@@ -163,76 +163,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Customerinsights
 
     public class CustomerinsightsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<DataSourcesList, ApiConnectionTriggerConfiguration> OnDataSourceRefreshComplete(Expression<Func<string>> dataset, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DataSourcesList, ApiConnectionPollingTriggerConfiguration> OnDataSourceRefreshComplete(Expression<Func<string>> dataset)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            return new DeferredBodyTrigger<DataSourcesList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<DataSourcesList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/onupdateditemscomplete", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<DataSourcesList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<DataSourcesList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<DataSourcesList, ApiConnectionTriggerConfiguration> OnDataSourceRefreshFail(Expression<Func<string>> dataset, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DataSourcesList, ApiConnectionPollingTriggerConfiguration> OnDataSourceRefreshFail(Expression<Func<string>> dataset)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            return new DeferredBodyTrigger<DataSourcesList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<DataSourcesList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/onupdateditemsfail", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<DataSourcesList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<DataSourcesList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SegmentData, ApiConnectionTriggerConfiguration> OnSegmentUpdated(Expression<Func<string>> dataset, Expression<Func<string>> segment, Expression<Func<int>> threshold, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SegmentData, ApiConnectionPollingTriggerConfiguration> OnSegmentUpdated(Expression<Func<string>> dataset, Expression<Func<string>> segment, Expression<Func<int>> threshold)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_segment = WorkflowExpression.Compile(segment, nameof(segment), required: true);
             var __workflow_threshold = WorkflowExpression.Compile(threshold, nameof(threshold), required: true);
-            return new DeferredBodyTrigger<SegmentData, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SegmentData, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/onupdatedsegment/{1}/{2}", __workflow_dataset.WithUrlEncoding(2), __workflow_segment.WithUrlEncoding(2), __workflow_threshold.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<SegmentData>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SegmentData>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<MeasureData, ApiConnectionTriggerConfiguration> OnBusinessMeasureUpdated(Expression<Func<string>> dataset, Expression<Func<string>> measure, Expression<Func<double>> threshold, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MeasureData, ApiConnectionPollingTriggerConfiguration> OnBusinessMeasureUpdated(Expression<Func<string>> dataset, Expression<Func<string>> measure, Expression<Func<double>> threshold)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_measure = WorkflowExpression.Compile(measure, nameof(measure), required: true);
             var __workflow_threshold = WorkflowExpression.Compile(threshold, nameof(threshold), required: true);
-            return new DeferredBodyTrigger<MeasureData, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MeasureData, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/onupdatedbusinessmeasure/{1}/{2}", __workflow_dataset.WithUrlEncoding(2), __workflow_measure.WithUrlEncoding(2), __workflow_threshold.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<MeasureData>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MeasureData>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<FullRefreshProcessData, ApiConnectionTriggerConfiguration> OnFullDagRefreshCompleted(Expression<Func<string>> dataset, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FullRefreshProcessData, ApiConnectionPollingTriggerConfiguration> OnFullDagRefreshCompleted(Expression<Func<string>> dataset)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            return new DeferredBodyTrigger<FullRefreshProcessData, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FullRefreshProcessData, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/onfulldagrefreshcompleted", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<FullRefreshProcessData>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FullRefreshProcessData>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ProcessData, ApiConnectionTriggerConfiguration> OnProcessCompleted(Expression<Func<string>> dataset, Expression<Func<ProcessInput>> process = null, Expression<Func<bool>> includingManualRefreshes = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProcessData, ApiConnectionPollingTriggerConfiguration> OnProcessCompleted(Expression<Func<string>> dataset, Expression<Func<ProcessInput>> process = null, Expression<Func<bool>> includingManualRefreshes = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_process = WorkflowExpression.Compile(process, nameof(process), required: false);
             var __workflow_includingManualRefreshes = WorkflowExpression.Compile(includingManualRefreshes, nameof(includingManualRefreshes), required: false);
-            return new DeferredBodyTrigger<ProcessData, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ProcessData, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/onprocesscompleted", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Customerinsights
                 callPayload.Queries["includingManualRefreshes"] = Convert.ToString(false);
                 if (__workflow_includingManualRefreshes != null)
                     callPayload.Queries["includingManualRefreshes"] = ExpressionConverter.Convert(__workflow_includingManualRefreshes);
-                return new ApiConnectionTrigger<ProcessData>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ProcessData>(callPayload);
             });
         }
     }

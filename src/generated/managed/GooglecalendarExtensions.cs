@@ -111,66 +111,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
     public class GooglecalendarTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CalendarEventList, ApiConnectionTriggerConfiguration> OnNewEventInCalendar(Expression<Func<string>> calendarId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList, ApiConnectionPollingTriggerConfiguration> OnNewEventInCalendar(Expression<Func<string>> calendarId)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
-            return new DeferredBodyTrigger<CalendarEventList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CalendarEventList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger1/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CalendarEventList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CalendarEventList, ApiConnectionTriggerConfiguration> OnUpdatedEventInCalendar(Expression<Func<string>> calendarId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList, ApiConnectionPollingTriggerConfiguration> OnUpdatedEventInCalendar(Expression<Func<string>> calendarId)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
-            return new DeferredBodyTrigger<CalendarEventList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CalendarEventList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger2/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CalendarEventList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CalendarEventList, ApiConnectionTriggerConfiguration> OnDeletedEventInCalendar(Expression<Func<string>> calendarId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList, ApiConnectionPollingTriggerConfiguration> OnDeletedEventInCalendar(Expression<Func<string>> calendarId)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
-            return new DeferredBodyTrigger<CalendarEventList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CalendarEventList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger3/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CalendarEventList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CalendarEventChangedList, ApiConnectionTriggerConfiguration> OnChangedEventInCalendar(Expression<Func<string>> calendarId, Expression<Func<bool>> singleEvents = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventChangedList, ApiConnectionPollingTriggerConfiguration> OnChangedEventInCalendar(Expression<Func<string>> calendarId, Expression<Func<bool>> singleEvents = null)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             var __workflow_singleEvents = WorkflowExpression.Compile(singleEvents, nameof(singleEvents), required: false);
-            return new DeferredBodyTrigger<CalendarEventChangedList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CalendarEventChangedList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger4/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_singleEvents != null)
                     callPayload.Queries["singleEvents"] = ExpressionConverter.Convert(__workflow_singleEvents);
-                return new ApiConnectionTrigger<CalendarEventChangedList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CalendarEventChangedList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CalendarEventList, ApiConnectionTriggerConfiguration> OnEventStarted(Expression<Func<string>> calendarId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList, ApiConnectionPollingTriggerConfiguration> OnEventStarted(Expression<Func<string>> calendarId)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
-            return new DeferredBodyTrigger<CalendarEventList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CalendarEventList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/eventstarted/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CalendarEventList>(callPayload);
             });
         }
     }

@@ -594,15 +594,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
 
     public class ImpowerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ConnectionDto, ApiConnectionTriggerConfiguration> CreateConnectionUsingPOST(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ConnectionDto, ApiConnectionPollingTriggerConfiguration> CreateConnectionUsingPOST()
         {
-            return new DeferredBodyTrigger<ConnectionDto, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ConnectionDto, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/connections";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new ConnectionCreateDtoInput().ToJToken();
-                return new ApiConnectionTrigger<ConnectionDto>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ConnectionDto>(callPayload);
             });
         }
     }

@@ -89,16 +89,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
 
     public class SlackTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewFileResponseItem[], ApiConnectionTriggerConfiguration> OnNewFile(Expression<Func<string>> channel, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewFileResponseItem[], ApiConnectionPollingTriggerConfiguration> OnNewFile(Expression<Func<string>> channel)
         {
             var __workflow_channel = WorkflowExpression.Compile(channel, nameof(channel), required: true);
-            return new DeferredBodyTrigger<OnNewFileResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnNewFileResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/files.list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["channel"] = ExpressionConverter.Convert(__workflow_channel);
-                return new ApiConnectionTrigger<OnNewFileResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnNewFileResponseItem[]>(callPayload);
             });
         }
     }

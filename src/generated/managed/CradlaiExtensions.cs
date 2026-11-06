@@ -129,17 +129,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 
     public class CradlaiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RunCompletedResponse, ApiConnectionTriggerConfiguration> RunCompleted(Expression<Func<string>> actionId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RunCompletedResponse, ApiConnectionPollingTriggerConfiguration> RunCompleted(Expression<Func<string>> actionId)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
-            return new DeferredBodyTrigger<RunCompletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RunCompletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/actions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["ActionId"] = ExpressionConverter.Convert(__workflow_actionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<RunCompletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RunCompletedResponse>(callPayload);
             });
         }
     }

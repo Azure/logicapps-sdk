@@ -214,18 +214,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
 
     public class RepliconTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> WebhookSubscriptionsRestAPI(Expression<Func<string>> hostUrl, Expression<Func<WebhookSubscriptionsRestAPIBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> WebhookSubscriptionsRestAPI(Expression<Func<string>> hostUrl, Expression<Func<WebhookSubscriptionsRestAPIBodyInput>> body)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WebhookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook-api/api/subscription";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSubscriptionResponse>(callPayload);
             });
         }
     }

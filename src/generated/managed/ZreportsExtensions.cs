@@ -27,31 +27,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
     public class ZreportsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionPollingTriggerConfiguration> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<BodyInput>> body)
         {
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CreateWebhookResponseBody, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/despatch-advice-hooks", __workflow_brandId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CreateWebhookResponseBody>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration> NewInvoice(Expression<Func<string>> brandId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionPollingTriggerConfiguration> NewInvoice(Expression<Func<string>> brandId, Expression<Func<BodyInput>> body)
         {
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CreateWebhookResponseBody, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/invoice-hooks", __workflow_brandId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CreateWebhookResponseBody>(callPayload);
             });
         }
     }

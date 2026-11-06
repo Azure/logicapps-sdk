@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SubscribeResponse, ApiConnectionTriggerConfiguration> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<SubscriptionInput>> subscription, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResponse, ApiConnectionPollingTriggerConfiguration> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<SubscriptionInput>> subscription, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null)
         {
             var __workflow_gatewayHost = WorkflowExpression.Compile(gatewayHost, nameof(gatewayHost), required: true);
             var __workflow_gatewayService = WorkflowExpression.Compile(gatewayService, nameof(gatewayService), required: true);
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             var __workflow_sncPartnerNames = WorkflowExpression.Compile(sncPartnerNames, nameof(sncPartnerNames), required: false);
             var __workflow_degreeOfParallelism = WorkflowExpression.Compile(degreeOfParallelism, nameof(degreeOfParallelism), required: false);
-            return new DeferredBodyTrigger<SubscribeResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SubscribeResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/webhooktrigger/subscribe";
                 var apiCallHttpMethod = "post";
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 if (__workflow_degreeOfParallelism != null)
                     callPayload.Queries["degreeOfParallelism"] = ExpressionConverter.Convert(__workflow_degreeOfParallelism);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
-                return new ApiConnectionTrigger<SubscribeResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SubscribeResponse>(callPayload);
             });
         }
     }

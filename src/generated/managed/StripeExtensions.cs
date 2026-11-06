@@ -88,47 +88,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
 
     public class StripeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListCustomersResponseItem[], ApiConnectionTriggerConfiguration> OnNewCustomer(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListCustomersResponseItem[], ApiConnectionPollingTriggerConfiguration> OnNewCustomer()
         {
-            return new DeferredBodyTrigger<ListCustomersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListCustomersResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/v1/customers";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListCustomersResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListCustomersResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListOrdersResponseItem[], ApiConnectionTriggerConfiguration> OnNewOrder(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListOrdersResponseItem[], ApiConnectionPollingTriggerConfiguration> OnNewOrder()
         {
-            return new DeferredBodyTrigger<ListOrdersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListOrdersResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/v1/orders";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListOrdersResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListChargesResponseItem[], ApiConnectionTriggerConfiguration> OnNewCharge(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListChargesResponseItem[], ApiConnectionPollingTriggerConfiguration> OnNewCharge()
         {
-            return new DeferredBodyTrigger<ListChargesResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListChargesResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/v1/charges";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListChargesResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListChargesResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListInvoiceItemsResponseItem[], ApiConnectionTriggerConfiguration> OnNewInvoiceItem(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListInvoiceItemsResponseItem[], ApiConnectionPollingTriggerConfiguration> OnNewInvoiceItem()
         {
-            return new DeferredBodyTrigger<ListInvoiceItemsResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListInvoiceItemsResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/v1/invoiceitems";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListInvoiceItemsResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListInvoiceItemsResponseItem[]>(callPayload);
             });
         }
     }

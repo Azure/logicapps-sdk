@@ -1652,16 +1652,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class MeisterplanTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<CreateWebhookPayloadInput>> payload, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhook(Expression<Func<CreateWebhookPayloadInput>> payload)
         {
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
-            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_payload);
-                return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookResponse>(callPayload);
             });
         }
     }

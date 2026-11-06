@@ -43,16 +43,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 
     public class ElasticformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TrigNewResponse(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TrigNewResponse(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/WebHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

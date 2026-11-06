@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
 
     public class SftpTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[], WhenFilesAreAddedOrModifiedTriggerConfiguration> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[], WhenFilesAreAddedOrModifiedTriggerConfiguration> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_includeFileContent = WorkflowExpression.Compile(includeFileContent, nameof(includeFileContent), required: false);
@@ -454,11 +454,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyTrigger<WhenFilesAreAddedOrModifiedOutputItem[], WhenFilesAreAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFilesAreAddedOrModifiedOutputItem[], WhenFilesAreAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true);
             });
         }
 
-        public IBodyWorkflowTrigger<WhenFileIsAddedOrModifiedOutput, WhenFileIsAddedOrModifiedTriggerConfiguration> WhenFileIsAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenFileIsAddedOrModifiedOutput, WhenFileIsAddedOrModifiedTriggerConfiguration> WhenFileIsAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_includeFileContent = WorkflowExpression.Compile(includeFileContent, nameof(includeFileContent), required: false);
@@ -492,12 +492,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "whenFileIsAddedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyTrigger<WhenFileIsAddedOrModifiedOutput, WhenFileIsAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFileIsAddedOrModifiedOutput, WhenFileIsAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true);
             });
         }
     }
 
-    public sealed class WhenFilesAreAddedOrModifiedTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
+    public sealed class WhenFilesAreAddedOrModifiedTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IRecurrenceConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
 
@@ -508,9 +508,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
 
         int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
     }
 
-    public sealed class WhenFileIsAddedOrModifiedTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
+    public sealed class WhenFileIsAddedOrModifiedTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IRecurrenceConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
 
@@ -521,6 +523,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
 
         int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
     }
 
     public class WhenFilesAreAddedOrModifiedOutputItem

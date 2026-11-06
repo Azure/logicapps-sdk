@@ -16,17 +16,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
 
     public class AppstudioapiTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ApiHooksSubscribePost(Expression<Func<string>> solutionId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ApiHooksSubscribePost(Expression<Func<string>> solutionId)
         {
             var __workflow_solutionId = WorkflowExpression.Compile(solutionId, nameof(solutionId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Hooks/subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["solutionId"] = ExpressionConverter.Convert(__workflow_solutionId);
                 callPayload.Body = new DataInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

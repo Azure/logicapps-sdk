@@ -88,16 +88,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motawordtranslations
 
     public class MotawordtranslationsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTranslationProjectCompleted(Expression<Func<int>> projectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WhenTranslationProjectCompleted(Expression<Func<int>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/webhooks", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new WhenTranslationProjectCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

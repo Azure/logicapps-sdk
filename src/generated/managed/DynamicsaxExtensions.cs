@@ -142,13 +142,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
 
     public class DynamicsaxTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BusinessEventSubscriptionResponse, ApiConnectionTriggerConfiguration> SubscribeOnABusinessEvent(Expression<Func<string>> dataset, Expression<Func<string>> businesseventcategory, Expression<Func<string>> businessevent, Expression<Func<string>> legalEntity = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BusinessEventSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> SubscribeOnABusinessEvent(Expression<Func<string>> dataset, Expression<Func<string>> businesseventcategory, Expression<Func<string>> businessevent, Expression<Func<string>> legalEntity = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_businesseventcategory = WorkflowExpression.Compile(businesseventcategory, nameof(businesseventcategory), required: true);
             var __workflow_businessevent = WorkflowExpression.Compile(businessevent, nameof(businessevent), required: true);
             var __workflow_legalEntity = WorkflowExpression.Compile(legalEntity, nameof(legalEntity), required: false);
-            return new DeferredBodyTrigger<BusinessEventSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<BusinessEventSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/subscribebusinessevent/{1}", __workflow_dataset.WithUrlEncoding(2), __workflow_businessevent.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
                 if (__workflow_legalEntity != null)
                     callPayload.Queries["legalEntity"] = ExpressionConverter.Convert(__workflow_legalEntity);
                 callPayload.Body = new SubscriptionInput().ToJToken();
-                return new ApiConnectionTrigger<BusinessEventSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<BusinessEventSubscriptionResponse>(callPayload);
             });
         }
     }

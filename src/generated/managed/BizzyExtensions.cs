@@ -301,29 +301,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class BizzyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<WebHookRegistrationsPostWebHookInput>> webHook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionPollingTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<WebHookRegistrationsPostWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
-            return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHook, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/register";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
-                return new ApiConnectionTrigger<WebHook>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHook>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsVectorPost(Expression<Func<WebHookRegistrationsVectorPostWebHookInput>> webHook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionPollingTriggerConfiguration> WebHookRegistrationsVectorPost(Expression<Func<WebHookRegistrationsVectorPostWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
-            return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHook, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerVector";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
-                return new ApiConnectionTrigger<WebHook>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHook>(callPayload);
             });
         }
     }

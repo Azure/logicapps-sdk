@@ -267,68 +267,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
     public class GlaassproTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseCreatedTrigger(Expression<Func<CaseClosedTriggerBodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CaseCreatedTrigger(Expression<Func<CaseClosedTriggerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/t/casecreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseUpdatedTrigger(Expression<Func<CaseClosedTriggerBodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CaseUpdatedTrigger(Expression<Func<CaseClosedTriggerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/t/caseupdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseClosedTrigger(Expression<Func<CaseClosedTriggerBodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CaseClosedTrigger(Expression<Func<CaseClosedTriggerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/t/caseclosed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MetadataCreatedTrigger(Expression<Func<MetadataCreatedTriggerRequestInput>> request, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> MetadataCreatedTrigger(Expression<Func<MetadataCreatedTriggerRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/mt/metadatacreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MetadataUpdatedTrigger(Expression<Func<MetadataCreatedTriggerRequestInput>> request, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> MetadataUpdatedTrigger(Expression<Func<MetadataCreatedTriggerRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/mt/metadataupdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

@@ -328,75 +328,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class CosmobotTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnNewTicket(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OnNewTicket()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/new-ticket";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnResolvedTicket(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OnResolvedTicket()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/resolved-ticket";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnUpdatedTicketTopic(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OnUpdatedTicketTopic()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/updated-ticket-topic";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnNewAnswer(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OnNewAnswer()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/new-answer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnUpdateAnswer(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OnUpdateAnswer()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/update-answer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnAskedQuestion(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OnAskedQuestion()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/asked-question";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

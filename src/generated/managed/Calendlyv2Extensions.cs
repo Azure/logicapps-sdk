@@ -81,31 +81,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
     public class Calendlyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscription(Expression<Func<CreateWebhookSubscriptionBodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookSubscription(Expression<Func<CreateWebhookSubscriptionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<CreateWebhookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CreateWebhookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook_subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<CreateWebhookSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CreateWebhookSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<CreateWebhookSubscriptionRoutingFormSubmissionBodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<CreateWebhookSubscriptionRoutingFormSubmissionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook_subscriptions/routing_form_submission";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(callPayload);
             });
         }
     }

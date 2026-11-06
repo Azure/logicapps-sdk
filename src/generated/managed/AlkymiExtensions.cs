@@ -187,17 +187,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
 
     public class AlkymiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookCreatedResponse, ApiConnectionTriggerConfiguration> EventListener(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookCreatedResponse, ApiConnectionPollingTriggerConfiguration> EventListener(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<WebHookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/webhooks/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebHookCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHookCreatedResponse>(callPayload);
             });
         }
     }

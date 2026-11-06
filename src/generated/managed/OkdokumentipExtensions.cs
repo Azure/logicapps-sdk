@@ -16,17 +16,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
 
     public class OkdokumentipTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WaitForSignature(Expression<Func<string>> signatureRequestId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WaitForSignature(Expression<Func<string>> signatureRequestId)
         {
             var __workflow_signatureRequestId = WorkflowExpression.Compile(signatureRequestId, nameof(signatureRequestId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signatureRequest/{0}", __workflow_signatureRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

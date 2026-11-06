@@ -163,44 +163,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
 
     public class OnenoteTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewSectionResponse, ApiConnectionTriggerConfiguration> OnNewSectionInNotebook(Expression<Func<string>> notebookKey, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSectionResponse, ApiConnectionPollingTriggerConfiguration> OnNewSectionInNotebook(Expression<Func<string>> notebookKey)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
-            return new DeferredBodyTrigger<NewSectionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewSectionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger1/notebooks/notebookKey/sections";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(__workflow_notebookKey);
-                return new ApiConnectionTrigger<NewSectionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewSectionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewSectionGroupResponse, ApiConnectionTriggerConfiguration> OnNewSectionGroupInNotebook(Expression<Func<string>> notebookKey, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSectionGroupResponse, ApiConnectionPollingTriggerConfiguration> OnNewSectionGroupInNotebook(Expression<Func<string>> notebookKey)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
-            return new DeferredBodyTrigger<NewSectionGroupResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewSectionGroupResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger2/notebooks/notebookKey/sectiongroups";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(__workflow_notebookKey);
-                return new ApiConnectionTrigger<NewSectionGroupResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewSectionGroupResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewPageResponse, ApiConnectionTriggerConfiguration> OnNewPageInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewPageResponse, ApiConnectionPollingTriggerConfiguration> OnNewPageInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
-            return new DeferredBodyTrigger<NewPageResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewPageResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger3/sections/Dynamic/pages";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(__workflow_notebookKey);
                 callPayload.Queries["sectionId"] = ExpressionConverter.Convert(__workflow_sectionId);
-                return new ApiConnectionTrigger<NewPageResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewPageResponse>(callPayload);
             });
         }
     }

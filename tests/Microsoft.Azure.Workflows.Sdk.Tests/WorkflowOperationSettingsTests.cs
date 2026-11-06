@@ -295,6 +295,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void GeneratedPollingTriggersUseFluentRecurrence()
+        {
+            var managed = WorkflowTriggers.Managed.Office365("office")
+                .OnCalendarNewItems(table: () => "calendar")
+                .WithRecurrence(new FlowRecurrence
+                {
+                    Frequency = FlowRecurrenceFrequency.Hour,
+                    Interval = 2,
+                });
+            var serviceProvider = WorkflowTriggers.ServiceProviders.ServiceBus("service")
+                .OnNewMessagesFromQueueSession(queueName: () => "orders")
+                .WithRecurrence(new FlowRecurrence
+                {
+                    Frequency = FlowRecurrenceFrequency.Second,
+                    Interval = 30,
+                });
+
+            var managedDefinition = managed.GetTriggerDefinition(FlowKind.Stateful);
+            var serviceProviderDefinition = serviceProvider.GetTriggerDefinition(FlowKind.Stateful);
+
+            Assert.Equal(FlowRecurrenceFrequency.Hour, managedDefinition.Recurrence.Frequency);
+            Assert.Equal(2, managedDefinition.Recurrence.Interval);
+            Assert.Equal(FlowRecurrenceFrequency.Second, serviceProviderDefinition.Recurrence.Frequency);
+            Assert.Equal(30, serviceProviderDefinition.Recurrence.Interval);
+        }
+
+        [Fact]
+        public void GeneratedPollingTriggersRetainDefaultRecurrence()
+        {
+            var managed = WorkflowTriggers.Managed.Office365("office")
+                .OnCalendarNewItems(table: () => "calendar");
+            var serviceProvider = WorkflowTriggers.ServiceProviders.ServiceBus("service")
+                .OnNewMessagesFromQueueSession(queueName: () => "orders");
+
+            var managedDefinition = managed.GetTriggerDefinition(FlowKind.Stateful);
+            var serviceProviderDefinition = serviceProvider.GetTriggerDefinition(FlowKind.Stateful);
+
+            Assert.Equal(FlowRecurrenceFrequency.Minute, managedDefinition.Recurrence.Frequency);
+            Assert.Equal(1, managedDefinition.Recurrence.Interval);
+            Assert.Equal(FlowRecurrenceFrequency.Minute, serviceProviderDefinition.Recurrence.Frequency);
+            Assert.Equal(1, serviceProviderDefinition.Recurrence.Interval);
+        }
+
+        [Fact]
+        public void RecurrenceValidationOccursDuringWorkflowBuild()
+        {
+            var trigger = WorkflowTriggers.Managed.Office365("office")
+                .OnCalendarNewItems(table: () => "calendar")
+                .WithRecurrence(new FlowRecurrence
+                {
+                    Frequency = FlowRecurrenceFrequency.Hour,
+                    Interval = 0,
+                });
+
+            Assert.Throws<InvalidOperationException>(
+                () => WorkflowFactory.CreateStatefulWorkflow("InvalidRecurrence", trigger));
+        }
+
+        [Fact]
         public void SettingsPreserveSpecializedOperationShapes()
         {
             var bodyAction = WorkflowActions.BuiltIn.HttpAction(
@@ -326,6 +385,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 configuredOutputAction;
             IOutputWorkflowTrigger<HttpRequestTriggerOutput, ITriggerConcurrencyConfiguration> concurrentOutputTrigger =
                 configuredOutputTrigger;
+            var pollingTrigger = WorkflowTriggers.Managed.Office365("office")
+                .OnCalendarNewItems(table: () => "calendar");
+            IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration>
+                configuredPollingTrigger = pollingTrigger.WithRecurrence(new FlowRecurrence
+                {
+                    Frequency = FlowRecurrenceFrequency.Minute,
+                    Interval = 5,
+                });
+            IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, IRecurrenceConfiguration>
+                recurrenceTrigger = configuredPollingTrigger;
             IAgentWorkflowAction<IRetryPolicyConfiguration> retryableAgentAction =
                 configuredAgentAction;
 
@@ -342,6 +411,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Same(configuredBodyAction, retryableBodyAction);
             Assert.Same(configuredOutputAction, trackedOutputAction);
             Assert.Same(configuredOutputTrigger, concurrentOutputTrigger);
+            Assert.Same(pollingTrigger, configuredPollingTrigger);
+            Assert.Same(configuredPollingTrigger, recurrenceTrigger);
             Assert.Same(configuredAgentAction, retryableAgentAction);
             Assert.Same(variableAction, trackedVariableAction);
         }
@@ -351,6 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             const string Source = """
                 using Microsoft.Azure.Workflows.Sdk;
+                using Microsoft.Azure.Workflows.Sdk.Connectors.Office365;
                 public sealed class Workflow
                 {
                     public void Build()
@@ -358,6 +430,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                         var compose = WorkflowActions.BuiltIn.Compose(() => "value");
                         compose.WithRetryPolicy(RetryPolicy.None());
                         compose.WithSecureOutputs();
+                        var notification = WorkflowTriggers.Managed.Office365("office").OnNewEmail();
+                        notification.WithRecurrence(new FlowRecurrence
+                        {
+                            Frequency = FlowRecurrenceFrequency.Minute,
+                            Interval = 1,
+                        });
                     }
                 }
                 """;
@@ -375,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .Where(diagnostic => diagnostic.Severity == DiagnosticSeverity.Error)
                 .ToArray();
 
-            Assert.Equal(2, errors.Length);
+            Assert.Equal(3, errors.Length);
             Assert.All(errors, error => Assert.Equal("CS0311", error.Id));
         }
 

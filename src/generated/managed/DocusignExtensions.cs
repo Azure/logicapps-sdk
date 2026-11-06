@@ -913,31 +913,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
 
     public class DocusignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateOrgHookEnvelope(Expression<Func<string>> organizationId, Expression<Func<CreateHookEnvelopeBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateOrgHookEnvelope(Expression<Func<string>> organizationId, Expression<Func<CreateHookEnvelopeBodyInput>> body)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Management/v2/organizations/{0}/connect", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateHookEnvelope(Expression<Func<string>> accountId, Expression<Func<CreateHookEnvelopeBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateHookEnvelope(Expression<Func<string>> accountId, Expression<Func<CreateHookEnvelopeBodyInput>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/connectV4", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
     }

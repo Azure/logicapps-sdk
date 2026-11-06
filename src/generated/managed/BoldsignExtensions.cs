@@ -115,18 +115,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
 
     public class BoldsignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AddWebHooksResponse, ApiConnectionTriggerConfiguration> WebHooks(Expression<Func<EventsInput>> events, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddWebHooksResponse, ApiConnectionPollingTriggerConfiguration> WebHooks(Expression<Func<EventsInput>> events, Expression<Func<BodyInput>> body)
         {
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<AddWebHooksResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<AddWebHooksResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/WebHooks/AddWebHooksAPIForPowerAutomate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["events"] = ExpressionConverter.Convert(__workflow_events);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<AddWebHooksResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<AddWebHooksResponse>(callPayload);
             });
         }
     }

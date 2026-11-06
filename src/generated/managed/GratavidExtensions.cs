@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
 
     public class GratavidTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewEvent(Expression<Func<WebookHookEventInput>> webookHookEvent, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NewEvent(Expression<Func<WebookHookEventInput>> webookHookEvent)
         {
             var __workflow_webookHookEvent = WorkflowExpression.Compile(webookHookEvent, nameof(webookHookEvent), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/manageIntegrations";
                 var apiCallHttpMethod = "post";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
                 callPayload.Queries["event"] = Convert.ToString("webhookSubscribe");
                 callPayload.Queries["webookHookEvent"] = ExpressionConverter.Convert(__workflow_webookHookEvent);
                 callPayload.Body = new NewEventBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

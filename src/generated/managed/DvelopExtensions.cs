@@ -16,17 +16,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
 
     public class DvelopTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<BodyInput>> body)
         {
             var __workflow_triggerId = WorkflowExpression.Compile(triggerId, nameof(triggerId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/triggers/{0}/subscribe", __workflow_triggerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

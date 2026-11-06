@@ -104,113 +104,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
     public class BitbucketTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListRepositoriesResponse, ApiConnectionTriggerConfiguration> OnNewRepo(Expression<Func<string>> account, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListRepositoriesResponse, ApiConnectionPollingTriggerConfiguration> OnNewRepo(Expression<Func<string>> account)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
-            return new DeferredBodyTrigger<ListRepositoriesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListRepositoriesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/repository_created_trigger/2.0/repositories/{0}", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListRepositoriesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListRepositoriesResponse>(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookIssueCreated(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateHookIssueCreated(Expression<Func<string>> account, Expression<Func<string>> slug)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookIssueUpdated(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateHookIssueUpdated(Expression<Func<string>> account, Expression<Func<string>> slug)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestApproved(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateHookPullRequestApproved(Expression<Func<string>> account, Expression<Func<string>> slug)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestCreated(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateHookPullRequestCreated(Expression<Func<string>> account, Expression<Func<string>> slug)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestDeclined(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateHookPullRequestDeclined(Expression<Func<string>> account, Expression<Func<string>> slug)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestMerged(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateHookPullRequestMerged(Expression<Func<string>> account, Expression<Func<string>> slug)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookRepositoryPush(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateHookRepositoryPush(Expression<Func<string>> account, Expression<Func<string>> slug)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

@@ -188,16 +188,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
 
     public class TwitterTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel, ApiConnectionTriggerConfiguration> OnNewTweet(Expression<Func<string>> searchQuery, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel, ApiConnectionPollingTriggerConfiguration> OnNewTweet(Expression<Func<string>> searchQuery)
         {
             var __workflow_searchQuery = WorkflowExpression.Compile(searchQuery, nameof(searchQuery), required: true);
-            return new DeferredBodyTrigger<TriggerBatchResponseTweetModel, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerBatchResponseTweetModel, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/onnewtweet";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(__workflow_searchQuery);
-                return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerBatchResponseTweetModel>(callPayload);
             });
         }
     }

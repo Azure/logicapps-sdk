@@ -205,10 +205,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
     public class TilkeeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEvent(Expression<Func<OnTilkeeEventBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> OnTilkeeEvent(Expression<Func<OnTilkeeEventBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/notifications";
                 var apiCallHttpMethod = "post";
@@ -217,14 +217,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEventEnded(Expression<Func<OnTilkeeEventEndedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> OnTilkeeEventEnded(Expression<Func<OnTilkeeEventEndedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/notifications/connexion_ended";
                 var apiCallHttpMethod = "post";
@@ -233,14 +233,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEventSigned(Expression<Func<OnTilkeeEventSignedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> OnTilkeeEventSigned(Expression<Func<OnTilkeeEventSignedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/notifications/token_signed";
                 var apiCallHttpMethod = "post";
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
     }

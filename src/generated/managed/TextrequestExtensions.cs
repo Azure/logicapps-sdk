@@ -546,17 +546,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
 
     public class TextrequestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TextingWebhookResponse, ApiConnectionTriggerConfiguration> TextingWebhook(Expression<Func<string>> dashboardId, Expression<Func<TextingWebhookBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TextingWebhookResponse, ApiConnectionPollingTriggerConfiguration> TextingWebhook(Expression<Func<string>> dashboardId, Expression<Func<TextingWebhookBodyInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<TextingWebhookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TextingWebhookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dashboards/{0}/hooks", __workflow_dashboardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<TextingWebhookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TextingWebhookResponse>(callPayload);
             });
         }
     }

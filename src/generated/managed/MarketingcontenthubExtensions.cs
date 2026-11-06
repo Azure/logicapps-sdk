@@ -224,16 +224,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
 
     public class MarketingcontenthubTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnEntitySaveTrigger(Expression<Func<AddSaveEntityTriggerSchemaInput>> addSaveEntityTriggerSchema, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> OnEntitySaveTrigger(Expression<Func<AddSaveEntityTriggerSchemaInput>> addSaveEntityTriggerSchema)
         {
             var __workflow_addSaveEntityTriggerSchema = WorkflowExpression.Compile(addSaveEntityTriggerSchema, nameof(addSaveEntityTriggerSchema), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_addSaveEntityTriggerSchema);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
     }

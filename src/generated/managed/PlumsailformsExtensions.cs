@@ -57,16 +57,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
 
     public class PlumsailformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormIsSubmitted(Expression<Func<SubscriberInput>> subscriber, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FormIsSubmitted(Expression<Func<SubscriberInput>> subscriber)
         {
             var __workflow_subscriber = WorkflowExpression.Compile(subscriber, nameof(subscriber), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/submissions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscriber);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

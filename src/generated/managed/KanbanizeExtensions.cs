@@ -252,10 +252,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbanize
 
     public class KanbanizeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CardHookResponse, ApiConnectionTriggerConfiguration> CardHook(Expression<Func<CardHookBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardHookResponse, ApiConnectionPollingTriggerConfiguration> CardHook(Expression<Func<CardHookBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<CardHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CardHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/webhooks";
                 var apiCallHttpMethod = "post";
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbanize
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<CardHookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CardHookResponse>(callPayload);
             });
         }
     }

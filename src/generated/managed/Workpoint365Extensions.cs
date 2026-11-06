@@ -720,18 +720,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint365
 
     public class Workpoint365Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WorkPoint365WebAPIModelWorkPointWebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<string>> workPoint365Url, Expression<Func<WebHookInput>> webHook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkPoint365WebAPIModelWorkPointWebHook, ApiConnectionPollingTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<string>> workPoint365Url, Expression<Func<WebHookInput>> webHook)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
-            return new DeferredBodyTrigger<WorkPoint365WebAPIModelWorkPointWebHook, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WorkPoint365WebAPIModelWorkPointWebHook, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/webhookproxy";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
-                return new ApiConnectionTrigger<WorkPoint365WebAPIModelWorkPointWebHook>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WorkPoint365WebAPIModelWorkPointWebHook>(callPayload);
             });
         }
     }

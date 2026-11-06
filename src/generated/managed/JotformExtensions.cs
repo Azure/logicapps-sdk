@@ -16,16 +16,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotform
 
     public class JotformTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> TriggerNewResponse(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> TriggerNewResponse(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
     }

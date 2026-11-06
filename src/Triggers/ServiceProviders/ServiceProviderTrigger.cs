@@ -23,30 +23,16 @@ namespace Microsoft.Azure.Workflows.Sdk
         private readonly bool isPolling;
 
         /// <summary>
-        /// The recurrence configuration for a polling trigger.
-        /// </summary>
-        private readonly FlowRecurrence recurrence;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="ServiceProviderTrigger"/> class.
         /// </summary>
         /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
         /// <param name="isPolling">Whether this trigger uses polling semantics.</param>
-        /// <param name="recurrence">The recurrence configuration for a polling trigger.</param>
         internal ServiceProviderTrigger(
             ServiceProviderOperationInput serviceProviderTriggerInput,
-            bool isPolling = false,
-            FlowRecurrence recurrence = null)
+            bool isPolling = false)
         {
             this.serviceProviderTriggerInput = serviceProviderTriggerInput;
             this.isPolling = isPolling;
-            this.recurrence = isPolling
-                ? recurrence ?? new FlowRecurrence
-                {
-                    Frequency = FlowRecurrenceFrequency.Minute,
-                    Interval = 1,
-                }
-                : null;
             this.Name = "ServiceProviderTrigger";
         }
 
@@ -62,7 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                     ? FlowTemplateOperationKind.Polling
                     : null,
                 Inputs = this.serviceProviderTriggerInput.ToJToken(),
-                Recurrence = this.recurrence,
             };
         }
     }
@@ -82,12 +67,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
         /// <param name="isPolling">Whether this trigger uses polling semantics.</param>
-        /// <param name="recurrence">The recurrence configuration for a polling trigger.</param>
         internal ServiceProviderBodyTrigger(
             ServiceProviderOperationInput serviceProviderTriggerInput,
-            bool isPolling = false,
-            FlowRecurrence recurrence = null)
-            : base(serviceProviderTriggerInput, isPolling, recurrence)
+            bool isPolling = false)
+            : base(serviceProviderTriggerInput, isPolling)
         {
         }
 
@@ -113,12 +96,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
         /// <param name="isPolling">Whether this trigger uses polling semantics.</param>
-        /// <param name="recurrence">The recurrence configuration for a polling trigger.</param>
         internal ServiceProviderOutputTrigger(
             ServiceProviderOperationInput serviceProviderTriggerInput,
-            bool isPolling = false,
-            FlowRecurrence recurrence = null)
-            : base(serviceProviderTriggerInput, isPolling, recurrence)
+            bool isPolling = false)
+            : base(serviceProviderTriggerInput, isPolling)
         {
         }
 

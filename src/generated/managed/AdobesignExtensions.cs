@@ -447,94 +447,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class AdobesignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementCreatedEvent(Expression<Func<CreateWebhookForAgreementCreatedEventWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookForAgreementCreatedEvent(Expression<Func<CreateWebhookForAgreementCreatedEventWebhookCreationInfoInput>> webhookCreationInfo)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/createwebhookforAgreementCreatedEvent_custom/v6/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhookCreationInfo);
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementSignatureRequestedEvent(Expression<Func<CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookForAgreementSignatureRequestedEvent(Expression<Func<CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInput>> webhookCreationInfo)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/createwebhookforSignatureRquestedEvent_custom/v6/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhookCreationInfo);
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementSignedEvent(Expression<Func<CreateWebhookForAgreementSignedEventWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookForAgreementSignedEvent(Expression<Func<CreateWebhookForAgreementSignedEventWebhookCreationInfoInput>> webhookCreationInfo)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/createwebhookforSignedDocumentEvent_custom/v6/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhookCreationInfo);
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementStatusUpdated(Expression<Func<CreateWebhookForAgreementStatusUpdatedWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookForAgreementStatusUpdated(Expression<Func<CreateWebhookForAgreementStatusUpdatedWebhookCreationInfoInput>> webhookCreationInfo)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/createwebhookforStatusChange_custom/v6/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhookCreationInfo);
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookGeneric(Expression<Func<CreateWebhookGenericWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookGeneric(Expression<Func<CreateWebhookGenericWebhookCreationInfoInput>> webhookCreationInfo)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/createwebhookGeneric_custom/v6/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhookCreationInfo);
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForWebFormAgreementEvent(Expression<Func<CreateWebhookForWebFormAgreementEventWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookForWebFormAgreementEvent(Expression<Func<CreateWebhookForWebFormAgreementEventWebhookCreationInfoInput>> webhookCreationInfo)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/createwebhookforWebFormAgreementEvent_custom/v6/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhookCreationInfo);
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForGroupEvent(Expression<Func<CreateWebhookForGroupEventWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookForGroupEvent(Expression<Func<CreateWebhookForGroupEventWebhookCreationInfoInput>> webhookCreationInfo)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/createwebhookForGroupEvent_custom/v6/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhookCreationInfo);
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
     }

@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
 
     public class BingsearchTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewsArticle[], ApiConnectionTriggerConfiguration> TrigNewNews(Expression<Func<string>> q, Expression<Func<MktInput>> mkt = null, Expression<Func<SafeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewsArticle[], ApiConnectionPollingTriggerConfiguration> TrigNewNews(Expression<Func<string>> q, Expression<Func<MktInput>> mkt = null, Expression<Func<SafeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_mkt = WorkflowExpression.Compile(mkt, nameof(mkt), required: false);
             var __workflow_safeSearch = WorkflowExpression.Compile(safeSearch, nameof(safeSearch), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyTrigger<NewsArticle[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewsArticle[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/news/search";
                 var apiCallHttpMethod = "get";
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
                     callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
-                return new ApiConnectionTrigger<NewsArticle[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewsArticle[]>(callPayload);
             });
         }
     }

@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmosign
 
     public class GmosignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateHookEnvelopeResponse, ApiConnectionTriggerConfiguration> CreateHookEnvelope(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateHookEnvelopeResponse, ApiConnectionPollingTriggerConfiguration> CreateHookEnvelope(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<CreateHookEnvelopeResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CreateHookEnvelopeResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/customer/connect";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<CreateHookEnvelopeResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CreateHookEnvelopeResponse>(callPayload);
             });
         }
     }

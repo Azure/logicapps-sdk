@@ -46,18 +46,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
 
     public class Survey123Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AddData(Expression<Func<string>> surveyId, Expression<Func<AddWebhookBodyInput>> addWebhookBody, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> AddData(Expression<Func<string>> surveyId, Expression<Func<AddWebhookBodyInput>> addWebhookBody)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             var __workflow_addWebhookBody = WorkflowExpression.Compile(addWebhookBody, nameof(addWebhookBody), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/survey/{0}/webhook/add", __workflow_surveyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["portalUrl"] = Convert.ToString("https://www.arcgis.com");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_addWebhookBody);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
     }

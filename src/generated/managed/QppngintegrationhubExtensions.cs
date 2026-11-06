@@ -485,18 +485,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qppngintegrationhub
 
     public class QppngintegrationhubTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSuccessResponse, ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> userName, Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSuccessResponse, ApiConnectionPollingTriggerConfiguration> WebhookTrigger(Expression<Func<string>> userName, Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
-            return new DeferredBodyTrigger<WebhookSuccessResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSuccessResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/api/v3/registration";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["user_name"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
-                return new ApiConnectionTrigger<WebhookSuccessResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSuccessResponse>(callPayload);
             });
         }
     }

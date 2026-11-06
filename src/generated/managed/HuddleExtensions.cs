@@ -122,29 +122,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
 
     public class HuddleTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse, ApiConnectionTriggerConfiguration> PollFolderForFileUpload(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse, ApiConnectionPollingTriggerConfiguration> PollFolderForFileUpload(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            return new DeferredBodyTrigger<PollFolderForFileUploadResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollFolderForFileUploadResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/v2/poll/folder/{0}/upload", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
-                return new ApiConnectionTrigger<PollFolderForFileUploadResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollFolderForFileUploadResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse, ApiConnectionTriggerConfiguration> PollWorkspaceForNewApproval(Expression<Func<string>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse, ApiConnectionPollingTriggerConfiguration> PollWorkspaceForNewApproval(Expression<Func<string>> workspaceId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            return new DeferredBodyTrigger<PollWorkspaceForNewApprovalResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollWorkspaceForNewApprovalResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/v2/poll/workspace/{0}/approvals", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PollWorkspaceForNewApprovalResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollWorkspaceForNewApprovalResponse>(callPayload);
             });
         }
     }

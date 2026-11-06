@@ -73,148 +73,148 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
 
     public class ZaharaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CostCodeIntegrationModel[], ApiConnectionTriggerConfiguration> NewCostCode(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CostCodeIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewCostCode()
         {
-            return new DeferredBodyTrigger<CostCodeIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CostCodeIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/CostCodeIntegration/GetAll";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CostCodeIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CostCodeIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[], ApiConnectionTriggerConfiguration> NewApprovalComment(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewApprovalComment()
         {
-            return new DeferredBodyTrigger<ProcessLogIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ProcessLogIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/DocumentsIntegration/GetApprovalComments";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ProcessLogIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[], ApiConnectionTriggerConfiguration> NewDocumentApproved(Expression<Func<DocumentTypeInput>> documentType, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewDocumentApproved(Expression<Func<DocumentTypeInput>> documentType)
         {
             var __workflow_documentType = WorkflowExpression.Compile(documentType, nameof(documentType), required: true);
-            return new DeferredBodyTrigger<ProcessLogIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ProcessLogIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/DocumentsIntegration/GetApproved";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["documentType"] = ExpressionConverter.Convert(__workflow_documentType);
-                return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ProcessLogIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<InvoiceIntegrationModel[], ApiConnectionTriggerConfiguration> NewInvoice(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<InvoiceIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewInvoice()
         {
-            return new DeferredBodyTrigger<InvoiceIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<InvoiceIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/InvoiceIntegration/GetAll";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<InvoiceIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<InvoiceIntegrationModel[], ApiConnectionTriggerConfiguration> NewInvoiceSetAsExported(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<InvoiceIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewInvoiceSetAsExported()
         {
-            return new DeferredBodyTrigger<InvoiceIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<InvoiceIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/InvoiceIntegration/GetExported";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<InvoiceIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NominalCodeIntegrationModel[], ApiConnectionTriggerConfiguration> NewNominalCode(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NominalCodeIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewNominalCode()
         {
-            return new DeferredBodyTrigger<NominalCodeIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NominalCodeIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/NominalCodeIntegration/GetAll";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NominalCodeIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NominalCodeIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ProjectIntegrationModel[], ApiConnectionTriggerConfiguration> NewProject(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProjectIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewProject()
         {
-            return new DeferredBodyTrigger<ProjectIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ProjectIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/ProjectIntegration/getall";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ProjectIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ProjectIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PurchaseOrderIntegrationModel[], ApiConnectionTriggerConfiguration> NewPurchaseOrder(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PurchaseOrderIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewPurchaseOrder()
         {
-            return new DeferredBodyTrigger<PurchaseOrderIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PurchaseOrderIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/PurchaseOrderIntegration/GetAll";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PurchaseOrderIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PurchaseOrderIntegrationModel[], ApiConnectionTriggerConfiguration> NewPurchaseOrderSentToSupplier(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PurchaseOrderIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewPurchaseOrderSentToSupplier()
         {
-            return new DeferredBodyTrigger<PurchaseOrderIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PurchaseOrderIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/PurchaseOrderIntegration/GetSentToSupplier";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PurchaseOrderIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PurchaseRequsitionIntegrationModel[], ApiConnectionTriggerConfiguration> NewPurchaseRequsition(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PurchaseRequsitionIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewPurchaseRequsition()
         {
-            return new DeferredBodyTrigger<PurchaseRequsitionIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PurchaseRequsitionIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/PurchaseRequsitionIntegration/getall";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PurchaseRequsitionIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PurchaseRequsitionIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SupplierIntegrationModel[], ApiConnectionTriggerConfiguration> NewSupplier(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SupplierIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewSupplier()
         {
-            return new DeferredBodyTrigger<SupplierIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SupplierIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/SupplierIntegration/GetAll";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<SupplierIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SupplierIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SupplierUpdateIntegrationModel[], ApiConnectionTriggerConfiguration> SupplierAmended(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SupplierUpdateIntegrationModel[], ApiConnectionPollingTriggerConfiguration> SupplierAmended()
         {
-            return new DeferredBodyTrigger<SupplierUpdateIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SupplierUpdateIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/SupplierIntegration/GetAllUpdated";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<SupplierUpdateIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SupplierUpdateIntegrationModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TaxCodeIntegrationModel[], ApiConnectionTriggerConfiguration> NewTaxCode(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaxCodeIntegrationModel[], ApiConnectionPollingTriggerConfiguration> NewTaxCode()
         {
-            return new DeferredBodyTrigger<TaxCodeIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TaxCodeIntegrationModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/TaxCodeIntegration/getall";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaxCodeIntegrationModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TaxCodeIntegrationModel[]>(callPayload);
             });
         }
     }

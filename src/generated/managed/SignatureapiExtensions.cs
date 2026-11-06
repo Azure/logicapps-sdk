@@ -317,198 +317,198 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class SignatureapiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeCreated(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForEnvelopeCreated(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeStarted(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForEnvelopeStarted(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.started";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeCompleted(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForEnvelopeCompleted(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.completed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeFailed(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForEnvelopeFailed(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.failed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeCanceled(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForEnvelopeCanceled(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.canceled";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientReleased(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForRecipientReleased(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.released";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientSent(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForRecipientSent(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.sent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientCompleted(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForRecipientCompleted(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.completed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientRejected(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForRecipientRejected(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.rejected";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientBounced(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForRecipientBounced(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.bounced";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientFailed(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForRecipientFailed(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.failed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientReplaced(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForRecipientReplaced(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.replaced";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientResent(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForRecipientResent(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.resent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForDeliverableGenerated(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForDeliverableGenerated(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/deliverable.generated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForDeliverableFailed(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateEndpointForDeliverableFailed(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/deliverable.failed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
     }

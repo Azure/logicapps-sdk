@@ -16,15 +16,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascregulatorycomplianceassess
 
     public class AscregulatorycomplianceassessmentTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> ASCRegulatoryComplianceAssessmentTriggerSubscribe(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> ASCRegulatoryComplianceAssessmentTriggerSubscribe()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Microsoft.Security/RegulatoryComplianceAssessment/subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
     }

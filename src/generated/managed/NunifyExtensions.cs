@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
 
     public class NunifyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId)
         {
             var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", __workflow_platformId.WithUrlEncoding(1), __workflow_domainId.WithUrlEncoding(1), __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -49,16 +49,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = new NEWREGISTRATIONBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId)
         {
             var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", __workflow_platformId.WithUrlEncoding(1), __workflow_domainId.WithUrlEncoding(1), __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = new NEWCHECKINBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

@@ -294,17 +294,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
 
     public class X12Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnModifiedControlNumberReplicableControlNumberContentResponse[], ApiConnectionTriggerConfiguration> OnModifiedControlNumber(Expression<Func<string>> startSyncTime = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnModifiedControlNumberReplicableControlNumberContentResponse[], ApiConnectionPollingTriggerConfiguration> OnModifiedControlNumber(Expression<Func<string>> startSyncTime = null)
         {
             var __workflow_startSyncTime = WorkflowExpression.Compile(startSyncTime, nameof(startSyncTime), required: false);
-            return new DeferredBodyTrigger<OnModifiedControlNumberReplicableControlNumberContentResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnModifiedControlNumberReplicableControlNumberContentResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/triggers/onModifiedControlNumber";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_startSyncTime != null)
                     callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(__workflow_startSyncTime);
-                return new ApiConnectionTrigger<OnModifiedControlNumberReplicableControlNumberContentResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnModifiedControlNumberReplicableControlNumberContentResponse[]>(callPayload);
             });
         }
     }

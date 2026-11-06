@@ -145,46 +145,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
     public class AsanaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListProjectsResponseV2, ApiConnectionTriggerConfiguration> OnProjectCreated(Expression<Func<string>> workspace, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponseV2, ApiConnectionPollingTriggerConfiguration> OnProjectCreated(Expression<Func<string>> workspace)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
-            return new DeferredBodyTrigger<ListProjectsResponseV2, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListProjectsResponseV2, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/new_project_trigger/projects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
-                return new ApiConnectionTrigger<ListProjectsResponseV2>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListProjectsResponseV2>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnTaskCompleted(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionPollingTriggerConfiguration> OnTaskCompleted(Expression<Func<string>> workspace, Expression<Func<string>> project)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/complete_task_trigger/tasks";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
-                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListTasksResponseV2>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnTaskCreated(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionPollingTriggerConfiguration> OnTaskCreated(Expression<Func<string>> workspace, Expression<Func<string>> project)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/new_task_trigger/tasks";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
-                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListTasksResponseV2>(callPayload);
             });
         }
     }

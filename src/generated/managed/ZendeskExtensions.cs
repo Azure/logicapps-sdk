@@ -92,14 +92,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zendesk
 
     public class ZendeskTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/default/tables/{0}/onupdateditems", __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zendesk
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
     }

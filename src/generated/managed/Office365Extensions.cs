@@ -884,13 +884,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             });
         }
 
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration> OnCalendarNewItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration> OnCalendarNewItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v3/tables/{0}/onnewitems", __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -901,17 +901,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GraphCalendarEventListClientReceive>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration> OnCalendarUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration> OnCalendarUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v3/tables/{0}/onupdateditems", __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -922,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GraphCalendarEventListClientReceive>(callPayload);
             });
         }
 
@@ -1134,11 +1134,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             });
         }
 
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration> OnUpcomingEvents(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration> OnUpcomingEvents(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_lookAheadTimeInMinutes = WorkflowExpression.Compile(lookAheadTimeInMinutes, nameof(lookAheadTimeInMinutes), required: false);
-            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v3/Events/OnUpcomingEvents";
                 var apiCallHttpMethod = "get";
@@ -1147,11 +1147,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 callPayload.Queries["lookAheadTimeInMinutes"] = Convert.ToString(15);
                 if (__workflow_lookAheadTimeInMinutes != null)
                     callPayload.Queries["lookAheadTimeInMinutes"] = ExpressionConverter.Convert(__workflow_lookAheadTimeInMinutes);
-                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GraphCalendarEventListClientReceive>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionTriggerConfiguration> OnSharedMailboxNewEmail(Expression<Func<string>> mailboxAddress, Expression<Func<string>> folderId = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<CreateGraphOnFlaggedEmailPokeSubscriptionImportanceInput>> importance = null, Expression<Func<bool>> hasAttachments = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionPollingTriggerConfiguration> OnSharedMailboxNewEmail(Expression<Func<string>> mailboxAddress, Expression<Func<string>> folderId = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<CreateGraphOnFlaggedEmailPokeSubscriptionImportanceInput>> importance = null, Expression<Func<bool>> hasAttachments = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
             var __workflow_mailboxAddress = WorkflowExpression.Compile(mailboxAddress, nameof(mailboxAddress), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: false);
@@ -1163,7 +1163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             var __workflow_hasAttachments = WorkflowExpression.Compile(hasAttachments, nameof(hasAttachments), required: false);
             var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
             var __workflow_subjectFilter = WorkflowExpression.Compile(subjectFilter, nameof(subjectFilter), required: false);
-            return new DeferredBodyTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/SharedMailbox/Mail/OnNewEmail";
                 var apiCallHttpMethod = "get";
@@ -1191,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(__workflow_includeAttachments);
                 if (__workflow_subjectFilter != null)
                     callPayload.Queries["subjectFilter"] = ExpressionConverter.Convert(__workflow_subjectFilter);
-                return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerBatchResponseGraphClientReceiveMessage>(callPayload);
             });
         }
     }

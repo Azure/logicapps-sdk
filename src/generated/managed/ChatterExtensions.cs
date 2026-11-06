@@ -85,15 +85,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
 
     public class ChatterTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListPostsByGroupResponse, ApiConnectionTriggerConfiguration> TrigNewPostInGroup(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPostsByGroupResponse, ApiConnectionPollingTriggerConfiguration> TrigNewPostInGroup(Expression<Func<string>> groupId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            return new DeferredBodyTrigger<ListPostsByGroupResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListPostsByGroupResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/new_post_trigger/services/data/v38.0/chatter/feeds/record/{0}/feed-elements", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListPostsByGroupResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListPostsByGroupResponse>(callPayload);
             });
         }
     }

@@ -82,26 +82,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
 
     public class GotowebinarTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebinarSummary[], ApiConnectionTriggerConfiguration> OnNewWebinar(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebinarSummary[], ApiConnectionPollingTriggerConfiguration> OnNewWebinar()
         {
-            return new DeferredBodyTrigger<WebinarSummary[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebinarSummary[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/organizers/organizerKey/webinars";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<WebinarSummary[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebinarSummary[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RegistrantSummary[], ApiConnectionTriggerConfiguration> OnNewRegistration(Expression<Func<string>> webinarKey, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegistrantSummary[], ApiConnectionPollingTriggerConfiguration> OnNewRegistration(Expression<Func<string>> webinarKey)
         {
             var __workflow_webinarKey = WorkflowExpression.Compile(webinarKey, nameof(webinarKey), required: true);
-            return new DeferredBodyTrigger<RegistrantSummary[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RegistrantSummary[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/organizers/organizerKey/webinars/{0}/registrants", __workflow_webinarKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<RegistrantSummary[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RegistrantSummary[]>(callPayload);
             });
         }
     }

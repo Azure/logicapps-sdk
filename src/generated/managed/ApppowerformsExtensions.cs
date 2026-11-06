@@ -84,16 +84,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
 
     public class ApppowerformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse, ApiConnectionTriggerConfiguration> TriggerGetCardResponse(Expression<Func<string>> name, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse, ApiConnectionPollingTriggerConfiguration> TriggerGetCardResponse(Expression<Func<string>> name)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyTrigger<TriggerGetCardResponseResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerGetCardResponseResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/TriggerGetCardResponse/{0}", __workflow_name.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["timestamp"] = Convert.ToString("2021-12-31");
-                return new ApiConnectionTrigger<TriggerGetCardResponseResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerGetCardResponseResponse>(callPayload);
             });
         }
     }

@@ -216,17 +216,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
 
     public class TeamsspiritTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ActionTriggerResponse, ApiConnectionTriggerConfiguration> ActionTrigger(Expression<Func<ActionTriggerBodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ActionTriggerResponse, ApiConnectionPollingTriggerConfiguration> ActionTrigger(Expression<Func<ActionTriggerBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<ActionTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ActionTriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<ActionTriggerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ActionTriggerResponse>(callPayload);
             });
         }
     }

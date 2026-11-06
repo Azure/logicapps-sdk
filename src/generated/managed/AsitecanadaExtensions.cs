@@ -69,11 +69,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitecanada
 
     public class AsitecanadaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<BodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/asitePullDataWebhook";
                 var apiCallHttpMethod = "post";
@@ -81,15 +81,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitecanada
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["Accept"] = Convert.ToString("*/*");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<BodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/asitePullAppFormDataWebhook";
                 var apiCallHttpMethod = "post";
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitecanada
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["Accept"] = Convert.ToString("*/*");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

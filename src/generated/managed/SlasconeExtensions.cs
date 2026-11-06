@@ -16,17 +16,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slascone
 
     public class SlasconeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookRegistrationDto, ApiConnectionTriggerConfiguration> CreateCustomerTrigger(Expression<Func<string>> isvId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookRegistrationDto, ApiConnectionPollingTriggerConfiguration> CreateCustomerTrigger(Expression<Func<string>> isvId, Expression<Func<BodyInput>> body)
         {
             var __workflow_isvId = WorkflowExpression.Compile(isvId, nameof(isvId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WebHookRegistrationDto, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookRegistrationDto, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/WebhookRegistration/isv/{0}", __workflow_isvId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebHookRegistrationDto>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHookRegistrationDto>(callPayload);
             });
         }
     }

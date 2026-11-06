@@ -46,29 +46,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 
     public class CaptisaformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookCreateTrigger(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionPollingTriggerConfiguration> WebhookCreateTrigger(Expression<Func<string>> formId)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/msflow/forms/{0}/c/subscribe", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookUpdateTrigger(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionPollingTriggerConfiguration> WebhookUpdateTrigger(Expression<Func<string>> formId)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/msflow/forms/{0}/u/subscribe", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookResponse>(callPayload);
             });
         }
     }

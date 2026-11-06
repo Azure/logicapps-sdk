@@ -163,185 +163,185 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
 
     public class AvepointcloudgovernanceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForCommon(Expression<Func<string>> flowTriggerType, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForCommon(Expression<Func<string>> flowTriggerType)
         {
             var __workflow_flowTriggerType = WorkflowExpression.Compile(flowTriggerType, nameof(flowTriggerType), required: true);
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/common";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["flowTriggerType"] = ExpressionConverter.Convert(__workflow_flowTriggerType);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForErrorTaskCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForErrorTaskCreated()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/errortask/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForErrorTaskRetried(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForErrorTaskRetried()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/errortask/retried";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRequestCancelled(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForRequestCancelled()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/request/cancelled";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRequestCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForRequestCompleted()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/request/completed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRequestSubmitted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForRequestSubmitted()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/request/submitted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForTaskApproved(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForTaskApproved()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/task/approved";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForFullyAutoImportCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForFullyAutoImportCompleted()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/task/autoimport";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForConfirmDetailCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForConfirmDetailCompleted()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/task/confirm";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForTaskCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForTaskCreated()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/task/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForTaskRejected(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForTaskRejected()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/task/rejected";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRenewalTaskCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForRenewalTaskCompleted()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/task/renewal/completed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRenewalTaskException(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForRenewalTaskException()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/task/renewal/exception";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRenewalTaskOverdue(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForRenewalTaskOverdue()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/task/renewal/overdue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForErrorTaskSkipped(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> FlowCreateHookForErrorTaskSkipped()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/task/skipped";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
     }

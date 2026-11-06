@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class VineforceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenTaskIsCompletedResponse, ApiConnectionTriggerConfiguration> WhenTaskIsCompleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsCompletedResponse, ApiConnectionPollingTriggerConfiguration> WhenTaskIsCompleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_assigneeEmail = WorkflowExpression.Compile(assigneeEmail, nameof(assigneeEmail), required: false);
             var __workflow_creatorEmail = WorkflowExpression.Compile(creatorEmail, nameof(creatorEmail), required: false);
-            return new DeferredBodyTrigger<WhenTaskIsCompletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WhenTaskIsCompletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/GetRecentCompletedTasks";
                 var apiCallHttpMethod = "get";
@@ -366,11 +366,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 if (__workflow_creatorEmail != null)
                     callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(__workflow_creatorEmail);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
-                return new ApiConnectionTrigger<WhenTaskIsCompletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WhenTaskIsCompletedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WhenTaskSectionIsChangedResponse, ApiConnectionTriggerConfiguration> WhenTaskSectionIsChanged(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> taskId = null, Expression<Func<string>> oldSectionId = null, Expression<Func<string>> oldSectoinName = null, Expression<Func<string>> newSectionId = null, Expression<Func<string>> newSectoinName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskSectionIsChangedResponse, ApiConnectionPollingTriggerConfiguration> WhenTaskSectionIsChanged(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> taskId = null, Expression<Func<string>> oldSectionId = null, Expression<Func<string>> oldSectoinName = null, Expression<Func<string>> newSectionId = null, Expression<Func<string>> newSectoinName = null)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_userEmail = WorkflowExpression.Compile(userEmail, nameof(userEmail), required: true);
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var __workflow_oldSectoinName = WorkflowExpression.Compile(oldSectoinName, nameof(oldSectoinName), required: false);
             var __workflow_newSectionId = WorkflowExpression.Compile(newSectionId, nameof(newSectionId), required: false);
             var __workflow_newSectoinName = WorkflowExpression.Compile(newSectoinName, nameof(newSectoinName), required: false);
-            return new DeferredBodyTrigger<WhenTaskSectionIsChangedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WhenTaskSectionIsChangedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/GetRecentModifiedSectionTasks";
                 var apiCallHttpMethod = "get";
@@ -405,31 +405,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                     callPayload.Queries["NewSectionId"] = ExpressionConverter.Convert(__workflow_newSectionId);
                 if (__workflow_newSectoinName != null)
                     callPayload.Queries["NewSectoinName"] = ExpressionConverter.Convert(__workflow_newSectoinName);
-                return new ApiConnectionTrigger<WhenTaskSectionIsChangedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WhenTaskSectionIsChangedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WhenTaskIsCreatedResponse, ApiConnectionTriggerConfiguration> WhenTaskIsCreated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsCreatedResponse, ApiConnectionPollingTriggerConfiguration> WhenTaskIsCreated(Expression<Func<string>> apiKey, Expression<Func<int>> duration)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
-            return new DeferredBodyTrigger<WhenTaskIsCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WhenTaskIsCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/GetRecentlyCreatedTask";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
-                return new ApiConnectionTrigger<WhenTaskIsCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WhenTaskIsCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WhenTaskIsUpdatedResponse, ApiConnectionTriggerConfiguration> WhenTaskIsUpdated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> updateFilter = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsUpdatedResponse, ApiConnectionPollingTriggerConfiguration> WhenTaskIsUpdated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> updateFilter = null)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
             var __workflow_updateFilter = WorkflowExpression.Compile(updateFilter, nameof(updateFilter), required: false);
-            return new DeferredBodyTrigger<WhenTaskIsUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WhenTaskIsUpdatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/GetRecentlyUpdatedTask";
                 var apiCallHttpMethod = "get";
@@ -438,11 +438,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 if (__workflow_updateFilter != null)
                     callPayload.Queries["UpdateFilter"] = ExpressionConverter.Convert(__workflow_updateFilter);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
-                return new ApiConnectionTrigger<WhenTaskIsUpdatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WhenTaskIsUpdatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WhenTaskIsDeletedResponse, ApiConnectionTriggerConfiguration> WhenTaskIsDeleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsDeletedResponse, ApiConnectionPollingTriggerConfiguration> WhenTaskIsDeleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_assigneeEmail = WorkflowExpression.Compile(assigneeEmail, nameof(assigneeEmail), required: false);
             var __workflow_creatorEmail = WorkflowExpression.Compile(creatorEmail, nameof(creatorEmail), required: false);
-            return new DeferredBodyTrigger<WhenTaskIsDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WhenTaskIsDeletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/GetRecentlyDeletedTasks";
                 var apiCallHttpMethod = "get";
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 if (__workflow_creatorEmail != null)
                     callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(__workflow_creatorEmail);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
-                return new ApiConnectionTrigger<WhenTaskIsDeletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WhenTaskIsDeletedResponse>(callPayload);
             });
         }
     }

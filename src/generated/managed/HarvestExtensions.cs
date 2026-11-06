@@ -188,69 +188,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
     public class HarvestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetUserByIdResponse[], ApiConnectionTriggerConfiguration> TrigNewUser(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetUserByIdResponse[], ApiConnectionPollingTriggerConfiguration> TrigNewUser()
         {
-            return new DeferredBodyTrigger<GetUserByIdResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetUserByIdResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/people";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<GetUserByIdResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetUserByIdResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListAllClientsResponseItem[], ApiConnectionTriggerConfiguration> TrigNewClient(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListAllClientsResponseItem[], ApiConnectionPollingTriggerConfiguration> TrigNewClient()
         {
-            return new DeferredBodyTrigger<ListAllClientsResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListAllClientsResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/clients";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListAllClientsResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListAllClientsResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListAllContactsResponseItem[], ApiConnectionTriggerConfiguration> TrigNewContact(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListAllContactsResponseItem[], ApiConnectionPollingTriggerConfiguration> TrigNewContact()
         {
-            return new DeferredBodyTrigger<ListAllContactsResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListAllContactsResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/contacts";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListAllContactsResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListAllContactsResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListProjectsResponseItem[], ApiConnectionTriggerConfiguration> TrigNewProject(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponseItem[], ApiConnectionPollingTriggerConfiguration> TrigNewProject()
         {
-            return new DeferredBodyTrigger<ListProjectsResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListProjectsResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/projects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListProjectsResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListProjectsResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse, ApiConnectionTriggerConfiguration> TrigNewTimeEntryToday(Expression<Func<string>> ofUser = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse, ApiConnectionPollingTriggerConfiguration> TrigNewTimeEntryToday(Expression<Func<string>> ofUser = null)
         {
             var __workflow_ofUser = WorkflowExpression.Compile(ofUser, nameof(ofUser), required: false);
-            return new DeferredBodyTrigger<GetTimeEntriesForDayResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetTimeEntriesForDayResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/daily";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_ofUser != null)
                     callPayload.Queries["of_user"] = ExpressionConverter.Convert(__workflow_ofUser);
-                return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetTimeEntriesForDayResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse, ApiConnectionTriggerConfiguration> TrigNewTimeEntry(Expression<Func<string>> date, Expression<Func<string>> ofUser = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse, ApiConnectionPollingTriggerConfiguration> TrigNewTimeEntry(Expression<Func<string>> date, Expression<Func<string>> ofUser = null)
         {
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             var __workflow_ofUser = WorkflowExpression.Compile(ofUser, nameof(ofUser), required: false);
-            return new DeferredBodyTrigger<GetTimeEntriesForDayResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetTimeEntriesForDayResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/daily/day/year";
                 var apiCallHttpMethod = "get";
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
                 if (__workflow_ofUser != null)
                     callPayload.Queries["of_user"] = ExpressionConverter.Convert(__workflow_ofUser);
-                return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetTimeEntriesForDayResponse>(callPayload);
             });
         }
     }

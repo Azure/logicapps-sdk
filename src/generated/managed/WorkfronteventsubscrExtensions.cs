@@ -16,16 +16,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
 
     public class WorkfronteventsubscrTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnWorkfrontEventResponse, ApiConnectionTriggerConfiguration> OnWorkfrontEvent(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnWorkfrontEventResponse, ApiConnectionPollingTriggerConfiguration> OnWorkfrontEvent(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<OnWorkfrontEventResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnWorkfrontEventResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/attask/eventsubscription/api/v1/subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<OnWorkfrontEventResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnWorkfrontEventResponse>(callPayload);
             });
         }
     }

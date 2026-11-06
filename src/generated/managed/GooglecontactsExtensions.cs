@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
 
     public class GooglecontactsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PeopleApiOnContactUpdatedResponse, ApiConnectionTriggerConfiguration> PeopleApiOnContactUpdated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PeopleApiOnContactUpdatedResponse, ApiConnectionPollingTriggerConfiguration> PeopleApiOnContactUpdated()
         {
-            return new DeferredBodyTrigger<PeopleApiOnContactUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PeopleApiOnContactUpdatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v3/people/trigger/onContactUpdated";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PeopleApiOnContactUpdatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PeopleApiOnContactUpdatedResponse>(callPayload);
             });
         }
     }

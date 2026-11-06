@@ -123,16 +123,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
 
     public class ElfsquaddataTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTrigger(Expression<Func<string>> triggerName, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateTrigger(Expression<Func<string>> triggerName)
         {
             var __workflow_triggerName = WorkflowExpression.Compile(triggerName, nameof(triggerName), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/2/webhooks/{0}", __workflow_triggerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new WebHooksSubscriptionInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

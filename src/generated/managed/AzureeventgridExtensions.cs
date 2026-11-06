@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid
 
     public class AzureeventgridTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateSubscription(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceType, Expression<Func<BodyInput>> body, Expression<Func<string>> subscriptionName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateSubscription(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceType, Expression<Func<BodyInput>> body, Expression<Func<string>> subscriptionName = null)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceType = WorkflowExpression.Compile(resourceType, nameof(resourceType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/providers/{1}/resource/eventSubscriptions", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid
                 if (__workflow_subscriptionName != null)
                     callPayload.Queries["subscriptionName"] = ExpressionConverter.Convert(__workflow_subscriptionName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

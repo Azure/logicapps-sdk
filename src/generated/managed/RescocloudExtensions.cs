@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
 
     public class RescocloudTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerCreate(Expression<Func<string>> entity, Expression<Func<ActionInput>> action, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TriggerCreate(Expression<Func<string>> entity, Expression<Func<ActionInput>> action)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_action = WorkflowExpression.Compile(action, nameof(action), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/$hook";
                 var apiCallHttpMethod = "post";
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
                 callPayload.Queries["$entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Queries["$action"] = ExpressionConverter.Convert(__workflow_action);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

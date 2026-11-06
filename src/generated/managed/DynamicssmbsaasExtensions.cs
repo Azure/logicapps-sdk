@@ -259,12 +259,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
     public class DynamicssmbsaasTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateBusinessEventSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> businessevent, Expression<Func<string>> company = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateBusinessEventSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> businessevent, Expression<Func<string>> company = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_businessevent = WorkflowExpression.Compile(businessevent, nameof(businessevent), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
-            return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/businessevents/{1}/subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_businessevent.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -273,176 +273,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 if (__workflow_company != null)
                     callPayload.Queries["company"] = ExpressionConverter.Convert(__workflow_company);
                 callPayload.Body = new CreateBusinessEventSubscriptionSubscriptionInput().ToJToken();
-                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ClientSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateCustomerApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookSubscriptionInput>> subscription, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateCustomerApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookSubscriptionInput>> subscription)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
-            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/customerapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHookSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateGeneralJournalBatchApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookSubscriptionInput>> subscription, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateGeneralJournalBatchApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookSubscriptionInput>> subscription)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
-            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournalbatchapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHookSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateGeneralJournalLineApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookSubscriptionInput>> subscription, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateGeneralJournalLineApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookSubscriptionInput>> subscription)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
-            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournallineapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHookSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateItemApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookSubscriptionInput>> subscription, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateItemApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookSubscriptionInput>> subscription)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
-            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/itemapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHookSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnChangedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateOnChangedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onchangeditems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateBusinessEventSubscriptionSubscriptionInput().ToJToken();
-                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ClientSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnDeletedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateOnDeletedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/ondeleteditems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateBusinessEventSubscriptionSubscriptionInput().ToJToken();
-                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ClientSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnNewItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateOnNewItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onnewitems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateBusinessEventSubscriptionSubscriptionInput().ToJToken();
-                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ClientSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnUpdatedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateOnUpdatedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onupdateditems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateBusinessEventSubscriptionSubscriptionInput().ToJToken();
-                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ClientSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreatePurchaseDocumentApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreatePurchaseDocumentApprovalWebHookSubscriptionInput>> subscription, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreatePurchaseDocumentApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreatePurchaseDocumentApprovalWebHookSubscriptionInput>> subscription)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
-            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/purchasedocumentapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHookSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateSalesDocumentApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreatePurchaseDocumentApprovalWebHookSubscriptionInput>> subscription, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateSalesDocumentApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreatePurchaseDocumentApprovalWebHookSubscriptionInput>> subscription)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
-            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/salesdocumentapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHookSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateVendorApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookSubscriptionInput>> subscription, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateVendorApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookSubscriptionInput>> subscription)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
-            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/vendorapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHookSubscriptionResponse>(callPayload);
             });
         }
     }

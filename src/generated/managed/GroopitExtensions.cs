@@ -122,46 +122,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
 
     public class GroopitTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToReports(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration> SubscribeToReports(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
-            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/forms/{1}/reports/subscribe", __workflow_groupId.WithUrlEncoding(1), __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribe);
-                return new ApiConnectionTrigger<GroopItWebhookDTO>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GroopItWebhookDTO>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToReports2(Expression<Func<string>> groupId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration> SubscribeToReports2(Expression<Func<string>> groupId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
-            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/reports/subscribe", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribe);
-                return new ApiConnectionTrigger<GroopItWebhookDTO>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GroopItWebhookDTO>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToLinkedMembers(Expression<Func<string>> groupId, Expression<Func<SubscribeToLinkedMembersSubscribeInput>> subscribe, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration> SubscribeToLinkedMembers(Expression<Func<string>> groupId, Expression<Func<SubscribeToLinkedMembersSubscribeInput>> subscribe)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
-            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/linked-members/subscribe", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribe);
-                return new ApiConnectionTrigger<GroopItWebhookDTO>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GroopItWebhookDTO>(callPayload);
             });
         }
     }

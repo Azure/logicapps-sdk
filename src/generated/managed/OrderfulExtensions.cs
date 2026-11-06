@@ -54,17 +54,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
 
     public class OrderfulTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CommunicationChannelCreationResponse, ApiConnectionTriggerConfiguration> CommunicationChannel(Expression<Func<CommunicationChannelRequestBodyInput>> communicationChannelRequestBody = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CommunicationChannelCreationResponse, ApiConnectionPollingTriggerConfiguration> CommunicationChannel(Expression<Func<CommunicationChannelRequestBodyInput>> communicationChannelRequestBody = null)
         {
             var __workflow_communicationChannelRequestBody = WorkflowExpression.Compile(communicationChannelRequestBody, nameof(communicationChannelRequestBody), required: false);
-            return new DeferredBodyTrigger<CommunicationChannelCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CommunicationChannelCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/destinations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_communicationChannelRequestBody != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_communicationChannelRequestBody);
-                return new ApiConnectionTrigger<CommunicationChannelCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CommunicationChannelCreationResponse>(callPayload);
             });
         }
     }

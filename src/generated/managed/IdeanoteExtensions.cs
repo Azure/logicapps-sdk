@@ -175,94 +175,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
 
     public class IdeanoteTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Model, ApiConnectionTriggerConfiguration> FinishRating(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Model, ApiConnectionPollingTriggerConfiguration> FinishRating()
         {
-            return new DeferredBodyTrigger<Model, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Model, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/finish_rating";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = new FinishRatingBodyInput().ToJToken();
-                return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Model>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Model, ApiConnectionTriggerConfiguration> NewIdea(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Model, ApiConnectionPollingTriggerConfiguration> NewIdea()
         {
-            return new DeferredBodyTrigger<Model, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Model, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/new_idea";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = new NewIdeaBodyInput().ToJToken();
-                return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Model>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Model, ApiConnectionTriggerConfiguration> NewUser(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Model, ApiConnectionPollingTriggerConfiguration> NewUser()
         {
-            return new DeferredBodyTrigger<Model, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Model, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/new_user";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = new NewUserBodyInput().ToJToken();
-                return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Model>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Model, ApiConnectionTriggerConfiguration> NewComment(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Model, ApiConnectionPollingTriggerConfiguration> NewComment()
         {
-            return new DeferredBodyTrigger<Model, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Model, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/new_comment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = new NewCommentBodyInput().ToJToken();
-                return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Model>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Model, ApiConnectionTriggerConfiguration> NewLike(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Model, ApiConnectionPollingTriggerConfiguration> NewLike()
         {
-            return new DeferredBodyTrigger<Model, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Model, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/new_like";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = new NewLikeBodyInput().ToJToken();
-                return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Model>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Model, ApiConnectionTriggerConfiguration> UpdatedIdeaStatus(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Model, ApiConnectionPollingTriggerConfiguration> UpdatedIdeaStatus()
         {
-            return new DeferredBodyTrigger<Model, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Model, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/updated_idea_status";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = new UpdatedIdeaStatusBodyInput().ToJToken();
-                return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Model>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Model, ApiConnectionTriggerConfiguration> UpdatedIdeaPhase(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Model, ApiConnectionPollingTriggerConfiguration> UpdatedIdeaPhase()
         {
-            return new DeferredBodyTrigger<Model, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Model, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/updated_idea_phase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = new UpdatedIdeaPhaseBodyInput().ToJToken();
-                return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Model>(callPayload);
             });
         }
     }

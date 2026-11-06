@@ -750,12 +750,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
 
     public class GithubTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> WebhookPullRequestTrigger(Expression<Func<string>> repositoryOwner, Expression<Func<string>> repositoryName, Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> WebhookPullRequestTrigger(Expression<Func<string>> repositoryOwner, Expression<Func<string>> repositoryName, Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook = null)
         {
             var __workflow_repositoryOwner = WorkflowExpression.Compile(repositoryOwner, nameof(repositoryOwner), required: true);
             var __workflow_repositoryName = WorkflowExpression.Compile(repositoryName, nameof(repositoryName), required: true);
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: false);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/repos/{0}/{1}/hooks", __workflow_repositoryOwner.WithUrlEncoding(1), __workflow_repositoryName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -763,40 +763,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
                 callPayload.Headers["Accept"] = Convert.ToString("application/vnd.github.v3+json");
                 if (__workflow_requestBodyOfWebhook != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IssueDetailsModel[], ApiConnectionTriggerConfiguration> IssueOpened(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssueDetailsModel[], ApiConnectionPollingTriggerConfiguration> IssueOpened()
         {
-            return new DeferredBodyTrigger<IssueDetailsModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IssueDetailsModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/issueOpened";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IssueDetailsModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IssueDetailsModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IssueDetailsModel[], ApiConnectionTriggerConfiguration> IssueClosed(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssueDetailsModel[], ApiConnectionPollingTriggerConfiguration> IssueClosed()
         {
-            return new DeferredBodyTrigger<IssueDetailsModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IssueDetailsModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/issueClosed";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IssueDetailsModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IssueDetailsModel[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IssueDetailsModel[], ApiConnectionTriggerConfiguration> IssueAssigned(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssueDetailsModel[], ApiConnectionPollingTriggerConfiguration> IssueAssigned()
         {
-            return new DeferredBodyTrigger<IssueDetailsModel[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IssueDetailsModel[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/issueAssigned";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IssueDetailsModel[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IssueDetailsModel[]>(callPayload);
             });
         }
     }

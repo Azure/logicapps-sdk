@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
 
     public class ActTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ActWebApiModelsContact[], ApiConnectionTriggerConfiguration> TrigNewContact(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ActWebApiModelsContact[], ApiConnectionPollingTriggerConfiguration> TrigNewContact()
         {
-            return new DeferredBodyTrigger<ActWebApiModelsContact[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ActWebApiModelsContact[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/Contacts/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ActWebApiModelsContact[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ActWebApiModelsContact[]>(callPayload);
             });
         }
     }

@@ -390,11 +390,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
 
     public class JiraTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionTriggerConfiguration> OnNewIssueDatacenter(Expression<Func<string>> projectKey, Expression<Func<string>> xRequestJirainstance = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration> OnNewIssueDatacenter(Expression<Func<string>> projectKey, Expression<Func<string>> xRequestJirainstance = null)
         {
             var __workflow_projectKey = WorkflowExpression.Compile(projectKey, nameof(projectKey), required: true);
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
-            return new DeferredBodyTrigger<FullIssue[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datacenter/new_issue_trigger/search";
                 var apiCallHttpMethod = "get";
@@ -402,15 +402,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
                 if (__workflow_xRequestJirainstance != null)
                     callPayload.Queries["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
                 callPayload.Queries["projectKey"] = ExpressionConverter.Convert(__workflow_projectKey);
-                return new ApiConnectionTrigger<FullIssue[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FullIssue[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionTriggerConfiguration> OnCloseIssueDatacenter(Expression<Func<string>> projectKey, Expression<Func<string>> xRequestJirainstance = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration> OnCloseIssueDatacenter(Expression<Func<string>> projectKey, Expression<Func<string>> xRequestJirainstance = null)
         {
             var __workflow_projectKey = WorkflowExpression.Compile(projectKey, nameof(projectKey), required: true);
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
-            return new DeferredBodyTrigger<FullIssue[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datacenter/close_issue_trigger/search";
                 var apiCallHttpMethod = "get";
@@ -418,15 +418,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
                 if (__workflow_xRequestJirainstance != null)
                     callPayload.Queries["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
                 callPayload.Queries["projectKey"] = ExpressionConverter.Convert(__workflow_projectKey);
-                return new ApiConnectionTrigger<FullIssue[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FullIssue[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionTriggerConfiguration> OnNewIssueJQLDatacenter(Expression<Func<string>> jql, Expression<Func<string>> xRequestJirainstance = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration> OnNewIssueJQLDatacenter(Expression<Func<string>> jql, Expression<Func<string>> xRequestJirainstance = null)
         {
             var __workflow_jql = WorkflowExpression.Compile(jql, nameof(jql), required: true);
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
-            return new DeferredBodyTrigger<FullIssue[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datacenter/new_issue_jql_trigger/search";
                 var apiCallHttpMethod = "get";
@@ -434,15 +434,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
                 if (__workflow_xRequestJirainstance != null)
                     callPayload.Queries["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
                 callPayload.Queries["jql"] = ExpressionConverter.Convert(__workflow_jql);
-                return new ApiConnectionTrigger<FullIssue[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FullIssue[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionTriggerConfiguration> OnCloseIssue(Expression<Func<string>> projectKey, Expression<Func<string>> xRequestJirainstance = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration> OnCloseIssue(Expression<Func<string>> projectKey, Expression<Func<string>> xRequestJirainstance = null)
         {
             var __workflow_projectKey = WorkflowExpression.Compile(projectKey, nameof(projectKey), required: true);
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
-            return new DeferredBodyTrigger<FullIssue[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/close_issue_trigger/search";
                 var apiCallHttpMethod = "get";
@@ -450,15 +450,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
                 if (__workflow_xRequestJirainstance != null)
                     callPayload.Queries["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
                 callPayload.Queries["projectKey"] = ExpressionConverter.Convert(__workflow_projectKey);
-                return new ApiConnectionTrigger<FullIssue[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FullIssue[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionTriggerConfiguration> OnNewIssue(Expression<Func<string>> projectKey, Expression<Func<string>> xRequestJirainstance = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration> OnNewIssue(Expression<Func<string>> projectKey, Expression<Func<string>> xRequestJirainstance = null)
         {
             var __workflow_projectKey = WorkflowExpression.Compile(projectKey, nameof(projectKey), required: true);
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
-            return new DeferredBodyTrigger<FullIssue[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/new_issue_trigger/search";
                 var apiCallHttpMethod = "get";
@@ -466,15 +466,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
                 if (__workflow_xRequestJirainstance != null)
                     callPayload.Queries["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
                 callPayload.Queries["projectKey"] = ExpressionConverter.Convert(__workflow_projectKey);
-                return new ApiConnectionTrigger<FullIssue[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FullIssue[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionTriggerConfiguration> OnNewIssueJQL(Expression<Func<string>> jql, Expression<Func<string>> xRequestJirainstance = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration> OnNewIssueJQL(Expression<Func<string>> jql, Expression<Func<string>> xRequestJirainstance = null)
         {
             var __workflow_jql = WorkflowExpression.Compile(jql, nameof(jql), required: true);
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
-            return new DeferredBodyTrigger<FullIssue[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/new_issue_jql_trigger/search";
                 var apiCallHttpMethod = "get";
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
                 if (__workflow_xRequestJirainstance != null)
                     callPayload.Queries["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
                 callPayload.Queries["jql"] = ExpressionConverter.Convert(__workflow_jql);
-                return new ApiConnectionTrigger<FullIssue[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FullIssue[]>(callPayload);
             });
         }
     }

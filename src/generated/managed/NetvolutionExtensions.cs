@@ -131,27 +131,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
     public class NetvolutionTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewEventResponse, ApiConnectionTriggerConfiguration> OnNewEvent(Expression<Func<OnNewEventEventNameInput>> eventName, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponse, ApiConnectionPollingTriggerConfiguration> OnNewEvent(Expression<Func<OnNewEventEventNameInput>> eventName)
         {
             var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: true);
-            return new DeferredBodyTrigger<OnNewEventResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnNewEventResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/cdp/events/{0}", __workflow_eventName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnNewEventResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnNewEventResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse, ApiConnectionTriggerConfiguration> OnNewUserInSegment(Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse, ApiConnectionPollingTriggerConfiguration> OnNewUserInSegment(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<OnNewUserInSegmentResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnNewUserInSegmentResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/cdp/contacts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnNewUserInSegmentResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnNewUserInSegmentResponse>(callPayload);
             });
         }
     }

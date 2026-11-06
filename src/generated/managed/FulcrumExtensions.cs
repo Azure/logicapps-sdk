@@ -590,11 +590,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
 
     public class FulcrumTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnFulcrumEventResponse, ApiConnectionTriggerConfiguration> OnFulcrumEvent(Expression<Func<OnFulcrumEventBodyInput>> body, Expression<Func<string>> contentType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnFulcrumEventResponse, ApiConnectionPollingTriggerConfiguration> OnFulcrumEvent(Expression<Func<OnFulcrumEventBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredBodyTrigger<OnFulcrumEventResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnFulcrumEventResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhooks.json";
                 var apiCallHttpMethod = "post";
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<OnFulcrumEventResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnFulcrumEventResponse>(callPayload);
             });
         }
     }

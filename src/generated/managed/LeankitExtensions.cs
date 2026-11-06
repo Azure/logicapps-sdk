@@ -99,33 +99,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
 
     public class LeankitTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CardResponse[], ApiConnectionTriggerConfiguration> TrigNewCard(Expression<Func<string>> board, Expression<Func<string>> lane, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardResponse[], ApiConnectionPollingTriggerConfiguration> TrigNewCard(Expression<Func<string>> board, Expression<Func<string>> lane)
         {
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             var __workflow_lane = WorkflowExpression.Compile(lane, nameof(lane), required: true);
-            return new DeferredBodyTrigger<CardResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CardResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/add_card_trigger/io/card";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board"] = ExpressionConverter.Convert(__workflow_board);
                 callPayload.Queries["lane"] = ExpressionConverter.Convert(__workflow_lane);
-                return new ApiConnectionTrigger<CardResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CardResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CardResponse[], ApiConnectionTriggerConfiguration> TrigUpdateCard(Expression<Func<string>> board, Expression<Func<string>> lane, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardResponse[], ApiConnectionPollingTriggerConfiguration> TrigUpdateCard(Expression<Func<string>> board, Expression<Func<string>> lane)
         {
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             var __workflow_lane = WorkflowExpression.Compile(lane, nameof(lane), required: true);
-            return new DeferredBodyTrigger<CardResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CardResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/update_card_trigger/io/card";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board"] = ExpressionConverter.Convert(__workflow_board);
                 callPayload.Queries["lane"] = ExpressionConverter.Convert(__workflow_lane);
-                return new ApiConnectionTrigger<CardResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CardResponse[]>(callPayload);
             });
         }
     }

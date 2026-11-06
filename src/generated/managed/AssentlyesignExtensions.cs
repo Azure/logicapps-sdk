@@ -217,17 +217,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
 
     public class AssentlyesignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseEventTrigger(Expression<Func<string>> eventPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CaseEventTrigger(Expression<Func<string>> eventPath)
         {
             var __workflow_eventPath = WorkflowExpression.Compile(eventPath, nameof(eventPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hook/v1/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["EventPath"] = ExpressionConverter.Convert(__workflow_eventPath);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

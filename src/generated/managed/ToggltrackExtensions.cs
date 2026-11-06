@@ -604,68 +604,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
     public class ToggltrackTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryCreated(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration> OnTimeEntryCreated(Expression<Func<int>> workspaceId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_created", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnTimeEntryCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSubscription>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryUpdated(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration> OnTimeEntryUpdated(Expression<Func<int>> workspaceId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_updated", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnTimeEntryCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSubscription>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryDeleted(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration> OnTimeEntryDeleted(Expression<Func<int>> workspaceId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_deleted", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnTimeEntryCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSubscription>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryStarted(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration> OnTimeEntryStarted(Expression<Func<int>> workspaceId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_started", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnTimeEntryCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSubscription>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryStopped(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration> OnTimeEntryStopped(Expression<Func<int>> workspaceId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_stopped", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnTimeEntryCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSubscription>(callPayload);
             });
         }
     }

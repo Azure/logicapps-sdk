@@ -194,10 +194,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
 
     public class YammerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<MessageListV2, ApiConnectionTriggerConfiguration> OnNewMessagesFollowing(Expression<Func<string>> networkId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessageListV2, ApiConnectionPollingTriggerConfiguration> OnNewMessagesFollowing(Expression<Func<string>> networkId = null)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
-            return new DeferredBodyTrigger<MessageListV2, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MessageListV2, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/trigger/messages/following.json";
                 var apiCallHttpMethod = "get";
@@ -205,15 +205,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
                 callPayload.Queries["network_id"] = Convert.ToString("Default");
                 if (__workflow_networkId != null)
                     callPayload.Queries["network_id"] = ExpressionConverter.Convert(__workflow_networkId);
-                return new ApiConnectionTrigger<MessageListV2>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MessageListV2>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<MessageListV2, ApiConnectionTriggerConfiguration> OnNewMessagesInGroup(Expression<Func<int>> groupId, Expression<Func<string>> networkId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessageListV2, ApiConnectionPollingTriggerConfiguration> OnNewMessagesInGroup(Expression<Func<int>> groupId, Expression<Func<string>> networkId = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
-            return new DeferredBodyTrigger<MessageListV2, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MessageListV2, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/trigger/in_group/{0}.json", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
                 callPayload.Queries["network_id"] = Convert.ToString("Default");
                 if (__workflow_networkId != null)
                     callPayload.Queries["network_id"] = ExpressionConverter.Convert(__workflow_networkId);
-                return new ApiConnectionTrigger<MessageListV2>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MessageListV2>(callPayload);
             });
         }
     }

@@ -160,9 +160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 
     public class TxtsyncTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<InboundSMSResponse, ApiConnectionTriggerConfiguration> InboundSMS(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<InboundSMSResponse, ApiConnectionPollingTriggerConfiguration> InboundSMS()
         {
-            return new DeferredBodyTrigger<InboundSMSResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<InboundSMSResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/system/applications/webhooks/type/0";
                 var apiCallHttpMethod = "post";
@@ -170,13 +170,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
                 callPayload.Body = new InboundSMSBodyInput().ToJToken();
-                return new ApiConnectionTrigger<InboundSMSResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<InboundSMSResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OutboundSMSResponse, ApiConnectionTriggerConfiguration> OutboundSMS(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OutboundSMSResponse, ApiConnectionPollingTriggerConfiguration> OutboundSMS()
         {
-            return new DeferredBodyTrigger<OutboundSMSResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OutboundSMSResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/system/applications/webhooks/type/5";
                 var apiCallHttpMethod = "post";
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
                 callPayload.Body = new InboundSMSBodyInput().ToJToken();
-                return new ApiConnectionTrigger<OutboundSMSResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OutboundSMSResponse>(callPayload);
             });
         }
     }

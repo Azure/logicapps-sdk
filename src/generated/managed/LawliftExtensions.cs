@@ -16,31 +16,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
 
     public class LawliftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<LawliftExportTriggerResponse, ApiConnectionTriggerConfiguration> LawliftExportTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftExportTriggerResponse, ApiConnectionPollingTriggerConfiguration> LawliftExportTrigger(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<LawliftExportTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<LawliftExportTriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/export";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<LawliftExportTriggerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<LawliftExportTriggerResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse, ApiConnectionTriggerConfiguration> LawliftNotificationTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse, ApiConnectionPollingTriggerConfiguration> LawliftNotificationTrigger(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<LawliftNotificationTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<LawliftNotificationTriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/notifications";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<LawliftNotificationTriggerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<LawliftNotificationTriggerResponse>(callPayload);
             });
         }
     }

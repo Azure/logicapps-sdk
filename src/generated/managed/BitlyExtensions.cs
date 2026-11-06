@@ -29,15 +29,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
 
     public class BitlyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse, ApiConnectionTriggerConfiguration> OnBitlinkCreated(Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse, ApiConnectionPollingTriggerConfiguration> OnBitlinkCreated(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<OnBitlinkCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnBitlinkCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/bitlinks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnBitlinkCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnBitlinkCreatedResponse>(callPayload);
             });
         }
     }

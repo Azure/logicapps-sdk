@@ -16,17 +16,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
 
     public class TypeformTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/forms/{0}/webhooks/{1}", __workflow_formId.WithUrlEncoding(1), __workflow_tag.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
     }

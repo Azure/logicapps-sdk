@@ -264,15 +264,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
 
     public class AnnatureipTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnDocumentEventResponse, ApiConnectionTriggerConfiguration> OnDocumentEvent(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnDocumentEventResponse, ApiConnectionPollingTriggerConfiguration> OnDocumentEvent()
         {
-            return new DeferredBodyTrigger<OnDocumentEventResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnDocumentEventResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/endpoints";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new OnDocumentEventBodyInput().ToJToken();
-                return new ApiConnectionTrigger<OnDocumentEventResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnDocumentEventResponse>(callPayload);
             });
         }
     }

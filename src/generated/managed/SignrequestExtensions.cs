@@ -29,16 +29,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
     public class SignrequestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> WebhooksCreate(Expression<Func<WebhooksCreateDataInput>> data, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration> WebhooksCreate(Expression<Func<WebhooksCreateDataInput>> data)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
-            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_data);
-                return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSubscription>(callPayload);
             });
         }
     }

@@ -103,17 +103,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
 
     public class IotcentralTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Action, ApiConnectionTriggerConfiguration> ActionsCreate(Expression<Func<string>> applicationId, Expression<Func<ActionsCreateBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Action, ApiConnectionPollingTriggerConfiguration> ActionsCreate(Expression<Func<string>> applicationId, Expression<Func<ActionsCreateBodyInput>> body)
         {
             var __workflow_applicationId = WorkflowExpression.Compile(applicationId, nameof(applicationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<Action, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Action, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/applications/{0}/actions/", __workflow_applicationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<Action>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Action>(callPayload);
             });
         }
     }

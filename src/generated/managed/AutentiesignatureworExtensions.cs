@@ -133,11 +133,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
 
     public class AutentiesignatureworTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentChange(Expression<Func<DocumentChangeBodyInput>> body, Expression<Func<string>> responseVariant = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> DocumentChange(Expression<Func<DocumentChangeBodyInput>> body, Expression<Func<string>> responseVariant = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_responseVariant = WorkflowExpression.Compile(responseVariant, nameof(responseVariant), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/applications/callbacks";
                 var apiCallHttpMethod = "post";
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
                 if (__workflow_responseVariant != null)
                     callPayload.Queries["responseVariant"] = ExpressionConverter.Convert(__workflow_responseVariant);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

@@ -47,17 +47,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingairtime
 
     public class AfricastalkingairtimeTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AirtimeStatusNotification(Expression<Func<string>> username, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AirtimeStatusNotification(Expression<Func<string>> username)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/powerapps/{0}/airtime/status/callback", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = new AirtimeStatusNotificationBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

@@ -141,16 +141,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
 
     public class LivetilesbotsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IntentRecognized(Expression<Func<SubscriptionInput>> subscription, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> IntentRecognized(Expression<Func<SubscriptionInput>> subscription)
         {
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flows/subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

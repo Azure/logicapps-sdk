@@ -426,16 +426,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class WorkpointTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<MicrosoftAspNetWebHooksWebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<WebHookInput>> webHook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MicrosoftAspNetWebHooksWebHook, ApiConnectionPollingTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<WebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
-            return new DeferredBodyTrigger<MicrosoftAspNetWebHooksWebHook, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MicrosoftAspNetWebHooksWebHook, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/webhooks/registrations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
-                return new ApiConnectionTrigger<MicrosoftAspNetWebHooksWebHook>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MicrosoftAspNetWebHooksWebHook>(callPayload);
             });
         }
     }

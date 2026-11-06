@@ -204,75 +204,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
     public class WaywedoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> ChecklistCreateWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> ChecklistCreateWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/checklist_start";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new WebhookRegistrationInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> NewCommentWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> NewCommentWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/new_comment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new WebhookRegistrationInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> FinishChecklistWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> FinishChecklistWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/checklist_finish";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new WebhookRegistrationInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> InviteSupervisorWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> InviteSupervisorWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/supervisor_invite";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new WebhookRegistrationInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> GenerateAcceptancePDFWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> GenerateAcceptancePDFWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/generate_acceptance_pdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new WebhookRegistrationInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> ChecklistStepCompletedWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> ChecklistStepCompletedWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/checklist_step_completed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new WebhookRegistrationInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
     }

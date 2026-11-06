@@ -118,57 +118,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
 
     public class RowshareTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewOrUpdatedRowResponse, ApiConnectionTriggerConfiguration> NewOrUpdatedRow(Expression<Func<string>> listId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewOrUpdatedRowResponse, ApiConnectionPollingTriggerConfiguration> NewOrUpdatedRow(Expression<Func<string>> listId)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyTrigger<NewOrUpdatedRowResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewOrUpdatedRowResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/application/GetRecentlyModifiedRows/{0}", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["v3"] = Convert.ToString(true);
-                return new ApiConnectionTrigger<NewOrUpdatedRowResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewOrUpdatedRowResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RowStatusChangedResponse, ApiConnectionTriggerConfiguration> RowStatusChanged(Expression<Func<RowStatusChangedBodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RowStatusChangedResponse, ApiConnectionPollingTriggerConfiguration> RowStatusChanged(Expression<Func<RowStatusChangedBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<RowStatusChangedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RowStatusChangedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/application/subscribe/8";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<RowStatusChangedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RowStatusChangedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ColumnChangedResponse, ApiConnectionTriggerConfiguration> ColumnChanged(Expression<Func<ColumnChangedBodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ColumnChangedResponse, ApiConnectionPollingTriggerConfiguration> ColumnChanged(Expression<Func<ColumnChangedBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<ColumnChangedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ColumnChangedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/application/subscribe/16";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<ColumnChangedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ColumnChangedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewRowResponse, ApiConnectionTriggerConfiguration> NewRow(Expression<Func<string>> listId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewRowResponse, ApiConnectionPollingTriggerConfiguration> NewRow(Expression<Func<string>> listId)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyTrigger<NewRowResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewRowResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/application/GetRecentlyCreatedRows/{0}", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["v3"] = Convert.ToString(true);
-                return new ApiConnectionTrigger<NewRowResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewRowResponse>(callPayload);
             });
         }
     }

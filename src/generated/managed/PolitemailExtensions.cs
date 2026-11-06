@@ -164,14 +164,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
 
     public class PolitemailTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewContactResponse, ApiConnectionTriggerConfiguration> OnNewContact(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewContactResponse, ApiConnectionPollingTriggerConfiguration> OnNewContact()
         {
-            return new DeferredBodyTrigger<OnNewContactResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnNewContactResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/odata/Contacts/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnNewContactResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnNewContactResponse>(callPayload);
             });
         }
     }

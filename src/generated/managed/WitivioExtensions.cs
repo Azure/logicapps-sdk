@@ -120,14 +120,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class WitivioTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> questionId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WebhookTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> questionId)
         {
             var __workflow_licenceId = WorkflowExpression.Compile(licenceId, nameof(licenceId), required: true);
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/conversations/{0}/{1}/questions/{2}/triggers/register", __workflow_botId.WithUrlEncoding(1), __workflow_language.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -135,18 +135,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 callPayload.Queries["licenceId"] = ExpressionConverter.Convert(__workflow_licenceId);
                 callPayload.Queries["profileId"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Body = new WebhookEscalationTriggerBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId)
         {
             var __workflow_licenceId = WorkflowExpression.Compile(licenceId, nameof(licenceId), required: true);
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             var __workflow_escalationId = WorkflowExpression.Compile(escalationId, nameof(escalationId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/escalation/{0}/{1}/triggers/{2}/register", __workflow_botId.WithUrlEncoding(1), __workflow_language.WithUrlEncoding(1), __workflow_escalationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 callPayload.Queries["licenceId"] = ExpressionConverter.Convert(__workflow_licenceId);
                 callPayload.Queries["profileId"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Body = new WebhookEscalationTriggerBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

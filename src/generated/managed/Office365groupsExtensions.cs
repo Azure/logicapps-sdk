@@ -228,29 +228,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 
     public class Office365groupsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[], ApiConnectionTriggerConfiguration> OnGroupMembershipChange(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[], ApiConnectionPollingTriggerConfiguration> OnGroupMembershipChange(Expression<Func<string>> groupId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            return new DeferredBodyTrigger<OnGroupMemberAddedOrRemovedResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnGroupMemberAddedOrRemovedResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/v1.0/groups/delta";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 callPayload.Queries["$select"] = Convert.ToString("members");
-                return new ApiConnectionTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OnNewEventResponseItem[], ApiConnectionTriggerConfiguration> OnNewEvent(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponseItem[], ApiConnectionPollingTriggerConfiguration> OnNewEvent(Expression<Func<string>> groupId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            return new DeferredBodyTrigger<OnNewEventResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnNewEventResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/v1.0/groups/{0}/events", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnNewEventResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnNewEventResponseItem[]>(callPayload);
             });
         }
     }

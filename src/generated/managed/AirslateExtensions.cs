@@ -53,16 +53,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
 
     public class AirslateTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateSlateTriggerResponse, ApiConnectionTriggerConfiguration> CreateSlateTrigger(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateSlateTriggerResponse, ApiConnectionPollingTriggerConfiguration> CreateSlateTrigger(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<CreateSlateTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CreateSlateTriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/event";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<CreateSlateTriggerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CreateSlateTriggerResponse>(callPayload);
             });
         }
     }

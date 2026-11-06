@@ -361,65 +361,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
 
     public class DeskdirectorTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateChatWebhook(Expression<Func<string>> type, Expression<Func<CreateChatWebhookReqInput>> req, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateChatWebhook(Expression<Func<string>> type, Expression<Func<CreateChatWebhookReqInput>> req)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/chat-workflows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateTicketWorkflow(Expression<Func<string>> type, Expression<Func<CreateTicketWorkflowReqInput>> req, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateTicketWorkflow(Expression<Func<string>> type, Expression<Func<CreateTicketWorkflowReqInput>> req)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/ticket-workflows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> SubscribeToWorkflow(Expression<Func<string>> type, Expression<Func<string>> workflowId, Expression<Func<AdvancedEventSubscribeReqInput>> req, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> SubscribeToWorkflow(Expression<Func<string>> type, Expression<Func<string>> workflowId, Expression<Func<AdvancedEventSubscribeReqInput>> req)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/workflows/{0}/actions", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AdvancedEventSubscribe(Expression<Func<string>> category, Expression<Func<string>> eventType, Expression<Func<AdvancedEventSubscribeReqInput>> req, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> AdvancedEventSubscribe(Expression<Func<string>> category, Expression<Func<string>> eventType, Expression<Func<AdvancedEventSubscribeReqInput>> req)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: true);
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/events/{0}/subscriptions", __workflow_eventType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
     }

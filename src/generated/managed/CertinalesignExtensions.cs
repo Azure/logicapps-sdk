@@ -135,10 +135,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
 
     public class CertinalesignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TransactionStatusChanged(Expression<Func<EventTypeInputItem[]>> eventType, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TransactionStatusChanged(Expression<Func<EventTypeInputItem[]>> eventType)
         {
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe";
                 var apiCallHttpMethod = "post";
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
                 callPayload.Queries["eventType"] = ExpressionConverter.Convert(__workflow_eventType);
                 callPayload.Headers["Integration-Platform"] = Convert.ToString("MS_Power_Automate");
                 callPayload.Body = new TransactionStatusChangedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

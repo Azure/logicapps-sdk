@@ -677,11 +677,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
 
     public class SharepointembeddedTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetChangesContainerResponse, ApiConnectionTriggerConfiguration> GetChangesContainer(Expression<Func<string>> containerId, Expression<Func<int>> pollingInterval = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetChangesContainerResponse, ApiConnectionPollingTriggerConfiguration> GetChangesContainer(Expression<Func<string>> containerId, Expression<Func<int>> pollingInterval = null)
         {
             var __workflow_containerId = WorkflowExpression.Compile(containerId, nameof(containerId), required: true);
             var __workflow_pollingInterval = WorkflowExpression.Compile(pollingInterval, nameof(pollingInterval), required: false);
-            return new DeferredBodyTrigger<GetChangesContainerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetChangesContainerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/v1.0/drives/{0}/root/delta", __workflow_containerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
                 callPayload.Queries["pollingInterval"] = Convert.ToString(300);
                 if (__workflow_pollingInterval != null)
                     callPayload.Queries["pollingInterval"] = ExpressionConverter.Convert(__workflow_pollingInterval);
-                return new ApiConnectionTrigger<GetChangesContainerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetChangesContainerResponse>(callPayload);
             });
         }
     }

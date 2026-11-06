@@ -125,26 +125,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
 
     public class VoceanTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<IdeaTriggerBodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<IdeaTriggerBodyInput>> body)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", __workflow_networkId.WithUrlEncoding(1), __workflow_activityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserActivityTrigger(Expression<Func<IdeaTriggerBodyInput>> body, Expression<Func<string>> networkId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> UserActivityTrigger(Expression<Func<IdeaTriggerBodyInput>> body, Expression<Func<string>> networkId = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/connector/v2/current-user/activities/webhooks";
                 var apiCallHttpMethod = "post";
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
                 if (__workflow_networkId != null)
                     callPayload.Queries["networkId"] = ExpressionConverter.Convert(__workflow_networkId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

@@ -81,40 +81,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 
     public class RedmineTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListProjectsResponse, ApiConnectionTriggerConfiguration> OnNewProject(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponse, ApiConnectionPollingTriggerConfiguration> OnNewProject()
         {
-            return new DeferredBodyTrigger<ListProjectsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListProjectsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/new_project_trigger/projects.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListProjectsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListProjectsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListIssuesResponse, ApiConnectionTriggerConfiguration> OnNewIssue(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListIssuesResponse, ApiConnectionPollingTriggerConfiguration> OnNewIssue(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyTrigger<ListIssuesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListIssuesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/new_issue_trigger/issues.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
-                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListIssuesResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListIssuesResponse, ApiConnectionTriggerConfiguration> OnUpdatedIssue(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListIssuesResponse, ApiConnectionPollingTriggerConfiguration> OnUpdatedIssue(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyTrigger<ListIssuesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListIssuesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/resolved_issue_trigger/issues.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
-                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListIssuesResponse>(callPayload);
             });
         }
     }

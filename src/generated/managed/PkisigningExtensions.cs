@@ -293,17 +293,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
 
     public class PkisigningTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponseModel, ApiConnectionTriggerConfiguration> WebhooksCreateWebhook(Expression<Func<WebhooksCreateWebhookModelInput>> model, Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponseModel, ApiConnectionPollingTriggerConfiguration> WebhooksCreateWebhook(Expression<Func<WebhooksCreateWebhookModelInput>> model, Expression<Func<string>> organisationId)
         {
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
             var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
-            return new DeferredBodyTrigger<WebhookResponseModel, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookResponseModel, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organisations/{0}/webhooks", __workflow_organisationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_model);
-                return new ApiConnectionTrigger<WebhookResponseModel>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookResponseModel>(callPayload);
             });
         }
     }

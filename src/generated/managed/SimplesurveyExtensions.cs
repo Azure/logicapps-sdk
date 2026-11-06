@@ -80,37 +80,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
 
     public class SimplesurveyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ResponseSubmitted(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ResponseSubmitted(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<BodyInput>> body)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_automationId = WorkflowExpression.Compile(automationId, nameof(automationId), required: true);
             var __workflow_xSAKKey = WorkflowExpression.Compile(xSAKKey, nameof(xSAKKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/events/{0}/automations/{1}/webhooks/register", __workflow_idProject.WithUrlEncoding(1), __workflow_automationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xSAKKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ResponseChanged(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ResponseChanged(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<BodyInput>> body)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_automationId = WorkflowExpression.Compile(automationId, nameof(automationId), required: true);
             var __workflow_xSAKKey = WorkflowExpression.Compile(xSAKKey, nameof(xSAKKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/events/{0}/automations/{1}/webhooks/register/cr", __workflow_idProject.WithUrlEncoding(1), __workflow_automationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xSAKKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

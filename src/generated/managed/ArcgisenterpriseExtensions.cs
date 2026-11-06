@@ -524,25 +524,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
 
     public class ArcgisenterpriseTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AddData(Expression<Func<string>> surveyId, Expression<Func<AddWebhookBodyInput>> addWebhookBody, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> AddData(Expression<Func<string>> surveyId, Expression<Func<AddWebhookBodyInput>> addWebhookBody)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             var __workflow_addWebhookBody = WorkflowExpression.Compile(addWebhookBody, nameof(addWebhookBody), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/survey123/survey/{0}/webhook/add", __workflow_surveyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_addWebhookBody);
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookAttachmentCreatedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentCreated(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookAttachmentCreatedResponse, ApiConnectionPollingTriggerConfiguration> WebhookAttachmentCreated(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer)
         {
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookAttachmentCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookAttachmentCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/attachmentsCreated";
                 var apiCallHttpMethod = "post";
@@ -550,15 +550,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookAttachmentCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookAttachmentCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookAttachmentDeletedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentDeleted(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookAttachmentDeletedResponse, ApiConnectionPollingTriggerConfiguration> WebhookAttachmentDeleted(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer)
         {
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookAttachmentDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookAttachmentDeletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/attachmentsDeleted";
                 var apiCallHttpMethod = "post";
@@ -566,15 +566,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookAttachmentDeletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookAttachmentDeletedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookAttachmentUpdatedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentUpdated(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookAttachmentUpdatedResponse, ApiConnectionPollingTriggerConfiguration> WebhookAttachmentUpdated(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer)
         {
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookAttachmentUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookAttachmentUpdatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/attachmentsUpdated";
                 var apiCallHttpMethod = "post";
@@ -582,15 +582,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookAttachmentUpdatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookAttachmentUpdatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookFLCreatedResponse, ApiConnectionTriggerConfiguration> WebhookFLCreated(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookFLCreatedResponse, ApiConnectionPollingTriggerConfiguration> WebhookFLCreated(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer)
         {
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookFLCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookFLCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/featuresCreated";
                 var apiCallHttpMethod = "post";
@@ -598,15 +598,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookFLCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookFLCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookFLDeletedResponse, ApiConnectionTriggerConfiguration> WebhookFLDeleted(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookFLDeletedResponse, ApiConnectionPollingTriggerConfiguration> WebhookFLDeleted(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer)
         {
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookFLDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookFLDeletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/featuresDeleted";
                 var apiCallHttpMethod = "post";
@@ -614,15 +614,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookFLDeletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookFLDeletedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookFLEditedResponse, ApiConnectionTriggerConfiguration> WebhookFLEdited(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookFLEditedResponse, ApiConnectionPollingTriggerConfiguration> WebhookFLEdited(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer)
         {
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookFLEditedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookFLEditedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/featuresUpdated";
                 var apiCallHttpMethod = "post";
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookFLEditedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookFLEditedResponse>(callPayload);
             });
         }
     }

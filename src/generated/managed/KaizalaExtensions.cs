@@ -251,11 +251,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
     public class KaizalaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ActionCreatedOnGroup(Expression<Func<string>> objectId, Expression<Func<string>> actionPackageId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ActionCreatedOnGroup(Expression<Func<string>> objectId, Expression<Func<string>> actionPackageId = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             var __workflow_actionPackageId = WorkflowExpression.Compile(actionPackageId, nameof(actionPackageId), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/ActionCreated";
                 var apiCallHttpMethod = "post";
@@ -264,113 +264,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 if (__workflow_actionPackageId != null)
                     callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(__workflow_actionPackageId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AnnouncementOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AnnouncementOnGroup(Expression<Func<string>> objectId)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/Announcement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupAddedToGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> GroupAddedToGroup(Expression<Func<string>> objectId)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/GroupAdded";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupRemovedFromGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> GroupRemovedFromGroup(Expression<Func<string>> objectId)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/GroupRemoved";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MemberAddedToGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> MemberAddedToGroup(Expression<Func<string>> objectId)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/MemberAdded";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MemberRemovedFromGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> MemberRemovedFromGroup(Expression<Func<string>> objectId)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/MemberRemoved";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SurveyCreatedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SurveyCreatedOnGroup(Expression<Func<string>> objectId)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/SurveyCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TextMessageCreatedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TextMessageCreatedOnGroup(Expression<Func<string>> objectId)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/TextMessageCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SurveyResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SurveyResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> objectId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Action/SurveyResponse";
                 var apiCallHttpMethod = "post";
@@ -378,30 +378,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttachmentOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AttachmentOnGroup(Expression<Func<string>> objectId)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/AttachmentCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ActionResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> actionPackageId, Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ActionResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> actionPackageId, Expression<Func<string>> objectId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_actionPackageId = WorkflowExpression.Compile(actionPackageId, nameof(actionPackageId), required: true);
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook";
                 var apiCallHttpMethod = "post";
@@ -410,21 +410,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(__workflow_actionPackageId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserJoinedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> UserJoinedOnGroup(Expression<Func<string>> objectId)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/UserJoined";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 callPayload.Body = new ActionCreatedOnGroupRequestInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

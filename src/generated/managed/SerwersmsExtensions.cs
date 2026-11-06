@@ -57,16 +57,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
 
     public class SerwersmsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewAnswerResponse, ApiConnectionTriggerConfiguration> NewAnswer(Expression<Func<NewAnswerBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewAnswerResponse, ApiConnectionPollingTriggerConfiguration> NewAnswer(Expression<Func<NewAnswerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<NewAnswerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewAnswerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/get_answer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<NewAnswerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewAnswerResponse>(callPayload);
             });
         }
     }

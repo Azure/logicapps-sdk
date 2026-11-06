@@ -271,10 +271,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class Office365groupsmailTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse, ApiConnectionTriggerConfiguration> OnNewEmailInGroup(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse, ApiConnectionPollingTriggerConfiguration> OnNewEmailInGroup(Expression<Func<string>> groupId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            return new DeferredBodyTrigger<OnNewEmailInGroupResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnNewEmailInGroupResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/v1.0/groups/{0}/conversations", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
                 callPayload.Queries["$select"] = Convert.ToString("id,lastDeliveredDateTime");
                 callPayload.Queries["$expand"] = Convert.ToString("threads($select=id;$expand=posts($select=id,createdDateTime))");
                 callPayload.Queries["$orderby"] = Convert.ToString("lastDeliveredDateTime desc");
-                return new ApiConnectionTrigger<OnNewEmailInGroupResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnNewEmailInGroupResponse>(callPayload);
             });
         }
     }

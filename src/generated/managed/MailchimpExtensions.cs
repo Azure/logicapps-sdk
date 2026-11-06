@@ -177,26 +177,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class MailchimpTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetMembersResponseModel, ApiConnectionTriggerConfiguration> OnMemberSubscribed(Expression<Func<string>> listId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetMembersResponseModel, ApiConnectionPollingTriggerConfiguration> OnMemberSubscribed(Expression<Func<string>> listId)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyTrigger<GetMembersResponseModel, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetMembersResponseModel, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/lists/{0}/members", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<GetMembersResponseModel>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetMembersResponseModel>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetListsResponseModel, ApiConnectionTriggerConfiguration> OnCreateList(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetListsResponseModel, ApiConnectionPollingTriggerConfiguration> OnCreateList()
         {
-            return new DeferredBodyTrigger<GetListsResponseModel, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetListsResponseModel, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/lists";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<GetListsResponseModel>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetListsResponseModel>(callPayload);
             });
         }
     }

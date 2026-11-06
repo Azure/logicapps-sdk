@@ -1051,18 +1051,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class AzureiotcentralTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WorkflowTrigger, ApiConnectionTriggerConfiguration> WorkflowCreateTrigger(Expression<Func<string>> application, Expression<Func<WorkflowCreateTriggerBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkflowTrigger, ApiConnectionPollingTriggerConfiguration> WorkflowCreateTrigger(Expression<Func<string>> application, Expression<Func<WorkflowCreateTriggerBodyInput>> body)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WorkflowTrigger, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WorkflowTrigger, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/preview/_internal/workflow/triggers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WorkflowTrigger>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WorkflowTrigger>(callPayload);
             });
         }
     }

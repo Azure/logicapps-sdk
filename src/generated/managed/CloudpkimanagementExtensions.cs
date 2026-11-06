@@ -475,297 +475,297 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
     public class CloudpkimanagementTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AddedHookResponse, ApiConnectionTriggerConfiguration> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddedHookResponse, ApiConnectionPollingTriggerConfiguration> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<AddedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<AddedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/added-hook", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new AddedHookBodyInput().ToJToken();
-                return new ApiConnectionTrigger<AddedHookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<AddedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RemovedHookResponse, ApiConnectionTriggerConfiguration> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RemovedHookResponse, ApiConnectionPollingTriggerConfiguration> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<RemovedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RemovedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/removed-hook", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new RemovedHookBodyInput().ToJToken();
-                return new ApiConnectionTrigger<RemovedHookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RemovedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IssuedCertificateResponse, ApiConnectionTriggerConfiguration> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCertificateResponse, ApiConnectionPollingTriggerConfiguration> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<IssuedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IssuedCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/issued-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new IssuedCertificateBodyInput().ToJToken();
-                return new ApiConnectionTrigger<IssuedCertificateResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IssuedCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RevokedCertificateResponse, ApiConnectionTriggerConfiguration> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RevokedCertificateResponse, ApiConnectionPollingTriggerConfiguration> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<RevokedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RevokedCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/revoked-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new RevokedCertificateBodyInput().ToJToken();
-                return new ApiConnectionTrigger<RevokedCertificateResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RevokedCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<UpdatedCertificateResponse, ApiConnectionTriggerConfiguration> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedCertificateResponse, ApiConnectionPollingTriggerConfiguration> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UpdatedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UpdatedCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new UpdatedCertificateBodyInput().ToJToken();
-                return new ApiConnectionTrigger<UpdatedCertificateResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<UpdatedCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ExpiringCertificateResponse, ApiConnectionTriggerConfiguration> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiringCertificateResponse, ApiConnectionPollingTriggerConfiguration> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<ExpiringCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ExpiringCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/expiring-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new ExpiringCertificateBodyInput().ToJToken();
-                return new ApiConnectionTrigger<ExpiringCertificateResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ExpiringCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ExpiredCertificateResponse, ApiConnectionTriggerConfiguration> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiredCertificateResponse, ApiConnectionPollingTriggerConfiguration> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<ExpiredCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ExpiredCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/expired-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new ExpiredCertificateBodyInput().ToJToken();
-                return new ApiConnectionTrigger<ExpiredCertificateResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ExpiredCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RenewingCertificateResponse, ApiConnectionTriggerConfiguration> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RenewingCertificateResponse, ApiConnectionPollingTriggerConfiguration> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<RenewingCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RenewingCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/renewing-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new RenewingCertificateBodyInput().ToJToken();
-                return new ApiConnectionTrigger<RenewingCertificateResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RenewingCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PendingRequestResponse, ApiConnectionTriggerConfiguration> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PendingRequestResponse, ApiConnectionPollingTriggerConfiguration> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<PendingRequestResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PendingRequestResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/pending-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new PendingRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger<PendingRequestResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PendingRequestResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ApprovedRequestResponse, ApiConnectionTriggerConfiguration> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ApprovedRequestResponse, ApiConnectionPollingTriggerConfiguration> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<ApprovedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ApprovedRequestResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/approved-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new ApprovedRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger<ApprovedRequestResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ApprovedRequestResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<DeniedRequestResponse, ApiConnectionTriggerConfiguration> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeniedRequestResponse, ApiConnectionPollingTriggerConfiguration> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<DeniedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<DeniedRequestResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/denied-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new DeniedRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger<DeniedRequestResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<DeniedRequestResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<UpdatedRequestResponse, ApiConnectionTriggerConfiguration> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedRequestResponse, ApiConnectionPollingTriggerConfiguration> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UpdatedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UpdatedRequestResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new UpdatedRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger<UpdatedRequestResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<UpdatedRequestResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<FailedRequestResponse, ApiConnectionTriggerConfiguration> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedRequestResponse, ApiConnectionPollingTriggerConfiguration> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<FailedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FailedRequestResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/failed-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new FailedRequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger<FailedRequestResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FailedRequestResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PublishedTemplateResponse, ApiConnectionTriggerConfiguration> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PublishedTemplateResponse, ApiConnectionPollingTriggerConfiguration> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<PublishedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PublishedTemplateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/published-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new PublishedTemplateBodyInput().ToJToken();
-                return new ApiConnectionTrigger<PublishedTemplateResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PublishedTemplateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<UnpublishedTemplateResponse, ApiConnectionTriggerConfiguration> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UnpublishedTemplateResponse, ApiConnectionPollingTriggerConfiguration> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UnpublishedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UnpublishedTemplateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/unpublished-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new UnpublishedTemplateBodyInput().ToJToken();
-                return new ApiConnectionTrigger<UnpublishedTemplateResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<UnpublishedTemplateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<UpdatedTemplateResponse, ApiConnectionTriggerConfiguration> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedTemplateResponse, ApiConnectionPollingTriggerConfiguration> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UpdatedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UpdatedTemplateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new UpdatedTemplateBodyInput().ToJToken();
-                return new ApiConnectionTrigger<UpdatedTemplateResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<UpdatedTemplateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IssuedCRLResponse, ApiConnectionTriggerConfiguration> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCRLResponse, ApiConnectionPollingTriggerConfiguration> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<IssuedCRLResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IssuedCRLResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/issued-crl", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new IssuedCRLBodyInput().ToJToken();
-                return new ApiConnectionTrigger<IssuedCRLResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IssuedCRLResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewConnectorActionResponse, ApiConnectionTriggerConfiguration> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewConnectorActionResponse, ApiConnectionPollingTriggerConfiguration> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<NewConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewConnectorActionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/new-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new NewConnectorActionBodyInput().ToJToken();
-                return new ApiConnectionTrigger<NewConnectorActionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewConnectorActionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CompletedConnectorActionResponse, ApiConnectionTriggerConfiguration> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CompletedConnectorActionResponse, ApiConnectionPollingTriggerConfiguration> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<CompletedConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CompletedConnectorActionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/completed-action", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CompletedConnectorActionBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CompletedConnectorActionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CompletedConnectorActionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<FailedConnectorActionResponse, ApiConnectionTriggerConfiguration> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedConnectorActionResponse, ApiConnectionPollingTriggerConfiguration> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<FailedConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FailedConnectorActionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/failed-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new FailedConnectorActionBodyInput().ToJToken();
-                return new ApiConnectionTrigger<FailedConnectorActionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FailedConnectorActionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<StalledConnectorActionResponse, ApiConnectionTriggerConfiguration> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<StalledConnectorActionResponse, ApiConnectionPollingTriggerConfiguration> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<StalledConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<StalledConnectorActionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/stalled-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new StalledConnectorActionBodyInput().ToJToken();
-                return new ApiConnectionTrigger<StalledConnectorActionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<StalledConnectorActionResponse>(callPayload);
             });
         }
     }

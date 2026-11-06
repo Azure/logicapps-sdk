@@ -46,26 +46,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
 
     public class InfusionsoftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TaskResponse[], ApiConnectionTriggerConfiguration> OnNewTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskResponse[], ApiConnectionPollingTriggerConfiguration> OnNewTask()
         {
-            return new DeferredBodyTrigger<TaskResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TaskResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/crm/rest/v1/tasks/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["order"] = Convert.ToString("-due_date");
-                return new ApiConnectionTrigger<TaskResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TaskResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListOrdersResponseItem[], ApiConnectionTriggerConfiguration> OnNewOrder(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListOrdersResponseItem[], ApiConnectionPollingTriggerConfiguration> OnNewOrder()
         {
-            return new DeferredBodyTrigger<ListOrdersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListOrdersResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/crm/rest/v1/orders";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListOrdersResponseItem[]>(callPayload);
             });
         }
     }

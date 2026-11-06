@@ -207,10 +207,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
 
     public class CiresonservicemanageTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSettings, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<CreateWebhookBodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings, ApiConnectionPollingTriggerConfiguration> CreateWebhook(Expression<Func<CreateWebhookBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<WebhookSettings, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSettings, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/platform/api/CreateWebhooks";
                 var apiCallHttpMethod = "post";
@@ -218,14 +218,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookSettings>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSettings>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSettings, ApiConnectionTriggerConfiguration> CreateActionLogWebhook(Expression<Func<CreateActionLogWebhookBodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings, ApiConnectionPollingTriggerConfiguration> CreateActionLogWebhook(Expression<Func<CreateActionLogWebhookBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<WebhookSettings, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSettings, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/platform/api/CreateActionLogWebhooks";
                 var apiCallHttpMethod = "post";
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookSettings>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSettings>(callPayload);
             });
         }
     }

@@ -204,11 +204,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
 
     public class FilesystemTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onnewfile";
                 var apiCallHttpMethod = "get";
@@ -217,16 +217,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
                 callPayload.Queries["maxFileCount"] = Convert.ToString(10);
                 if (__workflow_maxFileCount != null)
                     callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(__workflow_maxFileCount);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<BlobMetadata[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, Expression<Func<bool>> checkBothCreatedAndModifiedDateTime = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, Expression<Func<bool>> checkBothCreatedAndModifiedDateTime = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
             var __workflow_checkBothCreatedAndModifiedDateTime = WorkflowExpression.Compile(checkBothCreatedAndModifiedDateTime, nameof(checkBothCreatedAndModifiedDateTime), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onupdatedfile";
                 var apiCallHttpMethod = "get";
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
                 callPayload.Queries["checkBothCreatedAndModifiedDateTime"] = Convert.ToString(false);
                 if (__workflow_checkBothCreatedAndModifiedDateTime != null)
                     callPayload.Queries["checkBothCreatedAndModifiedDateTime"] = ExpressionConverter.Convert(__workflow_checkBothCreatedAndModifiedDateTime);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<BlobMetadata[]>(callPayload);
             });
         }
     }

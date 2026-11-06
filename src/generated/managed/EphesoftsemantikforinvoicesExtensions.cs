@@ -71,16 +71,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
 
     public class EphesoftsemantikforinvoicesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<UploadCreatedResponse, ApiConnectionTriggerConfiguration> TrigSemantikInvoiceCompleted(Expression<Func<TrigSemantikInvoiceCompletedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UploadCreatedResponse, ApiConnectionPollingTriggerConfiguration> TrigSemantikInvoiceCompleted(Expression<Func<TrigSemantikInvoiceCompletedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<UploadCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UploadCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/settings/integrations/configurations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<UploadCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<UploadCreatedResponse>(callPayload);
             });
         }
     }

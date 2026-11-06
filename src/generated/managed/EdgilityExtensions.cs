@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
 
     public class EdgilityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundMessage(Expression<Func<ConfigInput>> config, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> InboundMessage(Expression<Func<ConfigInput>> config)
         {
             var __workflow_config = WorkflowExpression.Compile(config, nameof(config), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/integrations/power-automate/subscribe";
                 var apiCallHttpMethod = "post";
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_config);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

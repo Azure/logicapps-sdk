@@ -28,42 +28,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
 
     public class MicrosoftbookingsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Webhookresponse, ApiConnectionTriggerConfiguration> CreateAppointment(Expression<Func<string>> sMTPAddress, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Webhookresponse, ApiConnectionPollingTriggerConfiguration> CreateAppointment(Expression<Func<string>> sMTPAddress)
         {
             var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
-            return new DeferredBodyTrigger<Webhookresponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Webhookresponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentCreated", __workflow_sMTPAddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateAppointmentBodyInput().ToJToken();
-                return new ApiConnectionTrigger<Webhookresponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Webhookresponse>(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateAppointment(Expression<Func<string>> sMTPAddress, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> UpdateAppointment(Expression<Func<string>> sMTPAddress)
         {
             var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentUpdated", __workflow_sMTPAddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new UpdateAppointmentBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CancelAppointment(Expression<Func<string>> sMTPAddress, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CancelAppointment(Expression<Func<string>> sMTPAddress)
         {
             var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentDeleted", __workflow_sMTPAddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CancelAppointmentBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

@@ -358,81 +358,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class FoxitesignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeSent(Expression<Func<TriggerEnvelopeSentBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration> TriggerEnvelopeSent(Expression<Func<TriggerEnvelopeSentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/trigger/envelope_sent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookEventPayload>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookEventPayload>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeViewed(Expression<Func<TriggerEnvelopeViewedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration> TriggerEnvelopeViewed(Expression<Func<TriggerEnvelopeViewedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/trigger/envelope_viewed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookEventPayload>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookEventPayload>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeSigned(Expression<Func<TriggerEnvelopeSignedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration> TriggerEnvelopeSigned(Expression<Func<TriggerEnvelopeSignedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/trigger/envelope_signed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookEventPayload>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookEventPayload>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeCancelled(Expression<Func<TriggerEnvelopeCancelledBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration> TriggerEnvelopeCancelled(Expression<Func<TriggerEnvelopeCancelledBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/trigger/envelope_cancelled";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookEventPayload>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookEventPayload>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeExecuted(Expression<Func<TriggerEnvelopeExecutedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration> TriggerEnvelopeExecuted(Expression<Func<TriggerEnvelopeExecutedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/trigger/envelope_executed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookEventPayload>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookEventPayload>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeDeleted(Expression<Func<TriggerEnvelopeDeletedBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration> TriggerEnvelopeDeleted(Expression<Func<TriggerEnvelopeDeletedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/trigger/envelope_deleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookEventPayload>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookEventPayload>(callPayload);
             });
         }
     }

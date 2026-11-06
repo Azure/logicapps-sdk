@@ -242,47 +242,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class CapsulecrmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OpportunityResponse[], ApiConnectionTriggerConfiguration> OnNewOpportunity(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityResponse[], ApiConnectionPollingTriggerConfiguration> OnNewOpportunity()
         {
-            return new DeferredBodyTrigger<OpportunityResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OpportunityResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/create_trigger/opportunities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OpportunityResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OpportunityResponse[], ApiConnectionTriggerConfiguration> OnUpdateOpportunity(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityResponse[], ApiConnectionPollingTriggerConfiguration> OnUpdateOpportunity()
         {
-            return new DeferredBodyTrigger<OpportunityResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OpportunityResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/update_trigger/opportunities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OpportunityResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TaskResponse[], ApiConnectionTriggerConfiguration> OnNewTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskResponse[], ApiConnectionPollingTriggerConfiguration> OnNewTask()
         {
-            return new DeferredBodyTrigger<TaskResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TaskResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/create_trigger/tasks";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaskResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TaskResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PartyResponseV2[], ApiConnectionTriggerConfiguration> OnNewParty(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PartyResponseV2[], ApiConnectionPollingTriggerConfiguration> OnNewParty()
         {
-            return new DeferredBodyTrigger<PartyResponseV2[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PartyResponseV2[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/create_trigger/parties";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PartyResponseV2[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PartyResponseV2[]>(callPayload);
             });
         }
     }

@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
 
     public class GmailTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<DetailedReceiveMessage, ApiConnectionTriggerConfiguration> OnNewEmail(Expression<Func<string>> label = null, Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> subject = null, Expression<Func<ImportanceInput>> importance = null, Expression<Func<StarredInput>> starred = null, Expression<Func<bool>> fetchOnlyWithAttachments = null, Expression<Func<bool>> includeAttachments = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DetailedReceiveMessage, ApiConnectionPollingTriggerConfiguration> OnNewEmail(Expression<Func<string>> label = null, Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> subject = null, Expression<Func<ImportanceInput>> importance = null, Expression<Func<StarredInput>> starred = null, Expression<Func<bool>> fetchOnlyWithAttachments = null, Expression<Func<bool>> includeAttachments = null)
         {
             var __workflow_label = WorkflowExpression.Compile(label, nameof(label), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
             var __workflow_starred = WorkflowExpression.Compile(starred, nameof(starred), required: false);
             var __workflow_fetchOnlyWithAttachments = WorkflowExpression.Compile(fetchOnlyWithAttachments, nameof(fetchOnlyWithAttachments), required: false);
             var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
-            return new DeferredBodyTrigger<DetailedReceiveMessage, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<DetailedReceiveMessage, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Mail/OnNewEmail";
                 var apiCallHttpMethod = "get";
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
                 callPayload.Queries["includeAttachments"] = Convert.ToString(false);
                 if (__workflow_includeAttachments != null)
                     callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(__workflow_includeAttachments);
-                return new ApiConnectionTrigger<DetailedReceiveMessage>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<DetailedReceiveMessage>(callPayload);
             });
         }
     }

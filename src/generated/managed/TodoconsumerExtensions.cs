@@ -157,27 +157,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
 
     public class TodoconsumerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ToDo[], ApiConnectionTriggerConfiguration> OnNewToDoInFolder(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ToDo[], ApiConnectionPollingTriggerConfiguration> OnNewToDoInFolder(Expression<Func<string>> folderId)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            return new DeferredBodyTrigger<ToDo[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ToDo[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/onNewToDoInFolder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ToDo[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ToDo[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ToDo[], ApiConnectionTriggerConfiguration> OnUpdateToDoInFolder(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ToDo[], ApiConnectionPollingTriggerConfiguration> OnUpdateToDoInFolder(Expression<Func<string>> folderId)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            return new DeferredBodyTrigger<ToDo[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ToDo[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/onUpdateToDoInFolder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ToDo[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ToDo[]>(callPayload);
             });
         }
     }

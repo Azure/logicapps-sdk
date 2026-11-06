@@ -123,13 +123,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 
     public class TeamformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<EnvironmentInput>> environment = null, Expression<Func<TriggersInput>> triggers = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<EnvironmentInput>> environment = null, Expression<Func<TriggersInput>> triggers = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: false);
             var __workflow_triggers = WorkflowExpression.Compile(triggers, nameof(triggers), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/response-subscription";
                 var apiCallHttpMethod = "post";
@@ -142,15 +142,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 if (__workflow_triggers != null)
                     callPayload.Queries["triggers"] = ExpressionConverter.Convert(__workflow_triggers);
                 callPayload.Body = new RequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/response-deletion-subscription";
                 var apiCallHttpMethod = "post";
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 if (__workflow_formId != null)
                     callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
                 callPayload.Body = new RequestBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

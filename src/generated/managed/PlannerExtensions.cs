@@ -202,42 +202,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
     public class PlannerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnCompleteTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionPollingTriggerConfiguration> OnCompleteTask(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
-                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListTasksResponseV2>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnNewTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionPollingTriggerConfiguration> OnNewTask(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
-                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListTasksResponseV2>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnTaskAssignedToMe(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionPollingTriggerConfiguration> OnTaskAssignedToMe()
         {
-            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/me/planner/ontaskassignedtome_trigger/tasks";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListTasksResponseV2>(callPayload);
             });
         }
     }

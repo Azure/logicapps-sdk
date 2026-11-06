@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
 
     public class ZvanuparvaldnieksTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetCallRecordingsResponse, ApiConnectionTriggerConfiguration> GetCallRecordings(Expression<Func<int>> recordId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> destination = null, Expression<Func<string>> source = null, Expression<Func<string>> direction = null, Expression<Func<int>> contactId = null, Expression<Func<string>> dateFrom = null, Expression<Func<string>> dateTo = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetCallRecordingsResponse, ApiConnectionPollingTriggerConfiguration> GetCallRecordings(Expression<Func<int>> recordId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> destination = null, Expression<Func<string>> source = null, Expression<Func<string>> direction = null, Expression<Func<int>> contactId = null, Expression<Func<string>> dateFrom = null, Expression<Func<string>> dateTo = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: false);
             var __workflow_dateFrom = WorkflowExpression.Compile(dateFrom, nameof(dateFrom), required: false);
             var __workflow_dateTo = WorkflowExpression.Compile(dateTo, nameof(dateTo), required: false);
-            return new DeferredBodyTrigger<GetCallRecordingsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetCallRecordingsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/call_records";
                 var apiCallHttpMethod = "get";
@@ -195,11 +195,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
                     callPayload.Queries["date_from"] = ExpressionConverter.Convert(__workflow_dateFrom);
                 if (__workflow_dateTo != null)
                     callPayload.Queries["date_to"] = ExpressionConverter.Convert(__workflow_dateTo);
-                return new ApiConnectionTrigger<GetCallRecordingsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetCallRecordingsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetCallHistoryResponse, ApiConnectionTriggerConfiguration> GetCallHistory(Expression<Func<int>> callId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> destination = null, Expression<Func<string>> source = null, Expression<Func<string>> direction = null, Expression<Func<int>> contactId = null, Expression<Func<string>> dateFrom = null, Expression<Func<string>> dateTo = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetCallHistoryResponse, ApiConnectionPollingTriggerConfiguration> GetCallHistory(Expression<Func<int>> callId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> destination = null, Expression<Func<string>> source = null, Expression<Func<string>> direction = null, Expression<Func<int>> contactId = null, Expression<Func<string>> dateFrom = null, Expression<Func<string>> dateTo = null)
         {
             var __workflow_callId = WorkflowExpression.Compile(callId, nameof(callId), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: false);
             var __workflow_dateFrom = WorkflowExpression.Compile(dateFrom, nameof(dateFrom), required: false);
             var __workflow_dateTo = WorkflowExpression.Compile(dateTo, nameof(dateTo), required: false);
-            return new DeferredBodyTrigger<GetCallHistoryResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetCallHistoryResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/call_history";
                 var apiCallHttpMethod = "get";
@@ -234,16 +234,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
                     callPayload.Queries["date_from"] = ExpressionConverter.Convert(__workflow_dateFrom);
                 if (__workflow_dateTo != null)
                     callPayload.Queries["date_to"] = ExpressionConverter.Convert(__workflow_dateTo);
-                return new ApiConnectionTrigger<GetCallHistoryResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetCallHistoryResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetVoicemailBoxesResponse, ApiConnectionTriggerConfiguration> GetVoicemailBoxes(Expression<Func<int>> boxId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetVoicemailBoxesResponse, ApiConnectionPollingTriggerConfiguration> GetVoicemailBoxes(Expression<Func<int>> boxId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_boxId = WorkflowExpression.Compile(boxId, nameof(boxId), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyTrigger<GetVoicemailBoxesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetVoicemailBoxesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/voicemail_boxes";
                 var apiCallHttpMethod = "get";
@@ -255,11 +255,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
-                return new ApiConnectionTrigger<GetVoicemailBoxesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetVoicemailBoxesResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetVoicemailsResponse, ApiConnectionTriggerConfiguration> GetVoicemails(Expression<Func<int>> voicemailId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> source = null, Expression<Func<int>> contactId = null, Expression<Func<int>> boxId = null, Expression<Func<string>> dateFrom = null, Expression<Func<string>> dateTo = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetVoicemailsResponse, ApiConnectionPollingTriggerConfiguration> GetVoicemails(Expression<Func<int>> voicemailId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> source = null, Expression<Func<int>> contactId = null, Expression<Func<int>> boxId = null, Expression<Func<string>> dateFrom = null, Expression<Func<string>> dateTo = null)
         {
             var __workflow_voicemailId = WorkflowExpression.Compile(voicemailId, nameof(voicemailId), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
             var __workflow_boxId = WorkflowExpression.Compile(boxId, nameof(boxId), required: false);
             var __workflow_dateFrom = WorkflowExpression.Compile(dateFrom, nameof(dateFrom), required: false);
             var __workflow_dateTo = WorkflowExpression.Compile(dateTo, nameof(dateTo), required: false);
-            return new DeferredBodyTrigger<GetVoicemailsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetVoicemailsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/voicemails";
                 var apiCallHttpMethod = "get";
@@ -291,16 +291,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
                     callPayload.Queries["date_from"] = ExpressionConverter.Convert(__workflow_dateFrom);
                 if (__workflow_dateTo != null)
                     callPayload.Queries["date_to"] = ExpressionConverter.Convert(__workflow_dateTo);
-                return new ApiConnectionTrigger<GetVoicemailsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetVoicemailsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetAudioPromptsResponse, ApiConnectionTriggerConfiguration> GetAudioPrompts(Expression<Func<int>> promptId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetAudioPromptsResponse, ApiConnectionPollingTriggerConfiguration> GetAudioPrompts(Expression<Func<int>> promptId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_promptId = WorkflowExpression.Compile(promptId, nameof(promptId), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyTrigger<GetAudioPromptsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetAudioPromptsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/audio_prompts";
                 var apiCallHttpMethod = "get";
@@ -312,16 +312,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
-                return new ApiConnectionTrigger<GetAudioPromptsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetAudioPromptsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetVoipEndpointsResponse, ApiConnectionTriggerConfiguration> GetVoipEndpoints(Expression<Func<int>> endpointId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetVoipEndpointsResponse, ApiConnectionPollingTriggerConfiguration> GetVoipEndpoints(Expression<Func<int>> endpointId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_endpointId = WorkflowExpression.Compile(endpointId, nameof(endpointId), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyTrigger<GetVoipEndpointsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetVoipEndpointsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/voip_endpoints";
                 var apiCallHttpMethod = "get";
@@ -333,137 +333,137 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
-                return new ApiConnectionTrigger<GetVoipEndpointsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetVoipEndpointsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CallConnectedResponse, ApiConnectionTriggerConfiguration> CallConnected(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallConnectedResponse, ApiConnectionPollingTriggerConfiguration> CallConnected()
         {
-            return new DeferredBodyTrigger<CallConnectedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CallConnectedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/CallConnected";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CallCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CallConnectedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CallConnectedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CallCompletedResponse, ApiConnectionTriggerConfiguration> CallCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallCompletedResponse, ApiConnectionPollingTriggerConfiguration> CallCompleted()
         {
-            return new DeferredBodyTrigger<CallCompletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CallCompletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/CallCompleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CallCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CallCompletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CallCompletedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VoicemailCreatedResponse, ApiConnectionTriggerConfiguration> VoicemailCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VoicemailCreatedResponse, ApiConnectionPollingTriggerConfiguration> VoicemailCreated()
         {
-            return new DeferredBodyTrigger<VoicemailCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VoicemailCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/VoicemailCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CallCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<VoicemailCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VoicemailCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VoicemailDeletedResponse, ApiConnectionTriggerConfiguration> VoicemailDeleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VoicemailDeletedResponse, ApiConnectionPollingTriggerConfiguration> VoicemailDeleted()
         {
-            return new DeferredBodyTrigger<VoicemailDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VoicemailDeletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/VoicemailDeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CallCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<VoicemailDeletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VoicemailDeletedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<LostCallerAddedResponse, ApiConnectionTriggerConfiguration> LostCallerAdded(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LostCallerAddedResponse, ApiConnectionPollingTriggerConfiguration> LostCallerAdded()
         {
-            return new DeferredBodyTrigger<LostCallerAddedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<LostCallerAddedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/LostCallerAdded";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CallCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<LostCallerAddedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<LostCallerAddedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<LostCallerUpdatedResponse, ApiConnectionTriggerConfiguration> LostCallerUpdated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LostCallerUpdatedResponse, ApiConnectionPollingTriggerConfiguration> LostCallerUpdated()
         {
-            return new DeferredBodyTrigger<LostCallerUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<LostCallerUpdatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/LostCallerUpdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CallCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<LostCallerUpdatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<LostCallerUpdatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<LostCallerRemovedResponse, ApiConnectionTriggerConfiguration> LostCallerRemoved(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LostCallerRemovedResponse, ApiConnectionPollingTriggerConfiguration> LostCallerRemoved()
         {
-            return new DeferredBodyTrigger<LostCallerRemovedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<LostCallerRemovedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/LostCallerRemoved";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CallCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<LostCallerRemovedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<LostCallerRemovedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CallRecordedResponse, ApiConnectionTriggerConfiguration> CallRecorded(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallRecordedResponse, ApiConnectionPollingTriggerConfiguration> CallRecorded()
         {
-            return new DeferredBodyTrigger<CallRecordedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CallRecordedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/CallRecorded";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CallCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CallRecordedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CallRecordedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CallTransferedResponse, ApiConnectionTriggerConfiguration> CallTransfered(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallTransferedResponse, ApiConnectionPollingTriggerConfiguration> CallTransfered()
         {
-            return new DeferredBodyTrigger<CallTransferedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CallTransferedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/CallTransfered";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CallCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CallTransferedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CallTransferedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CallStartedResponse, ApiConnectionTriggerConfiguration> CallStarted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallStartedResponse, ApiConnectionPollingTriggerConfiguration> CallStarted()
         {
-            return new DeferredBodyTrigger<CallStartedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CallStartedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/CallStarted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CallCompletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CallStartedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CallStartedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetGroupsResponse, ApiConnectionTriggerConfiguration> GetGroups(Expression<Func<int>> groupId = null, Expression<Func<int>> contactId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetGroupsResponse, ApiConnectionPollingTriggerConfiguration> GetGroups(Expression<Func<int>> groupId = null, Expression<Func<int>> contactId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: false);
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyTrigger<GetGroupsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetGroupsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/groups";
                 var apiCallHttpMethod = "get";
@@ -477,16 +477,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
-                return new ApiConnectionTrigger<GetGroupsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetGroupsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetContactsResponse, ApiConnectionTriggerConfiguration> GetContacts(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<int>> contactId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetContactsResponse, ApiConnectionPollingTriggerConfiguration> GetContacts(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<int>> contactId = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: false);
-            return new DeferredBodyTrigger<GetContactsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetContactsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/contacts";
                 var apiCallHttpMethod = "get";
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
                 if (__workflow_contactId != null)
                     callPayload.Queries["contact_id"] = ExpressionConverter.Convert(__workflow_contactId);
                 callPayload.Queries["initial_contact_id"] = Convert.ToString(0);
-                return new ApiConnectionTrigger<GetContactsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetContactsResponse>(callPayload);
             });
         }
     }

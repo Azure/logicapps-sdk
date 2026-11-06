@@ -27,16 +27,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formstackforms
 
     public class FormstackformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<FormstackFormSubmittedResponse, ApiConnectionTriggerConfiguration> FormstackFormSubmitted(Expression<Func<int>> formId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormstackFormSubmittedResponse, ApiConnectionPollingTriggerConfiguration> FormstackFormSubmitted(Expression<Func<int>> formId)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyTrigger<FormstackFormSubmittedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FormstackFormSubmittedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/form/{0}/webhook/", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<FormstackFormSubmittedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FormstackFormSubmittedResponse>(callPayload);
             });
         }
     }

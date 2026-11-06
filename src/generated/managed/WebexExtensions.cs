@@ -177,87 +177,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
     public class WebexTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration> MembershipsUpdated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsUpdatedResponse, ApiConnectionPollingTriggerConfiguration> MembershipsUpdated()
         {
-            return new DeferredBodyTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MembershipsUpdatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/1";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new MembershipsUpdatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<MembershipsUpdatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MembershipsUpdatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration> MembershipsDeleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsDeletedResponse, ApiConnectionPollingTriggerConfiguration> MembershipsDeleted()
         {
-            return new DeferredBodyTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MembershipsDeletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new MembershipsDeletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<MembershipsDeletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MembershipsDeletedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration> MembershipsCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsCreatedResponse, ApiConnectionPollingTriggerConfiguration> MembershipsCreated()
         {
-            return new DeferredBodyTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MembershipsCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/3";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new MembershipsCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<MembershipsCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MembershipsCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration> MessagesCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesCreatedResponse, ApiConnectionPollingTriggerConfiguration> MessagesCreated()
         {
-            return new DeferredBodyTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MessagesCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/4";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new MessagesCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<MessagesCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MessagesCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration> MessagesDeleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesDeletedResponse, ApiConnectionPollingTriggerConfiguration> MessagesDeleted()
         {
-            return new DeferredBodyTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MessagesDeletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/5";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new MessagesDeletedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<MessagesDeletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MessagesDeletedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration> SpaceCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SpaceCreatedResponse, ApiConnectionPollingTriggerConfiguration> SpaceCreated()
         {
-            return new DeferredBodyTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SpaceCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/6";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new SpaceCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<SpaceCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SpaceCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration> SpaceUpdated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SpaceUpdatedResponse, ApiConnectionPollingTriggerConfiguration> SpaceUpdated()
         {
-            return new DeferredBodyTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SpaceUpdatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/7";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new SpaceUpdatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<SpaceUpdatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SpaceUpdatedResponse>(callPayload);
             });
         }
     }

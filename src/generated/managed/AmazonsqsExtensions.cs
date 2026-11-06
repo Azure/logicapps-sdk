@@ -43,12 +43,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
 
     public class AmazonsqsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<QueueMessage, ApiConnectionTriggerConfiguration> GetMessageFromQueue(Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<QueueMessage, ApiConnectionPollingTriggerConfiguration> GetMessageFromQueue(Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null)
         {
             var __workflow_messageVisibilityTimeoutSeconds = WorkflowExpression.Compile(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
             var __workflow_requestWaitTimeoutSeconds = WorkflowExpression.Compile(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
             var __workflow_messageAttributeNames = WorkflowExpression.Compile(messageAttributeNames, nameof(messageAttributeNames), required: false);
-            return new DeferredBodyTrigger<QueueMessage, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<QueueMessage, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/message";
                 var apiCallHttpMethod = "get";
@@ -60,17 +60,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
                     callPayload.Queries["requestWaitTimeoutSeconds"] = ExpressionConverter.Convert(__workflow_requestWaitTimeoutSeconds);
                 if (__workflow_messageAttributeNames != null)
                     callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(__workflow_messageAttributeNames);
-                return new ApiConnectionTrigger<QueueMessage>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<QueueMessage>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<QueueMessage[], ApiConnectionTriggerConfiguration> GetMessagesFromQueue(Expression<Func<int>> maximumNumberOfMessages = null, Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<QueueMessage[], ApiConnectionPollingTriggerConfiguration> GetMessagesFromQueue(Expression<Func<int>> maximumNumberOfMessages = null, Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null)
         {
             var __workflow_maximumNumberOfMessages = WorkflowExpression.Compile(maximumNumberOfMessages, nameof(maximumNumberOfMessages), required: false);
             var __workflow_messageVisibilityTimeoutSeconds = WorkflowExpression.Compile(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
             var __workflow_requestWaitTimeoutSeconds = WorkflowExpression.Compile(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
             var __workflow_messageAttributeNames = WorkflowExpression.Compile(messageAttributeNames, nameof(messageAttributeNames), required: false);
-            return new DeferredBodyTrigger<QueueMessage[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<QueueMessage[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/messages";
                 var apiCallHttpMethod = "get";
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
                     callPayload.Queries["requestWaitTimeoutSeconds"] = ExpressionConverter.Convert(__workflow_requestWaitTimeoutSeconds);
                 if (__workflow_messageAttributeNames != null)
                     callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(__workflow_messageAttributeNames);
-                return new ApiConnectionTrigger<QueueMessage[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<QueueMessage[]>(callPayload);
             });
         }
     }

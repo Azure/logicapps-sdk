@@ -435,11 +435,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
 
     public class OnedriveTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnDeletedFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration> OnDeletedFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_includeSubfolders = WorkflowExpression.Compile(includeSubfolders, nameof(includeSubfolders), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/batch/ondeletedfile";
                 var apiCallHttpMethod = "get";
@@ -449,16 +449,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
                 if (__workflow_includeSubfolders != null)
                     callPayload.Queries["includeSubfolders"] = ExpressionConverter.Convert(__workflow_includeSubfolders);
                 callPayload.Queries["simulate"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<BlobMetadata[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> OnNewFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> OnNewFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_includeSubfolders = WorkflowExpression.Compile(includeSubfolders, nameof(includeSubfolders), required: false);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/onnewfilev2";
                 var apiCallHttpMethod = "get";
@@ -471,16 +471,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
                 if (__workflow_inferContentType != null)
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(__workflow_inferContentType);
                 callPayload.Queries["simulate"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_includeSubfolders = WorkflowExpression.Compile(includeSubfolders, nameof(includeSubfolders), required: false);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onnewfilesv2";
                 var apiCallHttpMethod = "get";
@@ -493,16 +493,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
                 if (__workflow_maxFileCount != null)
                     callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(__workflow_maxFileCount);
                 callPayload.Queries["simulate"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<BlobMetadata[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> OnUpdatedFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> OnUpdatedFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_includeSubfolders = WorkflowExpression.Compile(includeSubfolders, nameof(includeSubfolders), required: false);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/onupdatedfilev2";
                 var apiCallHttpMethod = "get";
@@ -516,16 +516,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
                 if (__workflow_inferContentType != null)
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(__workflow_inferContentType);
                 callPayload.Queries["simulate"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_includeSubfolders = WorkflowExpression.Compile(includeSubfolders, nameof(includeSubfolders), required: false);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onupdatedfilesv2";
                 var apiCallHttpMethod = "get";
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
                 if (__workflow_maxFileCount != null)
                     callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(__workflow_maxFileCount);
                 callPayload.Queries["simulate"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<BlobMetadata[]>(callPayload);
             });
         }
     }

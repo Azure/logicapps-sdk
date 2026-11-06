@@ -147,32 +147,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
 
     public class EventbriteTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[], ApiConnectionTriggerConfiguration> OnNewEvent(Expression<Func<string>> organizationId, Expression<Func<string>> organizerFilter, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[], ApiConnectionPollingTriggerConfiguration> OnNewEvent(Expression<Func<string>> organizationId, Expression<Func<string>> organizerFilter)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_organizerFilter = WorkflowExpression.Compile(organizerFilter, nameof(organizerFilter), required: true);
-            return new DeferredBodyTrigger<GetEventsForOrganizationResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetEventsForOrganizationResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/trigger/v3/organizations/{0}/events/", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["organizer_filter"] = ExpressionConverter.Convert(__workflow_organizerFilter);
                 callPayload.Queries["order_by"] = Convert.ToString("created_desc");
-                return new ApiConnectionTrigger<GetEventsForOrganizationResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetEventsForOrganizationResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetOrdersResponseItem[], ApiConnectionTriggerConfiguration> OnOrderChanged(Expression<Func<string>> organizationId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetOrdersResponseItem[], ApiConnectionPollingTriggerConfiguration> OnOrderChanged(Expression<Func<string>> organizationId, Expression<Func<string>> id)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<GetOrdersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetOrdersResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/trigger/v3/events/{0}/orders/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["organization_id"] = ExpressionConverter.Convert(__workflow_organizationId);
-                return new ApiConnectionTrigger<GetOrdersResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetOrdersResponseItem[]>(callPayload);
             });
         }
     }

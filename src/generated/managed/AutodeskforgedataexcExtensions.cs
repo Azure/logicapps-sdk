@@ -225,13 +225,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
 
     public class AutodeskforgedataexcTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RegisterWebhookExchangeModified(Expression<Func<RegionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RegisterWebhookExchangeModified(Expression<Func<RegionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_hubId = WorkflowExpression.Compile(hubId, nameof(hubId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/connector/webhook";
                 var apiCallHttpMethod = "post";
@@ -241,17 +241,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Queries["folderId"] = ExpressionConverter.Convert(__workflow_folderId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RegisterWebhookExchangeAdded(Expression<Func<RegionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RegisterWebhookExchangeAdded(Expression<Func<RegionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_hubId = WorkflowExpression.Compile(hubId, nameof(hubId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/connector/webhookModified";
                 var apiCallHttpMethod = "post";
@@ -261,21 +261,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Queries["folderId"] = ExpressionConverter.Convert(__workflow_folderId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RegisterWebhookExchangeModifiedUrl(Expression<Func<string>> fileId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RegisterWebhookExchangeModifiedUrl(Expression<Func<string>> fileId)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/connector/webhookModifiedByUrl";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

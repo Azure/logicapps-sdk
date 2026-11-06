@@ -103,11 +103,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
 
     public class NozbeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollNewTasksResponseItem[], ApiConnectionTriggerConfiguration> PollNewTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollNewTasksResponseItem[], ApiConnectionPollingTriggerConfiguration> PollNewTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_responsibleId = WorkflowExpression.Compile(responsibleId, nameof(responsibleId), required: false);
-            return new DeferredBodyTrigger<PollNewTasksResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollNewTasksResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/poll/tasks/new";
                 var apiCallHttpMethod = "get";
@@ -117,15 +117,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                     callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
                 if (__workflow_responsibleId != null)
                     callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(__workflow_responsibleId);
-                return new ApiConnectionTrigger<PollNewTasksResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollNewTasksResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[], ApiConnectionTriggerConfiguration> PollUpdatedTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[], ApiConnectionPollingTriggerConfiguration> PollUpdatedTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_responsibleId = WorkflowExpression.Compile(responsibleId, nameof(responsibleId), required: false);
-            return new DeferredBodyTrigger<PollUpdatedTasksResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollUpdatedTasksResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/poll/tasks/updated";
                 var apiCallHttpMethod = "get";
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                     callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
                 if (__workflow_responsibleId != null)
                     callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(__workflow_responsibleId);
-                return new ApiConnectionTrigger<PollUpdatedTasksResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollUpdatedTasksResponseItem[]>(callPayload);
             });
         }
     }

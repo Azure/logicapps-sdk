@@ -63,6 +63,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal int? MaximumWaitingRuns { get; set; }
     }
 
+    public interface IRecurrenceConfiguration :
+        IWorkflowOperationConfiguration
+    {
+        internal FlowRecurrence Recurrence { get; set; }
+    }
+
     public interface IClientTrackingIdConfiguration :
         IWorkflowOperationConfiguration
     {

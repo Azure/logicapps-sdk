@@ -123,17 +123,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
 
     public class FlexeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> Webhook(Expression<Func<WebhookBodyInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionPollingTriggerConfiguration> Webhook(Expression<Func<WebhookBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookResponse>(callPayload);
             });
         }
     }

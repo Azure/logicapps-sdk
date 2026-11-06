@@ -58,17 +58,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstation
 
     public class ShipstationTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscribeResponse, ApiConnectionTriggerConfiguration> WebhookSubscribe(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscribeResponse, ApiConnectionPollingTriggerConfiguration> WebhookSubscribe(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WebhookSubscribeResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSubscribeResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookSubscribeResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSubscribeResponse>(callPayload);
             });
         }
     }

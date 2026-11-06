@@ -763,10 +763,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
     public class LexofficeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost, ApiConnectionTriggerConfiguration> EventSubscriptionLexoffice(Expression<Func<EventSubscriptionLexofficeBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost, ApiConnectionPollingTriggerConfiguration> EventSubscriptionLexoffice(Expression<Func<EventSubscriptionLexofficeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<ResponseEventSubscriptionsPost, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ResponseEventSubscriptionsPost, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/event-subscriptions";
                 var apiCallHttpMethod = "post";
@@ -774,7 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<ResponseEventSubscriptionsPost>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ResponseEventSubscriptionsPost>(callPayload);
             });
         }
     }

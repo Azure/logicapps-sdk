@@ -83,17 +83,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
 
     public class As2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[], ApiConnectionTriggerConfiguration> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[], ApiConnectionPollingTriggerConfiguration> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null)
         {
             var __workflow_startSyncTime = WorkflowExpression.Compile(startSyncTime, nameof(startSyncTime), required: false);
-            return new DeferredBodyTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/triggers/onCreatedMicValues";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_startSyncTime != null)
                     callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(__workflow_startSyncTime);
-                return new ApiConnectionTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[]>(callPayload);
             });
         }
     }

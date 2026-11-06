@@ -58,14 +58,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
     public class WordpressTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListPostsResponse, ApiConnectionTriggerConfiguration> OnTriggerNewPost(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPostsResponse, ApiConnectionPollingTriggerConfiguration> OnTriggerNewPost()
         {
-            return new DeferredBodyTrigger<ListPostsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListPostsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/me/posts";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListPostsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListPostsResponse>(callPayload);
             });
         }
     }

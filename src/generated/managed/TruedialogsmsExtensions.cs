@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
     public class TruedialogsmsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> IncomingSMSReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration> IncomingSMSReceived(Expression<Func<string>> accountId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/account/{0}/callback", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -115,14 +115,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = new IncomingSMSReceivedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CallbackCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> KeywordReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration> KeywordReceived(Expression<Func<string>> accountId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/account/{0}/callback/-1", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -130,14 +130,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = new KeywordReceivedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CallbackCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> StopReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration> StopReceived(Expression<Func<string>> accountId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/account/{0}/callback/-6", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -145,14 +145,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = new StopReceivedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CallbackCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> DeliveryNoticeReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration> DeliveryNoticeReceived(Expression<Func<string>> accountId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/account/{0}/callback/-12", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -160,14 +160,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = new DeliveryNoticeReceivedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CallbackCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> InvalidTargets(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration> InvalidTargets(Expression<Func<string>> accountId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/account/{0}/callback/-13", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = new InvalidTargetsBodyInput().ToJToken();
-                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CallbackCreatedResponse>(callPayload);
             });
         }
     }

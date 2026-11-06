@@ -153,42 +153,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
     public class Junglemail365Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobCompleted(Expression<Func<WebhookJobCompletedRequestInput>> request, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionPollingTriggerConfiguration> WebhookJobCompleted(Expression<Func<WebhookJobCompletedRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
-            return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/registerwebhookjobcompleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
-                return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JsWebhookCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobStarted(Expression<Func<WebhookJobCompletedRequestInput>> request, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionPollingTriggerConfiguration> WebhookJobStarted(Expression<Func<WebhookJobCompletedRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
-            return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/registerwebhookjobstarted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
-                return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JsWebhookCreatedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobSumitted(Expression<Func<WebhookJobCompletedRequestInput>> request, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionPollingTriggerConfiguration> WebhookJobSumitted(Expression<Func<WebhookJobCompletedRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
-            return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/registerwebhookjobsubmitted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
-                return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JsWebhookCreatedResponse>(callPayload);
             });
         }
     }

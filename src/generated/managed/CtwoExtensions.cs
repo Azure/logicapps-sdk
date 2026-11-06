@@ -225,31 +225,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
 
     public class CtwoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<StartFlowWithoutTimeoutResponse, ApiConnectionTriggerConfiguration> StartFlowWithoutTimeout(Expression<Func<int>> taskId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<StartFlowWithoutTimeoutResponse, ApiConnectionPollingTriggerConfiguration> StartFlowWithoutTimeout(Expression<Func<int>> taskId)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            return new DeferredBodyTrigger<StartFlowWithoutTimeoutResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<StartFlowWithoutTimeoutResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/powerautomate/v1/trigger/ConsumePendingSessions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["taskId"] = ExpressionConverter.Convert(__workflow_taskId);
-                return new ApiConnectionTrigger<StartFlowWithoutTimeoutResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<StartFlowWithoutTimeoutResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<StartFlowWithTimeoutResponse, ApiConnectionTriggerConfiguration> StartFlowWithTimeout(Expression<Func<int>> taskId, Expression<Func<int>> timeout, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<StartFlowWithTimeoutResponse, ApiConnectionPollingTriggerConfiguration> StartFlowWithTimeout(Expression<Func<int>> taskId, Expression<Func<int>> timeout)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: true);
-            return new DeferredBodyTrigger<StartFlowWithTimeoutResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<StartFlowWithTimeoutResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/powerautomate/v1/trigger/ConsumePendingSessionsWithRequiredTimeout";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["taskId"] = ExpressionConverter.Convert(__workflow_taskId);
                 callPayload.Queries["timeout"] = ExpressionConverter.Convert(__workflow_timeout);
-                return new ApiConnectionTrigger<StartFlowWithTimeoutResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<StartFlowWithTimeoutResponse>(callPayload);
             });
         }
     }

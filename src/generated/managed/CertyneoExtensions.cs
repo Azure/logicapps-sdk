@@ -90,16 +90,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
 
     public class CertyneoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> SubscribeEnvelopeEvents(Expression<Func<SubscribeEnvelopeEventsBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration> SubscribeEnvelopeEvents(Expression<Func<SubscribeEnvelopeEventsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookSubscription>(callPayload);
             });
         }
     }

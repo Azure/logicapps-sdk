@@ -47,44 +47,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Campfire
 
     public class CampfireTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RoomsResponse, ApiConnectionTriggerConfiguration> OnNewRoom(Expression<Func<string>> account, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RoomsResponse, ApiConnectionPollingTriggerConfiguration> OnNewRoom(Expression<Func<string>> account)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
-            return new DeferredBodyTrigger<RoomsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RoomsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/OnNewRoom_trigger/rooms.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
-                return new ApiConnectionTrigger<RoomsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RoomsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<MessagesResponse, ApiConnectionTriggerConfiguration> OnNewMessage(Expression<Func<string>> account, Expression<Func<string>> roomId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesResponse, ApiConnectionPollingTriggerConfiguration> OnNewMessage(Expression<Func<string>> account, Expression<Func<string>> roomId)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
-            return new DeferredBodyTrigger<MessagesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MessagesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/OnNewMessage_trigger/room/{0}/recent.json", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
-                return new ApiConnectionTrigger<MessagesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MessagesResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<UploadResponse, ApiConnectionTriggerConfiguration> OnNewUpload(Expression<Func<string>> account, Expression<Func<string>> roomId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UploadResponse, ApiConnectionPollingTriggerConfiguration> OnNewUpload(Expression<Func<string>> account, Expression<Func<string>> roomId)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
-            return new DeferredBodyTrigger<UploadResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UploadResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/OnNewUpload_trigger/room/{0}/uploads.json", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
-                return new ApiConnectionTrigger<UploadResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<UploadResponse>(callPayload);
             });
         }
     }

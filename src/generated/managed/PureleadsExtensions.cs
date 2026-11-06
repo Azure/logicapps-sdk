@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 
     public class PureleadsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse, ApiConnectionTriggerConfiguration> CreatedLeadSubmission(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse, ApiConnectionPollingTriggerConfiguration> CreatedLeadSubmission()
         {
-            return new DeferredBodyTrigger<CreatedLeadSubmissionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CreatedLeadSubmissionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/contacts";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CreatedLeadSubmissionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CreatedLeadSubmissionResponse>(callPayload);
             });
         }
     }

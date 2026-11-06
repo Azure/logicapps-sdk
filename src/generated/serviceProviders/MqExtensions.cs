@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
 
     public class MqTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollAvailableOutput, PollAvailableTriggerConfiguration> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollAvailableOutput, PollAvailableTriggerConfiguration> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_waitIntervalInSeconds = WorkflowExpression.Compile(waitIntervalInSeconds, nameof(waitIntervalInSeconds), required: false);
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollAvailable", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyTrigger<PollAvailableOutput, PollAvailableTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<PollAvailableOutput, PollAvailableTriggerConfiguration>(serviceProviderInput, isPolling: true);
             });
         }
 
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
             });
         }
 
-        public IBodyWorkflowTrigger<PollMessagesOutput, PollMessagesTriggerConfiguration> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesInputGetMessageOptionsType>> getMessageOptions = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollMessagesOutput, PollMessagesTriggerConfiguration> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
@@ -410,18 +410,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyTrigger<PollMessagesOutput, PollMessagesTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<PollMessagesOutput, PollMessagesTriggerConfiguration>(serviceProviderInput, isPolling: true);
             });
         }
     }
 
-    public sealed class PollAvailableTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    public sealed class PollAvailableTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, IRecurrenceConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
 
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
 
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
     }
 
     public sealed class PollBrowseMessagesTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
@@ -433,13 +435,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
-    public sealed class PollMessagesTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    public sealed class PollMessagesTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, IRecurrenceConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
 
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
 
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
     }
 
     public class PollAvailableOutput

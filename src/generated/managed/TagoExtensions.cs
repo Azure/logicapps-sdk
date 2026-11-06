@@ -65,13 +65,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
 
     public class TagoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PostDataResponse, ApiConnectionTriggerConfiguration> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<ConditionInput>> condition, Expression<Func<string>> value = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostDataResponse, ApiConnectionPollingTriggerConfiguration> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<ConditionInput>> condition, Expression<Func<string>> value = null)
         {
             var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: true);
             var __workflow_variable = WorkflowExpression.Compile(variable, nameof(variable), required: true);
             var __workflow_condition = WorkflowExpression.Compile(condition, nameof(condition), required: true);
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
-            return new DeferredBodyTrigger<PostDataResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PostDataResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/prod/flow";
                 var apiCallHttpMethod = "post";
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
                 if (__workflow_value != null)
                     callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 callPayload.Body = new DataTriggerBodyInput().ToJToken();
-                return new ApiConnectionTrigger<PostDataResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PostDataResponse>(callPayload);
             });
         }
     }

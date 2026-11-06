@@ -173,29 +173,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
     public class TodoistTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnItemCompletedResponse, ApiConnectionTriggerConfiguration> OnItemCompleted(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCompletedResponse, ApiConnectionPollingTriggerConfiguration> OnItemCompleted(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyTrigger<OnItemCompletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnItemCompletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v4/trigger/completed/get_all";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
-                return new ApiConnectionTrigger<OnItemCompletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnItemCompletedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OnItemCreatedResponse, ApiConnectionTriggerConfiguration> OnItemCreated(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCreatedResponse, ApiConnectionPollingTriggerConfiguration> OnItemCreated(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyTrigger<OnItemCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnItemCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v4/trigger/sync";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
-                return new ApiConnectionTrigger<OnItemCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnItemCreatedResponse>(callPayload);
             });
         }
     }

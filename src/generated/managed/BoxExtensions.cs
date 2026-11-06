@@ -168,11 +168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Box
 
     public class BoxTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onnewfileV2";
                 var apiCallHttpMethod = "get";
@@ -181,15 +181,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Box
                 callPayload.Queries["maxFileCount"] = Convert.ToString(10);
                 if (__workflow_maxFileCount != null)
                     callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(__workflow_maxFileCount);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<BlobMetadata[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onupdatedfileV2";
                 var apiCallHttpMethod = "get";
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Box
                 callPayload.Queries["maxFileCount"] = Convert.ToString(10);
                 if (__workflow_maxFileCount != null)
                     callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(__workflow_maxFileCount);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<BlobMetadata[]>(callPayload);
             });
         }
     }

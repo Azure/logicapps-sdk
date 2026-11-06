@@ -1109,379 +1109,379 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class EgnyteTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileLocked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FileLocked(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/FileLocked";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileUnlocked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FileUnlocked(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/FileUnlocked";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileUpdated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FileUpdated(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/FileUpdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FileCreated(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/FileCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShareLinkCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ShareLinkCreated(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/ShareLinkCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShareLinkDeleted(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ShareLinkDeleted(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/ShareLinkDeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileOrFolderPermissionChange(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FileOrFolderPermissionChange(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/FileOrFolderPermissionChange";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileOrFolderMetadataChange(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FileOrFolderMetadataChange(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/FileOrFolderMetadataChange";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderProjectAdded(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FolderProjectAdded(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/FolderProjectAdded";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderProjectUnmarked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FolderProjectUnmarked(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/FolderProjectUnmarked";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderProjectUpdated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FolderProjectUpdated(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/FolderProjectUpdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WorkflowCreated(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/WorkflowCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowCompleted(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WorkflowCompleted(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/WorkflowCompleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowApprovalTaskApproved(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WorkflowApprovalTaskApproved(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/WorkflowApprovalTaskApproved";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowApprovalTaskRejected(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WorkflowApprovalTaskRejected(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/WorkflowApprovalTaskRejected";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupCreated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> GroupCreated()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/GroupCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupUpdated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> GroupUpdated()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/GroupUpdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupDeleted(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> GroupDeleted()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/GroupDeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new FileCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[], ApiConnectionTriggerConfiguration> PollCreatedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[], ApiConnectionPollingTriggerConfiguration> PollCreatedFiles(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyTrigger<PollCreatedFilesResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollCreatedFilesResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/created-files";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<PollCreatedFilesResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollCreatedFilesResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[], ApiConnectionTriggerConfiguration> PollCreatedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[], ApiConnectionPollingTriggerConfiguration> PollCreatedFolders(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyTrigger<PollCreatedFoldersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollCreatedFoldersResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/created-folders";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<PollCreatedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollCreatedFoldersResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[], ApiConnectionTriggerConfiguration> PollDeletedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[], ApiConnectionPollingTriggerConfiguration> PollDeletedFiles(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyTrigger<PollDeletedFilesResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollDeletedFilesResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/deleted-files";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<PollDeletedFilesResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollDeletedFilesResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[], ApiConnectionTriggerConfiguration> PollDeletedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[], ApiConnectionPollingTriggerConfiguration> PollDeletedFolders(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyTrigger<PollDeletedFoldersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollDeletedFoldersResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/deleted-folders";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<PollDeletedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollDeletedFoldersResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[], ApiConnectionTriggerConfiguration> PollRenamedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[], ApiConnectionPollingTriggerConfiguration> PollRenamedFiles(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyTrigger<PollRenamedFilesResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollRenamedFilesResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/renamed-files";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<PollRenamedFilesResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollRenamedFilesResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[], ApiConnectionTriggerConfiguration> PollRenamedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[], ApiConnectionPollingTriggerConfiguration> PollRenamedFolders(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyTrigger<PollRenamedFoldersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollRenamedFoldersResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/renamed-folders";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<PollRenamedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollRenamedFoldersResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollMovedFilesResponseItem[], ApiConnectionTriggerConfiguration> PollMovedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollMovedFilesResponseItem[], ApiConnectionPollingTriggerConfiguration> PollMovedFiles(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyTrigger<PollMovedFilesResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollMovedFilesResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/moved-files";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<PollMovedFilesResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollMovedFilesResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[], ApiConnectionTriggerConfiguration> PollMovedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[], ApiConnectionPollingTriggerConfiguration> PollMovedFolders(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyTrigger<PollMovedFoldersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollMovedFoldersResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/moved-folders";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<PollMovedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollMovedFoldersResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[], ApiConnectionTriggerConfiguration> PollCopiedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[], ApiConnectionPollingTriggerConfiguration> PollCopiedFiles(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyTrigger<PollCopiedFilesResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollCopiedFilesResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/copied-files";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<PollCopiedFilesResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollCopiedFilesResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[], ApiConnectionTriggerConfiguration> PollCopiedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[], ApiConnectionPollingTriggerConfiguration> PollCopiedFolders(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyTrigger<PollCopiedFoldersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollCopiedFoldersResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/copied-folders";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<PollCopiedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollCopiedFoldersResponseItem[]>(callPayload);
             });
         }
     }

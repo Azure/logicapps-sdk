@@ -44,16 +44,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Snapforms
 
     public class SnapformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResource, ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> formSlug, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResource, ApiConnectionPollingTriggerConfiguration> WebhookTrigger(Expression<Func<string>> formSlug)
         {
             var __workflow_formSlug = WorkflowExpression.Compile(formSlug, nameof(formSlug), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResource, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResource, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/forms/{0}/responses/hooks", __workflow_formSlug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookCreationResource>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResource>(callPayload);
             });
         }
     }

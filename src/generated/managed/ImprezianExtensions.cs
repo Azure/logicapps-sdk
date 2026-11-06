@@ -568,163 +568,163 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
     public class ImprezianTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewSalesLeadResponseItem[], ApiConnectionTriggerConfiguration> NewSalesLead(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSalesLeadResponseItem[], ApiConnectionPollingTriggerConfiguration> NewSalesLead()
         {
-            return new DeferredBodyTrigger<NewSalesLeadResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewSalesLeadResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/new_lead";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NewSalesLeadResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewSalesLeadResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewMarketingCampaignResponseItem[], ApiConnectionTriggerConfiguration> NewMarketingCampaign(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMarketingCampaignResponseItem[], ApiConnectionPollingTriggerConfiguration> NewMarketingCampaign()
         {
-            return new DeferredBodyTrigger<NewMarketingCampaignResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewMarketingCampaignResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/new_campaign";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NewMarketingCampaignResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewMarketingCampaignResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[], ApiConnectionTriggerConfiguration> NewMembersLeads(Expression<Func<int>> promotionId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[], ApiConnectionPollingTriggerConfiguration> NewMembersLeads(Expression<Func<int>> promotionId)
         {
             var __workflow_promotionId = WorkflowExpression.Compile(promotionId, nameof(promotionId), required: true);
-            return new DeferredBodyTrigger<NewMembersLeadsResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewMembersLeadsResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/new_members_leads";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["PromotionID"] = ExpressionConverter.Convert(__workflow_promotionId);
-                return new ApiConnectionTrigger<NewMembersLeadsResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewMembersLeadsResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewSalesOrderResponseItem[], ApiConnectionTriggerConfiguration> NewSalesOrder(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSalesOrderResponseItem[], ApiConnectionPollingTriggerConfiguration> NewSalesOrder()
         {
-            return new DeferredBodyTrigger<NewSalesOrderResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewSalesOrderResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/new_orders";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NewSalesOrderResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewSalesOrderResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewProposalCreatedResponseItem[], ApiConnectionTriggerConfiguration> NewProposalCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewProposalCreatedResponseItem[], ApiConnectionPollingTriggerConfiguration> NewProposalCreated()
         {
-            return new DeferredBodyTrigger<NewProposalCreatedResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewProposalCreatedResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/new_quotes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NewProposalCreatedResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewProposalCreatedResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[], ApiConnectionTriggerConfiguration> OrderStatusChanged(Expression<Func<string>> status, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[], ApiConnectionPollingTriggerConfiguration> OrderStatusChanged(Expression<Func<string>> status)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
-            return new DeferredBodyTrigger<OrderStatusChangedResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OrderStatusChangedResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/order_status";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Status"] = ExpressionConverter.Convert(__workflow_status);
-                return new ApiConnectionTrigger<OrderStatusChangedResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OrderStatusChangedResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OrderInHistoryResponseItem[], ApiConnectionTriggerConfiguration> OrderInHistory(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OrderInHistoryResponseItem[], ApiConnectionPollingTriggerConfiguration> OrderInHistory()
         {
-            return new DeferredBodyTrigger<OrderInHistoryResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OrderInHistoryResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/orders_final";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OrderInHistoryResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OrderInHistoryResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OrderInProcessingResponseItem[], ApiConnectionTriggerConfiguration> OrderInProcessing(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OrderInProcessingResponseItem[], ApiConnectionPollingTriggerConfiguration> OrderInProcessing()
         {
-            return new DeferredBodyTrigger<OrderInProcessingResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OrderInProcessingResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/orders_processing";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OrderInProcessingResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OrderInProcessingResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OrderIsShippingResponseItem[], ApiConnectionTriggerConfiguration> OrderIsShipping(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OrderIsShippingResponseItem[], ApiConnectionPollingTriggerConfiguration> OrderIsShipping()
         {
-            return new DeferredBodyTrigger<OrderIsShippingResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OrderIsShippingResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/orders_shipping";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OrderIsShippingResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OrderIsShippingResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ProposalNeedsApprovalResponseItem[], ApiConnectionTriggerConfiguration> ProposalNeedsApproval(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProposalNeedsApprovalResponseItem[], ApiConnectionPollingTriggerConfiguration> ProposalNeedsApproval()
         {
-            return new DeferredBodyTrigger<ProposalNeedsApprovalResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ProposalNeedsApprovalResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/quotes_approval";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ProposalNeedsApprovalResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ProposalNeedsApprovalResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WorkOrderClosedResponseItem[], ApiConnectionTriggerConfiguration> WorkOrderClosed(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkOrderClosedResponseItem[], ApiConnectionPollingTriggerConfiguration> WorkOrderClosed()
         {
-            return new DeferredBodyTrigger<WorkOrderClosedResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WorkOrderClosedResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/wo_closed";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<WorkOrderClosedResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WorkOrderClosedResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WorkOrderCreatedResponseItem[], ApiConnectionTriggerConfiguration> WorkOrderCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkOrderCreatedResponseItem[], ApiConnectionPollingTriggerConfiguration> WorkOrderCreated()
         {
-            return new DeferredBodyTrigger<WorkOrderCreatedResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WorkOrderCreatedResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/wo_opened";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<WorkOrderCreatedResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WorkOrderCreatedResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WorkOrderPastDueResponseItem[], ApiConnectionTriggerConfiguration> WorkOrderPastDue(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkOrderPastDueResponseItem[], ApiConnectionPollingTriggerConfiguration> WorkOrderPastDue()
         {
-            return new DeferredBodyTrigger<WorkOrderPastDueResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WorkOrderPastDueResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/wo_pastdue";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<WorkOrderPastDueResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WorkOrderPastDueResponseItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[], ApiConnectionTriggerConfiguration> WorkOrderStatusChanged(Expression<Func<string>> status, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[], ApiConnectionPollingTriggerConfiguration> WorkOrderStatusChanged(Expression<Func<string>> status)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
-            return new DeferredBodyTrigger<WorkOrderStatusChangedResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WorkOrderStatusChangedResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/wo_status";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Status"] = ExpressionConverter.Convert(__workflow_status);
-                return new ApiConnectionTrigger<WorkOrderStatusChangedResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WorkOrderStatusChangedResponseItem[]>(callPayload);
             });
         }
     }

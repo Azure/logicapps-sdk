@@ -76,18 +76,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugami
 
     public class DocugamiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RegisterWebhookResponse, ApiConnectionTriggerConfiguration> RegisterWebhook(Expression<Func<string>> xDocugamiOrganizationId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegisterWebhookResponse, ApiConnectionPollingTriggerConfiguration> RegisterWebhook(Expression<Func<string>> xDocugamiOrganizationId, Expression<Func<BodyInput>> body)
         {
             var __workflow_xDocugamiOrganizationId = WorkflowExpression.Compile(xDocugamiOrganizationId, nameof(xDocugamiOrganizationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<RegisterWebhookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RegisterWebhookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1preview1/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-docugami-organization-id"] = ExpressionConverter.Convert(__workflow_xDocugamiOrganizationId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<RegisterWebhookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RegisterWebhookResponse>(callPayload);
             });
         }
     }

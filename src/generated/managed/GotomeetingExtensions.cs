@@ -82,25 +82,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
 
     public class GotomeetingTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<MeetingArrayItem[], ApiConnectionTriggerConfiguration> OnNewMeeting(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MeetingArrayItem[], ApiConnectionPollingTriggerConfiguration> OnNewMeeting()
         {
-            return new DeferredBodyTrigger<MeetingArrayItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MeetingArrayItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/new_meeting_trigger/upcomingMeetings";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MeetingArrayItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<MeetingArrayItem[], ApiConnectionTriggerConfiguration> OnMeetingComplete(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MeetingArrayItem[], ApiConnectionPollingTriggerConfiguration> OnMeetingComplete()
         {
-            return new DeferredBodyTrigger<MeetingArrayItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MeetingArrayItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/completed_meeting_trigger/historicalMeetings";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MeetingArrayItem[]>(callPayload);
             });
         }
     }

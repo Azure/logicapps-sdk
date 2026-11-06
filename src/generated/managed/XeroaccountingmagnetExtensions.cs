@@ -128,12 +128,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
 
     public class XeroaccountingmagnetTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerXero(Expression<Func<string>> xeroTenantId, Expression<Func<EventTypeInput>> eventType, Expression<Func<EventCategoryInput>> eventCategory, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TriggerXero(Expression<Func<string>> xeroTenantId, Expression<Func<EventTypeInput>> eventType, Expression<Func<EventCategoryInput>> eventCategory)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: true);
             var __workflow_eventCategory = WorkflowExpression.Compile(eventCategory, nameof(eventCategory), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/register";
                 var apiCallHttpMethod = "post";
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
                 callPayload.Queries["eventCategory"] = ExpressionConverter.Convert(__workflow_eventCategory);
                 callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(__workflow_xeroTenantId);
                 callPayload.Body = new TriggerXeroBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

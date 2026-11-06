@@ -16,10 +16,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
 
     public class CpqsyncTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductUpdated(Expression<Func<string>> tenantId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ProductUpdated(Expression<Func<string>> tenantId)
         {
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemUpdated", __workflow_tenantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
                 callPayload.Headers["accept"] = Convert.ToString("*/*");
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductCreated(Expression<Func<string>> tenantId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ProductCreated(Expression<Func<string>> tenantId)
         {
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemCreated", __workflow_tenantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
                 callPayload.Headers["accept"] = Convert.ToString("*/*");
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

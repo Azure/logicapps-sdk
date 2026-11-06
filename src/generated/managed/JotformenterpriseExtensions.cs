@@ -16,18 +16,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
 
     public class JotformenterpriseTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> formId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionPollingTriggerConfiguration> WebhookTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> formId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/msflow/v2/forms/{0}/webhooks", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["workspaceID"] = ExpressionConverter.Convert(__workflow_workspaceId);
                 callPayload.Body = new BodyInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookResponse>(callPayload);
             });
         }
     }

@@ -27,16 +27,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eigenevents
 
     public class EigeneventsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<double>> eventIds, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhook(Expression<Func<double>> eventIds)
         {
             var __workflow_eventIds = WorkflowExpression.Compile(eventIds, nameof(eventIds), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/events/api/webhook/{0}", __workflow_eventIds.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new BodyOfTriggerRequestInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
     }

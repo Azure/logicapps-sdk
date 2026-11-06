@@ -63,16 +63,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lcpicordis
 
     public class LcpicordisTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<bool, ApiConnectionTriggerConfiguration> NewEntry(Expression<Func<int>> formid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<bool, ApiConnectionPollingTriggerConfiguration> NewEntry(Expression<Func<int>> formid)
         {
             var __workflow_formid = WorkflowExpression.Compile(formid, nameof(formid), required: true);
-            return new DeferredBodyTrigger<bool, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<bool, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/export/eloket/{0}/hooks", __workflow_formid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new NewEntryBodyInput().ToJToken();
-                return new ApiConnectionTrigger<bool>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<bool>(callPayload);
             });
         }
     }

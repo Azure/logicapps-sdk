@@ -550,225 +550,225 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
     public class MaximizercrmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAbEntryUpdated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerAbEntryUpdated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<AbEntryTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/AbEntry/trigger/updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<AbEntryTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAbEntryCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerAbEntryCreated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<AbEntryTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/AbEntry/trigger/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<AbEntryTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAbEntryDateNotification(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerAbEntryDateNotification(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<AbEntryTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/AbEntry/trigger/DateNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<AbEntryTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAppointmentUpdated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerAppointmentUpdated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<AppointmentTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Appointment/trigger/Updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<AppointmentTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAppointmentCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerAppointmentCreated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<AppointmentTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Appointment/trigger/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<AppointmentTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAppointmentDateNotification(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerAppointmentDateNotification(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<AppointmentTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Appointment/trigger/DateNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<AppointmentTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration> TriggerCaseUpdated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerCaseUpdated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CaseTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Case/api/Case/trigger/Updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CaseTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration> TriggerCaseDateNotification(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerCaseDateNotification(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CaseTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Case/trigger/DateNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CaseTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration> TriggerCaseCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerCaseCreated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CaseTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Case/api/Case/trigger/Created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CaseTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema, ApiConnectionTriggerConfiguration> TriggerHTaskCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerHTaskCreated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<HotlistTaskTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<HotlistTaskTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/HotlistTask/trigger/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<HotlistTaskTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<HotlistTaskTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration> TriggerLeadDateNotification(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerLeadDateNotification(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<LeadTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Lead/trigger/DateNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<LeadTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration> TriggerLeadUpdated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerLeadUpdated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<LeadTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Lead/trigger/updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<LeadTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration> TriggerLeadCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerLeadCreated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<LeadTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Lead/trigger/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<LeadTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreated, ApiConnectionTriggerConfiguration> WebhookOppStageChanged(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreated, ApiConnectionPollingTriggerConfiguration> WebhookOppStageChanged(Expression<Func<object>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyTrigger<WebhookCreated, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreated, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity/webhook/OpportunityStageChanged";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookCreated>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreated>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration> TriggerOppCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerOppCreated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OpportunityTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity/trigger/Created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OpportunityTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration> TriggerOppUpdated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerOppUpdated(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OpportunityTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity/trigger/Updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OpportunityTriggerSchema>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration> TriggerOpportunityDateNotification(Expression<Func<object>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionPollingTriggerConfiguration> TriggerOpportunityDateNotification(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OpportunityTriggerSchema, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity/trigger/DateNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OpportunityTriggerSchema>(callPayload);
             });
         }
     }

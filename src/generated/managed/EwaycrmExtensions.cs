@@ -295,69 +295,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
     public class EwaycrmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal, ApiConnectionTriggerConfiguration> NewOrUpdatedJournal(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal, ApiConnectionPollingTriggerConfiguration> NewOrUpdatedJournal()
         {
-            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/NewOrUpdatedJournal";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany, ApiConnectionTriggerConfiguration> NewOrUpdatedCompanies(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany, ApiConnectionPollingTriggerConfiguration> NewOrUpdatedCompanies()
         {
-            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/NewOrUpdatedCompanies";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact, ApiConnectionTriggerConfiguration> NewOrUpdatedContacts(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact, ApiConnectionPollingTriggerConfiguration> NewOrUpdatedContacts()
         {
-            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/NewOrUpdatedContacts";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead, ApiConnectionTriggerConfiguration> NewOrUpdatedLeads(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead, ApiConnectionPollingTriggerConfiguration> NewOrUpdatedLeads()
         {
-            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/NewOrUpdatedLeads";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject, ApiConnectionTriggerConfiguration> NewOrUpdatedProjects(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject, ApiConnectionPollingTriggerConfiguration> NewOrUpdatedProjects()
         {
-            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/NewOrUpdatedProjects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask, ApiConnectionTriggerConfiguration> NewOrUpdatedTasks(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask, ApiConnectionPollingTriggerConfiguration> NewOrUpdatedTasks()
         {
-            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/NewOrUpdatedTasks";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask>(callPayload);
             });
         }
     }

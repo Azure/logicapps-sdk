@@ -90,29 +90,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
 
     public class BoomappconnectTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GESTRESPONSESTRIGGERResponse, ApiConnectionTriggerConfiguration> GESTRESPONSESTRIGGER(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GESTRESPONSESTRIGGERResponse, ApiConnectionPollingTriggerConfiguration> GESTRESPONSESTRIGGER()
         {
-            return new DeferredBodyTrigger<GESTRESPONSESTRIGGERResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GESTRESPONSESTRIGGERResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/get_responses";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ignore_previous"] = Convert.ToString(true);
                 callPayload.Queries["mark_as_read"] = Convert.ToString(true);
-                return new ApiConnectionTrigger<GESTRESPONSESTRIGGERResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GESTRESPONSESTRIGGERResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GETDRSTRIGGERResponse, ApiConnectionTriggerConfiguration> GETDRSTRIGGER(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GETDRSTRIGGERResponse, ApiConnectionPollingTriggerConfiguration> GETDRSTRIGGER()
         {
-            return new DeferredBodyTrigger<GETDRSTRIGGERResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GETDRSTRIGGERResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/get_all_new_drs";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ignore_previous"] = Convert.ToString(true);
                 callPayload.Queries["drs_after"] = Convert.ToString("1990-01-01 00:00:00");
-                return new ApiConnectionTrigger<GETDRSTRIGGERResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GETDRSTRIGGERResponse>(callPayload);
             });
         }
     }

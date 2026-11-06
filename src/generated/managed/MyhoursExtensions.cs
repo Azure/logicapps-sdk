@@ -161,36 +161,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
     public class MyhoursTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerLogsEnvelope, ApiConnectionTriggerConfiguration> NewTimeLog(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerLogsEnvelope, ApiConnectionPollingTriggerConfiguration> NewTimeLog()
         {
-            return new DeferredBodyTrigger<TriggerLogsEnvelope, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerLogsEnvelope, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/logs/powerautomate";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TriggerLogsEnvelope>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerLogsEnvelope>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerProjectsEnvelope, ApiConnectionTriggerConfiguration> NewProject(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsEnvelope, ApiConnectionPollingTriggerConfiguration> NewProject()
         {
-            return new DeferredBodyTrigger<TriggerProjectsEnvelope, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerProjectsEnvelope, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/projects/powerautomate";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TriggerProjectsEnvelope>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerProjectsEnvelope>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerProjectTasksEnvelope, ApiConnectionTriggerConfiguration> NewTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectTasksEnvelope, ApiConnectionPollingTriggerConfiguration> NewTask()
         {
-            return new DeferredBodyTrigger<TriggerProjectTasksEnvelope, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerProjectTasksEnvelope, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/projecttasks/powerautomate";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TriggerProjectTasksEnvelope>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerProjectTasksEnvelope>(callPayload);
             });
         }
     }

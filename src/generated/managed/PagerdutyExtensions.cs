@@ -146,60 +146,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
     public class PagerdutyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NotesResponse, ApiConnectionTriggerConfiguration> OnNewIncidentNote(Expression<Func<string>> incidentId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NotesResponse, ApiConnectionPollingTriggerConfiguration> OnNewIncidentNote(Expression<Func<string>> incidentId)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            return new DeferredBodyTrigger<NotesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NotesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger1/incidents/{0}/notes", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NotesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NotesResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnNewIncidentCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration> OnNewIncidentCreated()
         {
-            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger2/incidents";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IncidentsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentAssigned(Expression<Func<string>> userId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration> OnIncidentAssigned(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger3/incidents/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IncidentsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentAcknowledged(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration> OnIncidentAcknowledged()
         {
-            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger4/incidents";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IncidentsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentResolved(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration> OnIncidentResolved()
         {
-            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger5/incidents";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IncidentsResponse>(callPayload);
             });
         }
     }

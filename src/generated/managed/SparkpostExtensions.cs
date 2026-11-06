@@ -87,14 +87,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class SparkpostTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListRecipientListsResponse, ApiConnectionTriggerConfiguration> OnNewRecipientList(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListRecipientListsResponse, ApiConnectionPollingTriggerConfiguration> OnNewRecipientList()
         {
-            return new DeferredBodyTrigger<ListRecipientListsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListRecipientListsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/recipient-lists";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListRecipientListsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListRecipientListsResponse>(callPayload);
             });
         }
     }

@@ -207,16 +207,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 
     public class OrbusinfinityTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0, ApiConnectionTriggerConfiguration> PostWebhooks(Expression<Func<PostWebhooksBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0, ApiConnectionPollingTriggerConfiguration> PostWebhooks(Expression<Func<PostWebhooksBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0>(callPayload);
             });
         }
     }

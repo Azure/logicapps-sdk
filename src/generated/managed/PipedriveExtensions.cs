@@ -99,25 +99,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
 
     public class PipedriveTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ActivityResponse[], ApiConnectionTriggerConfiguration> TrigNewActivity(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ActivityResponse[], ApiConnectionPollingTriggerConfiguration> TrigNewActivity()
         {
-            return new DeferredBodyTrigger<ActivityResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ActivityResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/v1/activities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ActivityResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ActivityResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<DealResponseV2[], ApiConnectionTriggerConfiguration> TrigNewDeal(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DealResponseV2[], ApiConnectionPollingTriggerConfiguration> TrigNewDeal()
         {
-            return new DeferredBodyTrigger<DealResponseV2[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<DealResponseV2[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/connector-v2/trigger/v1/deals";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<DealResponseV2[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<DealResponseV2[]>(callPayload);
             });
         }
     }

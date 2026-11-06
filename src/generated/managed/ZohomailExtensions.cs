@@ -159,11 +159,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 
     public class ZohomailTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewMailTriggerResponse, ApiConnectionTriggerConfiguration> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMailTriggerResponse, ApiConnectionPollingTriggerConfiguration> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias)
         {
             var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
             var __workflow_criterias = WorkflowExpression.Compile(criterias, nameof(criterias), required: true);
-            return new DeferredBodyTrigger<NewMailTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewMailTriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integPlatform/api/outgoingWebhooks/newcriteriamail";
                 var apiCallHttpMethod = "post";
@@ -175,15 +175,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
                 callPayload.Queries["matchingCondition"] = Convert.ToString("and");
                 callPayload.Queries["criterias"] = ExpressionConverter.Convert(__workflow_criterias);
                 callPayload.Body = new NewMailTriggerBodyInput().ToJToken();
-                return new ApiConnectionTrigger<NewMailTriggerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewMailTriggerResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse, ApiConnectionTriggerConfiguration> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<NEWCONDITIONALMAILBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse, ApiConnectionPollingTriggerConfiguration> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<NEWCONDITIONALMAILBodyInput>> body)
         {
             var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<NEWCONDITIONALMAILResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NEWCONDITIONALMAILResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integPlatform/api/outgoingconditionWebhooks";
                 var apiCallHttpMethod = "post";
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
                 callPayload.Queries["metaOnly"] = Convert.ToString(false);
                 callPayload.Queries["matchingCondition"] = Convert.ToString("and");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<NEWCONDITIONALMAILResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NEWCONDITIONALMAILResponse>(callPayload);
             });
         }
     }

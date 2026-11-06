@@ -1619,68 +1619,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESBusinessHookPost(Expression<Func<ESBusinessHookPostRegistrationInput>> registration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionPollingTriggerConfiguration> ESBusinessHookPost(Expression<Func<ESBusinessHookPostRegistrationInput>> registration)
         {
             var __workflow_registration = WorkflowExpression.Compile(registration, nameof(registration), required: true);
-            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/businesshook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_registration);
-                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESPodHookPost(Expression<Func<ESPodHookPostRegistrationInput>> registration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionPollingTriggerConfiguration> ESPodHookPost(Expression<Func<ESPodHookPostRegistrationInput>> registration)
         {
             var __workflow_registration = WorkflowExpression.Compile(registration, nameof(registration), required: true);
-            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/podhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_registration);
-                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESRFAHookPost(Expression<Func<ESRFAHookPostRegistrationInput>> registration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionPollingTriggerConfiguration> ESRFAHookPost(Expression<Func<ESRFAHookPostRegistrationInput>> registration)
         {
             var __workflow_registration = WorkflowExpression.Compile(registration, nameof(registration), required: true);
-            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/rfahook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_registration);
-                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESHookPost(Expression<Func<ESHookPostRegistrationInput>> registration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionPollingTriggerConfiguration> ESHookPost(Expression<Func<ESHookPostRegistrationInput>> registration)
         {
             var __workflow_registration = WorkflowExpression.Compile(registration, nameof(registration), required: true);
-            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/hook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_registration);
-                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESSystemHookPost(Expression<Func<ESSystemHookPostRegistrationInput>> registration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionPollingTriggerConfiguration> ESSystemHookPost(Expression<Func<ESSystemHookPostRegistrationInput>> registration)
         {
             var __workflow_registration = WorkflowExpression.Compile(registration, nameof(registration), required: true);
-            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/systemhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_registration);
-                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload);
             });
         }
     }

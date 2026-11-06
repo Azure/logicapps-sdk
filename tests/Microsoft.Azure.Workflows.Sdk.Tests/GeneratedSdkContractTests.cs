@@ -66,6 +66,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Contains("Service", serviceDefinition.Definition.Triggers.Keys);
         }
 
+        [Fact]
+        public void GeneratedConnectorFactoriesDoNotExposeSyntheticRecurrenceParameters()
+        {
+            var factoryMethods = typeof(WorkflowActions).Assembly.GetTypes()
+                .Where(type =>
+                    type.Namespace?.StartsWith(
+                        "Microsoft.Azure.Workflows.Sdk.Connectors.",
+                        StringComparison.Ordinal) == true ||
+                    type.Namespace?.StartsWith(
+                        "Microsoft.Azure.Workflows.Sdk.ServiceProviders.",
+                        StringComparison.Ordinal) == true)
+                .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.Public));
+
+            Assert.DoesNotContain(
+                factoryMethods,
+                method => method.GetParameters().Any(
+                    parameter => parameter.ParameterType == typeof(FlowRecurrence)));
+        }
+
         private static bool IsGeneratedIntegerEnum(Type type)
         {
             var names = Enum.GetNames(type);

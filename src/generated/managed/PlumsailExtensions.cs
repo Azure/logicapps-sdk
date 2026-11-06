@@ -581,16 +581,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
     public class PlumsailTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FlowV1ProcessesFlowTriggersPost(Expression<Func<FlowV1ProcessesFlowTriggersPostDataInput>> data, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FlowV1ProcessesFlowTriggersPost(Expression<Func<FlowV1ProcessesFlowTriggersPostDataInput>> data)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/v1/ProcessesFlow/triggers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_data);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

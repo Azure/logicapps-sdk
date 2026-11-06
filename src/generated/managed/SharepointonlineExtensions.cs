@@ -966,13 +966,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class SharepointonlineTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnChangedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnChangedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/onchangeditems", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -981,46 +981,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<DeletedItemList, ApiConnectionTriggerConfiguration> OnDeletedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeletedItemList, ApiConnectionPollingTriggerConfiguration> OnDeletedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
-            return new DeferredBodyTrigger<DeletedItemList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<DeletedItemList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/ondeletedfileitems", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_folderPath != null)
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                return new ApiConnectionTrigger<DeletedItemList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<DeletedItemList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<DeletedItemList, ApiConnectionTriggerConfiguration> OnDeletedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeletedItemList, ApiConnectionPollingTriggerConfiguration> OnDeletedItems(Expression<Func<string>> dataset, Expression<Func<string>> table)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            return new DeferredBodyTrigger<DeletedItemList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<DeletedItemList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/ondeleteditems", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<DeletedItemList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<DeletedItemList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnNewFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnNewFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/onnewfileitems", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -1029,33 +1029,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnNewItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnNewItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/onnewitems", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnNewItemsFromForm(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> form, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnNewItemsFromForm(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> form, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_form = WorkflowExpression.Compile(form, nameof(form), required: true);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/onnewitemsfromform", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -1063,11 +1063,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 callPayload.Queries["form"] = ExpressionConverter.Convert(__workflow_form);
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnRecurrenceDigest(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<bool>> update, Expression<Func<bool>> add, Expression<Func<string>> runSchedule, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, Expression<Func<string>> startTime = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnRecurrenceDigest(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<bool>> update, Expression<Func<bool>> add, Expression<Func<string>> runSchedule, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, Expression<Func<string>> startTime = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
@@ -1077,7 +1077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/onrecurrencedigest", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -1091,17 +1091,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 if (__workflow_startTime != null)
                     callPayload.Queries["startTime"] = ExpressionConverter.Convert(__workflow_startTime);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnUpdatedFileClassifiedTimes(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnUpdatedFileClassifiedTimes(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/onupdatedfileclassifiedtimes", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -1110,17 +1110,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnUpdatedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnUpdatedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/onupdatedfileitems", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -1129,32 +1129,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnUpdatedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnUpdatedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/onupdateditems", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> OnNewFile(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> OnNewFile(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<bool>> inferContentType = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/triggers/onnewfile", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -1164,16 +1164,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_inferContentType != null)
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(__workflow_inferContentType);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> OnUpdatedFile(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> OnUpdatedFile(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<bool>> inferContentType = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/triggers/onupdatedfile", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -1184,7 +1184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_inferContentType != null)
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(__workflow_inferContentType);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
     }

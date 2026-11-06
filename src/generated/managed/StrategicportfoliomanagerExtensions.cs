@@ -780,289 +780,289 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class StrategicportfoliomanagerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddFinancialValuesChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddFinancialValuesChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddFinancialValuesChangedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddEntityCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddEntityCreatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddEntityUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddEntityUpdatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddEntityDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddEntityDeletedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddStageTransitionHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddStageTransitionHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddStageTransitionHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddActualsApprovalWorkflowStartedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddActualsPeriodStatusChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddActualsPeriodStatusChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddActualsPeriodStatusChangedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddChangeRequestCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestCreatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddChangeRequestUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestUpdatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddChangeRequestDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestDeletedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestStatusChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddChangeRequestStatusChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestStatusChangedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentAddedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddResourceAssignmentAddedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddResourceAssignmentAddedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentRemovedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddResourceAssignmentRemovedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddResourceAssignmentRemovedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddResourceAssignmentUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddResourceAssignmentUpdatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddMilestoneCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddMilestoneCreatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddMilestoneUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddMilestoneUpdatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddMilestoneDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddMilestoneDeletedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddRelationshipCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddRelationshipCreatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddRelationshipUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddRelationshipUpdatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddRelationshipDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddRelationshipDeletedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddApprovalRequestCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddApprovalRequestCreatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration> EventsAddApprovalRequestChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
-            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddApprovalRequestChangedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EventCreationResponse>(callPayload);
             });
         }
     }

@@ -727,81 +727,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class ImanageworkTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SingleSelectedDocumentResponse, ApiConnectionTriggerConfiguration> SingleSelectedDocument(Expression<Func<SingleSelectedDocumentBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SingleSelectedDocumentResponse, ApiConnectionPollingTriggerConfiguration> SingleSelectedDocument(Expression<Func<SingleSelectedDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<SingleSelectedDocumentResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SingleSelectedDocumentResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/register/singleSelectedDocument";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<SingleSelectedDocumentResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SingleSelectedDocumentResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse, ApiConnectionTriggerConfiguration> MultipleSelectedDocuments(Expression<Func<MultipleSelectedDocumentsBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse, ApiConnectionPollingTriggerConfiguration> MultipleSelectedDocuments(Expression<Func<MultipleSelectedDocumentsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<MultipleSelectedDocumentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MultipleSelectedDocumentsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/register/multipleSelectedDocuments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<MultipleSelectedDocumentsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MultipleSelectedDocumentsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse, ApiConnectionTriggerConfiguration> SingleSelectedWorkspace(Expression<Func<RegisterGenericWorkflowBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse, ApiConnectionPollingTriggerConfiguration> SingleSelectedWorkspace(Expression<Func<RegisterGenericWorkflowBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<SingleSelectedWorkspaceResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SingleSelectedWorkspaceResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/register/singleSelectedWorkspace";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<SingleSelectedWorkspaceResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SingleSelectedWorkspaceResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionTriggerConfiguration> MultipleSelectedWorkspaces(Expression<Func<MultipleSelectedWorkspacesBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionPollingTriggerConfiguration> MultipleSelectedWorkspaces(Expression<Func<MultipleSelectedWorkspacesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/register/multipleSelectedWorkspaces";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<MultipleSelectedWorkspacesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<MultipleSelectedWorkspacesResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RegisterGenericWorkflowResponse, ApiConnectionTriggerConfiguration> RegisterGenericWorkflow(Expression<Func<RegisterGenericWorkflowBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegisterGenericWorkflowResponse, ApiConnectionPollingTriggerConfiguration> RegisterGenericWorkflow(Expression<Func<RegisterGenericWorkflowBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<RegisterGenericWorkflowResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RegisterGenericWorkflowResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/register/genericWorkflow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<RegisterGenericWorkflowResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RegisterGenericWorkflowResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RegisterFormWorkflowResponse, ApiConnectionTriggerConfiguration> RegisterFormWorkflow(Expression<Func<RegisterFormWorkflowBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegisterFormWorkflowResponse, ApiConnectionPollingTriggerConfiguration> RegisterFormWorkflow(Expression<Func<RegisterFormWorkflowBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<RegisterFormWorkflowResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RegisterFormWorkflowResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/register/formWorkflow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<RegisterFormWorkflowResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RegisterFormWorkflowResponse>(callPayload);
             });
         }
     }

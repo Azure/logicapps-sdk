@@ -683,13 +683,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
     public class VisualstudioteamservicesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VstsListBuildResult, ApiConnectionTriggerConfiguration> OnBuildCompleted(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<OnBuildCompletedResultFilterInput>> resultFilter = null, Expression<Func<string>> definitions = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListBuildResult, ApiConnectionPollingTriggerConfiguration> OnBuildCompleted(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<OnBuildCompletedResultFilterInput>> resultFilter = null, Expression<Func<string>> definitions = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_resultFilter = WorkflowExpression.Compile(resultFilter, nameof(resultFilter), required: false);
             var __workflow_definitions = WorkflowExpression.Compile(definitions, nameof(definitions), required: false);
-            return new DeferredBodyTrigger<VstsListBuildResult, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VstsListBuildResult, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/buildcompleted_trigger/{0}/_apis/build/builds", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -699,17 +699,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["resultFilter"] = ExpressionConverter.Convert(__workflow_resultFilter);
                 if (__workflow_definitions != null)
                     callPayload.Queries["definitions"] = ExpressionConverter.Convert(__workflow_definitions);
-                return new ApiConnectionTrigger<VstsListBuildResult>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VstsListBuildResult>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListGitPush, ApiConnectionTriggerConfiguration> OnGitPush(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> refName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListGitPush, ApiConnectionPollingTriggerConfiguration> OnGitPush(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> refName = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_repository = WorkflowExpression.Compile(repository, nameof(repository), required: true);
             var __workflow_refName = WorkflowExpression.Compile(refName, nameof(refName), required: false);
-            return new DeferredBodyTrigger<VstsListGitPush, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VstsListGitPush, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gitpushed_trigger/{0}/_apis/git/repositories/{1}/pushes", __workflow_project.WithUrlEncoding(1), __workflow_repository.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -717,18 +717,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 if (__workflow_refName != null)
                     callPayload.Queries["refName"] = ExpressionConverter.Convert(__workflow_refName);
-                return new ApiConnectionTrigger<VstsListGitPush>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VstsListGitPush>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListGitPullRequest, ApiConnectionTriggerConfiguration> OnGitPullCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListGitPullRequest, ApiConnectionPollingTriggerConfiguration> OnGitPullCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_repository = WorkflowExpression.Compile(repository, nameof(repository), required: true);
             var __workflow_sourceRefName = WorkflowExpression.Compile(sourceRefName, nameof(sourceRefName), required: false);
             var __workflow_targetRefName = WorkflowExpression.Compile(targetRefName, nameof(targetRefName), required: false);
-            return new DeferredBodyTrigger<VstsListGitPullRequest, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VstsListGitPullRequest, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gitpullcreated_trigger/{0}/_apis/git/repositories/{1}/pullrequests", __workflow_project.WithUrlEncoding(1), __workflow_repository.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -738,18 +738,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(__workflow_sourceRefName);
                 if (__workflow_targetRefName != null)
                     callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(__workflow_targetRefName);
-                return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VstsListGitPullRequest>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListGitPullRequest, ApiConnectionTriggerConfiguration> OnGitPullClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListGitPullRequest, ApiConnectionPollingTriggerConfiguration> OnGitPullClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_repository = WorkflowExpression.Compile(repository, nameof(repository), required: true);
             var __workflow_sourceRefName = WorkflowExpression.Compile(sourceRefName, nameof(sourceRefName), required: false);
             var __workflow_targetRefName = WorkflowExpression.Compile(targetRefName, nameof(targetRefName), required: false);
-            return new DeferredBodyTrigger<VstsListGitPullRequest, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VstsListGitPullRequest, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gitpullclosed_trigger/{0}/_apis/git/repositories/{1}/pullrequests", __workflow_project.WithUrlEncoding(1), __workflow_repository.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -759,17 +759,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(__workflow_sourceRefName);
                 if (__workflow_targetRefName != null)
                     callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(__workflow_targetRefName);
-                return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VstsListGitPullRequest>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListTfvcChangeset, ApiConnectionTriggerConfiguration> OnTfvcCheckIn(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> author = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTfvcChangeset, ApiConnectionPollingTriggerConfiguration> OnTfvcCheckIn(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> author = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: false);
             var __workflow_author = WorkflowExpression.Compile(author, nameof(author), required: false);
-            return new DeferredBodyTrigger<VstsListTfvcChangeset, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VstsListTfvcChangeset, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/tfvccheckin_trigger/_apis/tfvc/changesets";
                 var apiCallHttpMethod = "get";
@@ -780,11 +780,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["team"] = ExpressionConverter.Convert(__workflow_team);
                 if (__workflow_author != null)
                     callPayload.Queries["author"] = ExpressionConverter.Convert(__workflow_author);
-                return new ApiConnectionTrigger<VstsListTfvcChangeset>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VstsListTfvcChangeset>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemAssigned(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionPollingTriggerConfiguration> OnWorkItemAssigned(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_iterationPathComparison = WorkflowExpression.Compile(iterationPathComparison, nameof(iterationPathComparison), required: false);
             var __workflow_wiqlMicrosoftVSTSCommonPriority = WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
             var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
-            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -821,11 +821,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(__workflow_wiqlMicrosoftVSTSCommonPriority);
                 if (__workflow_wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(__workflow_wiqlSystemCreatedBy);
-                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VstsListTriggerWorkItemResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionPollingTriggerConfiguration> OnWorkItemClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -839,7 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_iterationPathComparison = WorkflowExpression.Compile(iterationPathComparison, nameof(iterationPathComparison), required: false);
             var __workflow_wiqlMicrosoftVSTSCommonPriority = WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
             var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
-            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -869,11 +869,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(__workflow_wiqlMicrosoftVSTSCommonPriority);
                 if (__workflow_wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(__workflow_wiqlSystemCreatedBy);
-                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VstsListTriggerWorkItemResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionPollingTriggerConfiguration> OnWorkItemCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -886,7 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_iterationPathComparison = WorkflowExpression.Compile(iterationPathComparison, nameof(iterationPathComparison), required: false);
             var __workflow_wiqlMicrosoftVSTSCommonPriority = WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
             var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
-            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -913,11 +913,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(__workflow_wiqlMicrosoftVSTSCommonPriority);
                 if (__workflow_wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(__workflow_wiqlSystemCreatedBy);
-                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VstsListTriggerWorkItemResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemUpdated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionPollingTriggerConfiguration> OnWorkItemUpdated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -930,7 +930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_iterationPathComparison = WorkflowExpression.Compile(iterationPathComparison, nameof(iterationPathComparison), required: false);
             var __workflow_wiqlMicrosoftVSTSCommonPriority = WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
             var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
-            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -956,7 +956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(__workflow_wiqlMicrosoftVSTSCommonPriority);
                 if (__workflow_wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(__workflow_wiqlSystemCreatedBy);
-                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VstsListTriggerWorkItemResponse>(callPayload);
             });
         }
     }

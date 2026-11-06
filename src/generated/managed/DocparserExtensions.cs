@@ -33,16 +33,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 
     public class DocparserTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreateReponse, ApiConnectionTriggerConfiguration> WebhookCreate(Expression<Func<string>> parserId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreateReponse, ApiConnectionPollingTriggerConfiguration> WebhookCreate(Expression<Func<string>> parserId)
         {
             var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
-            return new DeferredBodyTrigger<WebhookCreateReponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreateReponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/subscribe/{0}/flow", __workflow_parserId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new TargetUrlInput().ToJToken();
-                return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebhookCreateReponse>(callPayload);
             });
         }
     }

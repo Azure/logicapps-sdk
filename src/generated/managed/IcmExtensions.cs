@@ -461,12 +461,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
 
     public class IcmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionTriggerConfiguration> WhenAnIcMIncidentIsCreated(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<SearchEndpointInput>> searchEndpoint = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionPollingTriggerConfiguration> WhenAnIcMIncidentIsCreated(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<SearchEndpointInput>> searchEndpoint = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_searchEndpoint = WorkflowExpression.Compile(searchEndpoint, nameof(searchEndpoint), required: false);
-            return new DeferredBodyTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/icm/triggers/onIncidentCreated";
                 var apiCallHttpMethod = "get";
@@ -477,16 +477,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
                 callPayload.Queries["searchEndpoint"] = Convert.ToString("Public");
                 if (__workflow_searchEndpoint != null)
                     callPayload.Queries["searchEndpoint"] = ExpressionConverter.Convert(__workflow_searchEndpoint);
-                return new ApiConnectionTrigger<IcmIncidentResponseTriggerBatchResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IcmIncidentResponseTriggerBatchResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionTriggerConfiguration> WhenAnIcMIncidentIsModified(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<SearchEndpointInput>> searchEndpoint = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionPollingTriggerConfiguration> WhenAnIcMIncidentIsModified(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<SearchEndpointInput>> searchEndpoint = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_searchEndpoint = WorkflowExpression.Compile(searchEndpoint, nameof(searchEndpoint), required: false);
-            return new DeferredBodyTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/icm/triggers/onIncidentModified";
                 var apiCallHttpMethod = "get";
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
                 callPayload.Queries["searchEndpoint"] = Convert.ToString("Public");
                 if (__workflow_searchEndpoint != null)
                     callPayload.Queries["searchEndpoint"] = ExpressionConverter.Convert(__workflow_searchEndpoint);
-                return new ApiConnectionTrigger<IcmIncidentResponseTriggerBatchResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IcmIncidentResponseTriggerBatchResponse>(callPayload);
             });
         }
     }

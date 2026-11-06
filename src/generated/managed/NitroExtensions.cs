@@ -31,15 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
 
     public class NitroTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Error, ApiConnectionTriggerConfiguration> WebhookDocumentSignedTrigger(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Error, ApiConnectionPollingTriggerConfiguration> WebhookDocumentSignedTrigger()
         {
-            return new DeferredBodyTrigger<Error, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Error, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new RequestInput().ToJToken();
-                return new ApiConnectionTrigger<Error>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Error>(callPayload);
             });
         }
     }

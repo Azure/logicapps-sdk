@@ -392,16 +392,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class EduframeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Webhook, ApiConnectionTriggerConfiguration> PostWebhooks(Expression<Func<PostWebhooksBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Webhook, ApiConnectionPollingTriggerConfiguration> PostWebhooks(Expression<Func<PostWebhooksBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<Webhook, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Webhook, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<Webhook>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Webhook>(callPayload);
             });
         }
     }

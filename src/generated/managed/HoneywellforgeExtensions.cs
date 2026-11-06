@@ -47,17 +47,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
 
     public class HoneywellforgeTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ServiceCaseCreated(Expression<Func<string>> projectId, Expression<Func<string>> connectorId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ServiceCaseCreated(Expression<Func<string>> projectId, Expression<Func<string>> connectorId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_connectorId = WorkflowExpression.Compile(connectorId, nameof(connectorId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/webhooks/{1}", __workflow_projectId.WithUrlEncoding(1), __workflow_connectorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new ServiceCaseCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

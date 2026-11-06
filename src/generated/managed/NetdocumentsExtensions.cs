@@ -775,14 +775,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
 
     public class NetdocumentsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<SearchCabOrderbyInput>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<SearchCabOrderbyInput>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null)
         {
             var __workflow_cabId = WorkflowExpression.Compile(cabId, nameof(cabId), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Search/{0}", __workflow_cabId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

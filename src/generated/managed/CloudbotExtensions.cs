@@ -69,12 +69,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
 
     public class CloudbotTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BotDoneResponse, ApiConnectionTriggerConfiguration> BotDone(Expression<Func<XCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BotDoneResponse, ApiConnectionPollingTriggerConfiguration> BotDone(Expression<Func<XCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId)
         {
             var __workflow_xCbotContentLanguage = WorkflowExpression.Compile(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
             var __workflow_publicId = WorkflowExpression.Compile(publicId, nameof(publicId), required: true);
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
-            return new DeferredBodyTrigger<BotDoneResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<BotDoneResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/bots/{1}/subscriptions", __workflow_publicId.WithUrlEncoding(1), __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
                 callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);
                 callPayload.Headers["x-cbot-content-type"] = Convert.ToString("application/json");
                 callPayload.Body = new BotDoneBodyInput().ToJToken();
-                return new ApiConnectionTrigger<BotDoneResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<BotDoneResponse>(callPayload);
             });
         }
     }

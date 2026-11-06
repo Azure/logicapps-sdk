@@ -531,16 +531,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class SignnowTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggersResponse, ApiConnectionTriggerConfiguration> Triggers(Expression<Func<TriggersBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggersResponse, ApiConnectionPollingTriggerConfiguration> Triggers(Expression<Func<TriggersBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<TriggersResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggersResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/multievent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<TriggersResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggersResponse>(callPayload);
             });
         }
     }

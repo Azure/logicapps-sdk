@@ -28,31 +28,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formspace
 
     public class FormspaceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Subscription, ApiConnectionTriggerConfiguration> WhenResponseSubmitted(Expression<Func<string>> organizationId, Expression<Func<string>> formId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Subscription, ApiConnectionPollingTriggerConfiguration> WhenResponseSubmitted(Expression<Func<string>> organizationId, Expression<Func<string>> formId)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyTrigger<Subscription, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Subscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/forms/{1}/subscriptions", __workflow_organizationId.WithUrlEncoding(1), __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new WhenResponseSubmittedSubscriptionInput().ToJToken();
-                return new ApiConnectionTrigger<Subscription>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Subscription>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Subscription, ApiConnectionTriggerConfiguration> WhenInvokedByWorkflow(Expression<Func<string>> organizationId, Expression<Func<WhenInvokedByWorkflowSubscriptionInput>> subscription, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Subscription, ApiConnectionPollingTriggerConfiguration> WhenInvokedByWorkflow(Expression<Func<string>> organizationId, Expression<Func<WhenInvokedByWorkflowSubscriptionInput>> subscription)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
-            return new DeferredBodyTrigger<Subscription, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Subscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/workflow-subscriptions", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
-                return new ApiConnectionTrigger<Subscription>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Subscription>(callPayload);
             });
         }
     }

@@ -1037,16 +1037,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class Pdf4meconnectTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> GetDocumentFromPDF4me(Expression<Func<GetDocumentFromPDF4meBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> GetDocumentFromPDF4me(Expression<Func<GetDocumentFromPDF4meBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/WebhookSubscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
     }

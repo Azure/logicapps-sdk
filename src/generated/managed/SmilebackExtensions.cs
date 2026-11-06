@@ -76,10 +76,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 
     public class SmilebackTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CSATReceived(Expression<Func<CSATReceivedFieldInput>> field = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CSATReceived(Expression<Func<CSATReceivedFieldInput>> field = null)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/power/CSAT/";
                 var apiCallHttpMethod = "post";
@@ -87,14 +87,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
                 callPayload.Headers["x-ms-notification-url"] = Convert.ToString("#{listCallbackUrl()}");
                 if (__workflow_field != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_field);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NPSReceived(Expression<Func<NPSReceivedFieldInput>> field = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NPSReceived(Expression<Func<NPSReceivedFieldInput>> field = null)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/power/NPS/";
                 var apiCallHttpMethod = "post";
@@ -102,14 +102,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
                 callPayload.Headers["x-ms-notification-url"] = Convert.ToString("#{listCallbackUrl()}");
                 if (__workflow_field != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_field);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> PRJReceived(Expression<Func<PRJReceivedFieldInput>> field = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> PRJReceived(Expression<Func<PRJReceivedFieldInput>> field = null)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/power/PRJ/";
                 var apiCallHttpMethod = "post";
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
                 callPayload.Headers["x-ms-notification-url"] = Convert.ToString("#{listCallbackUrl()}");
                 if (__workflow_field != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_field);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

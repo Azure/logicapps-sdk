@@ -269,40 +269,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class ScriveesignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> StartAndOnDocumentSign(Expression<Func<StartAndOnDocumentSignBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> StartAndOnDocumentSign(Expression<Func<StartAndOnDocumentSignBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/signed/createandstart";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookFromTemplateSign(Expression<Func<string>> templateIdDynamic, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> WebhookFromTemplateSign(Expression<Func<string>> templateIdDynamic)
         {
             var __workflow_templateIdDynamic = WorkflowExpression.Compile(templateIdDynamic, nameof(templateIdDynamic), required: true);
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/signedfromtemplate/create/{0}", __workflow_templateIdDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new WebhookFromTemplateSignBodyInput().ToJToken();
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PollSignedDocumentsResponse, ApiConnectionTriggerConfiguration> PollSignedDocuments(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollSignedDocumentsResponse, ApiConnectionPollingTriggerConfiguration> PollSignedDocuments()
         {
-            return new DeferredBodyTrigger<PollSignedDocumentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PollSignedDocumentsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/polling/signed";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PollSignedDocumentsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PollSignedDocumentsResponse>(callPayload);
             });
         }
     }

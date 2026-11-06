@@ -281,65 +281,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
     public class HuddoboardsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> AddedToBoard(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionPollingTriggerConfiguration> AddedToBoard()
         {
-            return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NodeSummary, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/added-to-board";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new AddedToBoardBodyInput().ToJToken();
-                return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NodeSummary>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> AssignedTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionPollingTriggerConfiguration> AssignedTask()
         {
-            return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NodeSummary, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/assigned-task";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new AddedToBoardBodyInput().ToJToken();
-                return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NodeSummary>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> BoardTaskCompleted(Expression<Func<string>> boardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionPollingTriggerConfiguration> BoardTaskCompleted(Expression<Func<string>> boardId)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
-            return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NodeSummary, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/board-task-completed/{0}", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new AddedToBoardBodyInput().ToJToken();
-                return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NodeSummary>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> CreatedNode(Expression<Func<string>> boardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionPollingTriggerConfiguration> CreatedNode(Expression<Func<string>> boardId)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
-            return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NodeSummary, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/created-node/{0}", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new AddedToBoardBodyInput().ToJToken();
-                return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NodeSummary>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> MyTaskCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionPollingTriggerConfiguration> MyTaskCompleted()
         {
-            return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NodeSummary, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/my-task-completed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new AddedToBoardBodyInput().ToJToken();
-                return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NodeSummary>(callPayload);
             });
         }
     }

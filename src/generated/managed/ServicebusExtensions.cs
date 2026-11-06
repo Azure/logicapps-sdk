@@ -478,11 +478,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
     public class ServicebusTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionTriggerConfiguration> GetMessageFromQueue(Expression<Func<string>> queueName, Expression<Func<QueueTypeInput>> queueType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionPollingTriggerConfiguration> GetMessageFromQueue(Expression<Func<string>> queueName, Expression<Func<QueueTypeInput>> queueType = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_queueType = WorkflowExpression.Compile(queueType, nameof(queueType), required: false);
-            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/head", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -490,16 +490,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
                 if (__workflow_queueType != null)
                     callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
-                return new ApiConnectionTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionTriggerConfiguration> GetNewMessageFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<QueueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionPollingTriggerConfiguration> GetNewMessageFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<QueueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_queueType = WorkflowExpression.Compile(queueType, nameof(queueType), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/head/peek", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -510,16 +510,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                return new ApiConnectionTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionTriggerConfiguration> GetMessagesFromQueue(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<QueueTypeInput>> queueType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionPollingTriggerConfiguration> GetMessagesFromQueue(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<QueueTypeInput>> queueType = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_maxMessageCount = WorkflowExpression.Compile(maxMessageCount, nameof(maxMessageCount), required: false);
             var __workflow_queueType = WorkflowExpression.Compile(queueType, nameof(queueType), required: false);
-            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/batch/head", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -530,17 +530,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
                 if (__workflow_queueType != null)
                     callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
-                return new ApiConnectionTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionTriggerConfiguration> GetNewMessagesFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<QueueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionPollingTriggerConfiguration> GetNewMessagesFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<QueueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_maxMessageCount = WorkflowExpression.Compile(maxMessageCount, nameof(maxMessageCount), required: false);
             var __workflow_queueType = WorkflowExpression.Compile(queueType, nameof(queueType), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/batch/head/peek", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -554,16 +554,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                return new ApiConnectionTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionTriggerConfiguration> GetMessageFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<SubscriptionTypeInput>> subscriptionType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionPollingTriggerConfiguration> GetMessageFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<SubscriptionTypeInput>> subscriptionType = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_subscriptionType = WorkflowExpression.Compile(subscriptionType, nameof(subscriptionType), required: false);
-            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/head", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -571,17 +571,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
                 if (__workflow_subscriptionType != null)
                     callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
-                return new ApiConnectionTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionTriggerConfiguration> GetNewMessageFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<SubscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionPollingTriggerConfiguration> GetNewMessageFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<SubscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_subscriptionType = WorkflowExpression.Compile(subscriptionType, nameof(subscriptionType), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/head/peek", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -592,17 +592,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                return new ApiConnectionTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionTriggerConfiguration> GetMessagesFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<SubscriptionTypeInput>> subscriptionType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionPollingTriggerConfiguration> GetMessagesFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<SubscriptionTypeInput>> subscriptionType = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_maxMessageCount = WorkflowExpression.Compile(maxMessageCount, nameof(maxMessageCount), required: false);
             var __workflow_subscriptionType = WorkflowExpression.Compile(subscriptionType, nameof(subscriptionType), required: false);
-            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/batch/head", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -613,18 +613,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
                 if (__workflow_subscriptionType != null)
                     callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
-                return new ApiConnectionTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionTriggerConfiguration> GetNewMessagesFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<SubscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionPollingTriggerConfiguration> GetNewMessagesFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<SubscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_maxMessageCount = WorkflowExpression.Compile(maxMessageCount, nameof(maxMessageCount), required: false);
             var __workflow_subscriptionType = WorkflowExpression.Compile(subscriptionType, nameof(subscriptionType), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/batch/head/peek", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -638,7 +638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                return new ApiConnectionTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GetDeferredMessageFromQueueServiceBusMessageResponse[]>(callPayload);
             });
         }
     }

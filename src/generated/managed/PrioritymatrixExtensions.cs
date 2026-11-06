@@ -95,81 +95,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
 
     public class PrioritymatrixTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ItemCompletedHookResponse, ApiConnectionTriggerConfiguration> ItemCompletedHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemCompletedHookResponse, ApiConnectionPollingTriggerConfiguration> ItemCompletedHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<ItemCompletedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemCompletedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.completed/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<ItemCompletedHookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemCompletedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemCreatedHookResponse, ApiConnectionTriggerConfiguration> ItemCreatedHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemCreatedHookResponse, ApiConnectionPollingTriggerConfiguration> ItemCreatedHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<ItemCreatedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemCreatedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.created/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<ItemCreatedHookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemCreatedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemDelegatedHookResponse, ApiConnectionTriggerConfiguration> ItemDelegatedHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemDelegatedHookResponse, ApiConnectionPollingTriggerConfiguration> ItemDelegatedHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<ItemDelegatedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemDelegatedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.delegated/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<ItemDelegatedHookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemDelegatedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemDeletedHookResponse, ApiConnectionTriggerConfiguration> ItemDeletedHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemDeletedHookResponse, ApiConnectionPollingTriggerConfiguration> ItemDeletedHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<ItemDeletedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemDeletedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.deleted/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<ItemDeletedHookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemDeletedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemDueHookResponse, ApiConnectionTriggerConfiguration> ItemDueHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemDueHookResponse, ApiConnectionPollingTriggerConfiguration> ItemDueHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<ItemDueHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemDueHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.due/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<ItemDueHookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemDueHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemStartHookResponse, ApiConnectionTriggerConfiguration> ItemStartHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemStartHookResponse, ApiConnectionPollingTriggerConfiguration> ItemStartHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<ItemStartHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemStartHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.start/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<ItemStartHookResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemStartHookResponse>(callPayload);
             });
         }
     }

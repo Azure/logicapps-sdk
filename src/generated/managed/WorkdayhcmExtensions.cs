@@ -168,11 +168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
     public class WorkdayhcmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EmployeeInfo, ApiConnectionTriggerConfiguration> WhenAnEmployeeIsAddedOrUpdated(Expression<Func<DateCriteriaInput>> dateCriteria, Expression<Func<BusinessProcessTypeInput>> businessProcessType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EmployeeInfo, ApiConnectionPollingTriggerConfiguration> WhenAnEmployeeIsAddedOrUpdated(Expression<Func<DateCriteriaInput>> dateCriteria, Expression<Func<BusinessProcessTypeInput>> businessProcessType = null)
         {
             var __workflow_dateCriteria = WorkflowExpression.Compile(dateCriteria, nameof(dateCriteria), required: true);
             var __workflow_businessProcessType = WorkflowExpression.Compile(businessProcessType, nameof(businessProcessType), required: false);
-            return new DeferredBodyTrigger<EmployeeInfo, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EmployeeInfo, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/When_an_Employee_is_Added_or_Updated";
                 var apiCallHttpMethod = "get";
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 callPayload.Queries["dateCriteria"] = ExpressionConverter.Convert(__workflow_dateCriteria);
                 if (__workflow_businessProcessType != null)
                     callPayload.Queries["businessProcessType"] = ExpressionConverter.Convert(__workflow_businessProcessType);
-                return new ApiConnectionTrigger<EmployeeInfo>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EmployeeInfo>(callPayload);
             });
         }
     }

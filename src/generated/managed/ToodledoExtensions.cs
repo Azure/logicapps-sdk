@@ -85,14 +85,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
 
     public class ToodledoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TaskObject[], ApiConnectionTriggerConfiguration> TrigOnNewTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskObject[], ApiConnectionPollingTriggerConfiguration> TrigOnNewTask()
         {
-            return new DeferredBodyTrigger<TaskObject[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TaskObject[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/tasks/get.php";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaskObject[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TaskObject[]>(callPayload);
             });
         }
     }

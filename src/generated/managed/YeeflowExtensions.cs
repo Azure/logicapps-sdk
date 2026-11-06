@@ -274,11 +274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
     public class YeeflowTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemCreated(Expression<Func<string>> application, Expression<Func<string>> listId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> OnItemCreated(Expression<Func<string>> application, Expression<Func<string>> listId)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/1", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -286,15 +286,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
                 callPayload.Queries["channel"] = Convert.ToString("ms-power");
                 callPayload.Body = new OnItemCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemModified(Expression<Func<string>> application, Expression<Func<string>> listId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> OnItemModified(Expression<Func<string>> application, Expression<Func<string>> listId)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/2", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -302,15 +302,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
                 callPayload.Queries["channel"] = Convert.ToString("ms-power");
                 callPayload.Body = new OnItemCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemCreatedModified(Expression<Func<string>> application, Expression<Func<string>> listId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> OnItemCreatedModified(Expression<Func<string>> application, Expression<Func<string>> listId)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/3", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -318,15 +318,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
                 callPayload.Queries["channel"] = Convert.ToString("ms-power");
                 callPayload.Body = new OnItemCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemDeleted(Expression<Func<string>> application, Expression<Func<string>> listId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> OnItemDeleted(Expression<Func<string>> application, Expression<Func<string>> listId)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/4", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
                 callPayload.Queries["channel"] = Convert.ToString("ms-power");
                 callPayload.Body = new OnItemCreatedBodyInput().ToJToken();
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
     }

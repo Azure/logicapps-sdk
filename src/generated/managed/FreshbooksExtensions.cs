@@ -94,44 +94,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
     public class FreshbooksTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Invoice[], ApiConnectionTriggerConfiguration> TrigUpdatedInvoice(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Invoice[], ApiConnectionPollingTriggerConfiguration> TrigUpdatedInvoice(Expression<Func<string>> accountid)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
-            return new DeferredBodyTrigger<Invoice[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Invoice[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/accounting/account/{0}/invoices/invoices", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["include[]"] = Convert.ToString("client");
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                return new ApiConnectionTrigger<Invoice[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Invoice[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Expense[], ApiConnectionTriggerConfiguration> TrigUpdatedExpense(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Expense[], ApiConnectionPollingTriggerConfiguration> TrigUpdatedExpense(Expression<Func<string>> accountid)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
-            return new DeferredBodyTrigger<Expense[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Expense[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/accounting/account/{0}/expenses/expenses", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                return new ApiConnectionTrigger<Expense[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Expense[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Payment[], ApiConnectionTriggerConfiguration> TrigUpdatedPayment(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Payment[], ApiConnectionPollingTriggerConfiguration> TrigUpdatedPayment(Expression<Func<string>> accountid)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
-            return new DeferredBodyTrigger<Payment[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Payment[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/accounting/account/{0}/payments/payments", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["include[]"] = Convert.ToString("client");
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                return new ApiConnectionTrigger<Payment[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Payment[]>(callPayload);
             });
         }
     }

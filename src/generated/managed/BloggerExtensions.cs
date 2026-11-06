@@ -135,17 +135,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
 
     public class BloggerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Post[], ApiConnectionTriggerConfiguration> OnPostCreated(Expression<Func<string>> blogId, Expression<Func<StatusInput>> status, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Post[], ApiConnectionPollingTriggerConfiguration> OnPostCreated(Expression<Func<string>> blogId, Expression<Func<StatusInput>> status)
         {
             var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
-            return new DeferredBodyTrigger<Post[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Post[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger1/blogs/{0}/posts", __workflow_blogId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
-                return new ApiConnectionTrigger<Post[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Post[]>(callPayload);
             });
         }
     }

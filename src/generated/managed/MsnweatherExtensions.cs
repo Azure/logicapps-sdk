@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
 
     public class MsnweatherTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CurrentWeather, ApiConnectionTriggerConfiguration> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<MeasureInput>> measure, Expression<Func<WhenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather, ApiConnectionPollingTriggerConfiguration> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<MeasureInput>> measure, Expression<Func<WhenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_measure = WorkflowExpression.Compile(measure, nameof(measure), required: true);
             var __workflow_when = WorkflowExpression.Compile(when, nameof(when), required: true);
             var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
-            return new DeferredBodyTrigger<CurrentWeather, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CurrentWeather, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/current/weather/{0}", __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -76,21 +76,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
                 callPayload.Queries["When"] = ExpressionConverter.Convert(__workflow_when);
                 callPayload.Queries["Target"] = ExpressionConverter.Convert(__workflow_target);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
-                return new ApiConnectionTrigger<CurrentWeather>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CurrentWeather>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CurrentWeather, ApiConnectionTriggerConfiguration> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<UnitsInput>> units, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather, ApiConnectionPollingTriggerConfiguration> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<UnitsInput>> units)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
-            return new DeferredBodyTrigger<CurrentWeather, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CurrentWeather, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/current/conditions/{0}", __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
-                return new ApiConnectionTrigger<CurrentWeather>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CurrentWeather>(callPayload);
             });
         }
     }

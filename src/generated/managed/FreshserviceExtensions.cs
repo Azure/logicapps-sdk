@@ -59,14 +59,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
 
     public class FreshserviceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListTicketResponseV2[], ApiConnectionTriggerConfiguration> OnTicketCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTicketResponseV2[], ApiConnectionPollingTriggerConfiguration> OnTicketCreated()
         {
-            return new DeferredBodyTrigger<ListTicketResponseV2[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListTicketResponseV2[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/v2/tickets";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListTicketResponseV2[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListTicketResponseV2[]>(callPayload);
             });
         }
     }

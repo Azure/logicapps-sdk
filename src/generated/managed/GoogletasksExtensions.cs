@@ -83,50 +83,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
     public class GoogletasksTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TaskListList, ApiConnectionTriggerConfiguration> OnNewTaskList(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskListList, ApiConnectionPollingTriggerConfiguration> OnNewTaskList()
         {
-            return new DeferredBodyTrigger<TaskListList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TaskListList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger1/users/@me/lists";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaskListList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TaskListList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TaskList, ApiConnectionTriggerConfiguration> OnNewTaskInList(Expression<Func<string>> taskListId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList, ApiConnectionPollingTriggerConfiguration> OnNewTaskInList(Expression<Func<string>> taskListId)
         {
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
-            return new DeferredBodyTrigger<TaskList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TaskList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger2/lists/{0}/tasks", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaskList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TaskList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TaskList, ApiConnectionTriggerConfiguration> OnDueTaskInList(Expression<Func<string>> taskListId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList, ApiConnectionPollingTriggerConfiguration> OnDueTaskInList(Expression<Func<string>> taskListId)
         {
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
-            return new DeferredBodyTrigger<TaskList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TaskList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger4/lists/{0}/tasks", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaskList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TaskList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TaskList, ApiConnectionTriggerConfiguration> OnCompletedTaskInList(Expression<Func<string>> taskListId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList, ApiConnectionPollingTriggerConfiguration> OnCompletedTaskInList(Expression<Func<string>> taskListId)
         {
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
-            return new DeferredBodyTrigger<TaskList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TaskList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger5/lists/{0}/tasks", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaskList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TaskList>(callPayload);
             });
         }
     }

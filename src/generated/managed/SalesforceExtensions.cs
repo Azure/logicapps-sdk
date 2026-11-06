@@ -508,13 +508,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
 
     public class SalesforceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnNewItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnNewItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/tables/{0}/onnewitems", __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -525,17 +525,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                     callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration> OnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/tables/{0}/onupdateditems", __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                     callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ItemsList>(callPayload);
             });
         }
     }

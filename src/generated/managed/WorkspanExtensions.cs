@@ -171,42 +171,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
 
     public class WorkspanTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SubscribeResp, ApiConnectionTriggerConfiguration> Subscribe(Expression<Func<SubscribeSubscribeBodyInput>> subscribeBody, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResp, ApiConnectionPollingTriggerConfiguration> Subscribe(Expression<Func<SubscribeSubscribeBodyInput>> subscribeBody)
         {
             var __workflow_subscribeBody = WorkflowExpression.Compile(subscribeBody, nameof(subscribeBody), required: true);
-            return new DeferredBodyTrigger<SubscribeResp, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SubscribeResp, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/event/v1/subscriber";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribeBody);
-                return new ApiConnectionTrigger<SubscribeResp>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SubscribeResp>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SubscribeResp, ApiConnectionTriggerConfiguration> SubscribeObjectEvent(Expression<Func<SubscribeObjectEventSubscribeBodyInput>> subscribeBody, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResp, ApiConnectionPollingTriggerConfiguration> SubscribeObjectEvent(Expression<Func<SubscribeObjectEventSubscribeBodyInput>> subscribeBody)
         {
             var __workflow_subscribeBody = WorkflowExpression.Compile(subscribeBody, nameof(subscribeBody), required: true);
-            return new DeferredBodyTrigger<SubscribeResp, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SubscribeResp, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/event/v1/subscriber/object_integration_event";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribeBody);
-                return new ApiConnectionTrigger<SubscribeResp>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SubscribeResp>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SubscribeResp, ApiConnectionTriggerConfiguration> SubmitToPartnerCenterObjectEvent(Expression<Func<SubmitToPartnerCenterObjectEventSubscribeBodyInput>> subscribeBody, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResp, ApiConnectionPollingTriggerConfiguration> SubmitToPartnerCenterObjectEvent(Expression<Func<SubmitToPartnerCenterObjectEventSubscribeBodyInput>> subscribeBody)
         {
             var __workflow_subscribeBody = WorkflowExpression.Compile(subscribeBody, nameof(subscribeBody), required: true);
-            return new DeferredBodyTrigger<SubscribeResp, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SubscribeResp, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/event/v1/subscriber/submit_to_partner_center";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribeBody);
-                return new ApiConnectionTrigger<SubscribeResp>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SubscribeResp>(callPayload);
             });
         }
     }

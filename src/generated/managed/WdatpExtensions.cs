@@ -532,27 +532,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class WdatpTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookSubscriptionTableEntity, ApiConnectionTriggerConfiguration> WebHooksCreateWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionTableEntity, ApiConnectionPollingTriggerConfiguration> WebHooksCreateWebHook()
         {
-            return new DeferredBodyTrigger<WebHookSubscriptionTableEntity, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookSubscriptionTableEntity, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new RequestInput().ToJToken();
-                return new ApiConnectionTrigger<WebHookSubscriptionTableEntity>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHookSubscriptionTableEntity>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OnNewRemediationActivityResponse, ApiConnectionTriggerConfiguration> OnNewRemediationActivity(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewRemediationActivityResponse, ApiConnectionPollingTriggerConfiguration> OnNewRemediationActivity()
         {
-            return new DeferredBodyTrigger<OnNewRemediationActivityResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnNewRemediationActivityResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/remediationtasks";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$orderby"] = Convert.ToString("createdOn desc");
-                return new ApiConnectionTrigger<OnNewRemediationActivityResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnNewRemediationActivityResponse>(callPayload);
             });
         }
     }

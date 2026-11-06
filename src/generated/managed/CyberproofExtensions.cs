@@ -99,16 +99,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
 
     public class CyberproofTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CPTrigger(Expression<Func<CPTriggerActionReqInput>> actionReq, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CPTrigger(Expression<Func<CPTriggerActionReqInput>> actionReq)
         {
             var __workflow_actionReq = WorkflowExpression.Compile(actionReq, nameof(actionReq), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_actionReq);
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

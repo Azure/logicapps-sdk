@@ -100,16 +100,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
 
     public class BizzyadminTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPostSkillModified(Expression<Func<WebHookInput>> webHook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionPollingTriggerConfiguration> WebHookRegistrationsPostSkillModified(Expression<Func<WebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
-            return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHook, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerAdmin_SkillModified";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
-                return new ApiConnectionTrigger<WebHook>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<WebHook>(callPayload);
             });
         }
     }

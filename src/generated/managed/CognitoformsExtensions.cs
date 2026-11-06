@@ -16,10 +16,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 
     public class CognitoformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NewEntry(Expression<Func<string>> publisher)
         {
             var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integration/oauth/subscribenewentry";
                 var apiCallHttpMethod = "post";
@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 callPayload.Queries["module"] = Convert.ToString("forms");
                 callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
                 callPayload.Body = new EndpointInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> UpdateEntry(Expression<Func<string>> publisher)
         {
             var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integration/oauth/subscribeupdateentry";
                 var apiCallHttpMethod = "post";
@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 callPayload.Queries["module"] = Convert.ToString("forms");
                 callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
                 callPayload.Body = new EndpointInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EntryDeleted(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> EntryDeleted(Expression<Func<string>> publisher)
         {
             var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integration/oauth/subscribeentrydeleted";
                 var apiCallHttpMethod = "post";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 callPayload.Queries["module"] = Convert.ToString("forms");
                 callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
                 callPayload.Body = new EndpointInput().ToJToken();
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }

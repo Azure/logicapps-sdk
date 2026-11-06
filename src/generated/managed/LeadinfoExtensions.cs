@@ -16,55 +16,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo
 
     public class LeadinfoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerCompanyResponse, ApiConnectionTriggerConfiguration> TriggerCompany(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerCompanyResponse, ApiConnectionPollingTriggerConfiguration> TriggerCompany()
         {
-            return new DeferredBodyTrigger<TriggerCompanyResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerCompanyResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2");
                 callPayload.Body = new TriggerCompanyBodyInput().ToJToken();
-                return new ApiConnectionTrigger<TriggerCompanyResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerCompanyResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ShareContactResponse, ApiConnectionTriggerConfiguration> ShareContact(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ShareContactResponse, ApiConnectionPollingTriggerConfiguration> ShareContact()
         {
-            return new DeferredBodyTrigger<ShareContactResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ShareContactResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/share_contact";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2");
                 callPayload.Body = new ShareContactBodyInput().ToJToken();
-                return new ApiConnectionTrigger<ShareContactResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ShareContactResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerContactResponse, ApiConnectionTriggerConfiguration> TriggerContact(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerContactResponse, ApiConnectionPollingTriggerConfiguration> TriggerContact()
         {
-            return new DeferredBodyTrigger<TriggerContactResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerContactResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/trigger_contact";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2");
                 callPayload.Body = new TriggerContactBodyInput().ToJToken();
-                return new ApiConnectionTrigger<TriggerContactResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerContactResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ShareCompanyResponse, ApiConnectionTriggerConfiguration> ShareCompany(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ShareCompanyResponse, ApiConnectionPollingTriggerConfiguration> ShareCompany()
         {
-            return new DeferredBodyTrigger<ShareCompanyResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ShareCompanyResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/share";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2");
                 callPayload.Body = new ShareCompanyBodyInput().ToJToken();
-                return new ApiConnectionTrigger<ShareCompanyResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ShareCompanyResponse>(callPayload);
             });
         }
     }
