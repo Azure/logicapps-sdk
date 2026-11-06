@@ -575,6 +575,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreserveeconip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreserveeconip")]
+        public IBodyWorkflowAction<SeriesGetObservationsResponse, ApiConnectionActionConfiguration> SeriesGetObservations(Expression<Func<string>> seriesId, Expression<Func<string>> realtimeStart = null, Expression<Func<string>> realtimeEnd = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<OrderByInput>> orderBy = null, Expression<Func<SortOrderInput>> sortOrder = null, Expression<Func<string>> observationStart = null, Expression<Func<string>> observationEnd = null, Expression<Func<UnitsInput>> units = null, Expression<Func<FrequencyInput>> frequency = null, Expression<Func<AggregationMethodInput>> aggregationMethod = null, Expression<Func<OutputTypeInput>> outputType = null, Expression<Func<string>> vintageDates = null)
+        {
+            var __workflow_seriesId = WorkflowExpression.Compile(seriesId, nameof(seriesId), required: true);
+            var __workflow_realtimeStart = WorkflowExpression.Compile(realtimeStart, nameof(realtimeStart), required: false);
+            var __workflow_realtimeEnd = WorkflowExpression.Compile(realtimeEnd, nameof(realtimeEnd), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_observationStart = WorkflowExpression.Compile(observationStart, nameof(observationStart), required: false);
+            var __workflow_observationEnd = WorkflowExpression.Compile(observationEnd, nameof(observationEnd), required: false);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: false);
+            var __workflow_frequency = WorkflowExpression.Compile(frequency, nameof(frequency), required: false);
+            var __workflow_aggregationMethod = WorkflowExpression.Compile(aggregationMethod, nameof(aggregationMethod), required: false);
+            var __workflow_outputType = WorkflowExpression.Compile(outputType, nameof(outputType), required: false);
+            var __workflow_vintageDates = WorkflowExpression.Compile(vintageDates, nameof(vintageDates), required: false);
+            return new DeferredBodyAction<SeriesGetObservationsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/series/observations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["series_id"] = ExpressionConverter.Convert(__workflow_seriesId);
+                callPayload.Queries["file_type"] = Convert.ToString("json");
+                if (__workflow_realtimeStart != null)
+                    callPayload.Queries["realtime_start"] = ExpressionConverter.Convert(__workflow_realtimeStart);
+                if (__workflow_realtimeEnd != null)
+                    callPayload.Queries["realtime_end"] = ExpressionConverter.Convert(__workflow_realtimeEnd);
+                callPayload.Queries["limit"] = Convert.ToString(1000);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                callPayload.Queries["order_by"] = Convert.ToString("series_id");
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["order_by"] = ExpressionConverter.Convert(__workflow_orderBy);
+                callPayload.Queries["sort_order"] = Convert.ToString("asc");
+                if (__workflow_sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(__workflow_sortOrder);
+                if (__workflow_observationStart != null)
+                    callPayload.Queries["observation_start"] = ExpressionConverter.Convert(__workflow_observationStart);
+                if (__workflow_observationEnd != null)
+                    callPayload.Queries["observation_end"] = ExpressionConverter.Convert(__workflow_observationEnd);
+                callPayload.Queries["units"] = Convert.ToString("lin");
+                if (__workflow_units != null)
+                    callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
+                if (__workflow_frequency != null)
+                    callPayload.Queries["frequency"] = ExpressionConverter.Convert(__workflow_frequency);
+                callPayload.Queries["aggregation_method"] = Convert.ToString("avg");
+                if (__workflow_aggregationMethod != null)
+                    callPayload.Queries["aggregation_method"] = ExpressionConverter.Convert(__workflow_aggregationMethod);
+                callPayload.Queries["output_type"] = Convert.ToString(1);
+                if (__workflow_outputType != null)
+                    callPayload.Queries["output_type"] = ExpressionConverter.Convert(__workflow_outputType);
+                if (__workflow_vintageDates != null)
+                    callPayload.Queries["vintage_dates"] = ExpressionConverter.Convert(__workflow_vintageDates);
+                return new ApiConnectionAction<SeriesGetObservationsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreserveeconip")]
         public IBodyWorkflowAction<SeriesGetReleaseResponse, ApiConnectionActionConfiguration> SeriesGetRelease(Expression<Func<string>> seriesId, Expression<Func<string>> realtimeStart = null, Expression<Func<string>> realtimeEnd = null)
         {
             var __workflow_seriesId = WorkflowExpression.Compile(seriesId, nameof(seriesId), required: true);
@@ -2232,6 +2293,211 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreserveeconip
 
         [JsonProperty("parent_id")]
         public int ParentId { get; set; }
+    }
+
+    public class SeriesGetObservationsResponse
+    {
+        [JsonProperty("realtime_start")]
+        public string RealtimeStart { get; set; }
+
+        [JsonProperty("realtime_end")]
+        public string RealtimeEnd { get; set; }
+
+        [JsonProperty("observation_start")]
+        public string ObservationStart { get; set; }
+
+        [JsonProperty("observation_end")]
+        public string ObservationEnd { get; set; }
+
+        [JsonProperty("units")]
+        public SeriesGetObservationsResponseUnitsType Units { get; set; }
+
+        [JsonProperty("output_type")]
+        public SeriesGetObservationsResponseOutputTypeType OutputType { get; set; }
+
+        [JsonProperty("file_type")]
+        public string FileType { get; set; }
+
+        [JsonProperty("order_by")]
+        public SeriesGetObservationsResponseOrderByType OrderBy { get; set; }
+
+        [JsonProperty("sort_order")]
+        public SeriesGetObservationsResponseSortOrderType SortOrder { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("offset")]
+        public int Offset { get; set; }
+
+        [JsonProperty("limit")]
+        public int Limit { get; set; }
+
+        [JsonProperty("observations")]
+        public SeriesGetObservationsResponseObservationsTypeItem[] Observations { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SeriesGetObservationsResponseUnitsType
+    {
+        [EnumMember(Value = "lin")]
+        Lin,
+        [EnumMember(Value = "chg")]
+        Chg,
+        [EnumMember(Value = "ch1")]
+        Ch1,
+        [EnumMember(Value = "pch")]
+        Pch,
+        [EnumMember(Value = "pc1")]
+        Pc1,
+        [EnumMember(Value = "pca")]
+        Pca,
+        [EnumMember(Value = "cch")]
+        Cch,
+        [EnumMember(Value = "cca")]
+        Cca,
+        [EnumMember(Value = "log")]
+        Log
+    }
+
+    public enum SeriesGetObservationsResponseOutputTypeType
+    {
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SeriesGetObservationsResponseOrderByType
+    {
+        [EnumMember(Value = "series_id")]
+        SeriesId,
+        [EnumMember(Value = "title")]
+        Title,
+        [EnumMember(Value = "units")]
+        Units,
+        [EnumMember(Value = "frequency")]
+        Frequency,
+        [EnumMember(Value = "seasonal_adjustment")]
+        SeasonalAdjustment,
+        [EnumMember(Value = "realtime_start")]
+        RealtimeStart,
+        [EnumMember(Value = "realtime_end")]
+        RealtimeEnd,
+        [EnumMember(Value = "last_updated")]
+        LastUpdated,
+        [EnumMember(Value = "observation_start")]
+        ObservationStart,
+        [EnumMember(Value = "observation_end")]
+        ObservationEnd,
+        [EnumMember(Value = "popularity")]
+        Popularity,
+        [EnumMember(Value = "group_popularity")]
+        GroupPopularity
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SeriesGetObservationsResponseSortOrderType
+    {
+        [EnumMember(Value = "asc")]
+        Asc,
+        [EnumMember(Value = "desc")]
+        Desc
+    }
+
+    public class SeriesGetObservationsResponseObservationsTypeItem
+    {
+        [JsonProperty("realtime_start")]
+        public string RealtimeStart { get; set; }
+
+        [JsonProperty("realtime_end")]
+        public string RealtimeEnd { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UnitsInput
+    {
+        [EnumMember(Value = "lin")]
+        Lin,
+        [EnumMember(Value = "chg")]
+        Chg,
+        [EnumMember(Value = "ch1")]
+        Ch1,
+        [EnumMember(Value = "pch")]
+        Pch,
+        [EnumMember(Value = "pc1")]
+        Pc1,
+        [EnumMember(Value = "pca")]
+        Pca,
+        [EnumMember(Value = "cch")]
+        Cch,
+        [EnumMember(Value = "cca")]
+        Cca,
+        [EnumMember(Value = "log")]
+        Log
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum FrequencyInput
+    {
+        [EnumMember(Value = "d")]
+        D,
+        [EnumMember(Value = "w")]
+        W,
+        [EnumMember(Value = "bw")]
+        Bw,
+        [EnumMember(Value = "m")]
+        M,
+        [EnumMember(Value = "q")]
+        Q,
+        [EnumMember(Value = "sa")]
+        Sa,
+        [EnumMember(Value = "a")]
+        A,
+        [EnumMember(Value = "wef")]
+        Wef,
+        [EnumMember(Value = "weth")]
+        Weth,
+        [EnumMember(Value = "wew")]
+        Wew,
+        [EnumMember(Value = "wetu")]
+        Wetu,
+        [EnumMember(Value = "wem")]
+        Wem,
+        [EnumMember(Value = "wesu")]
+        Wesu,
+        [EnumMember(Value = "wesa")]
+        Wesa,
+        [EnumMember(Value = "bwew")]
+        Bwew,
+        [EnumMember(Value = "bwem")]
+        Bwem
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AggregationMethodInput
+    {
+        [EnumMember(Value = "avg")]
+        Avg,
+        [EnumMember(Value = "sum")]
+        Sum,
+        [EnumMember(Value = "eop")]
+        Eop
+    }
+
+    public enum OutputTypeInput
+    {
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
     }
 
     public class SeriesGetReleaseResponse

@@ -26,6 +26,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonedocumentgener
                 return new ApiConnectionAction(callPayload);
             });
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonedocumentgener")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListAllTemplates()
+        {
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["carbone-version"] = Convert.ToString(5);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
     }
 
     public class CarbonedocumentgenerTriggers([ConnectionName] string connectionId)

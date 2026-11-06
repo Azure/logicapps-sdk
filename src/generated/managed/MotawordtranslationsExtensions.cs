@@ -40,6 +40,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motawordtranslations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motawordtranslations")]
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadTranslations(Expression<Func<int>> projectId, Expression<Func<AsyncInput>> async = null)
+        {
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_async = WorkflowExpression.Compile(async, nameof(async), required: false);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/package", __workflow_projectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["async"] = Convert.ToString(0);
+                if (__workflow_async != null)
+                    callPayload.Queries["async"] = ExpressionConverter.Convert(__workflow_async);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motawordtranslations")]
         public IBodyWorkflowAction<LaunchTranslationProjectResponse, ApiConnectionActionConfiguration> LaunchTranslationProject(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -265,6 +282,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motawordtranslations
         Translated,
         [EnumMember(Value = "completed")]
         Completed
+    }
+
+    public enum AsyncInput
+    {
+        _0 = 0,
+        _1 = 1
     }
 
     public class LaunchTranslationProjectResponse

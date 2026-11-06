@@ -99,6 +99,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nrelip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nrelip")]
+        public IBodyWorkflowAction<SolarDatasetResponse, ApiConnectionActionConfiguration> SolarDataset(Expression<Func<string>> address = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null, Expression<Func<AllInput>> all = null)
+        {
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_all = WorkflowExpression.Compile(all, nameof(all), required: false);
+            return new DeferredBodyAction<SolarDatasetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/solar/data_query/v2.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_address != null)
+                    callPayload.Queries["address"] = ExpressionConverter.Convert(__workflow_address);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
+                callPayload.Queries["radius"] = Convert.ToString(0);
+                if (__workflow_radius != null)
+                    callPayload.Queries["radius"] = ExpressionConverter.Convert(__workflow_radius);
+                callPayload.Queries["all"] = Convert.ToString(0);
+                if (__workflow_all != null)
+                    callPayload.Queries["all"] = ExpressionConverter.Convert(__workflow_all);
+                return new ApiConnectionAction<SolarDatasetResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nrelip")]
         public IBodyWorkflowAction<SolarResourceResponse, ApiConnectionActionConfiguration> SolarResource(Expression<Func<string>> address = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null)
         {
             var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: false);
@@ -499,6 +528,180 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nrelip
         Blockgroup,
         [EnumMember(Value = "track")]
         Track
+    }
+
+    public class SolarDatasetResponse
+    {
+        [JsonProperty("version")]
+        public string Version { get; set; }
+
+        [JsonProperty("inputs")]
+        public SolarDatasetResponseInputsType Inputs { get; set; }
+
+        [JsonProperty("outputs")]
+        public SolarDatasetResponseOutputsType Outputs { get; set; }
+    }
+
+    public class SolarDatasetResponseInputsType
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("lat")]
+        public double Lat { get; set; }
+
+        [JsonProperty("lon")]
+        public double Lon { get; set; }
+
+        [JsonProperty("radius")]
+        public string Radius { get; set; }
+    }
+
+    public class SolarDatasetResponseOutputsType
+    {
+        [JsonProperty("tmy2")]
+        public SolarDatasetResponseOutputsTypeTmy2Type Tmy2 { get; set; }
+
+        [JsonProperty("tmy3")]
+        public SolarDatasetResponseOutputsTypeTmy3Type Tmy3 { get; set; }
+
+        [JsonProperty("intl")]
+        public SolarDatasetResponseOutputsTypeIntlType Intl { get; set; }
+
+        [JsonProperty("nsrdb")]
+        public SolarDatasetResponseOutputsTypeNsrdbType Nsrdb { get; set; }
+    }
+
+    public class SolarDatasetResponseOutputsTypeTmy2Type
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("timezone")]
+        public int Timezone { get; set; }
+
+        [JsonProperty("lat")]
+        public double Lat { get; set; }
+
+        [JsonProperty("lon")]
+        public double Lon { get; set; }
+
+        [JsonProperty("elevation")]
+        public int Elevation { get; set; }
+
+        [JsonProperty("distance")]
+        public int Distance { get; set; }
+
+        [JsonProperty("weather_data_source")]
+        public string WeatherDataSource { get; set; }
+    }
+
+    public class SolarDatasetResponseOutputsTypeTmy3Type
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("timezone")]
+        public int Timezone { get; set; }
+
+        [JsonProperty("lat")]
+        public double Lat { get; set; }
+
+        [JsonProperty("lon")]
+        public double Lon { get; set; }
+
+        [JsonProperty("elevation")]
+        public int Elevation { get; set; }
+
+        [JsonProperty("distance")]
+        public int Distance { get; set; }
+
+        [JsonProperty("weather_data_source")]
+        public string WeatherDataSource { get; set; }
+    }
+
+    public class SolarDatasetResponseOutputsTypeIntlType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("timezone")]
+        public int Timezone { get; set; }
+
+        [JsonProperty("lat")]
+        public double Lat { get; set; }
+
+        [JsonProperty("lon")]
+        public double Lon { get; set; }
+
+        [JsonProperty("elevation")]
+        public int Elevation { get; set; }
+
+        [JsonProperty("distance")]
+        public int Distance { get; set; }
+
+        [JsonProperty("weather_data_source")]
+        public string WeatherDataSource { get; set; }
+    }
+
+    public class SolarDatasetResponseOutputsTypeNsrdbType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("lat")]
+        public double Lat { get; set; }
+
+        [JsonProperty("lon")]
+        public double Lon { get; set; }
+
+        [JsonProperty("distance")]
+        public int Distance { get; set; }
+
+        [JsonProperty("timezone")]
+        public int Timezone { get; set; }
+
+        [JsonProperty("elevation")]
+        public int Elevation { get; set; }
+
+        [JsonProperty("resolution")]
+        public int Resolution { get; set; }
+
+        [JsonProperty("weather_data_source")]
+        public string WeatherDataSource { get; set; }
+    }
+
+    public enum AllInput
+    {
+        _0 = 0,
+        _1 = 1
     }
 
     public class SolarResourceResponse

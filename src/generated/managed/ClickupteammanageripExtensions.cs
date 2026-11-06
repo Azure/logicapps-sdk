@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         public int? OrderIndex { get; set; }
 
         [JsonProperty("due_date_time")]
-        public bool? DueDate2 { get; set; }
+        public bool? DueDate { get; set; }
     }
 }
 

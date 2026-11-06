@@ -2288,10 +2288,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
         public string Name { get; set; }
 
         [JsonProperty("tagType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputName2Type Name2 { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost.BodyInputName2Type._0;
+        public BodyInputNameType Name2 { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost.BodyInputNameType._0;
     }
 
-    public enum BodyInputName2Type
+    public enum BodyInputNameType
     {
         _0 = 0,
         _1 = 1

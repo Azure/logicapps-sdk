@@ -61,6 +61,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqdigitalfootprint
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqdigitalfootprint")]
+        public IBodyWorkflowAction<GlobalInventoryDeltasSummaryResponseItem[], ApiConnectionActionConfiguration> DeltasSummary(Expression<Func<string>> date = null, Expression<Func<RangeInput>> range = null, Expression<Func<string>> brand = null, Expression<Func<string>> organization = null, Expression<Func<string>> tag = null)
+        {
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_range = WorkflowExpression.Compile(range, nameof(range), required: false);
+            var __workflow_brand = WorkflowExpression.Compile(brand, nameof(brand), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: false);
+            return new DeferredBodyAction<GlobalInventoryDeltasSummaryResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/globalinventory/deltas/summary";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                callPayload.Queries["range"] = Convert.ToString(1);
+                if (__workflow_range != null)
+                    callPayload.Queries["range"] = ExpressionConverter.Convert(__workflow_range);
+                if (__workflow_brand != null)
+                    callPayload.Queries["brand"] = ExpressionConverter.Convert(__workflow_brand);
+                if (__workflow_organization != null)
+                    callPayload.Queries["organization"] = ExpressionConverter.Convert(__workflow_organization);
+                if (__workflow_tag != null)
+                    callPayload.Queries["tag"] = ExpressionConverter.Convert(__workflow_tag);
+                return new ApiConnectionAction<GlobalInventoryDeltasSummaryResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqdigitalfootprint")]
         public IBodyWorkflowAction<ApeHit[], ApiConnectionActionConfiguration> NewlyOpenedPorts(Expression<Func<PeriodInput>> period = null, Expression<Func<string>> ports = null, Expression<Func<string>> excludedPorts = null, Expression<Func<int>> after = null, Expression<Func<bool>> stream = null, Expression<Func<int>> size = null)
         {
             var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: false);
@@ -483,6 +511,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqdigitalfootprint
 
         [JsonProperty("id")]
         public int Id { get; set; }
+    }
+
+    public class GlobalInventoryDeltasSummaryResponseItem
+    {
+        [JsonProperty("runDate")]
+        public string RunDate { get; set; }
+
+        [JsonProperty("deltas")]
+        public DeltaSummary[] Deltas { get; set; }
+    }
+
+    public class DeltaSummary
+    {
+        [JsonProperty("type")]
+        public DeltaSummaryTypeType Type { get; set; }
+
+        [JsonProperty("aggregations")]
+        public Aggregation[] Aggregations { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum DeltaSummaryTypeType
+    {
+        CONTACT,
+        [EnumMember(Value = "SSL_CERT")]
+        SSLCERT,
+        [EnumMember(Value = "MAIL_SERVER")]
+        MAILSERVER,
+        [EnumMember(Value = "IP_BLOCK")]
+        IPBLOCK,
+        PAGE,
+        AS,
+        DOMAIN,
+        [EnumMember(Value = "IP_ADDRESS")]
+        IPADDRESS,
+        HOST,
+        [EnumMember(Value = "NAME_SERVER")]
+        NAMESERVER,
+        [EnumMember(Value = "SELF_HOSTED_RESOURCE")]
+        SELFHOSTEDRESOURCE,
+        [EnumMember(Value = "THIRDPARTY_HOSTED_RESOURCE")]
+        THIRDPARTYHOSTEDRESOURCE
+    }
+
+    public class Aggregation
+    {
+        [JsonProperty("removed")]
+        public int Removed { get; set; }
+
+        [JsonProperty("added")]
+        public int Added { get; set; }
+
+        [JsonProperty("changed")]
+        public int Changed { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("range")]
+        public AggregationRangeType Range { get; set; }
+
+        [JsonProperty("difference")]
+        public int Difference { get; set; }
+    }
+
+    public enum AggregationRangeType
+    {
+        _1 = 1,
+        _7 = 7,
+        _30 = 30
+    }
+
+    public enum RangeInput
+    {
+        _1 = 1,
+        _7 = 7,
+        _30 = 30
     }
 
     public class ApeHit

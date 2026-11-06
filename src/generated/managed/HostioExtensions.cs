@@ -63,6 +63,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hostio
                 return new ApiConnectionAction<FullGetResponse>(callPayload);
             });
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hostio")]
+        public IBodyWorkflowAction<FieldGetResponse, ApiConnectionActionConfiguration> FieldGet(Expression<Func<string>> field, Expression<Func<string>> value, Expression<Func<LimitInput>> limit = null)
+        {
+            var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<FieldGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/domains/{0}/{1}", __workflow_field.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(25);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<FieldGetResponse>(callPayload);
+            });
+        }
     }
 
     public class HostioTriggers([ConnectionName] string connectionId)
@@ -361,6 +379,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hostio
 
         [JsonProperty("count")]
         public int Count { get; set; }
+    }
+
+    public class FieldGetResponse
+    {
+        [JsonProperty("ns")]
+        public string Ns { get; set; }
+
+        [JsonProperty("page")]
+        public int Page { get; set; }
+
+        [JsonProperty("total")]
+        public int Total { get; set; }
+
+        [JsonProperty("domains")]
+        public string[] Domains { get; set; }
+    }
+
+    public enum LimitInput
+    {
+        _25 = 25,
+        _0 = 0,
+        _1 = 1,
+        _5 = 5,
+        _10 = 10,
+        _100 = 100,
+        _250 = 250,
+        _1000 = 1000
     }
 }
 

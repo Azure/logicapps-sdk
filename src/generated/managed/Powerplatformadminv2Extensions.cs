@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
     public class Powerplatformadminv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeAdvisorMCP(Expression<Func<string>> apiVersion, Expression<Func<string>> mcpSessionId = null, Expression<Func<InvokeAdvisorMCPQueryRequestInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeAdvisorMCP(Expression<Func<string>> apiVersion, Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
@@ -2061,7 +2061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpEnvironmentManagement(Expression<Func<McpEnvironmentManagementQueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpEnvironmentManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
@@ -2079,7 +2079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpGovernance(Expression<Func<McpEnvironmentManagementQueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpGovernance(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
@@ -2166,7 +2166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
     {
     }
 
-    public class InvokeAdvisorMCPQueryRequestInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }
@@ -5866,27 +5866,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
     }
 
     public class MCPQueryResponse
-    {
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("method")]
-        public string Method { get; set; }
-
-        [JsonProperty("params")]
-        public JToken Params { get; set; }
-
-        [JsonProperty("result")]
-        public JToken Result { get; set; }
-
-        [JsonProperty("error")]
-        public JToken Error { get; set; }
-    }
-
-    public class McpEnvironmentManagementQueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

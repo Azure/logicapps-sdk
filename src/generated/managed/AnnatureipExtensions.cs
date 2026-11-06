@@ -1426,14 +1426,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string Name { get; set; }
 
         [JsonProperty("type")]
-        public BodyInputDocumentsTypeItemGroupId2Type? GroupId2 { get; set; }
+        public BodyInputDocumentsTypeItemGroupIdType? GroupId2 { get; set; }
 
         [JsonProperty("base")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputDocumentsTypeItemGroupId2Type
+    public enum BodyInputDocumentsTypeItemGroupIdType
     {
         [EnumMember(Value = "application/pdf")]
         ApplicationPdf

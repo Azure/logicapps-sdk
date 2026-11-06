@@ -70,6 +70,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nhtsavpicip")]
+        public IBodyWorkflowAction<PartResponse, ApiConnectionActionConfiguration> Part(Expression<Func<TypeInput>> type = null, Expression<Func<string>> fromDate = null, Expression<Func<string>> toDate = null, Expression<Func<int>> page = null, Expression<Func<string>> manufacturer = null)
+        {
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_fromDate = WorkflowExpression.Compile(fromDate, nameof(fromDate), required: false);
+            var __workflow_toDate = WorkflowExpression.Compile(toDate, nameof(toDate), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_manufacturer = WorkflowExpression.Compile(manufacturer, nameof(manufacturer), required: false);
+            return new DeferredBodyAction<PartResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/vehicles/GetParts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["type"] = Convert.ToString(565);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_fromDate != null)
+                    callPayload.Queries["fromDate"] = ExpressionConverter.Convert(__workflow_fromDate);
+                if (__workflow_toDate != null)
+                    callPayload.Queries["toDate"] = ExpressionConverter.Convert(__workflow_toDate);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_manufacturer != null)
+                    callPayload.Queries["manufacturer"] = ExpressionConverter.Convert(__workflow_manufacturer);
+                return new ApiConnectionAction<PartResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nhtsavpicip")]
         public IBodyWorkflowAction<ManufacturerResponse, ApiConnectionActionConfiguration> Manufacturer(Expression<Func<string>> manufacturerType = null, Expression<Func<int>> page = null)
         {
             var __workflow_manufacturerType = WorkflowExpression.Compile(manufacturerType, nameof(manufacturerType), required: false);
@@ -462,6 +490,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
 
         [JsonProperty("Make_Name")]
         public string MakeName { get; set; }
+    }
+
+    public class PartResponse
+    {
+        public int Count { get; set; }
+        public string Message { get; set; }
+        public string SearchCriteria { get; set; }
+        public PartResponseResultsTypeItem[] Results { get; set; }
+    }
+
+    public class PartResponseResultsTypeItem
+    {
+        public string CoverLetterURL { get; set; }
+        public string LetterDate { get; set; }
+        public int ManufacturerId { get; set; }
+        public string ManufacturerName { get; set; }
+        public string ModelYearFrom { get; set; }
+        public string ModelYearTo { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string URL { get; set; }
+    }
+
+    public enum TypeInput
+    {
+        _565 = 565,
+        _566 = 566
     }
 
     public class ManufacturerResponse

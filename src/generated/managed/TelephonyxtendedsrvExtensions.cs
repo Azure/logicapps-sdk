@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallHold(Expression<Func<CallHoldBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallHold(Expression<Func<CallEndBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallTransfertoVoicemail(Expression<Func<CallTransfertoVoicemailBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallTransfertoVoicemail(Expression<Func<CallEndBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -440,25 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string Address { get; set; }
     }
 
-    public class CallHoldBodyInput
-    {
-        [JsonProperty("userId")]
-        public string UserId { get; set; }
-
-        [JsonProperty("callId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CallId { get; set; }
-    }
-
     public class CallEndBodyInput
-    {
-        [JsonProperty("userId")]
-        public string UserId { get; set; }
-
-        [JsonProperty("callId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CallId { get; set; }
-    }
-
-    public class CallTransfertoVoicemailBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }

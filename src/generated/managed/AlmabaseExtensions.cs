@@ -13,6 +13,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
     public class AlmabaseActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almabase")]
+        public IBodyWorkflowAction<V1FormApiFormRead[], ApiConnectionActionConfiguration> ListForms(Expression<Func<string[]>> fields = null)
+        {
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<V1FormApiFormRead[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/custom_forms/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString(JToken.Parse("[\"id\",\"title\"]"));
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                return new ApiConnectionAction<V1FormApiFormRead[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "almabase")]
         public IBodyWorkflowAction<CreateFormEntryResponse, ApiConnectionActionConfiguration> CreateFormEntry(Expression<Func<int>> formId, Expression<Func<object>> body = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
@@ -573,6 +589,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class V1FormApiFormRead
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("title")]
+        public string FormName { get; set; }
     }
 
     public class CreateFormEntryResponse
