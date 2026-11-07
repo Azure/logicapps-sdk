@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
     public class ZippopotamusipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
-        public IBodyWorkflowAction<GetDetailsByPostalCodeResponse, ApiConnectionActionConfiguration> GetDetailsByPostalCode(Expression<Func<countryInput>> country, Expression<Func<string>> postalCode)
+        public IBodyWorkflowAction<GetDetailsByPostalCodeResponse, ApiConnectionActionConfiguration> GetDetailsByPostalCode(Expression<Func<CountryInput>> country, Expression<Func<string>> postalCode)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: true);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
-        public IBodyWorkflowAction<GetDetailsByStateCityResponse, ApiConnectionActionConfiguration> GetDetailsByStateCity(Expression<Func<countryInput>> country, Expression<Func<string>> state, Expression<Func<string>> city)
+        public IBodyWorkflowAction<GetDetailsByStateCityResponse, ApiConnectionActionConfiguration> GetDetailsByStateCity(Expression<Func<CountryInput>> country, Expression<Func<string>> state, Expression<Func<string>> city)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum countryInput
+    public enum CountryInput
     {
         AD,
         AR,

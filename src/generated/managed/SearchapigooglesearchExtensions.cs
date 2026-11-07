@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
     public class SearchapigooglesearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "searchapigooglesearch")]
-        public IBodyWorkflowAction<SearchGetResponse, ApiConnectionActionConfiguration> SearchGet(Expression<Func<string>> q, Expression<Func<deviceInput>> device = null, Expression<Func<string>> location = null, Expression<Func<string>> uule = null, Expression<Func<string>> googleDomain = null, Expression<Func<string>> gl = null, Expression<Func<string>> hl = null, Expression<Func<string>> lr = null, Expression<Func<string>> cr = null, Expression<Func<nfprInput>> nfpr = null, Expression<Func<filterInput>> filter = null, Expression<Func<safeInput>> safe = null, Expression<Func<int>> num = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SearchGetResponse, ApiConnectionActionConfiguration> SearchGet(Expression<Func<string>> q, Expression<Func<DeviceInput>> device = null, Expression<Func<string>> location = null, Expression<Func<string>> uule = null, Expression<Func<string>> googleDomain = null, Expression<Func<string>> gl = null, Expression<Func<string>> hl = null, Expression<Func<string>> lr = null, Expression<Func<string>> cr = null, Expression<Func<NfprInput>> nfpr = null, Expression<Func<FilterInput>> filter = null, Expression<Func<SafeInput>> safe = null, Expression<Func<int>> num = null, Expression<Func<int>> page = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: false);
@@ -1477,7 +1477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum deviceInput
+    public enum DeviceInput
     {
         [EnumMember(Value = "desktop")]
         Desktop,
@@ -1487,20 +1487,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         Tablet
     }
 
-    public enum nfprInput
+    public enum NfprInput
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum filterInput
+    public enum FilterInput
     {
         _0 = 0,
         _1 = 1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum safeInput
+    public enum SafeInput
     {
         [EnumMember(Value = "off")]
         Off,

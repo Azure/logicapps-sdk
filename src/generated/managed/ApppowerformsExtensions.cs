@@ -13,107 +13,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
     public class ApppowerformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddForm(Expression<Func<string>> bodyformName, Expression<Func<string>> bodyformDescription = null, Expression<Func<string>> bodythankYouText = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddForm(Expression<Func<AddFormBodyInput>> body)
         {
-            var __workflow_bodyformName = WorkflowExpression.Compile(bodyformName, nameof(bodyformName), required: true);
-            var __workflow_bodyformDescription = WorkflowExpression.Compile(bodyformDescription, nameof(bodyformDescription), required: false);
-            var __workflow_bodythankYouText = WorkflowExpression.Compile(bodythankYouText, nameof(bodythankYouText), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddNewForm";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["formTitle"] = ExpressionConverter.ConvertO(__workflow_bodyformName);
-                if (__workflow_bodyformDescription != null)
-                {
-                    body["welcomeText"] = ExpressionConverter.ConvertO(__workflow_bodyformDescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythankYouText != null)
-                {
-                    body["thankYouText"] = ExpressionConverter.ConvertO(__workflow_bodythankYouText);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddFormField(Expression<Func<string>> bodyformId, Expression<Func<string>> bodyformName, Expression<Func<string>> bodyfieldName, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldConfiguration = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddFormField(Expression<Func<AddFormFieldBodyInput>> body)
         {
-            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
-            var __workflow_bodyformName = WorkflowExpression.Compile(bodyformName, nameof(bodyformName), required: true);
-            var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: true);
-            var __workflow_bodyfieldType = WorkflowExpression.Compile(bodyfieldType, nameof(bodyfieldType), required: true);
-            var __workflow_bodyfieldConfiguration = WorkflowExpression.Compile(bodyfieldConfiguration, nameof(bodyfieldConfiguration), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddFormField";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["instanceId"] = ExpressionConverter.ConvertO(__workflow_bodyformId);
-                bodypropCount++;
-                body["formName"] = ExpressionConverter.ConvertO(__workflow_bodyformName);
-                bodypropCount++;
-                body["fieldName"] = ExpressionConverter.ConvertO(__workflow_bodyfieldName);
-                bodypropCount++;
-                body["fieldType"] = ExpressionConverter.ConvertO(__workflow_bodyfieldType);
-                if (__workflow_bodyfieldConfiguration != null)
-                {
-                    body["fieldConfiguration"] = ExpressionConverter.ConvertO(__workflow_bodyfieldConfiguration);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddAdaptiveCard(Expression<Func<string>> bodyname, Expression<Func<string>> bodycard, Expression<Func<string>> bodycardAfterSubmit = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddAdaptiveCard(Expression<Func<AddAdaptiveCardBodyInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodycard = WorkflowExpression.Compile(bodycard, nameof(bodycard), required: true);
-            var __workflow_bodycardAfterSubmit = WorkflowExpression.Compile(bodycardAfterSubmit, nameof(bodycardAfterSubmit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddAdaptiveCard";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["card"] = ExpressionConverter.ConvertO(__workflow_bodycard);
-                if (__workflow_bodycardAfterSubmit != null)
-                {
-                    body["cardAfterSubmit"] = ExpressionConverter.ConvertO(__workflow_bodycardAfterSubmit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -148,18 +84,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
 
     public class ApppowerformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse, ApiConnectionTriggerConfiguration> TriggerGetCardResponse(Expression<Func<string>> name, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse, ApiConnectionPollingTriggerConfiguration> TriggerGetCardResponse(Expression<Func<string>> name)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyTrigger<TriggerGetCardResponseResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerGetCardResponseResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/TriggerGetCardResponse/{0}", __workflow_name.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["timestamp"] = Convert.ToString("2021-12-31");
-                return new ApiConnectionTrigger<TriggerGetCardResponseResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerGetCardResponseResponse>(callPayload);
             });
         }
+    }
+
+    public class AddFormBodyInput
+    {
+        [JsonProperty("formTitle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FormName { get; set; }
+
+        [JsonProperty("welcomeText")]
+        public string FormDescription { get; set; }
+
+        [JsonProperty("thankYouText")]
+        public string ThankYouText { get; set; }
+    }
+
+    public class AddFormFieldBodyInput
+    {
+        [JsonProperty("instanceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FormId { get; set; }
+
+        [JsonProperty("formName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FormName { get; set; }
+
+        [JsonProperty("fieldName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FieldName { get; set; }
+
+        [JsonProperty("fieldType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FieldType { get; set; }
+
+        [JsonProperty("fieldConfiguration")]
+        public JToken FieldConfiguration { get; set; }
+    }
+
+    public class AddAdaptiveCardBodyInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("card", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Card { get; set; }
+
+        [JsonProperty("cardAfterSubmit")]
+        public string CardAfterSubmit { get; set; }
     }
 
     public class TriggerGetCardResponseResponse

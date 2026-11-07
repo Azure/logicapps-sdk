@@ -13,526 +13,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
     public class TendocsdocumentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiCompareResponse, ApiConnectionActionConfiguration> AiCompare(Expression<Func<string>> requestsourceDocumentfirstFile = null, Expression<Func<string>> requestcomparisonDocumentsecondFile = null, Expression<Func<requestconfigurationprofessionInput>> requestconfigurationprofession = null)
+        public IBodyWorkflowAction<AiCompareResponse, ApiConnectionActionConfiguration> AiCompare(Expression<Func<AiCompareRequestInput>> request)
         {
-            var __workflow_requestsourceDocumentfirstFile = WorkflowExpression.Compile(requestsourceDocumentfirstFile, nameof(requestsourceDocumentfirstFile), required: false);
-            var __workflow_requestcomparisonDocumentsecondFile = WorkflowExpression.Compile(requestcomparisonDocumentsecondFile, nameof(requestcomparisonDocumentsecondFile), required: false);
-            var __workflow_requestconfigurationprofession = WorkflowExpression.Compile(requestconfigurationprofession, nameof(requestconfigurationprofession), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<AiCompareResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/compare";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                var sourceDocumentObject = new JObject();
-                var sourceDocumentObjectpropCount = 0;
-                if (__workflow_requestsourceDocumentfirstFile != null)
-                {
-                    sourceDocumentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestsourceDocumentfirstFile);
-                    sourceDocumentObjectpropCount++;
-                }
-
-                if (sourceDocumentObjectpropCount > 0)
-                {
-                    request["sourceDocument"] = sourceDocumentObject;
-                    requestpropCount++;
-                }
-
-                var comparisonDocumentObject = new JObject();
-                var comparisonDocumentObjectpropCount = 0;
-                if (__workflow_requestcomparisonDocumentsecondFile != null)
-                {
-                    comparisonDocumentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestcomparisonDocumentsecondFile);
-                    comparisonDocumentObjectpropCount++;
-                }
-
-                if (comparisonDocumentObjectpropCount > 0)
-                {
-                    request["comparisonDocument"] = comparisonDocumentObject;
-                    requestpropCount++;
-                }
-
-                var configurationObject = new JObject();
-                var configurationObjectpropCount = 0;
-                if (__workflow_requestconfigurationprofession != null)
-                {
-                    configurationObject["profession"] = ExpressionConverter.ConvertO(__workflow_requestconfigurationprofession);
-                    configurationObjectpropCount++;
-                }
-
-                var keysObject = new JObject();
-                var keysObjectpropCount = 0;
-                if (keysObjectpropCount > 0)
-                {
-                    configurationObject["keys"] = keysObject;
-                    configurationObjectpropCount++;
-                }
-
-                if (configurationObjectpropCount > 0)
-                {
-                    request["configuration"] = configurationObject;
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<AiCompareResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiSummaryResponse, ApiConnectionActionConfiguration> AiSummary(Expression<Func<string>> requestdocumentFile = null, Expression<Func<int>> requestconfigurationtargetWordCount = null)
+        public IBodyWorkflowAction<AiSummaryResponse, ApiConnectionActionConfiguration> AiSummary(Expression<Func<AiSummaryRequestInput>> request)
         {
-            var __workflow_requestdocumentFile = WorkflowExpression.Compile(requestdocumentFile, nameof(requestdocumentFile), required: false);
-            var __workflow_requestconfigurationtargetWordCount = WorkflowExpression.Compile(requestconfigurationtargetWordCount, nameof(requestconfigurationtargetWordCount), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<AiSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/summary";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_requestdocumentFile != null)
-                {
-                    documentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestdocumentFile);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    request["document"] = documentObject;
-                    requestpropCount++;
-                }
-
-                var configurationObject = new JObject();
-                var configurationObjectpropCount = 0;
-                if (__workflow_requestconfigurationtargetWordCount != null)
-                {
-                    configurationObject["targetWords"] = ExpressionConverter.ConvertO(__workflow_requestconfigurationtargetWordCount);
-                    configurationObjectpropCount++;
-                }
-
-                var keysObject = new JObject();
-                var keysObjectpropCount = 0;
-                if (keysObjectpropCount > 0)
-                {
-                    configurationObject["keys"] = keysObject;
-                    configurationObjectpropCount++;
-                }
-
-                if (configurationObjectpropCount > 0)
-                {
-                    request["configuration"] = configurationObject;
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<AiSummaryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiTemplateBuilderResponse, ApiConnectionActionConfiguration> AiTemplateBuilder(Expression<Func<string>> requestdescribeTheDocument1000Chars)
+        public IBodyWorkflowAction<AiTemplateBuilderResponse, ApiConnectionActionConfiguration> AiTemplateBuilder(Expression<Func<AiTemplateBuilderRequestInput>> request)
         {
-            var __workflow_requestdescribeTheDocument1000Chars = WorkflowExpression.Compile(requestdescribeTheDocument1000Chars, nameof(requestdescribeTheDocument1000Chars), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<AiTemplateBuilderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/templateBuilder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["description"] = ExpressionConverter.ConvertO(__workflow_requestdescribeTheDocument1000Chars);
-                var configurationObject = new JObject();
-                var configurationObjectpropCount = 0;
-                var keysObject = new JObject();
-                var keysObjectpropCount = 0;
-                if (keysObjectpropCount > 0)
-                {
-                    configurationObject["keys"] = keysObject;
-                    configurationObjectpropCount++;
-                }
-
-                if (configurationObjectpropCount > 0)
-                {
-                    request["configuration"] = configurationObject;
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<AiTemplateBuilderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConversionConvert(Expression<Func<string>> requestdocumentFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConversionConvert(Expression<Func<ConversionConvertRequestInput>> request)
         {
-            var __workflow_requestdocumentFile = WorkflowExpression.Compile(requestdocumentFile, nameof(requestdocumentFile), required: false);
-            var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversion/v1/convert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_requestdocumentFile != null)
-                {
-                    documentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestdocumentFile);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    request["document"] = documentObject;
-                    requestpropCount++;
-                }
-
-                var configurationObject = new JObject();
-                var configurationObjectpropCount = 0;
-                if (__workflow_requestconfigurationdocumentFormat != null)
-                {
-                    configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(__workflow_requestconfigurationdocumentFormat);
-                    configurationObjectpropCount++;
-                }
-
-                var keysObject = new JObject();
-                var keysObjectpropCount = 0;
-                if (keysObjectpropCount > 0)
-                {
-                    configurationObject["keys"] = keysObject;
-                    configurationObjectpropCount++;
-                }
-
-                if (configurationObjectpropCount > 0)
-                {
-                    request["configuration"] = configurationObject;
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentJsonTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentJsonTemplate(Expression<Func<DocumentJsonTemplateRequestInput>> request)
         {
-            var __workflow_requesttemplatetemplateFile = WorkflowExpression.Compile(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
-            var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documents/v1/jsonTemplate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                var templateObject = new JObject();
-                var templateObjectpropCount = 0;
-                if (__workflow_requesttemplatetemplateFile != null)
-                {
-                    templateObject["file"] = ExpressionConverter.ConvertO(__workflow_requesttemplatetemplateFile);
-                    templateObjectpropCount++;
-                }
-
-                if (templateObjectpropCount > 0)
-                {
-                    request["template"] = templateObject;
-                    requestpropCount++;
-                }
-
-                var jsonObject = new JObject();
-                var jsonObjectpropCount = 0;
-                if (jsonObjectpropCount > 0)
-                {
-                    request["json"] = jsonObject;
-                    requestpropCount++;
-                }
-
-                var configurationObject = new JObject();
-                var configurationObjectpropCount = 0;
-                if (__workflow_requestconfigurationdocumentFormat != null)
-                {
-                    configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(__workflow_requestconfigurationdocumentFormat);
-                    configurationObjectpropCount++;
-                }
-
-                var keysObject = new JObject();
-                var keysObjectpropCount = 0;
-                if (keysObjectpropCount > 0)
-                {
-                    configurationObject["keys"] = keysObject;
-                    configurationObjectpropCount++;
-                }
-
-                if (configurationObjectpropCount > 0)
-                {
-                    request["configuration"] = configurationObject;
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestimageInputItem[]>> requestimage = null, Expression<Func<requestdocumentInputItem[]>> requestdocument = null, Expression<Func<requesttableInputItem[]>> requesttable = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentTemplate(Expression<Func<DocumentTemplateRequestInput>> request)
         {
-            var __workflow_requesttemplatetemplateFile = WorkflowExpression.Compile(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
-            var __workflow_requestimage = WorkflowExpression.Compile(requestimage, nameof(requestimage), required: false);
-            var __workflow_requestdocument = WorkflowExpression.Compile(requestdocument, nameof(requestdocument), required: false);
-            var __workflow_requesttable = WorkflowExpression.Compile(requesttable, nameof(requesttable), required: false);
-            var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documents/v1/template";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                var templateObject = new JObject();
-                var templateObjectpropCount = 0;
-                if (__workflow_requesttemplatetemplateFile != null)
-                {
-                    templateObject["file"] = ExpressionConverter.ConvertO(__workflow_requesttemplatetemplateFile);
-                    templateObjectpropCount++;
-                }
-
-                if (templateObjectpropCount > 0)
-                {
-                    request["template"] = templateObject;
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestimage != null)
-                {
-                    request["images"] = ExpressionConverter.ConvertO(__workflow_requestimage);
-                    requestpropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (textObjectpropCount > 0)
-                {
-                    request["text"] = textObject;
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestdocument != null)
-                {
-                    request["substituteDocuments"] = ExpressionConverter.ConvertO(__workflow_requestdocument);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requesttable != null)
-                {
-                    request["tables"] = ExpressionConverter.ConvertO(__workflow_requesttable);
-                    requestpropCount++;
-                }
-
-                var configurationObject = new JObject();
-                var configurationObjectpropCount = 0;
-                if (__workflow_requestconfigurationdocumentFormat != null)
-                {
-                    configurationObject["documentresponseformat"] = ExpressionConverter.ConvertO(__workflow_requestconfigurationdocumentFormat);
-                    configurationObjectpropCount++;
-                }
-
-                var keysObject = new JObject();
-                var keysObjectpropCount = 0;
-                if (keysObjectpropCount > 0)
-                {
-                    configurationObject["keys"] = keysObject;
-                    configurationObjectpropCount++;
-                }
-
-                if (configurationObjectpropCount > 0)
-                {
-                    request["configuration"] = configurationObject;
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<InstancesResponse, ApiConnectionActionConfiguration> EnvelopesInstances(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdocumentIntroduction, Expression<Func<string>> requestrecipientEmail, Expression<Func<string>> requestrecipientFirstName, Expression<Func<string>> requestrecipientLastName, Expression<Func<string>> requestexpiryDate, Expression<Func<bool>> requestsignatureRequired, Expression<Func<string>> requestorgansiationTitle, Expression<Func<string>> requestorganisationEmail, Expression<Func<string>> requestorganisationOwner, Expression<Func<string>> requestdocumentpDFDocument = null, Expression<Func<string>> requestdocumentLogo = null, Expression<Func<string>> requestcheckbox = null, Expression<Func<string>> requestorganisationWebsite = null, Expression<Func<string>> requestorganisationPhone = null, Expression<Func<string>> requestoragnisationOwnerTitle = null, Expression<Func<bool>> requestcomments = null, Expression<Func<string>> requestprojectId = null, Expression<Func<string>> requestcompleteButtonLabel = null, Expression<Func<string>> requestcompleteDocumentLabel = null, Expression<Func<string>> requestincompleteDocumentLabel = null)
+        public IBodyWorkflowAction<InstancesResponse, ApiConnectionActionConfiguration> EnvelopesInstances(Expression<Func<EnvelopesInstancesRequestInput>> request)
         {
-            var __workflow_requestdocumentTitle = WorkflowExpression.Compile(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
-            var __workflow_requestdocumentIntroduction = WorkflowExpression.Compile(requestdocumentIntroduction, nameof(requestdocumentIntroduction), required: true);
-            var __workflow_requestrecipientEmail = WorkflowExpression.Compile(requestrecipientEmail, nameof(requestrecipientEmail), required: true);
-            var __workflow_requestrecipientFirstName = WorkflowExpression.Compile(requestrecipientFirstName, nameof(requestrecipientFirstName), required: true);
-            var __workflow_requestrecipientLastName = WorkflowExpression.Compile(requestrecipientLastName, nameof(requestrecipientLastName), required: true);
-            var __workflow_requestexpiryDate = WorkflowExpression.Compile(requestexpiryDate, nameof(requestexpiryDate), required: true);
-            var __workflow_requestsignatureRequired = WorkflowExpression.Compile(requestsignatureRequired, nameof(requestsignatureRequired), required: true);
-            var __workflow_requestorgansiationTitle = WorkflowExpression.Compile(requestorgansiationTitle, nameof(requestorgansiationTitle), required: true);
-            var __workflow_requestorganisationEmail = WorkflowExpression.Compile(requestorganisationEmail, nameof(requestorganisationEmail), required: true);
-            var __workflow_requestorganisationOwner = WorkflowExpression.Compile(requestorganisationOwner, nameof(requestorganisationOwner), required: true);
-            var __workflow_requestdocumentpDFDocument = WorkflowExpression.Compile(requestdocumentpDFDocument, nameof(requestdocumentpDFDocument), required: false);
-            var __workflow_requestdocumentLogo = WorkflowExpression.Compile(requestdocumentLogo, nameof(requestdocumentLogo), required: false);
-            var __workflow_requestcheckbox = WorkflowExpression.Compile(requestcheckbox, nameof(requestcheckbox), required: false);
-            var __workflow_requestorganisationWebsite = WorkflowExpression.Compile(requestorganisationWebsite, nameof(requestorganisationWebsite), required: false);
-            var __workflow_requestorganisationPhone = WorkflowExpression.Compile(requestorganisationPhone, nameof(requestorganisationPhone), required: false);
-            var __workflow_requestoragnisationOwnerTitle = WorkflowExpression.Compile(requestoragnisationOwnerTitle, nameof(requestoragnisationOwnerTitle), required: false);
-            var __workflow_requestcomments = WorkflowExpression.Compile(requestcomments, nameof(requestcomments), required: false);
-            var __workflow_requestprojectId = WorkflowExpression.Compile(requestprojectId, nameof(requestprojectId), required: false);
-            var __workflow_requestcompleteButtonLabel = WorkflowExpression.Compile(requestcompleteButtonLabel, nameof(requestcompleteButtonLabel), required: false);
-            var __workflow_requestcompleteDocumentLabel = WorkflowExpression.Compile(requestcompleteDocumentLabel, nameof(requestcompleteDocumentLabel), required: false);
-            var __workflow_requestincompleteDocumentLabel = WorkflowExpression.Compile(requestincompleteDocumentLabel, nameof(requestincompleteDocumentLabel), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<InstancesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/envelopes/v1/instances";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_requestdocumentpDFDocument != null)
-                {
-                    documentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestdocumentpDFDocument);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    request["document"] = documentObject;
-                    requestpropCount++;
-                }
-
-                var configurationObject = new JObject();
-                var configurationObjectpropCount = 0;
-                var keysObject = new JObject();
-                var keysObjectpropCount = 0;
-                if (keysObjectpropCount > 0)
-                {
-                    configurationObject["keys"] = keysObject;
-                    configurationObjectpropCount++;
-                }
-
-                if (configurationObjectpropCount > 0)
-                {
-                    request["configuration"] = configurationObject;
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["title"] = ExpressionConverter.ConvertO(__workflow_requestdocumentTitle);
-                requestpropCount++;
-                request["introduction"] = ExpressionConverter.ConvertO(__workflow_requestdocumentIntroduction);
-                if (__workflow_requestdocumentLogo != null)
-                {
-                    request["logoUrl"] = ExpressionConverter.ConvertO(__workflow_requestdocumentLogo);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["email"] = ExpressionConverter.ConvertO(__workflow_requestrecipientEmail);
-                requestpropCount++;
-                request["firstName"] = ExpressionConverter.ConvertO(__workflow_requestrecipientFirstName);
-                requestpropCount++;
-                request["lastName"] = ExpressionConverter.ConvertO(__workflow_requestrecipientLastName);
-                if (__workflow_requestcheckbox != null)
-                {
-                    request["checkboxText"] = ExpressionConverter.ConvertO(__workflow_requestcheckbox);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["expiry"] = ExpressionConverter.ConvertO(__workflow_requestexpiryDate);
-                requestpropCount++;
-                request["isSignatureRequired"] = ExpressionConverter.ConvertO(__workflow_requestsignatureRequired);
-                requestpropCount++;
-                request["organisationTitle"] = ExpressionConverter.ConvertO(__workflow_requestorgansiationTitle);
-                if (__workflow_requestorganisationWebsite != null)
-                {
-                    request["organisationWebsite"] = ExpressionConverter.ConvertO(__workflow_requestorganisationWebsite);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["organisationContactEmail"] = ExpressionConverter.ConvertO(__workflow_requestorganisationEmail);
-                if (__workflow_requestorganisationPhone != null)
-                {
-                    request["organisationContactPhone"] = ExpressionConverter.ConvertO(__workflow_requestorganisationPhone);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["organisationContactName"] = ExpressionConverter.ConvertO(__workflow_requestorganisationOwner);
-                if (__workflow_requestoragnisationOwnerTitle != null)
-                {
-                    request["organisationContactTitle"] = ExpressionConverter.ConvertO(__workflow_requestoragnisationOwnerTitle);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestcomments != null)
-                {
-                    request["commentsEnabled"] = ExpressionConverter.ConvertO(__workflow_requestcomments);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestprojectId != null)
-                {
-                    request["projectIdentifier"] = ExpressionConverter.ConvertO(__workflow_requestprojectId);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestcompleteButtonLabel != null)
-                {
-                    request["completeButtonLabel"] = ExpressionConverter.ConvertO(__workflow_requestcompleteButtonLabel);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestcompleteDocumentLabel != null)
-                {
-                    request["completeStatusLabel"] = ExpressionConverter.ConvertO(__workflow_requestcompleteDocumentLabel);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestincompleteDocumentLabel != null)
-                {
-                    request["incompleteStatusLabel"] = ExpressionConverter.ConvertO(__workflow_requestincompleteDocumentLabel);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<InstancesResponse>(callPayload);
             });
         }
@@ -575,8 +148,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public string DocumentSummary { get; set; }
     }
 
+    public class AiCompareRequestInput
+    {
+        [JsonProperty("sourceDocument", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RequestInputSourceDocumentType SourceDocument { get; set; }
+
+        [JsonProperty("comparisonDocument", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RequestInputComparisonDocumentType ComparisonDocument { get; set; }
+
+        [JsonProperty("configuration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AiCompareRequestInputConfigurationType Configuration { get; set; }
+    }
+
+    public class RequestInputSourceDocumentType
+    {
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FirstFile { get; set; }
+    }
+
+    public class RequestInputComparisonDocumentType
+    {
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SecondFile { get; set; }
+    }
+
+    public class AiCompareRequestInputConfigurationType
+    {
+        [JsonProperty("profession", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RequestInputConfigurationTypeProfessionType Profession { get; set; }
+
+        [JsonProperty("keys")]
+        public JToken ConfigurationKeys { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum requestconfigurationprofessionInput
+    public enum RequestInputConfigurationTypeProfessionType
     {
         Doctor,
         Editor,
@@ -597,6 +203,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
         [JsonProperty("lengthWords")]
         public double Length { get; set; }
+    }
+
+    public class AiSummaryRequestInput
+    {
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AiSummaryRequestInputDocumentType Document { get; set; }
+
+        [JsonProperty("configuration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AiSummaryRequestInputConfigurationType Configuration { get; set; }
+    }
+
+    public class AiSummaryRequestInputDocumentType
+    {
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string File { get; set; }
+    }
+
+    public class AiSummaryRequestInputConfigurationType
+    {
+        [JsonProperty("targetWords", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TargetWordCount { get; set; }
+
+        [JsonProperty("keys")]
+        public JToken ConfigurationKeys { get; set; }
     }
 
     public class AiTemplateBuilderResponse
@@ -641,45 +271,217 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public JToken[] Subsections { get; set; }
     }
 
+    public class AiTemplateBuilderRequestInput
+    {
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DescribeTheDocument1000Chars { get; set; }
+
+        [JsonProperty("configuration")]
+        public AiTemplateBuilderRequestInputConfigurationType Configuration { get; set; }
+    }
+
+    public class AiTemplateBuilderRequestInputConfigurationType
+    {
+        [JsonProperty("keys")]
+        public JToken ConfigurationKeys { get; set; }
+    }
+
+    public class ConversionConvertRequestInput
+    {
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AiSummaryRequestInputDocumentType Document { get; set; }
+
+        [JsonProperty("configuration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ConversionConvertRequestInputConfigurationType Configuration { get; set; }
+    }
+
+    public class ConversionConvertRequestInputConfigurationType
+    {
+        [JsonProperty("documentResponseFormat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ConversionConvertRequestInputConfigurationTypeDocumentFormatType DocumentFormat { get; set; }
+
+        [JsonProperty("keys")]
+        public JToken ConfigurationKeys { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum requestconfigurationdocumentFormatInput
+    public enum ConversionConvertRequestInputConfigurationTypeDocumentFormatType
+    {
+        PDF,
+        HTML
+    }
+
+    public class DocumentJsonTemplateRequestInput
+    {
+        [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RequestInputTemplateType Template { get; set; }
+
+        [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken JSONObject { get; set; }
+
+        [JsonProperty("configuration")]
+        public DocumentJsonTemplateRequestInputConfigurationType Configuration { get; set; }
+    }
+
+    public class RequestInputTemplateType
+    {
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplateFile { get; set; }
+    }
+
+    public class DocumentJsonTemplateRequestInputConfigurationType
+    {
+        [JsonProperty("documentResponseFormat")]
+        public DocumentJsonTemplateRequestInputConfigurationTypeDocumentFormatType? DocumentFormat { get; set; }
+
+        [JsonProperty("keys")]
+        public JToken ConfigurationKeys { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum DocumentJsonTemplateRequestInputConfigurationTypeDocumentFormatType
     {
         Original,
         PDF,
         HTML
     }
 
-    public class requestimageInputItem
+    public class DocumentTemplateRequestInput
     {
-        [JsonProperty("token")]
+        [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RequestInputTemplateType Template { get; set; }
+
+        [JsonProperty("images")]
+        public RequestInputImageTypeItem[] Image { get; set; }
+
+        [JsonProperty("text")]
+        public JToken Text { get; set; }
+
+        [JsonProperty("substituteDocuments")]
+        public RequestInputDocumentTypeItem[] Document { get; set; }
+
+        [JsonProperty("tables")]
+        public RequestInputTableTypeItem[] Table { get; set; }
+
+        [JsonProperty("configuration")]
+        public DocumentTemplateRequestInputConfigurationType Configuration { get; set; }
+    }
+
+    public class RequestInputImageTypeItem
+    {
+        [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Token { get; set; }
 
-        [JsonProperty("file")]
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }
     }
 
-    public class requestdocumentInputItem
+    public class RequestInputDocumentTypeItem
     {
-        [JsonProperty("token")]
+        [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Token { get; set; }
 
-        [JsonProperty("file")]
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }
     }
 
-    public class requesttableInputItem
+    public class RequestInputTableTypeItem
     {
-        [JsonProperty("token")]
+        [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Token { get; set; }
 
-        [JsonProperty("rows")]
+        [JsonProperty("rows", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Rows { get; set; }
+    }
+
+    public class DocumentTemplateRequestInputConfigurationType
+    {
+        [JsonProperty("documentresponseformat")]
+        public DocumentJsonTemplateRequestInputConfigurationTypeDocumentFormatType? DocumentFormat { get; set; }
+
+        [JsonProperty("keys")]
+        public JToken ConfigurationKeys { get; set; }
     }
 
     public class InstancesResponse
     {
         [JsonProperty("url")]
         public string DocumentUrl { get; set; }
+    }
+
+    public class EnvelopesInstancesRequestInput
+    {
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public EnvelopesInstancesRequestInputDocumentType Document { get; set; }
+
+        [JsonProperty("configuration")]
+        public AiTemplateBuilderRequestInputConfigurationType Configuration { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentTitle { get; set; }
+
+        [JsonProperty("introduction", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentIntroduction { get; set; }
+
+        [JsonProperty("logoUrl")]
+        public string DocumentLogo { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RecipientEmail { get; set; }
+
+        [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RecipientFirstName { get; set; }
+
+        [JsonProperty("lastName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RecipientLastName { get; set; }
+
+        [JsonProperty("checkboxText")]
+        public string Checkbox { get; set; }
+
+        [JsonProperty("expiry", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ExpiryDate { get; set; }
+
+        [JsonProperty("isSignatureRequired", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool SignatureRequired { get; set; }
+
+        [JsonProperty("organisationTitle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OrgansiationTitle { get; set; }
+
+        [JsonProperty("organisationWebsite")]
+        public string OrganisationWebsite { get; set; }
+
+        [JsonProperty("organisationContactEmail", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OrganisationEmail { get; set; }
+
+        [JsonProperty("organisationContactPhone")]
+        public string OrganisationPhone { get; set; }
+
+        [JsonProperty("organisationContactName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OrganisationOwner { get; set; }
+
+        [JsonProperty("organisationContactTitle")]
+        public string OragnisationOwnerTitle { get; set; }
+
+        [JsonProperty("commentsEnabled")]
+        public bool? Comments { get; set; }
+
+        [JsonProperty("projectIdentifier")]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("completeButtonLabel")]
+        public string CompleteButtonLabel { get; set; }
+
+        [JsonProperty("completeStatusLabel")]
+        public string CompleteDocumentLabel { get; set; }
+
+        [JsonProperty("incompleteStatusLabel")]
+        public string IncompleteDocumentLabel { get; set; }
+    }
+
+    public class EnvelopesInstancesRequestInputDocumentType
+    {
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PDFDocument { get; set; }
     }
 }
 

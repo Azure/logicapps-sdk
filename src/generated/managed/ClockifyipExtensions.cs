@@ -13,23 +13,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
     public class ClockifyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
-        public IBodyWorkflowAction<GetClientsV1ResponseItem[], ApiConnectionActionConfiguration> GetClients(Expression<Func<string>> workspaceId, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<GetClientsResponseItem[], ApiConnectionActionConfiguration> GetClients(Expression<Func<string>> workspaceId, Expression<Func<bool>> archived = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
-            return new DeferredBodyAction<GetClientsV1ResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetClientsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/workspaces/{0}/clients", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
-                return new ApiConnectionAction<GetClientsV1ResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetClientsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
-        public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[], ApiConnectionActionConfiguration> GetTimeEntriesForUser(Expression<Func<string>> workspaceId, Expression<Func<string>> userId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> project = null, Expression<Func<string>> task = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<GetTimeEntriesForUserResponseItem[], ApiConnectionActionConfiguration> GetTimeEntriesForUser(Expression<Func<string>> workspaceId, Expression<Func<string>> userId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> project = null, Expression<Func<string>> task = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
             var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
-            return new DeferredBodyAction<GetTimeEntriesForUserV1ResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetTimeEntriesForUserResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/workspaces/{0}/user/{1}/time-entries", __workflow_workspaceId.WithUrlEncoding(1), __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -56,19 +56,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 if (__workflow_pageSize != null)
                     callPayload.Queries["page-size"] = ExpressionConverter.Convert(__workflow_pageSize);
-                return new ApiConnectionAction<GetTimeEntriesForUserV1ResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetTimeEntriesForUserResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
-        public IBodyWorkflowAction<GetWorkspacesV1ResponseItem[], ApiConnectionActionConfiguration> GetWorkspaces()
+        public IBodyWorkflowAction<GetWorkspacesResponseItem[], ApiConnectionActionConfiguration> GetWorkspaces()
         {
-            return new DeferredBodyAction<GetWorkspacesV1ResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetWorkspacesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/workspaces";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetWorkspacesV1ResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetWorkspacesResponseItem[]>(callPayload);
             });
         }
     }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
     {
     }
 
-    public class GetClientsV1ResponseItem
+    public class GetClientsResponseItem
     {
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
         public string WorkspaceId { get; set; }
     }
 
-    public class GetTimeEntriesForUserV1ResponseItem
+    public class GetTimeEntriesForUserResponseItem
     {
         [JsonProperty("id")]
         public string TimeEntryId { get; set; }
@@ -119,10 +119,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
         public string WorkspaceId { get; set; }
 
         [JsonProperty("timeInterval")]
-        public GetTimeEntriesForUserV1ResponseItemTimeIntervalType TimeInterval { get; set; }
+        public GetTimeEntriesForUserResponseItemTimeIntervalType TimeInterval { get; set; }
     }
 
-    public class GetTimeEntriesForUserV1ResponseItemTimeIntervalType
+    public class GetTimeEntriesForUserResponseItemTimeIntervalType
     {
         [JsonProperty("duration")]
         public string Duration { get; set; }
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
         public string StartTime { get; set; }
     }
 
-    public class GetWorkspacesV1ResponseItem
+    public class GetWorkspacesResponseItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }

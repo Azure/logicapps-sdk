@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
-        public IBodyWorkflowAction<ConvertedCurrencyResult, ApiConnectionActionConfiguration> CurrencyExchangeConvertCurrency(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<double>> sourcePrice = null)
+        public IBodyWorkflowAction<ConvertedCurrencyResult, ApiConnectionActionConfiguration> CurrencyExchangeConvertCurrency(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<double>> sourcePrice)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
-            var __workflow_sourcePrice = WorkflowExpression.Compile(sourcePrice, nameof(sourcePrice), required: false);
+            var __workflow_sourcePrice = WorkflowExpression.Compile(sourcePrice, nameof(sourcePrice), required: true);
             return new DeferredBodyAction<ConvertedCurrencyResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", __workflow_source.WithUrlEncoding(1), __workflow_destination.WithUrlEncoding(1)));

@@ -13,23 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
     public class PdfblocksActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeDocumentsArray(Expression<Func<bodydocumentsInputItem[]>> bodydocuments)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeDocumentsArray(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/merge_documents/array";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -39,10 +31,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
     {
     }
 
-    public class bodydocumentsInputItem
+    public class BodyInput
     {
-        [JsonProperty("fileContent")]
-        public WorkflowBinaryContent FileContent { get; set; }
+        [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputDocumentsTypeItem[] Documents { get; set; }
+    }
+
+    public class BodyInputDocumentsTypeItem
+    {
+        [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("fileName")]
         public string FileName { get; set; }

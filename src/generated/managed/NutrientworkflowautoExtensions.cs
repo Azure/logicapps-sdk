@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientworkflowauto
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/instance/start/{0}/{1}", __workflow_processGuid.WithUrlEncoding(1), __workflow_processTaskGuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
+                if (__workflow_dynamicListSchema != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
                 return new ApiConnectionAction<SubmitFormResponse>(callPayload);
             });
         }

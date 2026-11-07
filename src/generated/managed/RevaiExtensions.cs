@@ -58,210 +58,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<TranscriptionPostResponse, ApiConnectionActionConfiguration> Transcription(Expression<Func<string>> bodysourceConfigurl, Expression<Func<string>> bodysourceConfigauthHeadersauthorization = null, Expression<Func<string>> bodymetadata = null, Expression<Func<string>> bodynotificationConfigurl = null, Expression<Func<string>> bodynotificationConfigauthHeadersauthorization = null, Expression<Func<int>> bodydeleteAfterSeconds = null, Expression<Func<string>> bodytranscriber = null, Expression<Func<bool>> bodyverbatim = null, Expression<Func<bool>> bodyrush = null, Expression<Func<bool>> bodytestMode = null, Expression<Func<bodysegmentsToTranscribeInputItem[]>> bodysegmentsToTranscribe = null, Expression<Func<bodyspeakersNamesInputItem[]>> bodyspeakersNames = null, Expression<Func<bool>> bodyskipDiarization = null, Expression<Func<bool>> bodyskipPostprocessing = null, Expression<Func<bool>> bodyskipPunctuation = null, Expression<Func<bool>> bodyremoveDisfluencies = null, Expression<Func<bool>> bodyremoveAtmospherics = null, Expression<Func<bool>> bodyfilterProfanity = null, Expression<Func<int>> bodyspeakerChannelsCount = null, Expression<Func<int>> bodyspeakersCount = null, Expression<Func<string>> bodycustomVocabularyId = null, Expression<Func<bodycustomVocabulariesInputItem[]>> bodycustomVocabularies = null, Expression<Func<string>> bodylanguage = null)
+        public IBodyWorkflowAction<TranscriptionResponse, ApiConnectionActionConfiguration> Transcription(Expression<Func<TranscriptionBodyInput>> body = null)
         {
-            var __workflow_bodysourceConfigurl = WorkflowExpression.Compile(bodysourceConfigurl, nameof(bodysourceConfigurl), required: true);
-            var __workflow_bodysourceConfigauthHeadersauthorization = WorkflowExpression.Compile(bodysourceConfigauthHeadersauthorization, nameof(bodysourceConfigauthHeadersauthorization), required: false);
-            var __workflow_bodymetadata = WorkflowExpression.Compile(bodymetadata, nameof(bodymetadata), required: false);
-            var __workflow_bodynotificationConfigurl = WorkflowExpression.Compile(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            var __workflow_bodynotificationConfigauthHeadersauthorization = WorkflowExpression.Compile(bodynotificationConfigauthHeadersauthorization, nameof(bodynotificationConfigauthHeadersauthorization), required: false);
-            var __workflow_bodydeleteAfterSeconds = WorkflowExpression.Compile(bodydeleteAfterSeconds, nameof(bodydeleteAfterSeconds), required: false);
-            var __workflow_bodytranscriber = WorkflowExpression.Compile(bodytranscriber, nameof(bodytranscriber), required: false);
-            var __workflow_bodyverbatim = WorkflowExpression.Compile(bodyverbatim, nameof(bodyverbatim), required: false);
-            var __workflow_bodyrush = WorkflowExpression.Compile(bodyrush, nameof(bodyrush), required: false);
-            var __workflow_bodytestMode = WorkflowExpression.Compile(bodytestMode, nameof(bodytestMode), required: false);
-            var __workflow_bodysegmentsToTranscribe = WorkflowExpression.Compile(bodysegmentsToTranscribe, nameof(bodysegmentsToTranscribe), required: false);
-            var __workflow_bodyspeakersNames = WorkflowExpression.Compile(bodyspeakersNames, nameof(bodyspeakersNames), required: false);
-            var __workflow_bodyskipDiarization = WorkflowExpression.Compile(bodyskipDiarization, nameof(bodyskipDiarization), required: false);
-            var __workflow_bodyskipPostprocessing = WorkflowExpression.Compile(bodyskipPostprocessing, nameof(bodyskipPostprocessing), required: false);
-            var __workflow_bodyskipPunctuation = WorkflowExpression.Compile(bodyskipPunctuation, nameof(bodyskipPunctuation), required: false);
-            var __workflow_bodyremoveDisfluencies = WorkflowExpression.Compile(bodyremoveDisfluencies, nameof(bodyremoveDisfluencies), required: false);
-            var __workflow_bodyremoveAtmospherics = WorkflowExpression.Compile(bodyremoveAtmospherics, nameof(bodyremoveAtmospherics), required: false);
-            var __workflow_bodyfilterProfanity = WorkflowExpression.Compile(bodyfilterProfanity, nameof(bodyfilterProfanity), required: false);
-            var __workflow_bodyspeakerChannelsCount = WorkflowExpression.Compile(bodyspeakerChannelsCount, nameof(bodyspeakerChannelsCount), required: false);
-            var __workflow_bodyspeakersCount = WorkflowExpression.Compile(bodyspeakersCount, nameof(bodyspeakersCount), required: false);
-            var __workflow_bodycustomVocabularyId = WorkflowExpression.Compile(bodycustomVocabularyId, nameof(bodycustomVocabularyId), required: false);
-            var __workflow_bodycustomVocabularies = WorkflowExpression.Compile(bodycustomVocabularies, nameof(bodycustomVocabularies), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            return new DeferredBodyAction<TranscriptionPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<TranscriptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/speechtotext/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var sourceConfigObject = new JObject();
-                var sourceConfigObjectpropCount = 0;
-                sourceConfigObjectpropCount++;
-                sourceConfigObject["url"] = ExpressionConverter.ConvertO(__workflow_bodysourceConfigurl);
-                var authHeadersObject = new JObject();
-                var authHeadersObjectpropCount = 0;
-                if (__workflow_bodysourceConfigauthHeadersauthorization != null)
-                {
-                    authHeadersObject["Authorization"] = ExpressionConverter.ConvertO(__workflow_bodysourceConfigauthHeadersauthorization);
-                    authHeadersObjectpropCount++;
-                }
-
-                if (authHeadersObjectpropCount > 0)
-                {
-                    sourceConfigObject["auth_headers"] = authHeadersObject;
-                    sourceConfigObjectpropCount++;
-                }
-
-                if (sourceConfigObjectpropCount > 0)
-                {
-                    body["source_config"] = sourceConfigObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymetadata != null)
-                {
-                    body["metadata"] = ExpressionConverter.ConvertO(__workflow_bodymetadata);
-                    bodypropCount++;
-                }
-
-                var notificationConfigObject = new JObject();
-                var notificationConfigObjectpropCount = 0;
-                if (__workflow_bodynotificationConfigurl != null)
-                {
-                    notificationConfigObject["url"] = ExpressionConverter.ConvertO(__workflow_bodynotificationConfigurl);
-                    notificationConfigObjectpropCount++;
-                }
-
-                var authHeadersObject2 = new JObject();
-                var authHeadersObject2propCount = 0;
-                if (__workflow_bodynotificationConfigauthHeadersauthorization != null)
-                {
-                    authHeadersObject2["Authorization"] = ExpressionConverter.ConvertO(__workflow_bodynotificationConfigauthHeadersauthorization);
-                    authHeadersObject2propCount++;
-                }
-
-                if (authHeadersObject2propCount > 0)
-                {
-                    notificationConfigObject["auth_headers"] = authHeadersObject2;
-                    notificationConfigObjectpropCount++;
-                }
-
-                if (notificationConfigObjectpropCount > 0)
-                {
-                    body["notification_config"] = notificationConfigObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydeleteAfterSeconds != null)
-                {
-                    body["delete_after_seconds"] = ExpressionConverter.ConvertO(__workflow_bodydeleteAfterSeconds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytranscriber != null)
-                {
-                    body["transcriber"] = ExpressionConverter.ConvertO(__workflow_bodytranscriber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyverbatim != null)
-                {
-                    body["verbatim"] = ExpressionConverter.ConvertO(__workflow_bodyverbatim);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrush != null)
-                {
-                    body["rush"] = ExpressionConverter.ConvertO(__workflow_bodyrush);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytestMode != null)
-                {
-                    body["test_mode"] = ExpressionConverter.ConvertO(__workflow_bodytestMode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysegmentsToTranscribe != null)
-                {
-                    body["segments_to_transcribe"] = ExpressionConverter.ConvertO(__workflow_bodysegmentsToTranscribe);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyspeakersNames != null)
-                {
-                    body["speakers_names"] = ExpressionConverter.ConvertO(__workflow_bodyspeakersNames);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyskipDiarization != null)
-                {
-                    body["skip_diarization"] = ExpressionConverter.ConvertO(__workflow_bodyskipDiarization);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyskipPostprocessing != null)
-                {
-                    body["skip_postprocessing"] = ExpressionConverter.ConvertO(__workflow_bodyskipPostprocessing);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyskipPunctuation != null)
-                {
-                    body["skip_punctuation"] = ExpressionConverter.ConvertO(__workflow_bodyskipPunctuation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyremoveDisfluencies != null)
-                {
-                    body["remove_disfluencies"] = ExpressionConverter.ConvertO(__workflow_bodyremoveDisfluencies);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyremoveAtmospherics != null)
-                {
-                    body["remove_atmospherics"] = ExpressionConverter.ConvertO(__workflow_bodyremoveAtmospherics);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilterProfanity != null)
-                {
-                    body["filter_profanity"] = ExpressionConverter.ConvertO(__workflow_bodyfilterProfanity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyspeakerChannelsCount != null)
-                {
-                    body["speaker_channels_count"] = ExpressionConverter.ConvertO(__workflow_bodyspeakerChannelsCount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyspeakersCount != null)
-                {
-                    body["speakers_count"] = ExpressionConverter.ConvertO(__workflow_bodyspeakersCount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomVocabularyId != null)
-                {
-                    body["custom_vocabulary_id"] = ExpressionConverter.ConvertO(__workflow_bodycustomVocabularyId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomVocabularies != null)
-                {
-                    body["custom_vocabularies"] = ExpressionConverter.ConvertO(__workflow_bodycustomVocabularies);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<TranscriptionPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<TranscriptionResponse>(callPayload);
             });
         }
 
@@ -279,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CaptionsGet(Expression<Func<string>> id, Expression<Func<acceptInput>> accept = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CaptionsGet(Expression<Func<string>> id, Expression<Func<AcceptInput>> accept = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
@@ -324,65 +131,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<VocabularyPostResponse, ApiConnectionActionConfiguration> Vocabulary(Expression<Func<string>> bodymetadata = null, Expression<Func<string>> bodynotificationConfigurl = null, Expression<Func<string>> bodynotificationConfigauthHeadersauthorization = null, Expression<Func<bodycustomVocabulariesInputItem[]>> bodycustomVocabularies = null)
+        public IBodyWorkflowAction<VocabularyResponse, ApiConnectionActionConfiguration> Vocabulary(Expression<Func<VocabularyBodyInput>> body = null)
         {
-            var __workflow_bodymetadata = WorkflowExpression.Compile(bodymetadata, nameof(bodymetadata), required: false);
-            var __workflow_bodynotificationConfigurl = WorkflowExpression.Compile(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            var __workflow_bodynotificationConfigauthHeadersauthorization = WorkflowExpression.Compile(bodynotificationConfigauthHeadersauthorization, nameof(bodynotificationConfigauthHeadersauthorization), required: false);
-            var __workflow_bodycustomVocabularies = WorkflowExpression.Compile(bodycustomVocabularies, nameof(bodycustomVocabularies), required: false);
-            return new DeferredBodyAction<VocabularyPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<VocabularyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/speechtotext/v1/vocabularies";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodymetadata != null)
-                {
-                    body["metadata"] = ExpressionConverter.ConvertO(__workflow_bodymetadata);
-                    bodypropCount++;
-                }
-
-                var notificationConfigObject = new JObject();
-                var notificationConfigObjectpropCount = 0;
-                if (__workflow_bodynotificationConfigurl != null)
-                {
-                    notificationConfigObject["url"] = ExpressionConverter.ConvertO(__workflow_bodynotificationConfigurl);
-                    notificationConfigObjectpropCount++;
-                }
-
-                var authHeadersObject = new JObject();
-                var authHeadersObjectpropCount = 0;
-                if (__workflow_bodynotificationConfigauthHeadersauthorization != null)
-                {
-                    authHeadersObject["Authorization"] = ExpressionConverter.ConvertO(__workflow_bodynotificationConfigauthHeadersauthorization);
-                    authHeadersObjectpropCount++;
-                }
-
-                if (authHeadersObjectpropCount > 0)
-                {
-                    notificationConfigObject["auth_headers"] = authHeadersObject;
-                    notificationConfigObjectpropCount++;
-                }
-
-                if (notificationConfigObjectpropCount > 0)
-                {
-                    body["notification_config"] = notificationConfigObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomVocabularies != null)
-                {
-                    body["custom_vocabularies"] = ExpressionConverter.ConvertO(__workflow_bodycustomVocabularies);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<VocabularyPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<VocabularyResponse>(callPayload);
             });
         }
 
@@ -432,87 +191,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<ExtractionPostResponse, ApiConnectionActionConfiguration> Extraction(Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodymetadata = null, Expression<Func<string>> bodynotificationConfigurl = null, Expression<Func<string>> bodynotificationConfigauthHeadersauthorization = null, Expression<Func<int>> bodydeleteAfterSeconds = null, Expression<Func<bodyjsonmonologuesInputItem[]>> bodyjsonmonologues = null)
+        public IBodyWorkflowAction<ExtractionResponse, ApiConnectionActionConfiguration> Extraction(Expression<Func<AnalysisBodyInput>> body = null)
         {
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodymetadata = WorkflowExpression.Compile(bodymetadata, nameof(bodymetadata), required: false);
-            var __workflow_bodynotificationConfigurl = WorkflowExpression.Compile(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            var __workflow_bodynotificationConfigauthHeadersauthorization = WorkflowExpression.Compile(bodynotificationConfigauthHeadersauthorization, nameof(bodynotificationConfigauthHeadersauthorization), required: false);
-            var __workflow_bodydeleteAfterSeconds = WorkflowExpression.Compile(bodydeleteAfterSeconds, nameof(bodydeleteAfterSeconds), required: false);
-            var __workflow_bodyjsonmonologues = WorkflowExpression.Compile(bodyjsonmonologues, nameof(bodyjsonmonologues), required: false);
-            return new DeferredBodyAction<ExtractionPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ExtractionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/topic_extraction/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymetadata != null)
-                {
-                    body["metadata"] = ExpressionConverter.ConvertO(__workflow_bodymetadata);
-                    bodypropCount++;
-                }
-
-                var notificationConfigObject = new JObject();
-                var notificationConfigObjectpropCount = 0;
-                if (__workflow_bodynotificationConfigurl != null)
-                {
-                    notificationConfigObject["url"] = ExpressionConverter.ConvertO(__workflow_bodynotificationConfigurl);
-                    notificationConfigObjectpropCount++;
-                }
-
-                var authHeadersObject = new JObject();
-                var authHeadersObjectpropCount = 0;
-                if (__workflow_bodynotificationConfigauthHeadersauthorization != null)
-                {
-                    authHeadersObject["Authorization"] = ExpressionConverter.ConvertO(__workflow_bodynotificationConfigauthHeadersauthorization);
-                    authHeadersObjectpropCount++;
-                }
-
-                if (authHeadersObjectpropCount > 0)
-                {
-                    notificationConfigObject["auth_headers"] = authHeadersObject;
-                    notificationConfigObjectpropCount++;
-                }
-
-                if (notificationConfigObjectpropCount > 0)
-                {
-                    body["notification_config"] = notificationConfigObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydeleteAfterSeconds != null)
-                {
-                    body["delete_after_seconds"] = ExpressionConverter.ConvertO(__workflow_bodydeleteAfterSeconds);
-                    bodypropCount++;
-                }
-
-                var jsonObject = new JObject();
-                var jsonObjectpropCount = 0;
-                if (__workflow_bodyjsonmonologues != null)
-                {
-                    jsonObject["monologues"] = ExpressionConverter.ConvertO(__workflow_bodyjsonmonologues);
-                    jsonObjectpropCount++;
-                }
-
-                if (jsonObjectpropCount > 0)
-                {
-                    body["json"] = jsonObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ExtractionPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ExtractionResponse>(callPayload);
             });
         }
 
@@ -578,87 +267,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<AnalysisPostResponse, ApiConnectionActionConfiguration> Analysis(Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodymetadata = null, Expression<Func<string>> bodynotificationConfigurl = null, Expression<Func<string>> bodynotificationConfigauthHeadersauthorization = null, Expression<Func<int>> bodydeleteAfterSeconds = null, Expression<Func<bodyjsonmonologuesInputItem[]>> bodyjsonmonologues = null)
+        public IBodyWorkflowAction<AnalysisResponse, ApiConnectionActionConfiguration> Analysis(Expression<Func<AnalysisBodyInput>> body = null)
         {
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodymetadata = WorkflowExpression.Compile(bodymetadata, nameof(bodymetadata), required: false);
-            var __workflow_bodynotificationConfigurl = WorkflowExpression.Compile(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            var __workflow_bodynotificationConfigauthHeadersauthorization = WorkflowExpression.Compile(bodynotificationConfigauthHeadersauthorization, nameof(bodynotificationConfigauthHeadersauthorization), required: false);
-            var __workflow_bodydeleteAfterSeconds = WorkflowExpression.Compile(bodydeleteAfterSeconds, nameof(bodydeleteAfterSeconds), required: false);
-            var __workflow_bodyjsonmonologues = WorkflowExpression.Compile(bodyjsonmonologues, nameof(bodyjsonmonologues), required: false);
-            return new DeferredBodyAction<AnalysisPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<AnalysisResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sentiment_analysis/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymetadata != null)
-                {
-                    body["metadata"] = ExpressionConverter.ConvertO(__workflow_bodymetadata);
-                    bodypropCount++;
-                }
-
-                var notificationConfigObject = new JObject();
-                var notificationConfigObjectpropCount = 0;
-                if (__workflow_bodynotificationConfigurl != null)
-                {
-                    notificationConfigObject["url"] = ExpressionConverter.ConvertO(__workflow_bodynotificationConfigurl);
-                    notificationConfigObjectpropCount++;
-                }
-
-                var authHeadersObject = new JObject();
-                var authHeadersObjectpropCount = 0;
-                if (__workflow_bodynotificationConfigauthHeadersauthorization != null)
-                {
-                    authHeadersObject["Authorization"] = ExpressionConverter.ConvertO(__workflow_bodynotificationConfigauthHeadersauthorization);
-                    authHeadersObjectpropCount++;
-                }
-
-                if (authHeadersObjectpropCount > 0)
-                {
-                    notificationConfigObject["auth_headers"] = authHeadersObject;
-                    notificationConfigObjectpropCount++;
-                }
-
-                if (notificationConfigObjectpropCount > 0)
-                {
-                    body["notification_config"] = notificationConfigObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydeleteAfterSeconds != null)
-                {
-                    body["delete_after_seconds"] = ExpressionConverter.ConvertO(__workflow_bodydeleteAfterSeconds);
-                    bodypropCount++;
-                }
-
-                var jsonObject = new JObject();
-                var jsonObjectpropCount = 0;
-                if (__workflow_bodyjsonmonologues != null)
-                {
-                    jsonObject["monologues"] = ExpressionConverter.ConvertO(__workflow_bodyjsonmonologues);
-                    jsonObjectpropCount++;
-                }
-
-                if (jsonObjectpropCount > 0)
-                {
-                    body["json"] = jsonObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<AnalysisPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AnalysisResponse>(callPayload);
             });
         }
 
@@ -689,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<AnalysisResultGetResponse, ApiConnectionActionConfiguration> AnalysisResultGet(Expression<Func<string>> id, Expression<Func<filterForInput>> filterFor = null)
+        public IBodyWorkflowAction<AnalysisResultGetResponse, ApiConnectionActionConfiguration> AnalysisResultGet(Expression<Func<string>> id, Expression<Func<FilterForInput>> filterFor = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_filterFor = WorkflowExpression.Compile(filterFor, nameof(filterFor), required: false);
@@ -724,65 +343,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<IdentificationPostResponse, ApiConnectionActionConfiguration> Identification(Expression<Func<string>> bodymetadata = null, Expression<Func<string>> bodynotificationConfigurl = null, Expression<Func<int>> bodydeleteAfterSeconds = null, Expression<Func<string>> bodysourceConfigurl = null)
+        public IBodyWorkflowAction<IdentificationResponse, ApiConnectionActionConfiguration> Identification(Expression<Func<IdentificationBodyInput>> body = null)
         {
-            var __workflow_bodymetadata = WorkflowExpression.Compile(bodymetadata, nameof(bodymetadata), required: false);
-            var __workflow_bodynotificationConfigurl = WorkflowExpression.Compile(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            var __workflow_bodydeleteAfterSeconds = WorkflowExpression.Compile(bodydeleteAfterSeconds, nameof(bodydeleteAfterSeconds), required: false);
-            var __workflow_bodysourceConfigurl = WorkflowExpression.Compile(bodysourceConfigurl, nameof(bodysourceConfigurl), required: false);
-            return new DeferredBodyAction<IdentificationPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<IdentificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/languageid/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodymetadata != null)
-                {
-                    body["metadata"] = ExpressionConverter.ConvertO(__workflow_bodymetadata);
-                    bodypropCount++;
-                }
-
-                var notificationConfigObject = new JObject();
-                var notificationConfigObjectpropCount = 0;
-                if (__workflow_bodynotificationConfigurl != null)
-                {
-                    notificationConfigObject["url"] = ExpressionConverter.ConvertO(__workflow_bodynotificationConfigurl);
-                    notificationConfigObjectpropCount++;
-                }
-
-                if (notificationConfigObjectpropCount > 0)
-                {
-                    body["notification_config"] = notificationConfigObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydeleteAfterSeconds != null)
-                {
-                    body["delete_after_seconds"] = ExpressionConverter.ConvertO(__workflow_bodydeleteAfterSeconds);
-                    bodypropCount++;
-                }
-
-                var sourceConfigObject = new JObject();
-                var sourceConfigObjectpropCount = 0;
-                if (__workflow_bodysourceConfigurl != null)
-                {
-                    sourceConfigObject["url"] = ExpressionConverter.ConvertO(__workflow_bodysourceConfigurl);
-                    sourceConfigObjectpropCount++;
-                }
-
-                if (sourceConfigObjectpropCount > 0)
-                {
-                    body["source_config"] = sourceConfigObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<IdentificationPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<IdentificationResponse>(callPayload);
             });
         }
 
@@ -845,89 +416,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<AlignmentPostResponse, ApiConnectionActionConfiguration> Alignment(Expression<Func<string>> bodymetadata = null, Expression<Func<string>> bodynotificationConfigurl = null, Expression<Func<int>> bodydeleteAfterSeconds = null, Expression<Func<string>> bodysourceConfigurl = null, Expression<Func<string>> bodytranscriptText = null, Expression<Func<bodylanguageInput>> bodylanguage = null)
+        public IBodyWorkflowAction<AlignmentResponse, ApiConnectionActionConfiguration> Alignment(Expression<Func<AlignmentBodyInput>> body = null)
         {
-            var __workflow_bodymetadata = WorkflowExpression.Compile(bodymetadata, nameof(bodymetadata), required: false);
-            var __workflow_bodynotificationConfigurl = WorkflowExpression.Compile(bodynotificationConfigurl, nameof(bodynotificationConfigurl), required: false);
-            var __workflow_bodydeleteAfterSeconds = WorkflowExpression.Compile(bodydeleteAfterSeconds, nameof(bodydeleteAfterSeconds), required: false);
-            var __workflow_bodysourceConfigurl = WorkflowExpression.Compile(bodysourceConfigurl, nameof(bodysourceConfigurl), required: false);
-            var __workflow_bodytranscriptText = WorkflowExpression.Compile(bodytranscriptText, nameof(bodytranscriptText), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            return new DeferredBodyAction<AlignmentPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<AlignmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alignment/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodymetadata != null)
-                {
-                    body["metadata"] = ExpressionConverter.ConvertO(__workflow_bodymetadata);
-                    bodypropCount++;
-                }
-
-                var notificationConfigObject = new JObject();
-                var notificationConfigObjectpropCount = 0;
-                if (__workflow_bodynotificationConfigurl != null)
-                {
-                    notificationConfigObject["url"] = ExpressionConverter.ConvertO(__workflow_bodynotificationConfigurl);
-                    notificationConfigObjectpropCount++;
-                }
-
-                if (notificationConfigObjectpropCount > 0)
-                {
-                    body["notification_config"] = notificationConfigObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydeleteAfterSeconds != null)
-                {
-                    body["delete_after_seconds"] = ExpressionConverter.ConvertO(__workflow_bodydeleteAfterSeconds);
-                    bodypropCount++;
-                }
-
-                var sourceConfigObject = new JObject();
-                var sourceConfigObjectpropCount = 0;
-                if (__workflow_bodysourceConfigurl != null)
-                {
-                    sourceConfigObject["url"] = ExpressionConverter.ConvertO(__workflow_bodysourceConfigurl);
-                    sourceConfigObjectpropCount++;
-                }
-
-                if (sourceConfigObjectpropCount > 0)
-                {
-                    body["source_config"] = sourceConfigObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytranscriptText != null)
-                {
-                    body["transcript_text"] = ExpressionConverter.ConvertO(__workflow_bodytranscriptText);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    if (__workflow_bodylanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["language"] = "en";
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<AlignmentPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AlignmentResponse>(callPayload);
             });
         }
 
@@ -1014,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Transcriber { get; set; }
     }
 
-    public class TranscriptionPostResponse
+    public class TranscriptionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1032,22 +531,116 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Transcriber { get; set; }
     }
 
-    public class bodysegmentsToTranscribeInputItem
+    public class TranscriptionBodyInput
     {
-        [JsonProperty("start")]
-        public int Start { get; set; }
+        [JsonProperty("source_config")]
+        public TranscriptionBodyInputSourceConfigType SourceConfig { get; set; }
 
-        [JsonProperty("end")]
-        public int End { get; set; }
+        [JsonProperty("metadata")]
+        public string Metadata { get; set; }
+
+        [JsonProperty("notification_config", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TranscriptionBodyInputNotificationConfigType NotificationConfig { get; set; }
+
+        [JsonProperty("delete_after_seconds")]
+        public int? DeleteAfterSeconds { get; set; }
+
+        [JsonProperty("transcriber")]
+        public string Transcriber { get; set; }
+
+        [JsonProperty("verbatim")]
+        public bool? Verbatim { get; set; }
+
+        [JsonProperty("rush")]
+        public bool? Rush { get; set; }
+
+        [JsonProperty("test_mode")]
+        public bool? TestMode { get; set; }
+
+        [JsonProperty("segments_to_transcribe")]
+        public BodyInputSegmentsToTranscribeTypeItem[] SegmentsToTranscribe { get; set; }
+
+        [JsonProperty("speakers_names")]
+        public BodyInputSpeakersNamesTypeItem[] SpeakersNames { get; set; }
+
+        [JsonProperty("skip_diarization")]
+        public bool? SkipDiarization { get; set; }
+
+        [JsonProperty("skip_postprocessing")]
+        public bool? SkipPostprocessing { get; set; }
+
+        [JsonProperty("skip_punctuation")]
+        public bool? SkipPunctuation { get; set; }
+
+        [JsonProperty("remove_disfluencies")]
+        public bool? RemoveDisfluencies { get; set; }
+
+        [JsonProperty("remove_atmospherics")]
+        public bool? RemoveAtmospherics { get; set; }
+
+        [JsonProperty("filter_profanity")]
+        public bool? FilterProfanity { get; set; }
+
+        [JsonProperty("speaker_channels_count")]
+        public int? SpeakerChannelsCount { get; set; }
+
+        [JsonProperty("speakers_count")]
+        public int? SpeakersCount { get; set; }
+
+        [JsonProperty("custom_vocabulary_id")]
+        public string CustomVocabularyId { get; set; }
+
+        [JsonProperty("custom_vocabularies")]
+        public BodyInputCustomVocabulariesTypeItem[] CustomVocabularies { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
     }
 
-    public class bodyspeakersNamesInputItem
+    public class TranscriptionBodyInputSourceConfigType
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+
+        [JsonProperty("auth_headers")]
+        public BodyInputSourceConfigTypeAuthHeadersType AuthHeaders { get; set; }
+    }
+
+    public class BodyInputSourceConfigTypeAuthHeadersType
+    {
+        public string Authorization { get; set; }
+    }
+
+    public class TranscriptionBodyInputNotificationConfigType
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+
+        [JsonProperty("auth_headers")]
+        public BodyInputNotificationConfigTypeAuthHeadersType AuthHeaders { get; set; }
+    }
+
+    public class BodyInputNotificationConfigTypeAuthHeadersType
+    {
+        public string Authorization { get; set; }
+    }
+
+    public class BodyInputSegmentsToTranscribeTypeItem
+    {
+        [JsonProperty("start")]
+        public int? Start { get; set; }
+
+        [JsonProperty("end")]
+        public int? End { get; set; }
+    }
+
+    public class BodyInputSpeakersNamesTypeItem
     {
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
     }
 
-    public class bodycustomVocabulariesInputItem
+    public class BodyInputCustomVocabulariesTypeItem
     {
         [JsonProperty("phrases")]
         public string[] Phrases { get; set; }
@@ -1087,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum acceptInput
+    public enum AcceptInput
     {
         [EnumMember(Value = "application/x-subrip")]
         ApplicationXSubrip,
@@ -1143,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string FailureDetail { get; set; }
     }
 
-    public class VocabularyPostResponse
+    public class VocabularyResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1156,6 +749,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
 
         [JsonProperty("callback_url")]
         public string CallbackUrl { get; set; }
+    }
+
+    public class VocabularyBodyInput
+    {
+        [JsonProperty("metadata")]
+        public string Metadata { get; set; }
+
+        [JsonProperty("notification_config")]
+        public AnalysisBodyInputNotificationConfigType NotificationConfig { get; set; }
+
+        [JsonProperty("custom_vocabularies")]
+        public BodyInputCustomVocabulariesTypeItem[] CustomVocabularies { get; set; }
+    }
+
+    public class AnalysisBodyInputNotificationConfigType
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("auth_headers")]
+        public BodyInputNotificationConfigTypeAuthHeadersType AuthHeaders { get; set; }
     }
 
     public class VocabularyGetResponse
@@ -1200,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public int WordCount { get; set; }
     }
 
-    public class ExtractionPostResponse
+    public class ExtractionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1218,16 +832,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Type { get; set; }
     }
 
-    public class bodyjsonmonologuesInputItem
+    public class AnalysisBodyInput
     {
-        [JsonProperty("speaker")]
-        public int Speaker { get; set; }
+        [JsonProperty("language")]
+        public string Language { get; set; }
 
-        [JsonProperty("elements")]
-        public bodyjsonmonologuesInputItemElementsTypeItem[] Elements { get; set; }
+        [JsonProperty("metadata")]
+        public string Metadata { get; set; }
+
+        [JsonProperty("notification_config")]
+        public AnalysisBodyInputNotificationConfigType NotificationConfig { get; set; }
+
+        [JsonProperty("delete_after_seconds")]
+        public int? DeleteAfterSeconds { get; set; }
+
+        [JsonProperty("json")]
+        public BodyInputJsonType Json { get; set; }
     }
 
-    public class bodyjsonmonologuesInputItemElementsTypeItem
+    public class BodyInputJsonType
+    {
+        [JsonProperty("monologues")]
+        public BodyInputJsonTypeMonologuesTypeItem[] Monologues { get; set; }
+    }
+
+    public class BodyInputJsonTypeMonologuesTypeItem
+    {
+        [JsonProperty("speaker")]
+        public int? Speaker { get; set; }
+
+        [JsonProperty("elements")]
+        public BodyInputJsonTypeMonologuesTypeItemElementsTypeItem[] Elements { get; set; }
+    }
+
+    public class BodyInputJsonTypeMonologuesTypeItemElementsTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1236,13 +874,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Value { get; set; }
 
         [JsonProperty("ts")]
-        public double Ts { get; set; }
+        public double? Ts { get; set; }
 
         [JsonProperty("end_ts")]
-        public double EndTs { get; set; }
+        public double? EndTs { get; set; }
 
         [JsonProperty("confidence")]
-        public double Confidence { get; set; }
+        public double? Confidence { get; set; }
     }
 
     public class ExtractionGetResponse
@@ -1293,7 +931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public double EndTs { get; set; }
     }
 
-    public class AnalysisPostResponse
+    public class AnalysisResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1360,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterForInput
+    public enum FilterForInput
     {
         [EnumMember(Value = "positive")]
         Positive,
@@ -1388,7 +1026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string CompletedOn { get; set; }
     }
 
-    public class IdentificationPostResponse
+    public class IdentificationResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1401,6 +1039,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
 
         [JsonProperty("type")]
         public string Type { get; set; }
+    }
+
+    public class IdentificationBodyInput
+    {
+        [JsonProperty("metadata")]
+        public string Metadata { get; set; }
+
+        [JsonProperty("notification_config")]
+        public AlignmentBodyInputNotificationConfigType NotificationConfig { get; set; }
+
+        [JsonProperty("delete_after_seconds")]
+        public int? DeleteAfterSeconds { get; set; }
+
+        [JsonProperty("source_config")]
+        public AlignmentBodyInputSourceConfigType SourceConfig { get; set; }
+    }
+
+    public class AlignmentBodyInputNotificationConfigType
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class AlignmentBodyInputSourceConfigType
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 
     public class IdentificationGetResponse
@@ -1457,7 +1122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Language { get; set; }
     }
 
-    public class AlignmentPostResponse
+    public class AlignmentResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1472,8 +1137,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Type { get; set; }
     }
 
+    public class AlignmentBodyInput
+    {
+        [JsonProperty("metadata")]
+        public string Metadata { get; set; }
+
+        [JsonProperty("notification_config")]
+        public AlignmentBodyInputNotificationConfigType NotificationConfig { get; set; }
+
+        [JsonProperty("delete_after_seconds")]
+        public int? DeleteAfterSeconds { get; set; }
+
+        [JsonProperty("source_config")]
+        public AlignmentBodyInputSourceConfigType SourceConfig { get; set; }
+
+        [JsonProperty("transcript_text")]
+        public string TranscriptText { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Revai.BodyInputLanguageType.En;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylanguageInput
+    public enum BodyInputLanguageType
     {
         [EnumMember(Value = "en")]
         En,

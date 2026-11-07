@@ -76,7 +76,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 if (__workflow_allocatesubversion != null)
                     callPayload.Queries["allocatesubversion"] = ExpressionConverter.Convert(__workflow_allocatesubversion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NewVersionResponse>(callPayload);
             });
         }
@@ -96,33 +97,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RenameDocument(Expression<Func<string>> id, Expression<Func<string>> renameBodystandardAttributesnewName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RenameDocument(Expression<Func<string>> id, Expression<Func<RenameBodyInput>> renameBody)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_renameBodystandardAttributesnewName = WorkflowExpression.Compile(renameBodystandardAttributesnewName, nameof(renameBodystandardAttributesnewName), required: true);
+            var __workflow_renameBody = WorkflowExpression.Compile(renameBody, nameof(renameBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Document/{0}/info", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var renameBody = new JObject();
-                var renameBodypropCount = 0;
-                var standardAttributesObject = new JObject();
-                var standardAttributesObjectpropCount = 0;
-                standardAttributesObjectpropCount++;
-                standardAttributesObject["name"] = ExpressionConverter.ConvertO(__workflow_renameBodystandardAttributesnewName);
-                if (standardAttributesObjectpropCount > 0)
-                {
-                    renameBody["standardAttributes"] = standardAttributesObject;
-                    renameBodypropCount++;
-                }
-
-                if (renameBodypropCount > 0)
-                {
-                    callPayload.Body = renameBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_renameBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -163,12 +148,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<bool>> base64 = null, Expression<Func<WorkflowBinaryContent>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> body, Expression<Func<string>> extension = null, Expression<Func<bool>> base64 = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_extension = WorkflowExpression.Compile(extension, nameof(extension), required: false);
             var __workflow_base64 = WorkflowExpression.Compile(base64, nameof(base64), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Document/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -225,33 +210,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RenameFolder(Expression<Func<string>> id, Expression<Func<string>> renameBodystandardAttributesnewName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RenameFolder(Expression<Func<string>> id, Expression<Func<RenameBodyInput>> renameBody)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_renameBodystandardAttributesnewName = WorkflowExpression.Compile(renameBodystandardAttributesnewName, nameof(renameBodystandardAttributesnewName), required: true);
+            var __workflow_renameBody = WorkflowExpression.Compile(renameBody, nameof(renameBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Folder/{0}/info", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var renameBody = new JObject();
-                var renameBodypropCount = 0;
-                var standardAttributesObject = new JObject();
-                var standardAttributesObjectpropCount = 0;
-                standardAttributesObjectpropCount++;
-                standardAttributesObject["name"] = ExpressionConverter.ConvertO(__workflow_renameBodystandardAttributesnewName);
-                if (standardAttributesObjectpropCount > 0)
-                {
-                    renameBody["standardAttributes"] = standardAttributesObject;
-                    renameBodypropCount++;
-                }
-
-                if (renameBodypropCount > 0)
-                {
-                    callPayload.Body = renameBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_renameBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -349,19 +318,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateChildEntryResponse, ApiConnectionActionConfiguration> CreateChildEntry(Expression<Func<string>> repositoryId, Expression<Func<string>> childAttributeId, Expression<Func<string>> parentId, Expression<Func<string>> childId, Expression<Func<bool>> lookupEntryBodyaccessfilteredPermissions, Expression<Func<bool>> lookupEntryBodyaccessforcePermssions, Expression<Func<string>> lookupEntryBodydescription = null, Expression<Func<string>> lookupEntryBodytype = null, Expression<Func<bool>> lookupEntryBodylitigationHold = null, Expression<Func<string>> lookupEntryBodyclosedDate = null, Expression<Func<lookupEntryBodyaccesspermissionsInputItem[]>> lookupEntryBodyaccesspermissions = null)
+        public IBodyWorkflowAction<CreateChildEntryResponse, ApiConnectionActionConfiguration> CreateChildEntry(Expression<Func<string>> repositoryId, Expression<Func<string>> childAttributeId, Expression<Func<string>> parentId, Expression<Func<string>> childId, Expression<Func<LookupEntryBodyInput>> lookupEntryBody)
         {
             var __workflow_repositoryId = WorkflowExpression.Compile(repositoryId, nameof(repositoryId), required: true);
             var __workflow_childAttributeId = WorkflowExpression.Compile(childAttributeId, nameof(childAttributeId), required: true);
             var __workflow_parentId = WorkflowExpression.Compile(parentId, nameof(parentId), required: true);
             var __workflow_childId = WorkflowExpression.Compile(childId, nameof(childId), required: true);
-            var __workflow_lookupEntryBodyaccessfilteredPermissions = WorkflowExpression.Compile(lookupEntryBodyaccessfilteredPermissions, nameof(lookupEntryBodyaccessfilteredPermissions), required: true);
-            var __workflow_lookupEntryBodyaccessforcePermssions = WorkflowExpression.Compile(lookupEntryBodyaccessforcePermssions, nameof(lookupEntryBodyaccessforcePermssions), required: true);
-            var __workflow_lookupEntryBodydescription = WorkflowExpression.Compile(lookupEntryBodydescription, nameof(lookupEntryBodydescription), required: false);
-            var __workflow_lookupEntryBodytype = WorkflowExpression.Compile(lookupEntryBodytype, nameof(lookupEntryBodytype), required: false);
-            var __workflow_lookupEntryBodylitigationHold = WorkflowExpression.Compile(lookupEntryBodylitigationHold, nameof(lookupEntryBodylitigationHold), required: false);
-            var __workflow_lookupEntryBodyclosedDate = WorkflowExpression.Compile(lookupEntryBodyclosedDate, nameof(lookupEntryBodyclosedDate), required: false);
-            var __workflow_lookupEntryBodyaccesspermissions = WorkflowExpression.Compile(lookupEntryBodyaccesspermissions, nameof(lookupEntryBodyaccesspermissions), required: false);
+            var __workflow_lookupEntryBody = WorkflowExpression.Compile(lookupEntryBody, nameof(lookupEntryBody), required: true);
             return new DeferredBodyAction<CreateChildEntryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/attributes/{0}/{1}/{2}/{3}", __workflow_repositoryId.WithUrlEncoding(1), __workflow_childAttributeId.WithUrlEncoding(1), __workflow_parentId.WithUrlEncoding(1), __workflow_childId.WithUrlEncoding(1)));
@@ -369,55 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var lookupEntryBody = new JObject();
-                var lookupEntryBodypropCount = 0;
-                if (__workflow_lookupEntryBodydescription != null)
-                {
-                    lookupEntryBody["description"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodydescription);
-                    lookupEntryBodypropCount++;
-                }
-
-                if (__workflow_lookupEntryBodytype != null)
-                {
-                    lookupEntryBody["defaulting"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodytype);
-                    lookupEntryBodypropCount++;
-                }
-
-                if (__workflow_lookupEntryBodylitigationHold != null)
-                {
-                    lookupEntryBody["hold"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodylitigationHold);
-                    lookupEntryBodypropCount++;
-                }
-
-                if (__workflow_lookupEntryBodyclosedDate != null)
-                {
-                    lookupEntryBody["closed"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodyclosedDate);
-                    lookupEntryBodypropCount++;
-                }
-
-                var accessObject = new JObject();
-                var accessObjectpropCount = 0;
-                accessObjectpropCount++;
-                accessObject["filtered_permissions"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodyaccessfilteredPermissions);
-                accessObjectpropCount++;
-                accessObject["force_permissions"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodyaccessforcePermssions);
-                if (__workflow_lookupEntryBodyaccesspermissions != null)
-                {
-                    accessObject["permissions"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodyaccesspermissions);
-                    accessObjectpropCount++;
-                }
-
-                if (accessObjectpropCount > 0)
-                {
-                    lookupEntryBody["access"] = accessObject;
-                    lookupEntryBodypropCount++;
-                }
-
-                if (lookupEntryBodypropCount > 0)
-                {
-                    callPayload.Body = lookupEntryBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_lookupEntryBody);
                 return new ApiConnectionAction<CreateChildEntryResponse>(callPayload);
             });
         }
@@ -459,18 +374,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateEntryResponse, ApiConnectionActionConfiguration> CreateEntry(Expression<Func<string>> repositoryId, Expression<Func<string>> attributeId, Expression<Func<string>> parentId, Expression<Func<bool>> lookupEntryBodyaccessfilteredPermissions, Expression<Func<bool>> lookupEntryBodyaccessforcePermssions, Expression<Func<string>> lookupEntryBodydescription = null, Expression<Func<string>> lookupEntryBodytype = null, Expression<Func<bool>> lookupEntryBodylitigationHold = null, Expression<Func<string>> lookupEntryBodyclosedDate = null, Expression<Func<lookupEntryBodyaccesspermissionsInputItem[]>> lookupEntryBodyaccesspermissions = null)
+        public IBodyWorkflowAction<CreateEntryResponse, ApiConnectionActionConfiguration> CreateEntry(Expression<Func<string>> repositoryId, Expression<Func<string>> attributeId, Expression<Func<string>> parentId, Expression<Func<LookupEntryBodyInput>> lookupEntryBody)
         {
             var __workflow_repositoryId = WorkflowExpression.Compile(repositoryId, nameof(repositoryId), required: true);
             var __workflow_attributeId = WorkflowExpression.Compile(attributeId, nameof(attributeId), required: true);
             var __workflow_parentId = WorkflowExpression.Compile(parentId, nameof(parentId), required: true);
-            var __workflow_lookupEntryBodyaccessfilteredPermissions = WorkflowExpression.Compile(lookupEntryBodyaccessfilteredPermissions, nameof(lookupEntryBodyaccessfilteredPermissions), required: true);
-            var __workflow_lookupEntryBodyaccessforcePermssions = WorkflowExpression.Compile(lookupEntryBodyaccessforcePermssions, nameof(lookupEntryBodyaccessforcePermssions), required: true);
-            var __workflow_lookupEntryBodydescription = WorkflowExpression.Compile(lookupEntryBodydescription, nameof(lookupEntryBodydescription), required: false);
-            var __workflow_lookupEntryBodytype = WorkflowExpression.Compile(lookupEntryBodytype, nameof(lookupEntryBodytype), required: false);
-            var __workflow_lookupEntryBodylitigationHold = WorkflowExpression.Compile(lookupEntryBodylitigationHold, nameof(lookupEntryBodylitigationHold), required: false);
-            var __workflow_lookupEntryBodyclosedDate = WorkflowExpression.Compile(lookupEntryBodyclosedDate, nameof(lookupEntryBodyclosedDate), required: false);
-            var __workflow_lookupEntryBodyaccesspermissions = WorkflowExpression.Compile(lookupEntryBodyaccesspermissions, nameof(lookupEntryBodyaccesspermissions), required: false);
+            var __workflow_lookupEntryBody = WorkflowExpression.Compile(lookupEntryBody, nameof(lookupEntryBody), required: true);
             return new DeferredBodyAction<CreateEntryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/attributes/{0}/{1}/{2}", __workflow_repositoryId.WithUrlEncoding(1), __workflow_attributeId.WithUrlEncoding(1), __workflow_parentId.WithUrlEncoding(1)));
@@ -478,61 +387,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var lookupEntryBody = new JObject();
-                var lookupEntryBodypropCount = 0;
-                if (__workflow_lookupEntryBodydescription != null)
-                {
-                    lookupEntryBody["description"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodydescription);
-                    lookupEntryBodypropCount++;
-                }
-
-                if (__workflow_lookupEntryBodytype != null)
-                {
-                    lookupEntryBody["defaulting"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodytype);
-                    lookupEntryBodypropCount++;
-                }
-
-                if (__workflow_lookupEntryBodylitigationHold != null)
-                {
-                    lookupEntryBody["hold"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodylitigationHold);
-                    lookupEntryBodypropCount++;
-                }
-
-                if (__workflow_lookupEntryBodyclosedDate != null)
-                {
-                    lookupEntryBody["closed"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodyclosedDate);
-                    lookupEntryBodypropCount++;
-                }
-
-                var accessObject = new JObject();
-                var accessObjectpropCount = 0;
-                accessObjectpropCount++;
-                accessObject["filtered_permissions"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodyaccessfilteredPermissions);
-                accessObjectpropCount++;
-                accessObject["force_permissions"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodyaccessforcePermssions);
-                if (__workflow_lookupEntryBodyaccesspermissions != null)
-                {
-                    accessObject["permissions"] = ExpressionConverter.ConvertO(__workflow_lookupEntryBodyaccesspermissions);
-                    accessObjectpropCount++;
-                }
-
-                if (accessObjectpropCount > 0)
-                {
-                    lookupEntryBody["access"] = accessObject;
-                    lookupEntryBodypropCount++;
-                }
-
-                if (lookupEntryBodypropCount > 0)
-                {
-                    callPayload.Body = lookupEntryBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_lookupEntryBody);
                 return new ApiConnectionAction<CreateEntryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetLookupEntry(Expression<Func<string>> repositoryId, Expression<Func<string>> attributeId, Expression<Func<string>> parentId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<orderbyInput>> orderby = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetLookupEntry(Expression<Func<string>> repositoryId, Expression<Func<string>> attributeId, Expression<Func<string>> parentId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<GetLookupEntryOrderbyInput>> orderby = null)
         {
             var __workflow_repositoryId = WorkflowExpression.Compile(repositoryId, nameof(repositoryId), required: true);
             var __workflow_attributeId = WorkflowExpression.Compile(attributeId, nameof(attributeId), required: true);
@@ -676,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetRepositoryLog(Expression<Func<string>> repositoryId, Expression<Func<logtypeInput>> logtype, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetRepositoryLog(Expression<Func<string>> repositoryId, Expression<Func<LogtypeInput>> logtype, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
         {
             var __workflow_repositoryId = WorkflowExpression.Compile(repositoryId, nameof(repositoryId), required: true);
             var __workflow_logtype = WorkflowExpression.Compile(logtype, nameof(logtype), required: true);
@@ -730,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> GetRepositoryGroups(Expression<Func<string>> repositoryId, Expression<Func<string>> filter = null, Expression<Func<string>> top = null, Expression<Func<bool>> paging = null, Expression<Func<string>> skiptoken = null, Expression<Func<returnInfoInput>> returnInfo = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> GetRepositoryGroups(Expression<Func<string>> repositoryId, Expression<Func<string>> filter = null, Expression<Func<string>> top = null, Expression<Func<bool>> paging = null, Expression<Func<string>> skiptoken = null, Expression<Func<ReturnInfoInput>> returnInfo = null)
         {
             var __workflow_repositoryId = WorkflowExpression.Compile(repositoryId, nameof(repositoryId), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -914,14 +775,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
 
     public class NetdocumentsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<orderbyInput>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<SearchCabOrderbyInput>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null)
         {
             var __workflow_cabId = WorkflowExpression.Compile(cabId, nameof(cabId), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Search/{0}", __workflow_cabId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -935,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
@@ -1012,6 +873,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         public int Versions { get; set; }
     }
 
+    public class RenameBodyInput
+    {
+        [JsonProperty("standardAttributes")]
+        public RenameBodyInputStandardAttributesType StandardAttributes { get; set; }
+    }
+
+    public class RenameBodyInputStandardAttributesType
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string NewName { get; set; }
+    }
+
     public class GetCurrentUserInfoResponse
     {
         [JsonProperty("displayName")]
@@ -1069,27 +942,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         public int Count { get; set; }
     }
 
-    public class lookupEntryBodyaccesspermissionsInputItem
+    public class LookupEntryBodyInput
     {
-        [JsonProperty("view")]
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("defaulting")]
+        public string Type { get; set; }
+
+        [JsonProperty("hold")]
+        public bool? LitigationHold { get; set; }
+
+        [JsonProperty("closed")]
+        public string ClosedDate { get; set; }
+
+        [JsonProperty("access")]
+        public LookupEntryBodyInputAccessType Access { get; set; }
+    }
+
+    public class LookupEntryBodyInputAccessType
+    {
+        [JsonProperty("filtered_permissions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool FilteredPermissions { get; set; }
+
+        [JsonProperty("force_permissions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool ForcePermssions { get; set; }
+
+        [JsonProperty("permissions")]
+        public LookupEntryBodyInputAccessTypePermissionsTypeItem[] Permissions { get; set; }
+    }
+
+    public class LookupEntryBodyInputAccessTypePermissionsTypeItem
+    {
+        [JsonProperty("view", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool View { get; set; }
 
-        [JsonProperty("edit")]
+        [JsonProperty("edit", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Edit { get; set; }
 
-        [JsonProperty("share")]
+        [JsonProperty("share", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Share { get; set; }
 
-        [JsonProperty("administer")]
+        [JsonProperty("administer", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Administer { get; set; }
 
-        [JsonProperty("noAccess")]
+        [JsonProperty("noAccess", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool NoAccess { get; set; }
 
-        [JsonProperty("cabDefault")]
+        [JsonProperty("cabDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool CabinetDefault { get; set; }
 
-        [JsonProperty("principal")]
+        [JsonProperty("principal", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Principal { get; set; }
     }
 
@@ -1106,20 +1009,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInput
+    public enum GetLookupEntryOrderbyInput
     {
-        [EnumMember(Value = "relevance desc")]
-        RelevanceDesc,
-        [EnumMember(Value = "lastMod desc")]
-        LastModDesc,
-        [EnumMember(Value = "name asc")]
-        NameAsc,
-        [EnumMember(Value = "relevance asc")]
-        RelevanceAsc,
-        [EnumMember(Value = "lastMod asc")]
-        LastModAsc,
-        [EnumMember(Value = "name desc")]
-        NameDesc
+        [EnumMember(Value = "key")]
+        Key,
+        [EnumMember(Value = "parent")]
+        Parent
     }
 
     public class DeleteLookupEntryResponse
@@ -1156,7 +1051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum logtypeInput
+    public enum LogtypeInput
     {
         [EnumMember(Value = "consolidated")]
         Consolidated,
@@ -1186,7 +1081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum returnInfoInput
+    public enum ReturnInfoInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -1269,6 +1164,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
 
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SearchCabOrderbyInput
+    {
+        [EnumMember(Value = "relevance desc")]
+        RelevanceDesc,
+        [EnumMember(Value = "lastMod desc")]
+        LastModDesc,
+        [EnumMember(Value = "name asc")]
+        NameAsc,
+        [EnumMember(Value = "relevance asc")]
+        RelevanceAsc,
+        [EnumMember(Value = "lastMod asc")]
+        LastModAsc,
+        [EnumMember(Value = "name desc")]
+        NameDesc
     }
 }
 

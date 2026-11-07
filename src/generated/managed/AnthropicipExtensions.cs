@@ -13,103 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
     public class AnthropicipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anthropicip")]
-        public IBodyWorkflowAction<MessagePostResponse, ApiConnectionActionConfiguration> Message(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens, Expression<Func<bool>> bodythinkingtype = null, Expression<Func<int>> bodythinkingbudgetTokens = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<string>> bodysystem = null, Expression<Func<double>> bodytemperature = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<int>> bodytopK = null, Expression<Func<double>> bodytopP = null)
+        public IBodyWorkflowAction<MessageResponse, ApiConnectionActionConfiguration> Message(Expression<Func<BodyInput>> body = null)
         {
-            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: true);
-            var __workflow_bodythinkingtype = WorkflowExpression.Compile(bodythinkingtype, nameof(bodythinkingtype), required: false);
-            var __workflow_bodythinkingbudgetTokens = WorkflowExpression.Compile(bodythinkingbudgetTokens, nameof(bodythinkingbudgetTokens), required: false);
-            var __workflow_bodystopSequences = WorkflowExpression.Compile(bodystopSequences, nameof(bodystopSequences), required: false);
-            var __workflow_bodysystem = WorkflowExpression.Compile(bodysystem, nameof(bodysystem), required: false);
-            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodytools = WorkflowExpression.Compile(bodytools, nameof(bodytools), required: false);
-            var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
-            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
-            return new DeferredBodyAction<MessagePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<MessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["anthropic-version"] = Convert.ToString("2023-06-01");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
-                bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                bodypropCount++;
-                body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
-                var thinkingObject = new JObject();
-                var thinkingObjectpropCount = 0;
-                if (__workflow_bodythinkingtype != null)
-                {
-                    thinkingObject["type"] = ExpressionConverter.ConvertO(__workflow_bodythinkingtype);
-                    thinkingObjectpropCount++;
-                }
-
-                if (__workflow_bodythinkingbudgetTokens != null)
-                {
-                    thinkingObject["budget_tokens"] = ExpressionConverter.ConvertO(__workflow_bodythinkingbudgetTokens);
-                    thinkingObjectpropCount++;
-                }
-
-                if (thinkingObjectpropCount > 0)
-                {
-                    body["thinking"] = thinkingObject;
-                    bodypropCount++;
-                }
-
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystopSequences != null)
-                {
-                    body["stop_sequences"] = ExpressionConverter.ConvertO(__workflow_bodystopSequences);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysystem != null)
-                {
-                    body["system"] = ExpressionConverter.ConvertO(__workflow_bodysystem);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemperature != null)
-                {
-                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytools != null)
-                {
-                    body["tools"] = ExpressionConverter.ConvertO(__workflow_bodytools);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytopK != null)
-                {
-                    body["top_k"] = ExpressionConverter.ConvertO(__workflow_bodytopK);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytopP != null)
-                {
-                    body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<MessagePostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<MessageResponse>(callPayload);
             });
         }
     }
@@ -118,10 +33,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
     {
     }
 
-    public class MessagePostResponse
+    public class MessageResponse
     {
         [JsonProperty("content")]
-        public MessagePostResponseContentTypeItem[] Content { get; set; }
+        public MessageResponseContentTypeItem[] Content { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -142,10 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public string Type { get; set; }
 
         [JsonProperty("usage")]
-        public MessagePostResponseUsageType Usage { get; set; }
+        public MessageResponseUsageType Usage { get; set; }
     }
 
-    public class MessagePostResponseContentTypeItem
+    public class MessageResponseContentTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -169,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public string Name { get; set; }
     }
 
-    public class MessagePostResponseUsageType
+    public class MessageResponseUsageType
     {
         [JsonProperty("input_tokens")]
         public int InputTokens { get; set; }
@@ -178,8 +93,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public int OutputTokens { get; set; }
     }
 
+    public class BodyInput
+    {
+        [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputModelType Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip.BodyInputModelType.ClaudeOpus40;
+
+        [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputMessagesTypeItem[] Messages { get; set; }
+
+        [JsonProperty("max_tokens", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int MaxTokens { get; set; } = 100;
+
+        [JsonProperty("thinking")]
+        public BodyInputThinkingType Thinking { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("stop_sequences")]
+        public string[] StopSequences { get; set; }
+
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("temperature")]
+        public double? Temperature { get; set; }
+
+        [JsonProperty("tools")]
+        public BodyInputToolsTypeItem[] Tools { get; set; }
+
+        [JsonProperty("top_k")]
+        public int? TopK { get; set; }
+
+        [JsonProperty("top_p")]
+        public double? TopP { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymodelInput
+    public enum BodyInputModelType
     {
         [EnumMember(Value = "claude-opus-4-0")]
         ClaudeOpus40,
@@ -195,17 +146,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         Claude3OpusLatest
     }
 
-    public class bodymessagesInputItem
+    public class BodyInputMessagesTypeItem
     {
-        [JsonProperty("role")]
-        public bodymessagesInputItemRoleType Role { get; set; }
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputMessagesTypeItemRoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip.BodyInputMessagesTypeItemRoleType.User;
 
-        [JsonProperty("content")]
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymessagesInputItemRoleType
+    public enum BodyInputMessagesTypeItemRoleType
     {
         [EnumMember(Value = "user")]
         User,
@@ -213,7 +164,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         Assistant
     }
 
-    public class bodytoolsInputItem
+    public class BodyInputThinkingType
+    {
+        [JsonProperty("type")]
+        public bool? Type { get; set; }
+
+        [JsonProperty("budget_tokens")]
+        public int? BudgetTokens { get; set; }
+    }
+
+    public class BodyInputToolsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }

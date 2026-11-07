@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buymeacoffeeip
     public class BuymeacoffeeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buymeacoffeeip")]
-        public IBodyWorkflowAction<MemberGetResponse, ApiConnectionActionConfiguration> MemberGet(Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<MemberGetResponse, ApiConnectionActionConfiguration> MemberGet(Expression<Func<StatusInput>> status = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             return new DeferredBodyAction<MemberGetResponse, ApiConnectionActionConfiguration>(() =>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buymeacoffeeip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "all")]
         All,

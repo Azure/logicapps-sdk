@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
-        public IBodyWorkflowAction<SchemeGetResponse, ApiConnectionActionConfiguration> SchemeGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null, Expression<Func<modeInput>> mode = null, Expression<Func<int>> count = null)
+        public IBodyWorkflowAction<SchemeGetResponse, ApiConnectionActionConfiguration> SchemeGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null, Expression<Func<ModeInput>> mode = null, Expression<Func<int>> count = null)
         {
             var __workflow_hex = WorkflowExpression.Compile(hex, nameof(hex), required: false);
             var __workflow_rgb = WorkflowExpression.Compile(rgb, nameof(rgb), required: false);
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum modeInput
+    public enum ModeInput
     {
         [EnumMember(Value = "monochrome")]
         Monochrome,

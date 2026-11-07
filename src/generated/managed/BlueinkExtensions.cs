@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
     public class BlueinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> ListBundles(Expression<Func<string>> search = null, Expression<Func<statusInput>> status = null, Expression<Func<statusInInput>> statusIn = null, Expression<Func<string>> tag = null, Expression<Func<string>> tagIn = null, Expression<Func<orderingInput>> ordering = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> ListBundles(Expression<Func<string>> search = null, Expression<Func<StatusInput>> status = null, Expression<Func<StatusInInput>> statusIn = null, Expression<Func<string>> tag = null, Expression<Func<string>> tagIn = null, Expression<Func<OrderingInput>> ordering = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhooksResponseItem[], ApiConnectionActionConfiguration> ListWebhooks(Expression<Func<bool>> enabled = null, Expression<Func<eventTypeInput>> eventType = null)
+        public IBodyWorkflowAction<ListWebhooksResponseItem[], ApiConnectionActionConfiguration> ListWebhooks(Expression<Func<bool>> enabled = null, Expression<Func<EventTypeInput>> eventType = null)
         {
             var __workflow_enabled = WorkflowExpression.Compile(enabled, nameof(enabled), required: false);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: false);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[], ApiConnectionActionConfiguration> ListWebhookDeliveries(Expression<Func<string>> webhook = null, Expression<Func<string>> webhookEvent = null, Expression<Func<eventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[], ApiConnectionActionConfiguration> ListWebhookDeliveries(Expression<Func<string>> webhook = null, Expression<Func<string>> webhookEvent = null, Expression<Func<EventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<string>> date = null)
         {
             var __workflow_webhook = WorkflowExpression.Compile(webhook, nameof(webhook), required: false);
             var __workflow_webhookEvent = WorkflowExpression.Compile(webhookEvent, nameof(webhookEvent), required: false);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhookEventsResponseItem[], ApiConnectionActionConfiguration> ListWebhookEvents(Expression<Func<string>> webhook = null, Expression<Func<eventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<bool>> success = null, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<ListWebhookEventsResponseItem[], ApiConnectionActionConfiguration> ListWebhookEvents(Expression<Func<string>> webhook = null, Expression<Func<EventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<bool>> success = null, Expression<Func<string>> date = null)
         {
             var __workflow_webhook = WorkflowExpression.Compile(webhook, nameof(webhook), required: false);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: false);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[], ApiConnectionActionConfiguration> ListWebhookExtraHeaders(Expression<Func<string>> webhook = null, Expression<Func<eventTypeInput>> eventType = null)
+        public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[], ApiConnectionActionConfiguration> ListWebhookExtraHeaders(Expression<Func<string>> webhook = null, Expression<Func<EventTypeInput>> eventType = null)
         {
             var __workflow_webhook = WorkflowExpression.Compile(webhook, nameof(webhook), required: false);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: false);
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "dr")]
         Dr,
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInInput
+    public enum StatusInInput
     {
         [EnumMember(Value = "dr")]
         Dr,
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderingInput
+    public enum OrderingInput
     {
         [EnumMember(Value = "created")]
         Created,
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum eventTypeInput
+    public enum EventTypeInput
     {
         [EnumMember(Value = "bundle_sent")]
         BundleSent,

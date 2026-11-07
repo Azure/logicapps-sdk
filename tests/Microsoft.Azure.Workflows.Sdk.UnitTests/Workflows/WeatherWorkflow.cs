@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var trigger = WorkflowTriggers.Managed.Msnweather("msnweather").OnCurrentWeatherChange(
                 location: () => "Seattle, WA",
-                measure: () => measureInput.Temperature,
-                when: () => whenInput.IsEqualTo,
+                measure: () => MeasureInput.Temperature,
+                when: () => WhenInput.IsEqualTo,
                 target: () => 70,
                 units: () => "I"
             );
 
             var msg = WorkflowActions.Managed.Teams("teams").PostMessageToConversation(
-                poster: () => posterInput.User,
+                poster: () => PostMessageToConversationPosterInput.User,
                 location: () => "Group chat",
                 body: () => new
                 {

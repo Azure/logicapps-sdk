@@ -13,79 +13,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
     public class CtwoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetSessionFailed(Expression<Func<string>> sessionId, Expression<Func<string>> bodydetails)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetSessionFailed(Expression<Func<string>> sessionId, Expression<Func<SetSessionFailedBodyInput>> body)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            var __workflow_bodydetails = WorkflowExpression.Compile(bodydetails, nameof(bodydetails), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/powerautomate/v1/actions/setsessionfailed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["details"] = ExpressionConverter.ConvertO(__workflow_bodydetails);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddLogToSession(Expression<Func<string>> sessionId, Expression<Func<bodylevelInput>> bodylevel, Expression<Func<string>> bodymessage)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddLogToSession(Expression<Func<string>> sessionId, Expression<Func<AddLogToSessionBodyInput>> body)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/powerautomate/v1/actions/log";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["level"] = ExpressionConverter.ConvertO(__workflow_bodylevel);
-                bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AssignForm(Expression<Func<string>> formId, Expression<Func<int>> bodyuserId = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AssignForm(Expression<Func<string>> formId, Expression<Func<AssignFormBodyInput>> body = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/v2/robotToHumanHelpRequests/{0}/assign", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyuserId != null)
-                {
-                    body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -104,63 +74,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompleteForm(Expression<Func<string>> formId, Expression<Func<string>> bodycompletedAt = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompleteForm(Expression<Func<string>> formId, Expression<Func<CompleteFormBodyInput>> body = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            var __workflow_bodycompletedAt = WorkflowExpression.Compile(bodycompletedAt, nameof(bodycompletedAt), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/v2/robotToHumanHelpRequests/{0}/complete", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycompletedAt != null)
-                {
-                    body["completedAt"] = ExpressionConverter.ConvertO(__workflow_bodycompletedAt);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetItemData(Expression<Func<string>> queueItemId, Expression<Func<string>> bodycreated = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetItemData(Expression<Func<string>> queueItemId, Expression<Func<SetItemDataBodyInput>> body = null)
         {
             var __workflow_queueItemId = WorkflowExpression.Compile(queueItemId, nameof(queueItemId), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/universalqueues/v2/items/{0}/data", __workflow_queueItemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreated != null)
-                {
-                    body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -179,28 +119,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetItemState(Expression<Func<string>> queueItemId, Expression<Func<string>> bodystate = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetItemState(Expression<Func<string>> queueItemId, Expression<Func<SetItemStateBodyInput>> body = null)
         {
             var __workflow_queueItemId = WorkflowExpression.Compile(queueItemId, nameof(queueItemId), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/universalqueues/v2/items/{0}/setstate", __workflow_queueItemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystate != null)
-                {
-                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -231,35 +160,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddItemLog(Expression<Func<string>> queueItemId, Expression<Func<bodylevelInput>> bodylevel = null, Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddItemLog(Expression<Func<string>> queueItemId, Expression<Func<AddItemLogBodyInput>> body = null)
         {
             var __workflow_queueItemId = WorkflowExpression.Compile(queueItemId, nameof(queueItemId), required: true);
-            var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: false);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/universalqueues/v2/items/{0}/log", __workflow_queueItemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylevel != null)
-                {
-                    body["level"] = ExpressionConverter.ConvertO(__workflow_bodylevel);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymessage != null)
-                {
-                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -281,101 +192,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddItemTag(Expression<Func<string>> queueItemId, Expression<Func<string>> bodytags = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddItemTag(Expression<Func<string>> queueItemId, Expression<Func<AddItemTagBodyInput>> body = null)
         {
             var __workflow_queueItemId = WorkflowExpression.Compile(queueItemId, nameof(queueItemId), required: true);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/universalqueues/v2/items/{0}/tag", __workflow_queueItemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateItemState(Expression<Func<bodyresponseTimeCalculationBasisInput>> bodyresponseTimeCalculationBasis, Expression<Func<bodystateInput>> bodystate, Expression<Func<int>> bodyqueueId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodytimeSavedPerItem = null, Expression<Func<int>> bodyvalueGeneratedPerItem = null, Expression<Func<bool>> bodyincludeInReports = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateItemState(Expression<Func<CreateItemStateBodyInput>> body = null)
         {
-            var __workflow_bodyresponseTimeCalculationBasis = WorkflowExpression.Compile(bodyresponseTimeCalculationBasis, nameof(bodyresponseTimeCalculationBasis), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
-            var __workflow_bodyqueueId = WorkflowExpression.Compile(bodyqueueId, nameof(bodyqueueId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodytimeSavedPerItem = WorkflowExpression.Compile(bodytimeSavedPerItem, nameof(bodytimeSavedPerItem), required: false);
-            var __workflow_bodyvalueGeneratedPerItem = WorkflowExpression.Compile(bodyvalueGeneratedPerItem, nameof(bodyvalueGeneratedPerItem), required: false);
-            var __workflow_bodyincludeInReports = WorkflowExpression.Compile(bodyincludeInReports, nameof(bodyincludeInReports), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/universalqueues/v2/states";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["responseTimeCalculationBasis"] = ExpressionConverter.ConvertO(__workflow_bodyresponseTimeCalculationBasis);
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                bodypropCount++;
-                body["queueId"] = ExpressionConverter.ConvertO(__workflow_bodyqueueId);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimeSavedPerItem != null)
-                {
-                    body["timeSavedPerItem"] = ExpressionConverter.ConvertO(__workflow_bodytimeSavedPerItem);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalueGeneratedPerItem != null)
-                {
-                    body["valueGeneratedPerItem"] = ExpressionConverter.ConvertO(__workflow_bodyvalueGeneratedPerItem);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyincludeInReports != null)
-                {
-                    if (__workflow_bodyincludeInReports != null)
-                    {
-                        body["includeInReports"] = ExpressionConverter.ConvertO(__workflow_bodyincludeInReports);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["includeInReports"] = true;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -383,45 +225,140 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
 
     public class CtwoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<StartFlowWithoutTimeoutResponse, ApiConnectionTriggerConfiguration> StartFlowWithoutTimeout(Expression<Func<int>> taskId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<StartFlowWithoutTimeoutResponse, ApiConnectionPollingTriggerConfiguration> StartFlowWithoutTimeout(Expression<Func<int>> taskId)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            return new DeferredBodyTrigger<StartFlowWithoutTimeoutResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<StartFlowWithoutTimeoutResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/powerautomate/v1/trigger/ConsumePendingSessions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["taskId"] = ExpressionConverter.Convert(__workflow_taskId);
-                return new ApiConnectionTrigger<StartFlowWithoutTimeoutResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<StartFlowWithoutTimeoutResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<StartFlowWithTimeoutResponse, ApiConnectionTriggerConfiguration> StartFlowWithTimeout(Expression<Func<int>> taskId, Expression<Func<int>> timeout, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<StartFlowWithTimeoutResponse, ApiConnectionPollingTriggerConfiguration> StartFlowWithTimeout(Expression<Func<int>> taskId, Expression<Func<int>> timeout)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: true);
-            return new DeferredBodyTrigger<StartFlowWithTimeoutResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<StartFlowWithTimeoutResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/powerautomate/v1/trigger/ConsumePendingSessionsWithRequiredTimeout";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["taskId"] = ExpressionConverter.Convert(__workflow_taskId);
                 callPayload.Queries["timeout"] = ExpressionConverter.Convert(__workflow_timeout);
-                return new ApiConnectionTrigger<StartFlowWithTimeoutResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<StartFlowWithTimeoutResponse>(callPayload);
             });
         }
     }
 
+    public class SetSessionFailedBodyInput
+    {
+        [JsonProperty("details", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Details { get; set; }
+    }
+
+    public class AddLogToSessionBodyInput
+    {
+        [JsonProperty("level", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddLogToSessionBodyInputLevelType Level { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylevelInput
+    public enum AddLogToSessionBodyInputLevelType
+    {
+        Trace,
+        Debug,
+        Information,
+        Warning,
+        Error,
+        Critical
+    }
+
+    public class AssignFormBodyInput
+    {
+        [JsonProperty("userId")]
+        public int? UserId { get; set; }
+    }
+
+    public class CompleteFormBodyInput
+    {
+        [JsonProperty("completedAt")]
+        public string CompletedAt { get; set; }
+    }
+
+    public class SetItemDataBodyInput
+    {
+        [JsonProperty("data")]
+        public JToken Data { get; set; }
+
+        [JsonProperty("created")]
+        public string Created { get; set; }
+    }
+
+    public class SetItemStateBodyInput
+    {
+        [JsonProperty("state")]
+        public string State { get; set; }
+    }
+
+    public class AddItemLogBodyInput
+    {
+        [JsonProperty("level")]
+        public AddItemLogBodyInputLevelType? Level { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddItemLogBodyInputLevelType
     {
         Information,
         Warning,
         Exception
     }
 
+    public class AddItemTagBodyInput
+    {
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+    }
+
+    public class CreateItemStateBodyInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("responseTimeCalculationBasis", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputResponseTimeCalculationBasisType ResponseTimeCalculationBasis { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo.BodyInputResponseTimeCalculationBasisType.ItemStateEnterTime;
+
+        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputStateType State { get; set; }
+
+        [JsonProperty("queueId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int QueueId { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("timeSavedPerItem")]
+        public int? TimeSavedPerItem { get; set; }
+
+        [JsonProperty("valueGeneratedPerItem")]
+        public int? ValueGeneratedPerItem { get; set; }
+
+        [JsonProperty("includeInReports", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeInReports { get; set; } = true;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyresponseTimeCalculationBasisInput
+    public enum BodyInputResponseTimeCalculationBasisType
     {
         ItemStateEnterTime,
         ItemCreationTime,
@@ -430,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystateInput
+    public enum BodyInputStateType
     {
         Pending,
         Completed,

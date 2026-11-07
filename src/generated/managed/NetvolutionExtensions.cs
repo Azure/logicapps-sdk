@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
-        public IBodyWorkflowAction<CheckEventResponse, ApiConnectionActionConfiguration> CheckEvent(Expression<Func<eventNameInput>> eventName = null, Expression<Func<string>> contactId = null, Expression<Func<string>> since = null)
+        public IBodyWorkflowAction<CheckEventResponse, ApiConnectionActionConfiguration> CheckEvent(Expression<Func<CheckEventEventNameInput>> eventName = null, Expression<Func<string>> contactId = null, Expression<Func<string>> since = null)
         {
             var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: false);
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: false);
@@ -131,27 +131,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
     public class NetvolutionTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewEventResponse, ApiConnectionTriggerConfiguration> OnNewEvent(Expression<Func<eventNameInput>> eventName, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponse, ApiConnectionPollingTriggerConfiguration> OnNewEvent(Expression<Func<OnNewEventEventNameInput>> eventName)
         {
             var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: true);
-            return new DeferredBodyTrigger<OnNewEventResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnNewEventResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/cdp/events/{0}", __workflow_eventName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnNewEventResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnNewEventResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse, ApiConnectionTriggerConfiguration> OnNewUserInSegment(Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse, ApiConnectionPollingTriggerConfiguration> OnNewUserInSegment(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<OnNewUserInSegmentResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnNewUserInSegmentResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/cdp/contacts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnNewUserInSegmentResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnNewUserInSegmentResponse>(callPayload);
             });
         }
     }
@@ -169,14 +169,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum eventNameInput
+    public enum CheckEventEventNameInput
     {
         [EnumMember(Value = "add_to_cart")]
         AddToCart,
+        [EnumMember(Value = "view_item")]
+        ViewItem,
         [EnumMember(Value = "view_page")]
         ViewPage,
-        [EnumMember(Value = "vies_item")]
-        ViesItem,
         [EnumMember(Value = "begin_checkout")]
         BeginCheckout
     }
@@ -266,6 +266,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         public string ItemParentId { get; set; }
         public string ItemName { get; set; }
         public string Category { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum OnNewEventEventNameInput
+    {
+        [EnumMember(Value = "add_to_cart")]
+        AddToCart,
+        [EnumMember(Value = "view_page")]
+        ViewPage,
+        [EnumMember(Value = "vies_item")]
+        ViesItem,
+        [EnumMember(Value = "begin_checkout")]
+        BeginCheckout
     }
 
     public class OnNewUserInSegmentResponse

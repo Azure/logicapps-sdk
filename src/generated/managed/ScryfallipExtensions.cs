@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class ScryfallipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsSearchGetResponse, ApiConnectionActionConfiguration> CardsSearchGet(Expression<Func<string>> q, Expression<Func<uniqueInput>> unique = null, Expression<Func<orderInput>> order = null, Expression<Func<dirInput>> dir = null, Expression<Func<bool>> includeExtras = null, Expression<Func<bool>> includeMultilingual = null, Expression<Func<bool>> includeVariations = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<CardsSearchGetResponse, ApiConnectionActionConfiguration> CardsSearchGet(Expression<Func<string>> q, Expression<Func<UniqueInput>> unique = null, Expression<Func<OrderInput>> order = null, Expression<Func<DirInput>> dir = null, Expression<Func<bool>> includeExtras = null, Expression<Func<bool>> includeMultilingual = null, Expression<Func<bool>> includeVariations = null, Expression<Func<int>> page = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_unique = WorkflowExpression.Compile(unique, nameof(unique), required: false);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsNamedGetResponse, ApiConnectionActionConfiguration> CardsNamedGet(Expression<Func<string>> exact = null, Expression<Func<string>> fuzzy = null, Expression<Func<string>> set = null, Expression<Func<versionInput>> version = null)
+        public IBodyWorkflowAction<CardsNamedGetResponse, ApiConnectionActionConfiguration> CardsNamedGet(Expression<Func<string>> exact = null, Expression<Func<string>> fuzzy = null, Expression<Func<string>> set = null, Expression<Func<VersionInput>> version = null)
         {
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             var __workflow_fuzzy = WorkflowExpression.Compile(fuzzy, nameof(fuzzy), required: false);
@@ -96,28 +96,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsCollectionPostResponse, ApiConnectionActionConfiguration> CardsCollection(Expression<Func<bodyidentifiersInputItem[]>> bodyidentifiers = null)
+        public IBodyWorkflowAction<CardsCollectionResponse, ApiConnectionActionConfiguration> CardsCollection(Expression<Func<BodyInput>> body = null)
         {
-            var __workflow_bodyidentifiers = WorkflowExpression.Compile(bodyidentifiers, nameof(bodyidentifiers), required: false);
-            return new DeferredBodyAction<CardsCollectionPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<CardsCollectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cards/collection";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidentifiers != null)
-                {
-                    body["identifiers"] = ExpressionConverter.ConvertO(__workflow_bodyidentifiers);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<CardsCollectionPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<CardsCollectionResponse>(callPayload);
             });
         }
 
@@ -974,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum uniqueInput
+    public enum UniqueInput
     {
         [EnumMember(Value = "cards")]
         Cards,
@@ -985,7 +974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderInput
+    public enum OrderInput
     {
         [EnumMember(Value = "name")]
         Name,
@@ -1020,7 +1009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum dirInput
+    public enum DirInput
     {
         [EnumMember(Value = "auto")]
         Auto,
@@ -1343,7 +1332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum versionInput
+    public enum VersionInput
     {
         [EnumMember(Value = "large")]
         Large,
@@ -1371,7 +1360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string[] Data { get; set; }
     }
 
-    public class CardsCollectionPostResponse
+    public class CardsCollectionResponse
     {
         [JsonProperty("object")]
         public string ObjectEntity { get; set; }
@@ -1380,10 +1369,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string[] NotFound { get; set; }
 
         [JsonProperty("data")]
-        public CardsCollectionPostResponseDataTypeItem[] Data { get; set; }
+        public CardsCollectionResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class CardsCollectionPostResponseDataTypeItem
+    public class CardsCollectionResponseDataTypeItem
     {
         [JsonProperty("object")]
         public string ObjectEntity { get; set; }
@@ -1434,7 +1423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string ImageStatus { get; set; }
 
         [JsonProperty("image_uris")]
-        public CardsCollectionPostResponseDataTypeItemImageUrisType ImageUris { get; set; }
+        public CardsCollectionResponseDataTypeItemImageUrisType ImageUris { get; set; }
 
         [JsonProperty("mana_cost")]
         public string ManaCost { get; set; }
@@ -1464,7 +1453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string[] Keywords { get; set; }
 
         [JsonProperty("legalities")]
-        public CardsCollectionPostResponseDataTypeItemLegalitiesType Legalities { get; set; }
+        public CardsCollectionResponseDataTypeItemLegalitiesType Legalities { get; set; }
 
         [JsonProperty("games")]
         public string[] Games { get; set; }
@@ -1572,19 +1561,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public int PennyRank { get; set; }
 
         [JsonProperty("prices")]
-        public CardsCollectionPostResponseDataTypeItemPricesType Prices { get; set; }
+        public CardsCollectionResponseDataTypeItemPricesType Prices { get; set; }
 
         [JsonProperty("related_uris")]
-        public CardsCollectionPostResponseDataTypeItemRelatedUrisType RelatedUris { get; set; }
+        public CardsCollectionResponseDataTypeItemRelatedUrisType RelatedUris { get; set; }
 
         [JsonProperty("purchase_uris")]
-        public CardsCollectionPostResponseDataTypeItemPurchaseUrisType PurchaseUris { get; set; }
+        public CardsCollectionResponseDataTypeItemPurchaseUrisType PurchaseUris { get; set; }
 
         [JsonProperty("produced_mana")]
         public string[] ProducedMana { get; set; }
     }
 
-    public class CardsCollectionPostResponseDataTypeItemImageUrisType
+    public class CardsCollectionResponseDataTypeItemImageUrisType
     {
         [JsonProperty("small")]
         public string Small { get; set; }
@@ -1605,7 +1594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string BorderCrop { get; set; }
     }
 
-    public class CardsCollectionPostResponseDataTypeItemLegalitiesType
+    public class CardsCollectionResponseDataTypeItemLegalitiesType
     {
         [JsonProperty("standard")]
         public string Standard { get; set; }
@@ -1671,7 +1660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Predh { get; set; }
     }
 
-    public class CardsCollectionPostResponseDataTypeItemPricesType
+    public class CardsCollectionResponseDataTypeItemPricesType
     {
         [JsonProperty("usd")]
         public string Usd { get; set; }
@@ -1692,7 +1681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Tix { get; set; }
     }
 
-    public class CardsCollectionPostResponseDataTypeItemRelatedUrisType
+    public class CardsCollectionResponseDataTypeItemRelatedUrisType
     {
         [JsonProperty("gatherer")]
         public string Gatherer { get; set; }
@@ -1707,7 +1696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Edhrec { get; set; }
     }
 
-    public class CardsCollectionPostResponseDataTypeItemPurchaseUrisType
+    public class CardsCollectionResponseDataTypeItemPurchaseUrisType
     {
         [JsonProperty("tcgplayer")]
         public string Tcgplayer { get; set; }
@@ -1719,16 +1708,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Cardhoarder { get; set; }
     }
 
-    public class bodyidentifiersInputItem
+    public class BodyInput
+    {
+        [JsonProperty("identifiers")]
+        public BodyInputIdentifiersTypeItem[] Identifiers { get; set; }
+    }
+
+    public class BodyInputIdentifiersTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("mtgo_id")]
-        public int MtgoId { get; set; }
+        public int? MtgoId { get; set; }
 
         [JsonProperty("multiverse_id")]
-        public int MultiverseId { get; set; }
+        public int? MultiverseId { get; set; }
 
         [JsonProperty("oracle_id")]
         public string OracleId { get; set; }

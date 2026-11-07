@@ -2,7 +2,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip;
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbonprem;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus;
     using Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus;
@@ -78,9 +78,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var dataset = "#{dataset}";
             var table = "@{table}";
-            var action = new DynamicsaxActions("connection").GetItems(
+            var action = new DynamicssmbonpremActions("connection").PostItem(
                 () => dataset,
-                () => table);
+                () => table,
+                () => new { });
             var path = ((ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs).Path;
 
             AssertReturnExpression(
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var action = new MsnweatherActions("connection").CurrentWeather(
                 () => "98058",
-                () => unitsInput.Imperial);
+                () => UnitsInput.Imperial);
 
             Assert.Equal(
                 """#{"/current/" + (encodeURIComponent("98058"))}""",
@@ -129,14 +130,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var compose = WorkflowActions.BuiltIn.Compose(() => "message").WithName("Message");
             var action = new ServicebusActions("connection").SendMessage(
                 () => "queue",
-                () => WorkflowBinaryContent.FromWorkflowContent(compose.Output));
+                () => new MessageInput
+                {
+                    Content = WorkflowBinaryContent.FromWorkflowContent(compose.Output),
+                });
             var inputs = (ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs;
-            var source = ((JObject)inputs.Body)["ContentData"].Value<string>();
+            var source = ((JToken)inputs.Body).Value<string>();
 
             AssertReturnExpression(
                 """
-                global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent.FromWorkflowContent(
-                    outputs("Message"))
+                new global::Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus.MessageInput
+                {
+                    Content = global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent.FromWorkflowContent(
+                        outputs("Message"))
+                }
                 """,
                 source);
         }

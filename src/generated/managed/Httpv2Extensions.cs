@@ -13,41 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Httpv2
     public class Httpv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "httpv2")]
-        public IBodyWorkflowAction<HttpResponse, ApiConnectionActionConfiguration> InvokeHttpRequest(Expression<Func<KeyValue[]>> requestheaders = null, Expression<Func<KeyValue[]>> requestqueryParameters = null, Expression<Func<object>> requestbody = null)
+        public IBodyWorkflowAction<HttpResponse, ApiConnectionActionConfiguration> InvokeHttpRequest(Expression<Func<RequestInput>> request)
         {
-            var __workflow_requestheaders = WorkflowExpression.Compile(requestheaders, nameof(requestheaders), required: false);
-            var __workflow_requestqueryParameters = WorkflowExpression.Compile(requestqueryParameters, nameof(requestqueryParameters), required: false);
-            var __workflow_requestbody = WorkflowExpression.Compile(requestbody, nameof(requestbody), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<HttpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/InvokeHttpRequest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (__workflow_requestheaders != null)
-                {
-                    request["headers"] = ExpressionConverter.ConvertO(__workflow_requestheaders);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestqueryParameters != null)
-                {
-                    request["queryParameters"] = ExpressionConverter.ConvertO(__workflow_requestqueryParameters);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestbody != null)
-                {
-                    request["body"] = ExpressionConverter.ConvertO(__workflow_requestbody);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<HttpResponse>(callPayload);
             });
         }
@@ -63,15 +37,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Httpv2
         public int StatusCode { get; set; }
 
         [JsonProperty("headers")]
-        public KeyValue[] Headers { get; set; }
+        public InvokeHttpRequestKeyValueResponse[] Headers { get; set; }
 
         [JsonProperty("body")]
         public JToken Body { get; set; }
     }
 
-    public class KeyValue
+    public class InvokeHttpRequestKeyValueResponse
     {
         [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class RequestInput
+    {
+        [JsonProperty("headers")]
+        public InvokeHttpRequestKeyValue[] Headers { get; set; }
+
+        [JsonProperty("queryParameters")]
+        public InvokeHttpRequestKeyValue[] QueryParameters { get; set; }
+
+        [JsonProperty("body")]
+        public JToken Body { get; set; }
+    }
+
+    public class InvokeHttpRequestKeyValue
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("value")]

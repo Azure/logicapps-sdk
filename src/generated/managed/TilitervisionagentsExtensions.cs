@@ -13,45 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
     public class TilitervisionagentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilitervisionagents")]
-        public IBodyWorkflowAction<AgentResponse, ApiConnectionActionConfiguration> RunVisionAgent(Expression<Func<agentNameInput>> agentName, Expression<Func<string>> payloadinputFileB64, Expression<Func<string>> payloadexpectedText = null, Expression<Func<string>> payloadobjectType = null, Expression<Func<string[]>> payloadexpectedObjects = null)
+        public IBodyWorkflowAction<AgentResponse, ApiConnectionActionConfiguration> RunVisionAgent(Expression<Func<AgentNameInput>> agentName, Expression<Func<PayloadInput>> payload)
         {
             var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
-            var __workflow_payloadinputFileB64 = WorkflowExpression.Compile(payloadinputFileB64, nameof(payloadinputFileB64), required: true);
-            var __workflow_payloadexpectedText = WorkflowExpression.Compile(payloadexpectedText, nameof(payloadexpectedText), required: false);
-            var __workflow_payloadobjectType = WorkflowExpression.Compile(payloadobjectType, nameof(payloadobjectType), required: false);
-            var __workflow_payloadexpectedObjects = WorkflowExpression.Compile(payloadexpectedObjects, nameof(payloadexpectedObjects), required: false);
+            var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
             return new DeferredBodyAction<AgentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/agents/{0}/v1/inference", __workflow_agentName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var payload = new JObject();
-                var payloadpropCount = 0;
-                payloadpropCount++;
-                payload["input_file_b64"] = ExpressionConverter.ConvertO(__workflow_payloadinputFileB64);
-                if (__workflow_payloadexpectedText != null)
-                {
-                    payload["expected_text"] = ExpressionConverter.ConvertO(__workflow_payloadexpectedText);
-                    payloadpropCount++;
-                }
-
-                if (__workflow_payloadobjectType != null)
-                {
-                    payload["object_type"] = ExpressionConverter.ConvertO(__workflow_payloadobjectType);
-                    payloadpropCount++;
-                }
-
-                if (__workflow_payloadexpectedObjects != null)
-                {
-                    payload["expected_objects"] = ExpressionConverter.ConvertO(__workflow_payloadexpectedObjects);
-                    payloadpropCount++;
-                }
-
-                if (payloadpropCount > 0)
-                {
-                    callPayload.Body = payload;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_payload);
                 return new ApiConnectionAction<AgentResponse>(callPayload);
             });
         }
@@ -86,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum agentNameInput
+    public enum AgentNameInput
     {
         [EnumMember(Value = "cleanliness-score")]
         CleanlinessScore,
@@ -112,6 +83,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
         ReverseVendingMachine,
         [EnumMember(Value = "tyre-recognition")]
         TyreRecognition
+    }
+
+    public class PayloadInput
+    {
+        [JsonProperty("input_file_b64", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string InputFileB64 { get; set; }
+
+        [JsonProperty("expected_text")]
+        public string ExpectedText { get; set; }
+
+        [JsonProperty("object_type")]
+        public string ObjectType { get; set; }
+
+        [JsonProperty("expected_objects")]
+        public string[] ExpectedObjects { get; set; }
     }
 }
 

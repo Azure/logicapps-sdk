@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
     public class PropublicacongressipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<MemberGetResponse, ApiConnectionActionConfiguration> MemberGet(Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber, Expression<Func<bool>> inOffice = null)
+        public IBodyWorkflowAction<MemberGetResponse, ApiConnectionActionConfiguration> MemberGet(Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber, Expression<Func<bool>> inOffice = null)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<MemberGetStateResponse, ApiConnectionActionConfiguration> MemberGetState(Expression<Func<chamberInput>> chamber, Expression<Func<string>> state)
+        public IBodyWorkflowAction<MemberGetStateResponse, ApiConnectionActionConfiguration> MemberGetState(Expression<Func<ChamberInput>> chamber, Expression<Func<string>> state)
         {
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<MemberGetLeavingResponse, ApiConnectionActionConfiguration> MemberGetLeaving(Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber)
+        public IBodyWorkflowAction<MemberGetLeavingResponse, ApiConnectionActionConfiguration> MemberGetLeaving(Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<MemberGetVotePositionsResponse, ApiConnectionActionConfiguration> MemberGetVotePositions(Expression<Func<string>> firstMemberId, Expression<Func<string>> secondMemberId, Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber)
+        public IBodyWorkflowAction<MemberGetVotePositionsResponse, ApiConnectionActionConfiguration> MemberGetVotePositions(Expression<Func<string>> firstMemberId, Expression<Func<string>> secondMemberId, Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber)
         {
             var __workflow_firstMemberId = WorkflowExpression.Compile(firstMemberId, nameof(firstMemberId), required: true);
             var __workflow_secondMemberId = WorkflowExpression.Compile(secondMemberId, nameof(secondMemberId), required: true);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<MemberGetBillResponse, ApiConnectionActionConfiguration> MemberGetBill(Expression<Func<string>> firstMemberId, Expression<Func<string>> secondMemberId, Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber)
+        public IBodyWorkflowAction<MemberGetBillResponse, ApiConnectionActionConfiguration> MemberGetBill(Expression<Func<string>> firstMemberId, Expression<Func<string>> secondMemberId, Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber)
         {
             var __workflow_firstMemberId = WorkflowExpression.Compile(firstMemberId, nameof(firstMemberId), required: true);
             var __workflow_secondMemberId = WorkflowExpression.Compile(secondMemberId, nameof(secondMemberId), required: true);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<BillRecentMemberResponse, ApiConnectionActionConfiguration> BillRecentMember(Expression<Func<string>> memberId, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<BillRecentMemberResponse, ApiConnectionActionConfiguration> BillRecentMember(Expression<Func<string>> memberId, Expression<Func<TypeInput>> type)
         {
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<HouseOfficeCategoryResponse, ApiConnectionActionConfiguration> HouseOfficeCategory(Expression<Func<string>> memberId, Expression<Func<categoryInput>> category)
+        public IBodyWorkflowAction<HouseOfficeCategoryResponse, ApiConnectionActionConfiguration> HouseOfficeCategory(Expression<Func<string>> memberId, Expression<Func<HouseOfficeCategoryCategoryInput>> category)
         {
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<HouseOfficeQuarterCategoryResponse, ApiConnectionActionConfiguration> HouseOfficeQuarterCategory(Expression<Func<categoryInput>> category, Expression<Func<string>> year, Expression<Func<string>> quarter)
+        public IBodyWorkflowAction<HouseOfficeQuarterCategoryResponse, ApiConnectionActionConfiguration> HouseOfficeQuarterCategory(Expression<Func<HouseOfficeCategoryCategoryInput>> category, Expression<Func<string>> year, Expression<Func<string>> quarter)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<BillSearchResponse, ApiConnectionActionConfiguration> BillSearch(Expression<Func<string>> query = null, Expression<Func<sortInput>> sort = null, Expression<Func<dirInput>> dir = null)
+        public IBodyWorkflowAction<BillSearchResponse, ApiConnectionActionConfiguration> BillSearch(Expression<Func<string>> query = null, Expression<Func<SortInput>> sort = null, Expression<Func<DirInput>> dir = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<BillRecentResponse, ApiConnectionActionConfiguration> BillRecent(Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<BillRecentResponse, ApiConnectionActionConfiguration> BillRecent(Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber, Expression<Func<TypeInput>> type)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<BillUpcomingResponse, ApiConnectionActionConfiguration> BillUpcoming(Expression<Func<chamberInput>> chamber)
+        public IBodyWorkflowAction<BillUpcomingResponse, ApiConnectionActionConfiguration> BillUpcoming(Expression<Func<ChamberInput>> chamber)
         {
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
             return new DeferredBodyAction<BillUpcomingResponse, ApiConnectionActionConfiguration>(() =>
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<VoteRecentResponse, ApiConnectionActionConfiguration> VoteRecent(Expression<Func<chamberInput>> chamber, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<VoteRecentResponse, ApiConnectionActionConfiguration> VoteRecent(Expression<Func<ChamberInput>> chamber, Expression<Func<int>> offset = null)
         {
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<VoteRollCallResponse, ApiConnectionActionConfiguration> VoteRollCall(Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber, Expression<Func<string>> sessionNumber, Expression<Func<int>> rollCallNumber)
+        public IBodyWorkflowAction<VoteRollCallResponse, ApiConnectionActionConfiguration> VoteRollCall(Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber, Expression<Func<string>> sessionNumber, Expression<Func<int>> rollCallNumber)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<VoteTypeResponse, ApiConnectionActionConfiguration> VoteType(Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber, Expression<Func<voteTypeInput>> voteType)
+        public IBodyWorkflowAction<VoteTypeResponse, ApiConnectionActionConfiguration> VoteType(Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber, Expression<Func<VoteTypeInput>> voteType)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<VoteDateResponse, ApiConnectionActionConfiguration> VoteDate(Expression<Func<chamberInput>> chamber, Expression<Func<string>> startDate, Expression<Func<string>> endDate)
+        public IBodyWorkflowAction<VoteDateResponse, ApiConnectionActionConfiguration> VoteDate(Expression<Func<ChamberInput>> chamber, Expression<Func<string>> startDate, Expression<Func<string>> endDate)
         {
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<CommitteeGetResponse, ApiConnectionActionConfiguration> CommitteeGet(Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber)
+        public IBodyWorkflowAction<CommitteeGetResponse, ApiConnectionActionConfiguration> CommitteeGet(Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<CommitteeGetAResponse, ApiConnectionActionConfiguration> CommitteeGetA(Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber, Expression<Func<string>> committeeId)
+        public IBodyWorkflowAction<CommitteeGetAResponse, ApiConnectionActionConfiguration> CommitteeGetA(Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber, Expression<Func<string>> committeeId)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<CommitteeHearingAResponse, ApiConnectionActionConfiguration> CommitteeHearingA(Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber, Expression<Func<string>> committeeId, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<CommitteeHearingAResponse, ApiConnectionActionConfiguration> CommitteeHearingA(Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber, Expression<Func<string>> committeeId, Expression<Func<int>> offset = null)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<SubcommitteeGetResponse, ApiConnectionActionConfiguration> SubcommitteeGet(Expression<Func<string>> congress, Expression<Func<chamberInput>> chamber, Expression<Func<string>> committeeId, Expression<Func<string>> subcommitteeId)
+        public IBodyWorkflowAction<SubcommitteeGetResponse, ApiConnectionActionConfiguration> SubcommitteeGet(Expression<Func<string>> congress, Expression<Func<ChamberInput>> chamber, Expression<Func<string>> committeeId, Expression<Func<string>> subcommitteeId)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<CommunicationRecentCategoryResponse, ApiConnectionActionConfiguration> CommunicationRecentCategory(Expression<Func<string>> congress, Expression<Func<categoryInput>> category)
+        public IBodyWorkflowAction<CommunicationRecentCategoryResponse, ApiConnectionActionConfiguration> CommunicationRecentCategory(Expression<Func<string>> congress, Expression<Func<CommunicationRecentCategoryCategoryInput>> category)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<FloorActionResponse, ApiConnectionActionConfiguration> FloorAction(Expression<Func<chamberInput>> chamber, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<FloorActionResponse, ApiConnectionActionConfiguration> FloorAction(Expression<Func<ChamberInput>> chamber, Expression<Func<int>> offset = null)
         {
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<FloorActionDateResponse, ApiConnectionActionConfiguration> FloorActionDate(Expression<Func<chamberInput>> chamber, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<FloorActionDateResponse, ApiConnectionActionConfiguration> FloorActionDate(Expression<Func<ChamberInput>> chamber, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
             var __workflow_chamber = WorkflowExpression.Compile(chamber, nameof(chamber), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum chamberInput
+    public enum ChamberInput
     {
         [EnumMember(Value = "house")]
         House,
@@ -1655,7 +1655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "cosponsored")]
         Cosponsored,
@@ -1757,14 +1757,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum categoryInput
+    public enum HouseOfficeCategoryCategoryInput
     {
-        [EnumMember(Value = "ec")]
-        Ec,
-        [EnumMember(Value = "pm")]
-        Pm,
-        [EnumMember(Value = "pom")]
-        Pom
+        [EnumMember(Value = "travel")]
+        Travel,
+        [EnumMember(Value = "personnel")]
+        Personnel,
+        [EnumMember(Value = "rent-utilities")]
+        RentUtilities,
+        [EnumMember(Value = "other-services")]
+        OtherServices,
+        [EnumMember(Value = "supplies")]
+        Supplies,
+        [EnumMember(Value = "franked-mail")]
+        FrankedMail,
+        [EnumMember(Value = "printing")]
+        Printing,
+        [EnumMember(Value = "equipment")]
+        Equipment,
+        [EnumMember(Value = "total")]
+        Total
     }
 
     public class HouseOfficeQuarterCategoryResponse
@@ -2056,7 +2068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "_score")]
         Score,
@@ -2065,7 +2077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum dirInput
+    public enum DirInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -3542,7 +3554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum voteTypeInput
+    public enum VoteTypeInput
     {
         [EnumMember(Value = "missed")]
         Missed,
@@ -4536,6 +4548,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
 
         [JsonProperty("committee_name")]
         public string CommitteeName { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CommunicationRecentCategoryCategoryInput
+    {
+        [EnumMember(Value = "ec")]
+        Ec,
+        [EnumMember(Value = "pm")]
+        Pm,
+        [EnumMember(Value = "pom")]
+        Pom
     }
 
     public class CommunicationDateResponse

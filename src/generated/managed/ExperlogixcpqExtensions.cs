@@ -13,12 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
     public class ExperlogixcpqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
-            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/webhooks/mcp";
@@ -26,55 +24,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_mcpSessionId != null)
                     callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(__workflow_mcpSessionId);
-                var queryRequest = new JObject();
-                var queryRequestpropCount = 0;
-                if (__workflow_queryRequestjsonrpc != null)
-                {
-                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(__workflow_queryRequestjsonrpc);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestid != null)
-                {
-                    queryRequest["id"] = ExpressionConverter.ConvertO(__workflow_queryRequestid);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestmethod != null)
-                {
-                    queryRequest["method"] = ExpressionConverter.ConvertO(__workflow_queryRequestmethod);
-                    queryRequestpropCount++;
-                }
-
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (@paramsObjectpropCount > 0)
-                {
-                    queryRequest["params"] = @paramsObject;
-                    queryRequestpropCount++;
-                }
-
-                var resultObject = new JObject();
-                var resultObjectpropCount = 0;
-                if (resultObjectpropCount > 0)
-                {
-                    queryRequest["result"] = resultObject;
-                    queryRequestpropCount++;
-                }
-
-                var errorObject = new JObject();
-                var errorObjectpropCount = 0;
-                if (errorObjectpropCount > 0)
-                {
-                    queryRequest["error"] = errorObject;
-                    queryRequestpropCount++;
-                }
-
-                if (queryRequestpropCount > 0)
-                {
-                    callPayload.Body = queryRequest;
-                }
-
+                if (__workflow_queryRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -96,222 +47,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfigurationFromCopy(Expression<Func<string>> reqtargetId, Expression<Func<string>> reqsourceId, Expression<Func<string>> reqtype, Expression<Func<int[]>> reqlineItemIds = null)
+        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfigurationFromCopy(Expression<Func<CreateConfigurationFromCopyReqInput>> req)
         {
-            var __workflow_reqtargetId = WorkflowExpression.Compile(reqtargetId, nameof(reqtargetId), required: true);
-            var __workflow_reqsourceId = WorkflowExpression.Compile(reqsourceId, nameof(reqsourceId), required: true);
-            var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
-            var __workflow_reqlineItemIds = WorkflowExpression.Compile(reqlineItemIds, nameof(reqlineItemIds), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CreateConfigurationFromCopy";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var req = new JObject();
-                var reqpropCount = 0;
-                reqpropCount++;
-                req["targetId"] = ExpressionConverter.ConvertO(__workflow_reqtargetId);
-                reqpropCount++;
-                req["sourceId"] = ExpressionConverter.ConvertO(__workflow_reqsourceId);
-                reqpropCount++;
-                req["type"] = ExpressionConverter.ConvertO(__workflow_reqtype);
-                if (__workflow_reqlineItemIds != null)
-                {
-                    req["lineItemIds"] = ExpressionConverter.ConvertO(__workflow_reqlineItemIds);
-                    reqpropCount++;
-                }
-
-                if (reqpropCount > 0)
-                {
-                    callPayload.Body = req;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
                 return new ApiConnectionAction<GetConfigurationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> UpdateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
+        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> UpdateConfiguration(Expression<Func<CreateConfigurationReqInput>> req)
         {
-            var __workflow_reqid = WorkflowExpression.Compile(reqid, nameof(reqid), required: true);
-            var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
-            var __workflow_reqconfigurationXml = WorkflowExpression.Compile(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UpdateConfiguration";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var req = new JObject();
-                var reqpropCount = 0;
-                reqpropCount++;
-                req["id"] = ExpressionConverter.ConvertO(__workflow_reqid);
-                reqpropCount++;
-                req["type"] = ExpressionConverter.ConvertO(__workflow_reqtype);
-                reqpropCount++;
-                req["configurationXml"] = ExpressionConverter.ConvertO(__workflow_reqconfigurationXml);
-                if (reqpropCount > 0)
-                {
-                    callPayload.Body = req;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
                 return new ApiConnectionAction<GetConfigurationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
+        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfiguration(Expression<Func<CreateConfigurationReqInput>> req)
         {
-            var __workflow_reqid = WorkflowExpression.Compile(reqid, nameof(reqid), required: true);
-            var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
-            var __workflow_reqconfigurationXml = WorkflowExpression.Compile(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CreateConfiguration";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var req = new JObject();
-                var reqpropCount = 0;
-                reqpropCount++;
-                req["id"] = ExpressionConverter.ConvertO(__workflow_reqid);
-                reqpropCount++;
-                req["type"] = ExpressionConverter.ConvertO(__workflow_reqtype);
-                reqpropCount++;
-                req["configurationXml"] = ExpressionConverter.ConvertO(__workflow_reqconfigurationXml);
-                if (reqpropCount > 0)
-                {
-                    callPayload.Body = req;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
                 return new ApiConnectionAction<GetConfigurationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfigurationFromChanges(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqseriesId, Expression<Func<string>> reqmodelId, Expression<Func<ChangeConfig[]>> reqchanges = null, Expression<Func<bool>> reqsaveConfiguration = null)
+        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfigurationFromChanges(Expression<Func<CreateConfigurationFromChangesReqInput>> req)
         {
-            var __workflow_reqid = WorkflowExpression.Compile(reqid, nameof(reqid), required: true);
-            var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
-            var __workflow_reqseriesId = WorkflowExpression.Compile(reqseriesId, nameof(reqseriesId), required: true);
-            var __workflow_reqmodelId = WorkflowExpression.Compile(reqmodelId, nameof(reqmodelId), required: true);
-            var __workflow_reqchanges = WorkflowExpression.Compile(reqchanges, nameof(reqchanges), required: false);
-            var __workflow_reqsaveConfiguration = WorkflowExpression.Compile(reqsaveConfiguration, nameof(reqsaveConfiguration), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CreateConfigurationFromChanges";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var req = new JObject();
-                var reqpropCount = 0;
-                reqpropCount++;
-                req["id"] = ExpressionConverter.ConvertO(__workflow_reqid);
-                reqpropCount++;
-                req["type"] = ExpressionConverter.ConvertO(__workflow_reqtype);
-                reqpropCount++;
-                req["seriesId"] = ExpressionConverter.ConvertO(__workflow_reqseriesId);
-                reqpropCount++;
-                req["modelId"] = ExpressionConverter.ConvertO(__workflow_reqmodelId);
-                if (__workflow_reqchanges != null)
-                {
-                    req["changes"] = ExpressionConverter.ConvertO(__workflow_reqchanges);
-                    reqpropCount++;
-                }
-
-                if (__workflow_reqsaveConfiguration != null)
-                {
-                    if (__workflow_reqsaveConfiguration != null)
-                    {
-                        req["saveConfiguration"] = ExpressionConverter.ConvertO(__workflow_reqsaveConfiguration);
-                        reqpropCount++;
-                    }
-
-                    reqpropCount++;
-                }
-                else
-                {
-                    req["saveConfiguration"] = true;
-                    reqpropCount++;
-                }
-
-                if (reqpropCount > 0)
-                {
-                    callPayload.Body = req;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
                 return new ApiConnectionAction<GetConfigurationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> UpdateConfigurationFromChanges(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<ChangeConfig[]>> reqchanges = null, Expression<Func<bool>> reqsaveConfiguration = null)
+        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> UpdateConfigurationFromChanges(Expression<Func<UpdateConfigurationFromChangesReqInput>> req)
         {
-            var __workflow_reqid = WorkflowExpression.Compile(reqid, nameof(reqid), required: true);
-            var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
-            var __workflow_reqchanges = WorkflowExpression.Compile(reqchanges, nameof(reqchanges), required: false);
-            var __workflow_reqsaveConfiguration = WorkflowExpression.Compile(reqsaveConfiguration, nameof(reqsaveConfiguration), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UpdateConfigurationFromChanges";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var req = new JObject();
-                var reqpropCount = 0;
-                reqpropCount++;
-                req["id"] = ExpressionConverter.ConvertO(__workflow_reqid);
-                reqpropCount++;
-                req["type"] = ExpressionConverter.ConvertO(__workflow_reqtype);
-                if (__workflow_reqchanges != null)
-                {
-                    req["changes"] = ExpressionConverter.ConvertO(__workflow_reqchanges);
-                    reqpropCount++;
-                }
-
-                if (__workflow_reqsaveConfiguration != null)
-                {
-                    if (__workflow_reqsaveConfiguration != null)
-                    {
-                        req["saveConfiguration"] = ExpressionConverter.ConvertO(__workflow_reqsaveConfiguration);
-                        reqpropCount++;
-                    }
-
-                    reqpropCount++;
-                }
-                else
-                {
-                    req["saveConfiguration"] = true;
-                    reqpropCount++;
-                }
-
-                if (reqpropCount > 0)
-                {
-                    callPayload.Body = req;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
                 return new ApiConnectionAction<GetConfigurationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetModelMetadataResponse, ApiConnectionActionConfiguration> GetModelMetadata(Expression<Func<string[]>> reqrelevantCategories = null)
+        public IBodyWorkflowAction<GetModelMetadataResponse, ApiConnectionActionConfiguration> GetModelMetadata(Expression<Func<GetModelMetadataReqInput>> req = null)
         {
-            var __workflow_reqrelevantCategories = WorkflowExpression.Compile(reqrelevantCategories, nameof(reqrelevantCategories), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
             return new DeferredBodyAction<GetModelMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ModelMetadata";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var req = new JObject();
-                var reqpropCount = 0;
-                if (__workflow_reqrelevantCategories != null)
-                {
-                    req["relevantCategories"] = ExpressionConverter.ConvertO(__workflow_reqrelevantCategories);
-                    reqpropCount++;
-                }
-
-                if (reqpropCount > 0)
-                {
-                    callPayload.Body = req;
-                }
-
+                if (__workflow_req != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
                 return new ApiConnectionAction<GetModelMetadataResponse>(callPayload);
             });
         }
@@ -319,6 +134,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
 
     public class ExperlogixcpqTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class QueryRequestInput
+    {
+        [JsonProperty("jsonrpc")]
+        public string Jsonrpc { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("method")]
+        public string Method { get; set; }
+
+        [JsonProperty("params")]
+        public JToken Params { get; set; }
+
+        [JsonProperty("result")]
+        public JToken Result { get; set; }
+
+        [JsonProperty("error")]
+        public JToken Error { get; set; }
     }
 
     public class GetConfigurationResponse
@@ -339,31 +175,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         public string[] Messages { get; set; }
     }
 
+    public class CreateConfigurationFromCopyReqInput
+    {
+        [JsonProperty("targetId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TargetId { get; set; }
+
+        [JsonProperty("sourceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("lineItemIds")]
+        public int[] LineItemIds { get; set; }
+    }
+
+    public class CreateConfigurationReqInput
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("configurationXml", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConfigurationXml { get; set; }
+    }
+
+    public class CreateConfigurationFromChangesReqInput
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("seriesId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SeriesId { get; set; }
+
+        [JsonProperty("modelId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ModelId { get; set; }
+
+        [JsonProperty("changes")]
+        public ChangeConfig[] Changes { get; set; }
+
+        [JsonProperty("saveConfiguration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SaveConfiguration { get; set; } = true;
+    }
+
     public class ChangeConfig
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
         [JsonProperty("configLineIndex")]
-        public int ConfigLineIndex { get; set; }
+        public int? ConfigLineIndex { get; set; }
 
         [JsonProperty("changeType")]
         public string ChangeType { get; set; }
 
-        [JsonProperty("categoryId")]
+        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CategoryId { get; set; }
 
-        [JsonProperty("optionId")]
+        [JsonProperty("optionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OptionId { get; set; }
 
         [JsonProperty("selectionIndex")]
-        public int SelectionIndex { get; set; }
+        public int? SelectionIndex { get; set; }
 
         [JsonProperty("propertyId")]
         public string PropertyId { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    public class UpdateConfigurationFromChangesReqInput
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("changes")]
+        public ChangeConfig[] Changes { get; set; }
+
+        [JsonProperty("saveConfiguration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SaveConfiguration { get; set; } = true;
     }
 
     public class GetModelMetadataResponse
@@ -384,6 +283,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [JsonProperty("CatID")]
         public string CatId { get; set; }
         public string Description { get; set; }
+    }
+
+    public class GetModelMetadataReqInput
+    {
+        [JsonProperty("relevantCategories")]
+        public string[] RelevantCategories { get; set; }
     }
 }
 

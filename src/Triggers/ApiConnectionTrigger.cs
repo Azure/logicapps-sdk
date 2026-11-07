@@ -21,6 +21,23 @@ namespace Microsoft.Azure.Workflows.Sdk
         Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
+    public sealed class ApiConnectionPollingTriggerConfiguration :
+        IRetryPolicyConfiguration,
+        ISecureInputsConfiguration,
+        ISecureOutputsConfiguration,
+        ITriggerConcurrencyConfiguration,
+        IClientTrackingIdConfiguration,
+        IRecurrenceConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
+    }
+
     /// <summary>
     /// Represents an API connection trigger in a workflow.
     /// </summary>
@@ -37,11 +54,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         private object _inputs;
 
         /// <summary>
-        /// Gets the recurrence of the trigger.
-        /// </summary>
-        FlowRecurrence Recurrence { get; set; }
-
-        /// <summary>
         /// Gets or sets the trigger split on.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
@@ -51,38 +63,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a new instance of the <see cref="ApiConnectionTrigger"/> class with notification input.
         /// </summary>
         /// <param name="input">The API connection notification action input.</param>
-        /// <param name="triggerName">The trigger name.</param>
-        internal ApiConnectionTrigger(
-            ApiConnectionNotificationActionInput input,
-            string triggerName = null)
+        internal ApiConnectionTrigger(ApiConnectionNotificationActionInput input)
         {
             this._type = FlowTemplateOperationType.ApiConnectionNotification;
             this._inputs = input;
-            this.Name = triggerName ?? "ApiConnectionTrigger";
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiConnectionTrigger"/> class with action input.
-        /// </summary>
-        /// <param name="input">The API connection action input.</param>
-        /// <param name="triggerName">The trigger name.</param>
-        /// <param name="recurrence">The recurrence configuration for the trigger.</param>
-        /// <param name="enableSplitOn">Enable spliton trigger</param>
-        internal ApiConnectionTrigger(
-            ApiConnectionActionInput input,
-            string triggerName = null,
-            FlowRecurrence recurrence = null,
-            bool enableSplitOn = false)
-        {
-            this._type = FlowTemplateOperationType.ApiConnection;
-            this.Name = triggerName ?? "ApiConnectionTrigger";
-            this._inputs = input;
-            this.Recurrence = recurrence ?? new FlowRecurrence
-                {
-                    Frequency = FlowRecurrenceFrequency.Minute,
-                    Interval = 1,
-                };
-            this.SplitOn = enableSplitOn ? "@triggerOutputs()?['body']" : null;
         }
 
         /// <summary>
@@ -95,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 Type = this._type,
                 Inputs = this._inputs,
-                Recurrence = this.Recurrence,
                 SplitOn = this.SplitOn,
             };
         }
@@ -113,21 +96,62 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a new instance of the <see cref="ApiConnectionTrigger{T}"/> class with notification input.
         /// </summary>
         /// <param name="input">The API connection notification action input.</param>
-        /// <param name="triggerName">The trigger name.</param>
-        internal ApiConnectionTrigger(ApiConnectionNotificationActionInput input, string triggerName = null)
-            : base(input, triggerName)
+        internal ApiConnectionTrigger(ApiConnectionNotificationActionInput input)
+            : base(input)
         { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiConnectionTrigger{T}"/> class with action input.
+        /// Gets the typed output of the trigger.
         /// </summary>
-        /// <param name="input">The API connection action input.</param>
-        /// <param name="triggerName">The trigger name.</param>
-        /// <param name="recurrence">The recurrence configuration for the trigger.</param>
-        /// <param name="enableSplitOn">Enable spliton trigger</param>
-        internal ApiConnectionTrigger(ApiConnectionActionInput input, string triggerName = null, FlowRecurrence recurrence = null, bool enableSplitOn = false)
-            : base(input, triggerName, recurrence, enableSplitOn)
-        { 
+        public T TriggerBody { get; private set; }
+    }
+
+    /// <summary>
+    /// Represents a polling API connection trigger in a workflow.
+    /// </summary>
+    internal class ApiConnectionPollingTrigger :
+        WorkflowTriggerBase<ApiConnectionPollingTriggerConfiguration>
+    {
+        private readonly ApiConnectionActionInput input;
+
+        /// <summary>
+        /// Gets or sets the trigger split on.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string SplitOn { get; set; }
+
+        internal ApiConnectionPollingTrigger(
+            ApiConnectionActionInput input,
+            bool enableSplitOn = false)
+        {
+            this.input = input;
+            this.SplitOn = enableSplitOn ? "@triggerOutputs()?['body']" : null;
+        }
+
+        internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
+        {
+            return new FlowTemplateTrigger
+            {
+                Type = FlowTemplateOperationType.ApiConnection,
+                Inputs = this.input,
+                SplitOn = this.SplitOn,
+            };
+        }
+    }
+
+    /// <summary>
+    /// Represents a polling API connection trigger with typed output in a workflow.
+    /// </summary>
+    /// <typeparam name="T">The type of the trigger output.</typeparam>
+    internal sealed class ApiConnectionPollingTrigger<T> :
+        ApiConnectionPollingTrigger,
+        IBodyWorkflowTrigger<T, ApiConnectionPollingTriggerConfiguration>
+    {
+        internal ApiConnectionPollingTrigger(
+            ApiConnectionActionInput input,
+            bool enableSplitOn = false)
+            : base(input, enableSplitOn)
+        {
         }
 
         /// <summary>

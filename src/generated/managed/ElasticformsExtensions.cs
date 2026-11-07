@@ -13,62 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
     public class ElasticformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
-        public IBodyWorkflowAction<AssignFormResponse, ApiConnectionActionConfiguration> AssignForm(Expression<Func<string>> formAssignBodyuser, Expression<Func<string>> formAssignBodyform, Expression<Func<object>> formAssignBodyfields = null)
+        public IBodyWorkflowAction<AssignFormResponse, ApiConnectionActionConfiguration> AssignForm(Expression<Func<FormAssignBodyInput>> formAssignBody)
         {
-            var __workflow_formAssignBodyuser = WorkflowExpression.Compile(formAssignBodyuser, nameof(formAssignBodyuser), required: true);
-            var __workflow_formAssignBodyform = WorkflowExpression.Compile(formAssignBodyform, nameof(formAssignBodyform), required: true);
-            var __workflow_formAssignBodyfields = WorkflowExpression.Compile(formAssignBodyfields, nameof(formAssignBodyfields), required: false);
+            var __workflow_formAssignBody = WorkflowExpression.Compile(formAssignBody, nameof(formAssignBody), required: true);
             return new DeferredBodyAction<AssignFormResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/Form";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var formAssignBody = new JObject();
-                var formAssignBodypropCount = 0;
-                formAssignBodypropCount++;
-                formAssignBody["UserName"] = ExpressionConverter.ConvertO(__workflow_formAssignBodyuser);
-                formAssignBodypropCount++;
-                formAssignBody["FormUid"] = ExpressionConverter.ConvertO(__workflow_formAssignBodyform);
-                if (__workflow_formAssignBodyfields != null)
-                {
-                    formAssignBody["FormData"] = ExpressionConverter.ConvertO(__workflow_formAssignBodyfields);
-                    formAssignBodypropCount++;
-                }
-
-                if (formAssignBodypropCount > 0)
-                {
-                    callPayload.Body = formAssignBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_formAssignBody);
                 return new ApiConnectionAction<AssignFormResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddData(Expression<Func<string>> formDataBodyform, Expression<Func<object>> formDataBodyfields = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddData(Expression<Func<FormDataBodyInput>> formDataBody)
         {
-            var __workflow_formDataBodyform = WorkflowExpression.Compile(formDataBodyform, nameof(formDataBodyform), required: true);
-            var __workflow_formDataBodyfields = WorkflowExpression.Compile(formDataBodyfields, nameof(formDataBodyfields), required: false);
+            var __workflow_formDataBody = WorkflowExpression.Compile(formDataBody, nameof(formDataBody), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/FormData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var formDataBody = new JObject();
-                var formDataBodypropCount = 0;
-                formDataBodypropCount++;
-                formDataBody["FormUid"] = ExpressionConverter.ConvertO(__workflow_formDataBodyform);
-                if (__workflow_formDataBodyfields != null)
-                {
-                    formDataBody["FormDataObject"] = ExpressionConverter.ConvertO(__workflow_formDataBodyfields);
-                    formDataBodypropCount++;
-                }
-
-                if (formDataBodypropCount > 0)
-                {
-                    callPayload.Body = formDataBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_formDataBody);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -76,26 +43,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 
     public class ElasticformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TrigNewResponse(Expression<Func<string>> requestBodyOfWebhookform, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TrigNewResponse(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
-            var __workflow_requestBodyOfWebhookform = WorkflowExpression.Compile(requestBodyOfWebhookform, nameof(requestBodyOfWebhookform), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/WebHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["TriggerUrl"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["FormUid"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookform);
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
@@ -103,6 +60,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
     public class AssignFormResponse
     {
         public string AssignedFormUrl { get; set; }
+    }
+
+    public class FormAssignBodyInput
+    {
+        [JsonProperty("UserName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string User { get; set; }
+
+        [JsonProperty("FormUid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Form { get; set; }
+
+        [JsonProperty("FormData")]
+        public JToken Fields { get; set; }
+    }
+
+    public class FormDataBodyInput
+    {
+        [JsonProperty("FormUid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Form { get; set; }
+
+        [JsonProperty("FormDataObject")]
+        public JToken Fields { get; set; }
+    }
+
+    public class RequestBodyOfWebhookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TriggerUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("FormUid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Form { get; set; }
     }
 }
 

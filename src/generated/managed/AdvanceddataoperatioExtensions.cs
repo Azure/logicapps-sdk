@@ -13,1931 +13,438 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
     public class AdvanceddataoperatioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Aggregate(Expression<Func<bodyaggregationTypeInput>> bodyaggregationType, Expression<Func<string[]>> bodyaggregateBy, Expression<Func<string[]>> bodyaggregateOn, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Aggregate(Expression<Func<AggregateBodyInput>> body)
         {
-            var __workflow_bodyaggregationType = WorkflowExpression.Compile(bodyaggregationType, nameof(bodyaggregationType), required: true);
-            var __workflow_bodyaggregateBy = WorkflowExpression.Compile(bodyaggregateBy, nameof(bodyaggregateBy), required: true);
-            var __workflow_bodyaggregateOn = WorkflowExpression.Compile(bodyaggregateOn, nameof(bodyaggregateOn), required: true);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Aggregate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["aggregationType"] = ExpressionConverter.ConvertO(__workflow_bodyaggregationType);
-                bodypropCount++;
-                body["aggregateBy"] = ExpressionConverter.ConvertO(__workflow_bodyaggregateBy);
-                bodypropCount++;
-                body["aggregateOn"] = ExpressionConverter.ConvertO(__workflow_bodyaggregateOn);
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> CartesianJoin(Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> CartesianJoin(Expression<Func<CartesianJoinBodyInput>> body)
         {
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CartesianJoin";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Concatenate(Expression<Func<string>> bodyfield, Expression<Func<string>> bodyseparator = null, Expression<Func<bool>> bodyignoreEmpty = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Concatenate(Expression<Func<ConcatenateBodyInput>> body = null)
         {
-            var __workflow_bodyfield = WorkflowExpression.Compile(bodyfield, nameof(bodyfield), required: true);
-            var __workflow_bodyseparator = WorkflowExpression.Compile(bodyseparator, nameof(bodyseparator), required: false);
-            var __workflow_bodyignoreEmpty = WorkflowExpression.Compile(bodyignoreEmpty, nameof(bodyignoreEmpty), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Concatenate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["field"] = ExpressionConverter.ConvertO(__workflow_bodyfield);
-                if (__workflow_bodyseparator != null)
-                {
-                    body["separator"] = ExpressionConverter.ConvertO(__workflow_bodyseparator);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyignoreEmpty != null)
-                {
-                    body["ignoreEmpty"] = ExpressionConverter.ConvertO(__workflow_bodyignoreEmpty);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CSharpEvaluate(Expression<Func<string>> bodyexpression)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CSharpEvaluate(Expression<Func<CSharpEvaluateBodyInput>> body = null)
         {
-            var __workflow_bodyexpression = WorkflowExpression.Compile(bodyexpression, nameof(bodyexpression), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CSharpEvaluate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["expression"] = ExpressionConverter.ConvertO(__workflow_bodyexpression);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CSharpScriptExecute(Expression<Func<string>> bodyscript, Expression<Func<string[]>> bodyclassDefinitions = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CSharpScriptExecute(Expression<Func<CSharpScriptExecuteBodyInput>> body = null)
         {
-            var __workflow_bodyscript = WorkflowExpression.Compile(bodyscript, nameof(bodyscript), required: true);
-            var __workflow_bodyclassDefinitions = WorkflowExpression.Compile(bodyclassDefinitions, nameof(bodyclassDefinitions), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CSharpScriptExecute";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["script"] = ExpressionConverter.ConvertO(__workflow_bodyscript);
-                if (__workflow_bodyclassDefinitions != null)
-                {
-                    body["classDefinitions"] = ExpressionConverter.ConvertO(__workflow_bodyclassDefinitions);
-                    bodypropCount++;
-                }
-
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> CsvToJson(Expression<Func<string>> bodydata, Expression<Func<bool>> bodyheaderRow = null, Expression<Func<string>> bodyrowSeparator = null, Expression<Func<string>> bodydelimiter = null, Expression<Func<string>> bodyescapeCharacter = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> CsvToJson(Expression<Func<CsvToJsonBodyInput>> body)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyheaderRow = WorkflowExpression.Compile(bodyheaderRow, nameof(bodyheaderRow), required: false);
-            var __workflow_bodyrowSeparator = WorkflowExpression.Compile(bodyrowSeparator, nameof(bodyrowSeparator), required: false);
-            var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
-            var __workflow_bodyescapeCharacter = WorkflowExpression.Compile(bodyescapeCharacter, nameof(bodyescapeCharacter), required: false);
-            var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CsvToJson";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyheaderRow != null)
-                {
-                    body["headerRow"] = ExpressionConverter.ConvertO(__workflow_bodyheaderRow);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrowSeparator != null)
-                {
-                    body["rowSeparator"] = ExpressionConverter.ConvertO(__workflow_bodyrowSeparator);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydelimiter != null)
-                {
-                    body["delimiter"] = ExpressionConverter.ConvertO(__workflow_bodydelimiter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyescapeCharacter != null)
-                {
-                    body["escapeCharacter"] = ExpressionConverter.ConvertO(__workflow_bodyescapeCharacter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyencoding != null)
-                {
-                    body["encoding"] = ExpressionConverter.ConvertO(__workflow_bodyencoding);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Distinct(Expression<Func<string[]>> bodyfields, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Distinct(Expression<Func<DistinctBodyInput>> body = null)
         {
-            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: true);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Distinct";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["fields"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Expert(Expression<Func<string>> bodyquery, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Expert(Expression<Func<ExpertBodyInput>> body = null)
         {
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Expert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FilterObjectArray(Expression<Func<string>> bodyfilter, Expression<Func<JToken[]>> bodydata = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FilterObjectArray(Expression<Func<FilterObjectArrayBodyInput>> body = null)
         {
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FilterObjectArray";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FlattenObjectArray(Expression<Func<string>> bodydelimiter, Expression<Func<bool>> bodybalancedOutput, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FlattenObjectArray(Expression<Func<FlattenObjectArrayBodyInput>> body = null)
         {
-            var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: true);
-            var __workflow_bodybalancedOutput = WorkflowExpression.Compile(bodybalancedOutput, nameof(bodybalancedOutput), required: true);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FlattenObjectArray";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["delimiter"] = ExpressionConverter.ConvertO(__workflow_bodydelimiter);
-                bodypropCount++;
-                body["balancedOutput"] = ExpressionConverter.ConvertO(__workflow_bodybalancedOutput);
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetDataSchema(Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetDataSchema(Expression<Func<GetDataSchemaBodyInput>> body = null)
         {
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetDataSchema";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GZipCompress(Expression<Func<string>> bodydata)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GZipCompress(Expression<Func<GZipCompressBodyInput>> body = null)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GZipCompress";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GZipDecompress(Expression<Func<string>> bodydata)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GZipDecompress(Expression<Func<GZipCompressBodyInput>> body = null)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GZipDecompress";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Join(Expression<Func<bodyjoinTypeInput>> bodyjoinType, Expression<Func<string[]>> bodyjoinFields, Expression<Func<string[]>> bodyfields, Expression<Func<bool>> bodyforceFullyQualifiedFieldNames = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Join(Expression<Func<JoinBodyInput>> body = null)
         {
-            var __workflow_bodyjoinType = WorkflowExpression.Compile(bodyjoinType, nameof(bodyjoinType), required: true);
-            var __workflow_bodyjoinFields = WorkflowExpression.Compile(bodyjoinFields, nameof(bodyjoinFields), required: true);
-            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: true);
-            var __workflow_bodyforceFullyQualifiedFieldNames = WorkflowExpression.Compile(bodyforceFullyQualifiedFieldNames, nameof(bodyforceFullyQualifiedFieldNames), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Join";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["joinType"] = ExpressionConverter.ConvertO(__workflow_bodyjoinType);
-                bodypropCount++;
-                body["joinFields"] = ExpressionConverter.ConvertO(__workflow_bodyjoinFields);
-                bodypropCount++;
-                body["fields"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
-                if (__workflow_bodyforceFullyQualifiedFieldNames != null)
-                {
-                    body["forceFullyQualifiedFieldNames"] = ExpressionConverter.ConvertO(__workflow_bodyforceFullyQualifiedFieldNames);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> JsonSchemaValidate()
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> JsonSchemaValidate(Expression<Func<JsonSchemaValidateBodyInput>> body)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JsonSchemaValidate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> JsonToTable(Expression<Func<string>> bodypath = null, Expression<Func<bool>> bodybalancedOutput = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> JsonToTable(Expression<Func<JsonToTableBodyInput>> body)
         {
-            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
-            var __workflow_bodybalancedOutput = WorkflowExpression.Compile(bodybalancedOutput, nameof(bodybalancedOutput), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JsonToTable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypath != null)
-                {
-                    body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybalancedOutput != null)
-                {
-                    body["balancedOutput"] = ExpressionConverter.ConvertO(__workflow_bodybalancedOutput);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> JsonToText(Expression<Func<bool>> bodyheaderRow = null, Expression<Func<string>> bodyrowSeparator = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> JsonToText(Expression<Func<JsonToTextBodyInput>> body)
         {
-            var __workflow_bodyheaderRow = WorkflowExpression.Compile(bodyheaderRow, nameof(bodyheaderRow), required: false);
-            var __workflow_bodyrowSeparator = WorkflowExpression.Compile(bodyrowSeparator, nameof(bodyrowSeparator), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JsonToText";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyheaderRow != null)
-                {
-                    body["headerRow"] = ExpressionConverter.ConvertO(__workflow_bodyheaderRow);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrowSeparator != null)
-                {
-                    body["rowSeparator"] = ExpressionConverter.ConvertO(__workflow_bodyrowSeparator);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> JsonToCsv(Expression<Func<bool>> bodyheaderRow = null, Expression<Func<string>> bodyrowSeparator = null, Expression<Func<string>> bodyescapeCharacter = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> JsonToCsv(Expression<Func<JsonToCsvBodyInput>> body)
         {
-            var __workflow_bodyheaderRow = WorkflowExpression.Compile(bodyheaderRow, nameof(bodyheaderRow), required: false);
-            var __workflow_bodyrowSeparator = WorkflowExpression.Compile(bodyrowSeparator, nameof(bodyrowSeparator), required: false);
-            var __workflow_bodyescapeCharacter = WorkflowExpression.Compile(bodyescapeCharacter, nameof(bodyescapeCharacter), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JsonToCsv";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyheaderRow != null)
-                {
-                    body["headerRow"] = ExpressionConverter.ConvertO(__workflow_bodyheaderRow);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrowSeparator != null)
-                {
-                    body["rowSeparator"] = ExpressionConverter.ConvertO(__workflow_bodyrowSeparator);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyescapeCharacter != null)
-                {
-                    body["escapeCharacter"] = ExpressionConverter.ConvertO(__workflow_bodyescapeCharacter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JsonPropertiesToNameValuePairArray(Expression<Func<object>> bodydata)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JsonPropertiesToNameValuePairArray(Expression<Func<JsonPropertiesToNameValuePairArrayBodyInput>> body)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JsonPropertiesToNameValuePairArray";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<LevenshteinDistanceResponse, ApiConnectionActionConfiguration> LevenshteinDistance(Expression<Func<string>> bodybaseValue, Expression<Func<string[]>> bodycomparisonValues, Expression<Func<double>> bodysettingsratioThreshold = null, Expression<Func<bodysettingsapplyRatioThresholdToInput>> bodysettingsapplyRatioThresholdTo = null, Expression<Func<bodysettingsratioSelectionTypeInput>> bodysettingsratioSelectionType = null, Expression<Func<bodysettingstokenSortTypeInput>> bodysettingstokenSortType = null, Expression<Func<bool>> bodysettingscaseSensitive = null, Expression<Func<bool>> bodysettingsremoveWhitespace = null, Expression<Func<bool>> bodysettingsremoveSpecialCharacters = null)
+        public IBodyWorkflowAction<LevenshteinDistanceResponse, ApiConnectionActionConfiguration> LevenshteinDistance(Expression<Func<LevenshteinDistanceBodyInput>> body)
         {
-            var __workflow_bodybaseValue = WorkflowExpression.Compile(bodybaseValue, nameof(bodybaseValue), required: true);
-            var __workflow_bodycomparisonValues = WorkflowExpression.Compile(bodycomparisonValues, nameof(bodycomparisonValues), required: true);
-            var __workflow_bodysettingsratioThreshold = WorkflowExpression.Compile(bodysettingsratioThreshold, nameof(bodysettingsratioThreshold), required: false);
-            var __workflow_bodysettingsapplyRatioThresholdTo = WorkflowExpression.Compile(bodysettingsapplyRatioThresholdTo, nameof(bodysettingsapplyRatioThresholdTo), required: false);
-            var __workflow_bodysettingsratioSelectionType = WorkflowExpression.Compile(bodysettingsratioSelectionType, nameof(bodysettingsratioSelectionType), required: false);
-            var __workflow_bodysettingstokenSortType = WorkflowExpression.Compile(bodysettingstokenSortType, nameof(bodysettingstokenSortType), required: false);
-            var __workflow_bodysettingscaseSensitive = WorkflowExpression.Compile(bodysettingscaseSensitive, nameof(bodysettingscaseSensitive), required: false);
-            var __workflow_bodysettingsremoveWhitespace = WorkflowExpression.Compile(bodysettingsremoveWhitespace, nameof(bodysettingsremoveWhitespace), required: false);
-            var __workflow_bodysettingsremoveSpecialCharacters = WorkflowExpression.Compile(bodysettingsremoveSpecialCharacters, nameof(bodysettingsremoveSpecialCharacters), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LevenshteinDistanceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/LevenshteinDistance";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["baseValue"] = ExpressionConverter.ConvertO(__workflow_bodybaseValue);
-                bodypropCount++;
-                body["comparisonValues"] = ExpressionConverter.ConvertO(__workflow_bodycomparisonValues);
-                var settingsObject = new JObject();
-                var settingsObjectpropCount = 0;
-                if (__workflow_bodysettingsratioThreshold != null)
-                {
-                    settingsObject["ratioThreshold"] = ExpressionConverter.ConvertO(__workflow_bodysettingsratioThreshold);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_bodysettingsapplyRatioThresholdTo != null)
-                {
-                    settingsObject["applyRatioThresholdTo"] = ExpressionConverter.ConvertO(__workflow_bodysettingsapplyRatioThresholdTo);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_bodysettingsratioSelectionType != null)
-                {
-                    settingsObject["ratioSelectionType"] = ExpressionConverter.ConvertO(__workflow_bodysettingsratioSelectionType);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_bodysettingstokenSortType != null)
-                {
-                    settingsObject["tokenSortType"] = ExpressionConverter.ConvertO(__workflow_bodysettingstokenSortType);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_bodysettingscaseSensitive != null)
-                {
-                    settingsObject["caseSensitive"] = ExpressionConverter.ConvertO(__workflow_bodysettingscaseSensitive);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_bodysettingsremoveWhitespace != null)
-                {
-                    settingsObject["removeWhitespace"] = ExpressionConverter.ConvertO(__workflow_bodysettingsremoveWhitespace);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_bodysettingsremoveSpecialCharacters != null)
-                {
-                    settingsObject["removeSpecialCharacters"] = ExpressionConverter.ConvertO(__workflow_bodysettingsremoveSpecialCharacters);
-                    settingsObjectpropCount++;
-                }
-
-                if (settingsObjectpropCount > 0)
-                {
-                    body["Settings"] = settingsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LevenshteinDistanceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> ParquetToJson(Expression<Func<string>> bodydata, Expression<Func<bool>> bodyvalidateOnly = null, Expression<Func<int>> bodyskip = null, Expression<Func<int>> bodytake = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> ParquetToJson(Expression<Func<ParquetToJsonBodyInput>> body)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyvalidateOnly = WorkflowExpression.Compile(bodyvalidateOnly, nameof(bodyvalidateOnly), required: false);
-            var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: false);
-            var __workflow_bodytake = WorkflowExpression.Compile(bodytake, nameof(bodytake), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ParquetToJson";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyvalidateOnly != null)
-                {
-                    body["validateOnly"] = ExpressionConverter.ConvertO(__workflow_bodyvalidateOnly);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyskip != null)
-                {
-                    body["skip"] = ExpressionConverter.ConvertO(__workflow_bodyskip);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytake != null)
-                {
-                    body["take"] = ExpressionConverter.ConvertO(__workflow_bodytake);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> RegexMatches(Expression<Func<string>> bodypattern, Expression<Func<string>> bodydata, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> RegexMatches(Expression<Func<RegexMatchesBodyInput>> body = null)
         {
-            var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RegexMatches";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SimpleConcatenate(Expression<Func<string[]>> bodydata, Expression<Func<string>> bodyseparator = null, Expression<Func<bool>> bodyignoreEmpty = null, Expression<Func<string>> bodyfilter = null, Expression<Func<bodysortOrderInput>> bodysortOrder = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SimpleConcatenate(Expression<Func<SimpleConcatenateBodyInput>> body = null)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyseparator = WorkflowExpression.Compile(bodyseparator, nameof(bodyseparator), required: false);
-            var __workflow_bodyignoreEmpty = WorkflowExpression.Compile(bodyignoreEmpty, nameof(bodyignoreEmpty), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SimpleConcatenate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyseparator != null)
-                {
-                    body["separator"] = ExpressionConverter.ConvertO(__workflow_bodyseparator);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyignoreEmpty != null)
-                {
-                    body["ignoreEmpty"] = ExpressionConverter.ConvertO(__workflow_bodyignoreEmpty);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysortOrder != null)
-                {
-                    body["sortOrder"] = ExpressionConverter.ConvertO(__workflow_bodysortOrder);
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SimpleDistinct(Expression<Func<string>> bodyfield, Expression<Func<string>> bodyfilter = null, Expression<Func<bodysortOrderInput>> bodysortOrder = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SimpleDistinct(Expression<Func<SimpleDistinctBodyInput>> body = null)
         {
-            var __workflow_bodyfield = WorkflowExpression.Compile(bodyfield, nameof(bodyfield), required: true);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SimpleDistinct";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["field"] = ExpressionConverter.ConvertO(__workflow_bodyfield);
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysortOrder != null)
-                {
-                    body["sortOrder"] = ExpressionConverter.ConvertO(__workflow_bodysortOrder);
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> SortObjectArray(Expression<Func<JToken[]>> bodydata = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> SortObjectArray(Expression<Func<SortObjectArrayBodyInput>> body = null)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SortObjectArray";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Split(Expression<Func<JToken[]>> bodysplits, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Split(Expression<Func<SplitBodyInput>> body = null)
         {
-            var __workflow_bodysplits = WorkflowExpression.Compile(bodysplits, nameof(bodysplits), required: true);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Split";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["splits"] = ExpressionConverter.ConvertO(__workflow_bodysplits);
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> TextToJson(Expression<Func<string>> bodydata, Expression<Func<bool>> bodyheaderRow = null, Expression<Func<string>> bodyrowSeparator = null, Expression<Func<string>> bodydelimiter = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> TextToJson(Expression<Func<TextToJsonBodyInput>> body)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyheaderRow = WorkflowExpression.Compile(bodyheaderRow, nameof(bodyheaderRow), required: false);
-            var __workflow_bodyrowSeparator = WorkflowExpression.Compile(bodyrowSeparator, nameof(bodyrowSeparator), required: false);
-            var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
-            var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/TextToJson";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyheaderRow != null)
-                {
-                    body["headerRow"] = ExpressionConverter.ConvertO(__workflow_bodyheaderRow);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrowSeparator != null)
-                {
-                    body["rowSeparator"] = ExpressionConverter.ConvertO(__workflow_bodyrowSeparator);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydelimiter != null)
-                {
-                    body["delimiter"] = ExpressionConverter.ConvertO(__workflow_bodydelimiter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyencoding != null)
-                {
-                    body["encoding"] = ExpressionConverter.ConvertO(__workflow_bodyencoding);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Transform(Expression<Func<bool>> bodypreserveAllProperties = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Transform(Expression<Func<TransformBodyInput>> body)
         {
-            var __workflow_bodypreserveAllProperties = WorkflowExpression.Compile(bodypreserveAllProperties, nameof(bodypreserveAllProperties), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Transform";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var transformationsObject = new JObject();
-                var transformationsObjectpropCount = 0;
-                if (transformationsObjectpropCount > 0)
-                {
-                    body["transformations"] = transformationsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypreserveAllProperties != null)
-                {
-                    body["preserveAllProperties"] = ExpressionConverter.ConvertO(__workflow_bodypreserveAllProperties);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                var schemaObject = new JObject();
-                var schemaObjectpropCount = 0;
-                if (schemaObjectpropCount > 0)
-                {
-                    body["schema"] = schemaObject;
-                    bodypropCount++;
-                }
-
-                var advancedOptionsObject = new JObject();
-                var advancedOptionsObjectpropCount = 0;
-                if (__workflow_bodyadvancedOptionscultureName != null)
-                {
-                    advancedOptionsObject["cultureName"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionscultureName);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadvancedOptionsisBoolean != null)
-                {
-                    advancedOptionsObject["isBoolean"] = ExpressionConverter.ConvertO(__workflow_bodyadvancedOptionsisBoolean);
-                    advancedOptionsObjectpropCount++;
-                }
-
-                if (advancedOptionsObjectpropCount > 0)
-                {
-                    body["advancedOptions"] = advancedOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> XmlToJson(Expression<Func<string>> bodydata, Expression<Func<string>> bodyprimaryLoopAtElement = null, Expression<Func<bodysubLoopAtElementsInputItem[]>> bodysubLoopAtElements = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> XmlToJson(Expression<Func<XmlToJsonBodyInput>> body)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyprimaryLoopAtElement = WorkflowExpression.Compile(bodyprimaryLoopAtElement, nameof(bodyprimaryLoopAtElement), required: false);
-            var __workflow_bodysubLoopAtElements = WorkflowExpression.Compile(bodysubLoopAtElements, nameof(bodysubLoopAtElements), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/XmlToJson";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyprimaryLoopAtElement != null)
-                {
-                    body["primaryLoopAtElement"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLoopAtElement);
-                    bodypropCount++;
-                }
-
-                var mapObject = new JObject();
-                var mapObjectpropCount = 0;
-                if (mapObjectpropCount > 0)
-                {
-                    body["map"] = mapObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubLoopAtElements != null)
-                {
-                    body["subLoopAtElements"] = ExpressionConverter.ConvertO(__workflow_bodysubLoopAtElements);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<ZipArchiveDecompressResponseItem[], ApiConnectionActionConfiguration> ZipArchiveDecompress(Expression<Func<string>> bodydata, Expression<Func<bool>> bodygetFileContents, Expression<Func<string>> bodyfilter = null)
+        public IBodyWorkflowAction<ZipArchiveDecompressResponseItem[], ApiConnectionActionConfiguration> ZipArchiveDecompress(Expression<Func<ZipArchiveDecompressBodyInput>> body = null)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodygetFileContents = WorkflowExpression.Compile(bodygetFileContents, nameof(bodygetFileContents), required: true);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ZipArchiveDecompressResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ZipArchiveDecompress";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                bodypropCount++;
-                body["getFileContents"] = ExpressionConverter.ConvertO(__workflow_bodygetFileContents);
-                if (__workflow_bodyfilter != null)
-                {
-                    body["filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                var sortOrderObject = new JObject();
-                var sortOrderObjectpropCount = 0;
-                if (sortOrderObjectpropCount > 0)
-                {
-                    body["sortOrder"] = sortOrderObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ZipArchiveDecompressResponseItem[]>(callPayload);
             });
         }
@@ -1947,8 +454,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
     {
     }
 
+    public class AggregateBodyInput
+    {
+        [JsonProperty("aggregationType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputAggregationTypeType AggregationType { get; set; }
+
+        [JsonProperty("aggregateBy", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] AggregateBy { get; set; }
+
+        [JsonProperty("aggregateOn", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] AggregateOn { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyaggregationTypeInput
+    public enum BodyInputAggregationTypeType
     {
         AVG,
         SUM,
@@ -1957,8 +491,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         MIN
     }
 
+    public class AdvancedOptions
+    {
+        [JsonProperty("cultureName")]
+        public string CultureName { get; set; }
+
+        [JsonProperty("isBoolean")]
+        public string[] IsBoolean { get; set; }
+    }
+
+    public class CartesianJoinBodyInput
+    {
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Data { get; set; }
+    }
+
+    public class ConcatenateBodyInput
+    {
+        [JsonProperty("field", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Field { get; set; }
+
+        [JsonProperty("separator")]
+        public string Separator { get; set; }
+
+        [JsonProperty("ignoreEmpty", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IgnoreEmpty { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class CSharpEvaluateBodyInput
+    {
+        [JsonProperty("expression", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Expression { get; set; }
+    }
+
+    public class CSharpScriptExecuteBodyInput
+    {
+        [JsonProperty("script", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Script { get; set; }
+
+        [JsonProperty("classDefinitions")]
+        public string[] ClassDefinitions { get; set; }
+
+        [JsonProperty("parameters")]
+        public JToken Parameters { get; set; }
+    }
+
+    public class CsvToJsonBodyInput
+    {
+        [JsonProperty("headerRow")]
+        public bool? HeaderRow { get; set; }
+
+        [JsonProperty("rowSeparator")]
+        public string RowSeparator { get; set; }
+
+        [JsonProperty("delimiter")]
+        public string Delimiter { get; set; }
+
+        [JsonProperty("escapeCharacter")]
+        public string EscapeCharacter { get; set; }
+
+        [JsonProperty("encoding")]
+        public BodyInputEncodingType? Encoding { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyencodingInput
+    public enum BodyInputEncodingType
     {
         ASCII,
         UTF8,
@@ -1968,11 +607,224 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         ISO88591
     }
 
+    public class DistinctBodyInput
+    {
+        [JsonProperty("fields", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Fields { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class ExpertBodyInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Query { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Data { get; set; }
+    }
+
+    public class FilterObjectArrayBodyInput
+    {
+        [JsonProperty("filter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Filter { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class FlattenObjectArrayBodyInput
+    {
+        [JsonProperty("delimiter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Delimiter { get; set; }
+
+        [JsonProperty("balancedOutput", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool BalancedOutput { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class GetDataSchemaBodyInput
+    {
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class GZipCompressBodyInput
+    {
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+    }
+
+    public class JoinBodyInput
+    {
+        [JsonProperty("joinType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputJoinTypeType JoinType { get; set; }
+
+        [JsonProperty("joinFields", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] JoinFields { get; set; }
+
+        [JsonProperty("fields", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Fields { get; set; }
+
+        [JsonProperty("forceFullyQualifiedFieldNames")]
+        public bool? ForceFullyQualifiedFieldNames { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Data { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyjoinTypeInput
+    public enum BodyInputJoinTypeType
     {
         Left,
         Inner
+    }
+
+    public class JsonSchemaValidateBodyInput
+    {
+        [JsonProperty("schema", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Data { get; set; }
+    }
+
+    public class JsonToTableBodyInput
+    {
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("balancedOutput")]
+        public bool? BalancedOutput { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Data { get; set; }
+    }
+
+    public class JsonToTextBodyInput
+    {
+        [JsonProperty("headerRow")]
+        public bool? HeaderRow { get; set; }
+
+        [JsonProperty("rowSeparator")]
+        public string RowSeparator { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class JsonToCsvBodyInput
+    {
+        [JsonProperty("headerRow")]
+        public bool? HeaderRow { get; set; }
+
+        [JsonProperty("rowSeparator")]
+        public string RowSeparator { get; set; }
+
+        [JsonProperty("escapeCharacter")]
+        public string EscapeCharacter { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class JsonPropertiesToNameValuePairArrayBodyInput
+    {
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Data { get; set; }
     }
 
     public class LevenshteinDistanceResponse
@@ -2021,15 +873,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         public double AvgRatio { get; set; }
     }
 
+    public class LevenshteinDistanceBodyInput
+    {
+        [JsonProperty("baseValue", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BaseValue { get; set; }
+
+        [JsonProperty("comparisonValues", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] ComparisonValues { get; set; }
+        public BodyInputSettingsType Settings { get; set; }
+    }
+
+    public class BodyInputSettingsType
+    {
+        [JsonProperty("ratioThreshold")]
+        public double? RatioThreshold { get; set; }
+
+        [JsonProperty("applyRatioThresholdTo")]
+        public BodyInputSettingsTypeApplyRatioThresholdToType? ApplyRatioThresholdTo { get; set; }
+
+        [JsonProperty("ratioSelectionType")]
+        public BodyInputSettingsTypeRatioSelectionTypeType? RatioSelectionType { get; set; }
+
+        [JsonProperty("tokenSortType")]
+        public BodyInputSettingsTypeTokenSortTypeType? TokenSortType { get; set; }
+
+        [JsonProperty("caseSensitive")]
+        public bool? CaseSensitive { get; set; }
+
+        [JsonProperty("removeWhitespace")]
+        public bool? RemoveWhitespace { get; set; }
+
+        [JsonProperty("removeSpecialCharacters")]
+        public bool? RemoveSpecialCharacters { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysettingsapplyRatioThresholdToInput
+    public enum BodyInputSettingsTypeApplyRatioThresholdToType
     {
         Max,
         Avg
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysettingsratioSelectionTypeInput
+    public enum BodyInputSettingsTypeRatioSelectionTypeType
     {
         All,
         Standard,
@@ -2037,7 +923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysettingstokenSortTypeInput
+    public enum BodyInputSettingsTypeTokenSortTypeType
     {
         All,
         [EnumMember(Value = "Not Sorted")]
@@ -2045,14 +931,206 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         Sorted
     }
 
+    public class ParquetToJsonBodyInput
+    {
+        [JsonProperty("validateOnly")]
+        public bool? ValidateOnly { get; set; }
+
+        [JsonProperty("skip")]
+        public int? Skip { get; set; }
+
+        [JsonProperty("take")]
+        public int? Take { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+    }
+
+    public class RegexMatchesBodyInput
+    {
+        [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Pattern { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+    }
+
+    public class SimpleConcatenateBodyInput
+    {
+        [JsonProperty("separator")]
+        public string Separator { get; set; }
+
+        [JsonProperty("ignoreEmpty")]
+        public bool? IgnoreEmpty { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public SimpleSortOrder? SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Data { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysortOrderInput
+    public enum SimpleSortOrder
     {
         ASC,
         DESC
     }
 
-    public class bodysubLoopAtElementsInputItem
+    public class SimpleDistinctBodyInput
+    {
+        [JsonProperty("field", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Field { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public SimpleSortOrder? SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class SortObjectArrayBodyInput
+    {
+        [JsonProperty("sortOrder", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class SplitBodyInput
+    {
+        [JsonProperty("splits", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Splits { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class TextToJsonBodyInput
+    {
+        [JsonProperty("headerRow")]
+        public bool? HeaderRow { get; set; }
+
+        [JsonProperty("rowSeparator")]
+        public string RowSeparator { get; set; }
+
+        [JsonProperty("delimiter")]
+        public string Delimiter { get; set; }
+
+        [JsonProperty("encoding")]
+        public BodyInputEncodingType? Encoding { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+    }
+
+    public class TransformBodyInput
+    {
+        [JsonProperty("transformations", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Transformations { get; set; }
+
+        [JsonProperty("preserveAllProperties")]
+        public bool? PreserveAllProperties { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
+
+        [JsonProperty("schema")]
+        public JToken Schema { get; set; }
+
+        [JsonProperty("advancedOptions")]
+        public AdvancedOptions AdvancedOptions { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Data { get; set; }
+    }
+
+    public class XmlToJsonBodyInput
+    {
+        [JsonProperty("primaryLoopAtElement")]
+        public string PrimaryLoopAtElement { get; set; }
+
+        [JsonProperty("map")]
+        public JToken Map { get; set; }
+
+        [JsonProperty("subLoopAtElements")]
+        public BodyInputSubLoopAtElementsTypeItem[] SubLoopAtElements { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+    }
+
+    public class BodyInputSubLoopAtElementsTypeItem
     {
         [JsonProperty("mapName")]
         public string MapName { get; set; }
@@ -2080,6 +1158,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
         [JsonProperty("fileContent")]
         public string FileContent { get; set; }
+    }
+
+    public class ZipArchiveDecompressBodyInput
+    {
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+
+        [JsonProperty("getFileContents", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool GetFileContents { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public JToken SortOrder { get; set; }
     }
 }
 

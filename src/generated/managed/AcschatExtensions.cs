@@ -35,12 +35,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IBodyWorkflowAction<SendChatResponse, ApiConnectionActionConfiguration> SendChat(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodycontent, Expression<Func<string>> bodysenderDisplayName)
+        public IBodyWorkflowAction<SendChatResponse, ApiConnectionActionConfiguration> SendChat(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<SendChatBodyInput>> body)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
-            var __workflow_bodysenderDisplayName = WorkflowExpression.Compile(bodysenderDisplayName, nameof(bodysenderDisplayName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendChatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/messages", __workflow_chatThreadId.WithUrlEncoding(1)));
@@ -48,27 +47,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                bodypropCount++;
-                body["senderDisplayName"] = ExpressionConverter.ConvertO(__workflow_bodysenderDisplayName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendChatResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IBodyWorkflowAction<AddParticipantsResponse, ApiConnectionActionConfiguration> AddParticipants(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<bodyparticipantsInputItem[]>> bodyparticipants = null)
+        public IBodyWorkflowAction<AddParticipantsResponse, ApiConnectionActionConfiguration> AddParticipants(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<AddParticipantsBodyInput>> body = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
-            var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddParticipantsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants/:add", __workflow_chatThreadId.WithUrlEncoding(1)));
@@ -76,29 +65,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyparticipants != null)
-                {
-                    body["participants"] = ExpressionConverter.ConvertO(__workflow_bodyparticipants);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddParticipantsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveParticipant(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodycommunicationUseruserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveParticipant(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<RemoveParticipantBodyInput>> body = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
-            var __workflow_bodycommunicationUseruserId = WorkflowExpression.Compile(bodycommunicationUseruserId, nameof(bodycommunicationUseruserId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants/:remove", __workflow_chatThreadId.WithUrlEncoding(1)));
@@ -106,27 +84,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var communicationUserObject = new JObject();
-                var communicationUserObjectpropCount = 0;
-                if (__workflow_bodycommunicationUseruserId != null)
-                {
-                    communicationUserObject["id"] = ExpressionConverter.ConvertO(__workflow_bodycommunicationUseruserId);
-                    communicationUserObjectpropCount++;
-                }
-
-                if (communicationUserObjectpropCount > 0)
-                {
-                    body["communicationUser"] = communicationUserObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -153,11 +112,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IBodyWorkflowAction<CreateChatResponse, ApiConnectionActionConfiguration> CreateChat(Expression<Func<string>> accessToken, Expression<Func<string>> bodytopic, Expression<Func<bodyparticipantsInputItem2[]>> bodyparticipants = null)
+        public IBodyWorkflowAction<CreateChatResponse, ApiConnectionActionConfiguration> CreateChat(Expression<Func<string>> accessToken, Expression<Func<CreateChatBodyInput>> body)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
-            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: true);
-            var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateChatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/threads";
@@ -165,21 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
-                if (__workflow_bodyparticipants != null)
-                {
-                    body["participants"] = ExpressionConverter.ConvertO(__workflow_bodyparticipants);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateChatResponse>(callPayload);
             });
         }
@@ -223,11 +167,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateChatThreadProperties(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodytopic = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateChatThreadProperties(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<UpdateChatThreadPropertiesBodyInput>> body)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
-            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}", __workflow_chatThreadId.WithUrlEncoding(1)));
@@ -236,19 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 callPayload.Headers["content-type"] = Convert.ToString("application/merge-patch+json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytopic != null)
-                {
-                    body["topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -307,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         public string CreatedOn { get; set; }
 
         [JsonProperty("senderCommunicationIdentifier")]
-        public CommunicationIdentifier SenderCommunicationIdentifier { get; set; }
+        public CreateChatCommunicationIdentifierResponse SenderCommunicationIdentifier { get; set; }
     }
 
     public class ListMessagesResponseMessageListTypeItemContentType
@@ -316,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         public string Message { get; set; }
 
         [JsonProperty("initiatorCommunicationIdentifier")]
-        public CommunicationIdentifier InitiatorCommunicationIdentifier { get; set; }
+        public CreateChatCommunicationIdentifierResponse InitiatorCommunicationIdentifier { get; set; }
 
         [JsonProperty("topic")]
         public string Topic { get; set; }
@@ -325,13 +257,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         public ListMessagesResponseMessageListTypeItemContentTypeParticipantsTypeItem[] Participants { get; set; }
     }
 
-    public class CommunicationIdentifier
+    public class CreateChatCommunicationIdentifierResponse
     {
         [JsonProperty("communicationUser")]
-        public CommunicationIdentifierCommunicationUserType CommunicationUser { get; set; }
+        public CreateChatCommunicationIdentifierCommunicationUserTypeResponse CommunicationUser { get; set; }
     }
 
-    public class CommunicationIdentifierCommunicationUserType
+    public class CreateChatCommunicationIdentifierCommunicationUserTypeResponse
     {
         [JsonProperty("id")]
         public string UserId { get; set; }
@@ -340,13 +272,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     public class ListMessagesResponseMessageListTypeItemContentTypeParticipantsTypeItem
     {
         [JsonProperty("communicationIdentifier")]
-        public CommunicationIdentifier CommunicationIdentifier { get; set; }
+        public CreateChatCommunicationIdentifierResponse CommunicationIdentifier { get; set; }
     }
 
     public class SendChatResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class SendChatBodyInput
+    {
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Content { get; set; }
+
+        [JsonProperty("senderDisplayName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SenderDisplayName { get; set; }
     }
 
     public class AddParticipantsResponse
@@ -367,16 +308,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         public string Message { get; set; }
     }
 
-    public class bodyparticipantsInputItem
+    public class AddParticipantsBodyInput
+    {
+        [JsonProperty("participants")]
+        public AddParticipantsBodyInputParticipantsTypeItem[] Participants { get; set; }
+    }
+
+    public class AddParticipantsBodyInputParticipantsTypeItem
     {
         [JsonProperty("communicationIdentifier")]
-        public CommunicationIdentifier CommunicationIdentifier { get; set; }
+        public AddParticipantsCommunicationIdentifier CommunicationIdentifier { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
 
         [JsonProperty("shareHistoryTime")]
         public string ShareHistoryTime { get; set; }
+    }
+
+    public class AddParticipantsCommunicationIdentifier
+    {
+        [JsonProperty("communicationUser")]
+        public AddParticipantsCommunicationIdentifierCommunicationUserType CommunicationUser { get; set; }
+    }
+
+    public class AddParticipantsCommunicationIdentifierCommunicationUserType
+    {
+        [JsonProperty("id")]
+        public string UserId { get; set; }
+    }
+
+    public class RemoveParticipantBodyInput
+    {
+        [JsonProperty("communicationUser")]
+        public BodyInputCommunicationUserType CommunicationUser { get; set; }
+    }
+
+    public class BodyInputCommunicationUserType
+    {
+        [JsonProperty("id")]
+        public string UserId { get; set; }
     }
 
     public class ListChatThreadsResponse
@@ -421,13 +392,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         public string CreatedOn { get; set; }
 
         [JsonProperty("createdByCommunicationIdentifier")]
-        public CommunicationIdentifier CreatedByCommunicationIdentifier { get; set; }
+        public CreateChatCommunicationIdentifierResponse CreatedByCommunicationIdentifier { get; set; }
     }
 
-    public class bodyparticipantsInputItem2
+    public class CreateChatBodyInput
+    {
+        [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Topic { get; set; }
+
+        [JsonProperty("participants")]
+        public CreateChatBodyInputParticipantsTypeItem[] Participants { get; set; }
+    }
+
+    public class CreateChatBodyInputParticipantsTypeItem
     {
         [JsonProperty("communicationIdentifier")]
-        public CommunicationIdentifier CommunicationIdentifier { get; set; }
+        public AddParticipantsCommunicationIdentifier CommunicationIdentifier { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -445,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     public class ListParticipantsResponseValueTypeItem
     {
         [JsonProperty("communicationIdentifier")]
-        public CommunicationIdentifier CommunicationIdentifier { get; set; }
+        public CreateChatCommunicationIdentifierResponse CommunicationIdentifier { get; set; }
 
         [JsonProperty("displayName")]
         public string Name { get; set; }
@@ -485,6 +465,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class UpdateChatThreadPropertiesBodyInput
+    {
+        [JsonProperty("topic")]
+        public string Topic { get; set; }
     }
 }
 

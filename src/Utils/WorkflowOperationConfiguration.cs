@@ -134,6 +134,13 @@ namespace Microsoft.Azure.Workflows.Sdk
                     (definition.OperationOptions ?? OperationOptions.None) |
                     OperationOptions.EnableSchemaValidation;
             }
+
+            if (configuration is IRecurrenceConfiguration recurrence)
+            {
+                var effectiveRecurrence = recurrence.Recurrence ?? CreateDefaultRecurrence();
+                ValidateRecurrence(effectiveRecurrence);
+                definition.Recurrence = effectiveRecurrence;
+            }
         }
 
         private static void AddRetryPolicy(FlowTemplateOperation definition, RetryPolicy retryPolicy)
@@ -289,6 +296,26 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new InvalidOperationException("The minimum retry interval cannot exceed the maximum retry interval.");
             }
         }
+
+        private static void ValidateRecurrence(FlowRecurrence recurrence)
+        {
+            if (recurrence.Frequency == FlowRecurrenceFrequency.NotSpecified)
+            {
+                throw new InvalidOperationException("A recurrence frequency is required.");
+            }
+
+            if (recurrence.Interval < 1)
+            {
+                throw new InvalidOperationException("The recurrence interval must be greater than zero.");
+            }
+        }
+
+        private static FlowRecurrence CreateDefaultRecurrence() =>
+            new FlowRecurrence
+            {
+                Frequency = FlowRecurrenceFrequency.Minute,
+                Interval = 1,
+            };
 
         private static void ValidateRetryInterval(
             TimeSpan interval,

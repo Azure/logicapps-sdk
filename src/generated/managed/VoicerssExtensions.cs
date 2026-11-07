@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicerss
     public class VoicerssActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicerss")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ConvertTTS(Expression<Func<string>> hl, Expression<Func<string>> src, Expression<Func<cInput>> c = null, Expression<Func<string>> f = null, Expression<Func<string>> v = null, Expression<Func<int>> r = null, Expression<Func<bool>> ssml = null, Expression<Func<bool>> b64 = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConvertTTS(Expression<Func<string>> hl, Expression<Func<string>> src, Expression<Func<CInput>> c = null, Expression<Func<string>> f = null, Expression<Func<string>> v = null, Expression<Func<int>> r = null, Expression<Func<bool>> ssml = null, Expression<Func<bool>> b64 = null)
         {
             var __workflow_hl = WorkflowExpression.Compile(hl, nameof(hl), required: true);
             var __workflow_src = WorkflowExpression.Compile(src, nameof(src), required: true);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicerss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum cInput
+    public enum CInput
     {
         MP3,
         WAV,

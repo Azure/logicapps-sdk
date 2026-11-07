@@ -13,81 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
     public class SkribblesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
-        public IBodyWorkflowAction<ErrorResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<WorkflowBinaryContent>> requestcontent, Expression<Func<string>> requesttitle = null, Expression<Func<string>> requestsealForSealing = null, Expression<Func<string>> requestvisualSignatureformField = null, Expression<Func<WorkflowBinaryContent>> requestvisualSignatureimagecontent = null, Expression<Func<string>> requestvisualSignatureimagecontentType = null, Expression<Func<Position[]>> requestvisualSignaturepositions = null)
+        public IBodyWorkflowAction<ErrorResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<RequestInput>> request)
         {
-            var __workflow_requestcontent = WorkflowExpression.Compile(requestcontent, nameof(requestcontent), required: true);
-            var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: false);
-            var __workflow_requestsealForSealing = WorkflowExpression.Compile(requestsealForSealing, nameof(requestsealForSealing), required: false);
-            var __workflow_requestvisualSignatureformField = WorkflowExpression.Compile(requestvisualSignatureformField, nameof(requestvisualSignatureformField), required: false);
-            var __workflow_requestvisualSignatureimagecontent = WorkflowExpression.Compile(requestvisualSignatureimagecontent, nameof(requestvisualSignatureimagecontent), required: false);
-            var __workflow_requestvisualSignatureimagecontentType = WorkflowExpression.Compile(requestvisualSignatureimagecontentType, nameof(requestvisualSignatureimagecontentType), required: false);
-            var __workflow_requestvisualSignaturepositions = WorkflowExpression.Compile(requestvisualSignaturepositions, nameof(requestvisualSignaturepositions), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ErrorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/seal";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (__workflow_requesttitle != null)
-                {
-                    request["title"] = ExpressionConverter.ConvertO(__workflow_requesttitle);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["content"] = ExpressionConverter.ConvertO(__workflow_requestcontent);
-                if (__workflow_requestsealForSealing != null)
-                {
-                    request["account_name"] = ExpressionConverter.ConvertO(__workflow_requestsealForSealing);
-                    requestpropCount++;
-                }
-
-                var visualSignatureObject = new JObject();
-                var visualSignatureObjectpropCount = 0;
-                if (__workflow_requestvisualSignatureformField != null)
-                {
-                    visualSignatureObject["form_field"] = ExpressionConverter.ConvertO(__workflow_requestvisualSignatureformField);
-                    visualSignatureObjectpropCount++;
-                }
-
-                var imageObject = new JObject();
-                var imageObjectpropCount = 0;
-                if (__workflow_requestvisualSignatureimagecontent != null)
-                {
-                    imageObject["content"] = ExpressionConverter.ConvertO(__workflow_requestvisualSignatureimagecontent);
-                    imageObjectpropCount++;
-                }
-
-                if (__workflow_requestvisualSignatureimagecontentType != null)
-                {
-                    imageObject["content_type"] = ExpressionConverter.ConvertO(__workflow_requestvisualSignatureimagecontentType);
-                    imageObjectpropCount++;
-                }
-
-                if (imageObjectpropCount > 0)
-                {
-                    visualSignatureObject["image"] = imageObject;
-                    visualSignatureObjectpropCount++;
-                }
-
-                if (__workflow_requestvisualSignaturepositions != null)
-                {
-                    visualSignatureObject["positions"] = ExpressionConverter.ConvertO(__workflow_requestvisualSignaturepositions);
-                    visualSignatureObjectpropCount++;
-                }
-
-                if (visualSignatureObjectpropCount > 0)
-                {
-                    request["visual_signature"] = visualSignatureObject;
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ErrorResponse>(callPayload);
             });
         }
@@ -124,25 +58,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
         DELETE
     }
 
+    public class RequestInput
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
+
+        [JsonProperty("account_name")]
+        public string SealForSealing { get; set; }
+
+        [JsonProperty("visual_signature")]
+        public VisualSignature VisualSignature { get; set; }
+    }
+
+    public class VisualSignature
+    {
+        [JsonProperty("form_field")]
+        public string FormField { get; set; }
+
+        [JsonProperty("image")]
+        public Image Image { get; set; }
+
+        [JsonProperty("positions")]
+        public Position[] Positions { get; set; }
+    }
+
+    public class Image
+    {
+        [JsonProperty("content")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
+
+        [JsonProperty("content_type")]
+        public string ContentType { get; set; }
+    }
+
     public class Position
     {
         [JsonProperty("x")]
-        public int X { get; set; }
+        public int? X { get; set; }
 
         [JsonProperty("y")]
-        public int Y { get; set; }
+        public int? Y { get; set; }
 
         [JsonProperty("width")]
-        public int Width { get; set; }
+        public int? Width { get; set; }
 
         [JsonProperty("height")]
-        public int Height { get; set; }
+        public int? Height { get; set; }
 
         [JsonProperty("page")]
         public string Page { get; set; }
 
         [JsonProperty("rotation")]
-        public int Rotation { get; set; }
+        public int? Rotation { get; set; }
     }
 }
 

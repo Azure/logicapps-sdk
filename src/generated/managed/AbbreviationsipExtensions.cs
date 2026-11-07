@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
     public class AbbreviationsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abbreviationsip")]
-        public IBodyWorkflowAction<AbbrGetResponse, ApiConnectionActionConfiguration> AbbrGet(Expression<Func<string>> term, Expression<Func<string>> categoryid = null, Expression<Func<sortbyInput>> sortby = null, Expression<Func<searchtypeInput>> searchtype = null)
+        public IBodyWorkflowAction<AbbrGetResponse, ApiConnectionActionConfiguration> AbbrGet(Expression<Func<string>> term, Expression<Func<string>> categoryid = null, Expression<Func<SortbyInput>> sortby = null, Expression<Func<SearchtypeInput>> searchtype = null)
         {
             var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
             var __workflow_categoryid = WorkflowExpression.Compile(categoryid, nameof(categoryid), required: false);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortbyInput
+    public enum SortbyInput
     {
         [EnumMember(Value = "p")]
         Popularity,
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum searchtypeInput
+    public enum SearchtypeInput
     {
         [EnumMember(Value = "e")]
         ExactMatch,

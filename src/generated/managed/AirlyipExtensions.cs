@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlyip")]
-        public IBodyWorkflowAction<GetMeasurementsForInstallationResponse, ApiConnectionActionConfiguration> GetMeasurementsForInstallation(Expression<Func<int>> installationId, Expression<Func<acceptLanguageInput>> acceptLanguage = null, Expression<Func<indexTypeInput>> indexType = null)
+        public IBodyWorkflowAction<GetMeasurementsForInstallationResponse, ApiConnectionActionConfiguration> GetMeasurementsForInstallation(Expression<Func<int>> installationId, Expression<Func<AcceptLanguageInput>> acceptLanguage = null, Expression<Func<IndexTypeInput>> indexType = null)
         {
             var __workflow_installationId = WorkflowExpression.Compile(installationId, nameof(installationId), required: true);
             var __workflow_acceptLanguage = WorkflowExpression.Compile(acceptLanguage, nameof(acceptLanguage), required: false);
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlyip")]
-        public IBodyWorkflowAction<GetNearestMeasurementsResponse, ApiConnectionActionConfiguration> GetNearestMeasurements(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<double>> maxDistanceKM = null, Expression<Func<indexTypeInput>> indexType = null, Expression<Func<acceptLanguageInput>> acceptLanguage = null)
+        public IBodyWorkflowAction<GetNearestMeasurementsResponse, ApiConnectionActionConfiguration> GetNearestMeasurements(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<double>> maxDistanceKM = null, Expression<Func<IndexTypeInput>> indexType = null, Expression<Func<AcceptLanguageInput>> acceptLanguage = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlyip")]
-        public IBodyWorkflowAction<GetMeasurementsForPointResponse, ApiConnectionActionConfiguration> GetMeasurementsForPoint(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<indexTypeInput>> indexType = null, Expression<Func<acceptLanguageInput>> acceptLanguage = null)
+        public IBodyWorkflowAction<GetMeasurementsForPointResponse, ApiConnectionActionConfiguration> GetMeasurementsForPoint(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<IndexTypeInput>> indexType = null, Expression<Func<AcceptLanguageInput>> acceptLanguage = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlyip")]
-        public IBodyWorkflowAction<GetAvailableMeasurementsResponseItem[], ApiConnectionActionConfiguration> GetAvailableMeasurements(Expression<Func<acceptLanguageInput>> acceptLanguage = null)
+        public IBodyWorkflowAction<GetAvailableMeasurementsResponseItem[], ApiConnectionActionConfiguration> GetAvailableMeasurements(Expression<Func<AcceptLanguageInput>> acceptLanguage = null)
         {
             var __workflow_acceptLanguage = WorkflowExpression.Compile(acceptLanguage, nameof(acceptLanguage), required: false);
             return new DeferredBodyAction<GetAvailableMeasurementsResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum acceptLanguageInput
+    public enum AcceptLanguageInput
     {
         [EnumMember(Value = "en")]
         En,
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum indexTypeInput
+    public enum IndexTypeInput
     {
         [EnumMember(Value = "AIRLY_CAQI")]
         AIRLYCAQI,

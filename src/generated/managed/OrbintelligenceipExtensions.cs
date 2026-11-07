@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbintelligenceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbintelligenceip")]
-        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> apiKey = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<entityTypeInput>> entityType = null, Expression<Func<string>> parentOrbNum = null, Expression<Func<int>> ultimateParentOrbNum = null, Expression<Func<string>> industry = null, Expression<Func<string>> address1 = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> zip = null, Expression<Func<string>> country = null, Expression<Func<employeesInputItem[]>> employees = null, Expression<Func<revenueInputItem[]>> revenue = null, Expression<Func<string>> techs = null, Expression<Func<string>> techCategories = null, Expression<Func<string>> naicsCodes = null, Expression<Func<string>> sicCodes = null, Expression<Func<string>> rankings = null, Expression<Func<string>> importanceScore = null, Expression<Func<string>> cik = null, Expression<Func<string>> cusip = null, Expression<Func<string>> ticker = null, Expression<Func<string>> exchange = null, Expression<Func<bool>> showFullProfile = null, Expression<Func<string>> include = null, Expression<Func<int>> orbNum = null, Expression<Func<string[]>> categories = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> apiKey = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<EntityTypeInput>> entityType = null, Expression<Func<string>> parentOrbNum = null, Expression<Func<int>> ultimateParentOrbNum = null, Expression<Func<string>> industry = null, Expression<Func<string>> address1 = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> zip = null, Expression<Func<string>> country = null, Expression<Func<EmployeesInputItem[]>> employees = null, Expression<Func<RevenueInputItem[]>> revenue = null, Expression<Func<string>> techs = null, Expression<Func<string>> techCategories = null, Expression<Func<string>> naicsCodes = null, Expression<Func<string>> sicCodes = null, Expression<Func<string>> rankings = null, Expression<Func<string>> importanceScore = null, Expression<Func<string>> cik = null, Expression<Func<string>> cusip = null, Expression<Func<string>> ticker = null, Expression<Func<string>> exchange = null, Expression<Func<bool>> showFullProfile = null, Expression<Func<string>> include = null, Expression<Func<int>> orbNum = null, Expression<Func<string[]>> categories = null)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbintelligenceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbintelligenceip")]
-        public IBodyWorkflowAction<LookAlikeResponse, ApiConnectionActionConfiguration> LookAlike(Expression<Func<int>> orbNum, Expression<Func<string>> apiKey = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> industry = null, Expression<Func<string>> address1 = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> zip = null, Expression<Func<string>> country = null, Expression<Func<employeesInputItem[]>> employees = null, Expression<Func<revenueInputItem[]>> revenue = null, Expression<Func<string>> techs = null, Expression<Func<string>> techCategories = null, Expression<Func<string>> naicsCodes = null, Expression<Func<string>> sicCodes = null, Expression<Func<string>> rankings = null, Expression<Func<string>> cik = null, Expression<Func<string>> cusip = null, Expression<Func<string>> ticker = null, Expression<Func<string>> exchange = null, Expression<Func<bool>> showFullProfile = null, Expression<Func<string>> include = null)
+        public IBodyWorkflowAction<LookAlikeResponse, ApiConnectionActionConfiguration> LookAlike(Expression<Func<int>> orbNum, Expression<Func<string>> apiKey = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> industry = null, Expression<Func<string>> address1 = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> zip = null, Expression<Func<string>> country = null, Expression<Func<EmployeesInputItem[]>> employees = null, Expression<Func<RevenueInputItem[]>> revenue = null, Expression<Func<string>> techs = null, Expression<Func<string>> techCategories = null, Expression<Func<string>> naicsCodes = null, Expression<Func<string>> sicCodes = null, Expression<Func<string>> rankings = null, Expression<Func<string>> cik = null, Expression<Func<string>> cusip = null, Expression<Func<string>> ticker = null, Expression<Func<string>> exchange = null, Expression<Func<bool>> showFullProfile = null, Expression<Func<string>> include = null)
         {
             var __workflow_orbNum = WorkflowExpression.Compile(orbNum, nameof(orbNum), required: true);
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: false);
@@ -1508,7 +1508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbintelligenceip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum entityTypeInput
+    public enum EntityTypeInput
     {
         [EnumMember(Value = "company")]
         Company,
@@ -1517,7 +1517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbintelligenceip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum employeesInputItem
+    public enum EmployeesInputItem
     {
         [EnumMember(Value = "any")]
         Any,
@@ -1540,7 +1540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbintelligenceip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum revenueInputItem
+    public enum RevenueInputItem
     {
         [EnumMember(Value = "any")]
         Any,

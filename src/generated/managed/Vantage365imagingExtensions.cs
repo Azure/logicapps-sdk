@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
     public class Vantage365imagingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vantage365imaging")]
-        public IBodyWorkflowAction<GenerateBarCodeResponse, ApiConnectionActionConfiguration> GenerateBarCode(Expression<Func<typeofcodeInput>> typeofcode, Expression<Func<string>> texttoencode, Expression<Func<int>> height = null, Expression<Func<int>> width = null)
+        public IBodyWorkflowAction<GenerateBarCodeResponse, ApiConnectionActionConfiguration> GenerateBarCode(Expression<Func<TypeofcodeInput>> typeofcode, Expression<Func<string>> texttoencode, Expression<Func<int>> height = null, Expression<Func<int>> width = null)
         {
             var __workflow_typeofcode = WorkflowExpression.Compile(typeofcode, nameof(typeofcode), required: true);
             var __workflow_texttoencode = WorkflowExpression.Compile(texttoencode, nameof(texttoencode), required: true);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeofcodeInput
+    public enum TypeofcodeInput
     {
         Aztec,
         [EnumMember(Value = "Code 39")]

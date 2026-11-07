@@ -13,1079 +13,253 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     public class Ilovepdfv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Compress(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodycompressionLevelInput>> bodycompressionLevel = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Compress(Expression<Func<CompressBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodycompressionLevel = WorkflowExpression.Compile(bodycompressionLevel, nameof(bodycompressionLevel), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/compress";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompressionLevel != null)
-                {
-                    body["compression_level"] = ExpressionConverter.ConvertO(__workflow_bodycompressionLevel);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Split(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<bodysplitModeInput>> bodysplitMode, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodyranges = null, Expression<Func<string>> bodyfixedRange = null, Expression<Func<string>> bodyremovePages = null, Expression<Func<bodymergeAfterInput>> bodymergeAfter = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Split(Expression<Func<SplitBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodysplitMode = WorkflowExpression.Compile(bodysplitMode, nameof(bodysplitMode), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodyranges = WorkflowExpression.Compile(bodyranges, nameof(bodyranges), required: false);
-            var __workflow_bodyfixedRange = WorkflowExpression.Compile(bodyfixedRange, nameof(bodyfixedRange), required: false);
-            var __workflow_bodyremovePages = WorkflowExpression.Compile(bodyremovePages, nameof(bodyremovePages), required: false);
-            var __workflow_bodymergeAfter = WorkflowExpression.Compile(bodymergeAfter, nameof(bodymergeAfter), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/split";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["split_mode"] = ExpressionConverter.ConvertO(__workflow_bodysplitMode);
-                if (__workflow_bodyranges != null)
-                {
-                    body["ranges"] = ExpressionConverter.ConvertO(__workflow_bodyranges);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfixedRange != null)
-                {
-                    body["fixed_range"] = ExpressionConverter.ConvertO(__workflow_bodyfixedRange);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyremovePages != null)
-                {
-                    body["remove_pages"] = ExpressionConverter.ConvertO(__workflow_bodyremovePages);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymergeAfter != null)
-                {
-                    body["merge_after"] = ExpressionConverter.ConvertO(__workflow_bodymergeAfter);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Protect(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodypassword, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Protect(Expression<Func<ProtectBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/protect";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoJPG(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodypdfjpgModeInput>> bodypdfjpgMode = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoJPG(Expression<Func<PDFtoJPGBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodypdfjpgMode = WorkflowExpression.Compile(bodypdfjpgMode, nameof(bodypdfjpgMode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdftojpg";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypdfjpgMode != null)
-                {
-                    body["pdfjpg_mode"] = ExpressionConverter.ConvertO(__workflow_bodypdfjpgMode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> ImageToPDF(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodyorientation = null, Expression<Func<string>> bodymargin = null, Expression<Func<bodypagesizeInput>> bodypagesize = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> ImageToPDF(Expression<Func<ImageToPDFBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodyorientation = WorkflowExpression.Compile(bodyorientation, nameof(bodyorientation), required: false);
-            var __workflow_bodymargin = WorkflowExpression.Compile(bodymargin, nameof(bodymargin), required: false);
-            var __workflow_bodypagesize = WorkflowExpression.Compile(bodypagesize, nameof(bodypagesize), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/jpgtoimg";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorientation != null)
-                {
-                    body["orientation"] = ExpressionConverter.ConvertO(__workflow_bodyorientation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymargin != null)
-                {
-                    body["margin"] = ExpressionConverter.ConvertO(__workflow_bodymargin);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypagesize != null)
-                {
-                    body["pagesize"] = ExpressionConverter.ConvertO(__workflow_bodypagesize);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoPDFA(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodyconformanceInput>> bodyconformance = null, Expression<Func<bodyallowDowngradeInput>> bodyallowDowngrade = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoPDFA(Expression<Func<PDFtoPDFABodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodyconformance = WorkflowExpression.Compile(bodyconformance, nameof(bodyconformance), required: false);
-            var __workflow_bodyallowDowngrade = WorkflowExpression.Compile(bodyallowDowngrade, nameof(bodyallowDowngrade), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdftopdfa";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconformance != null)
-                {
-                    body["conformance"] = ExpressionConverter.ConvertO(__workflow_bodyconformance);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyallowDowngrade != null)
-                {
-                    body["allow_downgrade"] = ExpressionConverter.ConvertO(__workflow_bodyallowDowngrade);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Unlock(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodypassword = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Unlock(Expression<Func<UnlockBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/unlock";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> AddPageNumber(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodyfacingPagesInput>> bodyfacingPages = null, Expression<Func<bodyfirstCoverInput>> bodyfirstCover = null, Expression<Func<string>> bodypages = null, Expression<Func<string>> bodystartingNumber = null, Expression<Func<bodyverticalPositionInput>> bodyverticalPosition = null, Expression<Func<bodyhorizontalPositionInput>> bodyhorizontalPosition = null, Expression<Func<string>> bodyverticalPositionAdjustment = null, Expression<Func<string>> bodyhorizontalPositionAdjustment = null, Expression<Func<bodyfontFamilyInput>> bodyfontFamily = null, Expression<Func<string>> bodyfontSize = null, Expression<Func<string>> bodyfontColor = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> AddPageNumber(Expression<Func<AddPageNumberBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodyfacingPages = WorkflowExpression.Compile(bodyfacingPages, nameof(bodyfacingPages), required: false);
-            var __workflow_bodyfirstCover = WorkflowExpression.Compile(bodyfirstCover, nameof(bodyfirstCover), required: false);
-            var __workflow_bodypages = WorkflowExpression.Compile(bodypages, nameof(bodypages), required: false);
-            var __workflow_bodystartingNumber = WorkflowExpression.Compile(bodystartingNumber, nameof(bodystartingNumber), required: false);
-            var __workflow_bodyverticalPosition = WorkflowExpression.Compile(bodyverticalPosition, nameof(bodyverticalPosition), required: false);
-            var __workflow_bodyhorizontalPosition = WorkflowExpression.Compile(bodyhorizontalPosition, nameof(bodyhorizontalPosition), required: false);
-            var __workflow_bodyverticalPositionAdjustment = WorkflowExpression.Compile(bodyverticalPositionAdjustment, nameof(bodyverticalPositionAdjustment), required: false);
-            var __workflow_bodyhorizontalPositionAdjustment = WorkflowExpression.Compile(bodyhorizontalPositionAdjustment, nameof(bodyhorizontalPositionAdjustment), required: false);
-            var __workflow_bodyfontFamily = WorkflowExpression.Compile(bodyfontFamily, nameof(bodyfontFamily), required: false);
-            var __workflow_bodyfontSize = WorkflowExpression.Compile(bodyfontSize, nameof(bodyfontSize), required: false);
-            var __workflow_bodyfontColor = WorkflowExpression.Compile(bodyfontColor, nameof(bodyfontColor), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pagenumber";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfacingPages != null)
-                {
-                    body["facing_pages"] = ExpressionConverter.ConvertO(__workflow_bodyfacingPages);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfirstCover != null)
-                {
-                    body["first_cover"] = ExpressionConverter.ConvertO(__workflow_bodyfirstCover);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypages != null)
-                {
-                    body["pages"] = ExpressionConverter.ConvertO(__workflow_bodypages);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartingNumber != null)
-                {
-                    body["starting_number"] = ExpressionConverter.ConvertO(__workflow_bodystartingNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyverticalPosition != null)
-                {
-                    body["vertical_position"] = ExpressionConverter.ConvertO(__workflow_bodyverticalPosition);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhorizontalPosition != null)
-                {
-                    body["horizontal_position"] = ExpressionConverter.ConvertO(__workflow_bodyhorizontalPosition);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyverticalPositionAdjustment != null)
-                {
-                    body["vertical_position_adjustment"] = ExpressionConverter.ConvertO(__workflow_bodyverticalPositionAdjustment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhorizontalPositionAdjustment != null)
-                {
-                    body["horizontal_position_adjustment"] = ExpressionConverter.ConvertO(__workflow_bodyhorizontalPositionAdjustment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfontFamily != null)
-                {
-                    body["font_family"] = ExpressionConverter.ConvertO(__workflow_bodyfontFamily);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfontSize != null)
-                {
-                    body["font_size"] = ExpressionConverter.ConvertO(__workflow_bodyfontSize);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfontColor != null)
-                {
-                    body["font_color"] = ExpressionConverter.ConvertO(__workflow_bodyfontColor);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Merge(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodyfileSource2Input>> bodyfileSource2 = null, Expression<Func<string>> bodyfileName2 = null, Expression<Func<string>> bodyfile2 = null, Expression<Func<string>> bodyfileUrl2 = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Merge(Expression<Func<MergeBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodyfileSource2 = WorkflowExpression.Compile(bodyfileSource2, nameof(bodyfileSource2), required: false);
-            var __workflow_bodyfileName2 = WorkflowExpression.Compile(bodyfileName2, nameof(bodyfileName2), required: false);
-            var __workflow_bodyfile2 = WorkflowExpression.Compile(bodyfile2, nameof(bodyfile2), required: false);
-            var __workflow_bodyfileUrl2 = WorkflowExpression.Compile(bodyfileUrl2, nameof(bodyfileUrl2), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/merge";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileSource2 != null)
-                {
-                    body["file_source2"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileName2 != null)
-                {
-                    body["file_name2"] = ExpressionConverter.ConvertO(__workflow_bodyfileName2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfile2 != null)
-                {
-                    body["file2"] = ExpressionConverter.ConvertO(__workflow_bodyfile2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl2 != null)
-                {
-                    body["file_url2"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl2);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Watermark(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyimageSource = null, Expression<Func<string>> bodyimageName = null, Expression<Func<WorkflowBinaryContent>> bodyimageFile = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<string>> bodypages = null, Expression<Func<bodyverticalPositionInput>> bodyverticalPosition = null, Expression<Func<bodyhorizontalPositionInput>> bodyhorizontalPosition = null, Expression<Func<string>> bodyverticalPositionAdjustment = null, Expression<Func<string>> bodyhorizontalPositionAdjustment = null, Expression<Func<bodymosaicInput>> bodymosaic = null, Expression<Func<string>> bodyrotation = null, Expression<Func<bodyfontFamilyInput>> bodyfontFamily = null, Expression<Func<bodyfontStyleInput>> bodyfontStyle = null, Expression<Func<string>> bodyfontSize = null, Expression<Func<string>> bodyfontColor = null, Expression<Func<string>> bodytransparency = null, Expression<Func<bodylayerInput>> bodylayer = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Watermark(Expression<Func<WatermarkBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyimageSource = WorkflowExpression.Compile(bodyimageSource, nameof(bodyimageSource), required: false);
-            var __workflow_bodyimageName = WorkflowExpression.Compile(bodyimageName, nameof(bodyimageName), required: false);
-            var __workflow_bodyimageFile = WorkflowExpression.Compile(bodyimageFile, nameof(bodyimageFile), required: false);
-            var __workflow_bodyimageUrl = WorkflowExpression.Compile(bodyimageUrl, nameof(bodyimageUrl), required: false);
-            var __workflow_bodypages = WorkflowExpression.Compile(bodypages, nameof(bodypages), required: false);
-            var __workflow_bodyverticalPosition = WorkflowExpression.Compile(bodyverticalPosition, nameof(bodyverticalPosition), required: false);
-            var __workflow_bodyhorizontalPosition = WorkflowExpression.Compile(bodyhorizontalPosition, nameof(bodyhorizontalPosition), required: false);
-            var __workflow_bodyverticalPositionAdjustment = WorkflowExpression.Compile(bodyverticalPositionAdjustment, nameof(bodyverticalPositionAdjustment), required: false);
-            var __workflow_bodyhorizontalPositionAdjustment = WorkflowExpression.Compile(bodyhorizontalPositionAdjustment, nameof(bodyhorizontalPositionAdjustment), required: false);
-            var __workflow_bodymosaic = WorkflowExpression.Compile(bodymosaic, nameof(bodymosaic), required: false);
-            var __workflow_bodyrotation = WorkflowExpression.Compile(bodyrotation, nameof(bodyrotation), required: false);
-            var __workflow_bodyfontFamily = WorkflowExpression.Compile(bodyfontFamily, nameof(bodyfontFamily), required: false);
-            var __workflow_bodyfontStyle = WorkflowExpression.Compile(bodyfontStyle, nameof(bodyfontStyle), required: false);
-            var __workflow_bodyfontSize = WorkflowExpression.Compile(bodyfontSize, nameof(bodyfontSize), required: false);
-            var __workflow_bodyfontColor = WorkflowExpression.Compile(bodyfontColor, nameof(bodyfontColor), required: false);
-            var __workflow_bodytransparency = WorkflowExpression.Compile(bodytransparency, nameof(bodytransparency), required: false);
-            var __workflow_bodylayer = WorkflowExpression.Compile(bodylayer, nameof(bodylayer), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/watermark";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymode != null)
-                {
-                    body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimageSource != null)
-                {
-                    body["image_source"] = ExpressionConverter.ConvertO(__workflow_bodyimageSource);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimageName != null)
-                {
-                    body["image_name"] = ExpressionConverter.ConvertO(__workflow_bodyimageName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimageFile != null)
-                {
-                    body["image_file"] = ExpressionConverter.ConvertO(__workflow_bodyimageFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimageUrl != null)
-                {
-                    body["image_url"] = ExpressionConverter.ConvertO(__workflow_bodyimageUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypages != null)
-                {
-                    body["pages"] = ExpressionConverter.ConvertO(__workflow_bodypages);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyverticalPosition != null)
-                {
-                    body["vertical_position"] = ExpressionConverter.ConvertO(__workflow_bodyverticalPosition);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhorizontalPosition != null)
-                {
-                    body["horizontal_position"] = ExpressionConverter.ConvertO(__workflow_bodyhorizontalPosition);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyverticalPositionAdjustment != null)
-                {
-                    body["vertical_position_adjustment"] = ExpressionConverter.ConvertO(__workflow_bodyverticalPositionAdjustment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhorizontalPositionAdjustment != null)
-                {
-                    body["horizontal_position_adjustment"] = ExpressionConverter.ConvertO(__workflow_bodyhorizontalPositionAdjustment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymosaic != null)
-                {
-                    body["mosaic"] = ExpressionConverter.ConvertO(__workflow_bodymosaic);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrotation != null)
-                {
-                    body["rotation"] = ExpressionConverter.ConvertO(__workflow_bodyrotation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfontFamily != null)
-                {
-                    body["font_family"] = ExpressionConverter.ConvertO(__workflow_bodyfontFamily);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfontStyle != null)
-                {
-                    body["font_style"] = ExpressionConverter.ConvertO(__workflow_bodyfontStyle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfontSize != null)
-                {
-                    body["font_size"] = ExpressionConverter.ConvertO(__workflow_bodyfontSize);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfontColor != null)
-                {
-                    body["font_color"] = ExpressionConverter.ConvertO(__workflow_bodyfontColor);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytransparency != null)
-                {
-                    body["transparency"] = ExpressionConverter.ConvertO(__workflow_bodytransparency);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylayer != null)
-                {
-                    body["layer"] = ExpressionConverter.ConvertO(__workflow_bodylayer);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Rotate(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodyrotateInput>> bodyrotate = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Rotate(Expression<Func<RotateBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodyrotate = WorkflowExpression.Compile(bodyrotate, nameof(bodyrotate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/rotate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrotate != null)
-                {
-                    body["rotate"] = ExpressionConverter.ConvertO(__workflow_bodyrotate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFOCR(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodyocrLanguages = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFOCR(Expression<Func<PDFOCRBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodyocrLanguages = WorkflowExpression.Compile(bodyocrLanguages, nameof(bodyocrLanguages), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdfocr";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyocrLanguages != null)
-                {
-                    body["ocr_languages"] = ExpressionConverter.ConvertO(__workflow_bodyocrLanguages);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> OfficeToPDF(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> OfficeToPDF(Expression<Func<DetectFormsBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/officetopdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DetectForms(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DetectForms(Expression<Func<DetectFormsBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/detectforms";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Summarize(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodylanguage, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodyoutputFormat = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Summarize(Expression<Func<SummarizeBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/summarize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                if (__workflow_bodyoutputFormat != null)
-                {
-                    body["output_format"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Translate(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodylanguageOutput = null, Expression<Func<string>> bodytranslateMode = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Translate(Expression<Func<TranslateBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodylanguageOutput = WorkflowExpression.Compile(bodylanguageOutput, nameof(bodylanguageOutput), required: false);
-            var __workflow_bodytranslateMode = WorkflowExpression.Compile(bodytranslateMode, nameof(bodytranslateMode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/translate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguageOutput != null)
-                {
-                    body["language_output"] = ExpressionConverter.ConvertO(__workflow_bodylanguageOutput);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytranslateMode != null)
-                {
-                    body["translate_mode"] = ExpressionConverter.ConvertO(__workflow_bodytranslateMode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> SplitSmart(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyprompt, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> SplitSmart(Expression<Func<SplitSmartBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/splitsmart";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFMarkdown(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFMarkdown(Expression<Func<DetectFormsBodyInput>> body)
         {
-            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdfmarkdown";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
@@ -1095,8 +269,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     {
     }
 
+    public class CompressBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("compression_level")]
+        public BodyInputCompressionLevelType? CompressionLevel { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyfileSourceInput
+    public enum BodyInputFileSourceType
     {
         [EnumMember(Value = "binary")]
         Binary,
@@ -1105,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycompressionLevelInput
+    public enum BodyInputCompressionLevelType
     {
         [EnumMember(Value = "extreme")]
         Extreme,
@@ -1115,8 +307,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Low
     }
 
+    public class SplitBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("split_mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputSplitModeType SplitMode { get; set; }
+
+        [JsonProperty("ranges")]
+        public string Ranges { get; set; }
+
+        [JsonProperty("fixed_range")]
+        public string FixedRange { get; set; }
+
+        [JsonProperty("remove_pages")]
+        public string RemovePages { get; set; }
+
+        [JsonProperty("merge_after")]
+        public BodyInputMergeAfterType? MergeAfter { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysplitModeInput
+    public enum BodyInputSplitModeType
     {
         [EnumMember(Value = "fixed_ranges")]
         FixedRanges,
@@ -1131,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymergeAfterInput
+    public enum BodyInputMergeAfterType
     {
         [EnumMember(Value = "true")]
         True,
@@ -1139,8 +361,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         False
     }
 
+    public class ProtectBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Password { get; set; }
+    }
+
+    public class PDFtoJPGBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("pdfjpg_mode")]
+        public BodyInputPdfjpgModeType? PdfjpgMode { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypdfjpgModeInput
+    public enum BodyInputPdfjpgModeType
     {
         [EnumMember(Value = "pages")]
         Pages,
@@ -1148,8 +406,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Extract
     }
 
+    public class ImageToPDFBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("orientation")]
+        public string Orientation { get; set; }
+
+        [JsonProperty("margin")]
+        public string Margin { get; set; }
+
+        [JsonProperty("pagesize")]
+        public BodyInputPagesizeType? Pagesize { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypagesizeInput
+    public enum BodyInputPagesizeType
     {
         [EnumMember(Value = "fit")]
         Fit,
@@ -1158,8 +440,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Letter
     }
 
+    public class PDFtoPDFABodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("conformance")]
+        public BodyInputConformanceType? Conformance { get; set; }
+
+        [JsonProperty("allow_downgrade")]
+        public BodyInputAllowDowngradeType? AllowDowngrade { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyconformanceInput
+    public enum BodyInputConformanceType
     {
         [EnumMember(Value = "pdfa-1b")]
         Pdfa1b,
@@ -1180,7 +483,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyallowDowngradeInput
+    public enum BodyInputAllowDowngradeType
+    {
+        [EnumMember(Value = "true")]
+        True,
+        [EnumMember(Value = "false")]
+        False
+    }
+
+    public class UnlockBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+    }
+
+    public class AddPageNumberBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("facing_pages")]
+        public BodyInputFacingPagesType? FacingPages { get; set; }
+
+        [JsonProperty("first_cover")]
+        public BodyInputFirstCoverType? FirstCover { get; set; }
+
+        [JsonProperty("pages")]
+        public string Pages { get; set; }
+
+        [JsonProperty("starting_number")]
+        public string StartingNumber { get; set; }
+
+        [JsonProperty("vertical_position")]
+        public AddPageNumberBodyInputVerticalPositionType? VerticalPosition { get; set; }
+
+        [JsonProperty("horizontal_position")]
+        public BodyInputHorizontalPositionType? HorizontalPosition { get; set; }
+
+        [JsonProperty("vertical_position_adjustment")]
+        public string VerticalPositionAdjustment { get; set; }
+
+        [JsonProperty("horizontal_position_adjustment")]
+        public string HorizontalPositionAdjustment { get; set; }
+
+        [JsonProperty("font_family")]
+        public BodyInputFontFamilyType? FontFamily { get; set; }
+
+        [JsonProperty("font_size")]
+        public string FontSize { get; set; }
+
+        [JsonProperty("font_color")]
+        public string FontColor { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum BodyInputFacingPagesType
     {
         [EnumMember(Value = "true")]
         True,
@@ -1189,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyfacingPagesInput
+    public enum BodyInputFirstCoverType
     {
         [EnumMember(Value = "true")]
         True,
@@ -1198,27 +579,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyfirstCoverInput
-    {
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyverticalPositionInput
+    public enum AddPageNumberBodyInputVerticalPositionType
     {
         [EnumMember(Value = "bottom")]
         Bottom,
-        [EnumMember(Value = "middle")]
-        Middle,
         [EnumMember(Value = "top")]
         Top
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyhorizontalPositionInput
+    public enum BodyInputHorizontalPositionType
     {
         [EnumMember(Value = "left")]
         Left,
@@ -1229,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyfontFamilyInput
+    public enum BodyInputFontFamilyType
     {
         Arial,
         [EnumMember(Value = "Arial Unicode MS")]
@@ -1246,8 +616,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         LohitMarathi
     }
 
+    public class MergeBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("file_source2")]
+        public BodyInputFileSource2Type? FileSource2 { get; set; }
+
+        [JsonProperty("file_name2")]
+        public string FileName2 { get; set; }
+
+        [JsonProperty("file2")]
+        public string File2 { get; set; }
+
+        [JsonProperty("file_url2")]
+        public string FileUrl2 { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyfileSource2Input
+    public enum BodyInputFileSource2Type
     {
         [EnumMember(Value = "binary")]
         Binary,
@@ -1255,8 +652,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Url
     }
 
+    public class WatermarkBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("mode")]
+        public BodyInputModeType? Mode { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("image_source")]
+        public string ImageSource { get; set; }
+
+        [JsonProperty("image_name")]
+        public string ImageName { get; set; }
+
+        [JsonProperty("image_file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
+
+        [JsonProperty("image_url")]
+        public string ImageUrl { get; set; }
+
+        [JsonProperty("pages")]
+        public string Pages { get; set; }
+
+        [JsonProperty("vertical_position")]
+        public WatermarkBodyInputVerticalPositionType? VerticalPosition { get; set; }
+
+        [JsonProperty("horizontal_position")]
+        public BodyInputHorizontalPositionType? HorizontalPosition { get; set; }
+
+        [JsonProperty("vertical_position_adjustment")]
+        public string VerticalPositionAdjustment { get; set; }
+
+        [JsonProperty("horizontal_position_adjustment")]
+        public string HorizontalPositionAdjustment { get; set; }
+
+        [JsonProperty("mosaic")]
+        public BodyInputMosaicType? Mosaic { get; set; }
+
+        [JsonProperty("rotation")]
+        public string Rotation { get; set; }
+
+        [JsonProperty("font_family")]
+        public BodyInputFontFamilyType? FontFamily { get; set; }
+
+        [JsonProperty("font_style")]
+        public BodyInputFontStyleType? FontStyle { get; set; }
+
+        [JsonProperty("font_size")]
+        public string FontSize { get; set; }
+
+        [JsonProperty("font_color")]
+        public string FontColor { get; set; }
+
+        [JsonProperty("transparency")]
+        public string Transparency { get; set; }
+
+        [JsonProperty("layer")]
+        public BodyInputLayerType? Layer { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymodeInput
+    public enum BodyInputModeType
     {
         [EnumMember(Value = "text")]
         Text,
@@ -1265,7 +734,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymosaicInput
+    public enum WatermarkBodyInputVerticalPositionType
+    {
+        [EnumMember(Value = "bottom")]
+        Bottom,
+        [EnumMember(Value = "middle")]
+        Middle,
+        [EnumMember(Value = "top")]
+        Top
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum BodyInputMosaicType
     {
         [EnumMember(Value = "true")]
         True,
@@ -1274,14 +754,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyfontStyleInput
+    public enum BodyInputFontStyleType
     {
         Bold,
         Italic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylayerInput
+    public enum BodyInputLayerType
     {
         [EnumMember(Value = "above")]
         Above,
@@ -1289,8 +769,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Below
     }
 
+    public class RotateBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("rotate")]
+        public BodyInputRotateType? Rotate { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrotateInput
+    public enum BodyInputRotateType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -1300,6 +798,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         _180,
         [EnumMember(Value = "270")]
         _270
+    }
+
+    public class PDFOCRBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("ocr_languages")]
+        public string OcrLanguages { get; set; }
+    }
+
+    public class DetectFormsBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+    }
+
+    public class SummarizeBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("output_format")]
+        public string OutputFormat { get; set; }
+    }
+
+    public class TranslateBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("language_output")]
+        public string LanguageOutput { get; set; }
+
+        [JsonProperty("translate_mode")]
+        public string TranslateMode { get; set; }
+    }
+
+    public class SplitSmartBodyInput
+    {
+        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFileSourceType FileSource { get; set; }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+
+        [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Prompt { get; set; }
     }
 }
 

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
     public class NewsdataioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newsdataio")]
-        public IBodyWorkflowAction<LatestGetResponse, ApiConnectionActionConfiguration> LatestGet(Expression<Func<string>> q = null, Expression<Func<string>> qInTitle = null, Expression<Func<string>> country = null, Expression<Func<string>> category = null, Expression<Func<string>> language = null, Expression<Func<string>> domain = null, Expression<Func<fullContentInput>> fullContent = null, Expression<Func<imageInput>> image = null, Expression<Func<videoInput>> video = null, Expression<Func<string>> page = null)
+        public IBodyWorkflowAction<LatestGetResponse, ApiConnectionActionConfiguration> LatestGet(Expression<Func<string>> q = null, Expression<Func<string>> qInTitle = null, Expression<Func<string>> country = null, Expression<Func<string>> category = null, Expression<Func<string>> language = null, Expression<Func<string>> domain = null, Expression<Func<FullContentInput>> fullContent = null, Expression<Func<ImageInput>> image = null, Expression<Func<VideoInput>> video = null, Expression<Func<string>> page = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_qInTitle = WorkflowExpression.Compile(qInTitle, nameof(qInTitle), required: false);
@@ -116,19 +116,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
         public string Language { get; set; }
     }
 
-    public enum fullContentInput
+    public enum FullContentInput
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum imageInput
+    public enum ImageInput
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum videoInput
+    public enum VideoInput
     {
         _0 = 0,
         _1 = 1

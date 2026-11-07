@@ -34,166 +34,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTAdverseEventResponse, ApiConnectionActionConfiguration> POSTAdverseEvent(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyEventcodingInputItem[]>> bodyEventcoding = null, Expression<Func<string>> bodyEventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
+        public IBodyWorkflowAction<POSTAdverseEventResponse, ApiConnectionActionConfiguration> POSTAdverseEvent(Expression<Func<POSTAdverseEventBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyidentifiersystem = WorkflowExpression.Compile(bodyidentifiersystem, nameof(bodyidentifiersystem), required: false);
-            var __workflow_bodyidentifiervalue = WorkflowExpression.Compile(bodyidentifiervalue, nameof(bodyidentifiervalue), required: false);
-            var __workflow_bodyactuality = WorkflowExpression.Compile(bodyactuality, nameof(bodyactuality), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyEventcoding = WorkflowExpression.Compile(bodyEventcoding, nameof(bodyEventcoding), required: false);
-            var __workflow_bodyEventtext = WorkflowExpression.Compile(bodyEventtext, nameof(bodyEventtext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyseriousnesscoding = WorkflowExpression.Compile(bodyseriousnesscoding, nameof(bodyseriousnesscoding), required: false);
-            var __workflow_bodyseveritycoding = WorkflowExpression.Compile(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            var __workflow_bodyrecorderreference = WorkflowExpression.Compile(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            var __workflow_bodysuspectEntity = WorkflowExpression.Compile(bodysuspectEntity, nameof(bodysuspectEntity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTAdverseEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AdverseEvent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var identifierObject = new JObject();
-                var identifierObjectpropCount = 0;
-                if (__workflow_bodyidentifiersystem != null)
-                {
-                    identifierObject["system"] = ExpressionConverter.ConvertO(__workflow_bodyidentifiersystem);
-                    identifierObjectpropCount++;
-                }
-
-                if (__workflow_bodyidentifiervalue != null)
-                {
-                    identifierObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyidentifiervalue);
-                    identifierObjectpropCount++;
-                }
-
-                if (identifierObjectpropCount > 0)
-                {
-                    body["identifier"] = identifierObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactuality != null)
-                {
-                    body["actuality"] = ExpressionConverter.ConvertO(__workflow_bodyactuality);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var @eventObject = new JObject();
-                var @eventObjectpropCount = 0;
-                if (__workflow_bodyEventcoding != null)
-                {
-                    @eventObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyEventcoding);
-                    @eventObjectpropCount++;
-                }
-
-                if (__workflow_bodyEventtext != null)
-                {
-                    @eventObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyEventtext);
-                    @eventObjectpropCount++;
-                }
-
-                if (@eventObjectpropCount > 0)
-                {
-                    body["event"] = @eventObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                var seriousnessObject = new JObject();
-                var seriousnessObjectpropCount = 0;
-                if (__workflow_bodyseriousnesscoding != null)
-                {
-                    seriousnessObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyseriousnesscoding);
-                    seriousnessObjectpropCount++;
-                }
-
-                if (seriousnessObjectpropCount > 0)
-                {
-                    body["seriousness"] = seriousnessObject;
-                    bodypropCount++;
-                }
-
-                var severityObject = new JObject();
-                var severityObjectpropCount = 0;
-                if (__workflow_bodyseveritycoding != null)
-                {
-                    severityObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyseveritycoding);
-                    severityObjectpropCount++;
-                }
-
-                if (severityObjectpropCount > 0)
-                {
-                    body["severity"] = severityObject;
-                    bodypropCount++;
-                }
-
-                var recorderObject = new JObject();
-                var recorderObjectpropCount = 0;
-                if (__workflow_bodyrecorderreference != null)
-                {
-                    recorderObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyrecorderreference);
-                    recorderObjectpropCount++;
-                }
-
-                if (recorderObjectpropCount > 0)
-                {
-                    body["recorder"] = recorderObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysuspectEntity != null)
-                {
-                    body["suspectEntity"] = ExpressionConverter.ConvertO(__workflow_bodysuspectEntity);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTAdverseEventResponse>(callPayload);
             });
         }
@@ -218,377 +68,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEAdverseEventIdResponse, ApiConnectionActionConfiguration> DELETEAdverseEventId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyEventcodingInputItem[]>> bodyEventcoding = null, Expression<Func<string>> bodyEventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
+        public IBodyWorkflowAction<DELETEAdverseEventIdResponse, ApiConnectionActionConfiguration> DELETEAdverseEventId(Expression<Func<string>> id, Expression<Func<DELETEAdverseEventIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodyidentifiersystem = WorkflowExpression.Compile(bodyidentifiersystem, nameof(bodyidentifiersystem), required: false);
-            var __workflow_bodyidentifiervalue = WorkflowExpression.Compile(bodyidentifiervalue, nameof(bodyidentifiervalue), required: false);
-            var __workflow_bodyactuality = WorkflowExpression.Compile(bodyactuality, nameof(bodyactuality), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyEventcoding = WorkflowExpression.Compile(bodyEventcoding, nameof(bodyEventcoding), required: false);
-            var __workflow_bodyEventtext = WorkflowExpression.Compile(bodyEventtext, nameof(bodyEventtext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyseriousnesscoding = WorkflowExpression.Compile(bodyseriousnesscoding, nameof(bodyseriousnesscoding), required: false);
-            var __workflow_bodyseveritycoding = WorkflowExpression.Compile(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            var __workflow_bodyrecorderreference = WorkflowExpression.Compile(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            var __workflow_bodysuspectEntity = WorkflowExpression.Compile(bodysuspectEntity, nameof(bodysuspectEntity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DELETEAdverseEventIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AdverseEvent/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var identifierObject = new JObject();
-                var identifierObjectpropCount = 0;
-                if (__workflow_bodyidentifiersystem != null)
-                {
-                    identifierObject["system"] = ExpressionConverter.ConvertO(__workflow_bodyidentifiersystem);
-                    identifierObjectpropCount++;
-                }
-
-                if (__workflow_bodyidentifiervalue != null)
-                {
-                    identifierObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyidentifiervalue);
-                    identifierObjectpropCount++;
-                }
-
-                if (identifierObjectpropCount > 0)
-                {
-                    body["identifier"] = identifierObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactuality != null)
-                {
-                    body["actuality"] = ExpressionConverter.ConvertO(__workflow_bodyactuality);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var @eventObject = new JObject();
-                var @eventObjectpropCount = 0;
-                if (__workflow_bodyEventcoding != null)
-                {
-                    @eventObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyEventcoding);
-                    @eventObjectpropCount++;
-                }
-
-                if (__workflow_bodyEventtext != null)
-                {
-                    @eventObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyEventtext);
-                    @eventObjectpropCount++;
-                }
-
-                if (@eventObjectpropCount > 0)
-                {
-                    body["event"] = @eventObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                var seriousnessObject = new JObject();
-                var seriousnessObjectpropCount = 0;
-                if (__workflow_bodyseriousnesscoding != null)
-                {
-                    seriousnessObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyseriousnesscoding);
-                    seriousnessObjectpropCount++;
-                }
-
-                if (seriousnessObjectpropCount > 0)
-                {
-                    body["seriousness"] = seriousnessObject;
-                    bodypropCount++;
-                }
-
-                var severityObject = new JObject();
-                var severityObjectpropCount = 0;
-                if (__workflow_bodyseveritycoding != null)
-                {
-                    severityObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyseveritycoding);
-                    severityObjectpropCount++;
-                }
-
-                if (severityObjectpropCount > 0)
-                {
-                    body["severity"] = severityObject;
-                    bodypropCount++;
-                }
-
-                var recorderObject = new JObject();
-                var recorderObjectpropCount = 0;
-                if (__workflow_bodyrecorderreference != null)
-                {
-                    recorderObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyrecorderreference);
-                    recorderObjectpropCount++;
-                }
-
-                if (recorderObjectpropCount > 0)
-                {
-                    body["recorder"] = recorderObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysuspectEntity != null)
-                {
-                    body["suspectEntity"] = ExpressionConverter.ConvertO(__workflow_bodysuspectEntity);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DELETEAdverseEventIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTAdverseEventIdResponse, ApiConnectionActionConfiguration> PUTAdverseEventId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyEventcodingInputItem[]>> bodyEventcoding = null, Expression<Func<string>> bodyEventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
+        public IBodyWorkflowAction<PUTAdverseEventIdResponse, ApiConnectionActionConfiguration> PUTAdverseEventId(Expression<Func<string>> id, Expression<Func<DELETEAdverseEventIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodyidentifiersystem = WorkflowExpression.Compile(bodyidentifiersystem, nameof(bodyidentifiersystem), required: false);
-            var __workflow_bodyidentifiervalue = WorkflowExpression.Compile(bodyidentifiervalue, nameof(bodyidentifiervalue), required: false);
-            var __workflow_bodyactuality = WorkflowExpression.Compile(bodyactuality, nameof(bodyactuality), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyEventcoding = WorkflowExpression.Compile(bodyEventcoding, nameof(bodyEventcoding), required: false);
-            var __workflow_bodyEventtext = WorkflowExpression.Compile(bodyEventtext, nameof(bodyEventtext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyseriousnesscoding = WorkflowExpression.Compile(bodyseriousnesscoding, nameof(bodyseriousnesscoding), required: false);
-            var __workflow_bodyseveritycoding = WorkflowExpression.Compile(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            var __workflow_bodyrecorderreference = WorkflowExpression.Compile(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            var __workflow_bodysuspectEntity = WorkflowExpression.Compile(bodysuspectEntity, nameof(bodysuspectEntity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTAdverseEventIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AdverseEvent/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var identifierObject = new JObject();
-                var identifierObjectpropCount = 0;
-                if (__workflow_bodyidentifiersystem != null)
-                {
-                    identifierObject["system"] = ExpressionConverter.ConvertO(__workflow_bodyidentifiersystem);
-                    identifierObjectpropCount++;
-                }
-
-                if (__workflow_bodyidentifiervalue != null)
-                {
-                    identifierObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyidentifiervalue);
-                    identifierObjectpropCount++;
-                }
-
-                if (identifierObjectpropCount > 0)
-                {
-                    body["identifier"] = identifierObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactuality != null)
-                {
-                    body["actuality"] = ExpressionConverter.ConvertO(__workflow_bodyactuality);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var @eventObject = new JObject();
-                var @eventObjectpropCount = 0;
-                if (__workflow_bodyEventcoding != null)
-                {
-                    @eventObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyEventcoding);
-                    @eventObjectpropCount++;
-                }
-
-                if (__workflow_bodyEventtext != null)
-                {
-                    @eventObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyEventtext);
-                    @eventObjectpropCount++;
-                }
-
-                if (@eventObjectpropCount > 0)
-                {
-                    body["event"] = @eventObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                var seriousnessObject = new JObject();
-                var seriousnessObjectpropCount = 0;
-                if (__workflow_bodyseriousnesscoding != null)
-                {
-                    seriousnessObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyseriousnesscoding);
-                    seriousnessObjectpropCount++;
-                }
-
-                if (seriousnessObjectpropCount > 0)
-                {
-                    body["seriousness"] = seriousnessObject;
-                    bodypropCount++;
-                }
-
-                var severityObject = new JObject();
-                var severityObjectpropCount = 0;
-                if (__workflow_bodyseveritycoding != null)
-                {
-                    severityObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyseveritycoding);
-                    severityObjectpropCount++;
-                }
-
-                if (severityObjectpropCount > 0)
-                {
-                    body["severity"] = severityObject;
-                    bodypropCount++;
-                }
-
-                var recorderObject = new JObject();
-                var recorderObjectpropCount = 0;
-                if (__workflow_bodyrecorderreference != null)
-                {
-                    recorderObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyrecorderreference);
-                    recorderObjectpropCount++;
-                }
-
-                if (recorderObjectpropCount > 0)
-                {
-                    body["recorder"] = recorderObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysuspectEntity != null)
-                {
-                    body["suspectEntity"] = ExpressionConverter.ConvertO(__workflow_bodysuspectEntity);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTAdverseEventIdResponse>(callPayload);
             });
         }
@@ -615,181 +121,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTAllergyIntoleranceResponse, ApiConnectionActionConfiguration> POSTAllergyIntolerance(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyclinicalStatuscodingInputItem[]>> bodyclinicalStatuscoding = null, Expression<Func<bodyverificationStatuscodingInputItem[]>> bodyverificationStatuscoding = null, Expression<Func<string>> bodytype = null, Expression<Func<string[]>> bodycategory = null, Expression<Func<string>> bodycriticality = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodypatientreference = null, Expression<Func<string>> bodyrecordedDate = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodyreactionInputItem[]>> bodyreaction = null)
+        public IBodyWorkflowAction<POSTAllergyIntoleranceResponse, ApiConnectionActionConfiguration> POSTAllergyIntolerance(Expression<Func<POSTAllergyIntoleranceBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodyclinicalStatuscoding = WorkflowExpression.Compile(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            var __workflow_bodyverificationStatuscoding = WorkflowExpression.Compile(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodycriticality = WorkflowExpression.Compile(bodycriticality, nameof(bodycriticality), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodypatientreference = WorkflowExpression.Compile(bodypatientreference, nameof(bodypatientreference), required: false);
-            var __workflow_bodyrecordedDate = WorkflowExpression.Compile(bodyrecordedDate, nameof(bodyrecordedDate), required: false);
-            var __workflow_bodyrecorderreference = WorkflowExpression.Compile(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            var __workflow_bodyreaction = WorkflowExpression.Compile(bodyreaction, nameof(bodyreaction), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTAllergyIntoleranceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AllergyIntolerance";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                var clinicalStatusObject = new JObject();
-                var clinicalStatusObjectpropCount = 0;
-                if (__workflow_bodyclinicalStatuscoding != null)
-                {
-                    clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyclinicalStatuscoding);
-                    clinicalStatusObjectpropCount++;
-                }
-
-                if (clinicalStatusObjectpropCount > 0)
-                {
-                    body["clinicalStatus"] = clinicalStatusObject;
-                    bodypropCount++;
-                }
-
-                var verificationStatusObject = new JObject();
-                var verificationStatusObjectpropCount = 0;
-                if (__workflow_bodyverificationStatuscoding != null)
-                {
-                    verificationStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyverificationStatuscoding);
-                    verificationStatusObjectpropCount++;
-                }
-
-                if (verificationStatusObjectpropCount > 0)
-                {
-                    body["verificationStatus"] = verificationStatusObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycriticality != null)
-                {
-                    body["criticality"] = ExpressionConverter.ConvertO(__workflow_bodycriticality);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var patientObject = new JObject();
-                var patientObjectpropCount = 0;
-                if (__workflow_bodypatientreference != null)
-                {
-                    patientObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodypatientreference);
-                    patientObjectpropCount++;
-                }
-
-                if (patientObjectpropCount > 0)
-                {
-                    body["patient"] = patientObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrecordedDate != null)
-                {
-                    body["recordedDate"] = ExpressionConverter.ConvertO(__workflow_bodyrecordedDate);
-                    bodypropCount++;
-                }
-
-                var recorderObject = new JObject();
-                var recorderObjectpropCount = 0;
-                if (__workflow_bodyrecorderreference != null)
-                {
-                    recorderObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyrecorderreference);
-                    recorderObjectpropCount++;
-                }
-
-                if (recorderObjectpropCount > 0)
-                {
-                    body["recorder"] = recorderObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreaction != null)
-                {
-                    body["reaction"] = ExpressionConverter.ConvertO(__workflow_bodyreaction);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTAllergyIntoleranceResponse>(callPayload);
             });
         }
@@ -814,303 +155,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> DELETEAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyclinicalStatuscodingInputItem2[]>> bodyclinicalStatuscoding = null, Expression<Func<bodyverificationStatuscodingInputItem2[]>> bodyverificationStatuscoding = null, Expression<Func<string>> bodytype = null, Expression<Func<string[]>> bodycategory = null, Expression<Func<string>> bodycriticality = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodypatientreference = null, Expression<Func<string>> bodyrecordedDate = null)
+        public IBodyWorkflowAction<DELETEAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> DELETEAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<DELETEAllergyIntoleranceIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodyclinicalStatuscoding = WorkflowExpression.Compile(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            var __workflow_bodyverificationStatuscoding = WorkflowExpression.Compile(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodycriticality = WorkflowExpression.Compile(bodycriticality, nameof(bodycriticality), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodypatientreference = WorkflowExpression.Compile(bodypatientreference, nameof(bodypatientreference), required: false);
-            var __workflow_bodyrecordedDate = WorkflowExpression.Compile(bodyrecordedDate, nameof(bodyrecordedDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DELETEAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AllergyIntolerance/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var clinicalStatusObject = new JObject();
-                var clinicalStatusObjectpropCount = 0;
-                if (__workflow_bodyclinicalStatuscoding != null)
-                {
-                    clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyclinicalStatuscoding);
-                    clinicalStatusObjectpropCount++;
-                }
-
-                if (clinicalStatusObjectpropCount > 0)
-                {
-                    body["clinicalStatus"] = clinicalStatusObject;
-                    bodypropCount++;
-                }
-
-                var verificationStatusObject = new JObject();
-                var verificationStatusObjectpropCount = 0;
-                if (__workflow_bodyverificationStatuscoding != null)
-                {
-                    verificationStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyverificationStatuscoding);
-                    verificationStatusObjectpropCount++;
-                }
-
-                if (verificationStatusObjectpropCount > 0)
-                {
-                    body["verificationStatus"] = verificationStatusObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycriticality != null)
-                {
-                    body["criticality"] = ExpressionConverter.ConvertO(__workflow_bodycriticality);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var patientObject = new JObject();
-                var patientObjectpropCount = 0;
-                if (__workflow_bodypatientreference != null)
-                {
-                    patientObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodypatientreference);
-                    patientObjectpropCount++;
-                }
-
-                if (patientObjectpropCount > 0)
-                {
-                    body["patient"] = patientObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrecordedDate != null)
-                {
-                    body["recordedDate"] = ExpressionConverter.ConvertO(__workflow_bodyrecordedDate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DELETEAllergyIntoleranceIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> PUTAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyclinicalStatuscodingInputItem2[]>> bodyclinicalStatuscoding = null, Expression<Func<bodyverificationStatuscodingInputItem2[]>> bodyverificationStatuscoding = null, Expression<Func<string>> bodytype = null, Expression<Func<string[]>> bodycategory = null, Expression<Func<string>> bodycriticality = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodypatientreference = null, Expression<Func<string>> bodyrecordedDate = null)
+        public IBodyWorkflowAction<PUTAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> PUTAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<DELETEAllergyIntoleranceIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodyclinicalStatuscoding = WorkflowExpression.Compile(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            var __workflow_bodyverificationStatuscoding = WorkflowExpression.Compile(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodycriticality = WorkflowExpression.Compile(bodycriticality, nameof(bodycriticality), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodypatientreference = WorkflowExpression.Compile(bodypatientreference, nameof(bodypatientreference), required: false);
-            var __workflow_bodyrecordedDate = WorkflowExpression.Compile(bodyrecordedDate, nameof(bodyrecordedDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AllergyIntolerance/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var clinicalStatusObject = new JObject();
-                var clinicalStatusObjectpropCount = 0;
-                if (__workflow_bodyclinicalStatuscoding != null)
-                {
-                    clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyclinicalStatuscoding);
-                    clinicalStatusObjectpropCount++;
-                }
-
-                if (clinicalStatusObjectpropCount > 0)
-                {
-                    body["clinicalStatus"] = clinicalStatusObject;
-                    bodypropCount++;
-                }
-
-                var verificationStatusObject = new JObject();
-                var verificationStatusObjectpropCount = 0;
-                if (__workflow_bodyverificationStatuscoding != null)
-                {
-                    verificationStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyverificationStatuscoding);
-                    verificationStatusObjectpropCount++;
-                }
-
-                if (verificationStatusObjectpropCount > 0)
-                {
-                    body["verificationStatus"] = verificationStatusObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycriticality != null)
-                {
-                    body["criticality"] = ExpressionConverter.ConvertO(__workflow_bodycriticality);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var patientObject = new JObject();
-                var patientObjectpropCount = 0;
-                if (__workflow_bodypatientreference != null)
-                {
-                    patientObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodypatientreference);
-                    patientObjectpropCount++;
-                }
-
-                if (patientObjectpropCount > 0)
-                {
-                    body["patient"] = patientObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrecordedDate != null)
-                {
-                    body["recordedDate"] = ExpressionConverter.ConvertO(__workflow_bodyrecordedDate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTAllergyIntoleranceIdResponse>(callPayload);
             });
         }
@@ -1137,179 +208,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTCarePlanResponse, ApiConnectionActionConfiguration> POSTCarePlan(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyintent = null, Expression<Func<bodycategoryInputItem2[]>> bodycategory = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyencounterreference = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<bodycareTeamInputItem[]>> bodycareTeam = null, Expression<Func<bodyaddressesInputItem[]>> bodyaddresses = null, Expression<Func<bodyactivityInputItem[]>> bodyactivity = null)
+        public IBodyWorkflowAction<POSTCarePlanResponse, ApiConnectionActionConfiguration> POSTCarePlan(Expression<Func<POSTCarePlanBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyintent = WorkflowExpression.Compile(bodyintent, nameof(bodyintent), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodyencounterreference = WorkflowExpression.Compile(bodyencounterreference, nameof(bodyencounterreference), required: false);
-            var __workflow_bodyperiodstart = WorkflowExpression.Compile(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
-            var __workflow_bodycareTeam = WorkflowExpression.Compile(bodycareTeam, nameof(bodycareTeam), required: false);
-            var __workflow_bodyaddresses = WorkflowExpression.Compile(bodyaddresses, nameof(bodyaddresses), required: false);
-            var __workflow_bodyactivity = WorkflowExpression.Compile(bodyactivity, nameof(bodyactivity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTCarePlanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CarePlan";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyintent != null)
-                {
-                    body["intent"] = ExpressionConverter.ConvertO(__workflow_bodyintent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                var encounterObject = new JObject();
-                var encounterObjectpropCount = 0;
-                if (__workflow_bodyencounterreference != null)
-                {
-                    encounterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyencounterreference);
-                    encounterObjectpropCount++;
-                }
-
-                if (encounterObjectpropCount > 0)
-                {
-                    body["encounter"] = encounterObject;
-                    bodypropCount++;
-                }
-
-                var periodObject = new JObject();
-                var periodObjectpropCount = 0;
-                if (__workflow_bodyperiodstart != null)
-                {
-                    periodObject["start"] = ExpressionConverter.ConvertO(__workflow_bodyperiodstart);
-                    periodObjectpropCount++;
-                }
-
-                if (__workflow_bodyperiodend != null)
-                {
-                    periodObject["end"] = ExpressionConverter.ConvertO(__workflow_bodyperiodend);
-                    periodObjectpropCount++;
-                }
-
-                if (periodObjectpropCount > 0)
-                {
-                    body["period"] = periodObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycareTeam != null)
-                {
-                    body["careTeam"] = ExpressionConverter.ConvertO(__workflow_bodycareTeam);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddresses != null)
-                {
-                    body["addresses"] = ExpressionConverter.ConvertO(__workflow_bodyaddresses);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactivity != null)
-                {
-                    body["activity"] = ExpressionConverter.ConvertO(__workflow_bodyactivity);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTCarePlanResponse>(callPayload);
             });
         }
@@ -1334,315 +242,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETECarePlanIdResponse, ApiConnectionActionConfiguration> DELETECarePlanId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem[]>> bodycontained = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyintent = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<bodycareTeamInputItem[]>> bodycareTeam = null, Expression<Func<bodyaddressesInputItem2[]>> bodyaddresses = null, Expression<Func<bodygoalInputItem[]>> bodygoal = null, Expression<Func<bodyactivityInputItem2[]>> bodyactivity = null)
+        public IBodyWorkflowAction<DELETECarePlanIdResponse, ApiConnectionActionConfiguration> DELETECarePlanId(Expression<Func<string>> id, Expression<Func<DELETECarePlanIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodycontained = WorkflowExpression.Compile(bodycontained, nameof(bodycontained), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyintent = WorkflowExpression.Compile(bodyintent, nameof(bodyintent), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyperiodstart = WorkflowExpression.Compile(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            var __workflow_bodycareTeam = WorkflowExpression.Compile(bodycareTeam, nameof(bodycareTeam), required: false);
-            var __workflow_bodyaddresses = WorkflowExpression.Compile(bodyaddresses, nameof(bodyaddresses), required: false);
-            var __workflow_bodygoal = WorkflowExpression.Compile(bodygoal, nameof(bodygoal), required: false);
-            var __workflow_bodyactivity = WorkflowExpression.Compile(bodyactivity, nameof(bodyactivity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DELETECarePlanIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/CarePlan/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontained != null)
-                {
-                    body["contained"] = ExpressionConverter.ConvertO(__workflow_bodycontained);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyintent != null)
-                {
-                    body["intent"] = ExpressionConverter.ConvertO(__workflow_bodyintent);
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                var periodObject = new JObject();
-                var periodObjectpropCount = 0;
-                if (__workflow_bodyperiodstart != null)
-                {
-                    periodObject["start"] = ExpressionConverter.ConvertO(__workflow_bodyperiodstart);
-                    periodObjectpropCount++;
-                }
-
-                if (periodObjectpropCount > 0)
-                {
-                    body["period"] = periodObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycareTeam != null)
-                {
-                    body["careTeam"] = ExpressionConverter.ConvertO(__workflow_bodycareTeam);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddresses != null)
-                {
-                    body["addresses"] = ExpressionConverter.ConvertO(__workflow_bodyaddresses);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygoal != null)
-                {
-                    body["goal"] = ExpressionConverter.ConvertO(__workflow_bodygoal);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactivity != null)
-                {
-                    body["activity"] = ExpressionConverter.ConvertO(__workflow_bodyactivity);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DELETECarePlanIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTCarePlanIdResponse, ApiConnectionActionConfiguration> PUTCarePlanId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem[]>> bodycontained = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyintent = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<bodycareTeamInputItem[]>> bodycareTeam = null, Expression<Func<bodyaddressesInputItem2[]>> bodyaddresses = null, Expression<Func<bodygoalInputItem[]>> bodygoal = null, Expression<Func<bodyactivityInputItem2[]>> bodyactivity = null)
+        public IBodyWorkflowAction<PUTCarePlanIdResponse, ApiConnectionActionConfiguration> PUTCarePlanId(Expression<Func<string>> id, Expression<Func<DELETECarePlanIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodycontained = WorkflowExpression.Compile(bodycontained, nameof(bodycontained), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyintent = WorkflowExpression.Compile(bodyintent, nameof(bodyintent), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyperiodstart = WorkflowExpression.Compile(bodyperiodstart, nameof(bodyperiodstart), required: false);
-            var __workflow_bodycareTeam = WorkflowExpression.Compile(bodycareTeam, nameof(bodycareTeam), required: false);
-            var __workflow_bodyaddresses = WorkflowExpression.Compile(bodyaddresses, nameof(bodyaddresses), required: false);
-            var __workflow_bodygoal = WorkflowExpression.Compile(bodygoal, nameof(bodygoal), required: false);
-            var __workflow_bodyactivity = WorkflowExpression.Compile(bodyactivity, nameof(bodyactivity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTCarePlanIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/CarePlan/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontained != null)
-                {
-                    body["contained"] = ExpressionConverter.ConvertO(__workflow_bodycontained);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyintent != null)
-                {
-                    body["intent"] = ExpressionConverter.ConvertO(__workflow_bodyintent);
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                var periodObject = new JObject();
-                var periodObjectpropCount = 0;
-                if (__workflow_bodyperiodstart != null)
-                {
-                    periodObject["start"] = ExpressionConverter.ConvertO(__workflow_bodyperiodstart);
-                    periodObjectpropCount++;
-                }
-
-                if (periodObjectpropCount > 0)
-                {
-                    body["period"] = periodObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycareTeam != null)
-                {
-                    body["careTeam"] = ExpressionConverter.ConvertO(__workflow_bodycareTeam);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddresses != null)
-                {
-                    body["addresses"] = ExpressionConverter.ConvertO(__workflow_bodyaddresses);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygoal != null)
-                {
-                    body["goal"] = ExpressionConverter.ConvertO(__workflow_bodygoal);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactivity != null)
-                {
-                    body["activity"] = ExpressionConverter.ConvertO(__workflow_bodyactivity);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTCarePlanIdResponse>(callPayload);
             });
         }
@@ -1669,152 +295,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTConditionResponse, ApiConnectionActionConfiguration> POSTCondition(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyclinicalStatuscodingInputItem2[]>> bodyclinicalStatuscoding = null, Expression<Func<bodyverificationStatuscodingInputItem2[]>> bodyverificationStatuscoding = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<bodybodySiteInputItem[]>> bodybodySite = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyonsetDateTime = null)
+        public IBodyWorkflowAction<POSTConditionResponse, ApiConnectionActionConfiguration> POSTCondition(Expression<Func<POSTConditionBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodyclinicalStatuscoding = WorkflowExpression.Compile(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            var __workflow_bodyverificationStatuscoding = WorkflowExpression.Compile(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyseveritycoding = WorkflowExpression.Compile(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodybodySite = WorkflowExpression.Compile(bodybodySite, nameof(bodybodySite), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodyonsetDateTime = WorkflowExpression.Compile(bodyonsetDateTime, nameof(bodyonsetDateTime), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTConditionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Condition";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                var clinicalStatusObject = new JObject();
-                var clinicalStatusObjectpropCount = 0;
-                if (__workflow_bodyclinicalStatuscoding != null)
-                {
-                    clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyclinicalStatuscoding);
-                    clinicalStatusObjectpropCount++;
-                }
-
-                if (clinicalStatusObjectpropCount > 0)
-                {
-                    body["clinicalStatus"] = clinicalStatusObject;
-                    bodypropCount++;
-                }
-
-                var verificationStatusObject = new JObject();
-                var verificationStatusObjectpropCount = 0;
-                if (__workflow_bodyverificationStatuscoding != null)
-                {
-                    verificationStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyverificationStatuscoding);
-                    verificationStatusObjectpropCount++;
-                }
-
-                if (verificationStatusObjectpropCount > 0)
-                {
-                    body["verificationStatus"] = verificationStatusObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var severityObject = new JObject();
-                var severityObjectpropCount = 0;
-                if (__workflow_bodyseveritycoding != null)
-                {
-                    severityObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyseveritycoding);
-                    severityObjectpropCount++;
-                }
-
-                if (severityObjectpropCount > 0)
-                {
-                    body["severity"] = severityObject;
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybodySite != null)
-                {
-                    body["bodySite"] = ExpressionConverter.ConvertO(__workflow_bodybodySite);
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyonsetDateTime != null)
-                {
-                    body["onsetDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyonsetDateTime);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTConditionResponse>(callPayload);
             });
         }
@@ -1839,349 +329,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEConditionIdResponse, ApiConnectionActionConfiguration> DELETEConditionId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyclinicalStatuscodingInputItem2[]>> bodyclinicalStatuscoding = null, Expression<Func<bodyverificationStatuscodingInputItem2[]>> bodyverificationStatuscoding = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<bodybodySiteInputItem[]>> bodybodySite = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyonsetDateTime = null)
+        public IBodyWorkflowAction<DELETEConditionIdResponse, ApiConnectionActionConfiguration> DELETEConditionId(Expression<Func<string>> id, Expression<Func<DELETEConditionIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodyclinicalStatuscoding = WorkflowExpression.Compile(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            var __workflow_bodyverificationStatuscoding = WorkflowExpression.Compile(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyseveritycoding = WorkflowExpression.Compile(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodybodySite = WorkflowExpression.Compile(bodybodySite, nameof(bodybodySite), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodyonsetDateTime = WorkflowExpression.Compile(bodyonsetDateTime, nameof(bodyonsetDateTime), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DELETEConditionIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Condition/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                var clinicalStatusObject = new JObject();
-                var clinicalStatusObjectpropCount = 0;
-                if (__workflow_bodyclinicalStatuscoding != null)
-                {
-                    clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyclinicalStatuscoding);
-                    clinicalStatusObjectpropCount++;
-                }
-
-                if (clinicalStatusObjectpropCount > 0)
-                {
-                    body["clinicalStatus"] = clinicalStatusObject;
-                    bodypropCount++;
-                }
-
-                var verificationStatusObject = new JObject();
-                var verificationStatusObjectpropCount = 0;
-                if (__workflow_bodyverificationStatuscoding != null)
-                {
-                    verificationStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyverificationStatuscoding);
-                    verificationStatusObjectpropCount++;
-                }
-
-                if (verificationStatusObjectpropCount > 0)
-                {
-                    body["verificationStatus"] = verificationStatusObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var severityObject = new JObject();
-                var severityObjectpropCount = 0;
-                if (__workflow_bodyseveritycoding != null)
-                {
-                    severityObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyseveritycoding);
-                    severityObjectpropCount++;
-                }
-
-                if (severityObjectpropCount > 0)
-                {
-                    body["severity"] = severityObject;
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybodySite != null)
-                {
-                    body["bodySite"] = ExpressionConverter.ConvertO(__workflow_bodybodySite);
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyonsetDateTime != null)
-                {
-                    body["onsetDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyonsetDateTime);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DELETEConditionIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTConditionIdResponse, ApiConnectionActionConfiguration> PUTConditionId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyclinicalStatuscodingInputItem2[]>> bodyclinicalStatuscoding = null, Expression<Func<bodyverificationStatuscodingInputItem2[]>> bodyverificationStatuscoding = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<bodybodySiteInputItem[]>> bodybodySite = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyonsetDateTime = null)
+        public IBodyWorkflowAction<PUTConditionIdResponse, ApiConnectionActionConfiguration> PUTConditionId(Expression<Func<string>> id, Expression<Func<DELETEConditionIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodyclinicalStatuscoding = WorkflowExpression.Compile(bodyclinicalStatuscoding, nameof(bodyclinicalStatuscoding), required: false);
-            var __workflow_bodyverificationStatuscoding = WorkflowExpression.Compile(bodyverificationStatuscoding, nameof(bodyverificationStatuscoding), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyseveritycoding = WorkflowExpression.Compile(bodyseveritycoding, nameof(bodyseveritycoding), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodybodySite = WorkflowExpression.Compile(bodybodySite, nameof(bodybodySite), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodyonsetDateTime = WorkflowExpression.Compile(bodyonsetDateTime, nameof(bodyonsetDateTime), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTConditionIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Condition/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                var clinicalStatusObject = new JObject();
-                var clinicalStatusObjectpropCount = 0;
-                if (__workflow_bodyclinicalStatuscoding != null)
-                {
-                    clinicalStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyclinicalStatuscoding);
-                    clinicalStatusObjectpropCount++;
-                }
-
-                if (clinicalStatusObjectpropCount > 0)
-                {
-                    body["clinicalStatus"] = clinicalStatusObject;
-                    bodypropCount++;
-                }
-
-                var verificationStatusObject = new JObject();
-                var verificationStatusObjectpropCount = 0;
-                if (__workflow_bodyverificationStatuscoding != null)
-                {
-                    verificationStatusObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyverificationStatuscoding);
-                    verificationStatusObjectpropCount++;
-                }
-
-                if (verificationStatusObjectpropCount > 0)
-                {
-                    body["verificationStatus"] = verificationStatusObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var severityObject = new JObject();
-                var severityObjectpropCount = 0;
-                if (__workflow_bodyseveritycoding != null)
-                {
-                    severityObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyseveritycoding);
-                    severityObjectpropCount++;
-                }
-
-                if (severityObjectpropCount > 0)
-                {
-                    body["severity"] = severityObject;
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybodySite != null)
-                {
-                    body["bodySite"] = ExpressionConverter.ConvertO(__workflow_bodybodySite);
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyonsetDateTime != null)
-                {
-                    body["onsetDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyonsetDateTime);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTConditionIdResponse>(callPayload);
             });
         }
@@ -2208,142 +382,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTDiagnosticReportResponse, ApiConnectionActionConfiguration> POSTDiagnosticReport(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bodybasedOnInputItem[]>> bodybasedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyissued = null, Expression<Func<bodyperformerInputItem[]>> bodyperformer = null, Expression<Func<bodyresultInputItem[]>> bodyresult = null, Expression<Func<string>> bodyconclusion = null)
+        public IBodyWorkflowAction<POSTDiagnosticReportResponse, ApiConnectionActionConfiguration> POSTDiagnosticReport(Expression<Func<POSTDiagnosticReportBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
-            var __workflow_bodybasedOn = WorkflowExpression.Compile(bodybasedOn, nameof(bodybasedOn), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyissued = WorkflowExpression.Compile(bodyissued, nameof(bodyissued), required: false);
-            var __workflow_bodyperformer = WorkflowExpression.Compile(bodyperformer, nameof(bodyperformer), required: false);
-            var __workflow_bodyresult = WorkflowExpression.Compile(bodyresult, nameof(bodyresult), required: false);
-            var __workflow_bodyconclusion = WorkflowExpression.Compile(bodyconclusion, nameof(bodyconclusion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTDiagnosticReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DiagnosticReport";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidentifier != null)
-                {
-                    body["identifier"] = ExpressionConverter.ConvertO(__workflow_bodyidentifier);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybasedOn != null)
-                {
-                    body["basedOn"] = ExpressionConverter.ConvertO(__workflow_bodybasedOn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyissued != null)
-                {
-                    body["issued"] = ExpressionConverter.ConvertO(__workflow_bodyissued);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformer != null)
-                {
-                    body["performer"] = ExpressionConverter.ConvertO(__workflow_bodyperformer);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresult != null)
-                {
-                    body["result"] = ExpressionConverter.ConvertO(__workflow_bodyresult);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconclusion != null)
-                {
-                    body["conclusion"] = ExpressionConverter.ConvertO(__workflow_bodyconclusion);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTDiagnosticReportResponse>(callPayload);
             });
         }
@@ -2368,329 +416,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEDiagnosticReportIdResponse, ApiConnectionActionConfiguration> DELETEDiagnosticReportId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bodybasedOnInputItem[]>> bodybasedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyissued = null, Expression<Func<bodyperformerInputItem[]>> bodyperformer = null, Expression<Func<bodyresultInputItem[]>> bodyresult = null, Expression<Func<string>> bodyconclusion = null)
+        public IBodyWorkflowAction<DELETEDiagnosticReportIdResponse, ApiConnectionActionConfiguration> DELETEDiagnosticReportId(Expression<Func<string>> id, Expression<Func<DELETEDiagnosticReportIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
-            var __workflow_bodybasedOn = WorkflowExpression.Compile(bodybasedOn, nameof(bodybasedOn), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyissued = WorkflowExpression.Compile(bodyissued, nameof(bodyissued), required: false);
-            var __workflow_bodyperformer = WorkflowExpression.Compile(bodyperformer, nameof(bodyperformer), required: false);
-            var __workflow_bodyresult = WorkflowExpression.Compile(bodyresult, nameof(bodyresult), required: false);
-            var __workflow_bodyconclusion = WorkflowExpression.Compile(bodyconclusion, nameof(bodyconclusion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DELETEDiagnosticReportIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/DiagnosticReport/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidentifier != null)
-                {
-                    body["identifier"] = ExpressionConverter.ConvertO(__workflow_bodyidentifier);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybasedOn != null)
-                {
-                    body["basedOn"] = ExpressionConverter.ConvertO(__workflow_bodybasedOn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyissued != null)
-                {
-                    body["issued"] = ExpressionConverter.ConvertO(__workflow_bodyissued);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformer != null)
-                {
-                    body["performer"] = ExpressionConverter.ConvertO(__workflow_bodyperformer);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresult != null)
-                {
-                    body["result"] = ExpressionConverter.ConvertO(__workflow_bodyresult);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconclusion != null)
-                {
-                    body["conclusion"] = ExpressionConverter.ConvertO(__workflow_bodyconclusion);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DELETEDiagnosticReportIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTDiagnosticReportIdResponse, ApiConnectionActionConfiguration> PUTDiagnosticReportId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bodybasedOnInputItem[]>> bodybasedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyissued = null, Expression<Func<bodyperformerInputItem[]>> bodyperformer = null, Expression<Func<bodyresultInputItem[]>> bodyresult = null, Expression<Func<string>> bodyconclusion = null)
+        public IBodyWorkflowAction<PUTDiagnosticReportIdResponse, ApiConnectionActionConfiguration> PUTDiagnosticReportId(Expression<Func<string>> id, Expression<Func<DELETEDiagnosticReportIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
-            var __workflow_bodybasedOn = WorkflowExpression.Compile(bodybasedOn, nameof(bodybasedOn), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyissued = WorkflowExpression.Compile(bodyissued, nameof(bodyissued), required: false);
-            var __workflow_bodyperformer = WorkflowExpression.Compile(bodyperformer, nameof(bodyperformer), required: false);
-            var __workflow_bodyresult = WorkflowExpression.Compile(bodyresult, nameof(bodyresult), required: false);
-            var __workflow_bodyconclusion = WorkflowExpression.Compile(bodyconclusion, nameof(bodyconclusion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTDiagnosticReportIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/DiagnosticReport/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidentifier != null)
-                {
-                    body["identifier"] = ExpressionConverter.ConvertO(__workflow_bodyidentifier);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybasedOn != null)
-                {
-                    body["basedOn"] = ExpressionConverter.ConvertO(__workflow_bodybasedOn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyissued != null)
-                {
-                    body["issued"] = ExpressionConverter.ConvertO(__workflow_bodyissued);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformer != null)
-                {
-                    body["performer"] = ExpressionConverter.ConvertO(__workflow_bodyperformer);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresult != null)
-                {
-                    body["result"] = ExpressionConverter.ConvertO(__workflow_bodyresult);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconclusion != null)
-                {
-                    body["conclusion"] = ExpressionConverter.ConvertO(__workflow_bodyconclusion);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTDiagnosticReportIdResponse>(callPayload);
             });
         }
@@ -2717,137 +469,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTMedicationResponse, ApiConnectionActionConfiguration> POSTMedication(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem2[]>> bodycontained = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymanufacturerreference = null, Expression<Func<bodyformcodingInputItem[]>> bodyformcoding = null, Expression<Func<bodyingredientInputItem[]>> bodyingredient = null, Expression<Func<string>> bodybatchlotNumber = null, Expression<Func<string>> bodybatchexpirationDate = null)
+        public IBodyWorkflowAction<POSTMedicationResponse, ApiConnectionActionConfiguration> POSTMedication(Expression<Func<POSTMedicationBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodycontained = WorkflowExpression.Compile(bodycontained, nameof(bodycontained), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodymanufacturerreference = WorkflowExpression.Compile(bodymanufacturerreference, nameof(bodymanufacturerreference), required: false);
-            var __workflow_bodyformcoding = WorkflowExpression.Compile(bodyformcoding, nameof(bodyformcoding), required: false);
-            var __workflow_bodyingredient = WorkflowExpression.Compile(bodyingredient, nameof(bodyingredient), required: false);
-            var __workflow_bodybatchlotNumber = WorkflowExpression.Compile(bodybatchlotNumber, nameof(bodybatchlotNumber), required: false);
-            var __workflow_bodybatchexpirationDate = WorkflowExpression.Compile(bodybatchexpirationDate, nameof(bodybatchexpirationDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTMedicationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Medication";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontained != null)
-                {
-                    body["contained"] = ExpressionConverter.ConvertO(__workflow_bodycontained);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var manufacturerObject = new JObject();
-                var manufacturerObjectpropCount = 0;
-                if (__workflow_bodymanufacturerreference != null)
-                {
-                    manufacturerObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodymanufacturerreference);
-                    manufacturerObjectpropCount++;
-                }
-
-                if (manufacturerObjectpropCount > 0)
-                {
-                    body["manufacturer"] = manufacturerObject;
-                    bodypropCount++;
-                }
-
-                var formObject = new JObject();
-                var formObjectpropCount = 0;
-                if (__workflow_bodyformcoding != null)
-                {
-                    formObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyformcoding);
-                    formObjectpropCount++;
-                }
-
-                if (formObjectpropCount > 0)
-                {
-                    body["form"] = formObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyingredient != null)
-                {
-                    body["ingredient"] = ExpressionConverter.ConvertO(__workflow_bodyingredient);
-                    bodypropCount++;
-                }
-
-                var batchObject = new JObject();
-                var batchObjectpropCount = 0;
-                if (__workflow_bodybatchlotNumber != null)
-                {
-                    batchObject["lotNumber"] = ExpressionConverter.ConvertO(__workflow_bodybatchlotNumber);
-                    batchObjectpropCount++;
-                }
-
-                if (__workflow_bodybatchexpirationDate != null)
-                {
-                    batchObject["expirationDate"] = ExpressionConverter.ConvertO(__workflow_bodybatchexpirationDate);
-                    batchObjectpropCount++;
-                }
-
-                if (batchObjectpropCount > 0)
-                {
-                    body["batch"] = batchObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTMedicationResponse>(callPayload);
             });
         }
@@ -2872,304 +503,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEMedicationIdResponse, ApiConnectionActionConfiguration> DELETEMedicationId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem2[]>> bodycontained = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymanufacturerreference = null, Expression<Func<bodyformcodingInputItem[]>> bodyformcoding = null, Expression<Func<bodyingredientInputItem[]>> bodyingredient = null, Expression<Func<string>> bodybatchlotNumber = null, Expression<Func<string>> bodybatchexpirationDate = null)
+        public IBodyWorkflowAction<DELETEMedicationIdResponse, ApiConnectionActionConfiguration> DELETEMedicationId(Expression<Func<string>> id, Expression<Func<DELETEMedicationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodycontained = WorkflowExpression.Compile(bodycontained, nameof(bodycontained), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodymanufacturerreference = WorkflowExpression.Compile(bodymanufacturerreference, nameof(bodymanufacturerreference), required: false);
-            var __workflow_bodyformcoding = WorkflowExpression.Compile(bodyformcoding, nameof(bodyformcoding), required: false);
-            var __workflow_bodyingredient = WorkflowExpression.Compile(bodyingredient, nameof(bodyingredient), required: false);
-            var __workflow_bodybatchlotNumber = WorkflowExpression.Compile(bodybatchlotNumber, nameof(bodybatchlotNumber), required: false);
-            var __workflow_bodybatchexpirationDate = WorkflowExpression.Compile(bodybatchexpirationDate, nameof(bodybatchexpirationDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DELETEMedicationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Medication/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontained != null)
-                {
-                    body["contained"] = ExpressionConverter.ConvertO(__workflow_bodycontained);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var manufacturerObject = new JObject();
-                var manufacturerObjectpropCount = 0;
-                if (__workflow_bodymanufacturerreference != null)
-                {
-                    manufacturerObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodymanufacturerreference);
-                    manufacturerObjectpropCount++;
-                }
-
-                if (manufacturerObjectpropCount > 0)
-                {
-                    body["manufacturer"] = manufacturerObject;
-                    bodypropCount++;
-                }
-
-                var formObject = new JObject();
-                var formObjectpropCount = 0;
-                if (__workflow_bodyformcoding != null)
-                {
-                    formObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyformcoding);
-                    formObjectpropCount++;
-                }
-
-                if (formObjectpropCount > 0)
-                {
-                    body["form"] = formObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyingredient != null)
-                {
-                    body["ingredient"] = ExpressionConverter.ConvertO(__workflow_bodyingredient);
-                    bodypropCount++;
-                }
-
-                var batchObject = new JObject();
-                var batchObjectpropCount = 0;
-                if (__workflow_bodybatchlotNumber != null)
-                {
-                    batchObject["lotNumber"] = ExpressionConverter.ConvertO(__workflow_bodybatchlotNumber);
-                    batchObjectpropCount++;
-                }
-
-                if (__workflow_bodybatchexpirationDate != null)
-                {
-                    batchObject["expirationDate"] = ExpressionConverter.ConvertO(__workflow_bodybatchexpirationDate);
-                    batchObjectpropCount++;
-                }
-
-                if (batchObjectpropCount > 0)
-                {
-                    body["batch"] = batchObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DELETEMedicationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTMedicationIdResponse, ApiConnectionActionConfiguration> PUTMedicationId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodycontainedInputItem2[]>> bodycontained = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymanufacturerreference = null, Expression<Func<bodyformcodingInputItem[]>> bodyformcoding = null, Expression<Func<bodyingredientInputItem[]>> bodyingredient = null, Expression<Func<string>> bodybatchlotNumber = null, Expression<Func<string>> bodybatchexpirationDate = null)
+        public IBodyWorkflowAction<PUTMedicationIdResponse, ApiConnectionActionConfiguration> PUTMedicationId(Expression<Func<string>> id, Expression<Func<PUTMedicationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodytextdiv = WorkflowExpression.Compile(bodytextdiv, nameof(bodytextdiv), required: false);
-            var __workflow_bodycontained = WorkflowExpression.Compile(bodycontained, nameof(bodycontained), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodymanufacturerreference = WorkflowExpression.Compile(bodymanufacturerreference, nameof(bodymanufacturerreference), required: false);
-            var __workflow_bodyformcoding = WorkflowExpression.Compile(bodyformcoding, nameof(bodyformcoding), required: false);
-            var __workflow_bodyingredient = WorkflowExpression.Compile(bodyingredient, nameof(bodyingredient), required: false);
-            var __workflow_bodybatchlotNumber = WorkflowExpression.Compile(bodybatchlotNumber, nameof(bodybatchlotNumber), required: false);
-            var __workflow_bodybatchexpirationDate = WorkflowExpression.Compile(bodybatchexpirationDate, nameof(bodybatchexpirationDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTMedicationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Medication/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (__workflow_bodytextdiv != null)
-                {
-                    textObject["div"] = ExpressionConverter.ConvertO(__workflow_bodytextdiv);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontained != null)
-                {
-                    body["contained"] = ExpressionConverter.ConvertO(__workflow_bodycontained);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var manufacturerObject = new JObject();
-                var manufacturerObjectpropCount = 0;
-                if (__workflow_bodymanufacturerreference != null)
-                {
-                    manufacturerObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodymanufacturerreference);
-                    manufacturerObjectpropCount++;
-                }
-
-                if (manufacturerObjectpropCount > 0)
-                {
-                    body["manufacturer"] = manufacturerObject;
-                    bodypropCount++;
-                }
-
-                var formObject = new JObject();
-                var formObjectpropCount = 0;
-                if (__workflow_bodyformcoding != null)
-                {
-                    formObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodyformcoding);
-                    formObjectpropCount++;
-                }
-
-                if (formObjectpropCount > 0)
-                {
-                    body["form"] = formObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyingredient != null)
-                {
-                    body["ingredient"] = ExpressionConverter.ConvertO(__workflow_bodyingredient);
-                    bodypropCount++;
-                }
-
-                var batchObject = new JObject();
-                var batchObjectpropCount = 0;
-                if (__workflow_bodybatchlotNumber != null)
-                {
-                    batchObject["lotNumber"] = ExpressionConverter.ConvertO(__workflow_bodybatchlotNumber);
-                    batchObjectpropCount++;
-                }
-
-                if (__workflow_bodybatchexpirationDate != null)
-                {
-                    batchObject["expirationDate"] = ExpressionConverter.ConvertO(__workflow_bodybatchexpirationDate);
-                    batchObjectpropCount++;
-                }
-
-                if (batchObjectpropCount > 0)
-                {
-                    body["batch"] = batchObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTMedicationIdResponse>(callPayload);
             });
         }
@@ -3196,332 +556,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTMedicationRequestResponse, ApiConnectionActionConfiguration> POSTMedicationRequest(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem22[]>> bodycontained = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyintent = null, Expression<Func<bodymedicationCodeableConceptcodingInputItem[]>> bodymedicationCodeableConceptcoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyencounterreference = null, Expression<Func<string>> bodyencounterdisplay = null, Expression<Func<bodysupportingInformationInputItem[]>> bodysupportingInformation = null, Expression<Func<string>> bodyauthoredOn = null, Expression<Func<string>> bodyrequesterreference = null, Expression<Func<string>> bodyrequesterdisplay = null, Expression<Func<bodyreasonCodeInputItem[]>> bodyreasonCode = null, Expression<Func<bodynoteInputItem[]>> bodynote = null, Expression<Func<bodydosageInstructionInputItem[]>> bodydosageInstruction = null, Expression<Func<string>> bodydispenseRequestvalidityPeriodstart = null, Expression<Func<string>> bodydispenseRequestvalidityPeriodend = null, Expression<Func<int>> bodydispenseRequestnumberOfRepeatsAllowed = null, Expression<Func<int>> bodydispenseRequestquantityvalue = null, Expression<Func<string>> bodydispenseRequestquantityunit = null, Expression<Func<string>> bodydispenseRequestquantitysystem = null, Expression<Func<string>> bodydispenseRequestquantitycode = null, Expression<Func<int>> bodydispenseRequestexpectedSupplyDurationvalue = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationunit = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationsystem = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationcode = null, Expression<Func<bool>> bodysubstitutionallowedBoolean = null, Expression<Func<bodysubstitutionreasoncodingInputItem[]>> bodysubstitutionreasoncoding = null)
+        public IBodyWorkflowAction<POSTMedicationRequestResponse, ApiConnectionActionConfiguration> POSTMedicationRequest(Expression<Func<POSTMedicationRequestBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodycontained = WorkflowExpression.Compile(bodycontained, nameof(bodycontained), required: false);
-            var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyintent = WorkflowExpression.Compile(bodyintent, nameof(bodyintent), required: false);
-            var __workflow_bodymedicationCodeableConceptcoding = WorkflowExpression.Compile(bodymedicationCodeableConceptcoding, nameof(bodymedicationCodeableConceptcoding), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyencounterreference = WorkflowExpression.Compile(bodyencounterreference, nameof(bodyencounterreference), required: false);
-            var __workflow_bodyencounterdisplay = WorkflowExpression.Compile(bodyencounterdisplay, nameof(bodyencounterdisplay), required: false);
-            var __workflow_bodysupportingInformation = WorkflowExpression.Compile(bodysupportingInformation, nameof(bodysupportingInformation), required: false);
-            var __workflow_bodyauthoredOn = WorkflowExpression.Compile(bodyauthoredOn, nameof(bodyauthoredOn), required: false);
-            var __workflow_bodyrequesterreference = WorkflowExpression.Compile(bodyrequesterreference, nameof(bodyrequesterreference), required: false);
-            var __workflow_bodyrequesterdisplay = WorkflowExpression.Compile(bodyrequesterdisplay, nameof(bodyrequesterdisplay), required: false);
-            var __workflow_bodyreasonCode = WorkflowExpression.Compile(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodydosageInstruction = WorkflowExpression.Compile(bodydosageInstruction, nameof(bodydosageInstruction), required: false);
-            var __workflow_bodydispenseRequestvalidityPeriodstart = WorkflowExpression.Compile(bodydispenseRequestvalidityPeriodstart, nameof(bodydispenseRequestvalidityPeriodstart), required: false);
-            var __workflow_bodydispenseRequestvalidityPeriodend = WorkflowExpression.Compile(bodydispenseRequestvalidityPeriodend, nameof(bodydispenseRequestvalidityPeriodend), required: false);
-            var __workflow_bodydispenseRequestnumberOfRepeatsAllowed = WorkflowExpression.Compile(bodydispenseRequestnumberOfRepeatsAllowed, nameof(bodydispenseRequestnumberOfRepeatsAllowed), required: false);
-            var __workflow_bodydispenseRequestquantityvalue = WorkflowExpression.Compile(bodydispenseRequestquantityvalue, nameof(bodydispenseRequestquantityvalue), required: false);
-            var __workflow_bodydispenseRequestquantityunit = WorkflowExpression.Compile(bodydispenseRequestquantityunit, nameof(bodydispenseRequestquantityunit), required: false);
-            var __workflow_bodydispenseRequestquantitysystem = WorkflowExpression.Compile(bodydispenseRequestquantitysystem, nameof(bodydispenseRequestquantitysystem), required: false);
-            var __workflow_bodydispenseRequestquantitycode = WorkflowExpression.Compile(bodydispenseRequestquantitycode, nameof(bodydispenseRequestquantitycode), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationvalue = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationvalue, nameof(bodydispenseRequestexpectedSupplyDurationvalue), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationunit = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationunit, nameof(bodydispenseRequestexpectedSupplyDurationunit), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationsystem = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationsystem, nameof(bodydispenseRequestexpectedSupplyDurationsystem), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationcode = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationcode, nameof(bodydispenseRequestexpectedSupplyDurationcode), required: false);
-            var __workflow_bodysubstitutionallowedBoolean = WorkflowExpression.Compile(bodysubstitutionallowedBoolean, nameof(bodysubstitutionallowedBoolean), required: false);
-            var __workflow_bodysubstitutionreasoncoding = WorkflowExpression.Compile(bodysubstitutionreasoncoding, nameof(bodysubstitutionreasoncoding), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTMedicationRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/MedicationRequest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontained != null)
-                {
-                    body["contained"] = ExpressionConverter.ConvertO(__workflow_bodycontained);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidentifier != null)
-                {
-                    body["identifier"] = ExpressionConverter.ConvertO(__workflow_bodyidentifier);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyintent != null)
-                {
-                    body["intent"] = ExpressionConverter.ConvertO(__workflow_bodyintent);
-                    bodypropCount++;
-                }
-
-                var medicationCodeableConceptObject = new JObject();
-                var medicationCodeableConceptObjectpropCount = 0;
-                if (__workflow_bodymedicationCodeableConceptcoding != null)
-                {
-                    medicationCodeableConceptObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodymedicationCodeableConceptcoding);
-                    medicationCodeableConceptObjectpropCount++;
-                }
-
-                if (medicationCodeableConceptObjectpropCount > 0)
-                {
-                    body["medicationCodeableConcept"] = medicationCodeableConceptObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                var encounterObject = new JObject();
-                var encounterObjectpropCount = 0;
-                if (__workflow_bodyencounterreference != null)
-                {
-                    encounterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyencounterreference);
-                    encounterObjectpropCount++;
-                }
-
-                if (__workflow_bodyencounterdisplay != null)
-                {
-                    encounterObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyencounterdisplay);
-                    encounterObjectpropCount++;
-                }
-
-                if (encounterObjectpropCount > 0)
-                {
-                    body["encounter"] = encounterObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysupportingInformation != null)
-                {
-                    body["supportingInformation"] = ExpressionConverter.ConvertO(__workflow_bodysupportingInformation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyauthoredOn != null)
-                {
-                    body["authoredOn"] = ExpressionConverter.ConvertO(__workflow_bodyauthoredOn);
-                    bodypropCount++;
-                }
-
-                var requesterObject = new JObject();
-                var requesterObjectpropCount = 0;
-                if (__workflow_bodyrequesterreference != null)
-                {
-                    requesterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterreference);
-                    requesterObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequesterdisplay != null)
-                {
-                    requesterObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterdisplay);
-                    requesterObjectpropCount++;
-                }
-
-                if (requesterObjectpropCount > 0)
-                {
-                    body["requester"] = requesterObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonCode != null)
-                {
-                    body["reasonCode"] = ExpressionConverter.ConvertO(__workflow_bodyreasonCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydosageInstruction != null)
-                {
-                    body["dosageInstruction"] = ExpressionConverter.ConvertO(__workflow_bodydosageInstruction);
-                    bodypropCount++;
-                }
-
-                var dispenseRequestObject = new JObject();
-                var dispenseRequestObjectpropCount = 0;
-                var validityPeriodObject = new JObject();
-                var validityPeriodObjectpropCount = 0;
-                if (__workflow_bodydispenseRequestvalidityPeriodstart != null)
-                {
-                    validityPeriodObject["start"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestvalidityPeriodstart);
-                    validityPeriodObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestvalidityPeriodend != null)
-                {
-                    validityPeriodObject["end"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestvalidityPeriodend);
-                    validityPeriodObjectpropCount++;
-                }
-
-                if (validityPeriodObjectpropCount > 0)
-                {
-                    dispenseRequestObject["validityPeriod"] = validityPeriodObject;
-                    dispenseRequestObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestnumberOfRepeatsAllowed != null)
-                {
-                    dispenseRequestObject["numberOfRepeatsAllowed"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestnumberOfRepeatsAllowed);
-                    dispenseRequestObjectpropCount++;
-                }
-
-                var quantityObject = new JObject();
-                var quantityObjectpropCount = 0;
-                if (__workflow_bodydispenseRequestquantityvalue != null)
-                {
-                    quantityObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantityvalue);
-                    quantityObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestquantityunit != null)
-                {
-                    quantityObject["unit"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantityunit);
-                    quantityObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestquantitysystem != null)
-                {
-                    quantityObject["system"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantitysystem);
-                    quantityObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestquantitycode != null)
-                {
-                    quantityObject["code"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantitycode);
-                    quantityObjectpropCount++;
-                }
-
-                if (quantityObjectpropCount > 0)
-                {
-                    dispenseRequestObject["quantity"] = quantityObject;
-                    dispenseRequestObjectpropCount++;
-                }
-
-                var expectedSupplyDurationObject = new JObject();
-                var expectedSupplyDurationObjectpropCount = 0;
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationvalue != null)
-                {
-                    expectedSupplyDurationObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationvalue);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationunit != null)
-                {
-                    expectedSupplyDurationObject["unit"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationunit);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationsystem != null)
-                {
-                    expectedSupplyDurationObject["system"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationsystem);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationcode != null)
-                {
-                    expectedSupplyDurationObject["code"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationcode);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (expectedSupplyDurationObjectpropCount > 0)
-                {
-                    dispenseRequestObject["expectedSupplyDuration"] = expectedSupplyDurationObject;
-                    dispenseRequestObjectpropCount++;
-                }
-
-                if (dispenseRequestObjectpropCount > 0)
-                {
-                    body["dispenseRequest"] = dispenseRequestObject;
-                    bodypropCount++;
-                }
-
-                var substitutionObject = new JObject();
-                var substitutionObjectpropCount = 0;
-                if (__workflow_bodysubstitutionallowedBoolean != null)
-                {
-                    substitutionObject["allowedBoolean"] = ExpressionConverter.ConvertO(__workflow_bodysubstitutionallowedBoolean);
-                    substitutionObjectpropCount++;
-                }
-
-                var reasonObject = new JObject();
-                var reasonObjectpropCount = 0;
-                if (__workflow_bodysubstitutionreasoncoding != null)
-                {
-                    reasonObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodysubstitutionreasoncoding);
-                    reasonObjectpropCount++;
-                }
-
-                if (reasonObjectpropCount > 0)
-                {
-                    substitutionObject["reason"] = reasonObject;
-                    substitutionObjectpropCount++;
-                }
-
-                if (substitutionObjectpropCount > 0)
-                {
-                    body["substitution"] = substitutionObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTMedicationRequestResponse>(callPayload);
             });
         }
@@ -3546,665 +590,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEMedicationRequestIdResponse, ApiConnectionActionConfiguration> DELETEMedicationRequestId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem22[]>> bodycontained = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyintent = null, Expression<Func<string>> bodymedicationReferencereference = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyencounterreference = null, Expression<Func<string>> bodyencounterdisplay = null, Expression<Func<bodysupportingInformationInputItem[]>> bodysupportingInformation = null, Expression<Func<string>> bodyauthoredOn = null, Expression<Func<string>> bodyrequesterreference = null, Expression<Func<string>> bodyrequesterdisplay = null, Expression<Func<bodyreasonCodeInputItem[]>> bodyreasonCode = null, Expression<Func<bodynoteInputItem[]>> bodynote = null, Expression<Func<bodydosageInstructionInputItem[]>> bodydosageInstruction = null, Expression<Func<string>> bodydispenseRequestvalidityPeriodstart = null, Expression<Func<string>> bodydispenseRequestvalidityPeriodend = null, Expression<Func<int>> bodydispenseRequestnumberOfRepeatsAllowed = null, Expression<Func<int>> bodydispenseRequestquantityvalue = null, Expression<Func<string>> bodydispenseRequestquantityunit = null, Expression<Func<string>> bodydispenseRequestquantitysystem = null, Expression<Func<string>> bodydispenseRequestquantitycode = null, Expression<Func<int>> bodydispenseRequestexpectedSupplyDurationvalue = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationunit = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationsystem = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationcode = null, Expression<Func<bool>> bodysubstitutionallowedBoolean = null, Expression<Func<bodysubstitutionreasoncodingInputItem[]>> bodysubstitutionreasoncoding = null)
+        public IBodyWorkflowAction<DELETEMedicationRequestIdResponse, ApiConnectionActionConfiguration> DELETEMedicationRequestId(Expression<Func<string>> id, Expression<Func<DELETEMedicationRequestIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodycontained = WorkflowExpression.Compile(bodycontained, nameof(bodycontained), required: false);
-            var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyintent = WorkflowExpression.Compile(bodyintent, nameof(bodyintent), required: false);
-            var __workflow_bodymedicationReferencereference = WorkflowExpression.Compile(bodymedicationReferencereference, nameof(bodymedicationReferencereference), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyencounterreference = WorkflowExpression.Compile(bodyencounterreference, nameof(bodyencounterreference), required: false);
-            var __workflow_bodyencounterdisplay = WorkflowExpression.Compile(bodyencounterdisplay, nameof(bodyencounterdisplay), required: false);
-            var __workflow_bodysupportingInformation = WorkflowExpression.Compile(bodysupportingInformation, nameof(bodysupportingInformation), required: false);
-            var __workflow_bodyauthoredOn = WorkflowExpression.Compile(bodyauthoredOn, nameof(bodyauthoredOn), required: false);
-            var __workflow_bodyrequesterreference = WorkflowExpression.Compile(bodyrequesterreference, nameof(bodyrequesterreference), required: false);
-            var __workflow_bodyrequesterdisplay = WorkflowExpression.Compile(bodyrequesterdisplay, nameof(bodyrequesterdisplay), required: false);
-            var __workflow_bodyreasonCode = WorkflowExpression.Compile(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodydosageInstruction = WorkflowExpression.Compile(bodydosageInstruction, nameof(bodydosageInstruction), required: false);
-            var __workflow_bodydispenseRequestvalidityPeriodstart = WorkflowExpression.Compile(bodydispenseRequestvalidityPeriodstart, nameof(bodydispenseRequestvalidityPeriodstart), required: false);
-            var __workflow_bodydispenseRequestvalidityPeriodend = WorkflowExpression.Compile(bodydispenseRequestvalidityPeriodend, nameof(bodydispenseRequestvalidityPeriodend), required: false);
-            var __workflow_bodydispenseRequestnumberOfRepeatsAllowed = WorkflowExpression.Compile(bodydispenseRequestnumberOfRepeatsAllowed, nameof(bodydispenseRequestnumberOfRepeatsAllowed), required: false);
-            var __workflow_bodydispenseRequestquantityvalue = WorkflowExpression.Compile(bodydispenseRequestquantityvalue, nameof(bodydispenseRequestquantityvalue), required: false);
-            var __workflow_bodydispenseRequestquantityunit = WorkflowExpression.Compile(bodydispenseRequestquantityunit, nameof(bodydispenseRequestquantityunit), required: false);
-            var __workflow_bodydispenseRequestquantitysystem = WorkflowExpression.Compile(bodydispenseRequestquantitysystem, nameof(bodydispenseRequestquantitysystem), required: false);
-            var __workflow_bodydispenseRequestquantitycode = WorkflowExpression.Compile(bodydispenseRequestquantitycode, nameof(bodydispenseRequestquantitycode), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationvalue = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationvalue, nameof(bodydispenseRequestexpectedSupplyDurationvalue), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationunit = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationunit, nameof(bodydispenseRequestexpectedSupplyDurationunit), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationsystem = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationsystem, nameof(bodydispenseRequestexpectedSupplyDurationsystem), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationcode = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationcode, nameof(bodydispenseRequestexpectedSupplyDurationcode), required: false);
-            var __workflow_bodysubstitutionallowedBoolean = WorkflowExpression.Compile(bodysubstitutionallowedBoolean, nameof(bodysubstitutionallowedBoolean), required: false);
-            var __workflow_bodysubstitutionreasoncoding = WorkflowExpression.Compile(bodysubstitutionreasoncoding, nameof(bodysubstitutionreasoncoding), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DELETEMedicationRequestIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationRequest/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontained != null)
-                {
-                    body["contained"] = ExpressionConverter.ConvertO(__workflow_bodycontained);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidentifier != null)
-                {
-                    body["identifier"] = ExpressionConverter.ConvertO(__workflow_bodyidentifier);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyintent != null)
-                {
-                    body["intent"] = ExpressionConverter.ConvertO(__workflow_bodyintent);
-                    bodypropCount++;
-                }
-
-                var medicationReferenceObject = new JObject();
-                var medicationReferenceObjectpropCount = 0;
-                if (__workflow_bodymedicationReferencereference != null)
-                {
-                    medicationReferenceObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodymedicationReferencereference);
-                    medicationReferenceObjectpropCount++;
-                }
-
-                if (medicationReferenceObjectpropCount > 0)
-                {
-                    body["medicationReference"] = medicationReferenceObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                var encounterObject = new JObject();
-                var encounterObjectpropCount = 0;
-                if (__workflow_bodyencounterreference != null)
-                {
-                    encounterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyencounterreference);
-                    encounterObjectpropCount++;
-                }
-
-                if (__workflow_bodyencounterdisplay != null)
-                {
-                    encounterObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyencounterdisplay);
-                    encounterObjectpropCount++;
-                }
-
-                if (encounterObjectpropCount > 0)
-                {
-                    body["encounter"] = encounterObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysupportingInformation != null)
-                {
-                    body["supportingInformation"] = ExpressionConverter.ConvertO(__workflow_bodysupportingInformation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyauthoredOn != null)
-                {
-                    body["authoredOn"] = ExpressionConverter.ConvertO(__workflow_bodyauthoredOn);
-                    bodypropCount++;
-                }
-
-                var requesterObject = new JObject();
-                var requesterObjectpropCount = 0;
-                if (__workflow_bodyrequesterreference != null)
-                {
-                    requesterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterreference);
-                    requesterObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequesterdisplay != null)
-                {
-                    requesterObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterdisplay);
-                    requesterObjectpropCount++;
-                }
-
-                if (requesterObjectpropCount > 0)
-                {
-                    body["requester"] = requesterObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonCode != null)
-                {
-                    body["reasonCode"] = ExpressionConverter.ConvertO(__workflow_bodyreasonCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydosageInstruction != null)
-                {
-                    body["dosageInstruction"] = ExpressionConverter.ConvertO(__workflow_bodydosageInstruction);
-                    bodypropCount++;
-                }
-
-                var dispenseRequestObject = new JObject();
-                var dispenseRequestObjectpropCount = 0;
-                var validityPeriodObject = new JObject();
-                var validityPeriodObjectpropCount = 0;
-                if (__workflow_bodydispenseRequestvalidityPeriodstart != null)
-                {
-                    validityPeriodObject["start"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestvalidityPeriodstart);
-                    validityPeriodObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestvalidityPeriodend != null)
-                {
-                    validityPeriodObject["end"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestvalidityPeriodend);
-                    validityPeriodObjectpropCount++;
-                }
-
-                if (validityPeriodObjectpropCount > 0)
-                {
-                    dispenseRequestObject["validityPeriod"] = validityPeriodObject;
-                    dispenseRequestObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestnumberOfRepeatsAllowed != null)
-                {
-                    dispenseRequestObject["numberOfRepeatsAllowed"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestnumberOfRepeatsAllowed);
-                    dispenseRequestObjectpropCount++;
-                }
-
-                var quantityObject = new JObject();
-                var quantityObjectpropCount = 0;
-                if (__workflow_bodydispenseRequestquantityvalue != null)
-                {
-                    quantityObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantityvalue);
-                    quantityObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestquantityunit != null)
-                {
-                    quantityObject["unit"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantityunit);
-                    quantityObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestquantitysystem != null)
-                {
-                    quantityObject["system"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantitysystem);
-                    quantityObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestquantitycode != null)
-                {
-                    quantityObject["code"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantitycode);
-                    quantityObjectpropCount++;
-                }
-
-                if (quantityObjectpropCount > 0)
-                {
-                    dispenseRequestObject["quantity"] = quantityObject;
-                    dispenseRequestObjectpropCount++;
-                }
-
-                var expectedSupplyDurationObject = new JObject();
-                var expectedSupplyDurationObjectpropCount = 0;
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationvalue != null)
-                {
-                    expectedSupplyDurationObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationvalue);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationunit != null)
-                {
-                    expectedSupplyDurationObject["unit"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationunit);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationsystem != null)
-                {
-                    expectedSupplyDurationObject["system"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationsystem);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationcode != null)
-                {
-                    expectedSupplyDurationObject["code"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationcode);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (expectedSupplyDurationObjectpropCount > 0)
-                {
-                    dispenseRequestObject["expectedSupplyDuration"] = expectedSupplyDurationObject;
-                    dispenseRequestObjectpropCount++;
-                }
-
-                if (dispenseRequestObjectpropCount > 0)
-                {
-                    body["dispenseRequest"] = dispenseRequestObject;
-                    bodypropCount++;
-                }
-
-                var substitutionObject = new JObject();
-                var substitutionObjectpropCount = 0;
-                if (__workflow_bodysubstitutionallowedBoolean != null)
-                {
-                    substitutionObject["allowedBoolean"] = ExpressionConverter.ConvertO(__workflow_bodysubstitutionallowedBoolean);
-                    substitutionObjectpropCount++;
-                }
-
-                var reasonObject = new JObject();
-                var reasonObjectpropCount = 0;
-                if (__workflow_bodysubstitutionreasoncoding != null)
-                {
-                    reasonObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodysubstitutionreasoncoding);
-                    reasonObjectpropCount++;
-                }
-
-                if (reasonObjectpropCount > 0)
-                {
-                    substitutionObject["reason"] = reasonObject;
-                    substitutionObjectpropCount++;
-                }
-
-                if (substitutionObjectpropCount > 0)
-                {
-                    body["substitution"] = substitutionObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DELETEMedicationRequestIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTMedicationRequestIdResponse, ApiConnectionActionConfiguration> PUTMedicationRequestId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<bodycontainedInputItem22[]>> bodycontained = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyintent = null, Expression<Func<string>> bodymedicationReferencereference = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyencounterreference = null, Expression<Func<string>> bodyencounterdisplay = null, Expression<Func<bodysupportingInformationInputItem[]>> bodysupportingInformation = null, Expression<Func<string>> bodyauthoredOn = null, Expression<Func<string>> bodyrequesterreference = null, Expression<Func<string>> bodyrequesterdisplay = null, Expression<Func<bodyreasonCodeInputItem[]>> bodyreasonCode = null, Expression<Func<bodynoteInputItem[]>> bodynote = null, Expression<Func<bodydosageInstructionInputItem[]>> bodydosageInstruction = null, Expression<Func<string>> bodydispenseRequestvalidityPeriodstart = null, Expression<Func<string>> bodydispenseRequestvalidityPeriodend = null, Expression<Func<int>> bodydispenseRequestnumberOfRepeatsAllowed = null, Expression<Func<int>> bodydispenseRequestquantityvalue = null, Expression<Func<string>> bodydispenseRequestquantityunit = null, Expression<Func<string>> bodydispenseRequestquantitysystem = null, Expression<Func<string>> bodydispenseRequestquantitycode = null, Expression<Func<int>> bodydispenseRequestexpectedSupplyDurationvalue = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationunit = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationsystem = null, Expression<Func<string>> bodydispenseRequestexpectedSupplyDurationcode = null, Expression<Func<bool>> bodysubstitutionallowedBoolean = null, Expression<Func<bodysubstitutionreasoncodingInputItem[]>> bodysubstitutionreasoncoding = null)
+        public IBodyWorkflowAction<PUTMedicationRequestIdResponse, ApiConnectionActionConfiguration> PUTMedicationRequestId(Expression<Func<string>> id, Expression<Func<DELETEMedicationRequestIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodycontained = WorkflowExpression.Compile(bodycontained, nameof(bodycontained), required: false);
-            var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyintent = WorkflowExpression.Compile(bodyintent, nameof(bodyintent), required: false);
-            var __workflow_bodymedicationReferencereference = WorkflowExpression.Compile(bodymedicationReferencereference, nameof(bodymedicationReferencereference), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyencounterreference = WorkflowExpression.Compile(bodyencounterreference, nameof(bodyencounterreference), required: false);
-            var __workflow_bodyencounterdisplay = WorkflowExpression.Compile(bodyencounterdisplay, nameof(bodyencounterdisplay), required: false);
-            var __workflow_bodysupportingInformation = WorkflowExpression.Compile(bodysupportingInformation, nameof(bodysupportingInformation), required: false);
-            var __workflow_bodyauthoredOn = WorkflowExpression.Compile(bodyauthoredOn, nameof(bodyauthoredOn), required: false);
-            var __workflow_bodyrequesterreference = WorkflowExpression.Compile(bodyrequesterreference, nameof(bodyrequesterreference), required: false);
-            var __workflow_bodyrequesterdisplay = WorkflowExpression.Compile(bodyrequesterdisplay, nameof(bodyrequesterdisplay), required: false);
-            var __workflow_bodyreasonCode = WorkflowExpression.Compile(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodydosageInstruction = WorkflowExpression.Compile(bodydosageInstruction, nameof(bodydosageInstruction), required: false);
-            var __workflow_bodydispenseRequestvalidityPeriodstart = WorkflowExpression.Compile(bodydispenseRequestvalidityPeriodstart, nameof(bodydispenseRequestvalidityPeriodstart), required: false);
-            var __workflow_bodydispenseRequestvalidityPeriodend = WorkflowExpression.Compile(bodydispenseRequestvalidityPeriodend, nameof(bodydispenseRequestvalidityPeriodend), required: false);
-            var __workflow_bodydispenseRequestnumberOfRepeatsAllowed = WorkflowExpression.Compile(bodydispenseRequestnumberOfRepeatsAllowed, nameof(bodydispenseRequestnumberOfRepeatsAllowed), required: false);
-            var __workflow_bodydispenseRequestquantityvalue = WorkflowExpression.Compile(bodydispenseRequestquantityvalue, nameof(bodydispenseRequestquantityvalue), required: false);
-            var __workflow_bodydispenseRequestquantityunit = WorkflowExpression.Compile(bodydispenseRequestquantityunit, nameof(bodydispenseRequestquantityunit), required: false);
-            var __workflow_bodydispenseRequestquantitysystem = WorkflowExpression.Compile(bodydispenseRequestquantitysystem, nameof(bodydispenseRequestquantitysystem), required: false);
-            var __workflow_bodydispenseRequestquantitycode = WorkflowExpression.Compile(bodydispenseRequestquantitycode, nameof(bodydispenseRequestquantitycode), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationvalue = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationvalue, nameof(bodydispenseRequestexpectedSupplyDurationvalue), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationunit = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationunit, nameof(bodydispenseRequestexpectedSupplyDurationunit), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationsystem = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationsystem, nameof(bodydispenseRequestexpectedSupplyDurationsystem), required: false);
-            var __workflow_bodydispenseRequestexpectedSupplyDurationcode = WorkflowExpression.Compile(bodydispenseRequestexpectedSupplyDurationcode, nameof(bodydispenseRequestexpectedSupplyDurationcode), required: false);
-            var __workflow_bodysubstitutionallowedBoolean = WorkflowExpression.Compile(bodysubstitutionallowedBoolean, nameof(bodysubstitutionallowedBoolean), required: false);
-            var __workflow_bodysubstitutionreasoncoding = WorkflowExpression.Compile(bodysubstitutionreasoncoding, nameof(bodysubstitutionreasoncoding), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTMedicationRequestIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationRequest/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontained != null)
-                {
-                    body["contained"] = ExpressionConverter.ConvertO(__workflow_bodycontained);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidentifier != null)
-                {
-                    body["identifier"] = ExpressionConverter.ConvertO(__workflow_bodyidentifier);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyintent != null)
-                {
-                    body["intent"] = ExpressionConverter.ConvertO(__workflow_bodyintent);
-                    bodypropCount++;
-                }
-
-                var medicationReferenceObject = new JObject();
-                var medicationReferenceObjectpropCount = 0;
-                if (__workflow_bodymedicationReferencereference != null)
-                {
-                    medicationReferenceObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodymedicationReferencereference);
-                    medicationReferenceObjectpropCount++;
-                }
-
-                if (medicationReferenceObjectpropCount > 0)
-                {
-                    body["medicationReference"] = medicationReferenceObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                var encounterObject = new JObject();
-                var encounterObjectpropCount = 0;
-                if (__workflow_bodyencounterreference != null)
-                {
-                    encounterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyencounterreference);
-                    encounterObjectpropCount++;
-                }
-
-                if (__workflow_bodyencounterdisplay != null)
-                {
-                    encounterObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyencounterdisplay);
-                    encounterObjectpropCount++;
-                }
-
-                if (encounterObjectpropCount > 0)
-                {
-                    body["encounter"] = encounterObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysupportingInformation != null)
-                {
-                    body["supportingInformation"] = ExpressionConverter.ConvertO(__workflow_bodysupportingInformation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyauthoredOn != null)
-                {
-                    body["authoredOn"] = ExpressionConverter.ConvertO(__workflow_bodyauthoredOn);
-                    bodypropCount++;
-                }
-
-                var requesterObject = new JObject();
-                var requesterObjectpropCount = 0;
-                if (__workflow_bodyrequesterreference != null)
-                {
-                    requesterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterreference);
-                    requesterObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequesterdisplay != null)
-                {
-                    requesterObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterdisplay);
-                    requesterObjectpropCount++;
-                }
-
-                if (requesterObjectpropCount > 0)
-                {
-                    body["requester"] = requesterObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonCode != null)
-                {
-                    body["reasonCode"] = ExpressionConverter.ConvertO(__workflow_bodyreasonCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydosageInstruction != null)
-                {
-                    body["dosageInstruction"] = ExpressionConverter.ConvertO(__workflow_bodydosageInstruction);
-                    bodypropCount++;
-                }
-
-                var dispenseRequestObject = new JObject();
-                var dispenseRequestObjectpropCount = 0;
-                var validityPeriodObject = new JObject();
-                var validityPeriodObjectpropCount = 0;
-                if (__workflow_bodydispenseRequestvalidityPeriodstart != null)
-                {
-                    validityPeriodObject["start"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestvalidityPeriodstart);
-                    validityPeriodObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestvalidityPeriodend != null)
-                {
-                    validityPeriodObject["end"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestvalidityPeriodend);
-                    validityPeriodObjectpropCount++;
-                }
-
-                if (validityPeriodObjectpropCount > 0)
-                {
-                    dispenseRequestObject["validityPeriod"] = validityPeriodObject;
-                    dispenseRequestObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestnumberOfRepeatsAllowed != null)
-                {
-                    dispenseRequestObject["numberOfRepeatsAllowed"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestnumberOfRepeatsAllowed);
-                    dispenseRequestObjectpropCount++;
-                }
-
-                var quantityObject = new JObject();
-                var quantityObjectpropCount = 0;
-                if (__workflow_bodydispenseRequestquantityvalue != null)
-                {
-                    quantityObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantityvalue);
-                    quantityObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestquantityunit != null)
-                {
-                    quantityObject["unit"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantityunit);
-                    quantityObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestquantitysystem != null)
-                {
-                    quantityObject["system"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantitysystem);
-                    quantityObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestquantitycode != null)
-                {
-                    quantityObject["code"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestquantitycode);
-                    quantityObjectpropCount++;
-                }
-
-                if (quantityObjectpropCount > 0)
-                {
-                    dispenseRequestObject["quantity"] = quantityObject;
-                    dispenseRequestObjectpropCount++;
-                }
-
-                var expectedSupplyDurationObject = new JObject();
-                var expectedSupplyDurationObjectpropCount = 0;
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationvalue != null)
-                {
-                    expectedSupplyDurationObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationvalue);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationunit != null)
-                {
-                    expectedSupplyDurationObject["unit"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationunit);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationsystem != null)
-                {
-                    expectedSupplyDurationObject["system"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationsystem);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (__workflow_bodydispenseRequestexpectedSupplyDurationcode != null)
-                {
-                    expectedSupplyDurationObject["code"] = ExpressionConverter.ConvertO(__workflow_bodydispenseRequestexpectedSupplyDurationcode);
-                    expectedSupplyDurationObjectpropCount++;
-                }
-
-                if (expectedSupplyDurationObjectpropCount > 0)
-                {
-                    dispenseRequestObject["expectedSupplyDuration"] = expectedSupplyDurationObject;
-                    dispenseRequestObjectpropCount++;
-                }
-
-                if (dispenseRequestObjectpropCount > 0)
-                {
-                    body["dispenseRequest"] = dispenseRequestObject;
-                    bodypropCount++;
-                }
-
-                var substitutionObject = new JObject();
-                var substitutionObjectpropCount = 0;
-                if (__workflow_bodysubstitutionallowedBoolean != null)
-                {
-                    substitutionObject["allowedBoolean"] = ExpressionConverter.ConvertO(__workflow_bodysubstitutionallowedBoolean);
-                    substitutionObjectpropCount++;
-                }
-
-                var reasonObject = new JObject();
-                var reasonObjectpropCount = 0;
-                if (__workflow_bodysubstitutionreasoncoding != null)
-                {
-                    reasonObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodysubstitutionreasoncoding);
-                    reasonObjectpropCount++;
-                }
-
-                if (reasonObjectpropCount > 0)
-                {
-                    substitutionObject["reason"] = reasonObject;
-                    substitutionObjectpropCount++;
-                }
-
-                if (substitutionObjectpropCount > 0)
-                {
-                    body["substitution"] = substitutionObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTMedicationRequestIdResponse>(callPayload);
             });
         }
@@ -4231,150 +643,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTMedicationStatementResponse, ApiConnectionActionConfiguration> POSTMedicationStatement(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymedicationCodeableConcepttext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyeffectiveDateTime = null, Expression<Func<string>> bodydateAsserted = null, Expression<Func<string>> bodyinformationSourcereference = null, Expression<Func<string>> bodyinformationSourcedisplay = null, Expression<Func<bodyreasonReferenceInputItem[]>> bodyreasonReference = null, Expression<Func<bodynoteInputItem[]>> bodynote = null, Expression<Func<bodydosageInputItem[]>> bodydosage = null)
+        public IBodyWorkflowAction<POSTMedicationStatementResponse, ApiConnectionActionConfiguration> POSTMedicationStatement(Expression<Func<DELETEMedicationStatementIdBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodymedicationCodeableConcepttext = WorkflowExpression.Compile(bodymedicationCodeableConcepttext, nameof(bodymedicationCodeableConcepttext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyeffectiveDateTime = WorkflowExpression.Compile(bodyeffectiveDateTime, nameof(bodyeffectiveDateTime), required: false);
-            var __workflow_bodydateAsserted = WorkflowExpression.Compile(bodydateAsserted, nameof(bodydateAsserted), required: false);
-            var __workflow_bodyinformationSourcereference = WorkflowExpression.Compile(bodyinformationSourcereference, nameof(bodyinformationSourcereference), required: false);
-            var __workflow_bodyinformationSourcedisplay = WorkflowExpression.Compile(bodyinformationSourcedisplay, nameof(bodyinformationSourcedisplay), required: false);
-            var __workflow_bodyreasonReference = WorkflowExpression.Compile(bodyreasonReference, nameof(bodyreasonReference), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodydosage = WorkflowExpression.Compile(bodydosage, nameof(bodydosage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTMedicationStatementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/MedicationStatement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var medicationCodeableConceptObject = new JObject();
-                var medicationCodeableConceptObjectpropCount = 0;
-                if (__workflow_bodymedicationCodeableConcepttext != null)
-                {
-                    medicationCodeableConceptObject["text"] = ExpressionConverter.ConvertO(__workflow_bodymedicationCodeableConcepttext);
-                    medicationCodeableConceptObjectpropCount++;
-                }
-
-                if (medicationCodeableConceptObjectpropCount > 0)
-                {
-                    body["medicationCodeableConcept"] = medicationCodeableConceptObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyeffectiveDateTime != null)
-                {
-                    body["effectiveDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyeffectiveDateTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydateAsserted != null)
-                {
-                    body["dateAsserted"] = ExpressionConverter.ConvertO(__workflow_bodydateAsserted);
-                    bodypropCount++;
-                }
-
-                var informationSourceObject = new JObject();
-                var informationSourceObjectpropCount = 0;
-                if (__workflow_bodyinformationSourcereference != null)
-                {
-                    informationSourceObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyinformationSourcereference);
-                    informationSourceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinformationSourcedisplay != null)
-                {
-                    informationSourceObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyinformationSourcedisplay);
-                    informationSourceObjectpropCount++;
-                }
-
-                if (informationSourceObjectpropCount > 0)
-                {
-                    body["informationSource"] = informationSourceObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonReference != null)
-                {
-                    body["reasonReference"] = ExpressionConverter.ConvertO(__workflow_bodyreasonReference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydosage != null)
-                {
-                    body["dosage"] = ExpressionConverter.ConvertO(__workflow_bodydosage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTMedicationStatementResponse>(callPayload);
             });
         }
@@ -4399,301 +677,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DELETEMedicationStatementId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymedicationCodeableConcepttext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyeffectiveDateTime = null, Expression<Func<string>> bodydateAsserted = null, Expression<Func<string>> bodyinformationSourcereference = null, Expression<Func<string>> bodyinformationSourcedisplay = null, Expression<Func<bodyreasonReferenceInputItem[]>> bodyreasonReference = null, Expression<Func<bodynoteInputItem[]>> bodynote = null, Expression<Func<bodydosageInputItem[]>> bodydosage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DELETEMedicationStatementId(Expression<Func<string>> id, Expression<Func<DELETEMedicationStatementIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodymedicationCodeableConcepttext = WorkflowExpression.Compile(bodymedicationCodeableConcepttext, nameof(bodymedicationCodeableConcepttext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyeffectiveDateTime = WorkflowExpression.Compile(bodyeffectiveDateTime, nameof(bodyeffectiveDateTime), required: false);
-            var __workflow_bodydateAsserted = WorkflowExpression.Compile(bodydateAsserted, nameof(bodydateAsserted), required: false);
-            var __workflow_bodyinformationSourcereference = WorkflowExpression.Compile(bodyinformationSourcereference, nameof(bodyinformationSourcereference), required: false);
-            var __workflow_bodyinformationSourcedisplay = WorkflowExpression.Compile(bodyinformationSourcedisplay, nameof(bodyinformationSourcedisplay), required: false);
-            var __workflow_bodyreasonReference = WorkflowExpression.Compile(bodyreasonReference, nameof(bodyreasonReference), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodydosage = WorkflowExpression.Compile(bodydosage, nameof(bodydosage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationStatement/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var medicationCodeableConceptObject = new JObject();
-                var medicationCodeableConceptObjectpropCount = 0;
-                if (__workflow_bodymedicationCodeableConcepttext != null)
-                {
-                    medicationCodeableConceptObject["text"] = ExpressionConverter.ConvertO(__workflow_bodymedicationCodeableConcepttext);
-                    medicationCodeableConceptObjectpropCount++;
-                }
-
-                if (medicationCodeableConceptObjectpropCount > 0)
-                {
-                    body["medicationCodeableConcept"] = medicationCodeableConceptObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyeffectiveDateTime != null)
-                {
-                    body["effectiveDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyeffectiveDateTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydateAsserted != null)
-                {
-                    body["dateAsserted"] = ExpressionConverter.ConvertO(__workflow_bodydateAsserted);
-                    bodypropCount++;
-                }
-
-                var informationSourceObject = new JObject();
-                var informationSourceObjectpropCount = 0;
-                if (__workflow_bodyinformationSourcereference != null)
-                {
-                    informationSourceObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyinformationSourcereference);
-                    informationSourceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinformationSourcedisplay != null)
-                {
-                    informationSourceObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyinformationSourcedisplay);
-                    informationSourceObjectpropCount++;
-                }
-
-                if (informationSourceObjectpropCount > 0)
-                {
-                    body["informationSource"] = informationSourceObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonReference != null)
-                {
-                    body["reasonReference"] = ExpressionConverter.ConvertO(__workflow_bodyreasonReference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydosage != null)
-                {
-                    body["dosage"] = ExpressionConverter.ConvertO(__workflow_bodydosage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTMedicationStatementIdResponse, ApiConnectionActionConfiguration> PUTMedicationStatementId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymedicationCodeableConcepttext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyeffectiveDateTime = null, Expression<Func<string>> bodydateAsserted = null, Expression<Func<string>> bodyinformationSourcereference = null, Expression<Func<string>> bodyinformationSourcedisplay = null, Expression<Func<bodyreasonReferenceInputItem[]>> bodyreasonReference = null, Expression<Func<bodynoteInputItem[]>> bodynote = null, Expression<Func<bodydosageInputItem[]>> bodydosage = null)
+        public IBodyWorkflowAction<PUTMedicationStatementIdResponse, ApiConnectionActionConfiguration> PUTMedicationStatementId(Expression<Func<string>> id, Expression<Func<DELETEMedicationStatementIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodymedicationCodeableConcepttext = WorkflowExpression.Compile(bodymedicationCodeableConcepttext, nameof(bodymedicationCodeableConcepttext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyeffectiveDateTime = WorkflowExpression.Compile(bodyeffectiveDateTime, nameof(bodyeffectiveDateTime), required: false);
-            var __workflow_bodydateAsserted = WorkflowExpression.Compile(bodydateAsserted, nameof(bodydateAsserted), required: false);
-            var __workflow_bodyinformationSourcereference = WorkflowExpression.Compile(bodyinformationSourcereference, nameof(bodyinformationSourcereference), required: false);
-            var __workflow_bodyinformationSourcedisplay = WorkflowExpression.Compile(bodyinformationSourcedisplay, nameof(bodyinformationSourcedisplay), required: false);
-            var __workflow_bodyreasonReference = WorkflowExpression.Compile(bodyreasonReference, nameof(bodyreasonReference), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodydosage = WorkflowExpression.Compile(bodydosage, nameof(bodydosage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTMedicationStatementIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationStatement/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var medicationCodeableConceptObject = new JObject();
-                var medicationCodeableConceptObjectpropCount = 0;
-                if (__workflow_bodymedicationCodeableConcepttext != null)
-                {
-                    medicationCodeableConceptObject["text"] = ExpressionConverter.ConvertO(__workflow_bodymedicationCodeableConcepttext);
-                    medicationCodeableConceptObjectpropCount++;
-                }
-
-                if (medicationCodeableConceptObjectpropCount > 0)
-                {
-                    body["medicationCodeableConcept"] = medicationCodeableConceptObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyeffectiveDateTime != null)
-                {
-                    body["effectiveDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyeffectiveDateTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydateAsserted != null)
-                {
-                    body["dateAsserted"] = ExpressionConverter.ConvertO(__workflow_bodydateAsserted);
-                    bodypropCount++;
-                }
-
-                var informationSourceObject = new JObject();
-                var informationSourceObjectpropCount = 0;
-                if (__workflow_bodyinformationSourcereference != null)
-                {
-                    informationSourceObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyinformationSourcereference);
-                    informationSourceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinformationSourcedisplay != null)
-                {
-                    informationSourceObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyinformationSourcedisplay);
-                    informationSourceObjectpropCount++;
-                }
-
-                if (informationSourceObjectpropCount > 0)
-                {
-                    body["informationSource"] = informationSourceObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonReference != null)
-                {
-                    body["reasonReference"] = ExpressionConverter.ConvertO(__workflow_bodyreasonReference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydosage != null)
-                {
-                    body["dosage"] = ExpressionConverter.ConvertO(__workflow_bodydosage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTMedicationStatementIdResponse>(callPayload);
             });
         }
@@ -4723,216 +733,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTObservationResponse, ApiConnectionActionConfiguration> POSTObservation(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyencounterreference = null, Expression<Func<string>> bodyissued = null, Expression<Func<bodyperformerInputItem2[]>> bodyperformer = null, Expression<Func<int>> bodyvalueQuantityvalue = null, Expression<Func<string>> bodyvalueQuantityunit = null, Expression<Func<string>> bodyvalueQuantitysystem = null, Expression<Func<string>> bodyvalueQuantitycode = null, Expression<Func<bodyinterpretationInputItem[]>> bodyinterpretation = null, Expression<Func<bodybodySitecodingInputItem[]>> bodybodySitecoding = null, Expression<Func<bodymethodcodingInputItem[]>> bodymethodcoding = null, Expression<Func<bodyreferenceRangeInputItem[]>> bodyreferenceRange = null)
+        public IBodyWorkflowAction<POSTObservationResponse, ApiConnectionActionConfiguration> POSTObservation(Expression<Func<POSTObservationBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyencounterreference = WorkflowExpression.Compile(bodyencounterreference, nameof(bodyencounterreference), required: false);
-            var __workflow_bodyissued = WorkflowExpression.Compile(bodyissued, nameof(bodyissued), required: false);
-            var __workflow_bodyperformer = WorkflowExpression.Compile(bodyperformer, nameof(bodyperformer), required: false);
-            var __workflow_bodyvalueQuantityvalue = WorkflowExpression.Compile(bodyvalueQuantityvalue, nameof(bodyvalueQuantityvalue), required: false);
-            var __workflow_bodyvalueQuantityunit = WorkflowExpression.Compile(bodyvalueQuantityunit, nameof(bodyvalueQuantityunit), required: false);
-            var __workflow_bodyvalueQuantitysystem = WorkflowExpression.Compile(bodyvalueQuantitysystem, nameof(bodyvalueQuantitysystem), required: false);
-            var __workflow_bodyvalueQuantitycode = WorkflowExpression.Compile(bodyvalueQuantitycode, nameof(bodyvalueQuantitycode), required: false);
-            var __workflow_bodyinterpretation = WorkflowExpression.Compile(bodyinterpretation, nameof(bodyinterpretation), required: false);
-            var __workflow_bodybodySitecoding = WorkflowExpression.Compile(bodybodySitecoding, nameof(bodybodySitecoding), required: false);
-            var __workflow_bodymethodcoding = WorkflowExpression.Compile(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            var __workflow_bodyreferenceRange = WorkflowExpression.Compile(bodyreferenceRange, nameof(bodyreferenceRange), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTObservationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Observation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                var encounterObject = new JObject();
-                var encounterObjectpropCount = 0;
-                if (__workflow_bodyencounterreference != null)
-                {
-                    encounterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyencounterreference);
-                    encounterObjectpropCount++;
-                }
-
-                if (encounterObjectpropCount > 0)
-                {
-                    body["encounter"] = encounterObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyissued != null)
-                {
-                    body["issued"] = ExpressionConverter.ConvertO(__workflow_bodyissued);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformer != null)
-                {
-                    body["performer"] = ExpressionConverter.ConvertO(__workflow_bodyperformer);
-                    bodypropCount++;
-                }
-
-                var valueQuantityObject = new JObject();
-                var valueQuantityObjectpropCount = 0;
-                if (__workflow_bodyvalueQuantityvalue != null)
-                {
-                    valueQuantityObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantityvalue);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (__workflow_bodyvalueQuantityunit != null)
-                {
-                    valueQuantityObject["unit"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantityunit);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (__workflow_bodyvalueQuantitysystem != null)
-                {
-                    valueQuantityObject["system"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantitysystem);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (__workflow_bodyvalueQuantitycode != null)
-                {
-                    valueQuantityObject["code"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantitycode);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (valueQuantityObjectpropCount > 0)
-                {
-                    body["valueQuantity"] = valueQuantityObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinterpretation != null)
-                {
-                    body["interpretation"] = ExpressionConverter.ConvertO(__workflow_bodyinterpretation);
-                    bodypropCount++;
-                }
-
-                var bodySiteObject = new JObject();
-                var bodySiteObjectpropCount = 0;
-                if (__workflow_bodybodySitecoding != null)
-                {
-                    bodySiteObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodybodySitecoding);
-                    bodySiteObjectpropCount++;
-                }
-
-                if (bodySiteObjectpropCount > 0)
-                {
-                    body["bodySite"] = bodySiteObject;
-                    bodypropCount++;
-                }
-
-                var methodObject = new JObject();
-                var methodObjectpropCount = 0;
-                if (__workflow_bodymethodcoding != null)
-                {
-                    methodObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodymethodcoding);
-                    methodObjectpropCount++;
-                }
-
-                if (methodObjectpropCount > 0)
-                {
-                    body["method"] = methodObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreferenceRange != null)
-                {
-                    body["referenceRange"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceRange);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTObservationResponse>(callPayload);
             });
         }
@@ -4957,403 +767,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEObservationIdResponse, ApiConnectionActionConfiguration> DELETEObservationId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyissued = null, Expression<Func<bodyperformerInputItem2[]>> bodyperformer = null, Expression<Func<int>> bodyvalueQuantityvalue = null, Expression<Func<string>> bodyvalueQuantityunit = null, Expression<Func<string>> bodyvalueQuantitysystem = null, Expression<Func<string>> bodyvalueQuantitycode = null, Expression<Func<bodyinterpretationInputItem[]>> bodyinterpretation = null, Expression<Func<bodybodySitecodingInputItem[]>> bodybodySitecoding = null, Expression<Func<bodymethodcodingInputItem[]>> bodymethodcoding = null, Expression<Func<bodyreferenceRangeInputItem[]>> bodyreferenceRange = null)
+        public IBodyWorkflowAction<DELETEObservationIdResponse, ApiConnectionActionConfiguration> DELETEObservationId(Expression<Func<string>> id, Expression<Func<DELETEObservationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyissued = WorkflowExpression.Compile(bodyissued, nameof(bodyissued), required: false);
-            var __workflow_bodyperformer = WorkflowExpression.Compile(bodyperformer, nameof(bodyperformer), required: false);
-            var __workflow_bodyvalueQuantityvalue = WorkflowExpression.Compile(bodyvalueQuantityvalue, nameof(bodyvalueQuantityvalue), required: false);
-            var __workflow_bodyvalueQuantityunit = WorkflowExpression.Compile(bodyvalueQuantityunit, nameof(bodyvalueQuantityunit), required: false);
-            var __workflow_bodyvalueQuantitysystem = WorkflowExpression.Compile(bodyvalueQuantitysystem, nameof(bodyvalueQuantitysystem), required: false);
-            var __workflow_bodyvalueQuantitycode = WorkflowExpression.Compile(bodyvalueQuantitycode, nameof(bodyvalueQuantitycode), required: false);
-            var __workflow_bodyinterpretation = WorkflowExpression.Compile(bodyinterpretation, nameof(bodyinterpretation), required: false);
-            var __workflow_bodybodySitecoding = WorkflowExpression.Compile(bodybodySitecoding, nameof(bodybodySitecoding), required: false);
-            var __workflow_bodymethodcoding = WorkflowExpression.Compile(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            var __workflow_bodyreferenceRange = WorkflowExpression.Compile(bodyreferenceRange, nameof(bodyreferenceRange), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DELETEObservationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Observation/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyissued != null)
-                {
-                    body["issued"] = ExpressionConverter.ConvertO(__workflow_bodyissued);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformer != null)
-                {
-                    body["performer"] = ExpressionConverter.ConvertO(__workflow_bodyperformer);
-                    bodypropCount++;
-                }
-
-                var valueQuantityObject = new JObject();
-                var valueQuantityObjectpropCount = 0;
-                if (__workflow_bodyvalueQuantityvalue != null)
-                {
-                    valueQuantityObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantityvalue);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (__workflow_bodyvalueQuantityunit != null)
-                {
-                    valueQuantityObject["unit"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantityunit);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (__workflow_bodyvalueQuantitysystem != null)
-                {
-                    valueQuantityObject["system"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantitysystem);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (__workflow_bodyvalueQuantitycode != null)
-                {
-                    valueQuantityObject["code"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantitycode);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (valueQuantityObjectpropCount > 0)
-                {
-                    body["valueQuantity"] = valueQuantityObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinterpretation != null)
-                {
-                    body["interpretation"] = ExpressionConverter.ConvertO(__workflow_bodyinterpretation);
-                    bodypropCount++;
-                }
-
-                var bodySiteObject = new JObject();
-                var bodySiteObjectpropCount = 0;
-                if (__workflow_bodybodySitecoding != null)
-                {
-                    bodySiteObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodybodySitecoding);
-                    bodySiteObjectpropCount++;
-                }
-
-                if (bodySiteObjectpropCount > 0)
-                {
-                    body["bodySite"] = bodySiteObject;
-                    bodypropCount++;
-                }
-
-                var methodObject = new JObject();
-                var methodObjectpropCount = 0;
-                if (__workflow_bodymethodcoding != null)
-                {
-                    methodObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodymethodcoding);
-                    methodObjectpropCount++;
-                }
-
-                if (methodObjectpropCount > 0)
-                {
-                    body["method"] = methodObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreferenceRange != null)
-                {
-                    body["referenceRange"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceRange);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DELETEObservationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTObservationIdResponse, ApiConnectionActionConfiguration> PUTObservationId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyissued = null, Expression<Func<bodyperformerInputItem2[]>> bodyperformer = null, Expression<Func<int>> bodyvalueQuantityvalue = null, Expression<Func<string>> bodyvalueQuantityunit = null, Expression<Func<string>> bodyvalueQuantitysystem = null, Expression<Func<string>> bodyvalueQuantitycode = null, Expression<Func<bodyinterpretationInputItem[]>> bodyinterpretation = null, Expression<Func<bodybodySitecodingInputItem[]>> bodybodySitecoding = null, Expression<Func<bodymethodcodingInputItem[]>> bodymethodcoding = null, Expression<Func<bodyreferenceRangeInputItem[]>> bodyreferenceRange = null)
+        public IBodyWorkflowAction<PUTObservationIdResponse, ApiConnectionActionConfiguration> PUTObservationId(Expression<Func<string>> id, Expression<Func<DELETEObservationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodysubjectdisplay = WorkflowExpression.Compile(bodysubjectdisplay, nameof(bodysubjectdisplay), required: false);
-            var __workflow_bodyissued = WorkflowExpression.Compile(bodyissued, nameof(bodyissued), required: false);
-            var __workflow_bodyperformer = WorkflowExpression.Compile(bodyperformer, nameof(bodyperformer), required: false);
-            var __workflow_bodyvalueQuantityvalue = WorkflowExpression.Compile(bodyvalueQuantityvalue, nameof(bodyvalueQuantityvalue), required: false);
-            var __workflow_bodyvalueQuantityunit = WorkflowExpression.Compile(bodyvalueQuantityunit, nameof(bodyvalueQuantityunit), required: false);
-            var __workflow_bodyvalueQuantitysystem = WorkflowExpression.Compile(bodyvalueQuantitysystem, nameof(bodyvalueQuantitysystem), required: false);
-            var __workflow_bodyvalueQuantitycode = WorkflowExpression.Compile(bodyvalueQuantitycode, nameof(bodyvalueQuantitycode), required: false);
-            var __workflow_bodyinterpretation = WorkflowExpression.Compile(bodyinterpretation, nameof(bodyinterpretation), required: false);
-            var __workflow_bodybodySitecoding = WorkflowExpression.Compile(bodybodySitecoding, nameof(bodybodySitecoding), required: false);
-            var __workflow_bodymethodcoding = WorkflowExpression.Compile(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            var __workflow_bodyreferenceRange = WorkflowExpression.Compile(bodyreferenceRange, nameof(bodyreferenceRange), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTObservationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Observation/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (__workflow_bodysubjectdisplay != null)
-                {
-                    subjectObject["display"] = ExpressionConverter.ConvertO(__workflow_bodysubjectdisplay);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyissued != null)
-                {
-                    body["issued"] = ExpressionConverter.ConvertO(__workflow_bodyissued);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformer != null)
-                {
-                    body["performer"] = ExpressionConverter.ConvertO(__workflow_bodyperformer);
-                    bodypropCount++;
-                }
-
-                var valueQuantityObject = new JObject();
-                var valueQuantityObjectpropCount = 0;
-                if (__workflow_bodyvalueQuantityvalue != null)
-                {
-                    valueQuantityObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantityvalue);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (__workflow_bodyvalueQuantityunit != null)
-                {
-                    valueQuantityObject["unit"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantityunit);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (__workflow_bodyvalueQuantitysystem != null)
-                {
-                    valueQuantityObject["system"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantitysystem);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (__workflow_bodyvalueQuantitycode != null)
-                {
-                    valueQuantityObject["code"] = ExpressionConverter.ConvertO(__workflow_bodyvalueQuantitycode);
-                    valueQuantityObjectpropCount++;
-                }
-
-                if (valueQuantityObjectpropCount > 0)
-                {
-                    body["valueQuantity"] = valueQuantityObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinterpretation != null)
-                {
-                    body["interpretation"] = ExpressionConverter.ConvertO(__workflow_bodyinterpretation);
-                    bodypropCount++;
-                }
-
-                var bodySiteObject = new JObject();
-                var bodySiteObjectpropCount = 0;
-                if (__workflow_bodybodySitecoding != null)
-                {
-                    bodySiteObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodybodySitecoding);
-                    bodySiteObjectpropCount++;
-                }
-
-                if (bodySiteObjectpropCount > 0)
-                {
-                    body["bodySite"] = bodySiteObject;
-                    bodypropCount++;
-                }
-
-                var methodObject = new JObject();
-                var methodObjectpropCount = 0;
-                if (__workflow_bodymethodcoding != null)
-                {
-                    methodObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodymethodcoding);
-                    methodObjectpropCount++;
-                }
-
-                if (methodObjectpropCount > 0)
-                {
-                    body["method"] = methodObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreferenceRange != null)
-                {
-                    body["referenceRange"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceRange);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTObservationIdResponse>(callPayload);
             });
         }
@@ -5380,172 +820,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTProcedureResponse, ApiConnectionActionConfiguration> POSTProcedure(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyperformedDateTime = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<string>> bodyrecorderdisplay = null, Expression<Func<string>> bodyasserterreference = null, Expression<Func<string>> bodyasserterdisplay = null, Expression<Func<bodyperformerInputItem22[]>> bodyperformer = null, Expression<Func<bodyreasonCodeInputItem2[]>> bodyreasonCode = null, Expression<Func<bodyfollowUpInputItem[]>> bodyfollowUp = null, Expression<Func<bodynoteInputItem[]>> bodynote = null)
+        public IBodyWorkflowAction<POSTProcedureResponse, ApiConnectionActionConfiguration> POSTProcedure(Expression<Func<POSTProcedureBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodyperformedDateTime = WorkflowExpression.Compile(bodyperformedDateTime, nameof(bodyperformedDateTime), required: false);
-            var __workflow_bodyrecorderreference = WorkflowExpression.Compile(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            var __workflow_bodyrecorderdisplay = WorkflowExpression.Compile(bodyrecorderdisplay, nameof(bodyrecorderdisplay), required: false);
-            var __workflow_bodyasserterreference = WorkflowExpression.Compile(bodyasserterreference, nameof(bodyasserterreference), required: false);
-            var __workflow_bodyasserterdisplay = WorkflowExpression.Compile(bodyasserterdisplay, nameof(bodyasserterdisplay), required: false);
-            var __workflow_bodyperformer = WorkflowExpression.Compile(bodyperformer, nameof(bodyperformer), required: false);
-            var __workflow_bodyreasonCode = WorkflowExpression.Compile(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            var __workflow_bodyfollowUp = WorkflowExpression.Compile(bodyfollowUp, nameof(bodyfollowUp), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTProcedureResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Procedure";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformedDateTime != null)
-                {
-                    body["performedDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyperformedDateTime);
-                    bodypropCount++;
-                }
-
-                var recorderObject = new JObject();
-                var recorderObjectpropCount = 0;
-                if (__workflow_bodyrecorderreference != null)
-                {
-                    recorderObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyrecorderreference);
-                    recorderObjectpropCount++;
-                }
-
-                if (__workflow_bodyrecorderdisplay != null)
-                {
-                    recorderObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyrecorderdisplay);
-                    recorderObjectpropCount++;
-                }
-
-                if (recorderObjectpropCount > 0)
-                {
-                    body["recorder"] = recorderObject;
-                    bodypropCount++;
-                }
-
-                var asserterObject = new JObject();
-                var asserterObjectpropCount = 0;
-                if (__workflow_bodyasserterreference != null)
-                {
-                    asserterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyasserterreference);
-                    asserterObjectpropCount++;
-                }
-
-                if (__workflow_bodyasserterdisplay != null)
-                {
-                    asserterObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyasserterdisplay);
-                    asserterObjectpropCount++;
-                }
-
-                if (asserterObjectpropCount > 0)
-                {
-                    body["asserter"] = asserterObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformer != null)
-                {
-                    body["performer"] = ExpressionConverter.ConvertO(__workflow_bodyperformer);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonCode != null)
-                {
-                    body["reasonCode"] = ExpressionConverter.ConvertO(__workflow_bodyreasonCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfollowUp != null)
-                {
-                    body["followUp"] = ExpressionConverter.ConvertO(__workflow_bodyfollowUp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTProcedureResponse>(callPayload);
             });
         }
@@ -5570,389 +854,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEProcedureIdResponse, ApiConnectionActionConfiguration> DELETEProcedureId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyperformedDateTime = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<string>> bodyrecorderdisplay = null, Expression<Func<string>> bodyasserterreference = null, Expression<Func<string>> bodyasserterdisplay = null, Expression<Func<bodyperformerInputItem22[]>> bodyperformer = null, Expression<Func<bodyreasonCodeInputItem2[]>> bodyreasonCode = null, Expression<Func<bodyfollowUpInputItem[]>> bodyfollowUp = null, Expression<Func<bodynoteInputItem[]>> bodynote = null)
+        public IBodyWorkflowAction<DELETEProcedureIdResponse, ApiConnectionActionConfiguration> DELETEProcedureId(Expression<Func<string>> id, Expression<Func<DELETEProcedureIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodyperformedDateTime = WorkflowExpression.Compile(bodyperformedDateTime, nameof(bodyperformedDateTime), required: false);
-            var __workflow_bodyrecorderreference = WorkflowExpression.Compile(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            var __workflow_bodyrecorderdisplay = WorkflowExpression.Compile(bodyrecorderdisplay, nameof(bodyrecorderdisplay), required: false);
-            var __workflow_bodyasserterreference = WorkflowExpression.Compile(bodyasserterreference, nameof(bodyasserterreference), required: false);
-            var __workflow_bodyasserterdisplay = WorkflowExpression.Compile(bodyasserterdisplay, nameof(bodyasserterdisplay), required: false);
-            var __workflow_bodyperformer = WorkflowExpression.Compile(bodyperformer, nameof(bodyperformer), required: false);
-            var __workflow_bodyreasonCode = WorkflowExpression.Compile(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            var __workflow_bodyfollowUp = WorkflowExpression.Compile(bodyfollowUp, nameof(bodyfollowUp), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DELETEProcedureIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Procedure/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformedDateTime != null)
-                {
-                    body["performedDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyperformedDateTime);
-                    bodypropCount++;
-                }
-
-                var recorderObject = new JObject();
-                var recorderObjectpropCount = 0;
-                if (__workflow_bodyrecorderreference != null)
-                {
-                    recorderObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyrecorderreference);
-                    recorderObjectpropCount++;
-                }
-
-                if (__workflow_bodyrecorderdisplay != null)
-                {
-                    recorderObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyrecorderdisplay);
-                    recorderObjectpropCount++;
-                }
-
-                if (recorderObjectpropCount > 0)
-                {
-                    body["recorder"] = recorderObject;
-                    bodypropCount++;
-                }
-
-                var asserterObject = new JObject();
-                var asserterObjectpropCount = 0;
-                if (__workflow_bodyasserterreference != null)
-                {
-                    asserterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyasserterreference);
-                    asserterObjectpropCount++;
-                }
-
-                if (__workflow_bodyasserterdisplay != null)
-                {
-                    asserterObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyasserterdisplay);
-                    asserterObjectpropCount++;
-                }
-
-                if (asserterObjectpropCount > 0)
-                {
-                    body["asserter"] = asserterObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformer != null)
-                {
-                    body["performer"] = ExpressionConverter.ConvertO(__workflow_bodyperformer);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonCode != null)
-                {
-                    body["reasonCode"] = ExpressionConverter.ConvertO(__workflow_bodyreasonCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfollowUp != null)
-                {
-                    body["followUp"] = ExpressionConverter.ConvertO(__workflow_bodyfollowUp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DELETEProcedureIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTProcedureIdResponse, ApiConnectionActionConfiguration> PUTProcedureId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyperformedDateTime = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<string>> bodyrecorderdisplay = null, Expression<Func<string>> bodyasserterreference = null, Expression<Func<string>> bodyasserterdisplay = null, Expression<Func<bodyperformerInputItem22[]>> bodyperformer = null, Expression<Func<bodyreasonCodeInputItem2[]>> bodyreasonCode = null, Expression<Func<bodyfollowUpInputItem[]>> bodyfollowUp = null, Expression<Func<bodynoteInputItem[]>> bodynote = null)
+        public IBodyWorkflowAction<PUTProcedureIdResponse, ApiConnectionActionConfiguration> PUTProcedureId(Expression<Func<string>> id, Expression<Func<DELETEProcedureIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodymetaversionId = WorkflowExpression.Compile(bodymetaversionId, nameof(bodymetaversionId), required: false);
-            var __workflow_bodymetalastUpdated = WorkflowExpression.Compile(bodymetalastUpdated, nameof(bodymetalastUpdated), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodycodecoding = WorkflowExpression.Compile(bodycodecoding, nameof(bodycodecoding), required: false);
-            var __workflow_bodycodetext = WorkflowExpression.Compile(bodycodetext, nameof(bodycodetext), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodyperformedDateTime = WorkflowExpression.Compile(bodyperformedDateTime, nameof(bodyperformedDateTime), required: false);
-            var __workflow_bodyrecorderreference = WorkflowExpression.Compile(bodyrecorderreference, nameof(bodyrecorderreference), required: false);
-            var __workflow_bodyrecorderdisplay = WorkflowExpression.Compile(bodyrecorderdisplay, nameof(bodyrecorderdisplay), required: false);
-            var __workflow_bodyasserterreference = WorkflowExpression.Compile(bodyasserterreference, nameof(bodyasserterreference), required: false);
-            var __workflow_bodyasserterdisplay = WorkflowExpression.Compile(bodyasserterdisplay, nameof(bodyasserterdisplay), required: false);
-            var __workflow_bodyperformer = WorkflowExpression.Compile(bodyperformer, nameof(bodyperformer), required: false);
-            var __workflow_bodyreasonCode = WorkflowExpression.Compile(bodyreasonCode, nameof(bodyreasonCode), required: false);
-            var __workflow_bodyfollowUp = WorkflowExpression.Compile(bodyfollowUp, nameof(bodyfollowUp), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTProcedureIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Procedure/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetaversionId != null)
-                {
-                    metaObject["versionId"] = ExpressionConverter.ConvertO(__workflow_bodymetaversionId);
-                    metaObjectpropCount++;
-                }
-
-                if (__workflow_bodymetalastUpdated != null)
-                {
-                    metaObject["lastUpdated"] = ExpressionConverter.ConvertO(__workflow_bodymetalastUpdated);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var codeObject = new JObject();
-                var codeObjectpropCount = 0;
-                if (__workflow_bodycodecoding != null)
-                {
-                    codeObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodycodecoding);
-                    codeObjectpropCount++;
-                }
-
-                if (__workflow_bodycodetext != null)
-                {
-                    codeObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycodetext);
-                    codeObjectpropCount++;
-                }
-
-                if (codeObjectpropCount > 0)
-                {
-                    body["code"] = codeObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformedDateTime != null)
-                {
-                    body["performedDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyperformedDateTime);
-                    bodypropCount++;
-                }
-
-                var recorderObject = new JObject();
-                var recorderObjectpropCount = 0;
-                if (__workflow_bodyrecorderreference != null)
-                {
-                    recorderObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyrecorderreference);
-                    recorderObjectpropCount++;
-                }
-
-                if (__workflow_bodyrecorderdisplay != null)
-                {
-                    recorderObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyrecorderdisplay);
-                    recorderObjectpropCount++;
-                }
-
-                if (recorderObjectpropCount > 0)
-                {
-                    body["recorder"] = recorderObject;
-                    bodypropCount++;
-                }
-
-                var asserterObject = new JObject();
-                var asserterObjectpropCount = 0;
-                if (__workflow_bodyasserterreference != null)
-                {
-                    asserterObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodyasserterreference);
-                    asserterObjectpropCount++;
-                }
-
-                if (__workflow_bodyasserterdisplay != null)
-                {
-                    asserterObject["display"] = ExpressionConverter.ConvertO(__workflow_bodyasserterdisplay);
-                    asserterObjectpropCount++;
-                }
-
-                if (asserterObjectpropCount > 0)
-                {
-                    body["asserter"] = asserterObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyperformer != null)
-                {
-                    body["performer"] = ExpressionConverter.ConvertO(__workflow_bodyperformer);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonCode != null)
-                {
-                    body["reasonCode"] = ExpressionConverter.ConvertO(__workflow_bodyreasonCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfollowUp != null)
-                {
-                    body["followUp"] = ExpressionConverter.ConvertO(__workflow_bodyfollowUp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTProcedureIdResponse>(callPayload);
             });
         }
@@ -5979,114 +907,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTRiskAssessmentResponse, ApiConnectionActionConfiguration> POSTRiskAssessment(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodymethodcodingInputItem2[]>> bodymethodcoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyoccurrenceDateTime = null, Expression<Func<bodybasisInputItem[]>> bodybasis = null, Expression<Func<bodypredictionInputItem[]>> bodyprediction = null, Expression<Func<bodynoteInputItem[]>> bodynote = null)
+        public IBodyWorkflowAction<POSTRiskAssessmentResponse, ApiConnectionActionConfiguration> POSTRiskAssessment(Expression<Func<DELETERiskAssessmentIdBodyInput>> body = null)
         {
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodymethodcoding = WorkflowExpression.Compile(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodyoccurrenceDateTime = WorkflowExpression.Compile(bodyoccurrenceDateTime, nameof(bodyoccurrenceDateTime), required: false);
-            var __workflow_bodybasis = WorkflowExpression.Compile(bodybasis, nameof(bodybasis), required: false);
-            var __workflow_bodyprediction = WorkflowExpression.Compile(bodyprediction, nameof(bodyprediction), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTRiskAssessmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RiskAssessment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var methodObject = new JObject();
-                var methodObjectpropCount = 0;
-                if (__workflow_bodymethodcoding != null)
-                {
-                    methodObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodymethodcoding);
-                    methodObjectpropCount++;
-                }
-
-                if (methodObjectpropCount > 0)
-                {
-                    body["method"] = methodObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoccurrenceDateTime != null)
-                {
-                    body["occurrenceDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyoccurrenceDateTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybasis != null)
-                {
-                    body["basis"] = ExpressionConverter.ConvertO(__workflow_bodybasis);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprediction != null)
-                {
-                    body["prediction"] = ExpressionConverter.ConvertO(__workflow_bodyprediction);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<POSTRiskAssessmentResponse>(callPayload);
             });
         }
@@ -6111,229 +941,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETERiskAssessmentIdResponse, ApiConnectionActionConfiguration> DELETERiskAssessmentId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodymethodcodingInputItem2[]>> bodymethodcoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyoccurrenceDateTime = null, Expression<Func<bodybasisInputItem[]>> bodybasis = null, Expression<Func<bodypredictionInputItem[]>> bodyprediction = null, Expression<Func<bodynoteInputItem[]>> bodynote = null)
+        public IBodyWorkflowAction<DELETERiskAssessmentIdResponse, ApiConnectionActionConfiguration> DELETERiskAssessmentId(Expression<Func<string>> id, Expression<Func<DELETERiskAssessmentIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodymethodcoding = WorkflowExpression.Compile(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodyoccurrenceDateTime = WorkflowExpression.Compile(bodyoccurrenceDateTime, nameof(bodyoccurrenceDateTime), required: false);
-            var __workflow_bodybasis = WorkflowExpression.Compile(bodybasis, nameof(bodybasis), required: false);
-            var __workflow_bodyprediction = WorkflowExpression.Compile(bodyprediction, nameof(bodyprediction), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DELETERiskAssessmentIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RiskAssessment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var methodObject = new JObject();
-                var methodObjectpropCount = 0;
-                if (__workflow_bodymethodcoding != null)
-                {
-                    methodObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodymethodcoding);
-                    methodObjectpropCount++;
-                }
-
-                if (methodObjectpropCount > 0)
-                {
-                    body["method"] = methodObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoccurrenceDateTime != null)
-                {
-                    body["occurrenceDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyoccurrenceDateTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybasis != null)
-                {
-                    body["basis"] = ExpressionConverter.ConvertO(__workflow_bodybasis);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprediction != null)
-                {
-                    body["prediction"] = ExpressionConverter.ConvertO(__workflow_bodyprediction);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DELETERiskAssessmentIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTRiskAssessmentIdResponse, ApiConnectionActionConfiguration> PUTRiskAssessmentId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodymethodcodingInputItem2[]>> bodymethodcoding = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodyoccurrenceDateTime = null, Expression<Func<bodybasisInputItem[]>> bodybasis = null, Expression<Func<bodypredictionInputItem[]>> bodyprediction = null, Expression<Func<bodynoteInputItem[]>> bodynote = null)
+        public IBodyWorkflowAction<PUTRiskAssessmentIdResponse, ApiConnectionActionConfiguration> PUTRiskAssessmentId(Expression<Func<string>> id, Expression<Func<DELETERiskAssessmentIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodymethodcoding = WorkflowExpression.Compile(bodymethodcoding, nameof(bodymethodcoding), required: false);
-            var __workflow_bodysubjectreference = WorkflowExpression.Compile(bodysubjectreference, nameof(bodysubjectreference), required: false);
-            var __workflow_bodyoccurrenceDateTime = WorkflowExpression.Compile(bodyoccurrenceDateTime, nameof(bodyoccurrenceDateTime), required: false);
-            var __workflow_bodybasis = WorkflowExpression.Compile(bodybasis, nameof(bodybasis), required: false);
-            var __workflow_bodyprediction = WorkflowExpression.Compile(bodyprediction, nameof(bodyprediction), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PUTRiskAssessmentIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RiskAssessment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyresourceType != null)
-                {
-                    body["resourceType"] = ExpressionConverter.ConvertO(__workflow_bodyresourceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                var textObject = new JObject();
-                var textObjectpropCount = 0;
-                if (__workflow_bodytextstatus != null)
-                {
-                    textObject["status"] = ExpressionConverter.ConvertO(__workflow_bodytextstatus);
-                    textObjectpropCount++;
-                }
-
-                if (textObjectpropCount > 0)
-                {
-                    body["text"] = textObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var methodObject = new JObject();
-                var methodObjectpropCount = 0;
-                if (__workflow_bodymethodcoding != null)
-                {
-                    methodObject["coding"] = ExpressionConverter.ConvertO(__workflow_bodymethodcoding);
-                    methodObjectpropCount++;
-                }
-
-                if (methodObjectpropCount > 0)
-                {
-                    body["method"] = methodObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectreference != null)
-                {
-                    subjectObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodysubjectreference);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoccurrenceDateTime != null)
-                {
-                    body["occurrenceDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyoccurrenceDateTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybasis != null)
-                {
-                    body["basis"] = ExpressionConverter.ConvertO(__workflow_bodybasis);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprediction != null)
-                {
-                    body["prediction"] = ExpressionConverter.ConvertO(__workflow_bodyprediction);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PUTRiskAssessmentIdResponse>(callPayload);
             });
         }
@@ -6749,13 +1383,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class bodycategoryInputItem
+    public class POSTAdverseEventBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("identifier")]
+        public BodyInputIdentifierType Identifier { get; set; }
+
+        [JsonProperty("actuality")]
+        public string Actuality { get; set; }
+
+        [JsonProperty("category")]
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+
+        [JsonProperty("event")]
+        public BodyInputEventType Event { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("seriousness")]
+        public BodyInputSeriousnessType Seriousness { get; set; }
+
+        [JsonProperty("severity")]
+        public BodyInputSeverityType Severity { get; set; }
+
+        [JsonProperty("recorder")]
+        public DELETEAdverseEventIdBodyInputRecorderType Recorder { get; set; }
+
+        [JsonProperty("suspectEntity")]
+        public BodyInputSuspectEntityTypeItem[] SuspectEntity { get; set; }
+    }
+
+    public class BodyInputIdentifierType
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class DELETEAdverseEventIdBodyInputCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public bodycategoryInputItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodycategoryInputItemCodingTypeItem
+    public class BodyInputCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6767,7 +1449,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodyEventcodingInputItem
+    public class BodyInputEventType
+    {
+        [JsonProperty("coding")]
+        public BodyInputEventTypeCodingTypeItem[] Coding { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class BodyInputEventTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6779,7 +1470,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodyseriousnesscodingInputItem
+    public class DELETEAdverseEventIdBodyInputSubjectType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+    }
+
+    public class BodyInputSeriousnessType
+    {
+        [JsonProperty("coding")]
+        public BodyInputSeriousnessTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class BodyInputSeriousnessTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6791,7 +1494,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodyseveritycodingInputItem
+    public class BodyInputSeverityType
+    {
+        [JsonProperty("coding")]
+        public BodyInputSeverityTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class BodyInputSeverityTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6803,13 +1512,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodysuspectEntityInputItem
+    public class DELETEAdverseEventIdBodyInputRecorderType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+    }
+
+    public class BodyInputSuspectEntityTypeItem
     {
         [JsonProperty("instance")]
-        public bodysuspectEntityInputItemInstanceType Instance { get; set; }
+        public BodyInputSuspectEntityTypeItemInstanceType Instance { get; set; }
     }
 
-    public class bodysuspectEntityInputItemInstanceType
+    public class BodyInputSuspectEntityTypeItemInstanceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7131,6 +1846,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
+    }
+
+    public class DELETEAdverseEventIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("meta")]
+        public BodyInputMetaType Meta { get; set; }
+
+        [JsonProperty("identifier")]
+        public BodyInputIdentifierType Identifier { get; set; }
+
+        [JsonProperty("actuality")]
+        public string Actuality { get; set; }
+
+        [JsonProperty("category")]
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+
+        [JsonProperty("event")]
+        public BodyInputEventType Event { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("seriousness")]
+        public BodyInputSeriousnessType Seriousness { get; set; }
+
+        [JsonProperty("severity")]
+        public BodyInputSeverityType Severity { get; set; }
+
+        [JsonProperty("recorder")]
+        public DELETEAdverseEventIdBodyInputRecorderType Recorder { get; set; }
+
+        [JsonProperty("suspectEntity")]
+        public BodyInputSuspectEntityTypeItem[] SuspectEntity { get; set; }
+    }
+
+    public class BodyInputMetaType
+    {
+        [JsonProperty("versionId")]
+        public string VersionId { get; set; }
+
+        [JsonProperty("lastUpdated")]
+        public string LastUpdated { get; set; }
     }
 
     public class PUTAdverseEventIdResponse
@@ -7598,55 +2364,130 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodyclinicalStatuscodingInputItem
+    public class POSTAllergyIntoleranceBodyInput
     {
-        [JsonProperty("system")]
-        public string System { get; set; }
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("meta")]
+        public BodyInputMetaType Meta { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("clinicalStatus")]
+        public POSTAllergyIntoleranceBodyInputClinicalStatusType ClinicalStatus { get; set; }
+
+        [JsonProperty("verificationStatus")]
+        public POSTAllergyIntoleranceBodyInputVerificationStatusType VerificationStatus { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("category")]
+        public string[] Category { get; set; }
+
+        [JsonProperty("criticality")]
+        public string Criticality { get; set; }
 
         [JsonProperty("code")]
-        public string Code { get; set; }
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
-        [JsonProperty("display")]
-        public string Display { get; set; }
+        [JsonProperty("patient")]
+        public BodyInputPatientType Patient { get; set; }
+
+        [JsonProperty("recordedDate")]
+        public string RecordedDate { get; set; }
+
+        [JsonProperty("recorder")]
+        public DELETEAdverseEventIdBodyInputRecorderType Recorder { get; set; }
+
+        [JsonProperty("reaction")]
+        public BodyInputReactionTypeItem[] Reaction { get; set; }
     }
 
-    public class bodyverificationStatuscodingInputItem
+    public class DELETECarePlanIdBodyInputTextType
     {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; }
     }
 
-    public class bodycodecodingInputItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class bodyreactionInputItem
-    {
-        [JsonProperty("manifestation")]
-        public bodyreactionInputItemManifestationTypeItem[] Manifestation { get; set; }
-    }
-
-    public class bodyreactionInputItemManifestationTypeItem
+    public class POSTAllergyIntoleranceBodyInputClinicalStatusType
     {
         [JsonProperty("coding")]
-        public bodyreactionInputItemManifestationTypeItemCodingTypeItem[] Coding { get; set; }
+        public POSTAllergyIntoleranceBodyInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodyreactionInputItemManifestationTypeItemCodingTypeItem
+    public class POSTAllergyIntoleranceBodyInputClinicalStatusTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class POSTAllergyIntoleranceBodyInputVerificationStatusType
+    {
+        [JsonProperty("coding")]
+        public POSTAllergyIntoleranceBodyInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class POSTAllergyIntoleranceBodyInputVerificationStatusTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class DELETEDiagnosticReportIdBodyInputCodeType
+    {
+        [JsonProperty("coding")]
+        public BodyInputCodeTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class BodyInputCodeTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class BodyInputPatientType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+    }
+
+    public class BodyInputReactionTypeItem
+    {
+        [JsonProperty("manifestation")]
+        public BodyInputReactionTypeItemManifestationTypeItem[] Manifestation { get; set; }
+    }
+
+    public class BodyInputReactionTypeItemManifestationTypeItem
+    {
+        [JsonProperty("coding")]
+        public BodyInputReactionTypeItemManifestationTypeItemCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class BodyInputReactionTypeItemManifestationTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7862,7 +2703,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class bodyclinicalStatuscodingInputItem2
+    public class DELETEAllergyIntoleranceIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("meta")]
+        public BodyInputMetaType Meta { get; set; }
+
+        [JsonProperty("clinicalStatus")]
+        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
+
+        [JsonProperty("verificationStatus")]
+        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("category")]
+        public string[] Category { get; set; }
+
+        [JsonProperty("criticality")]
+        public string Criticality { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("patient")]
+        public BodyInputPatientType Patient { get; set; }
+
+        [JsonProperty("recordedDate")]
+        public string RecordedDate { get; set; }
+    }
+
+    public class DELETEAllergyIntoleranceIdBodyInputClinicalStatusType
+    {
+        [JsonProperty("coding")]
+        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class DELETEAllergyIntoleranceIdBodyInputClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7871,13 +2754,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class bodyverificationStatuscodingInputItem2
+    public class DELETEAllergyIntoleranceIdBodyInputVerificationStatusType
+    {
+        [JsonProperty("coding")]
+        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class DELETEAllergyIntoleranceIdBodyInputVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
 
         [JsonProperty("code")]
         public string Code { get; set; }
+    }
+
+    public class DELETEAllergyIntoleranceIdBodyInputCodeType
+    {
+        [JsonProperty("coding")]
+        public BodyInputCodeTypeCodingTypeItem[] Coding { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 
     public class PUTAllergyIntoleranceIdResponse
@@ -8489,55 +3387,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodycategoryInputItem2
+    public class POSTCarePlanBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("meta")]
+        public BodyInputMetaType Meta { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("intent")]
+        public string Intent { get; set; }
+
+        [JsonProperty("category")]
+        public POSTCarePlanBodyInputCategoryTypeItem[] Category { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("encounter")]
+        public POSTCarePlanBodyInputEncounterType Encounter { get; set; }
+
+        [JsonProperty("period")]
+        public POSTCarePlanBodyInputPeriodType Period { get; set; }
+
+        [JsonProperty("careTeam")]
+        public BodyInputCareTeamTypeItem[] CareTeam { get; set; }
+
+        [JsonProperty("addresses")]
+        public POSTCarePlanBodyInputAddressesTypeItem[] Addresses { get; set; }
+
+        [JsonProperty("activity")]
+        public POSTCarePlanBodyInputActivityTypeItem[] Activity { get; set; }
+    }
+
+    public class POSTCarePlanBodyInputCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public bodycategoryInputItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodycareTeamInputItem
+    public class POSTCarePlanBodyInputEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class bodyaddressesInputItem
+    public class POSTCarePlanBodyInputPeriodType
+    {
+        [JsonProperty("start")]
+        public string Start { get; set; }
+
+        [JsonProperty("end")]
+        public string End { get; set; }
+    }
+
+    public class BodyInputCareTeamTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class bodyactivityInputItem
+    public class POSTCarePlanBodyInputAddressesTypeItem
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+    }
+
+    public class POSTCarePlanBodyInputActivityTypeItem
     {
         [JsonProperty("detail")]
-        public bodyactivityInputItemDetailType Detail { get; set; }
+        public POSTCarePlanBodyInputActivityTypeItemDetailType Detail { get; set; }
     }
 
-    public class bodyactivityInputItemDetailType
+    public class POSTCarePlanBodyInputActivityTypeItemDetailType
     {
         [JsonProperty("code")]
-        public bodyactivityInputItemDetailTypeCodeType Code { get; set; }
+        public POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("location")]
-        public bodyactivityInputItemDetailTypeLocationType Location { get; set; }
+        public BodyInputActivityTypeItemDetailTypeLocationType Location { get; set; }
     }
 
-    public class bodyactivityInputItemDetailTypeCodeType
+    public class POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public bodyactivityInputItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodyactivityInputItemDetailTypeCodeTypeCodingTypeItem
+    public class POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8549,7 +3510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodyactivityInputItemDetailTypeLocationType
+    public class BodyInputActivityTypeItemDetailTypeLocationType
     {
         [JsonProperty("display")]
         public string Display { get; set; }
@@ -9002,7 +3963,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodycontainedInputItem
+    public class DELETECarePlanIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("meta")]
+        public BodyInputMetaType Meta { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("contained")]
+        public DELETECarePlanIdBodyInputContainedTypeItem[] Contained { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("intent")]
+        public string Intent { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("period")]
+        public DELETECarePlanIdBodyInputPeriodType Period { get; set; }
+
+        [JsonProperty("careTeam")]
+        public BodyInputCareTeamTypeItem[] CareTeam { get; set; }
+
+        [JsonProperty("addresses")]
+        public DELETECarePlanIdBodyInputAddressesTypeItem[] Addresses { get; set; }
+
+        [JsonProperty("goal")]
+        public BodyInputGoalTypeItem[] Goal { get; set; }
+
+        [JsonProperty("activity")]
+        public DELETECarePlanIdBodyInputActivityTypeItem[] Activity { get; set; }
+    }
+
+    public class DELETECarePlanIdBodyInputContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9011,34 +4014,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public bodycontainedInputItemClinicalStatusType ClinicalStatus { get; set; }
+        public BodyInputContainedTypeItemClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public bodycontainedInputItemVerificationStatusType VerificationStatus { get; set; }
+        public BodyInputContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("code")]
-        public bodycontainedInputItemCodeType Code { get; set; }
+        public DELETECarePlanIdBodyInputContainedTypeItemCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public bodycontainedInputItemSubjectType Subject { get; set; }
+        public BodyInputContainedTypeItemSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public bodycontainedInputItemParticipantTypeItem[] Participant { get; set; }
+        public BodyInputContainedTypeItemParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("lifecycleStatus")]
         public string LifecycleStatus { get; set; }
 
         [JsonProperty("description")]
-        public bodycontainedInputItemDescriptionType Description { get; set; }
+        public BodyInputContainedTypeItemDescriptionType Description { get; set; }
     }
 
-    public class bodycontainedInputItemClinicalStatusType
+    public class BodyInputContainedTypeItemClinicalStatusType
     {
         [JsonProperty("coding")]
-        public bodycontainedInputItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputContainedTypeItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodycontainedInputItemClinicalStatusTypeCodingTypeItem
+    public class BodyInputContainedTypeItemClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9047,13 +4050,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class bodycontainedInputItemVerificationStatusType
+    public class BodyInputContainedTypeItemVerificationStatusType
     {
         [JsonProperty("coding")]
-        public bodycontainedInputItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputContainedTypeItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodycontainedInputItemVerificationStatusTypeCodingTypeItem
+    public class BodyInputContainedTypeItemVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9062,13 +4065,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class bodycontainedInputItemCodeType
+    public class DELETECarePlanIdBodyInputContainedTypeItemCodeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodycontainedInputItemSubjectType
+    public class BodyInputContainedTypeItemSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9077,28 +4080,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodycontainedInputItemParticipantTypeItem
+    public class BodyInputContainedTypeItemParticipantTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("role")]
-        public bodycontainedInputItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
+        public BodyInputContainedTypeItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
 
         [JsonProperty("member")]
-        public bodycontainedInputItemParticipantTypeItemMemberType Member { get; set; }
+        public BodyInputContainedTypeItemParticipantTypeItemMemberType Member { get; set; }
     }
 
-    public class bodycontainedInputItemParticipantTypeItemRoleTypeItem
+    public class BodyInputContainedTypeItemParticipantTypeItemRoleTypeItem
     {
         [JsonProperty("coding")]
-        public bodycontainedInputItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodycontainedInputItemParticipantTypeItemRoleTypeItemCodingTypeItem
+    public class BodyInputContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9107,7 +4110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class bodycontainedInputItemParticipantTypeItemMemberType
+    public class BodyInputContainedTypeItemParticipantTypeItemMemberType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9116,13 +4119,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodycontainedInputItemDescriptionType
+    public class BodyInputContainedTypeItemDescriptionType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodyaddressesInputItem2
+    public class DELETECarePlanIdBodyInputSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9131,58 +4134,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodygoalInputItem
+    public class DELETECarePlanIdBodyInputPeriodType
+    {
+        [JsonProperty("start")]
+        public string Start { get; set; }
+    }
+
+    public class DELETECarePlanIdBodyInputAddressesTypeItem
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class BodyInputGoalTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class bodyactivityInputItem2
+    public class DELETECarePlanIdBodyInputActivityTypeItem
     {
         [JsonProperty("outcomeReference")]
-        public bodyactivityInputItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
+        public BodyInputActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
 
         [JsonProperty("detail")]
-        public bodyactivityInputItemDetailType2 Detail { get; set; }
+        public DELETECarePlanIdBodyInputActivityTypeItemDetailType Detail { get; set; }
     }
 
-    public class bodyactivityInputItemOutcomeReferenceTypeItem
+    public class BodyInputActivityTypeItemOutcomeReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class bodyactivityInputItemDetailType2
+    public class DELETECarePlanIdBodyInputActivityTypeItemDetailType
     {
         [JsonProperty("kind")]
         public string Kind { get; set; }
 
         [JsonProperty("code")]
-        public bodyactivityInputItemDetailTypeCodeType2 Code { get; set; }
+        public DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("doNotPerform")]
-        public bool DoNotPerform { get; set; }
+        public bool? DoNotPerform { get; set; }
 
         [JsonProperty("scheduledPeriod")]
-        public bodyactivityInputItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
+        public BodyInputActivityTypeItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
 
         [JsonProperty("performer")]
-        public bodyactivityInputItemDetailTypePerformerTypeItem[] Performer { get; set; }
+        public BodyInputActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
     }
 
-    public class bodyactivityInputItemDetailTypeCodeType2
+    public class DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public bodyactivityInputItemDetailTypeCodeTypeCodingTypeItem2[] Coding { get; set; }
+        public DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodyactivityInputItemDetailTypeCodeTypeCodingTypeItem2
+    public class DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9191,7 +4209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class bodyactivityInputItemDetailTypeScheduledPeriodType
+    public class BodyInputActivityTypeItemDetailTypeScheduledPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -9200,7 +4218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class bodyactivityInputItemDetailTypePerformerTypeItem
+    public class BodyInputActivityTypeItemDetailTypePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9824,16 +4842,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class bodybodySiteInputItem
+    public class POSTConditionBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("clinicalStatus")]
+        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
+
+        [JsonProperty("verificationStatus")]
+        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
+
+        [JsonProperty("category")]
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+
+        [JsonProperty("severity")]
+        public BodyInputSeverityType Severity { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("bodySite")]
+        public BodyInputBodySiteTypeItem[] BodySite { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("onsetDateTime")]
+        public string OnsetDateTime { get; set; }
+    }
+
+    public class BodyInputBodySiteTypeItem
     {
         [JsonProperty("coding")]
-        public bodybodySiteInputItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodybodySiteInputItemCodingTypeItem
+    public class BodyInputBodySiteTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10179,6 +5233,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
+    }
+
+    public class DELETEConditionIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("meta")]
+        public BodyInputMetaType Meta { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("clinicalStatus")]
+        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
+
+        [JsonProperty("verificationStatus")]
+        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
+
+        [JsonProperty("category")]
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+
+        [JsonProperty("severity")]
+        public BodyInputSeverityType Severity { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("bodySite")]
+        public BodyInputBodySiteTypeItem[] BodySite { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("onsetDateTime")]
+        public string OnsetDateTime { get; set; }
     }
 
     public class PUTConditionIdResponse
@@ -10646,7 +5739,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class bodyidentifierInputItem
+    public class POSTDiagnosticReportBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("identifier")]
+        public BodyInputIdentifierTypeItem[] Identifier { get; set; }
+
+        [JsonProperty("basedOn")]
+        public BodyInputBasedOnTypeItem[] BasedOn { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("category")]
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("issued")]
+        public string Issued { get; set; }
+
+        [JsonProperty("performer")]
+        public DELETEDiagnosticReportIdBodyInputPerformerTypeItem[] Performer { get; set; }
+
+        [JsonProperty("result")]
+        public BodyInputResultTypeItem[] Result { get; set; }
+
+        [JsonProperty("conclusion")]
+        public string Conclusion { get; set; }
+    }
+
+    public class BodyInputIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -10658,13 +5793,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class bodybasedOnInputItem
+    public class BodyInputBasedOnTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class bodyperformerInputItem
+    public class DELETEDiagnosticReportIdBodyInputPerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -10673,7 +5808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodyresultInputItem
+    public class BodyInputResultTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -10953,6 +6088,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
+    }
+
+    public class DELETEDiagnosticReportIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("meta")]
+        public BodyInputMetaType Meta { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("identifier")]
+        public BodyInputIdentifierTypeItem[] Identifier { get; set; }
+
+        [JsonProperty("basedOn")]
+        public BodyInputBasedOnTypeItem[] BasedOn { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("category")]
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("issued")]
+        public string Issued { get; set; }
+
+        [JsonProperty("performer")]
+        public DELETEDiagnosticReportIdBodyInputPerformerTypeItem[] Performer { get; set; }
+
+        [JsonProperty("result")]
+        public BodyInputResultTypeItem[] Result { get; set; }
+
+        [JsonProperty("conclusion")]
+        public string Conclusion { get; set; }
     }
 
     public class PUTDiagnosticReportIdResponse
@@ -11453,7 +6633,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class bodycontainedInputItem2
+    public class POSTMedicationBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("contained")]
+        public DELETEMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("manufacturer")]
+        public BodyInputManufacturerType Manufacturer { get; set; }
+
+        [JsonProperty("form")]
+        public BodyInputFormType Form { get; set; }
+
+        [JsonProperty("ingredient")]
+        public BodyInputIngredientTypeItem[] Ingredient { get; set; }
+
+        [JsonProperty("batch")]
+        public BodyInputBatchType Batch { get; set; }
+    }
+
+    public class DELETEMedicationIdBodyInputContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -11465,37 +6678,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Name { get; set; }
     }
 
-    public class bodyformcodingInputItem
+    public class BodyInputManufacturerType
     {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
     }
 
-    public class bodyingredientInputItem
-    {
-        [JsonProperty("itemCodeableConcept")]
-        public bodyingredientInputItemItemCodeableConceptType ItemCodeableConcept { get; set; }
-
-        [JsonProperty("isActive")]
-        public bool IsActive { get; set; }
-
-        [JsonProperty("strength")]
-        public bodyingredientInputItemStrengthType Strength { get; set; }
-    }
-
-    public class bodyingredientInputItemItemCodeableConceptType
+    public class BodyInputFormType
     {
         [JsonProperty("coding")]
-        public bodyingredientInputItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputFormTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodyingredientInputItemItemCodeableConceptTypeCodingTypeItem
+    public class BodyInputFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11507,19 +6702,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodyingredientInputItemStrengthType
+    public class BodyInputIngredientTypeItem
+    {
+        [JsonProperty("itemCodeableConcept")]
+        public BodyInputIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+
+        [JsonProperty("isActive")]
+        public bool? IsActive { get; set; }
+
+        [JsonProperty("strength")]
+        public BodyInputIngredientTypeItemStrengthType Strength { get; set; }
+    }
+
+    public class BodyInputIngredientTypeItemItemCodeableConceptType
+    {
+        [JsonProperty("coding")]
+        public BodyInputIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class BodyInputIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class BodyInputIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public bodyingredientInputItemStrengthTypeNumeratorType Numerator { get; set; }
+        public BodyInputIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public bodyingredientInputItemStrengthTypeDenominatorType Denominator { get; set; }
+        public BodyInputIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class bodyingredientInputItemStrengthTypeNumeratorType
+    public class BodyInputIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
-        public int Value { get; set; }
+        public int? Value { get; set; }
 
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11528,16 +6753,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class bodyingredientInputItemStrengthTypeDenominatorType
+    public class BodyInputIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
-        public int Value { get; set; }
+        public int? Value { get; set; }
 
         [JsonProperty("system")]
         public string System { get; set; }
 
         [JsonProperty("code")]
         public string Code { get; set; }
+    }
+
+    public class BodyInputBatchType
+    {
+        [JsonProperty("lotNumber")]
+        public string LotNumber { get; set; }
+
+        [JsonProperty("expirationDate")]
+        public string ExpirationDate { get; set; }
     }
 
     public class GETMedicationIdResponse
@@ -11894,6 +7128,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
+    public class DELETEMedicationIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("meta")]
+        public BodyInputMetaType Meta { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("contained")]
+        public DELETEMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("manufacturer")]
+        public BodyInputManufacturerType Manufacturer { get; set; }
+
+        [JsonProperty("form")]
+        public BodyInputFormType Form { get; set; }
+
+        [JsonProperty("ingredient")]
+        public BodyInputIngredientTypeItem[] Ingredient { get; set; }
+
+        [JsonProperty("batch")]
+        public BodyInputBatchType Batch { get; set; }
+    }
+
     public class PUTMedicationIdResponse
     {
         [JsonProperty("resourceType")]
@@ -12069,6 +7339,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
         [JsonProperty("expirationDate")]
         public string ExpirationDate { get; set; }
+    }
+
+    public class PUTMedicationIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public PUTMedicationIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("contained")]
+        public DELETEMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("manufacturer")]
+        public BodyInputManufacturerType Manufacturer { get; set; }
+
+        [JsonProperty("form")]
+        public BodyInputFormType Form { get; set; }
+
+        [JsonProperty("ingredient")]
+        public BodyInputIngredientTypeItem[] Ingredient { get; set; }
+
+        [JsonProperty("batch")]
+        public BodyInputBatchType Batch { get; set; }
+    }
+
+    public class PUTMedicationIdBodyInputTextType
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("div")]
+        public string Div { get; set; }
     }
 
     public class GETMedicationRequestResponse
@@ -12698,7 +8010,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodycontainedInputItem22
+    public class POSTMedicationRequestBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("contained")]
+        public DELETEMedicationRequestIdBodyInputContainedTypeItem[] Contained { get; set; }
+
+        [JsonProperty("identifier")]
+        public BodyInputIdentifierTypeItem[] Identifier { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("intent")]
+        public string Intent { get; set; }
+
+        [JsonProperty("medicationCodeableConcept")]
+        public POSTMedicationRequestBodyInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("encounter")]
+        public DELETEMedicationRequestIdBodyInputEncounterType Encounter { get; set; }
+
+        [JsonProperty("supportingInformation")]
+        public BodyInputSupportingInformationTypeItem[] SupportingInformation { get; set; }
+
+        [JsonProperty("authoredOn")]
+        public string AuthoredOn { get; set; }
+
+        [JsonProperty("requester")]
+        public BodyInputRequesterType Requester { get; set; }
+
+        [JsonProperty("reasonCode")]
+        public DELETEMedicationRequestIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
+
+        [JsonProperty("note")]
+        public BodyInputNoteTypeItem[] Note { get; set; }
+
+        [JsonProperty("dosageInstruction")]
+        public BodyInputDosageInstructionTypeItem[] DosageInstruction { get; set; }
+
+        [JsonProperty("dispenseRequest")]
+        public BodyInputDispenseRequestType DispenseRequest { get; set; }
+
+        [JsonProperty("substitution")]
+        public BodyInputSubstitutionType Substitution { get; set; }
+    }
+
+    public class DELETEMedicationRequestIdBodyInputContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -12707,16 +8076,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("code")]
-        public bodycontainedInputItemCodeType2 Code { get; set; }
+        public DELETEMedicationRequestIdBodyInputContainedTypeItemCodeType Code { get; set; }
     }
 
-    public class bodycontainedInputItemCodeType2
+    public class DELETEMedicationRequestIdBodyInputContainedTypeItemCodeType
     {
         [JsonProperty("coding")]
-        public bodycontainedInputItemCodeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodycontainedInputItemCodeTypeCodingTypeItem
+    public class BodyInputContainedTypeItemCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12728,7 +8097,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodymedicationCodeableConceptcodingInputItem
+    public class POSTMedicationRequestBodyInputMedicationCodeableConceptType
+    {
+        [JsonProperty("coding")]
+        public BodyInputMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class BodyInputMedicationCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12740,19 +8115,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodysupportingInformationInputItem
+    public class DELETEMedicationRequestIdBodyInputEncounterType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class BodyInputSupportingInformationTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class bodyreasonCodeInputItem
+    public class BodyInputRequesterType
     {
-        [JsonProperty("coding")]
-        public bodyreasonCodeInputItemCodingTypeItem[] Coding { get; set; }
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
     }
 
-    public class bodyreasonCodeInputItemCodingTypeItem
+    public class DELETEMedicationRequestIdBodyInputReasonCodeTypeItem
+    {
+        [JsonProperty("coding")]
+        public BodyInputReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class BodyInputReasonCodeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12764,43 +8157,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodynoteInputItem
+    public class BodyInputNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodydosageInstructionInputItem
+    public class BodyInputDosageInstructionTypeItem
     {
         [JsonProperty("sequence")]
-        public int Sequence { get; set; }
+        public int? Sequence { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
 
         [JsonProperty("additionalInstruction")]
-        public bodydosageInstructionInputItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
+        public BodyInputDosageInstructionTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
 
         [JsonProperty("timing")]
-        public bodydosageInstructionInputItemTimingType Timing { get; set; }
+        public BodyInputDosageInstructionTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("route")]
-        public bodydosageInstructionInputItemRouteType Route { get; set; }
+        public BodyInputDosageInstructionTypeItemRouteType Route { get; set; }
 
         [JsonProperty("method")]
-        public bodydosageInstructionInputItemMethodType Method { get; set; }
+        public BodyInputDosageInstructionTypeItemMethodType Method { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public bodydosageInstructionInputItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public BodyInputDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
     }
 
-    public class bodydosageInstructionInputItemAdditionalInstructionTypeItem
+    public class BodyInputDosageInstructionTypeItemAdditionalInstructionTypeItem
     {
         [JsonProperty("coding")]
-        public bodydosageInstructionInputItemAdditionalInstructionTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodydosageInstructionInputItemAdditionalInstructionTypeItemCodingTypeItem
+    public class BodyInputDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12812,31 +8205,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodydosageInstructionInputItemTimingType
+    public class BodyInputDosageInstructionTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public bodydosageInstructionInputItemTimingTypeRepeatType Repeat { get; set; }
+        public BodyInputDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class bodydosageInstructionInputItemTimingTypeRepeatType
+    public class BodyInputDosageInstructionTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
-        public int Frequency { get; set; }
+        public int? Frequency { get; set; }
 
         [JsonProperty("period")]
-        public int Period { get; set; }
+        public int? Period { get; set; }
 
         [JsonProperty("periodUnit")]
         public string PeriodUnit { get; set; }
     }
 
-    public class bodydosageInstructionInputItemRouteType
+    public class BodyInputDosageInstructionTypeItemRouteType
     {
         [JsonProperty("coding")]
-        public bodydosageInstructionInputItemRouteTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageInstructionTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodydosageInstructionInputItemRouteTypeCodingTypeItem
+    public class BodyInputDosageInstructionTypeItemRouteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12848,13 +8241,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodydosageInstructionInputItemMethodType
+    public class BodyInputDosageInstructionTypeItemMethodType
     {
         [JsonProperty("coding")]
-        public bodydosageInstructionInputItemMethodTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageInstructionTypeItemMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodydosageInstructionInputItemMethodTypeCodingTypeItem
+    public class BodyInputDosageInstructionTypeItemMethodTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12866,22 +8259,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodydosageInstructionInputItemDoseAndRateTypeItem
+    public class BodyInputDosageInstructionTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public bodydosageInstructionInputItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public BodyInputDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public bodydosageInstructionInputItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public BodyInputDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class bodydosageInstructionInputItemDoseAndRateTypeItemTypeType
+    public class BodyInputDosageInstructionTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public bodydosageInstructionInputItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodydosageInstructionInputItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class BodyInputDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12893,10 +8286,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodydosageInstructionInputItemDoseAndRateTypeItemDoseQuantityType
+    public class BodyInputDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
-        public int Value { get; set; }
+        public int? Value { get; set; }
 
         [JsonProperty("unit")]
         public string Unit { get; set; }
@@ -12908,7 +8301,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class bodysubstitutionreasoncodingInputItem
+    public class BodyInputDispenseRequestType
+    {
+        [JsonProperty("validityPeriod")]
+        public BodyInputDispenseRequestTypeValidityPeriodType ValidityPeriod { get; set; }
+
+        [JsonProperty("numberOfRepeatsAllowed")]
+        public int? NumberOfRepeatsAllowed { get; set; }
+
+        [JsonProperty("quantity")]
+        public BodyInputDispenseRequestTypeQuantityType Quantity { get; set; }
+
+        [JsonProperty("expectedSupplyDuration")]
+        public BodyInputDispenseRequestTypeExpectedSupplyDurationType ExpectedSupplyDuration { get; set; }
+    }
+
+    public class BodyInputDispenseRequestTypeValidityPeriodType
+    {
+        [JsonProperty("start")]
+        public string Start { get; set; }
+
+        [JsonProperty("end")]
+        public string End { get; set; }
+    }
+
+    public class BodyInputDispenseRequestTypeQuantityType
+    {
+        [JsonProperty("value")]
+        public int? Value { get; set; }
+
+        [JsonProperty("unit")]
+        public string Unit { get; set; }
+
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+    }
+
+    public class BodyInputDispenseRequestTypeExpectedSupplyDurationType
+    {
+        [JsonProperty("value")]
+        public int? Value { get; set; }
+
+        [JsonProperty("unit")]
+        public string Unit { get; set; }
+
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+    }
+
+    public class BodyInputSubstitutionType
+    {
+        [JsonProperty("allowedBoolean")]
+        public bool? AllowedBoolean { get; set; }
+
+        [JsonProperty("reason")]
+        public BodyInputSubstitutionTypeReasonType Reason { get; set; }
+    }
+
+    public class BodyInputSubstitutionTypeReasonType
+    {
+        [JsonProperty("coding")]
+        public BodyInputSubstitutionTypeReasonTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class BodyInputSubstitutionTypeReasonTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -13350,6 +8812,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
+    }
+
+    public class DELETEMedicationRequestIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("contained")]
+        public DELETEMedicationRequestIdBodyInputContainedTypeItem[] Contained { get; set; }
+
+        [JsonProperty("identifier")]
+        public BodyInputIdentifierTypeItem[] Identifier { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("intent")]
+        public string Intent { get; set; }
+
+        [JsonProperty("medicationReference")]
+        public BodyInputMedicationReferenceType MedicationReference { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("encounter")]
+        public DELETEMedicationRequestIdBodyInputEncounterType Encounter { get; set; }
+
+        [JsonProperty("supportingInformation")]
+        public BodyInputSupportingInformationTypeItem[] SupportingInformation { get; set; }
+
+        [JsonProperty("authoredOn")]
+        public string AuthoredOn { get; set; }
+
+        [JsonProperty("requester")]
+        public BodyInputRequesterType Requester { get; set; }
+
+        [JsonProperty("reasonCode")]
+        public DELETEMedicationRequestIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
+
+        [JsonProperty("note")]
+        public BodyInputNoteTypeItem[] Note { get; set; }
+
+        [JsonProperty("dosageInstruction")]
+        public BodyInputDosageInstructionTypeItem[] DosageInstruction { get; set; }
+
+        [JsonProperty("dispenseRequest")]
+        public BodyInputDispenseRequestType DispenseRequest { get; set; }
+
+        [JsonProperty("substitution")]
+        public BodyInputSubstitutionType Substitution { get; set; }
+    }
+
+    public class BodyInputMedicationReferenceType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
     }
 
     public class PUTMedicationRequestIdResponse
@@ -14687,40 +10212,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Mode { get; set; }
     }
 
-    public class bodyreasonReferenceInputItem
+    public class DELETEMedicationStatementIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("medicationCodeableConcept")]
+        public DELETEMedicationStatementIdBodyInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("effectiveDateTime")]
+        public string EffectiveDateTime { get; set; }
+
+        [JsonProperty("dateAsserted")]
+        public string DateAsserted { get; set; }
+
+        [JsonProperty("informationSource")]
+        public BodyInputInformationSourceType InformationSource { get; set; }
+
+        [JsonProperty("reasonReference")]
+        public BodyInputReasonReferenceTypeItem[] ReasonReference { get; set; }
+
+        [JsonProperty("note")]
+        public BodyInputNoteTypeItem[] Note { get; set; }
+
+        [JsonProperty("dosage")]
+        public BodyInputDosageTypeItem[] Dosage { get; set; }
+    }
+
+    public class DELETEMedicationStatementIdBodyInputMedicationCodeableConceptType
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class BodyInputInformationSourceType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class BodyInputReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class bodydosageInputItem
+    public class BodyInputDosageTypeItem
     {
         [JsonProperty("sequence")]
-        public int Sequence { get; set; }
+        public int? Sequence { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
 
         [JsonProperty("asNeededBoolean")]
-        public bool AsNeededBoolean { get; set; }
+        public bool? AsNeededBoolean { get; set; }
 
         [JsonProperty("route")]
-        public bodydosageInputItemRouteType Route { get; set; }
+        public BodyInputDosageTypeItemRouteType Route { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public bodydosageInputItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public BodyInputDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
 
         [JsonProperty("maxDosePerPeriod")]
-        public bodydosageInputItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
+        public BodyInputDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
     }
 
-    public class bodydosageInputItemRouteType
+    public class BodyInputDosageTypeItemRouteType
     {
         [JsonProperty("coding")]
-        public bodydosageInputItemRouteTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodydosageInputItemRouteTypeCodingTypeItem
+    public class BodyInputDosageTypeItemRouteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -14732,22 +10311,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodydosageInputItemDoseAndRateTypeItem
+    public class BodyInputDosageTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public bodydosageInputItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public BodyInputDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public bodydosageInputItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public BodyInputDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class bodydosageInputItemDoseAndRateTypeItemTypeType
+    public class BodyInputDosageTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public bodydosageInputItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class bodydosageInputItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class BodyInputDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -14759,10 +10338,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodydosageInputItemDoseAndRateTypeItemDoseQuantityType
+    public class BodyInputDosageTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
-        public int Value { get; set; }
+        public int? Value { get; set; }
 
         [JsonProperty("unit")]
         public string Unit { get; set; }
@@ -14774,25 +10353,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class bodydosageInputItemMaxDosePerPeriodType
+    public class BodyInputDosageTypeItemMaxDosePerPeriodType
     {
         [JsonProperty("numerator")]
-        public bodydosageInputItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
+        public BodyInputDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public bodydosageInputItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
+        public BodyInputDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
     }
 
-    public class bodydosageInputItemMaxDosePerPeriodTypeNumeratorType
+    public class BodyInputDosageTypeItemMaxDosePerPeriodTypeNumeratorType
     {
         [JsonProperty("value")]
-        public int Value { get; set; }
+        public int? Value { get; set; }
     }
 
-    public class bodydosageInputItemMaxDosePerPeriodTypeDenominatorType
+    public class BodyInputDosageTypeItemMaxDosePerPeriodTypeDenominatorType
     {
         [JsonProperty("value")]
-        public int Value { get; set; }
+        public int? Value { get; set; }
 
         [JsonProperty("system")]
         public string System { get; set; }
@@ -16277,61 +11856,136 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Unit { get; set; }
     }
 
-    public class bodyperformerInputItem2
+    public class POSTObservationBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("category")]
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("encounter")]
+        public POSTCarePlanBodyInputEncounterType Encounter { get; set; }
+
+        [JsonProperty("issued")]
+        public string Issued { get; set; }
+
+        [JsonProperty("performer")]
+        public DELETEObservationIdBodyInputPerformerTypeItem[] Performer { get; set; }
+
+        [JsonProperty("valueQuantity")]
+        public BodyInputValueQuantityType ValueQuantity { get; set; }
+
+        [JsonProperty("interpretation")]
+        public BodyInputInterpretationTypeItem[] Interpretation { get; set; }
+
+        [JsonProperty("bodySite")]
+        public BodyInputBodySiteType BodySite { get; set; }
+
+        [JsonProperty("method")]
+        public DELETEObservationIdBodyInputMethodType Method { get; set; }
+
+        [JsonProperty("referenceRange")]
+        public BodyInputReferenceRangeTypeItem[] ReferenceRange { get; set; }
+    }
+
+    public class DELETEObservationIdBodyInputPerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class bodyinterpretationInputItem
-    {
-        [JsonProperty("coding")]
-        public bodyinterpretationInputItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class bodyinterpretationInputItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class bodybodySitecodingInputItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class bodymethodcodingInputItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class bodyreferenceRangeInputItem
-    {
-        [JsonProperty("high")]
-        public bodyreferenceRangeInputItemHighType High { get; set; }
-    }
-
-    public class bodyreferenceRangeInputItemHighType
+    public class BodyInputValueQuantityType
     {
         [JsonProperty("value")]
-        public double Value { get; set; }
+        public int? Value { get; set; }
+
+        [JsonProperty("unit")]
+        public string Unit { get; set; }
+
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+    }
+
+    public class BodyInputInterpretationTypeItem
+    {
+        [JsonProperty("coding")]
+        public BodyInputInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class BodyInputInterpretationTypeItemCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+    }
+
+    public class BodyInputBodySiteType
+    {
+        [JsonProperty("coding")]
+        public BodyInputBodySiteTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class BodyInputBodySiteTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class DELETEObservationIdBodyInputMethodType
+    {
+        [JsonProperty("coding")]
+        public DELETEObservationIdBodyInputMethodTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class DELETEObservationIdBodyInputMethodTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class BodyInputReferenceRangeTypeItem
+    {
+        [JsonProperty("high")]
+        public BodyInputReferenceRangeTypeItemHighType High { get; set; }
+    }
+
+    public class BodyInputReferenceRangeTypeItemHighType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
 
         [JsonProperty("unit")]
         public string Unit { get; set; }
@@ -16731,6 +12385,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
         [JsonProperty("unit")]
         public string Unit { get; set; }
+    }
+
+    public class DELETEObservationIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("category")]
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("issued")]
+        public string Issued { get; set; }
+
+        [JsonProperty("performer")]
+        public DELETEObservationIdBodyInputPerformerTypeItem[] Performer { get; set; }
+
+        [JsonProperty("valueQuantity")]
+        public BodyInputValueQuantityType ValueQuantity { get; set; }
+
+        [JsonProperty("interpretation")]
+        public BodyInputInterpretationTypeItem[] Interpretation { get; set; }
+
+        [JsonProperty("bodySite")]
+        public BodyInputBodySiteType BodySite { get; set; }
+
+        [JsonProperty("method")]
+        public DELETEObservationIdBodyInputMethodType Method { get; set; }
+
+        [JsonProperty("referenceRange")]
+        public BodyInputReferenceRangeTypeItem[] ReferenceRange { get; set; }
     }
 
     public class PUTObservationIdResponse
@@ -17213,13 +12912,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
     }
 
-    public class bodyperformerInputItem22
+    public class POSTProcedureBodyInput
     {
-        [JsonProperty("actor")]
-        public bodyperformerInputItemActorType Actor { get; set; }
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("performedDateTime")]
+        public string PerformedDateTime { get; set; }
+
+        [JsonProperty("recorder")]
+        public DELETEProcedureIdBodyInputRecorderType Recorder { get; set; }
+
+        [JsonProperty("asserter")]
+        public BodyInputAsserterType Asserter { get; set; }
+
+        [JsonProperty("performer")]
+        public DELETEProcedureIdBodyInputPerformerTypeItem[] Performer { get; set; }
+
+        [JsonProperty("reasonCode")]
+        public DELETEProcedureIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
+
+        [JsonProperty("followUp")]
+        public BodyInputFollowUpTypeItem[] FollowUp { get; set; }
+
+        [JsonProperty("note")]
+        public BodyInputNoteTypeItem[] Note { get; set; }
     }
 
-    public class bodyperformerInputItemActorType
+    public class DELETEProcedureIdBodyInputRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -17228,13 +12963,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodyreasonCodeInputItem2
+    public class BodyInputAsserterType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class DELETEProcedureIdBodyInputPerformerTypeItem
+    {
+        [JsonProperty("actor")]
+        public BodyInputPerformerTypeItemActorType Actor { get; set; }
+    }
+
+    public class BodyInputPerformerTypeItemActorType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class DELETEProcedureIdBodyInputReasonCodeTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodyfollowUpInputItem
+    public class BodyInputFollowUpTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -17454,6 +13213,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     {
         [JsonProperty("text")]
         public string Text { get; set; }
+    }
+
+    public class DELETEProcedureIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("meta")]
+        public BodyInputMetaType Meta { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("code")]
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("performedDateTime")]
+        public string PerformedDateTime { get; set; }
+
+        [JsonProperty("recorder")]
+        public DELETEProcedureIdBodyInputRecorderType Recorder { get; set; }
+
+        [JsonProperty("asserter")]
+        public BodyInputAsserterType Asserter { get; set; }
+
+        [JsonProperty("performer")]
+        public DELETEProcedureIdBodyInputPerformerTypeItem[] Performer { get; set; }
+
+        [JsonProperty("reasonCode")]
+        public DELETEProcedureIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
+
+        [JsonProperty("followUp")]
+        public BodyInputFollowUpTypeItem[] FollowUp { get; set; }
+
+        [JsonProperty("note")]
+        public BodyInputNoteTypeItem[] Note { get; set; }
     }
 
     public class PUTProcedureIdResponse
@@ -17870,49 +13674,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
     }
 
-    public class bodymethodcodingInputItem2
+    public class DELETERiskAssessmentIdBodyInput
+    {
+        [JsonProperty("resourceType")]
+        public string ResourceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("method")]
+        public DELETERiskAssessmentIdBodyInputMethodType Method { get; set; }
+
+        [JsonProperty("subject")]
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+
+        [JsonProperty("occurrenceDateTime")]
+        public string OccurrenceDateTime { get; set; }
+
+        [JsonProperty("basis")]
+        public BodyInputBasisTypeItem[] Basis { get; set; }
+
+        [JsonProperty("prediction")]
+        public BodyInputPredictionTypeItem[] Prediction { get; set; }
+
+        [JsonProperty("note")]
+        public BodyInputNoteTypeItem[] Note { get; set; }
+    }
+
+    public class DELETERiskAssessmentIdBodyInputMethodType
+    {
+        [JsonProperty("coding")]
+        public DELETERiskAssessmentIdBodyInputMethodTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class DELETERiskAssessmentIdBodyInputMethodTypeCodingTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
     }
 
-    public class bodybasisInputItem
+    public class BodyInputBasisTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class bodypredictionInputItem
+    public class BodyInputPredictionTypeItem
     {
         [JsonProperty("outcome")]
-        public bodypredictionInputItemOutcomeType Outcome { get; set; }
+        public BodyInputPredictionTypeItemOutcomeType Outcome { get; set; }
 
         [JsonProperty("probabilityDecimal")]
-        public double ProbabilityDecimal { get; set; }
+        public double? ProbabilityDecimal { get; set; }
 
         [JsonProperty("whenRange")]
-        public bodypredictionInputItemWhenRangeType WhenRange { get; set; }
+        public BodyInputPredictionTypeItemWhenRangeType WhenRange { get; set; }
     }
 
-    public class bodypredictionInputItemOutcomeType
+    public class BodyInputPredictionTypeItemOutcomeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodypredictionInputItemWhenRangeType
+    public class BodyInputPredictionTypeItemWhenRangeType
     {
         [JsonProperty("high")]
-        public bodypredictionInputItemWhenRangeTypeHighType High { get; set; }
+        public BodyInputPredictionTypeItemWhenRangeTypeHighType High { get; set; }
 
         [JsonProperty("low")]
-        public bodypredictionInputItemWhenRangeTypeLowType Low { get; set; }
+        public BodyInputPredictionTypeItemWhenRangeTypeLowType Low { get; set; }
     }
 
-    public class bodypredictionInputItemWhenRangeTypeHighType
+    public class BodyInputPredictionTypeItemWhenRangeTypeHighType
     {
         [JsonProperty("value")]
-        public int Value { get; set; }
+        public int? Value { get; set; }
 
         [JsonProperty("unit")]
         public string Unit { get; set; }
@@ -17924,10 +13767,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class bodypredictionInputItemWhenRangeTypeLowType
+    public class BodyInputPredictionTypeItemWhenRangeTypeLowType
     {
         [JsonProperty("value")]
-        public int Value { get; set; }
+        public int? Value { get; set; }
 
         [JsonProperty("unit")]
         public string Unit { get; set; }

@@ -16,26 +16,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
 
     public class M365updatesappTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken[], ApiConnectionTriggerConfiguration> ListReceivedReportsByReportDefinition(Expression<Func<string>> reportDefinitionId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken[], ApiConnectionPollingTriggerConfiguration> ListReceivedReportsByReportDefinition(Expression<Func<string>> reportDefinitionId)
         {
             var __workflow_reportDefinitionId = WorkflowExpression.Compile(reportDefinitionId, nameof(reportDefinitionId), required: true);
-            return new DeferredBodyTrigger<JToken[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/connector/powerautomate/triggers/{0}/reports", __workflow_reportDefinitionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<JToken[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken[], ApiConnectionTriggerConfiguration> ListReceivedReports(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken[], ApiConnectionPollingTriggerConfiguration> ListReceivedReports()
         {
-            return new DeferredBodyTrigger<JToken[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<JToken[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/connector/powerautomate/triggers/reports";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<JToken[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<JToken[]>(callPayload);
             });
         }
     }

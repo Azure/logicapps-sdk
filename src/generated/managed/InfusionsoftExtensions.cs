@@ -13,104 +13,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
     public class InfusionsoftActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infusionsoft")]
-        public IBodyWorkflowAction<TaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodydueDateFormatYYYYMMDdThhMmSsFffZ = null)
+        public IBodyWorkflowAction<TaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodydueDateFormatYYYYMMDdThhMmSsFffZ = WorkflowExpression.Compile(bodydueDateFormatYYYYMMDdThhMmSsFffZ, nameof(bodydueDateFormatYYYYMMDdThhMmSsFffZ), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/crm/rest/v1/tasks/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydueDateFormatYYYYMMDdThhMmSsFffZ != null)
-                {
-                    body["due_date"] = ExpressionConverter.ConvertO(__workflow_bodydueDateFormatYYYYMMDdThhMmSsFffZ);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infusionsoft")]
-        public IBodyWorkflowAction<TaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<int>> id, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodydueDateFormatYYYYMMDdThhMmSsFffZ = null)
+        public IBodyWorkflowAction<TaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<int>> id, Expression<Func<BodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodydueDateFormatYYYYMMDdThhMmSsFffZ = WorkflowExpression.Compile(bodydueDateFormatYYYYMMDdThhMmSsFffZ, nameof(bodydueDateFormatYYYYMMDdThhMmSsFffZ), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/rest/v1/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydueDateFormatYYYYMMDdThhMmSsFffZ != null)
-                {
-                    body["due_date"] = ExpressionConverter.ConvertO(__workflow_bodydueDateFormatYYYYMMDdThhMmSsFffZ);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TaskResponse>(callPayload);
             });
         }
@@ -118,26 +46,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
 
     public class InfusionsoftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TaskResponse[], ApiConnectionTriggerConfiguration> OnNewTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskResponse[], ApiConnectionPollingTriggerConfiguration> OnNewTask()
         {
-            return new DeferredBodyTrigger<TaskResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TaskResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/crm/rest/v1/tasks/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["order"] = Convert.ToString("-due_date");
-                return new ApiConnectionTrigger<TaskResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TaskResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListOrdersResponseItem[], ApiConnectionTriggerConfiguration> OnNewOrder(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListOrdersResponseItem[], ApiConnectionPollingTriggerConfiguration> OnNewOrder()
         {
-            return new DeferredBodyTrigger<ListOrdersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListOrdersResponseItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/crm/rest/v1/orders";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListOrdersResponseItem[]>(callPayload);
             });
         }
     }
@@ -169,8 +97,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
         public string DueDate { get; set; }
     }
 
+    public class BodyInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("type")]
+        public BodyInputTypeType? Type { get; set; }
+
+        [JsonProperty("priority")]
+        public int? Priority { get; set; }
+
+        [JsonProperty("due_date")]
+        public string DueDateFormatYYYYMMDdThhMmSsFffZ { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum BodyInputTypeType
     {
         Call,
         Email,

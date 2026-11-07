@@ -25,114 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateOpportunityResponse, ApiConnectionActionConfiguration> CreateOpportunity(Expression<Func<int>> bodyopportunitypartypartyId, Expression<Func<int>> bodyopportunitymilestoneid, Expression<Func<string>> bodyopportunityname = null, Expression<Func<string>> bodyopportunitydescription = null, Expression<Func<bodyopportunitydurationBasisInput>> bodyopportunitydurationBasis = null, Expression<Func<string>> bodyopportunityduration = null, Expression<Func<string>> bodyopportunityexpectedCloseDate = null, Expression<Func<int>> bodyopportunitywinningProbability = null, Expression<Func<int>> bodyopportunityexpectedamount = null, Expression<Func<string>> bodyopportunityexpectedcurrency = null)
+        public IBodyWorkflowAction<CreateOpportunityResponse, ApiConnectionActionConfiguration> CreateOpportunity(Expression<Func<CreateOpportunityBodyInput>> body)
         {
-            var __workflow_bodyopportunitypartypartyId = WorkflowExpression.Compile(bodyopportunitypartypartyId, nameof(bodyopportunitypartypartyId), required: true);
-            var __workflow_bodyopportunitymilestoneid = WorkflowExpression.Compile(bodyopportunitymilestoneid, nameof(bodyopportunitymilestoneid), required: true);
-            var __workflow_bodyopportunityname = WorkflowExpression.Compile(bodyopportunityname, nameof(bodyopportunityname), required: false);
-            var __workflow_bodyopportunitydescription = WorkflowExpression.Compile(bodyopportunitydescription, nameof(bodyopportunitydescription), required: false);
-            var __workflow_bodyopportunitydurationBasis = WorkflowExpression.Compile(bodyopportunitydurationBasis, nameof(bodyopportunitydurationBasis), required: false);
-            var __workflow_bodyopportunityduration = WorkflowExpression.Compile(bodyopportunityduration, nameof(bodyopportunityduration), required: false);
-            var __workflow_bodyopportunityexpectedCloseDate = WorkflowExpression.Compile(bodyopportunityexpectedCloseDate, nameof(bodyopportunityexpectedCloseDate), required: false);
-            var __workflow_bodyopportunitywinningProbability = WorkflowExpression.Compile(bodyopportunitywinningProbability, nameof(bodyopportunitywinningProbability), required: false);
-            var __workflow_bodyopportunityexpectedamount = WorkflowExpression.Compile(bodyopportunityexpectedamount, nameof(bodyopportunityexpectedamount), required: false);
-            var __workflow_bodyopportunityexpectedcurrency = WorkflowExpression.Compile(bodyopportunityexpectedcurrency, nameof(bodyopportunityexpectedcurrency), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateOpportunityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/opportunities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var opportunityObject = new JObject();
-                var opportunityObjectpropCount = 0;
-                if (__workflow_bodyopportunityname != null)
-                {
-                    opportunityObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityname);
-                    opportunityObjectpropCount++;
-                }
-
-                var partyObject = new JObject();
-                var partyObjectpropCount = 0;
-                partyObjectpropCount++;
-                partyObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunitypartypartyId);
-                if (partyObjectpropCount > 0)
-                {
-                    opportunityObject["party"] = partyObject;
-                    opportunityObjectpropCount++;
-                }
-
-                var milestoneObject = new JObject();
-                var milestoneObjectpropCount = 0;
-                milestoneObjectpropCount++;
-                milestoneObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunitymilestoneid);
-                if (milestoneObjectpropCount > 0)
-                {
-                    opportunityObject["milestone"] = milestoneObject;
-                    opportunityObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunitydescription != null)
-                {
-                    opportunityObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyopportunitydescription);
-                    opportunityObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunitydurationBasis != null)
-                {
-                    opportunityObject["durationBasis"] = ExpressionConverter.ConvertO(__workflow_bodyopportunitydurationBasis);
-                    opportunityObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunityduration != null)
-                {
-                    opportunityObject["duration"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityduration);
-                    opportunityObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunityexpectedCloseDate != null)
-                {
-                    opportunityObject["expectedCloseOn"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityexpectedCloseDate);
-                    opportunityObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunitywinningProbability != null)
-                {
-                    opportunityObject["probability"] = ExpressionConverter.ConvertO(__workflow_bodyopportunitywinningProbability);
-                    opportunityObjectpropCount++;
-                }
-
-                var valueObject = new JObject();
-                var valueObjectpropCount = 0;
-                if (__workflow_bodyopportunityexpectedamount != null)
-                {
-                    valueObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityexpectedamount);
-                    valueObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunityexpectedcurrency != null)
-                {
-                    valueObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityexpectedcurrency);
-                    valueObjectpropCount++;
-                }
-
-                if (valueObjectpropCount > 0)
-                {
-                    opportunityObject["value"] = valueObject;
-                    opportunityObjectpropCount++;
-                }
-
-                if (opportunityObjectpropCount > 0)
-                {
-                    body["opportunity"] = opportunityObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateOpportunityResponse>(callPayload);
             });
         }
@@ -151,115 +52,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdateOpportunityResponse, ApiConnectionActionConfiguration> UpdateOpportunity(Expression<Func<string>> opportunityId, Expression<Func<int>> bodyopportunitypartypartyId, Expression<Func<int>> bodyopportunitymilestonemilestoneId, Expression<Func<string>> bodyopportunityname = null, Expression<Func<string>> bodyopportunitydescription = null, Expression<Func<bodyopportunitydurationBasisInput>> bodyopportunitydurationBasis = null, Expression<Func<string>> bodyopportunityduration = null, Expression<Func<string>> bodyopportunityexpectedCloseDate = null, Expression<Func<int>> bodyopportunitywinningProbability = null, Expression<Func<int>> bodyopportunityexpectedamount = null, Expression<Func<string>> bodyopportunityexpectedcurrency = null)
+        public IBodyWorkflowAction<UpdateOpportunityResponse, ApiConnectionActionConfiguration> UpdateOpportunity(Expression<Func<string>> opportunityId, Expression<Func<UpdateOpportunityBodyInput>> body)
         {
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
-            var __workflow_bodyopportunitypartypartyId = WorkflowExpression.Compile(bodyopportunitypartypartyId, nameof(bodyopportunitypartypartyId), required: true);
-            var __workflow_bodyopportunitymilestonemilestoneId = WorkflowExpression.Compile(bodyopportunitymilestonemilestoneId, nameof(bodyopportunitymilestonemilestoneId), required: true);
-            var __workflow_bodyopportunityname = WorkflowExpression.Compile(bodyopportunityname, nameof(bodyopportunityname), required: false);
-            var __workflow_bodyopportunitydescription = WorkflowExpression.Compile(bodyopportunitydescription, nameof(bodyopportunitydescription), required: false);
-            var __workflow_bodyopportunitydurationBasis = WorkflowExpression.Compile(bodyopportunitydurationBasis, nameof(bodyopportunitydurationBasis), required: false);
-            var __workflow_bodyopportunityduration = WorkflowExpression.Compile(bodyopportunityduration, nameof(bodyopportunityduration), required: false);
-            var __workflow_bodyopportunityexpectedCloseDate = WorkflowExpression.Compile(bodyopportunityexpectedCloseDate, nameof(bodyopportunityexpectedCloseDate), required: false);
-            var __workflow_bodyopportunitywinningProbability = WorkflowExpression.Compile(bodyopportunitywinningProbability, nameof(bodyopportunitywinningProbability), required: false);
-            var __workflow_bodyopportunityexpectedamount = WorkflowExpression.Compile(bodyopportunityexpectedamount, nameof(bodyopportunityexpectedamount), required: false);
-            var __workflow_bodyopportunityexpectedcurrency = WorkflowExpression.Compile(bodyopportunityexpectedcurrency, nameof(bodyopportunityexpectedcurrency), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateOpportunityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunities/{0}", __workflow_opportunityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var opportunityObject = new JObject();
-                var opportunityObjectpropCount = 0;
-                if (__workflow_bodyopportunityname != null)
-                {
-                    opportunityObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityname);
-                    opportunityObjectpropCount++;
-                }
-
-                var partyObject = new JObject();
-                var partyObjectpropCount = 0;
-                partyObjectpropCount++;
-                partyObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunitypartypartyId);
-                if (partyObjectpropCount > 0)
-                {
-                    opportunityObject["party"] = partyObject;
-                    opportunityObjectpropCount++;
-                }
-
-                var milestoneObject = new JObject();
-                var milestoneObjectpropCount = 0;
-                milestoneObjectpropCount++;
-                milestoneObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunitymilestonemilestoneId);
-                if (milestoneObjectpropCount > 0)
-                {
-                    opportunityObject["milestone"] = milestoneObject;
-                    opportunityObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunitydescription != null)
-                {
-                    opportunityObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyopportunitydescription);
-                    opportunityObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunitydurationBasis != null)
-                {
-                    opportunityObject["durationBasis"] = ExpressionConverter.ConvertO(__workflow_bodyopportunitydurationBasis);
-                    opportunityObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunityduration != null)
-                {
-                    opportunityObject["duration"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityduration);
-                    opportunityObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunityexpectedCloseDate != null)
-                {
-                    opportunityObject["expectedCloseOn"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityexpectedCloseDate);
-                    opportunityObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunitywinningProbability != null)
-                {
-                    opportunityObject["probability"] = ExpressionConverter.ConvertO(__workflow_bodyopportunitywinningProbability);
-                    opportunityObjectpropCount++;
-                }
-
-                var valueObject = new JObject();
-                var valueObjectpropCount = 0;
-                if (__workflow_bodyopportunityexpectedamount != null)
-                {
-                    valueObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityexpectedamount);
-                    valueObjectpropCount++;
-                }
-
-                if (__workflow_bodyopportunityexpectedcurrency != null)
-                {
-                    valueObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityexpectedcurrency);
-                    valueObjectpropCount++;
-                }
-
-                if (valueObjectpropCount > 0)
-                {
-                    opportunityObject["value"] = valueObject;
-                    opportunityObjectpropCount++;
-                }
-
-                if (opportunityObjectpropCount > 0)
-                {
-                    body["opportunity"] = opportunityObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateOpportunityResponse>(callPayload);
             });
         }
@@ -278,348 +80,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateOrganisationResponse, ApiConnectionActionConfiguration> CreateOrganisation(Expression<Func<string>> bodypartyname = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        public IBodyWorkflowAction<CreateOrganisationResponse, ApiConnectionActionConfiguration> CreateOrganisation(Expression<Func<CreateOrganisationBodyInput>> body)
         {
-            var __workflow_bodypartyname = WorkflowExpression.Compile(bodypartyname, nameof(bodypartyname), required: false);
-            var __workflow_bodypartyabout = WorkflowExpression.Compile(bodypartyabout, nameof(bodypartyabout), required: false);
-            var __workflow_bodypartyphoneNumbersphoneNumber = WorkflowExpression.Compile(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
-            var __workflow_bodypartyphoneNumbersphoneType = WorkflowExpression.Compile(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
-            var __workflow_bodypartyemailAddressesemailAddress = WorkflowExpression.Compile(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
-            var __workflow_bodypartyemailAddressesemailType = WorkflowExpression.Compile(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
-            var __workflow_bodypartywebsiteswebsiteAddress = WorkflowExpression.Compile(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
-            var __workflow_bodypartywebsiteswebsiteService = WorkflowExpression.Compile(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
-            var __workflow_bodypartywebsiteswebsiteType = WorkflowExpression.Compile(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
-            var __workflow_bodypartyaddressesaddressStreet = WorkflowExpression.Compile(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
-            var __workflow_bodypartyaddressesaddressCity = WorkflowExpression.Compile(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
-            var __workflow_bodypartyaddressesaddressState = WorkflowExpression.Compile(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
-            var __workflow_bodypartyaddressesaddressZip = WorkflowExpression.Compile(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
-            var __workflow_bodypartyaddressesaddressCountry = WorkflowExpression.Compile(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
-            var __workflow_bodypartyaddressesaddressType = WorkflowExpression.Compile(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
-            var __workflow_bodypartytags = WorkflowExpression.Compile(bodypartytags, nameof(bodypartytags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateOrganisationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/organisation/parties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var partyObject = new JObject();
-                var partyObjectpropCount = 0;
-                if (__workflow_bodypartyname != null)
-                {
-                    partyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodypartyname);
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyabout != null)
-                {
-                    partyObject["about"] = ExpressionConverter.ConvertO(__workflow_bodypartyabout);
-                    partyObjectpropCount++;
-                }
-
-                var phoneNumbersObject = new JObject();
-                var phoneNumbersObjectpropCount = 0;
-                if (__workflow_bodypartyphoneNumbersphoneNumber != null)
-                {
-                    phoneNumbersObject["number"] = ExpressionConverter.ConvertO(__workflow_bodypartyphoneNumbersphoneNumber);
-                    phoneNumbersObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyphoneNumbersphoneType != null)
-                {
-                    phoneNumbersObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyphoneNumbersphoneType);
-                    phoneNumbersObjectpropCount++;
-                }
-
-                if (phoneNumbersObjectpropCount > 0)
-                {
-                    partyObject["phoneNumbers"] = phoneNumbersObject;
-                    partyObjectpropCount++;
-                }
-
-                var emailAddressesObject = new JObject();
-                var emailAddressesObjectpropCount = 0;
-                if (__workflow_bodypartyemailAddressesemailAddress != null)
-                {
-                    emailAddressesObject["address"] = ExpressionConverter.ConvertO(__workflow_bodypartyemailAddressesemailAddress);
-                    emailAddressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyemailAddressesemailType != null)
-                {
-                    emailAddressesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyemailAddressesemailType);
-                    emailAddressesObjectpropCount++;
-                }
-
-                if (emailAddressesObjectpropCount > 0)
-                {
-                    partyObject["emailAddresses"] = emailAddressesObject;
-                    partyObjectpropCount++;
-                }
-
-                var websitesObject = new JObject();
-                var websitesObjectpropCount = 0;
-                if (__workflow_bodypartywebsiteswebsiteAddress != null)
-                {
-                    websitesObject["address"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteAddress);
-                    websitesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartywebsiteswebsiteService != null)
-                {
-                    websitesObject["service"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteService);
-                    websitesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartywebsiteswebsiteType != null)
-                {
-                    websitesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteType);
-                    websitesObjectpropCount++;
-                }
-
-                if (websitesObjectpropCount > 0)
-                {
-                    partyObject["websites"] = websitesObject;
-                    partyObjectpropCount++;
-                }
-
-                var addressesObject = new JObject();
-                var addressesObjectpropCount = 0;
-                if (__workflow_bodypartyaddressesaddressStreet != null)
-                {
-                    addressesObject["street"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressStreet);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressCity != null)
-                {
-                    addressesObject["city"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressCity);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressState != null)
-                {
-                    addressesObject["state"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressState);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressZip != null)
-                {
-                    addressesObject["zip"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressZip);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressCountry != null)
-                {
-                    addressesObject["country"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressCountry);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressType != null)
-                {
-                    addressesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressType);
-                    addressesObjectpropCount++;
-                }
-
-                if (addressesObjectpropCount > 0)
-                {
-                    partyObject["addresses"] = addressesObject;
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartytags != null)
-                {
-                    partyObject["tags"] = ExpressionConverter.ConvertO(__workflow_bodypartytags);
-                    partyObjectpropCount++;
-                }
-
-                partyObject["type"] = "organisation";
-                partyObjectpropCount++;
-                if (partyObjectpropCount > 0)
-                {
-                    body["party"] = partyObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateOrganisationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdateOrganisationResponse, ApiConnectionActionConfiguration> UpdateOrganisation(Expression<Func<string>> id, Expression<Func<string>> bodypartyname = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        public IBodyWorkflowAction<UpdateOrganisationResponse, ApiConnectionActionConfiguration> UpdateOrganisation(Expression<Func<string>> id, Expression<Func<UpdateOrganisationBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodypartyname = WorkflowExpression.Compile(bodypartyname, nameof(bodypartyname), required: false);
-            var __workflow_bodypartyabout = WorkflowExpression.Compile(bodypartyabout, nameof(bodypartyabout), required: false);
-            var __workflow_bodypartyphoneNumbersphoneNumber = WorkflowExpression.Compile(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
-            var __workflow_bodypartyphoneNumbersphoneType = WorkflowExpression.Compile(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
-            var __workflow_bodypartyemailAddressesemailAddress = WorkflowExpression.Compile(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
-            var __workflow_bodypartyemailAddressesemailType = WorkflowExpression.Compile(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
-            var __workflow_bodypartywebsiteswebsiteAddress = WorkflowExpression.Compile(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
-            var __workflow_bodypartywebsiteswebsiteService = WorkflowExpression.Compile(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
-            var __workflow_bodypartywebsiteswebsiteType = WorkflowExpression.Compile(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
-            var __workflow_bodypartyaddressesaddressStreet = WorkflowExpression.Compile(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
-            var __workflow_bodypartyaddressesaddressCity = WorkflowExpression.Compile(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
-            var __workflow_bodypartyaddressesaddressState = WorkflowExpression.Compile(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
-            var __workflow_bodypartyaddressesaddressZip = WorkflowExpression.Compile(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
-            var __workflow_bodypartyaddressesaddressCountry = WorkflowExpression.Compile(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
-            var __workflow_bodypartyaddressesaddressType = WorkflowExpression.Compile(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
-            var __workflow_bodypartytags = WorkflowExpression.Compile(bodypartytags, nameof(bodypartytags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateOrganisationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organisation/parties/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var partyObject = new JObject();
-                var partyObjectpropCount = 0;
-                if (__workflow_bodypartyname != null)
-                {
-                    partyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodypartyname);
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyabout != null)
-                {
-                    partyObject["about"] = ExpressionConverter.ConvertO(__workflow_bodypartyabout);
-                    partyObjectpropCount++;
-                }
-
-                var phoneNumbersObject = new JObject();
-                var phoneNumbersObjectpropCount = 0;
-                if (__workflow_bodypartyphoneNumbersphoneNumber != null)
-                {
-                    phoneNumbersObject["number"] = ExpressionConverter.ConvertO(__workflow_bodypartyphoneNumbersphoneNumber);
-                    phoneNumbersObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyphoneNumbersphoneType != null)
-                {
-                    phoneNumbersObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyphoneNumbersphoneType);
-                    phoneNumbersObjectpropCount++;
-                }
-
-                if (phoneNumbersObjectpropCount > 0)
-                {
-                    partyObject["phoneNumbers"] = phoneNumbersObject;
-                    partyObjectpropCount++;
-                }
-
-                var emailAddressesObject = new JObject();
-                var emailAddressesObjectpropCount = 0;
-                if (__workflow_bodypartyemailAddressesemailAddress != null)
-                {
-                    emailAddressesObject["address"] = ExpressionConverter.ConvertO(__workflow_bodypartyemailAddressesemailAddress);
-                    emailAddressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyemailAddressesemailType != null)
-                {
-                    emailAddressesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyemailAddressesemailType);
-                    emailAddressesObjectpropCount++;
-                }
-
-                if (emailAddressesObjectpropCount > 0)
-                {
-                    partyObject["emailAddresses"] = emailAddressesObject;
-                    partyObjectpropCount++;
-                }
-
-                var websitesObject = new JObject();
-                var websitesObjectpropCount = 0;
-                if (__workflow_bodypartywebsiteswebsiteAddress != null)
-                {
-                    websitesObject["address"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteAddress);
-                    websitesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartywebsiteswebsiteService != null)
-                {
-                    websitesObject["service"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteService);
-                    websitesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartywebsiteswebsiteType != null)
-                {
-                    websitesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteType);
-                    websitesObjectpropCount++;
-                }
-
-                if (websitesObjectpropCount > 0)
-                {
-                    partyObject["websites"] = websitesObject;
-                    partyObjectpropCount++;
-                }
-
-                var addressesObject = new JObject();
-                var addressesObjectpropCount = 0;
-                if (__workflow_bodypartyaddressesaddressStreet != null)
-                {
-                    addressesObject["street"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressStreet);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressCity != null)
-                {
-                    addressesObject["city"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressCity);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressState != null)
-                {
-                    addressesObject["state"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressState);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressZip != null)
-                {
-                    addressesObject["zip"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressZip);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressCountry != null)
-                {
-                    addressesObject["country"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressCountry);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressType != null)
-                {
-                    addressesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressType);
-                    addressesObjectpropCount++;
-                }
-
-                if (addressesObjectpropCount > 0)
-                {
-                    partyObject["addresses"] = addressesObject;
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartytags != null)
-                {
-                    partyObject["tags"] = ExpressionConverter.ConvertO(__workflow_bodypartytags);
-                    partyObjectpropCount++;
-                }
-
-                partyObject["type"] = "organisation";
-                partyObjectpropCount++;
-                if (partyObjectpropCount > 0)
-                {
-                    body["party"] = partyObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateOrganisationResponse>(callPayload);
             });
         }
@@ -662,71 +146,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodytaskdescription = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<string>> bodytaskdueTime = null, Expression<Func<string>> bodytaskdetails = null, Expression<Func<int>> bodytaskpartyid = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskBodyInput>> body)
         {
-            var __workflow_bodytaskdescription = WorkflowExpression.Compile(bodytaskdescription, nameof(bodytaskdescription), required: false);
-            var __workflow_bodytaskdueDate = WorkflowExpression.Compile(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
-            var __workflow_bodytaskdueTime = WorkflowExpression.Compile(bodytaskdueTime, nameof(bodytaskdueTime), required: false);
-            var __workflow_bodytaskdetails = WorkflowExpression.Compile(bodytaskdetails, nameof(bodytaskdetails), required: false);
-            var __workflow_bodytaskpartyid = WorkflowExpression.Compile(bodytaskpartyid, nameof(bodytaskpartyid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var taskObject = new JObject();
-                var taskObjectpropCount = 0;
-                if (__workflow_bodytaskdescription != null)
-                {
-                    taskObject["description"] = ExpressionConverter.ConvertO(__workflow_bodytaskdescription);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskdueDate != null)
-                {
-                    taskObject["dueOn"] = ExpressionConverter.ConvertO(__workflow_bodytaskdueDate);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskdueTime != null)
-                {
-                    taskObject["dueTime"] = ExpressionConverter.ConvertO(__workflow_bodytaskdueTime);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskdetails != null)
-                {
-                    taskObject["detail"] = ExpressionConverter.ConvertO(__workflow_bodytaskdetails);
-                    taskObjectpropCount++;
-                }
-
-                var partyObject = new JObject();
-                var partyObjectpropCount = 0;
-                if (__workflow_bodytaskpartyid != null)
-                {
-                    partyObject["id"] = ExpressionConverter.ConvertO(__workflow_bodytaskpartyid);
-                    partyObjectpropCount++;
-                }
-
-                if (partyObjectpropCount > 0)
-                {
-                    taskObject["party"] = partyObject;
-                    taskObjectpropCount++;
-                }
-
-                if (taskObjectpropCount > 0)
-                {
-                    body["task"] = taskObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
             });
         }
@@ -740,242 +168,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var taskObject = new JObject();
-                var taskObjectpropCount = 0;
-                taskObject["status"] = "completed";
-                taskObjectpropCount++;
-                if (taskObjectpropCount > 0)
-                {
-                    body["task"] = taskObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = new CompleteTaskBodyInput().ToJToken();
                 return new ApiConnectionAction<CompleteTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreatePersonV2Response, ApiConnectionActionConfiguration> CreatePerson(Expression<Func<int>> bodypartyorganisationid, Expression<Func<string>> bodypartylastName = null, Expression<Func<string>> bodypartyfirstName = null, Expression<Func<bodypartytitleInput>> bodypartytitle = null, Expression<Func<string>> bodypartyjobTitle = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        public IBodyWorkflowAction<CreatePersonResponse, ApiConnectionActionConfiguration> CreatePerson(Expression<Func<CreatePersonBodyInput>> body)
         {
-            var __workflow_bodypartyorganisationid = WorkflowExpression.Compile(bodypartyorganisationid, nameof(bodypartyorganisationid), required: true);
-            var __workflow_bodypartylastName = WorkflowExpression.Compile(bodypartylastName, nameof(bodypartylastName), required: false);
-            var __workflow_bodypartyfirstName = WorkflowExpression.Compile(bodypartyfirstName, nameof(bodypartyfirstName), required: false);
-            var __workflow_bodypartytitle = WorkflowExpression.Compile(bodypartytitle, nameof(bodypartytitle), required: false);
-            var __workflow_bodypartyjobTitle = WorkflowExpression.Compile(bodypartyjobTitle, nameof(bodypartyjobTitle), required: false);
-            var __workflow_bodypartyabout = WorkflowExpression.Compile(bodypartyabout, nameof(bodypartyabout), required: false);
-            var __workflow_bodypartyphoneNumbersphoneNumber = WorkflowExpression.Compile(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
-            var __workflow_bodypartyphoneNumbersphoneType = WorkflowExpression.Compile(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
-            var __workflow_bodypartyemailAddressesemailAddress = WorkflowExpression.Compile(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
-            var __workflow_bodypartyemailAddressesemailType = WorkflowExpression.Compile(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
-            var __workflow_bodypartywebsiteswebsiteAddress = WorkflowExpression.Compile(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
-            var __workflow_bodypartywebsiteswebsiteService = WorkflowExpression.Compile(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
-            var __workflow_bodypartywebsiteswebsiteType = WorkflowExpression.Compile(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
-            var __workflow_bodypartyaddressesaddressStreet = WorkflowExpression.Compile(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
-            var __workflow_bodypartyaddressesaddressCity = WorkflowExpression.Compile(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
-            var __workflow_bodypartyaddressesaddressState = WorkflowExpression.Compile(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
-            var __workflow_bodypartyaddressesaddressZip = WorkflowExpression.Compile(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
-            var __workflow_bodypartyaddressesaddressCountry = WorkflowExpression.Compile(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
-            var __workflow_bodypartyaddressesaddressType = WorkflowExpression.Compile(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
-            var __workflow_bodypartytags = WorkflowExpression.Compile(bodypartytags, nameof(bodypartytags), required: false);
-            return new DeferredBodyAction<CreatePersonV2Response, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<CreatePersonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/person/parties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var partyObject = new JObject();
-                var partyObjectpropCount = 0;
-                if (__workflow_bodypartylastName != null)
-                {
-                    partyObject["lastName"] = ExpressionConverter.ConvertO(__workflow_bodypartylastName);
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyfirstName != null)
-                {
-                    partyObject["firstName"] = ExpressionConverter.ConvertO(__workflow_bodypartyfirstName);
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartytitle != null)
-                {
-                    partyObject["title"] = ExpressionConverter.ConvertO(__workflow_bodypartytitle);
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyjobTitle != null)
-                {
-                    partyObject["jobTitle"] = ExpressionConverter.ConvertO(__workflow_bodypartyjobTitle);
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyabout != null)
-                {
-                    partyObject["about"] = ExpressionConverter.ConvertO(__workflow_bodypartyabout);
-                    partyObjectpropCount++;
-                }
-
-                var organisationObject = new JObject();
-                var organisationObjectpropCount = 0;
-                organisationObjectpropCount++;
-                organisationObject["id"] = ExpressionConverter.ConvertO(__workflow_bodypartyorganisationid);
-                if (organisationObjectpropCount > 0)
-                {
-                    partyObject["organisation"] = organisationObject;
-                    partyObjectpropCount++;
-                }
-
-                var phoneNumbersObject = new JObject();
-                var phoneNumbersObjectpropCount = 0;
-                if (__workflow_bodypartyphoneNumbersphoneNumber != null)
-                {
-                    phoneNumbersObject["number"] = ExpressionConverter.ConvertO(__workflow_bodypartyphoneNumbersphoneNumber);
-                    phoneNumbersObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyphoneNumbersphoneType != null)
-                {
-                    phoneNumbersObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyphoneNumbersphoneType);
-                    phoneNumbersObjectpropCount++;
-                }
-
-                if (phoneNumbersObjectpropCount > 0)
-                {
-                    partyObject["phoneNumbers"] = phoneNumbersObject;
-                    partyObjectpropCount++;
-                }
-
-                var emailAddressesObject = new JObject();
-                var emailAddressesObjectpropCount = 0;
-                if (__workflow_bodypartyemailAddressesemailAddress != null)
-                {
-                    emailAddressesObject["address"] = ExpressionConverter.ConvertO(__workflow_bodypartyemailAddressesemailAddress);
-                    emailAddressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyemailAddressesemailType != null)
-                {
-                    emailAddressesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyemailAddressesemailType);
-                    emailAddressesObjectpropCount++;
-                }
-
-                if (emailAddressesObjectpropCount > 0)
-                {
-                    partyObject["emailAddresses"] = emailAddressesObject;
-                    partyObjectpropCount++;
-                }
-
-                var websitesObject = new JObject();
-                var websitesObjectpropCount = 0;
-                if (__workflow_bodypartywebsiteswebsiteAddress != null)
-                {
-                    websitesObject["address"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteAddress);
-                    websitesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartywebsiteswebsiteService != null)
-                {
-                    websitesObject["service"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteService);
-                    websitesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartywebsiteswebsiteType != null)
-                {
-                    websitesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteType);
-                    websitesObjectpropCount++;
-                }
-
-                if (websitesObjectpropCount > 0)
-                {
-                    partyObject["websites"] = websitesObject;
-                    partyObjectpropCount++;
-                }
-
-                var addressesObject = new JObject();
-                var addressesObjectpropCount = 0;
-                if (__workflow_bodypartyaddressesaddressStreet != null)
-                {
-                    addressesObject["street"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressStreet);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressCity != null)
-                {
-                    addressesObject["city"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressCity);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressState != null)
-                {
-                    addressesObject["state"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressState);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressZip != null)
-                {
-                    addressesObject["zip"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressZip);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressCountry != null)
-                {
-                    addressesObject["country"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressCountry);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressType != null)
-                {
-                    addressesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressType);
-                    addressesObjectpropCount++;
-                }
-
-                if (addressesObjectpropCount > 0)
-                {
-                    partyObject["addresses"] = addressesObject;
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartytags != null)
-                {
-                    partyObject["tags"] = ExpressionConverter.ConvertO(__workflow_bodypartytags);
-                    partyObjectpropCount++;
-                }
-
-                partyObject["type"] = "person";
-                partyObjectpropCount++;
-                if (partyObjectpropCount > 0)
-                {
-                    body["party"] = partyObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<CreatePersonV2Response>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<CreatePersonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<GetPartyV2Response, ApiConnectionActionConfiguration> GetParty(Expression<Func<string>> personId)
+        public IBodyWorkflowAction<GetPartyResponse, ApiConnectionActionConfiguration> GetParty(Expression<Func<string>> personId)
         {
             var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: true);
-            return new DeferredBodyAction<GetPartyV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetPartyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/parties/{0}", __workflow_personId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetPartyV2Response>(callPayload);
+                return new ApiConnectionAction<GetPartyResponse>(callPayload);
             });
         }
 
@@ -1004,255 +225,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdatePersonV2Response, ApiConnectionActionConfiguration> UpdatePerson(Expression<Func<string>> personId, Expression<Func<int>> bodypartyorganisationid, Expression<Func<string>> bodypartylastName = null, Expression<Func<string>> bodypartyfirstName = null, Expression<Func<bodypartytitleInput>> bodypartytitle = null, Expression<Func<string>> bodypartyjobTitle = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        public IBodyWorkflowAction<UpdatePersonResponse, ApiConnectionActionConfiguration> UpdatePerson(Expression<Func<string>> personId, Expression<Func<UpdatePersonBodyInput>> body)
         {
             var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: true);
-            var __workflow_bodypartyorganisationid = WorkflowExpression.Compile(bodypartyorganisationid, nameof(bodypartyorganisationid), required: true);
-            var __workflow_bodypartylastName = WorkflowExpression.Compile(bodypartylastName, nameof(bodypartylastName), required: false);
-            var __workflow_bodypartyfirstName = WorkflowExpression.Compile(bodypartyfirstName, nameof(bodypartyfirstName), required: false);
-            var __workflow_bodypartytitle = WorkflowExpression.Compile(bodypartytitle, nameof(bodypartytitle), required: false);
-            var __workflow_bodypartyjobTitle = WorkflowExpression.Compile(bodypartyjobTitle, nameof(bodypartyjobTitle), required: false);
-            var __workflow_bodypartyabout = WorkflowExpression.Compile(bodypartyabout, nameof(bodypartyabout), required: false);
-            var __workflow_bodypartyphoneNumbersphoneNumber = WorkflowExpression.Compile(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
-            var __workflow_bodypartyphoneNumbersphoneType = WorkflowExpression.Compile(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
-            var __workflow_bodypartyemailAddressesemailAddress = WorkflowExpression.Compile(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
-            var __workflow_bodypartyemailAddressesemailType = WorkflowExpression.Compile(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
-            var __workflow_bodypartywebsiteswebsiteAddress = WorkflowExpression.Compile(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
-            var __workflow_bodypartywebsiteswebsiteService = WorkflowExpression.Compile(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
-            var __workflow_bodypartywebsiteswebsiteType = WorkflowExpression.Compile(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
-            var __workflow_bodypartyaddressesaddressStreet = WorkflowExpression.Compile(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
-            var __workflow_bodypartyaddressesaddressCity = WorkflowExpression.Compile(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
-            var __workflow_bodypartyaddressesaddressState = WorkflowExpression.Compile(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
-            var __workflow_bodypartyaddressesaddressZip = WorkflowExpression.Compile(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
-            var __workflow_bodypartyaddressesaddressCountry = WorkflowExpression.Compile(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
-            var __workflow_bodypartyaddressesaddressType = WorkflowExpression.Compile(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
-            var __workflow_bodypartytags = WorkflowExpression.Compile(bodypartytags, nameof(bodypartytags), required: false);
-            return new DeferredBodyAction<UpdatePersonV2Response, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<UpdatePersonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/person/parties/{0}", __workflow_personId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var partyObject = new JObject();
-                var partyObjectpropCount = 0;
-                if (__workflow_bodypartylastName != null)
-                {
-                    partyObject["lastName"] = ExpressionConverter.ConvertO(__workflow_bodypartylastName);
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyfirstName != null)
-                {
-                    partyObject["firstName"] = ExpressionConverter.ConvertO(__workflow_bodypartyfirstName);
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartytitle != null)
-                {
-                    partyObject["title"] = ExpressionConverter.ConvertO(__workflow_bodypartytitle);
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyjobTitle != null)
-                {
-                    partyObject["jobTitle"] = ExpressionConverter.ConvertO(__workflow_bodypartyjobTitle);
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyabout != null)
-                {
-                    partyObject["about"] = ExpressionConverter.ConvertO(__workflow_bodypartyabout);
-                    partyObjectpropCount++;
-                }
-
-                var organisationObject = new JObject();
-                var organisationObjectpropCount = 0;
-                organisationObjectpropCount++;
-                organisationObject["id"] = ExpressionConverter.ConvertO(__workflow_bodypartyorganisationid);
-                if (organisationObjectpropCount > 0)
-                {
-                    partyObject["organisation"] = organisationObject;
-                    partyObjectpropCount++;
-                }
-
-                var phoneNumbersObject = new JObject();
-                var phoneNumbersObjectpropCount = 0;
-                if (__workflow_bodypartyphoneNumbersphoneNumber != null)
-                {
-                    phoneNumbersObject["number"] = ExpressionConverter.ConvertO(__workflow_bodypartyphoneNumbersphoneNumber);
-                    phoneNumbersObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyphoneNumbersphoneType != null)
-                {
-                    phoneNumbersObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyphoneNumbersphoneType);
-                    phoneNumbersObjectpropCount++;
-                }
-
-                if (phoneNumbersObjectpropCount > 0)
-                {
-                    partyObject["phoneNumbers"] = phoneNumbersObject;
-                    partyObjectpropCount++;
-                }
-
-                var emailAddressesObject = new JObject();
-                var emailAddressesObjectpropCount = 0;
-                if (__workflow_bodypartyemailAddressesemailAddress != null)
-                {
-                    emailAddressesObject["address"] = ExpressionConverter.ConvertO(__workflow_bodypartyemailAddressesemailAddress);
-                    emailAddressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyemailAddressesemailType != null)
-                {
-                    emailAddressesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyemailAddressesemailType);
-                    emailAddressesObjectpropCount++;
-                }
-
-                if (emailAddressesObjectpropCount > 0)
-                {
-                    partyObject["emailAddresses"] = emailAddressesObject;
-                    partyObjectpropCount++;
-                }
-
-                var websitesObject = new JObject();
-                var websitesObjectpropCount = 0;
-                if (__workflow_bodypartywebsiteswebsiteAddress != null)
-                {
-                    websitesObject["address"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteAddress);
-                    websitesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartywebsiteswebsiteService != null)
-                {
-                    websitesObject["service"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteService);
-                    websitesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartywebsiteswebsiteType != null)
-                {
-                    websitesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartywebsiteswebsiteType);
-                    websitesObjectpropCount++;
-                }
-
-                if (websitesObjectpropCount > 0)
-                {
-                    partyObject["websites"] = websitesObject;
-                    partyObjectpropCount++;
-                }
-
-                var addressesObject = new JObject();
-                var addressesObjectpropCount = 0;
-                if (__workflow_bodypartyaddressesaddressStreet != null)
-                {
-                    addressesObject["street"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressStreet);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressCity != null)
-                {
-                    addressesObject["city"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressCity);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressState != null)
-                {
-                    addressesObject["state"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressState);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressZip != null)
-                {
-                    addressesObject["zip"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressZip);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressCountry != null)
-                {
-                    addressesObject["country"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressCountry);
-                    addressesObjectpropCount++;
-                }
-
-                if (__workflow_bodypartyaddressesaddressType != null)
-                {
-                    addressesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypartyaddressesaddressType);
-                    addressesObjectpropCount++;
-                }
-
-                if (addressesObjectpropCount > 0)
-                {
-                    partyObject["addresses"] = addressesObject;
-                    partyObjectpropCount++;
-                }
-
-                if (__workflow_bodypartytags != null)
-                {
-                    partyObject["tags"] = ExpressionConverter.ConvertO(__workflow_bodypartytags);
-                    partyObjectpropCount++;
-                }
-
-                partyObject["type"] = "person";
-                partyObjectpropCount++;
-                if (partyObjectpropCount > 0)
-                {
-                    body["party"] = partyObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<UpdatePersonV2Response>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<UpdatePersonResponse>(callPayload);
             });
         }
     }
 
     public class CapsulecrmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OpportunityResponse[], ApiConnectionTriggerConfiguration> OnNewOpportunity(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityResponse[], ApiConnectionPollingTriggerConfiguration> OnNewOpportunity()
         {
-            return new DeferredBodyTrigger<OpportunityResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OpportunityResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/create_trigger/opportunities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OpportunityResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OpportunityResponse[], ApiConnectionTriggerConfiguration> OnUpdateOpportunity(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityResponse[], ApiConnectionPollingTriggerConfiguration> OnUpdateOpportunity()
         {
-            return new DeferredBodyTrigger<OpportunityResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OpportunityResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/update_trigger/opportunities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OpportunityResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TaskResponse[], ApiConnectionTriggerConfiguration> OnNewTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskResponse[], ApiConnectionPollingTriggerConfiguration> OnNewTask()
         {
-            return new DeferredBodyTrigger<TaskResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TaskResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/create_trigger/tasks";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaskResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TaskResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PartyResponseV2[], ApiConnectionTriggerConfiguration> OnNewParty(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PartyResponseV2[], ApiConnectionPollingTriggerConfiguration> OnNewParty()
         {
-            return new DeferredBodyTrigger<PartyResponseV2[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PartyResponseV2[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/create_trigger/parties";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PartyResponseV2[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PartyResponseV2[]>(callPayload);
             });
         }
     }
@@ -1362,8 +392,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public OpportunityResponse Opportunity { get; set; }
     }
 
+    public class CreateOpportunityBodyInput
+    {
+        [JsonProperty("opportunity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateOpportunityBodyInputOpportunityType Opportunity { get; set; }
+    }
+
+    public class CreateOpportunityBodyInputOpportunityType
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputOpportunityTypePartyType Party { get; set; }
+
+        [JsonProperty("milestone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateOpportunityBodyInputOpportunityTypeMilestoneType Milestone { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("durationBasis")]
+        public BodyInputOpportunityTypeDurationBasisType? DurationBasis { get; set; }
+
+        [JsonProperty("duration")]
+        public string Duration { get; set; }
+
+        [JsonProperty("expectedCloseOn")]
+        public string ExpectedCloseDate { get; set; }
+
+        [JsonProperty("probability")]
+        public int? WinningProbability { get; set; }
+
+        [JsonProperty("value")]
+        public BodyInputOpportunityTypeExpectedType Expected { get; set; }
+    }
+
+    public class BodyInputOpportunityTypePartyType
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int PartyId { get; set; }
+    }
+
+    public class CreateOpportunityBodyInputOpportunityTypeMilestoneType
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Id { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyopportunitydurationBasisInput
+    public enum BodyInputOpportunityTypeDurationBasisType
     {
         FIXED,
         HOUR,
@@ -1372,6 +450,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         YEAR,
         WEEK,
         QUARTER
+    }
+
+    public class BodyInputOpportunityTypeExpectedType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
     }
 
     public class GetOpportunityResponse
@@ -1384,6 +471,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     {
         [JsonProperty("opportunity")]
         public OpportunityResponse Opportunity { get; set; }
+    }
+
+    public class UpdateOpportunityBodyInput
+    {
+        [JsonProperty("opportunity")]
+        public UpdateOpportunityBodyInputOpportunityType Opportunity { get; set; }
+    }
+
+    public class UpdateOpportunityBodyInputOpportunityType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("party")]
+        public BodyInputOpportunityTypePartyType Party { get; set; }
+
+        [JsonProperty("milestone")]
+        public UpdateOpportunityBodyInputOpportunityTypeMilestoneType Milestone { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("durationBasis")]
+        public BodyInputOpportunityTypeDurationBasisType? DurationBasis { get; set; }
+
+        [JsonProperty("duration")]
+        public string Duration { get; set; }
+
+        [JsonProperty("expectedCloseOn")]
+        public string ExpectedCloseDate { get; set; }
+
+        [JsonProperty("probability")]
+        public int? WinningProbability { get; set; }
+
+        [JsonProperty("value")]
+        public BodyInputOpportunityTypeExpectedType Expected { get; set; }
+    }
+
+    public class UpdateOpportunityBodyInputOpportunityTypeMilestoneType
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int MilestoneId { get; set; }
     }
 
     public class CreateOrganisationResponse
@@ -1497,8 +626,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string WebsiteType { get; set; }
     }
 
+    public class CreateOrganisationBodyInput
+    {
+        [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateOrganisationBodyInputPartyType Party { get; set; } = new CreateOrganisationBodyInputPartyType();
+    }
+
+    public class CreateOrganisationBodyInputPartyType
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("about")]
+        public string About { get; set; }
+
+        [JsonProperty("phoneNumbers")]
+        public BodyInputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
+
+        [JsonProperty("emailAddresses")]
+        public BodyInputPartyTypeEmailAddressesType EmailAddresses { get; set; }
+
+        [JsonProperty("websites")]
+        public BodyInputPartyTypeWebsitesType Websites { get; set; }
+
+        [JsonProperty("addresses")]
+        public BodyInputPartyTypeAddressesType Addresses { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "organisation";
+    }
+
+    public class BodyInputPartyTypePhoneNumbersType
+    {
+        [JsonProperty("number")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("type")]
+        public BodyInputPartyTypePhoneNumbersTypePhoneTypeType? PhoneType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypartyphoneNumbersphoneTypeInput
+    public enum BodyInputPartyTypePhoneNumbersTypePhoneTypeType
     {
         Home,
         Work,
@@ -1507,15 +678,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         Direct
     }
 
+    public class BodyInputPartyTypeEmailAddressesType
+    {
+        [JsonProperty("address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("type")]
+        public BodyInputPartyTypeEmailAddressesTypeEmailTypeType? EmailType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypartyemailAddressesemailTypeInput
+    public enum BodyInputPartyTypeEmailAddressesTypeEmailTypeType
     {
         Home,
         Work
     }
 
+    public class BodyInputPartyTypeWebsitesType
+    {
+        [JsonProperty("address")]
+        public string WebsiteAddress { get; set; }
+
+        [JsonProperty("service")]
+        public BodyInputPartyTypeWebsitesTypeWebsiteServiceType? WebsiteService { get; set; }
+
+        [JsonProperty("type")]
+        public BodyInputPartyTypeWebsitesTypeWebsiteTypeType? WebsiteType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypartywebsiteswebsiteServiceInput
+    public enum BodyInputPartyTypeWebsitesTypeWebsiteServiceType
     {
         FEED,
         FACEBOOK,
@@ -1535,14 +727,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypartywebsiteswebsiteTypeInput
+    public enum BodyInputPartyTypeWebsitesTypeWebsiteTypeType
     {
         Home,
         Work
     }
 
+    public class BodyInputPartyTypeAddressesType
+    {
+        [JsonProperty("street")]
+        public string AddressStreet { get; set; }
+
+        [JsonProperty("city")]
+        public string AddressCity { get; set; }
+
+        [JsonProperty("state")]
+        public string AddressState { get; set; }
+
+        [JsonProperty("zip")]
+        public string AddressZip { get; set; }
+
+        [JsonProperty("country")]
+        public string AddressCountry { get; set; }
+
+        [JsonProperty("type")]
+        public BodyInputPartyTypeAddressesTypeAddressTypeType? AddressType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypartyaddressesaddressTypeInput
+    public enum BodyInputPartyTypeAddressesTypeAddressTypeType
     {
         Home,
         Postal,
@@ -1553,6 +766,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     {
         [JsonProperty("party")]
         public PartyResponse Party { get; set; }
+    }
+
+    public class UpdateOrganisationBodyInput
+    {
+        [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateOrganisationBodyInputPartyType Party { get; set; } = new UpdateOrganisationBodyInputPartyType();
+    }
+
+    public class UpdateOrganisationBodyInputPartyType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("about")]
+        public string About { get; set; }
+
+        [JsonProperty("phoneNumbers")]
+        public BodyInputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
+
+        [JsonProperty("emailAddresses")]
+        public BodyInputPartyTypeEmailAddressesType EmailAddresses { get; set; }
+
+        [JsonProperty("websites")]
+        public BodyInputPartyTypeWebsitesType Websites { get; set; }
+
+        [JsonProperty("addresses")]
+        public BodyInputPartyTypeAddressesType Addresses { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "organisation";
     }
 
     public class ListpartiesResponse
@@ -1699,13 +945,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public TaskResponse TaskObject { get; set; }
     }
 
+    public class CreateTaskBodyInput
+    {
+        [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateTaskBodyInputTaskObjectType TaskObject { get; set; }
+    }
+
+    public class CreateTaskBodyInputTaskObjectType
+    {
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("dueOn", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DueDate { get; set; }
+
+        [JsonProperty("dueTime")]
+        public string DueTime { get; set; }
+
+        [JsonProperty("detail")]
+        public string Details { get; set; }
+
+        [JsonProperty("party")]
+        public BodyInputTaskObjectTypePartyType Party { get; set; }
+    }
+
+    public class BodyInputTaskObjectTypePartyType
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+    }
+
     public class CompleteTaskResponse
     {
         [JsonProperty("task")]
         public TaskResponse TaskObject { get; set; }
     }
 
-    public class CreatePersonV2Response
+    public class CompleteTaskBodyInput
+    {
+        [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CompleteTaskBodyInputTaskObjectType TaskObject { get; set; } = new CompleteTaskBodyInputTaskObjectType();
+    }
+
+    public class CompleteTaskBodyInputTaskObjectType
+    {
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Status { get; set; } = "completed";
+    }
+
+    public class CreatePersonResponse
     {
         [JsonProperty("party")]
         public PartyResponseV2 Party { get; set; }
@@ -1828,8 +1116,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string WebsiteType { get; set; }
     }
 
+    public class CreatePersonBodyInput
+    {
+        [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreatePersonBodyInputPartyType Party { get; set; } = new CreatePersonBodyInputPartyType();
+    }
+
+    public class CreatePersonBodyInputPartyType
+    {
+        [JsonProperty("lastName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastName { get; set; }
+
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("title")]
+        public BodyInputPartyTypeTitleType? Title { get; set; }
+
+        [JsonProperty("jobTitle")]
+        public string JobTitle { get; set; }
+
+        [JsonProperty("about")]
+        public string About { get; set; }
+
+        [JsonProperty("organisation")]
+        public BodyInputPartyTypeOrganisationType Organisation { get; set; }
+
+        [JsonProperty("phoneNumbers")]
+        public BodyInputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
+
+        [JsonProperty("emailAddresses")]
+        public BodyInputPartyTypeEmailAddressesType EmailAddresses { get; set; }
+
+        [JsonProperty("websites")]
+        public BodyInputPartyTypeWebsitesType Websites { get; set; }
+
+        [JsonProperty("addresses")]
+        public BodyInputPartyTypeAddressesType Addresses { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "person";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypartytitleInput
+    public enum BodyInputPartyTypeTitleType
     {
         Mr,
         Master,
@@ -1840,7 +1173,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         Prof
     }
 
-    public class GetPartyV2Response
+    public class BodyInputPartyTypeOrganisationType
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Id { get; set; }
+    }
+
+    public class GetPartyResponse
     {
         [JsonProperty("party")]
         public PartyResponseV2 Party { get; set; }
@@ -1906,10 +1245,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string PictureURL { get; set; }
     }
 
-    public class UpdatePersonV2Response
+    public class UpdatePersonResponse
     {
         [JsonProperty("party")]
         public PartyResponseV2 Party { get; set; }
+    }
+
+    public class UpdatePersonBodyInput
+    {
+        [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdatePersonBodyInputPartyType Party { get; set; } = new UpdatePersonBodyInputPartyType();
+    }
+
+    public class UpdatePersonBodyInputPartyType
+    {
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("title")]
+        public BodyInputPartyTypeTitleType? Title { get; set; }
+
+        [JsonProperty("jobTitle")]
+        public string JobTitle { get; set; }
+
+        [JsonProperty("about")]
+        public string About { get; set; }
+
+        [JsonProperty("organisation")]
+        public BodyInputPartyTypeOrganisationType Organisation { get; set; }
+
+        [JsonProperty("phoneNumbers")]
+        public BodyInputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
+
+        [JsonProperty("emailAddresses")]
+        public BodyInputPartyTypeEmailAddressesType EmailAddresses { get; set; }
+
+        [JsonProperty("websites")]
+        public BodyInputPartyTypeWebsitesType Websites { get; set; }
+
+        [JsonProperty("addresses")]
+        public BodyInputPartyTypeAddressesType Addresses { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "person";
     }
 }
 

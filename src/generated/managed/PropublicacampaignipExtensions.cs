@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateTopFinancialResponse, ApiConnectionActionConfiguration> CandidateTopFinancial(Expression<Func<string>> cycle, Expression<Func<categoryInput>> category)
+        public IBodyWorkflowAction<CandidateTopFinancialResponse, ApiConnectionActionConfiguration> CandidateTopFinancial(Expression<Func<string>> cycle, Expression<Func<CategoryInput>> category)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum categoryInput
+    public enum CategoryInput
     {
         [EnumMember(Value = "candidate-loan")]
         CandidateLoan,

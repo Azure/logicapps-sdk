@@ -65,24 +65,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<ImageHashtagsPostResponse, ApiConnectionActionConfiguration> ImageHashtags(Expression<Func<string>> bodyimage)
+        public IBodyWorkflowAction<ImageHashtagsResponse, ApiConnectionActionConfiguration> ImageHashtags(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: true);
-            return new DeferredBodyAction<ImageHashtagsPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<ImageHashtagsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tag/generate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ImageHashtagsPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ImageHashtagsResponse>(callPayload);
             });
         }
 
@@ -178,10 +170,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         public int Count { get; set; }
     }
 
-    public class ImageHashtagsPostResponse
+    public class ImageHashtagsResponse
     {
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Image { get; set; }
     }
 
     public class CategoriesGetResponse

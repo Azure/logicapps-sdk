@@ -13,124 +13,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
     public class BywordActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticlePostResponse, ApiConnectionActionConfiguration> Article(Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyinput, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodysubheadings = null, Expression<Func<bool>> bodyundetectable = null, Expression<Func<string>> bodytone = null, Expression<Func<int>> bodylength = null)
+        public IBodyWorkflowAction<ArticleResponse, ApiConnectionActionConfiguration> Article(Expression<Func<ArticleBodyInput>> body = null)
         {
-            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
-            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodysubheadings = WorkflowExpression.Compile(bodysubheadings, nameof(bodysubheadings), required: false);
-            var __workflow_bodyundetectable = WorkflowExpression.Compile(bodyundetectable, nameof(bodyundetectable), required: false);
-            var __workflow_bodytone = WorkflowExpression.Compile(bodytone, nameof(bodytone), required: false);
-            var __workflow_bodylength = WorkflowExpression.Compile(bodylength, nameof(bodylength), required: false);
-            return new DeferredBodyAction<ArticlePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ArticleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create_article";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
-                bodypropCount++;
-                body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubheadings != null)
-                {
-                    body["subheadings"] = ExpressionConverter.ConvertO(__workflow_bodysubheadings);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyundetectable != null)
-                {
-                    body["undetectable"] = ExpressionConverter.ConvertO(__workflow_bodyundetectable);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytone != null)
-                {
-                    body["tone"] = ExpressionConverter.ConvertO(__workflow_bodytone);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylength != null)
-                {
-                    body["length"] = ExpressionConverter.ConvertO(__workflow_bodylength);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ArticlePostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ArticleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticleGetPostResponse, ApiConnectionActionConfiguration> ArticleGet(Expression<Func<string>> bodyarticleId = null)
+        public IBodyWorkflowAction<ArticleGetResponse, ApiConnectionActionConfiguration> ArticleGet(Expression<Func<ArticleGetBodyInput>> body = null)
         {
-            var __workflow_bodyarticleId = WorkflowExpression.Compile(bodyarticleId, nameof(bodyarticleId), required: false);
-            return new DeferredBodyAction<ArticleGetPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ArticleGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/get_article";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyarticleId != null)
-                {
-                    body["articleID"] = ExpressionConverter.ConvertO(__workflow_bodyarticleId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ArticleGetPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ArticleGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticlesPostResponseItem[], ApiConnectionActionConfiguration> Articles(Expression<Func<int>> bodycursor = null)
+        public IBodyWorkflowAction<ArticlesResponseItem[], ApiConnectionActionConfiguration> Articles(Expression<Func<ArticlesBodyInput>> body = null)
         {
-            var __workflow_bodycursor = WorkflowExpression.Compile(bodycursor, nameof(bodycursor), required: false);
-            return new DeferredBodyAction<ArticlesPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ArticlesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list_articles";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycursor != null)
-                {
-                    if (__workflow_bodycursor != null)
-                    {
-                        body["cursor"] = ExpressionConverter.ConvertO(__workflow_bodycursor);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["cursor"] = 0;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ArticlesPostResponseItem[]>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ArticlesResponseItem[]>(callPayload);
             });
         }
     }
@@ -139,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
     {
     }
 
-    public class ArticlePostResponse
+    public class ArticleResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -148,8 +71,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         public string ArticleId { get; set; }
     }
 
+    public class ArticleBodyInput
+    {
+        [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputModeType Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Byword.BodyInputModeType.Keyword;
+
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Input { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("subheadings")]
+        public string Subheadings { get; set; }
+
+        [JsonProperty("undetectable")]
+        public bool? Undetectable { get; set; }
+
+        [JsonProperty("tone")]
+        public string Tone { get; set; }
+
+        [JsonProperty("length")]
+        public int? Length { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymodeInput
+    public enum BodyInputModeType
     {
         [EnumMember(Value = "keyword")]
         Keyword,
@@ -157,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         Title
     }
 
-    public class ArticleGetPostResponse
+    public class ArticleGetResponse
     {
         public string Body { get; set; }
 
@@ -190,7 +137,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         public string Id { get; set; }
     }
 
-    public class ArticlesPostResponseItem
+    public class ArticleGetBodyInput
+    {
+        [JsonProperty("articleID")]
+        public string ArticleId { get; set; }
+    }
+
+    public class ArticlesResponseItem
     {
         public string Body { get; set; }
 
@@ -221,6 +174,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
 
         [JsonProperty("_id")]
         public string Id { get; set; }
+    }
+
+    public class ArticlesBodyInput
+    {
+        [JsonProperty("cursor", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Cursor { get; set; } = 0;
     }
 }
 

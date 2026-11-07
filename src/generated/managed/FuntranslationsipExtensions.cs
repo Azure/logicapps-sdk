@@ -13,25 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
     public class FuntranslationsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "funtranslationsip")]
-        public IBodyWorkflowAction<TranslatePostResponse, ApiConnectionActionConfiguration> Translate(Expression<Func<languageInput>> language, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<TranslateResponse, ApiConnectionActionConfiguration> Translate(Expression<Func<LanguageInput>> language, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            return new DeferredBodyAction<TranslatePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<TranslateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}.json", __workflow_language.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<TranslatePostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<TranslateResponse>(callPayload);
             });
         }
     }
@@ -40,22 +33,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
     {
     }
 
-    public class TranslatePostResponse
+    public class TranslateResponse
     {
         [JsonProperty("success")]
-        public TranslatePostResponseSuccessType Success { get; set; }
+        public TranslateResponseSuccessType Success { get; set; }
 
         [JsonProperty("contents")]
-        public TranslatePostResponseContentsType Contents { get; set; }
+        public TranslateResponseContentsType Contents { get; set; }
     }
 
-    public class TranslatePostResponseSuccessType
+    public class TranslateResponseSuccessType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
     }
 
-    public class TranslatePostResponseContentsType
+    public class TranslateResponseContentsType
     {
         [JsonProperty("translation")]
         public string Translation { get; set; }
@@ -68,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum languageInput
+    public enum LanguageInput
     {
         [EnumMember(Value = "aldmeris")]
         Aldmeris,
@@ -162,6 +155,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
         Wow,
         [EnumMember(Value = "yoda")]
         Yoda
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
     }
 }
 

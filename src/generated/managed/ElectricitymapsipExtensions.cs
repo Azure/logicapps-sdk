@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<CarbonHistoryResponse, ApiConnectionActionConfiguration> CarbonHistory(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<emissionFactorTypeInput>> emissionFactorType = null, Expression<Func<bool>> disableEstimations = null)
+        public IBodyWorkflowAction<CarbonHistoryResponse, ApiConnectionActionConfiguration> CarbonHistory(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<EmissionFactorTypeInput>> emissionFactorType = null, Expression<Func<bool>> disableEstimations = null)
         {
             var __workflow_zone = WorkflowExpression.Compile(zone, nameof(zone), required: false);
             var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<CarbonLatestResponse, ApiConnectionActionConfiguration> CarbonLatest(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<emissionFactorTypeInput>> emissionFactorType = null, Expression<Func<bool>> disableEstimations = null)
+        public IBodyWorkflowAction<CarbonLatestResponse, ApiConnectionActionConfiguration> CarbonLatest(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<EmissionFactorTypeInput>> emissionFactorType = null, Expression<Func<bool>> disableEstimations = null)
         {
             var __workflow_zone = WorkflowExpression.Compile(zone, nameof(zone), required: false);
             var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum emissionFactorTypeInput
+    public enum EmissionFactorTypeInput
     {
         [EnumMember(Value = "lifecycle")]
         Lifecycle,

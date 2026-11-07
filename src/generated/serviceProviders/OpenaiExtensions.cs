@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         [System.ComponentModel.DefaultValue(GetChatCompletionsInputMessagesTypeItemRoleType.User)]
-        public GetChatCompletionsInputMessagesTypeItemRoleType Role { get; set; } = GetChatCompletionsInputMessagesTypeItemRoleType.User;
+        public GetChatCompletionsInputMessagesTypeItemRoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai.GetChatCompletionsInputMessagesTypeItemRoleType.User;
 
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         [System.ComponentModel.DefaultValue(GetMultipleChatCompletionsInputMessagesTypeItemRoleType.User)]
-        public GetMultipleChatCompletionsInputMessagesTypeItemRoleType Role { get; set; } = GetMultipleChatCompletionsInputMessagesTypeItemRoleType.User;
+        public GetMultipleChatCompletionsInputMessagesTypeItemRoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai.GetMultipleChatCompletionsInputMessagesTypeItemRoleType.User;
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }

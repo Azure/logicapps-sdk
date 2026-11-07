@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     public class UplandpanvivausActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<OperationsSearchResponse, ApiConnectionActionConfiguration> OperationsSearch(Expression<Func<string>> instance, Expression<Func<string>> term, Expression<Func<int>> pageOffset = null, Expression<Func<int>> pageLimit = null, Expression<Func<changedWhenInput>> changedWhen = null, Expression<Func<int>> directParentFolderId = null)
+        public IBodyWorkflowAction<OperationsSearchResponse, ApiConnectionActionConfiguration> OperationsSearch(Expression<Func<string>> instance, Expression<Func<string>> term, Expression<Func<int>> pageOffset = null, Expression<Func<int>> pageLimit = null, Expression<Func<ChangedWhenInput>> changedWhen = null, Expression<Func<int>> directParentFolderId = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
@@ -80,173 +80,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveCsh(Expression<Func<string>> instance, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyquery = null, Expression<Func<bool>> bodyshowFirstResult = null, Expression<Func<bool>> bodymaximizeClient = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveCsh(Expression<Func<string>> instance, Expression<Func<OperationsLiveCshBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
-            var __workflow_bodyshowFirstResult = WorkflowExpression.Compile(bodyshowFirstResult, nameof(bodyshowFirstResult), required: false);
-            var __workflow_bodymaximizeClient = WorkflowExpression.Compile(bodymaximizeClient, nameof(bodymaximizeClient), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/operations/live/csh", __workflow_instance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyusername != null)
-                {
-                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserId != null)
-                {
-                    body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyquery != null)
-                {
-                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshowFirstResult != null)
-                {
-                    body["showFirstResult"] = ExpressionConverter.ConvertO(__workflow_bodyshowFirstResult);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaximizeClient != null)
-                {
-                    body["maximizeClient"] = ExpressionConverter.ConvertO(__workflow_bodymaximizeClient);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveDocument(Expression<Func<string>> instance, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodylocation = null, Expression<Func<bool>> bodymaximizeClient = null, Expression<Func<string>> bodycontainerId = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveDocument(Expression<Func<string>> instance, Expression<Func<OperationsLiveDocumentBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodymaximizeClient = WorkflowExpression.Compile(bodymaximizeClient, nameof(bodymaximizeClient), required: false);
-            var __workflow_bodycontainerId = WorkflowExpression.Compile(bodycontainerId, nameof(bodycontainerId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/operations/live/document", __workflow_instance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyusername != null)
-                {
-                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserId != null)
-                {
-                    body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocation != null)
-                {
-                    body["location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaximizeClient != null)
-                {
-                    body["maximizeClient"] = ExpressionConverter.ConvertO(__workflow_bodymaximizeClient);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontainerId != null)
-                {
-                    body["containerId"] = ExpressionConverter.ConvertO(__workflow_bodycontainerId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveSearch(Expression<Func<string>> instance, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyquery = null, Expression<Func<bool>> bodymaximizeClient = null, Expression<Func<bool>> bodyshowFirstResult = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveSearch(Expression<Func<string>> instance, Expression<Func<OperationsLiveCshBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
-            var __workflow_bodymaximizeClient = WorkflowExpression.Compile(bodymaximizeClient, nameof(bodymaximizeClient), required: false);
-            var __workflow_bodyshowFirstResult = WorkflowExpression.Compile(bodyshowFirstResult, nameof(bodyshowFirstResult), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/operations/live/search", __workflow_instance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyusername != null)
-                {
-                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserId != null)
-                {
-                    body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyquery != null)
-                {
-                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaximizeClient != null)
-                {
-                    body["maximizeClient"] = ExpressionConverter.ConvertO(__workflow_bodymaximizeClient);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshowFirstResult != null)
-                {
-                    body["showFirstResult"] = ExpressionConverter.ConvertO(__workflow_bodyshowFirstResult);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -310,115 +186,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<PutArtefactResponse, ApiConnectionActionConfiguration> PublishArtefact(Expression<Func<string>> instance, Expression<Func<string>> id, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyprimaryResponse = null, Expression<Func<int>> bodypanvivaDocumentVersion = null, Expression<Func<ArtefactSection[]>> bodycontent = null, Expression<Func<TaggedSectionWithContentViewModel[]>> bodytaggedSections = null, Expression<Func<int>> bodycategoryid = null, Expression<Func<string>> bodypanvivaDocumentId = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyprimaryQuery = null, Expression<Func<QueryVariationViewModel[]>> bodyqueryVariations = null, Expression<Func<ResponseVariationViewModel[]>> bodyresponseVariations = null)
+        public IBodyWorkflowAction<PutArtefactResponse, ApiConnectionActionConfiguration> PublishArtefact(Expression<Func<string>> instance, Expression<Func<string>> id, Expression<Func<PublishArtefactBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyprimaryResponse = WorkflowExpression.Compile(bodyprimaryResponse, nameof(bodyprimaryResponse), required: false);
-            var __workflow_bodypanvivaDocumentVersion = WorkflowExpression.Compile(bodypanvivaDocumentVersion, nameof(bodypanvivaDocumentVersion), required: false);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodytaggedSections = WorkflowExpression.Compile(bodytaggedSections, nameof(bodytaggedSections), required: false);
-            var __workflow_bodycategoryid = WorkflowExpression.Compile(bodycategoryid, nameof(bodycategoryid), required: false);
-            var __workflow_bodypanvivaDocumentId = WorkflowExpression.Compile(bodypanvivaDocumentId, nameof(bodypanvivaDocumentId), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyprimaryQuery = WorkflowExpression.Compile(bodyprimaryQuery, nameof(bodyprimaryQuery), required: false);
-            var __workflow_bodyqueryVariations = WorkflowExpression.Compile(bodyqueryVariations, nameof(bodyqueryVariations), required: false);
-            var __workflow_bodyresponseVariations = WorkflowExpression.Compile(bodyresponseVariations, nameof(bodyresponseVariations), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PutArtefactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/resources/artefact/{1}", __workflow_instance.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprimaryResponse != null)
-                {
-                    body["primaryResponse"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryResponse);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypanvivaDocumentVersion != null)
-                {
-                    body["panvivaDocumentVersion"] = ExpressionConverter.ConvertO(__workflow_bodypanvivaDocumentVersion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaggedSections != null)
-                {
-                    body["taggedSections"] = ExpressionConverter.ConvertO(__workflow_bodytaggedSections);
-                    bodypropCount++;
-                }
-
-                var categoryObject = new JObject();
-                var categoryObjectpropCount = 0;
-                if (__workflow_bodycategoryid != null)
-                {
-                    categoryObject["id"] = ExpressionConverter.ConvertO(__workflow_bodycategoryid);
-                    categoryObjectpropCount++;
-                }
-
-                if (categoryObjectpropCount > 0)
-                {
-                    body["category"] = categoryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypanvivaDocumentId != null)
-                {
-                    body["panvivaDocumentId"] = ExpressionConverter.ConvertO(__workflow_bodypanvivaDocumentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprimaryQuery != null)
-                {
-                    body["primaryQuery"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryQuery);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyqueryVariations != null)
-                {
-                    body["queryVariations"] = ExpressionConverter.ConvertO(__workflow_bodyqueryVariations);
-                    bodypropCount++;
-                }
-
-                var metaDataObject = new JObject();
-                var metaDataObjectpropCount = 0;
-                if (metaDataObjectpropCount > 0)
-                {
-                    body["metaData"] = metaDataObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresponseVariations != null)
-                {
-                    body["responseVariations"] = ExpressionConverter.ConvertO(__workflow_bodyresponseVariations);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PutArtefactResponse>(callPayload);
             });
         }
@@ -565,45 +344,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<PostArtefactCategoryResponse, ApiConnectionActionConfiguration> ResourcesArtefactCategory(Expression<Func<string>> instance, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<PostArtefactCategoryResponse, ApiConnectionActionConfiguration> ResourcesArtefactCategory(Expression<Func<string>> instance, Expression<Func<ResourcesArtefactCategoryBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostArtefactCategoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/resources/artefactcategory", __workflow_instance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostArtefactCategoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<PostArtefactResponse, ApiConnectionActionConfiguration> ResourcesCreateArtefact(Expression<Func<string>> instance, Expression<Func<bool>> isDraft = null, Expression<Func<string>> bodytitle = null, Expression<Func<ArtefactSection[]>> bodycontent = null, Expression<Func<ResponseVariationModel[]>> bodyvariations = null, Expression<Func<int>> bodycategoryid = null, Expression<Func<string>> bodyprimaryQuery = null, Expression<Func<QueryVariationModel[]>> bodyqueryVariations = null, Expression<Func<int>> bodypanvivaDocumentId = null, Expression<Func<int>> bodypanvivaDocumentVersion = null)
+        public IBodyWorkflowAction<PostArtefactResponse, ApiConnectionActionConfiguration> ResourcesCreateArtefact(Expression<Func<string>> instance, Expression<Func<bool>> isDraft = null, Expression<Func<ResourcesCreateArtefactBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_isDraft = WorkflowExpression.Compile(isDraft, nameof(isDraft), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyvariations = WorkflowExpression.Compile(bodyvariations, nameof(bodyvariations), required: false);
-            var __workflow_bodycategoryid = WorkflowExpression.Compile(bodycategoryid, nameof(bodycategoryid), required: false);
-            var __workflow_bodyprimaryQuery = WorkflowExpression.Compile(bodyprimaryQuery, nameof(bodyprimaryQuery), required: false);
-            var __workflow_bodyqueryVariations = WorkflowExpression.Compile(bodyqueryVariations, nameof(bodyqueryVariations), required: false);
-            var __workflow_bodypanvivaDocumentId = WorkflowExpression.Compile(bodypanvivaDocumentId, nameof(bodypanvivaDocumentId), required: false);
-            var __workflow_bodypanvivaDocumentVersion = WorkflowExpression.Compile(bodypanvivaDocumentVersion, nameof(bodypanvivaDocumentVersion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostArtefactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/resources/artefact", __workflow_instance.WithUrlEncoding(1)));
@@ -612,77 +373,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
                 callPayload.Queries["isDraft"] = Convert.ToString(false);
                 if (__workflow_isDraft != null)
                     callPayload.Queries["isDraft"] = ExpressionConverter.Convert(__workflow_isDraft);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvariations != null)
-                {
-                    body["variations"] = ExpressionConverter.ConvertO(__workflow_bodyvariations);
-                    bodypropCount++;
-                }
-
-                var categoryObject = new JObject();
-                var categoryObjectpropCount = 0;
-                if (__workflow_bodycategoryid != null)
-                {
-                    categoryObject["id"] = ExpressionConverter.ConvertO(__workflow_bodycategoryid);
-                    categoryObjectpropCount++;
-                }
-
-                if (categoryObjectpropCount > 0)
-                {
-                    body["category"] = categoryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprimaryQuery != null)
-                {
-                    body["primaryQuery"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryQuery);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyqueryVariations != null)
-                {
-                    body["queryVariations"] = ExpressionConverter.ConvertO(__workflow_bodyqueryVariations);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypanvivaDocumentId != null)
-                {
-                    body["panvivaDocumentId"] = ExpressionConverter.ConvertO(__workflow_bodypanvivaDocumentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypanvivaDocumentVersion != null)
-                {
-                    body["panvivaDocumentVersion"] = ExpressionConverter.ConvertO(__workflow_bodypanvivaDocumentVersion);
-                    bodypropCount++;
-                }
-
-                var metaDataObject = new JObject();
-                var metaDataObjectpropCount = 0;
-                if (metaDataObjectpropCount > 0)
-                {
-                    body["metaData"] = metaDataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostArtefactResponse>(callPayload);
             });
         }
@@ -765,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum changedWhenInput
+    public enum ChangedWhenInput
     {
         NotProvided,
         [EnumMember(Value = "today")]
@@ -822,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string Id { get; set; }
 
         [JsonProperty("content")]
-        public ResponseSection[] Content { get; set; }
+        public OperationsArtefactNlsResponseSectionResponse[] Content { get; set; }
 
         [JsonProperty("simpleContent")]
         public string SimpleContent { get; set; }
@@ -858,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public Highlights Highlights { get; set; }
     }
 
-    public class ResponseSection
+    public class OperationsArtefactNlsResponseSectionResponse
     {
         [JsonProperty("mediaType")]
         public string MediaType { get; set; }
@@ -916,6 +608,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
 
         [JsonProperty("title")]
         public string Title { get; set; }
+    }
+
+    public class OperationsLiveCshBodyInput
+    {
+        [JsonProperty("username")]
+        public string Username { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("query")]
+        public string Query { get; set; }
+
+        [JsonProperty("showFirstResult")]
+        public bool? ShowFirstResult { get; set; }
+
+        [JsonProperty("maximizeClient")]
+        public bool? MaximizeClient { get; set; }
+    }
+
+    public class OperationsLiveDocumentBodyInput
+    {
+        [JsonProperty("username")]
+        public string Username { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("maximizeClient")]
+        public bool? MaximizeClient { get; set; }
+
+        [JsonProperty("containerId")]
+        public string ContainerId { get; set; }
     }
 
     public class GetContainerResponse
@@ -1044,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string Title { get; set; }
 
         [JsonProperty("content")]
-        public ResponseSection[] Content { get; set; }
+        public OperationsArtefactNlsResponseSectionResponse[] Content { get; set; }
 
         [JsonProperty("simpleContent")]
         public string SimpleContent { get; set; }
@@ -1092,16 +823,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string DateModified { get; set; }
 
         [JsonProperty("content")]
-        public ResponseSection[] Content { get; set; }
+        public OperationsArtefactNlsResponseSectionResponse[] Content { get; set; }
 
         [JsonProperty("simpleContent")]
         public string SimpleContent { get; set; }
 
         [JsonProperty("channels")]
-        public Channel[] Channels { get; set; }
+        public ResourcesArtefactByIdChannelResponse[] Channels { get; set; }
     }
 
-    public class Channel
+    public class ResourcesArtefactByIdChannelResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -1120,6 +851,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class PublishArtefactBodyInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("primaryResponse")]
+        public string PrimaryResponse { get; set; }
+
+        [JsonProperty("panvivaDocumentVersion")]
+        public int? PanvivaDocumentVersion { get; set; }
+
+        [JsonProperty("content")]
+        public ArtefactSection[] Content { get; set; }
+
+        [JsonProperty("taggedSections")]
+        public TaggedSectionWithContentViewModel[] TaggedSections { get; set; }
+
+        [JsonProperty("category")]
+        public CategoryModel Category { get; set; }
+
+        [JsonProperty("panvivaDocumentId")]
+        public string PanvivaDocumentId { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("primaryQuery")]
+        public string PrimaryQuery { get; set; }
+
+        [JsonProperty("queryVariations")]
+        public QueryVariationViewModel[] QueryVariations { get; set; }
+
+        [JsonProperty("metaData")]
+        public JToken MetaData { get; set; }
+
+        [JsonProperty("responseVariations")]
+        public ResponseVariationViewModel[] ResponseVariations { get; set; }
     }
 
     public class ArtefactSection
@@ -1146,10 +916,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string Hash { get; set; }
     }
 
+    public class CategoryModel
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+    }
+
     public class QueryVariationViewModel
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [JsonProperty("query")]
         public string Query { get; set; }
@@ -1158,7 +934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     public class ResponseVariationViewModel
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [JsonProperty("channels")]
         public ChannelViewModel[] Channels { get; set; }
@@ -1170,7 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     public class ChannelViewModel
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1563,6 +1339,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string CategoryName { get; set; }
     }
 
+    public class ResourcesArtefactCategoryBodyInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
     public class PostArtefactResponse
     {
         [JsonProperty("hasErrors")]
@@ -1575,13 +1357,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string ResponseId { get; set; }
     }
 
+    public class ResourcesCreateArtefactBodyInput
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("content")]
+        public ArtefactSection[] Content { get; set; }
+
+        [JsonProperty("variations")]
+        public ResponseVariationModel[] Variations { get; set; }
+
+        [JsonProperty("category")]
+        public CategoryModel Category { get; set; }
+
+        [JsonProperty("primaryQuery")]
+        public string PrimaryQuery { get; set; }
+
+        [JsonProperty("queryVariations")]
+        public QueryVariationModel[] QueryVariations { get; set; }
+
+        [JsonProperty("panvivaDocumentId")]
+        public int? PanvivaDocumentId { get; set; }
+
+        [JsonProperty("panvivaDocumentVersion")]
+        public int? PanvivaDocumentVersion { get; set; }
+
+        [JsonProperty("metaData")]
+        public JToken MetaData { get; set; }
+    }
+
     public class ResponseVariationModel
     {
         [JsonProperty("content")]
-        public ResponseSection[] Content { get; set; }
+        public ResourcesCreateArtefactResponseSection[] Content { get; set; }
 
         [JsonProperty("channels")]
-        public Channel[] Channels { get; set; }
+        public ResourcesCreateArtefactChannel[] Channels { get; set; }
+    }
+
+    public class ResourcesCreateArtefactResponseSection
+    {
+        [JsonProperty("mediaType")]
+        public string MediaType { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("resourceLocation")]
+        public string ResourceLocation { get; set; }
+    }
+
+    public class ResourcesCreateArtefactChannel
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class QueryVariationModel

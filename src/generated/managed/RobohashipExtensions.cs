@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
     public class RobohashipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robohaship")]
-        public IBodyWorkflowAction<ImageGetResponse, ApiConnectionActionConfiguration> ImageGet(Expression<Func<string>> text, Expression<Func<setInput>> set, Expression<Func<string>> size = null, Expression<Func<string>> bgset = null, Expression<Func<gravatarInput>> gravatar = null)
+        public IBodyWorkflowAction<ImageGetResponse, ApiConnectionActionConfiguration> ImageGet(Expression<Func<string>> text, Expression<Func<SetInput>> set, Expression<Func<string>> size = null, Expression<Func<string>> bgset = null, Expression<Func<GravatarInput>> gravatar = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
             var __workflow_set = WorkflowExpression.Compile(set, nameof(set), required: true);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum setInput
+    public enum SetInput
     {
         [EnumMember(Value = "any")]
         Any,
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum gravatarInput
+    public enum GravatarInput
     {
         [EnumMember(Value = "no")]
         No,

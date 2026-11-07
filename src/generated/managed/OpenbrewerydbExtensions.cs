@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<RefBrewery[], ApiConnectionActionConfiguration> ListBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byDist = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<RefBrewery[], ApiConnectionActionConfiguration> ListBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byDist = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<ByTypeInput>> byType = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_byCity = WorkflowExpression.Compile(byCity, nameof(byCity), required: false);
             var __workflow_byCountry = WorkflowExpression.Compile(byCountry, nameof(byCountry), required: false);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<CountBreweriesResponse, ApiConnectionActionConfiguration> CountBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null)
+        public IBodyWorkflowAction<CountBreweriesResponse, ApiConnectionActionConfiguration> CountBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<ByTypeInput>> byType = null)
         {
             var __workflow_byCity = WorkflowExpression.Compile(byCity, nameof(byCity), required: false);
             var __workflow_byCountry = WorkflowExpression.Compile(byCountry, nameof(byCountry), required: false);
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum byTypeInput
+    public enum ByTypeInput
     {
         [EnumMember(Value = "micro")]
         Micro,

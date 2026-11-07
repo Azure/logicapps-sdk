@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
     public class As2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<MicUpdateResponse[], ApiConnectionActionConfiguration> AddOrUpdateMicValues(Expression<Func<As2ReplicableMicContent[]>> micContent = null)
+        public IBodyWorkflowAction<MicUpdateResponse[], ApiConnectionActionConfiguration> AddOrUpdateMicValues(Expression<Func<AddOrUpdateMicValuesAs2ReplicableMicContent[]>> micContent)
         {
-            var __workflow_micContent = WorkflowExpression.Compile(micContent, nameof(micContent), required: false);
+            var __workflow_micContent = WorkflowExpression.Compile(micContent, nameof(micContent), required: true);
             return new DeferredBodyAction<MicUpdateResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/createOrUpdateMicValues";
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<As2DecodeResponse, ApiConnectionActionConfiguration> Decode(Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<As2DecodeResponse, ApiConnectionActionConfiguration> Decode(Expression<Func<string>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<As2DecodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/decode";
@@ -57,12 +57,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<As2EncodeResponse, ApiConnectionActionConfiguration> Encode(Expression<Func<string>> as2From, Expression<Func<string>> as2To, Expression<Func<string>> fileName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<As2EncodeResponse, ApiConnectionActionConfiguration> Encode(Expression<Func<string>> as2From, Expression<Func<string>> as2To, Expression<Func<string>> body, Expression<Func<string>> fileName = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_as2From = WorkflowExpression.Compile(as2From, nameof(as2From), required: true);
             var __workflow_as2To = WorkflowExpression.Compile(as2To, nameof(as2To), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<As2EncodeResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -83,17 +83,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
 
     public class As2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<As2ReplicableMicContent[], ApiConnectionTriggerConfiguration> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[], ApiConnectionPollingTriggerConfiguration> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null)
         {
             var __workflow_startSyncTime = WorkflowExpression.Compile(startSyncTime, nameof(startSyncTime), required: false);
-            return new DeferredBodyTrigger<As2ReplicableMicContent[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/triggers/onCreatedMicValues";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_startSyncTime != null)
                     callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(__workflow_startSyncTime);
-                return new ApiConnectionTrigger<As2ReplicableMicContent[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[]>(callPayload);
             });
         }
     }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         HttpVersionNotSupported
     }
 
-    public class As2ReplicableMicContent
+    public class AddOrUpdateMicValuesAs2ReplicableMicContent
     {
         public string AgreementName { get; set; }
         public string MicValue { get; set; }
@@ -340,6 +340,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         NotConfigured,
         Sync,
         Async
+    }
+
+    public class OnCreatedMicValuesAs2ReplicableMicContentResponse
+    {
+        public string AgreementName { get; set; }
+        public string MicValue { get; set; }
+        public string MicHashAlgorithm { get; set; }
+        public string MicChangedTime { get; set; }
+        public string MessageId { get; set; }
+        public string As2From { get; set; }
+        public string As2To { get; set; }
     }
 }
 

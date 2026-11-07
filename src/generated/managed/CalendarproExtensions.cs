@@ -41,86 +41,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarpro")]
-        public IBodyWorkflowAction<Event, ApiConnectionActionConfiguration> UpdateEvent(Expression<Func<string>> calendarId, Expression<Func<string>> eventId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<bodytimeZoneInput>> bodytimeZone, Expression<Func<string>> bodyaddressfullAddress, Expression<Func<double>> bodyaddresslat, Expression<Func<double>> bodyaddresslng, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycolor = null, Expression<Func<string>> bodyresourceId = null, Expression<Func<bodymodeRecurrenceInput>> bodymodeRecurrence = null, Expression<Func<string[]>> bodytags = null)
+        public IBodyWorkflowAction<Event, ApiConnectionActionConfiguration> UpdateEvent(Expression<Func<string>> calendarId, Expression<Func<string>> eventId, Expression<Func<BodyInput>> body)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
-            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: true);
-            var __workflow_bodyaddressfullAddress = WorkflowExpression.Compile(bodyaddressfullAddress, nameof(bodyaddressfullAddress), required: true);
-            var __workflow_bodyaddresslat = WorkflowExpression.Compile(bodyaddresslat, nameof(bodyaddresslat), required: true);
-            var __workflow_bodyaddresslng = WorkflowExpression.Compile(bodyaddresslng, nameof(bodyaddresslng), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: false);
-            var __workflow_bodyresourceId = WorkflowExpression.Compile(bodyresourceId, nameof(bodyresourceId), required: false);
-            var __workflow_bodymodeRecurrence = WorkflowExpression.Compile(bodymodeRecurrence, nameof(bodymodeRecurrence), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Event, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/events/{1}", __workflow_calendarId.WithUrlEncoding(1), __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                bodypropCount++;
-                body["endDate"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                if (__workflow_bodycolor != null)
-                {
-                    body["color"] = ExpressionConverter.ConvertO(__workflow_bodycolor);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresourceId != null)
-                {
-                    body["resourceId"] = ExpressionConverter.ConvertO(__workflow_bodyresourceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymodeRecurrence != null)
-                {
-                    body["modeRecurrence"] = ExpressionConverter.ConvertO(__workflow_bodymodeRecurrence);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
-                var addressObject = new JObject();
-                var addressObjectpropCount = 0;
-                addressObjectpropCount++;
-                addressObject["fullAddress"] = ExpressionConverter.ConvertO(__workflow_bodyaddressfullAddress);
-                addressObjectpropCount++;
-                addressObject["lat"] = ExpressionConverter.ConvertO(__workflow_bodyaddresslat);
-                addressObjectpropCount++;
-                addressObject["lng"] = ExpressionConverter.ConvertO(__workflow_bodyaddresslng);
-                if (addressObjectpropCount > 0)
-                {
-                    body["address"] = addressObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Event>(callPayload);
             });
         }
@@ -139,85 +70,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarpro")]
-        public IBodyWorkflowAction<Event, ApiConnectionActionConfiguration> CreateNewEvent(Expression<Func<string>> calendarId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<bodytimeZoneInput>> bodytimeZone, Expression<Func<string>> bodyaddressfullAddress, Expression<Func<double>> bodyaddresslat, Expression<Func<double>> bodyaddresslng, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycolor = null, Expression<Func<string>> bodyresourceId = null, Expression<Func<bodymodeRecurrenceInput>> bodymodeRecurrence = null, Expression<Func<string[]>> bodytags = null)
+        public IBodyWorkflowAction<Event, ApiConnectionActionConfiguration> CreateNewEvent(Expression<Func<string>> calendarId, Expression<Func<BodyInput>> body)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
-            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: true);
-            var __workflow_bodyaddressfullAddress = WorkflowExpression.Compile(bodyaddressfullAddress, nameof(bodyaddressfullAddress), required: true);
-            var __workflow_bodyaddresslat = WorkflowExpression.Compile(bodyaddresslat, nameof(bodyaddresslat), required: true);
-            var __workflow_bodyaddresslng = WorkflowExpression.Compile(bodyaddresslng, nameof(bodyaddresslng), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: false);
-            var __workflow_bodyresourceId = WorkflowExpression.Compile(bodyresourceId, nameof(bodyresourceId), required: false);
-            var __workflow_bodymodeRecurrence = WorkflowExpression.Compile(bodymodeRecurrence, nameof(bodymodeRecurrence), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Event, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                bodypropCount++;
-                body["endDate"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                if (__workflow_bodycolor != null)
-                {
-                    body["color"] = ExpressionConverter.ConvertO(__workflow_bodycolor);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresourceId != null)
-                {
-                    body["resourceId"] = ExpressionConverter.ConvertO(__workflow_bodyresourceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymodeRecurrence != null)
-                {
-                    body["modeRecurrence"] = ExpressionConverter.ConvertO(__workflow_bodymodeRecurrence);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
-                var addressObject = new JObject();
-                var addressObjectpropCount = 0;
-                addressObjectpropCount++;
-                addressObject["fullAddress"] = ExpressionConverter.ConvertO(__workflow_bodyaddressfullAddress);
-                addressObjectpropCount++;
-                addressObject["lat"] = ExpressionConverter.ConvertO(__workflow_bodyaddresslat);
-                addressObjectpropCount++;
-                addressObject["lng"] = ExpressionConverter.ConvertO(__workflow_bodyaddresslng);
-                if (addressObjectpropCount > 0)
-                {
-                    body["address"] = addressObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Event>(callPayload);
             });
         }
@@ -272,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         public EventTimeZoneType TimeZone { get; set; }
 
         [JsonProperty("address")]
-        public Address Address { get; set; }
+        public CreateNewEventAddressResponse Address { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -1116,7 +978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         WET
     }
 
-    public class Address
+    public class CreateNewEventAddressResponse
     {
         [JsonProperty("fullAddress")]
         public string FullAddress { get; set; }
@@ -1128,8 +990,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         public double Lng { get; set; }
     }
 
+    public class BodyInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartDate { get; set; }
+
+        [JsonProperty("endDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndDate { get; set; }
+
+        [JsonProperty("color")]
+        public string Color { get; set; }
+
+        [JsonProperty("resourceId")]
+        public string ResourceId { get; set; }
+
+        [JsonProperty("modeRecurrence")]
+        public BodyInputModeRecurrenceType? ModeRecurrence { get; set; }
+
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputTimeZoneType TimeZone { get; set; }
+
+        [JsonProperty("address")]
+        public CreateNewEventAddress Address { get; set; }
+
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytimeZoneInput
+    public enum BodyInputModeRecurrenceType
+    {
+        Workweek,
+        Daily,
+        Weekly,
+        Monthly,
+        Yearly
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum BodyInputTimeZoneType
     {
         [EnumMember(Value = "Africa/Abidjan")]
         AfricaAbidjan,
@@ -1894,14 +1799,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         WET
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymodeRecurrenceInput
+    public class CreateNewEventAddress
     {
-        Workweek,
-        Daily,
-        Weekly,
-        Monthly,
-        Yearly
+        [JsonProperty("fullAddress", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FullAddress { get; set; }
+
+        [JsonProperty("lat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Lat { get; set; }
+
+        [JsonProperty("lng", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Lng { get; set; }
     }
 }
 

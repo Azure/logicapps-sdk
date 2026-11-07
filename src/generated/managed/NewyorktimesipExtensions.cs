@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<TopStoriesResponse, ApiConnectionActionConfiguration> TopStories(Expression<Func<sectionInput>> section)
+        public IBodyWorkflowAction<TopStoriesResponse, ApiConnectionActionConfiguration> TopStories(Expression<Func<SectionInput>> section)
         {
             var __workflow_section = WorkflowExpression.Compile(section, nameof(section), required: true);
             return new DeferredBodyAction<TopStoriesResponse, ApiConnectionActionConfiguration>(() =>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<MostViewedResponse, ApiConnectionActionConfiguration> MostViewed(Expression<Func<periodInput>> period)
+        public IBodyWorkflowAction<MostViewedResponse, ApiConnectionActionConfiguration> MostViewed(Expression<Func<PeriodInput>> period)
         {
             var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
             return new DeferredBodyAction<MostViewedResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sectionInput
+    public enum SectionInput
     {
         [EnumMember(Value = "arts")]
         Arts,
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         public string Format { get; set; }
     }
 
-    public enum periodInput
+    public enum PeriodInput
     {
         _1 = 1,
         _7 = 7,

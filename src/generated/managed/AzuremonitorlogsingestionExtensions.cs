@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogsingestion
     public class AzuremonitorlogsingestionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogsingestion")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendData(Expression<Func<string>> dcrImmutableId, Expression<Func<string>> streamName, Expression<Func<JToken[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendData(Expression<Func<string>> dcrImmutableId, Expression<Func<string>> streamName, Expression<Func<JToken[]>> body)
         {
             var __workflow_dcrImmutableId = WorkflowExpression.Compile(dcrImmutableId, nameof(dcrImmutableId), required: true);
             var __workflow_streamName = WorkflowExpression.Compile(streamName, nameof(streamName), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dataCollectionRules/{0}/streams/{1}", __workflow_dcrImmutableId.WithUrlEncoding(1), __workflow_streamName.WithUrlEncoding(1)));

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
     public class BkkfutaripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
-        public IBodyWorkflowAction<SearchAlertsResponse, ApiConnectionActionConfiguration> SearchAlerts(Expression<Func<string>> query = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null, Expression<Func<int>> minResult = null, Expression<Func<includeReferencesInput>> includeReferences = null)
+        public IBodyWorkflowAction<SearchAlertsResponse, ApiConnectionActionConfiguration> SearchAlerts(Expression<Func<string>> query = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null, Expression<Func<int>> minResult = null, Expression<Func<IncludeReferencesInput>> includeReferences = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
-        public IBodyWorkflowAction<GetArrivalsAndDeparturesForStopResponse, ApiConnectionActionConfiguration> GetArrivalsAndDeparturesForStop(Expression<Func<string>> stopId, Expression<Func<int>> minutesBefore = null, Expression<Func<string>> minutesAfter = null, Expression<Func<string>> includeRouteId = null, Expression<Func<int>> time = null, Expression<Func<bool>> onlyDepartures = null, Expression<Func<int>> limit = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<int>> radius = null, Expression<Func<string>> query = null, Expression<Func<int>> minResult = null, Expression<Func<includeReferencesInput>> includeReferences = null)
+        public IBodyWorkflowAction<GetArrivalsAndDeparturesForStopResponse, ApiConnectionActionConfiguration> GetArrivalsAndDeparturesForStop(Expression<Func<string>> stopId, Expression<Func<int>> minutesBefore = null, Expression<Func<string>> minutesAfter = null, Expression<Func<string>> includeRouteId = null, Expression<Func<int>> time = null, Expression<Func<bool>> onlyDepartures = null, Expression<Func<int>> limit = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<int>> radius = null, Expression<Func<string>> query = null, Expression<Func<int>> minResult = null, Expression<Func<IncludeReferencesInput>> includeReferences = null)
         {
             var __workflow_stopId = WorkflowExpression.Compile(stopId, nameof(stopId), required: true);
             var __workflow_minutesBefore = WorkflowExpression.Compile(minutesBefore, nameof(minutesBefore), required: false);
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
-        public IBodyWorkflowAction<GetBicycleRentalStationsResponse, ApiConnectionActionConfiguration> GetBicycleRentalStations(Expression<Func<includeReferencesInput>> includeReferences = null)
+        public IBodyWorkflowAction<GetBicycleRentalStationsResponse, ApiConnectionActionConfiguration> GetBicycleRentalStations(Expression<Func<IncludeReferencesInput>> includeReferences = null)
         {
             var __workflow_includeReferences = WorkflowExpression.Compile(includeReferences, nameof(includeReferences), required: false);
             return new DeferredBodyAction<GetBicycleRentalStationsResponse, ApiConnectionActionConfiguration>(() =>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
-        public IBodyWorkflowAction<GetScheduleForStopResponse, ApiConnectionActionConfiguration> GetScheduleForStop(Expression<Func<string>> stopId, Expression<Func<string>> date = null, Expression<Func<bool>> onlyDepartures = null, Expression<Func<includeReferencesInput>> includeReferences = null)
+        public IBodyWorkflowAction<GetScheduleForStopResponse, ApiConnectionActionConfiguration> GetScheduleForStop(Expression<Func<string>> stopId, Expression<Func<string>> date = null, Expression<Func<bool>> onlyDepartures = null, Expression<Func<IncludeReferencesInput>> includeReferences = null)
         {
             var __workflow_stopId = WorkflowExpression.Compile(stopId, nameof(stopId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
-        public IBodyWorkflowAction<GetStopsForLocationResponse, ApiConnectionActionConfiguration> GetStopsForLocation(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> latSpan = null, Expression<Func<double>> lonSpan = null, Expression<Func<int>> radius = null, Expression<Func<int>> minResult = null, Expression<Func<includeReferencesInput>> includeReferences = null)
+        public IBodyWorkflowAction<GetStopsForLocationResponse, ApiConnectionActionConfiguration> GetStopsForLocation(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> latSpan = null, Expression<Func<double>> lonSpan = null, Expression<Func<int>> radius = null, Expression<Func<int>> minResult = null, Expression<Func<IncludeReferencesInput>> includeReferences = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
-        public IBodyWorkflowAction<GetVehiclesForStopResponse, ApiConnectionActionConfiguration> GetVehiclesForStop(Expression<Func<string>> stopId, Expression<Func<int>> ifModifiedSince = null, Expression<Func<includeReferencesInput>> includeReferences = null)
+        public IBodyWorkflowAction<GetVehiclesForStopResponse, ApiConnectionActionConfiguration> GetVehiclesForStop(Expression<Func<string>> stopId, Expression<Func<int>> ifModifiedSince = null, Expression<Func<IncludeReferencesInput>> includeReferences = null)
         {
             var __workflow_stopId = WorkflowExpression.Compile(stopId, nameof(stopId), required: true);
             var __workflow_ifModifiedSince = WorkflowExpression.Compile(ifModifiedSince, nameof(ifModifiedSince), required: false);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bkkfutarip")]
-        public IBodyWorkflowAction<GetReferencesResponse, ApiConnectionActionConfiguration> GetReferences(Expression<Func<string>> agencyId = null, Expression<Func<string>> alertId = null, Expression<Func<string>> routeId = null, Expression<Func<string>> stopId = null, Expression<Func<includeReferencesInput>> includeReferences = null)
+        public IBodyWorkflowAction<GetReferencesResponse, ApiConnectionActionConfiguration> GetReferences(Expression<Func<string>> agencyId = null, Expression<Func<string>> alertId = null, Expression<Func<string>> routeId = null, Expression<Func<string>> stopId = null, Expression<Func<IncludeReferencesInput>> includeReferences = null)
         {
             var __workflow_agencyId = WorkflowExpression.Compile(agencyId, nameof(agencyId), required: false);
             var __workflow_alertId = WorkflowExpression.Compile(alertId, nameof(alertId), required: false);
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeReferencesInput
+    public enum IncludeReferencesInput
     {
         [EnumMember(Value = "true")]
         True,

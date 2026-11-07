@@ -16,42 +16,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 
     public class FeatheryformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<FormCompletionResponse, ApiConnectionTriggerConfiguration> FormCompletion(Expression<Func<string>> formKey, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormCompletionResponse, ApiConnectionPollingTriggerConfiguration> FormCompletion(Expression<Func<string>> formKey)
         {
             var __workflow_formKey = WorkflowExpression.Compile(formKey, nameof(formKey), required: true);
-            return new DeferredBodyTrigger<FormCompletionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FormCompletionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/power-automate/poll/form_completion/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["form_key"] = ExpressionConverter.Convert(__workflow_formKey);
-                return new ApiConnectionTrigger<FormCompletionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<FormCompletionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<DataReceivedResponse, ApiConnectionTriggerConfiguration> DataReceived(Expression<Func<string>> formKey, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DataReceivedResponse, ApiConnectionPollingTriggerConfiguration> DataReceived(Expression<Func<string>> formKey)
         {
             var __workflow_formKey = WorkflowExpression.Compile(formKey, nameof(formKey), required: true);
-            return new DeferredBodyTrigger<DataReceivedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<DataReceivedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/power-automate/poll/data_received/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["form_key"] = ExpressionConverter.Convert(__workflow_formKey);
-                return new ApiConnectionTrigger<DataReceivedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<DataReceivedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewFileResponse, ApiConnectionTriggerConfiguration> NewFile(Expression<Func<string>> formKey, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewFileResponse, ApiConnectionPollingTriggerConfiguration> NewFile(Expression<Func<string>> formKey)
         {
             var __workflow_formKey = WorkflowExpression.Compile(formKey, nameof(formKey), required: true);
-            return new DeferredBodyTrigger<NewFileResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewFileResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/power-automate/poll/file/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["form_key"] = ExpressionConverter.Convert(__workflow_formKey);
-                return new ApiConnectionTrigger<NewFileResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewFileResponse>(callPayload);
             });
         }
     }

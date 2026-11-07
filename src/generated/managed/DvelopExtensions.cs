@@ -16,36 +16,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
 
     public class DvelopTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<bodyconditionInputItem[]>> bodycondition = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<BodyInput>> body)
         {
             var __workflow_triggerId = WorkflowExpression.Compile(triggerId, nameof(triggerId), required: true);
-            var __workflow_bodycondition = WorkflowExpression.Compile(bodycondition, nameof(bodycondition), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/triggers/{0}/subscribe", __workflow_triggerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callback_url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodycondition != null)
-                {
-                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodycondition);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
 
-    public class bodyconditionInputItem
+    public class BodyInput
+    {
+        [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrlForTheTrigger { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("conditions")]
+        public BodyInputConditionTypeItem[] Condition { get; set; }
+    }
+
+    public class BodyInputConditionTypeItem
     {
         [JsonProperty("conditionType")]
         public string Type { get; set; }

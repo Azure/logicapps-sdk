@@ -13,196 +13,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
     public class TldripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ArticleHumanPostResponse, ApiConnectionActionConfiguration> ArticleHuman(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null, Expression<Func<bool>> bodyisDetailed = null)
+        public IBodyWorkflowAction<ArticleHumanResponse, ApiConnectionActionConfiguration> ArticleHuman(Expression<Func<ArticleHumanBodyInput>> body = null)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyminLength = WorkflowExpression.Compile(bodyminLength, nameof(bodyminLength), required: false);
-            var __workflow_bodymaxLength = WorkflowExpression.Compile(bodymaxLength, nameof(bodymaxLength), required: false);
-            var __workflow_bodyisDetailed = WorkflowExpression.Compile(bodyisDetailed, nameof(bodyisDetailed), required: false);
-            return new DeferredBodyAction<ArticleHumanPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ArticleHumanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/abstractive/summarize-url/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                if (__workflow_bodyminLength != null)
-                {
-                    if (__workflow_bodyminLength != null)
-                    {
-                        body["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyminLength);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["min_length"] = 100;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaxLength != null)
-                {
-                    if (__workflow_bodymaxLength != null)
-                    {
-                        body["max_length"] = ExpressionConverter.ConvertO(__workflow_bodymaxLength);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["max_length"] = 300;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisDetailed != null)
-                {
-                    body["is_detailed"] = ExpressionConverter.ConvertO(__workflow_bodyisDetailed);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ArticleHumanPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ArticleHumanResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ExtractArticlePostResponse, ApiConnectionActionConfiguration> ExtractArticle(Expression<Func<string>> bodyurl, Expression<Func<int>> bodynumSentences = null, Expression<Func<bool>> bodyisDetailed = null)
+        public IBodyWorkflowAction<ExtractArticleResponse, ApiConnectionActionConfiguration> ExtractArticle(Expression<Func<ExtractArticleBodyInput>> body = null)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodynumSentences = WorkflowExpression.Compile(bodynumSentences, nameof(bodynumSentences), required: false);
-            var __workflow_bodyisDetailed = WorkflowExpression.Compile(bodyisDetailed, nameof(bodyisDetailed), required: false);
-            return new DeferredBodyAction<ExtractArticlePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ExtractArticleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/extractive/summarize-url/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                if (__workflow_bodynumSentences != null)
-                {
-                    body["num_sentences"] = ExpressionConverter.ConvertO(__workflow_bodynumSentences);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisDetailed != null)
-                {
-                    if (__workflow_bodyisDetailed != null)
-                    {
-                        body["is_detailed"] = ExpressionConverter.ConvertO(__workflow_bodyisDetailed);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["is_detailed"] = true;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ExtractArticlePostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ExtractArticleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<TextHumanPostResponse, ApiConnectionActionConfiguration> TextHuman(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null)
+        public IBodyWorkflowAction<TextHumanResponse, ApiConnectionActionConfiguration> TextHuman(Expression<Func<TextHumanBodyInput>> body = null)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyminLength = WorkflowExpression.Compile(bodyminLength, nameof(bodyminLength), required: false);
-            var __workflow_bodymaxLength = WorkflowExpression.Compile(bodymaxLength, nameof(bodymaxLength), required: false);
-            return new DeferredBodyAction<TextHumanPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<TextHumanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/abstractive/summarize-text/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (__workflow_bodyminLength != null)
-                {
-                    if (__workflow_bodyminLength != null)
-                    {
-                        body["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyminLength);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["min_length"] = 100;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaxLength != null)
-                {
-                    if (__workflow_bodymaxLength != null)
-                    {
-                        body["max_length"] = ExpressionConverter.ConvertO(__workflow_bodymaxLength);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["max_length"] = 300;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<TextHumanPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<TextHumanResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ExtractTextPostResponse, ApiConnectionActionConfiguration> ExtractText(Expression<Func<string>> bodytext, Expression<Func<int>> bodynumSentences = null)
+        public IBodyWorkflowAction<ExtractTextResponse, ApiConnectionActionConfiguration> ExtractText(Expression<Func<ExtractTextBodyInput>> body = null)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodynumSentences = WorkflowExpression.Compile(bodynumSentences, nameof(bodynumSentences), required: false);
-            return new DeferredBodyAction<ExtractTextPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ExtractTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/extractive/summarize-text/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (__workflow_bodynumSentences != null)
-                {
-                    body["num_sentences"] = ExpressionConverter.ConvertO(__workflow_bodynumSentences);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ExtractTextPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ExtractTextResponse>(callPayload);
             });
         }
     }
@@ -211,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
     {
     }
 
-    public class ArticleHumanPostResponse
+    public class ArticleHumanResponse
     {
         [JsonProperty("summary")]
         public string[] Summary { get; set; }
@@ -241,7 +107,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         public string ArticleAbstract { get; set; }
     }
 
-    public class ExtractArticlePostResponse
+    public class ArticleHumanBodyInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+
+        [JsonProperty("min_length", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MinLength { get; set; } = 100;
+
+        [JsonProperty("max_length", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaxLength { get; set; } = 300;
+
+        [JsonProperty("is_detailed")]
+        public bool? IsDetailed { get; set; }
+    }
+
+    public class ExtractArticleResponse
     {
         [JsonProperty("summary")]
         public string[] Summary { get; set; }
@@ -271,16 +152,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         public string ArticleAbstract { get; set; }
     }
 
-    public class TextHumanPostResponse
+    public class ExtractArticleBodyInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+
+        [JsonProperty("num_sentences")]
+        public int? NumSentences { get; set; }
+
+        [JsonProperty("is_detailed", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsDetailed { get; set; } = true;
+    }
+
+    public class TextHumanResponse
     {
         [JsonProperty("summary")]
         public string Summary { get; set; }
     }
 
-    public class ExtractTextPostResponse
+    public class TextHumanBodyInput
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("min_length", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MinLength { get; set; } = 100;
+
+        [JsonProperty("max_length", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaxLength { get; set; } = 300;
+    }
+
+    public class ExtractTextResponse
     {
         [JsonProperty("summary")]
         public string[] Summary { get; set; }
+    }
+
+    public class ExtractTextBodyInput
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("num_sentences")]
+        public int? NumSentences { get; set; }
     }
 }
 

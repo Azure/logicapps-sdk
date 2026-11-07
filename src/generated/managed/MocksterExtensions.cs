@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetAnimalsResponseItem[], ApiConnectionActionConfiguration> GetAnimals(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetAnimalsResponseItem[], ApiConnectionActionConfiguration> GetAnimals(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetColorsResponseItem[], ApiConnectionActionConfiguration> GetColors(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetColorsResponseItem[], ApiConnectionActionConfiguration> GetColors(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetCompaniesResponseItem[], ApiConnectionActionConfiguration> GetCompanies(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetCompaniesResponseItem[], ApiConnectionActionConfiguration> GetCompanies(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetDatesResponseItem[], ApiConnectionActionConfiguration> GetDates(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetDatesResponseItem[], ApiConnectionActionConfiguration> GetDates(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetFinancesResponseItem[], ApiConnectionActionConfiguration> GetFinances(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetFinancesResponseItem[], ApiConnectionActionConfiguration> GetFinances(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetGitsResponseItem[], ApiConnectionActionConfiguration> GetGits(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetGitsResponseItem[], ApiConnectionActionConfiguration> GetGits(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetHackersResponseItem[], ApiConnectionActionConfiguration> GetHackers(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetHackersResponseItem[], ApiConnectionActionConfiguration> GetHackers(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetRandomImagesResponseItem[], ApiConnectionActionConfiguration> GetRandomImages(Expression<Func<int>> count = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<categoryInput>> category = null)
+        public IBodyWorkflowAction<GetRandomImagesResponseItem[], ApiConnectionActionConfiguration> GetRandomImages(Expression<Func<int>> count = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<CategoryInput>> category = null)
         {
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: false);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetLocationsResponseItem[], ApiConnectionActionConfiguration> GetLocations(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetLocationsResponseItem[], ApiConnectionActionConfiguration> GetLocations(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetMusicsResponseItem[], ApiConnectionActionConfiguration> GetMusics(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetMusicsResponseItem[], ApiConnectionActionConfiguration> GetMusics(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetPeopleResponseItem[], ApiConnectionActionConfiguration> GetPeople(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetPeopleResponseItem[], ApiConnectionActionConfiguration> GetPeople(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetPhonesResponseItem[], ApiConnectionActionConfiguration> GetPhones(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetPhonesResponseItem[], ApiConnectionActionConfiguration> GetPhones(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetProductsResponseItem[], ApiConnectionActionConfiguration> GetProducts(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetProductsResponseItem[], ApiConnectionActionConfiguration> GetProducts(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetVehiclesResponseItem[], ApiConnectionActionConfiguration> GetVehicles(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetVehiclesResponseItem[], ApiConnectionActionConfiguration> GetVehicles(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetWordsResponseItem[], ApiConnectionActionConfiguration> GetWords(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetWordsResponseItem[], ApiConnectionActionConfiguration> GetWords(Expression<Func<AvailableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
             var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum availableLocalesInput
+    public enum AvailableLocalesInput
     {
         [EnumMember(Value = "af_ZA")]
         AfrikaansSouthAfrica,
@@ -963,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum categoryInput
+    public enum CategoryInput
     {
         [EnumMember(Value = "abstract")]
         Abstract,

@@ -13,105 +13,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     public class KagiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<SummarizePostResponse, ApiConnectionActionConfiguration> Summarize(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodytext = null, Expression<Func<bodyengineInput>> bodyengine = null, Expression<Func<bodysummaryTypeInput>> bodysummaryType = null, Expression<Func<bodytargetLanguageInput>> bodytargetLanguage = null, Expression<Func<bool>> bodycache = null)
+        public IBodyWorkflowAction<SummarizeResponse, ApiConnectionActionConfiguration> Summarize(Expression<Func<SummarizeBodyInput>> body = null)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyengine = WorkflowExpression.Compile(bodyengine, nameof(bodyengine), required: false);
-            var __workflow_bodysummaryType = WorkflowExpression.Compile(bodysummaryType, nameof(bodysummaryType), required: false);
-            var __workflow_bodytargetLanguage = WorkflowExpression.Compile(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
-            var __workflow_bodycache = WorkflowExpression.Compile(bodycache, nameof(bodycache), required: false);
-            return new DeferredBodyAction<SummarizePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<SummarizeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/summarize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyengine != null)
-                {
-                    if (__workflow_bodyengine != null)
-                    {
-                        body["engine"] = ExpressionConverter.ConvertO(__workflow_bodyengine);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["engine"] = "cecil";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysummaryType != null)
-                {
-                    if (__workflow_bodysummaryType != null)
-                    {
-                        body["summary_type"] = ExpressionConverter.ConvertO(__workflow_bodysummaryType);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["summary_type"] = "summary";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytargetLanguage != null)
-                {
-                    body["target_language"] = ExpressionConverter.ConvertO(__workflow_bodytargetLanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycache != null)
-                {
-                    body["cache"] = ExpressionConverter.ConvertO(__workflow_bodycache);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<SummarizePostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<SummarizeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<FastGPTPostResponse, ApiConnectionActionConfiguration> FastGPT(Expression<Func<string>> bodyquery)
+        public IBodyWorkflowAction<FastGPTResponse, ApiConnectionActionConfiguration> FastGPT(Expression<Func<FastGPTBodyInput>> body = null)
         {
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            return new DeferredBodyAction<FastGPTPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<FastGPTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/fastgpt";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<FastGPTPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<FastGPTResponse>(callPayload);
             });
         }
 
@@ -180,19 +107,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     {
     }
 
-    public class SummarizePostResponse
+    public class SummarizeResponse
     {
         [JsonProperty("meta")]
-        public SummarizePostResponseMetaType Meta { get; set; }
+        public SummarizeResponseMetaType Meta { get; set; }
 
         [JsonProperty("data")]
-        public SummarizePostResponseDataTypeItem[] Data { get; set; }
+        public SummarizeResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("error")]
-        public SummarizePostResponseErrorTypeItem[] Error { get; set; }
+        public SummarizeResponseErrorTypeItem[] Error { get; set; }
     }
 
-    public class SummarizePostResponseMetaType
+    public class SummarizeResponseMetaType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -207,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public double ApiBalance { get; set; }
     }
 
-    public class SummarizePostResponseDataTypeItem
+    public class SummarizeResponseDataTypeItem
     {
         [JsonProperty("t")]
         public int T { get; set; }
@@ -222,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public string Snippet { get; set; }
     }
 
-    public class SummarizePostResponseErrorTypeItem
+    public class SummarizeResponseErrorTypeItem
     {
         [JsonProperty("code")]
         public int Code { get; set; }
@@ -234,8 +161,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public string Ref { get; set; }
     }
 
+    public class SummarizeBodyInput
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("engine", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputEngineType? Engine { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Kagi.BodyInputEngineType.Cecil;
+
+        [JsonProperty("summary_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputSummaryTypeType? SummaryType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Kagi.BodyInputSummaryTypeType.Summary;
+
+        [JsonProperty("target_language")]
+        public BodyInputTargetLanguageType? TargetLanguage { get; set; }
+
+        [JsonProperty("cache")]
+        public bool? Cache { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyengineInput
+    public enum BodyInputEngineType
     {
         [EnumMember(Value = "cecil")]
         Cecil,
@@ -248,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysummaryTypeInput
+    public enum BodyInputSummaryTypeType
     {
         [EnumMember(Value = "summary")]
         Summary,
@@ -257,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytargetLanguageInput
+    public enum BodyInputTargetLanguageType
     {
         BG,
         CS,
@@ -293,16 +241,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         ZHHANT
     }
 
-    public class FastGPTPostResponse
+    public class FastGPTResponse
     {
         [JsonProperty("meta")]
-        public FastGPTPostResponseMetaType Meta { get; set; }
+        public FastGPTResponseMetaType Meta { get; set; }
 
         [JsonProperty("data")]
-        public FastGPTPostResponseDataType Data { get; set; }
+        public FastGPTResponseDataType Data { get; set; }
     }
 
-    public class FastGPTPostResponseMetaType
+    public class FastGPTResponseMetaType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -314,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public int Ms { get; set; }
     }
 
-    public class FastGPTPostResponseDataType
+    public class FastGPTResponseDataType
     {
         [JsonProperty("output")]
         public string Output { get; set; }
@@ -323,10 +271,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public int Tokens { get; set; }
 
         [JsonProperty("references")]
-        public FastGPTPostResponseDataTypeReferencesTypeItem[] References { get; set; }
+        public FastGPTResponseDataTypeReferencesTypeItem[] References { get; set; }
     }
 
-    public class FastGPTPostResponseDataTypeReferencesTypeItem
+    public class FastGPTResponseDataTypeReferencesTypeItem
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -336,6 +284,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
 
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class FastGPTBodyInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Query { get; set; }
     }
 
     public class SearchGetResponse

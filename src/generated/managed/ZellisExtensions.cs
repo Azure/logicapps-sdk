@@ -13,34 +13,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
     public class ZellisActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ValidateNotification(Expression<Func<string>> xZipSignature, Expression<Func<string>> bodypayload)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ValidateNotification(Expression<Func<string>> xZipSignature, Expression<Func<ValidateNotificationBodyInput>> body)
         {
             var __workflow_xZipSignature = WorkflowExpression.Compile(xZipSignature, nameof(xZipSignature), required: true);
-            var __workflow_bodypayload = WorkflowExpression.Compile(bodypayload, nameof(bodypayload), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ValidateNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Zip-Signature"] = ExpressionConverter.Convert(__workflow_xZipSignature);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["payload"] = ExpressionConverter.ConvertO(__workflow_bodypayload);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IBodyWorkflowAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration> AmendObject(Expression<Func<entityInput>> entity, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration> AmendObject(Expression<Func<AmendObjectEntityInput>> entity, Expression<Func<object>> body)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_entity.WithUrlEncoding(1)));
@@ -83,10 +75,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IBodyWorkflowAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration> UpdateObject(Expression<Func<entityInput>> entity, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration> UpdateObject(Expression<Func<UpdateObjectEntityInput>> entity, Expression<Func<object>> body)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_entity.WithUrlEncoding(1)));
@@ -100,90 +92,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 
     public class ZellisTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CRUDEntitiy(Expression<Func<string>> bodyEvent, Expression<Func<bool>> bodyisEnabled, Expression<Func<bool>> bodyeventTypecreate = null, Expression<Func<bool>> bodyeventTypedelete = null, Expression<Func<bool>> bodyeventTypeupdate = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CRUDEntitiy(Expression<Func<CRUDEntitiyBodyInput>> body)
         {
-            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
-            var __workflow_bodyisEnabled = WorkflowExpression.Compile(bodyisEnabled, nameof(bodyisEnabled), required: true);
-            var __workflow_bodyeventTypecreate = WorkflowExpression.Compile(bodyeventTypecreate, nameof(bodyeventTypecreate), required: false);
-            var __workflow_bodyeventTypedelete = WorkflowExpression.Compile(bodyeventTypedelete, nameof(bodyeventTypedelete), required: false);
-            var __workflow_bodyeventTypeupdate = WorkflowExpression.Compile(bodyeventTypeupdate, nameof(bodyeventTypeupdate), required: false);
-            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/subscription";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Event"] = ExpressionConverter.ConvertO(__workflow_bodyEvent);
-                var eventTypeObject = new JObject();
-                var eventTypeObjectpropCount = 0;
-                if (__workflow_bodyeventTypecreate != null)
-                {
-                    if (__workflow_bodyeventTypecreate != null)
-                    {
-                        eventTypeObject["Create"] = ExpressionConverter.ConvertO(__workflow_bodyeventTypecreate);
-                        eventTypeObjectpropCount++;
-                    }
-
-                    eventTypeObjectpropCount++;
-                }
-                else
-                {
-                    eventTypeObject["Create"] = true;
-                    eventTypeObjectpropCount++;
-                }
-
-                if (__workflow_bodyeventTypedelete != null)
-                {
-                    if (__workflow_bodyeventTypedelete != null)
-                    {
-                        eventTypeObject["Delete"] = ExpressionConverter.ConvertO(__workflow_bodyeventTypedelete);
-                        eventTypeObjectpropCount++;
-                    }
-
-                    eventTypeObjectpropCount++;
-                }
-                else
-                {
-                    eventTypeObject["Delete"] = false;
-                    eventTypeObjectpropCount++;
-                }
-
-                if (__workflow_bodyeventTypeupdate != null)
-                {
-                    if (__workflow_bodyeventTypeupdate != null)
-                    {
-                        eventTypeObject["Update"] = ExpressionConverter.ConvertO(__workflow_bodyeventTypeupdate);
-                        eventTypeObjectpropCount++;
-                    }
-
-                    eventTypeObjectpropCount++;
-                }
-                else
-                {
-                    eventTypeObject["Update"] = true;
-                    eventTypeObjectpropCount++;
-                }
-
-                if (eventTypeObjectpropCount > 0)
-                {
-                    body["EventType"] = eventTypeObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["IsEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyisEnabled);
-                body["URL"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<JToken>(callPayload);
             });
         }
+    }
+
+    public class ValidateNotificationBodyInput
+    {
+        [JsonProperty("payload", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Payload { get; set; }
     }
 
     public class StaticResponseWriteSchema
@@ -241,7 +167,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum entityInput
+    public enum AmendObjectEntityInput
+    {
+        AbsenceHeaders,
+        CostCentres,
+        Grades,
+        Jobs,
+        Locations,
+        OperatorBackgroundMessage,
+        Posts,
+        StructureUnit,
+        WorkerAttainments,
+        WorkerDrivingLicences,
+        WorkPatterns,
+        Workers,
+        WorkerPRSIDetails,
+        WorkerPensionSchemes,
+        WorkerPosts,
+        WorkerRelationships,
+        WorkerUSCDetails
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateObjectEntityInput
     {
         AbsenceDailyDetails,
         AbsenceHeaders,
@@ -273,6 +221,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         WorkerRelationships,
         WorkerTaxCodeHistories,
         WorkerUSCDetails
+    }
+
+    public class CRUDEntitiyBodyInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Event { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputEventTypeType EventType { get; set; } = new BodyInputEventTypeType();
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsEnabled { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string URL { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class BodyInputEventTypeType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Create { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Delete { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Update { get; set; } = true;
     }
 }
 

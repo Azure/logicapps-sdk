@@ -13,78 +13,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
     public class Office365usersActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMyProfile(Expression<Func<string>> bodyaboutMe = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string[]>> bodyinterests = null, Expression<Func<string>> bodymySite = null, Expression<Func<string[]>> bodypastProjects = null, Expression<Func<string[]>> bodyschools = null, Expression<Func<string[]>> bodyskills = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMyProfile(Expression<Func<BodyInput>> body = null)
         {
-            var __workflow_bodyaboutMe = WorkflowExpression.Compile(bodyaboutMe, nameof(bodyaboutMe), required: false);
-            var __workflow_bodybirthday = WorkflowExpression.Compile(bodybirthday, nameof(bodybirthday), required: false);
-            var __workflow_bodyinterests = WorkflowExpression.Compile(bodyinterests, nameof(bodyinterests), required: false);
-            var __workflow_bodymySite = WorkflowExpression.Compile(bodymySite, nameof(bodymySite), required: false);
-            var __workflow_bodypastProjects = WorkflowExpression.Compile(bodypastProjects, nameof(bodypastProjects), required: false);
-            var __workflow_bodyschools = WorkflowExpression.Compile(bodyschools, nameof(bodyschools), required: false);
-            var __workflow_bodyskills = WorkflowExpression.Compile(bodyskills, nameof(bodyskills), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/v1.0/me";
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyaboutMe != null)
-                {
-                    body["aboutMe"] = ExpressionConverter.ConvertO(__workflow_bodyaboutMe);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybirthday != null)
-                {
-                    body["birthday"] = ExpressionConverter.ConvertO(__workflow_bodybirthday);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinterests != null)
-                {
-                    body["interests"] = ExpressionConverter.ConvertO(__workflow_bodyinterests);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymySite != null)
-                {
-                    body["mySite"] = ExpressionConverter.ConvertO(__workflow_bodymySite);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypastProjects != null)
-                {
-                    body["pastProjects"] = ExpressionConverter.ConvertO(__workflow_bodypastProjects);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyschools != null)
-                {
-                    body["schools"] = ExpressionConverter.ConvertO(__workflow_bodyschools);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyskills != null)
-                {
-                    body["skills"] = ExpressionConverter.ConvertO(__workflow_bodyskills);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMyPhoto(Expression<Func<string>> contentType, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMyPhoto(Expression<Func<string>> body, Expression<Func<string>> contentType)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/v1.0/me/photo/$value";
@@ -167,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<MethodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
             var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -198,18 +145,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
                     callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
                 if (__workflow_customHeader5 != null)
                     callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IBodyWorkflowAction<DirectReportsV2Response, ApiConnectionActionConfiguration> DirectReports(Expression<Func<string>> id, Expression<Func<string>> select = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<DirectReportsResponse, ApiConnectionActionConfiguration> DirectReports(Expression<Func<string>> id, Expression<Func<string>> select = null, Expression<Func<int>> top = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<DirectReportsV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DirectReportsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/users/{0}/directReports", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -218,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
-                return new ApiConnectionAction<DirectReportsV2Response>(callPayload);
+                return new ApiConnectionAction<DirectReportsResponse>(callPayload);
             });
         }
 
@@ -307,6 +255,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
 
     public class Office365usersTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("aboutMe")]
+        public string AboutMe { get; set; }
+
+        [JsonProperty("birthday")]
+        public string Birthday { get; set; }
+
+        [JsonProperty("interests")]
+        public string[] Interests { get; set; }
+
+        [JsonProperty("mySite")]
+        public string MySite { get; set; }
+
+        [JsonProperty("pastProjects")]
+        public string[] PastProjects { get; set; }
+
+        [JsonProperty("schools")]
+        public string[] Schools { get; set; }
+
+        [JsonProperty("skills")]
+        public string[] Skills { get; set; }
     }
 
     public class MyTrendingDocumentsResponse
@@ -481,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         POST,
@@ -490,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         DELETE
     }
 
-    public class DirectReportsV2Response
+    public class DirectReportsResponse
     {
         [JsonProperty("value")]
         public GraphUserV1[] Value { get; set; }

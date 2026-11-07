@@ -39,50 +39,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> CreateComment(Expression<Func<string>> spaceId, Expression<Func<string>> nodeId, Expression<Func<string>> bodyannotationPayload = null, Expression<Func<string>> bodyannotationType = null, Expression<Func<string>> bodycommentContent = null, Expression<Func<bool>> bodyisResolved = null)
+        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> CreateComment(Expression<Func<string>> spaceId, Expression<Func<string>> nodeId, Expression<Func<CreateCommentBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
-            var __workflow_bodyannotationPayload = WorkflowExpression.Compile(bodyannotationPayload, nameof(bodyannotationPayload), required: false);
-            var __workflow_bodyannotationType = WorkflowExpression.Compile(bodyannotationType, nameof(bodyannotationType), required: false);
-            var __workflow_bodycommentContent = WorkflowExpression.Compile(bodycommentContent, nameof(bodycommentContent), required: false);
-            var __workflow_bodyisResolved = WorkflowExpression.Compile(bodyisResolved, nameof(bodyisResolved), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Comment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/planner/v2/spaces/{0}/nodes/{1}/comments", __workflow_spaceId.WithUrlEncoding(1), __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyannotationPayload != null)
-                {
-                    body["annotationPayload"] = ExpressionConverter.ConvertO(__workflow_bodyannotationPayload);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyannotationType != null)
-                {
-                    body["annotationType"] = ExpressionConverter.ConvertO(__workflow_bodyannotationType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycommentContent != null)
-                {
-                    body["commentContent"] = ExpressionConverter.ConvertO(__workflow_bodycommentContent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisResolved != null)
-                {
-                    body["isResolved"] = ExpressionConverter.ConvertO(__workflow_bodyisResolved);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Comment>(callPayload);
             });
         }
@@ -118,51 +85,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> UpdateComment(Expression<Func<string>> spaceId, Expression<Func<string>> nodeId, Expression<Func<string>> commentId, Expression<Func<string>> bodyannotationPayload = null, Expression<Func<string>> bodyannotationType = null, Expression<Func<string>> bodycommentContent = null, Expression<Func<bool>> bodyisResolved = null)
+        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> UpdateComment(Expression<Func<string>> spaceId, Expression<Func<string>> nodeId, Expression<Func<string>> commentId, Expression<Func<CreateCommentBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             var __workflow_commentId = WorkflowExpression.Compile(commentId, nameof(commentId), required: true);
-            var __workflow_bodyannotationPayload = WorkflowExpression.Compile(bodyannotationPayload, nameof(bodyannotationPayload), required: false);
-            var __workflow_bodyannotationType = WorkflowExpression.Compile(bodyannotationType, nameof(bodyannotationType), required: false);
-            var __workflow_bodycommentContent = WorkflowExpression.Compile(bodycommentContent, nameof(bodycommentContent), required: false);
-            var __workflow_bodyisResolved = WorkflowExpression.Compile(bodyisResolved, nameof(bodyisResolved), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Comment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/planner/v2/spaces/{0}/nodes/{1}/comments/{2}", __workflow_spaceId.WithUrlEncoding(1), __workflow_nodeId.WithUrlEncoding(1), __workflow_commentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyannotationPayload != null)
-                {
-                    body["annotationPayload"] = ExpressionConverter.ConvertO(__workflow_bodyannotationPayload);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyannotationType != null)
-                {
-                    body["annotationType"] = ExpressionConverter.ConvertO(__workflow_bodyannotationType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycommentContent != null)
-                {
-                    body["commentContent"] = ExpressionConverter.ConvertO(__workflow_bodycommentContent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisResolved != null)
-                {
-                    body["isResolved"] = ExpressionConverter.ConvertO(__workflow_bodyisResolved);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Comment>(callPayload);
             });
         }
@@ -246,77 +180,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerProject, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> spaceId, Expression<Func<AssociationReq[]>> bodyassociations = null, Expression<Func<CustomPropertyValuesInput[]>> bodycustomProperties = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodymanagerId = null, Expression<Func<int>> bodyplannedDuration = null, Expression<Func<string>> bodyplannedEndDate = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<PlannerProject, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> spaceId, Expression<Func<CreateProjectBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
-            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
-            var __workflow_bodycustomProperties = WorkflowExpression.Compile(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodymanagerId = WorkflowExpression.Compile(bodymanagerId, nameof(bodymanagerId), required: false);
-            var __workflow_bodyplannedDuration = WorkflowExpression.Compile(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            var __workflow_bodyplannedEndDate = WorkflowExpression.Compile(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            var __workflow_bodyplannedStartDate = WorkflowExpression.Compile(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlannerProject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/planner/v2/spaces/{0}/projects", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyassociations != null)
-                {
-                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomProperties != null)
-                {
-                    body["customProperties"] = ExpressionConverter.ConvertO(__workflow_bodycustomProperties);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymanagerId != null)
-                {
-                    body["managerId"] = ExpressionConverter.ConvertO(__workflow_bodymanagerId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedDuration != null)
-                {
-                    body["plannedDuration"] = ExpressionConverter.ConvertO(__workflow_bodyplannedDuration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedEndDate != null)
-                {
-                    body["plannedEndDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedEndDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedStartDate != null)
-                {
-                    body["plannedStartDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedStartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlannerProject>(callPayload);
             });
         }
@@ -360,98 +233,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerProject, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> spaceId, Expression<Func<string>> projectId, Expression<Func<CustomPropertyValues[]>> bodycustomProperties = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyisActive = null, Expression<Func<string>> bodymanagerId = null, Expression<Func<string>> bodymaxRank = null, Expression<Func<string>> bodyminRank = null, Expression<Func<int>> bodyplannedDuration = null, Expression<Func<string>> bodyplannedEndDate = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<PlannerProject, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> spaceId, Expression<Func<string>> projectId, Expression<Func<UpdateProjectBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_bodycustomProperties = WorkflowExpression.Compile(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyisActive = WorkflowExpression.Compile(bodyisActive, nameof(bodyisActive), required: false);
-            var __workflow_bodymanagerId = WorkflowExpression.Compile(bodymanagerId, nameof(bodymanagerId), required: false);
-            var __workflow_bodymaxRank = WorkflowExpression.Compile(bodymaxRank, nameof(bodymaxRank), required: false);
-            var __workflow_bodyminRank = WorkflowExpression.Compile(bodyminRank, nameof(bodyminRank), required: false);
-            var __workflow_bodyplannedDuration = WorkflowExpression.Compile(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            var __workflow_bodyplannedEndDate = WorkflowExpression.Compile(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            var __workflow_bodyplannedStartDate = WorkflowExpression.Compile(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlannerProject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/planner/v2/spaces/{0}/projects/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycustomProperties != null)
-                {
-                    body["customProperties"] = ExpressionConverter.ConvertO(__workflow_bodycustomProperties);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisActive != null)
-                {
-                    body["isActive"] = ExpressionConverter.ConvertO(__workflow_bodyisActive);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymanagerId != null)
-                {
-                    body["managerId"] = ExpressionConverter.ConvertO(__workflow_bodymanagerId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaxRank != null)
-                {
-                    body["maxRank"] = ExpressionConverter.ConvertO(__workflow_bodymaxRank);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyminRank != null)
-                {
-                    body["minRank"] = ExpressionConverter.ConvertO(__workflow_bodyminRank);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedDuration != null)
-                {
-                    body["plannedDuration"] = ExpressionConverter.ConvertO(__workflow_bodyplannedDuration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedEndDate != null)
-                {
-                    body["plannedEndDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedEndDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedStartDate != null)
-                {
-                    body["plannedStartDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedStartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlannerProject>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerRequestQueryResponse, ApiConnectionActionConfiguration> GetRequests(Expression<Func<string>> spaceId, Expression<Func<string>> plannedEndDateFrom = null, Expression<Func<string>> plannedEndDateTo = null, Expression<Func<string>> plannedStartDateFrom = null, Expression<Func<string>> plannedStartDateTo = null, Expression<Func<string>> createdAtFrom = null, Expression<Func<string>> createdAtTo = null, Expression<Func<string>> updatedAtFrom = null, Expression<Func<string>> updatedAtTo = null, Expression<Func<string[]>> ids = null, Expression<Func<string>> title = null, Expression<Func<string[]>> assigneeIds = null, Expression<Func<prioritiesInputItem[]>> priorities = null, Expression<Func<string>> keywords = null, Expression<Func<string[]>> assignerIds = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<int[]>> stepIds = null, Expression<Func<string>> statusSchemaId = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null, Expression<Func<string[]>> sort = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> hasProject = null, Expression<Func<string>> customProperties = null, Expression<Func<string[]>> followerIds = null, Expression<Func<string[]>> associatedNodeIds = null, Expression<Func<string[]>> contentRefs = null, Expression<Func<bool>> includeRequestFormCustomProperties = null)
+        public IBodyWorkflowAction<PlannerRequestQueryResponse, ApiConnectionActionConfiguration> GetRequests(Expression<Func<string>> spaceId, Expression<Func<string>> plannedEndDateFrom = null, Expression<Func<string>> plannedEndDateTo = null, Expression<Func<string>> plannedStartDateFrom = null, Expression<Func<string>> plannedStartDateTo = null, Expression<Func<string>> createdAtFrom = null, Expression<Func<string>> createdAtTo = null, Expression<Func<string>> updatedAtFrom = null, Expression<Func<string>> updatedAtTo = null, Expression<Func<string[]>> ids = null, Expression<Func<string>> title = null, Expression<Func<string[]>> assigneeIds = null, Expression<Func<PrioritiesInputItem[]>> priorities = null, Expression<Func<string>> keywords = null, Expression<Func<string[]>> assignerIds = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<int[]>> stepIds = null, Expression<Func<string>> statusSchemaId = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null, Expression<Func<string[]>> sort = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> hasProject = null, Expression<Func<string>> customProperties = null, Expression<Func<string[]>> followerIds = null, Expression<Func<string[]>> associatedNodeIds = null, Expression<Func<string[]>> contentRefs = null, Expression<Func<bool>> includeRequestFormCustomProperties = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_plannedEndDateFrom = WorkflowExpression.Compile(plannedEndDateFrom, nameof(plannedEndDateFrom), required: false);
@@ -546,11 +344,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<AsyncOperationResponse, ApiConnectionActionConfiguration> DeleteRequests(Expression<Func<string>> spaceId, Expression<Func<string>> contentType = null, Expression<Func<string[]>> bodyrequestIDs = null)
+        public IBodyWorkflowAction<AsyncOperationResponse, ApiConnectionActionConfiguration> DeleteRequests(Expression<Func<string>> spaceId, Expression<Func<DeleteRequestsBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            var __workflow_bodyrequestIDs = WorkflowExpression.Compile(bodyrequestIDs, nameof(bodyrequestIDs), required: false);
             return new DeferredBodyAction<AsyncOperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/planner/v2/spaces/{0}/requests", __workflow_spaceId.WithUrlEncoding(1)));
@@ -558,123 +356,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyrequestIDs != null)
-                {
-                    body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyrequestIDs);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AsyncOperationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerRequest, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> spaceId, Expression<Func<string>> bodyassigneeId = null, Expression<Func<AssociationReq[]>> bodyassociations = null, Expression<Func<ContentRef[]>> bodycontentReferences = null, Expression<Func<CustomPropertyValuesInput[]>> bodycustomProperties = null, Expression<Func<object>> bodyformReference = null, Expression<Func<int>> bodyplannedDuration = null, Expression<Func<string>> bodyplannedEndDate = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodystatusSchemaId = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<PlannerRequest, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> spaceId, Expression<Func<CreateRequestBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
-            var __workflow_bodyassigneeId = WorkflowExpression.Compile(bodyassigneeId, nameof(bodyassigneeId), required: false);
-            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
-            var __workflow_bodycontentReferences = WorkflowExpression.Compile(bodycontentReferences, nameof(bodycontentReferences), required: false);
-            var __workflow_bodycustomProperties = WorkflowExpression.Compile(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            var __workflow_bodyformReference = WorkflowExpression.Compile(bodyformReference, nameof(bodyformReference), required: false);
-            var __workflow_bodyplannedDuration = WorkflowExpression.Compile(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            var __workflow_bodyplannedEndDate = WorkflowExpression.Compile(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            var __workflow_bodyplannedStartDate = WorkflowExpression.Compile(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodystatusSchemaId = WorkflowExpression.Compile(bodystatusSchemaId, nameof(bodystatusSchemaId), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlannerRequest, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/planner/v2/spaces/{0}/requests", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyassigneeId != null)
-                {
-                    body["assigneeId"] = ExpressionConverter.ConvertO(__workflow_bodyassigneeId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassociations != null)
-                {
-                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontentReferences != null)
-                {
-                    body["contentRefs"] = ExpressionConverter.ConvertO(__workflow_bodycontentReferences);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomProperties != null)
-                {
-                    body["customProperties"] = ExpressionConverter.ConvertO(__workflow_bodycustomProperties);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformReference != null)
-                {
-                    body["formRef"] = ExpressionConverter.ConvertO(__workflow_bodyformReference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedDuration != null)
-                {
-                    body["plannedDuration"] = ExpressionConverter.ConvertO(__workflow_bodyplannedDuration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedEndDate != null)
-                {
-                    body["plannedEndDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedEndDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedStartDate != null)
-                {
-                    body["plannedStartDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedStartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatusSchemaId != null)
-                {
-                    body["statusSchemaId"] = ExpressionConverter.ConvertO(__workflow_bodystatusSchemaId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlannerRequest>(callPayload);
             });
         }
@@ -708,112 +405,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerRequest, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> spaceId, Expression<Func<string>> requestId, Expression<Func<string>> bodyassigneeId = null, Expression<Func<ContentRef[]>> bodycontentReferenceObjects = null, Expression<Func<CustomPropertyValuesInput[]>> bodycustomProperties = null, Expression<Func<object>> bodyformReference = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyplannedDuration = null, Expression<Func<string>> bodyplannedEndDate = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<int>> bodystepId = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<PlannerRequest, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> spaceId, Expression<Func<string>> requestId, Expression<Func<UpdateRequestBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            var __workflow_bodyassigneeId = WorkflowExpression.Compile(bodyassigneeId, nameof(bodyassigneeId), required: false);
-            var __workflow_bodycontentReferenceObjects = WorkflowExpression.Compile(bodycontentReferenceObjects, nameof(bodycontentReferenceObjects), required: false);
-            var __workflow_bodycustomProperties = WorkflowExpression.Compile(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            var __workflow_bodyformReference = WorkflowExpression.Compile(bodyformReference, nameof(bodyformReference), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodyplannedDuration = WorkflowExpression.Compile(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            var __workflow_bodyplannedEndDate = WorkflowExpression.Compile(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            var __workflow_bodyplannedStartDate = WorkflowExpression.Compile(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodystepId = WorkflowExpression.Compile(bodystepId, nameof(bodystepId), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlannerRequest, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/planner/v2/spaces/{0}/requests/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyassigneeId != null)
-                {
-                    body["assigneeId"] = ExpressionConverter.ConvertO(__workflow_bodyassigneeId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontentReferenceObjects != null)
-                {
-                    body["contentRefs"] = ExpressionConverter.ConvertO(__workflow_bodycontentReferenceObjects);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomProperties != null)
-                {
-                    body["customProperties"] = ExpressionConverter.ConvertO(__workflow_bodycustomProperties);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformReference != null)
-                {
-                    body["formRef"] = ExpressionConverter.ConvertO(__workflow_bodyformReference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedDuration != null)
-                {
-                    body["plannedDuration"] = ExpressionConverter.ConvertO(__workflow_bodyplannedDuration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedEndDate != null)
-                {
-                    body["plannedEndDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedEndDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedStartDate != null)
-                {
-                    body["plannedStartDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedStartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystepId != null)
-                {
-                    body["stepId"] = ExpressionConverter.ConvertO(__workflow_bodystepId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlannerRequest>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<StatusSchemaQueryResponse, ApiConnectionActionConfiguration> GetStatusSchemas(Expression<Func<string>> spaceId, Expression<Func<bool>> isDefault = null, Expression<Func<typeInput>> type = null, Expression<Func<string[]>> ids = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<StatusSchemaQueryResponse, ApiConnectionActionConfiguration> GetStatusSchemas(Expression<Func<string>> spaceId, Expression<Func<bool>> isDefault = null, Expression<Func<TypeInput>> type = null, Expression<Func<string[]>> ids = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_isDefault = WorkflowExpression.Compile(isDefault, nameof(isDefault), required: false);
@@ -858,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerTaskQueryResponse, ApiConnectionActionConfiguration> GetTasks(Expression<Func<string>> spaceId, Expression<Func<string>> plannedEndDateFrom = null, Expression<Func<string>> plannedEndDateTo = null, Expression<Func<string>> plannedStartDateFrom = null, Expression<Func<string>> plannedStartDateTo = null, Expression<Func<string>> createdAtFrom = null, Expression<Func<string>> createdAtTo = null, Expression<Func<string>> updatedAtFrom = null, Expression<Func<string>> updatedAtTo = null, Expression<Func<string[]>> ids = null, Expression<Func<string>> title = null, Expression<Func<string>> description = null, Expression<Func<string[]>> assigneeIds = null, Expression<Func<prioritiesInputItem[]>> priorities = null, Expression<Func<string>> keywords = null, Expression<Func<string[]>> assignerIds = null, Expression<Func<int[]>> stepIds = null, Expression<Func<string>> statusSchemaId = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null, Expression<Func<string[]>> sort = null, Expression<Func<bool>> recursive = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> hasProject = null, Expression<Func<string>> customProperties = null, Expression<Func<string[]>> followerIds = null, Expression<Func<string[]>> associatedNodeIds = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<bool>> includeAssociations = null, Expression<Func<string>> parentId = null)
+        public IBodyWorkflowAction<PlannerTaskQueryResponse, ApiConnectionActionConfiguration> GetTasks(Expression<Func<string>> spaceId, Expression<Func<string>> plannedEndDateFrom = null, Expression<Func<string>> plannedEndDateTo = null, Expression<Func<string>> plannedStartDateFrom = null, Expression<Func<string>> plannedStartDateTo = null, Expression<Func<string>> createdAtFrom = null, Expression<Func<string>> createdAtTo = null, Expression<Func<string>> updatedAtFrom = null, Expression<Func<string>> updatedAtTo = null, Expression<Func<string[]>> ids = null, Expression<Func<string>> title = null, Expression<Func<string>> description = null, Expression<Func<string[]>> assigneeIds = null, Expression<Func<PrioritiesInputItem[]>> priorities = null, Expression<Func<string>> keywords = null, Expression<Func<string[]>> assignerIds = null, Expression<Func<int[]>> stepIds = null, Expression<Func<string>> statusSchemaId = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null, Expression<Func<string[]>> sort = null, Expression<Func<bool>> recursive = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> hasProject = null, Expression<Func<string>> customProperties = null, Expression<Func<string[]>> followerIds = null, Expression<Func<string[]>> associatedNodeIds = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<bool>> includeAssociations = null, Expression<Func<string>> parentId = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_plannedEndDateFrom = WorkflowExpression.Compile(plannedEndDateFrom, nameof(plannedEndDateFrom), required: false);
@@ -958,98 +566,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerTask, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> spaceId, Expression<Func<string>> bodyassigneeId = null, Expression<Func<AssociationReq[]>> bodyassociations = null, Expression<Func<CustomPropertyValuesInput[]>> bodycustomProperties = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyparentId = null, Expression<Func<int>> bodyplannedDuration = null, Expression<Func<string>> bodyplannedEndDate = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<PlannerTask, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> spaceId, Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
-            var __workflow_bodyassigneeId = WorkflowExpression.Compile(bodyassigneeId, nameof(bodyassigneeId), required: false);
-            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
-            var __workflow_bodycustomProperties = WorkflowExpression.Compile(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
-            var __workflow_bodyplannedDuration = WorkflowExpression.Compile(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            var __workflow_bodyplannedEndDate = WorkflowExpression.Compile(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            var __workflow_bodyplannedStartDate = WorkflowExpression.Compile(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlannerTask, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/planner/v2/spaces/{0}/tasks", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyassigneeId != null)
-                {
-                    body["assigneeId"] = ExpressionConverter.ConvertO(__workflow_bodyassigneeId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassociations != null)
-                {
-                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomProperties != null)
-                {
-                    body["customProperties"] = ExpressionConverter.ConvertO(__workflow_bodycustomProperties);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparentId != null)
-                {
-                    body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedDuration != null)
-                {
-                    body["plannedDuration"] = ExpressionConverter.ConvertO(__workflow_bodyplannedDuration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedEndDate != null)
-                {
-                    body["plannedEndDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedEndDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedStartDate != null)
-                {
-                    body["plannedStartDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedStartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlannerTask>(callPayload);
             });
         }
@@ -1083,99 +609,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerTask, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> spaceId, Expression<Func<string>> taskId, Expression<Func<string>> bodyassigneeId = null, Expression<Func<CustomPropertyValuesInput[]>> bodycustomProperties = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyparentId = null, Expression<Func<int>> bodyplannedDuration = null, Expression<Func<string>> bodyplannedEndDate = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<int>> bodystepId = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<PlannerTask, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> spaceId, Expression<Func<string>> taskId, Expression<Func<UpdateTaskBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            var __workflow_bodyassigneeId = WorkflowExpression.Compile(bodyassigneeId, nameof(bodyassigneeId), required: false);
-            var __workflow_bodycustomProperties = WorkflowExpression.Compile(bodycustomProperties, nameof(bodycustomProperties), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
-            var __workflow_bodyplannedDuration = WorkflowExpression.Compile(bodyplannedDuration, nameof(bodyplannedDuration), required: false);
-            var __workflow_bodyplannedEndDate = WorkflowExpression.Compile(bodyplannedEndDate, nameof(bodyplannedEndDate), required: false);
-            var __workflow_bodyplannedStartDate = WorkflowExpression.Compile(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodystepId = WorkflowExpression.Compile(bodystepId, nameof(bodystepId), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlannerTask, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/planner/v2/spaces/{0}/tasks/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyassigneeId != null)
-                {
-                    body["assigneeId"] = ExpressionConverter.ConvertO(__workflow_bodyassigneeId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomProperties != null)
-                {
-                    body["customProperties"] = ExpressionConverter.ConvertO(__workflow_bodycustomProperties);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparentId != null)
-                {
-                    body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedDuration != null)
-                {
-                    body["plannedDuration"] = ExpressionConverter.ConvertO(__workflow_bodyplannedDuration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedEndDate != null)
-                {
-                    body["plannedEndDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedEndDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedStartDate != null)
-                {
-                    body["plannedStartDate"] = ExpressionConverter.ConvertO(__workflow_bodyplannedStartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystepId != null)
-                {
-                    body["stepId"] = ExpressionConverter.ConvertO(__workflow_bodystepId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlannerTask>(callPayload);
             });
         }
@@ -1274,6 +718,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string[] Sort { get; set; }
     }
 
+    public class CreateCommentBodyInput
+    {
+        [JsonProperty("annotationPayload")]
+        public string AnnotationPayload { get; set; }
+
+        [JsonProperty("annotationType")]
+        public string AnnotationType { get; set; }
+
+        [JsonProperty("commentContent")]
+        public string CommentContent { get; set; }
+
+        [JsonProperty("isResolved")]
+        public bool? IsResolved { get; set; }
+    }
+
     public class PlannerProjectQueryResponse
     {
         [JsonProperty("count")]
@@ -1319,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string CreatorId { get; set; }
 
         [JsonProperty("customProperties")]
-        public CustomPropertyValues[] CustomProperties { get; set; }
+        public CreateProjectCustomPropertyValuesResponse[] CustomProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1432,7 +891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         Content
     }
 
-    public class CustomPropertyValues
+    public class CreateProjectCustomPropertyValuesResponse
     {
         [JsonProperty("id")]
         public string CustomPropertyId { get; set; }
@@ -1447,10 +906,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string Name { get; set; }
 
         [JsonProperty("values")]
-        public CustomPropertyValuesValues[] Values { get; set; }
+        public CreateProjectCustomPropertyValuesValuesResponse[] Values { get; set; }
     }
 
-    public class CustomPropertyValuesValues
+    public class CreateProjectCustomPropertyValuesValuesResponse
     {
         [JsonProperty("id")]
         public string ValueId { get; set; }
@@ -1507,7 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string CreatorId { get; set; }
 
         [JsonProperty("customProperties")]
-        public CustomPropertyValues[] CustomProperties { get; set; }
+        public CreateProjectCustomPropertyValuesResponse[] CustomProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1619,7 +1078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string CreatorId { get; set; }
 
         [JsonProperty("customProperties")]
-        public CustomPropertyValues[] CustomProperties { get; set; }
+        public CreateProjectCustomPropertyValuesResponse[] CustomProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1719,13 +1178,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string[] AsyncOperationIDs { get; set; }
     }
 
+    public class CreateProjectBodyInput
+    {
+        [JsonProperty("associations")]
+        public AssociationReq[] Associations { get; set; }
+
+        [JsonProperty("customProperties")]
+        public CustomPropertyValuesInput[] CustomProperties { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("managerId")]
+        public string ManagerId { get; set; }
+
+        [JsonProperty("plannedDuration")]
+        public int? PlannedDuration { get; set; }
+
+        [JsonProperty("plannedEndDate")]
+        public string PlannedEndDate { get; set; }
+
+        [JsonProperty("plannedStartDate")]
+        public string PlannedStartDate { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+    }
+
     public class AssociationReq
     {
         [JsonProperty("nodeId")]
         public string NodeId { get; set; }
 
         [JsonProperty("nodeType")]
-        public AssociationReqNodeTypeType NodeType { get; set; }
+        public AssociationReqNodeTypeType? NodeType { get; set; }
 
         [JsonProperty("spaceId")]
         public string SpaceId { get; set; }
@@ -1750,7 +1236,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string CustomPropertyId { get; set; }
 
         [JsonProperty("values")]
-        public CustomPropertyValuesValues[] Values { get; set; }
+        public CreateProjectCustomPropertyValuesValues[] Values { get; set; }
+    }
+
+    public class CreateProjectCustomPropertyValuesValues
+    {
+        [JsonProperty("id")]
+        public string ValueId { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+    }
+
+    public class UpdateProjectBodyInput
+    {
+        [JsonProperty("customProperties")]
+        public UpdateProjectCustomPropertyValues[] CustomProperties { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("isActive")]
+        public bool? IsActive { get; set; }
+
+        [JsonProperty("managerId")]
+        public string ManagerId { get; set; }
+
+        [JsonProperty("maxRank")]
+        public string MaxRank { get; set; }
+
+        [JsonProperty("minRank")]
+        public string MinRank { get; set; }
+
+        [JsonProperty("plannedDuration")]
+        public int? PlannedDuration { get; set; }
+
+        [JsonProperty("plannedEndDate")]
+        public string PlannedEndDate { get; set; }
+
+        [JsonProperty("plannedStartDate")]
+        public string PlannedStartDate { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+    }
+
+    public class UpdateProjectCustomPropertyValues
+    {
+        [JsonProperty("id")]
+        public string CustomPropertyId { get; set; }
+
+        [JsonProperty("localizations")]
+        public JToken Localizations { get; set; }
+
+        [JsonProperty("multipleValue")]
+        public bool? MultipleValue { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("values")]
+        public CreateProjectCustomPropertyValuesValues[] Values { get; set; }
     }
 
     public class PlannerRequestQueryResponse
@@ -1783,7 +1329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public Association[] Associations { get; set; }
 
         [JsonProperty("contentRefs")]
-        public ContentRef[] ContentReferenceObjects { get; set; }
+        public CreateRequestContentRefResponse[] ContentReferenceObjects { get; set; }
 
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; }
@@ -1792,7 +1338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string CreatorId { get; set; }
 
         [JsonProperty("customProperties")]
-        public CustomPropertyValues[] CustomProperties { get; set; }
+        public CreateProjectCustomPropertyValuesResponse[] CustomProperties { get; set; }
 
         [JsonProperty("followers")]
         public Follower[] Followers { get; set; }
@@ -1843,7 +1389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string UpdatedAt { get; set; }
     }
 
-    public class ContentRef
+    public class CreateRequestContentRefResponse
     {
         [JsonProperty("contentId")]
         public string ContentId { get; set; }
@@ -1870,7 +1416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string ProfileVersionId { get; set; }
 
         [JsonProperty("source")]
-        public ContentRefSourceType Source { get; set; }
+        public CreateRequestContentRefSourceTypeResponse Source { get; set; }
 
         [JsonProperty("teamSiteId")]
         public string TeamSiteId { get; set; }
@@ -1883,7 +1429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContentRefSourceType
+    public enum CreateRequestContentRefSourceTypeResponse
     {
         Library,
         DocCenter,
@@ -2051,7 +1597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum prioritiesInputItem
+    public enum PrioritiesInputItem
     {
         [EnumMember(Value = "critical")]
         Critical,
@@ -2065,8 +1611,101 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         NoPriority
     }
 
+    public class DeleteRequestsBodyInput
+    {
+        [JsonProperty("ids")]
+        public string[] RequestIDs { get; set; }
+    }
+
+    public class CreateRequestBodyInput
+    {
+        [JsonProperty("assigneeId")]
+        public string AssigneeId { get; set; }
+
+        [JsonProperty("associations")]
+        public AssociationReq[] Associations { get; set; }
+
+        [JsonProperty("contentRefs")]
+        public CreateRequestContentRef[] ContentReferences { get; set; }
+
+        [JsonProperty("customProperties")]
+        public CustomPropertyValuesInput[] CustomProperties { get; set; }
+
+        [JsonProperty("formRef")]
+        public JToken FormReference { get; set; }
+
+        [JsonProperty("plannedDuration")]
+        public int? PlannedDuration { get; set; }
+
+        [JsonProperty("plannedEndDate")]
+        public string PlannedEndDate { get; set; }
+
+        [JsonProperty("plannedStartDate")]
+        public string PlannedStartDate { get; set; }
+
+        [JsonProperty("priority")]
+        public BodyInputPriorityType? Priority { get; set; }
+
+        [JsonProperty("projectId")]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("statusSchemaId")]
+        public string StatusSchemaId { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+    }
+
+    public class CreateRequestContentRef
+    {
+        [JsonProperty("contentId")]
+        public string ContentId { get; set; }
+
+        [JsonProperty("docCenterFullPath")]
+        public string DocCenterFullPath { get; set; }
+
+        [JsonProperty("majorVersion")]
+        public int? MajorVersion { get; set; }
+
+        [JsonProperty("minorVersion")]
+        public int? MinorVersion { get; set; }
+
+        [JsonProperty("modifiedDate")]
+        public string ModifiedDate { get; set; }
+
+        [JsonProperty("orderNo")]
+        public int? OrderNumber { get; set; }
+
+        [JsonProperty("profileId")]
+        public string ProfileId { get; set; }
+
+        [JsonProperty("profileVersionId")]
+        public string ProfileVersionId { get; set; }
+
+        [JsonProperty("source")]
+        public CreateRequestContentRefSourceType? Source { get; set; }
+
+        [JsonProperty("teamSiteId")]
+        public string TeamSiteId { get; set; }
+
+        [JsonProperty("thumbnailId")]
+        public string ThumbnailId { get; set; }
+
+        [JsonProperty("versionId")]
+        public string VersionId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypriorityInput
+    public enum CreateRequestContentRefSourceType
+    {
+        Library,
+        DocCenter,
+        NewsCenter,
+        Workspace
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum BodyInputPriorityType
     {
         [EnumMember(Value = "low")]
         Low,
@@ -2076,6 +1715,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         High,
         [EnumMember(Value = "critical")]
         Critical
+    }
+
+    public class UpdateRequestBodyInput
+    {
+        [JsonProperty("assigneeId")]
+        public string AssigneeId { get; set; }
+
+        [JsonProperty("contentRefs")]
+        public CreateRequestContentRef[] ContentReferenceObjects { get; set; }
+
+        [JsonProperty("customProperties")]
+        public CustomPropertyValuesInput[] CustomProperties { get; set; }
+
+        [JsonProperty("formRef")]
+        public JToken FormReference { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+
+        [JsonProperty("plannedDuration")]
+        public int? PlannedDuration { get; set; }
+
+        [JsonProperty("plannedEndDate")]
+        public string PlannedEndDate { get; set; }
+
+        [JsonProperty("plannedStartDate")]
+        public string PlannedStartDate { get; set; }
+
+        [JsonProperty("priority")]
+        public BodyInputPriorityType? Priority { get; set; }
+
+        [JsonProperty("projectId")]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("stepId")]
+        public int? StepId { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
     }
 
     public class StatusSchemaQueryResponse
@@ -2139,7 +1817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "task")]
         TaskObject,
@@ -2163,6 +1841,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
 
         [JsonProperty("meta")]
         public Meta Meta { get; set; }
+    }
+
+    public class CreateTaskBodyInput
+    {
+        [JsonProperty("assigneeId")]
+        public string AssigneeId { get; set; }
+
+        [JsonProperty("associations")]
+        public AssociationReq[] Associations { get; set; }
+
+        [JsonProperty("customProperties")]
+        public CustomPropertyValuesInput[] CustomProperties { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("parentId")]
+        public string ParentId { get; set; }
+
+        [JsonProperty("plannedDuration")]
+        public int? PlannedDuration { get; set; }
+
+        [JsonProperty("plannedEndDate")]
+        public string PlannedEndDate { get; set; }
+
+        [JsonProperty("plannedStartDate")]
+        public string PlannedStartDate { get; set; }
+
+        [JsonProperty("priority")]
+        public BodyInputPriorityType? Priority { get; set; }
+
+        [JsonProperty("projectId")]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+    }
+
+    public class UpdateTaskBodyInput
+    {
+        [JsonProperty("assigneeId")]
+        public string AssigneeId { get; set; }
+
+        [JsonProperty("customProperties")]
+        public CustomPropertyValuesInput[] CustomProperties { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("parentId")]
+        public string ParentId { get; set; }
+
+        [JsonProperty("plannedDuration")]
+        public int? PlannedDuration { get; set; }
+
+        [JsonProperty("plannedEndDate")]
+        public string PlannedEndDate { get; set; }
+
+        [JsonProperty("plannedStartDate")]
+        public string PlannedStartDate { get; set; }
+
+        [JsonProperty("priority")]
+        public BodyInputPriorityType? Priority { get; set; }
+
+        [JsonProperty("projectId")]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("stepId")]
+        public int? StepId { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
     }
 }
 

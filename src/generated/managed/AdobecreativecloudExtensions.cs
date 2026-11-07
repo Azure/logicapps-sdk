@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
     public class AdobecreativecloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<CreatedAssetDetails, ApiConnectionActionConfiguration> CreateAsset(Expression<Func<string>> path, Expression<Func<string>> name, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<CreatedAssetDetails, ApiConnectionActionConfiguration> CreateAsset(Expression<Func<string>> path, Expression<Func<string>> name, Expression<Func<string>> body)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatedAssetDetails, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storage/cc/asset";
@@ -116,26 +116,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<CreatedAssetDetails, ApiConnectionActionConfiguration> CopyAsset(Expression<Func<string>> bodysourceAssetPath, Expression<Func<string>> bodydestinationAssetPath)
+        public IBodyWorkflowAction<CreatedAssetDetails, ApiConnectionActionConfiguration> CopyAsset(Expression<Func<CopyAssetBodyInput>> body)
         {
-            var __workflow_bodysourceAssetPath = WorkflowExpression.Compile(bodysourceAssetPath, nameof(bodysourceAssetPath), required: true);
-            var __workflow_bodydestinationAssetPath = WorkflowExpression.Compile(bodydestinationAssetPath, nameof(bodydestinationAssetPath), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatedAssetDetails, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storage/cc/op/copy";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["from"] = ExpressionConverter.ConvertO(__workflow_bodysourceAssetPath);
-                bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(__workflow_bodydestinationAssetPath);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatedAssetDetails>(callPayload);
             });
         }
@@ -143,43 +132,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
 
     public class AdobecreativecloudTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookSubscribeToAssetCreatedEvents(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WebhookSubscribeToAssetCreatedEvents()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook1/csm/cc/events/asset_created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webhookUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = new WebhookSubscribeToAssetCreatedEventsBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookSubscribeToAssetUpdatedEvents(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WebhookSubscribeToAssetUpdatedEvents()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook2/csm/cc/events/asset_updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webhookUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = new WebhookSubscribeToAssetCreatedEventsBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
@@ -233,6 +206,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
     {
         [JsonProperty("children")]
         public AssetMetadata[] ListOfAssets { get; set; }
+    }
+
+    public class CopyAssetBodyInput
+    {
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceAssetPath { get; set; }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationAssetPath { get; set; }
+    }
+
+    public class WebhookSubscribeToAssetCreatedEventsBodyInput
+    {
+        [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

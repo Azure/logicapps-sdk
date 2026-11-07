@@ -13,66 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
     public class KintoneActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddRecord(Expression<Func<string>> requestBodyOfRecordappId, Expression<Func<object>> requestBodyOfRecordRecord = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddRecord(Expression<Func<AddRecordRequestBodyOfRecordInput>> requestBodyOfRecord = null)
         {
-            var __workflow_requestBodyOfRecordappId = WorkflowExpression.Compile(requestBodyOfRecordappId, nameof(requestBodyOfRecordappId), required: true);
-            var __workflow_requestBodyOfRecordRecord = WorkflowExpression.Compile(requestBodyOfRecordRecord, nameof(requestBodyOfRecordRecord), required: false);
+            var __workflow_requestBodyOfRecord = WorkflowExpression.Compile(requestBodyOfRecord, nameof(requestBodyOfRecord), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/k/v1/record.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfRecord = new JObject();
-                var requestBodyOfRecordpropCount = 0;
-                requestBodyOfRecordpropCount++;
-                requestBodyOfRecord["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecordappId);
-                requestBodyOfRecord["schemaType"] = "ACTION_POST_RECORD";
-                requestBodyOfRecordpropCount++;
-                if (__workflow_requestBodyOfRecordRecord != null)
-                {
-                    requestBodyOfRecord["record"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecordRecord);
-                    requestBodyOfRecordpropCount++;
-                }
-
-                if (requestBodyOfRecordpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfRecord;
-                }
-
+                if (__workflow_requestBodyOfRecord != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecord);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<string>> requestBodyOfRecordappId, Expression<Func<string>> requestBodyOfRecordrecordNumber, Expression<Func<object>> requestBodyOfRecordRecord = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<UpdateRecordRequestBodyOfRecordInput>> requestBodyOfRecord = null)
         {
-            var __workflow_requestBodyOfRecordappId = WorkflowExpression.Compile(requestBodyOfRecordappId, nameof(requestBodyOfRecordappId), required: true);
-            var __workflow_requestBodyOfRecordrecordNumber = WorkflowExpression.Compile(requestBodyOfRecordrecordNumber, nameof(requestBodyOfRecordrecordNumber), required: true);
-            var __workflow_requestBodyOfRecordRecord = WorkflowExpression.Compile(requestBodyOfRecordRecord, nameof(requestBodyOfRecordRecord), required: false);
+            var __workflow_requestBodyOfRecord = WorkflowExpression.Compile(requestBodyOfRecord, nameof(requestBodyOfRecord), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/k/v1/record.json";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfRecord = new JObject();
-                var requestBodyOfRecordpropCount = 0;
-                requestBodyOfRecordpropCount++;
-                requestBodyOfRecord["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecordappId);
-                requestBodyOfRecordpropCount++;
-                requestBodyOfRecord["id"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecordrecordNumber);
-                requestBodyOfRecord["schemaType"] = "ACTION_PUT_RECORD";
-                requestBodyOfRecordpropCount++;
-                if (__workflow_requestBodyOfRecordRecord != null)
-                {
-                    requestBodyOfRecord["record"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecordRecord);
-                    requestBodyOfRecordpropCount++;
-                }
-
-                if (requestBodyOfRecordpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfRecord;
-                }
-
+                if (__workflow_requestBodyOfRecord != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecord);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -80,142 +45,130 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
     public class KintoneTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookappId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WebhookTrigger(Expression<Func<WebhookTriggerRequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
-            var __workflow_requestBodyOfWebhookappId = WorkflowExpression.Compile(requestBodyOfWebhookappId, nameof(requestBodyOfWebhookappId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookappId);
-                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["type"] = "ADD_RECORD";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["schemaType"] = "TRIGGER_WEBHOOK_RECORD";
-                requestBodyOfWebhookpropCount++;
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForUpdatingRecord(Expression<Func<string>> requestBodyOfWebhookappId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AddWebhookForUpdatingRecord(Expression<Func<AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
-            var __workflow_requestBodyOfWebhookappId = WorkflowExpression.Compile(requestBodyOfWebhookappId, nameof(requestBodyOfWebhookappId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/update_record.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookappId);
-                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["schemaType"] = "TRIGGER_WEBHOOK_RECORD";
-                requestBodyOfWebhookpropCount++;
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForDeletingRecord(Expression<Func<string>> requestBodyOfWebhookappId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AddWebhookForDeletingRecord(Expression<Func<AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
-            var __workflow_requestBodyOfWebhookappId = WorkflowExpression.Compile(requestBodyOfWebhookappId, nameof(requestBodyOfWebhookappId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/delete_record.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookappId);
-                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["schemaType"] = "TRIGGER_WEBHOOK_RECORD";
-                requestBodyOfWebhookpropCount++;
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForAddingRecordComment(Expression<Func<string>> requestBodyOfWebhookappId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AddWebhookForAddingRecordComment(Expression<Func<AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
-            var __workflow_requestBodyOfWebhookappId = WorkflowExpression.Compile(requestBodyOfWebhookappId, nameof(requestBodyOfWebhookappId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/add_record_comment.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookappId);
-                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["schemaType"] = "TRIGGER_WEBHOOK_RECORD";
-                requestBodyOfWebhookpropCount++;
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForUpdatingStatus(Expression<Func<string>> requestBodyOfWebhookappId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AddWebhookForUpdatingStatus(Expression<Func<AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
-            var __workflow_requestBodyOfWebhookappId = WorkflowExpression.Compile(requestBodyOfWebhookappId, nameof(requestBodyOfWebhookappId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/update_status.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookappId);
-                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["schemaType"] = "TRIGGER_WEBHOOK_RECORD";
-                requestBodyOfWebhookpropCount++;
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
+    }
+
+    public class AddRecordRequestBodyOfRecordInput
+    {
+        [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AppId { get; set; }
+
+        [JsonProperty("schemaType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string SchemaType { get; set; } = "ACTION_POST_RECORD";
+
+        [JsonProperty("record")]
+        public JToken Record { get; set; }
+    }
+
+    public class UpdateRecordRequestBodyOfRecordInput
+    {
+        [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AppId { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RecordNumber { get; set; }
+
+        [JsonProperty("schemaType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string SchemaType { get; set; } = "ACTION_PUT_RECORD";
+
+        [JsonProperty("record")]
+        public JToken Record { get; set; }
+    }
+
+    public class WebhookTriggerRequestBodyOfWebhookInput
+    {
+        [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AppId { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "ADD_RECORD";
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Description { get; set; } = "Added by Microsoft Flow. Settings should not be changed.";
+
+        [JsonProperty("schemaType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string SchemaType { get; set; } = "TRIGGER_WEBHOOK_RECORD";
+    }
+
+    public class AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput
+    {
+        [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AppId { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Description { get; set; } = "Added by Microsoft Flow. Settings should not be changed.";
+
+        [JsonProperty("schemaType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string SchemaType { get; set; } = "TRIGGER_WEBHOOK_RECORD";
     }
 }
 

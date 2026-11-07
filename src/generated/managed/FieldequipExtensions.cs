@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
     public class FieldequipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCustomer(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCustomer(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<CreateCustomerBodyInputItem[]>> body = null)
         {
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
             var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
@@ -28,13 +28,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                     callPayload.Queries["companyId"] = ExpressionConverter.Convert(__workflow_companyId);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateCustomer(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateCustomer(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<CreateCustomerBodyInputItem[]>> body = null)
         {
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
             var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
@@ -49,13 +50,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                     callPayload.Queries["companyId"] = ExpressionConverter.Convert(__workflow_companyId);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateWorkOrders(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem2[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateWorkOrders(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<CreateWorkOrdersBodyInputItem[]>> body = null)
         {
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
             var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
@@ -70,13 +72,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                     callPayload.Queries["companyId"] = ExpressionConverter.Convert(__workflow_companyId);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateWorkOrders(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem2[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateWorkOrders(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<CreateWorkOrdersBodyInputItem[]>> body = null)
         {
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
             var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
@@ -91,13 +94,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                     callPayload.Queries["companyId"] = ExpressionConverter.Convert(__workflow_companyId);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateItems(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem22[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateItems(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<CreateItemsBodyInputItem[]>> body = null)
         {
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
             var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
@@ -112,13 +116,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                     callPayload.Queries["companyId"] = ExpressionConverter.Convert(__workflow_companyId);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateItems(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem22[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateItems(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<CreateItemsBodyInputItem[]>> body = null)
         {
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
             var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
@@ -133,13 +138,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                     callPayload.Queries["companyId"] = ExpressionConverter.Convert(__workflow_companyId);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateInventory(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<string>> warehouseRefNum = null, Expression<Func<bodyInputItem222[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateInventory(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<string>> warehouseRefNum = null, Expression<Func<CreateInventoryBodyInputItem[]>> body = null)
         {
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
             var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
@@ -157,13 +163,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                     callPayload.Queries["warehouseRefNum"] = ExpressionConverter.Convert(__workflow_warehouseRefNum);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateItemAdjustment(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<string>> warehouseRefNum = null, Expression<Func<bodyInputItem2222[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateItemAdjustment(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<string>> warehouseRefNum = null, Expression<Func<CreateItemAdjustmentBodyInputItem[]>> body = null)
         {
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
             var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
@@ -181,13 +188,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                     callPayload.Queries["warehouseRefNum"] = ExpressionConverter.Convert(__workflow_warehouseRefNum);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateLocations(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<bodyInputItem22222[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateLocations(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<CreateLocationsBodyInputItem[]>> body = null)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
@@ -201,13 +209,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Queries["companyId"] = ExpressionConverter.Convert(__workflow_companyId);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateLocations(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<bodyInputItem22222[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateLocations(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<CreateLocationsBodyInputItem[]>> body = null)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
@@ -221,13 +230,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Queries["companyId"] = ExpressionConverter.Convert(__workflow_companyId);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUsers(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<bodyInputItem222222[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUsers(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<CreateUsersBodyInputItem[]>> body = null)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
@@ -241,30 +251,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Queries["companyId"] = ExpressionConverter.Convert(__workflow_companyId);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUsers(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> bodycompanyId = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodybusinessUnitCode = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodypayrollCode = null, Expression<Func<string>> bodyplantId = null, Expression<Func<string>> bodyempId = null, Expression<Func<string>> bodymobileNumber = null, Expression<Func<string>> bodyreportingManager = null, Expression<Func<string>> bodyempType = null, Expression<Func<string>> bodystateCode = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUsers(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
             var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
-            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodybusinessUnitCode = WorkflowExpression.Compile(bodybusinessUnitCode, nameof(bodybusinessUnitCode), required: false);
-            var __workflow_bodydepartmentCode = WorkflowExpression.Compile(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
-            var __workflow_bodypayrollCode = WorkflowExpression.Compile(bodypayrollCode, nameof(bodypayrollCode), required: false);
-            var __workflow_bodyplantId = WorkflowExpression.Compile(bodyplantId, nameof(bodyplantId), required: false);
-            var __workflow_bodyempId = WorkflowExpression.Compile(bodyempId, nameof(bodyempId), required: false);
-            var __workflow_bodymobileNumber = WorkflowExpression.Compile(bodymobileNumber, nameof(bodymobileNumber), required: false);
-            var __workflow_bodyreportingManager = WorkflowExpression.Compile(bodyreportingManager, nameof(bodyreportingManager), required: false);
-            var __workflow_bodyempType = WorkflowExpression.Compile(bodyempType, nameof(bodyempType), required: false);
-            var __workflow_bodystateCode = WorkflowExpression.Compile(bodystateCode, nameof(bodystateCode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/user/update";
@@ -273,91 +272,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Queries["companyId"] = ExpressionConverter.Convert(__workflow_companyId);
                 callPayload.Headers["x-api-key"] = ExpressionConverter.Convert(__workflow_xApiKey);
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycompanyId != null)
-                {
-                    body["companyId"] = ExpressionConverter.ConvertO(__workflow_bodycompanyId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybusinessUnitCode != null)
-                {
-                    body["businessUnitCode"] = ExpressionConverter.ConvertO(__workflow_bodybusinessUnitCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydepartmentCode != null)
-                {
-                    body["departmentCode"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypayrollCode != null)
-                {
-                    body["payrollCode"] = ExpressionConverter.ConvertO(__workflow_bodypayrollCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplantId != null)
-                {
-                    body["plantId"] = ExpressionConverter.ConvertO(__workflow_bodyplantId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyempId != null)
-                {
-                    body["empId"] = ExpressionConverter.ConvertO(__workflow_bodyempId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymobileNumber != null)
-                {
-                    body["mobileNumber"] = ExpressionConverter.ConvertO(__workflow_bodymobileNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreportingManager != null)
-                {
-                    body["reportingManager"] = ExpressionConverter.ConvertO(__workflow_bodyreportingManager);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyempType != null)
-                {
-                    body["empType"] = ExpressionConverter.ConvertO(__workflow_bodyempType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystateCode != null)
-                {
-                    body["stateCode"] = ExpressionConverter.ConvertO(__workflow_bodystateCode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -367,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
     {
     }
 
-    public class bodyInputItem
+    public class CreateCustomerBodyInputItem
     {
         [JsonProperty("companyId")]
         public string CompanyId { get; set; }
@@ -442,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         public string ShipToCountryCode { get; set; }
     }
 
-    public class bodyInputItem2
+    public class CreateWorkOrdersBodyInputItem
     {
         [JsonProperty("companyId")]
         public string CompanyId { get; set; }
@@ -466,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         public string Criticality { get; set; }
 
         [JsonProperty("alarming")]
-        public bool Alarming { get; set; }
+        public bool? Alarming { get; set; }
 
         [JsonProperty("reportedTime")]
         public string ReportedTime { get; set; }
@@ -478,10 +394,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         public string SourceKey { get; set; }
 
         [JsonProperty("sparse")]
-        public bool Sparse { get; set; }
+        public bool? Sparse { get; set; }
     }
 
-    public class bodyInputItem22
+    public class CreateItemsBodyInputItem
     {
         [JsonProperty("companyId")]
         public string CompanyId { get; set; }
@@ -514,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         public string ItemStatus { get; set; }
 
         [JsonProperty("inventoryItem")]
-        public bool InventoryItem { get; set; }
+        public bool? InventoryItem { get; set; }
 
         [JsonProperty("manufacturer")]
         public string Manufacturer { get; set; }
@@ -529,13 +445,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         public string Supplier { get; set; }
 
         [JsonProperty("isSerialized")]
-        public bool IsSerialized { get; set; }
+        public bool? IsSerialized { get; set; }
 
         [JsonProperty("taxCode")]
         public string TaxCode { get; set; }
     }
 
-    public class bodyInputItem222
+    public class CreateInventoryBodyInputItem
     {
         [JsonProperty("companyId")]
         public string CompanyId { get; set; }
@@ -547,10 +463,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         public string WarehouseName { get; set; }
 
         [JsonProperty("items")]
-        public bodyInputItemItemsTypeItem[] Items { get; set; }
+        public CreateInventoryBodyInputItemItemsTypeItem[] Items { get; set; }
     }
 
-    public class bodyInputItemItemsTypeItem
+    public class CreateInventoryBodyInputItemItemsTypeItem
     {
         [JsonProperty("itemId")]
         public string ItemId { get; set; }
@@ -565,16 +481,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         public string UnitListPrice { get; set; }
 
         [JsonProperty("qtyOnHand")]
-        public double QtyOnHand { get; set; }
+        public double? QtyOnHand { get; set; }
 
         [JsonProperty("qtyAvailable")]
-        public double QtyAvailable { get; set; }
+        public double? QtyAvailable { get; set; }
 
         [JsonProperty("qtyThreshold")]
-        public double QtyThreshold { get; set; }
+        public double? QtyThreshold { get; set; }
     }
 
-    public class bodyInputItem2222
+    public class CreateItemAdjustmentBodyInputItem
     {
         [JsonProperty("companyId")]
         public string CompanyId { get; set; }
@@ -586,10 +502,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         public string WarehouseName { get; set; }
 
         [JsonProperty("items")]
-        public bodyInputItemItemsTypeItem2[] Items { get; set; }
+        public CreateItemAdjustmentBodyInputItemItemsTypeItem[] Items { get; set; }
     }
 
-    public class bodyInputItemItemsTypeItem2
+    public class CreateItemAdjustmentBodyInputItemItemsTypeItem
     {
         [JsonProperty("itemId")]
         public string ItemId { get; set; }
@@ -604,14 +520,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         public string UnitCostPrice { get; set; }
 
         [JsonProperty("qty")]
-        public double Qty { get; set; }
+        public double? Qty { get; set; }
 
         [JsonProperty("purchaseOrder")]
         public string PurchaseOrder { get; set; }
         public string ReceiptDate { get; set; }
     }
 
-    public class bodyInputItem22222
+    public class CreateLocationsBodyInputItem
     {
         [JsonProperty("companyId")]
         public string CompanyId { get; set; }
@@ -668,7 +584,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         public string ContactPhone { get; set; }
     }
 
-    public class bodyInputItem222222
+    public class CreateUsersBodyInputItem
+    {
+        [JsonProperty("companyId")]
+        public string CompanyId { get; set; }
+
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("businessUnitCode")]
+        public string BusinessUnitCode { get; set; }
+
+        [JsonProperty("departmentCode")]
+        public string DepartmentCode { get; set; }
+
+        [JsonProperty("payrollCode")]
+        public string PayrollCode { get; set; }
+
+        [JsonProperty("plantId")]
+        public string PlantId { get; set; }
+
+        [JsonProperty("empId")]
+        public string EmpId { get; set; }
+
+        [JsonProperty("mobileNumber")]
+        public string MobileNumber { get; set; }
+
+        [JsonProperty("reportingManager")]
+        public string ReportingManager { get; set; }
+
+        [JsonProperty("empType")]
+        public string EmpType { get; set; }
+
+        [JsonProperty("stateCode")]
+        public string StateCode { get; set; }
+    }
+
+    public class BodyInput
     {
         [JsonProperty("companyId")]
         public string CompanyId { get; set; }

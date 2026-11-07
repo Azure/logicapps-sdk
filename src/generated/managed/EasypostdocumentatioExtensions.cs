@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSessionUpload(Expression<Func<string>> sessionId, Expression<Func<string>> fileName, Expression<Func<string>> fileContent = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSessionUpload(Expression<Func<string>> sessionId, Expression<Func<string>> fileName, Expression<Func<string>> fileContent)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
-            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/direct_upload/{0}/{1}", __workflow_sessionId.WithUrlEncoding(1), __workflow_fileName.WithUrlEncoding(1)));

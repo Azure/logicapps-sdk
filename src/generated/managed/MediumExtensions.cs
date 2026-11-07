@@ -16,14 +16,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medium
 
     public class MediumTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Publications, ApiConnectionTriggerConfiguration> TriggerPublicationAdded(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Publications, ApiConnectionPollingTriggerConfiguration> TriggerPublicationAdded()
         {
-            return new DeferredBodyTrigger<Publications, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Publications, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/publications";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<Publications>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Publications>(callPayload);
             });
         }
     }

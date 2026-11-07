@@ -25,18 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<OutlookReceiveMessage, ApiConnectionActionConfiguration> DraftEmail(Expression<Func<string>> draftMessageto, Expression<Func<string>> draftMessagesubject, Expression<Func<string>> draftMessagebody, Expression<Func<string>> draftMessagefromSendAs = null, Expression<Func<string>> draftMessagecC = null, Expression<Func<string>> draftMessagebCC = null, Expression<Func<ClientSendAttachmentInput[]>> draftMessageattachments = null, Expression<Func<string>> draftMessagesensitivity = null, Expression<Func<string>> draftMessagereplyTo = null, Expression<Func<draftMessageimportanceInput>> draftMessageimportance = null, Expression<Func<string>> messageId = null, Expression<Func<string>> draftType = null, Expression<Func<string>> comment = null)
+        public IBodyWorkflowAction<OutlookReceiveMessage, ApiConnectionActionConfiguration> DraftEmail(Expression<Func<DraftMessageInput>> draftMessage, Expression<Func<string>> messageId = null, Expression<Func<string>> draftType = null, Expression<Func<string>> comment = null)
         {
-            var __workflow_draftMessageto = WorkflowExpression.Compile(draftMessageto, nameof(draftMessageto), required: true);
-            var __workflow_draftMessagesubject = WorkflowExpression.Compile(draftMessagesubject, nameof(draftMessagesubject), required: true);
-            var __workflow_draftMessagebody = WorkflowExpression.Compile(draftMessagebody, nameof(draftMessagebody), required: true);
-            var __workflow_draftMessagefromSendAs = WorkflowExpression.Compile(draftMessagefromSendAs, nameof(draftMessagefromSendAs), required: false);
-            var __workflow_draftMessagecC = WorkflowExpression.Compile(draftMessagecC, nameof(draftMessagecC), required: false);
-            var __workflow_draftMessagebCC = WorkflowExpression.Compile(draftMessagebCC, nameof(draftMessagebCC), required: false);
-            var __workflow_draftMessageattachments = WorkflowExpression.Compile(draftMessageattachments, nameof(draftMessageattachments), required: false);
-            var __workflow_draftMessagesensitivity = WorkflowExpression.Compile(draftMessagesensitivity, nameof(draftMessagesensitivity), required: false);
-            var __workflow_draftMessagereplyTo = WorkflowExpression.Compile(draftMessagereplyTo, nameof(draftMessagereplyTo), required: false);
-            var __workflow_draftMessageimportance = WorkflowExpression.Compile(draftMessageimportance, nameof(draftMessageimportance), required: false);
+            var __workflow_draftMessage = WorkflowExpression.Compile(draftMessage, nameof(draftMessage), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: false);
             var __workflow_draftType = WorkflowExpression.Compile(draftType, nameof(draftType), required: false);
             var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
@@ -51,160 +42,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["draftType"] = ExpressionConverter.Convert(__workflow_draftType);
                 if (__workflow_comment != null)
                     callPayload.Queries["comment"] = ExpressionConverter.Convert(__workflow_comment);
-                var draftMessage = new JObject();
-                var draftMessagepropCount = 0;
-                draftMessagepropCount++;
-                draftMessage["To"] = ExpressionConverter.ConvertO(__workflow_draftMessageto);
-                draftMessagepropCount++;
-                draftMessage["Subject"] = ExpressionConverter.ConvertO(__workflow_draftMessagesubject);
-                draftMessagepropCount++;
-                draftMessage["Body"] = ExpressionConverter.ConvertO(__workflow_draftMessagebody);
-                if (__workflow_draftMessagefromSendAs != null)
-                {
-                    draftMessage["From"] = ExpressionConverter.ConvertO(__workflow_draftMessagefromSendAs);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessagecC != null)
-                {
-                    draftMessage["Cc"] = ExpressionConverter.ConvertO(__workflow_draftMessagecC);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessagebCC != null)
-                {
-                    draftMessage["Bcc"] = ExpressionConverter.ConvertO(__workflow_draftMessagebCC);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessageattachments != null)
-                {
-                    draftMessage["Attachments"] = ExpressionConverter.ConvertO(__workflow_draftMessageattachments);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessagesensitivity != null)
-                {
-                    draftMessage["Sensitivity"] = ExpressionConverter.ConvertO(__workflow_draftMessagesensitivity);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessagereplyTo != null)
-                {
-                    draftMessage["ReplyTo"] = ExpressionConverter.ConvertO(__workflow_draftMessagereplyTo);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessageimportance != null)
-                {
-                    if (__workflow_draftMessageimportance != null)
-                    {
-                        draftMessage["Importance"] = ExpressionConverter.ConvertO(__workflow_draftMessageimportance);
-                        draftMessagepropCount++;
-                    }
-
-                    draftMessagepropCount++;
-                }
-                else
-                {
-                    draftMessage["Importance"] = "Normal";
-                    draftMessagepropCount++;
-                }
-
-                if (draftMessagepropCount > 0)
-                {
-                    callPayload.Body = draftMessage;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_draftMessage);
                 return new ApiConnectionAction<OutlookReceiveMessage>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDraftEmail(Expression<Func<string>> draftMessageto, Expression<Func<string>> draftMessagesubject, Expression<Func<string>> draftMessagebody, Expression<Func<string>> messageId, Expression<Func<string>> draftMessagefromSendAs = null, Expression<Func<string>> draftMessagecC = null, Expression<Func<string>> draftMessagebCC = null, Expression<Func<ClientSendAttachmentInput[]>> draftMessageattachments = null, Expression<Func<string>> draftMessagesensitivity = null, Expression<Func<string>> draftMessagereplyTo = null, Expression<Func<draftMessageimportanceInput>> draftMessageimportance = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDraftEmail(Expression<Func<DraftMessageInput>> draftMessage, Expression<Func<string>> messageId)
         {
-            var __workflow_draftMessageto = WorkflowExpression.Compile(draftMessageto, nameof(draftMessageto), required: true);
-            var __workflow_draftMessagesubject = WorkflowExpression.Compile(draftMessagesubject, nameof(draftMessagesubject), required: true);
-            var __workflow_draftMessagebody = WorkflowExpression.Compile(draftMessagebody, nameof(draftMessagebody), required: true);
+            var __workflow_draftMessage = WorkflowExpression.Compile(draftMessage, nameof(draftMessage), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            var __workflow_draftMessagefromSendAs = WorkflowExpression.Compile(draftMessagefromSendAs, nameof(draftMessagefromSendAs), required: false);
-            var __workflow_draftMessagecC = WorkflowExpression.Compile(draftMessagecC, nameof(draftMessagecC), required: false);
-            var __workflow_draftMessagebCC = WorkflowExpression.Compile(draftMessagebCC, nameof(draftMessagebCC), required: false);
-            var __workflow_draftMessageattachments = WorkflowExpression.Compile(draftMessageattachments, nameof(draftMessageattachments), required: false);
-            var __workflow_draftMessagesensitivity = WorkflowExpression.Compile(draftMessagesensitivity, nameof(draftMessagesensitivity), required: false);
-            var __workflow_draftMessagereplyTo = WorkflowExpression.Compile(draftMessagereplyTo, nameof(draftMessagereplyTo), required: false);
-            var __workflow_draftMessageimportance = WorkflowExpression.Compile(draftMessageimportance, nameof(draftMessageimportance), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Draft";
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["messageId"] = ExpressionConverter.Convert(__workflow_messageId);
-                var draftMessage = new JObject();
-                var draftMessagepropCount = 0;
-                draftMessagepropCount++;
-                draftMessage["To"] = ExpressionConverter.ConvertO(__workflow_draftMessageto);
-                draftMessagepropCount++;
-                draftMessage["Subject"] = ExpressionConverter.ConvertO(__workflow_draftMessagesubject);
-                draftMessagepropCount++;
-                draftMessage["Body"] = ExpressionConverter.ConvertO(__workflow_draftMessagebody);
-                if (__workflow_draftMessagefromSendAs != null)
-                {
-                    draftMessage["From"] = ExpressionConverter.ConvertO(__workflow_draftMessagefromSendAs);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessagecC != null)
-                {
-                    draftMessage["Cc"] = ExpressionConverter.ConvertO(__workflow_draftMessagecC);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessagebCC != null)
-                {
-                    draftMessage["Bcc"] = ExpressionConverter.ConvertO(__workflow_draftMessagebCC);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessageattachments != null)
-                {
-                    draftMessage["Attachments"] = ExpressionConverter.ConvertO(__workflow_draftMessageattachments);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessagesensitivity != null)
-                {
-                    draftMessage["Sensitivity"] = ExpressionConverter.ConvertO(__workflow_draftMessagesensitivity);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessagereplyTo != null)
-                {
-                    draftMessage["ReplyTo"] = ExpressionConverter.ConvertO(__workflow_draftMessagereplyTo);
-                    draftMessagepropCount++;
-                }
-
-                if (__workflow_draftMessageimportance != null)
-                {
-                    if (__workflow_draftMessageimportance != null)
-                    {
-                        draftMessage["Importance"] = ExpressionConverter.ConvertO(__workflow_draftMessageimportance);
-                        draftMessagepropCount++;
-                    }
-
-                    draftMessagepropCount++;
-                }
-                else
-                {
-                    draftMessage["Importance"] = "Normal";
-                    draftMessagepropCount++;
-                }
-
-                if (draftMessagepropCount > 0)
-                {
-                    callPayload.Body = draftMessage;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_draftMessage);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -239,10 +93,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<BatchOperationResult, ApiConnectionActionConfiguration> AssignCategoryBulk(Expression<Func<string>> categoryName, Expression<Func<string[]>> messageIds = null)
+        public IBodyWorkflowAction<BatchOperationResult, ApiConnectionActionConfiguration> AssignCategoryBulk(Expression<Func<string[]>> messageIds, Expression<Func<string>> categoryName)
         {
+            var __workflow_messageIds = WorkflowExpression.Compile(messageIds, nameof(messageIds), required: true);
             var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: true);
-            var __workflow_messageIds = WorkflowExpression.Compile(messageIds, nameof(messageIds), required: false);
             return new DeferredBodyAction<BatchOperationResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Mail/Category/Bulk/{0}", __workflow_categoryName.WithUrlEncoding(1)));
@@ -254,332 +108,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<SubscriptionResponse, ApiConnectionActionConfiguration> SendMailWithOptions(Expression<Func<string>> optionsEmailSubscriptionmessageto, Expression<Func<string>> optionsEmailSubscriptionmessagesubject = null, Expression<Func<string>> optionsEmailSubscriptionmessageuserOptions = null, Expression<Func<string>> optionsEmailSubscriptionmessageheaderText = null, Expression<Func<string>> optionsEmailSubscriptionmessageselectionText = null, Expression<Func<string>> optionsEmailSubscriptionmessagebody = null, Expression<Func<optionsEmailSubscriptionmessageimportanceInput>> optionsEmailSubscriptionmessageimportance = null, Expression<Func<ClientSendAttachmentInput[]>> optionsEmailSubscriptionmessageattachments = null, Expression<Func<bool>> optionsEmailSubscriptionmessageuseOnlyHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionmessagehideHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionmessageshowHTMLConfirmationDialog = null, Expression<Func<bool>> optionsEmailSubscriptionmessagehideMicrosoftFooter = null)
+        public IBodyWorkflowAction<SubscriptionResponse, ApiConnectionActionConfiguration> SendMailWithOptions(Expression<Func<OptionsEmailSubscriptionInput>> optionsEmailSubscription)
         {
-            var __workflow_optionsEmailSubscriptionmessageto = WorkflowExpression.Compile(optionsEmailSubscriptionmessageto, nameof(optionsEmailSubscriptionmessageto), required: true);
-            var __workflow_optionsEmailSubscriptionmessagesubject = WorkflowExpression.Compile(optionsEmailSubscriptionmessagesubject, nameof(optionsEmailSubscriptionmessagesubject), required: false);
-            var __workflow_optionsEmailSubscriptionmessageuserOptions = WorkflowExpression.Compile(optionsEmailSubscriptionmessageuserOptions, nameof(optionsEmailSubscriptionmessageuserOptions), required: false);
-            var __workflow_optionsEmailSubscriptionmessageheaderText = WorkflowExpression.Compile(optionsEmailSubscriptionmessageheaderText, nameof(optionsEmailSubscriptionmessageheaderText), required: false);
-            var __workflow_optionsEmailSubscriptionmessageselectionText = WorkflowExpression.Compile(optionsEmailSubscriptionmessageselectionText, nameof(optionsEmailSubscriptionmessageselectionText), required: false);
-            var __workflow_optionsEmailSubscriptionmessagebody = WorkflowExpression.Compile(optionsEmailSubscriptionmessagebody, nameof(optionsEmailSubscriptionmessagebody), required: false);
-            var __workflow_optionsEmailSubscriptionmessageimportance = WorkflowExpression.Compile(optionsEmailSubscriptionmessageimportance, nameof(optionsEmailSubscriptionmessageimportance), required: false);
-            var __workflow_optionsEmailSubscriptionmessageattachments = WorkflowExpression.Compile(optionsEmailSubscriptionmessageattachments, nameof(optionsEmailSubscriptionmessageattachments), required: false);
-            var __workflow_optionsEmailSubscriptionmessageuseOnlyHTMLMessage = WorkflowExpression.Compile(optionsEmailSubscriptionmessageuseOnlyHTMLMessage, nameof(optionsEmailSubscriptionmessageuseOnlyHTMLMessage), required: false);
-            var __workflow_optionsEmailSubscriptionmessagehideHTMLMessage = WorkflowExpression.Compile(optionsEmailSubscriptionmessagehideHTMLMessage, nameof(optionsEmailSubscriptionmessagehideHTMLMessage), required: false);
-            var __workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog = WorkflowExpression.Compile(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog, nameof(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog), required: false);
-            var __workflow_optionsEmailSubscriptionmessagehideMicrosoftFooter = WorkflowExpression.Compile(optionsEmailSubscriptionmessagehideMicrosoftFooter, nameof(optionsEmailSubscriptionmessagehideMicrosoftFooter), required: false);
+            var __workflow_optionsEmailSubscription = WorkflowExpression.Compile(optionsEmailSubscription, nameof(optionsEmailSubscription), required: true);
             return new DeferredBodyAction<SubscriptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mailwithoptions/$subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var optionsEmailSubscription = new JObject();
-                var optionsEmailSubscriptionpropCount = 0;
-                optionsEmailSubscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                optionsEmailSubscriptionpropCount++;
-                var messageObject = new JObject();
-                var messageObjectpropCount = 0;
-                messageObjectpropCount++;
-                messageObject["To"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageto);
-                if (__workflow_optionsEmailSubscriptionmessagesubject != null)
-                {
-                    if (__workflow_optionsEmailSubscriptionmessagesubject != null)
-                    {
-                        messageObject["Subject"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessagesubject);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["Subject"] = "Your input is required";
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_optionsEmailSubscriptionmessageuserOptions != null)
-                {
-                    if (__workflow_optionsEmailSubscriptionmessageuserOptions != null)
-                    {
-                        messageObject["Options"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageuserOptions);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["Options"] = "Choice1, Choice2, Choice3";
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_optionsEmailSubscriptionmessageheaderText != null)
-                {
-                    messageObject["HeaderText"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageheaderText);
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_optionsEmailSubscriptionmessageselectionText != null)
-                {
-                    messageObject["SelectionText"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageselectionText);
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_optionsEmailSubscriptionmessagebody != null)
-                {
-                    messageObject["Body"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessagebody);
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_optionsEmailSubscriptionmessageimportance != null)
-                {
-                    if (__workflow_optionsEmailSubscriptionmessageimportance != null)
-                    {
-                        messageObject["Importance"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageimportance);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["Importance"] = "Normal";
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_optionsEmailSubscriptionmessageattachments != null)
-                {
-                    messageObject["Attachments"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageattachments);
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_optionsEmailSubscriptionmessageuseOnlyHTMLMessage != null)
-                {
-                    messageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageuseOnlyHTMLMessage);
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_optionsEmailSubscriptionmessagehideHTMLMessage != null)
-                {
-                    if (__workflow_optionsEmailSubscriptionmessagehideHTMLMessage != null)
-                    {
-                        messageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessagehideHTMLMessage);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["HideHTMLMessage"] = false;
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
-                {
-                    if (__workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
-                    {
-                        messageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["ShowHTMLConfirmationDialog"] = false;
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_optionsEmailSubscriptionmessagehideMicrosoftFooter != null)
-                {
-                    if (__workflow_optionsEmailSubscriptionmessagehideMicrosoftFooter != null)
-                    {
-                        messageObject["HideMicrosoftFooter"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessagehideMicrosoftFooter);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["HideMicrosoftFooter"] = false;
-                    messageObjectpropCount++;
-                }
-
-                if (messageObjectpropCount > 0)
-                {
-                    optionsEmailSubscription["Message"] = messageObject;
-                    optionsEmailSubscriptionpropCount++;
-                }
-
-                if (optionsEmailSubscriptionpropCount > 0)
-                {
-                    callPayload.Body = optionsEmailSubscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscription);
                 return new ApiConnectionAction<SubscriptionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<SubscriptionResponse, ApiConnectionActionConfiguration> SendApprovalMail(Expression<Func<string>> approvalEmailSubscriptionmessageto, Expression<Func<string>> approvalEmailSubscriptionmessagesubject = null, Expression<Func<string>> approvalEmailSubscriptionmessageuserOptions = null, Expression<Func<string>> approvalEmailSubscriptionmessageheaderText = null, Expression<Func<string>> approvalEmailSubscriptionmessageselectionText = null, Expression<Func<string>> approvalEmailSubscriptionmessagebody = null, Expression<Func<approvalEmailSubscriptionmessageimportanceInput>> approvalEmailSubscriptionmessageimportance = null, Expression<Func<ClientSendAttachmentInput[]>> approvalEmailSubscriptionmessageattachments = null, Expression<Func<bool>> approvalEmailSubscriptionmessageuseOnlyHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionmessagehideHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionmessageshowHTMLConfirmationDialog = null)
+        public IBodyWorkflowAction<SubscriptionResponse, ApiConnectionActionConfiguration> SendApprovalMail(Expression<Func<ApprovalEmailSubscriptionInput>> approvalEmailSubscription)
         {
-            var __workflow_approvalEmailSubscriptionmessageto = WorkflowExpression.Compile(approvalEmailSubscriptionmessageto, nameof(approvalEmailSubscriptionmessageto), required: true);
-            var __workflow_approvalEmailSubscriptionmessagesubject = WorkflowExpression.Compile(approvalEmailSubscriptionmessagesubject, nameof(approvalEmailSubscriptionmessagesubject), required: false);
-            var __workflow_approvalEmailSubscriptionmessageuserOptions = WorkflowExpression.Compile(approvalEmailSubscriptionmessageuserOptions, nameof(approvalEmailSubscriptionmessageuserOptions), required: false);
-            var __workflow_approvalEmailSubscriptionmessageheaderText = WorkflowExpression.Compile(approvalEmailSubscriptionmessageheaderText, nameof(approvalEmailSubscriptionmessageheaderText), required: false);
-            var __workflow_approvalEmailSubscriptionmessageselectionText = WorkflowExpression.Compile(approvalEmailSubscriptionmessageselectionText, nameof(approvalEmailSubscriptionmessageselectionText), required: false);
-            var __workflow_approvalEmailSubscriptionmessagebody = WorkflowExpression.Compile(approvalEmailSubscriptionmessagebody, nameof(approvalEmailSubscriptionmessagebody), required: false);
-            var __workflow_approvalEmailSubscriptionmessageimportance = WorkflowExpression.Compile(approvalEmailSubscriptionmessageimportance, nameof(approvalEmailSubscriptionmessageimportance), required: false);
-            var __workflow_approvalEmailSubscriptionmessageattachments = WorkflowExpression.Compile(approvalEmailSubscriptionmessageattachments, nameof(approvalEmailSubscriptionmessageattachments), required: false);
-            var __workflow_approvalEmailSubscriptionmessageuseOnlyHTMLMessage = WorkflowExpression.Compile(approvalEmailSubscriptionmessageuseOnlyHTMLMessage, nameof(approvalEmailSubscriptionmessageuseOnlyHTMLMessage), required: false);
-            var __workflow_approvalEmailSubscriptionmessagehideHTMLMessage = WorkflowExpression.Compile(approvalEmailSubscriptionmessagehideHTMLMessage, nameof(approvalEmailSubscriptionmessagehideHTMLMessage), required: false);
-            var __workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog = WorkflowExpression.Compile(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog, nameof(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog), required: false);
+            var __workflow_approvalEmailSubscription = WorkflowExpression.Compile(approvalEmailSubscription, nameof(approvalEmailSubscription), required: true);
             return new DeferredBodyAction<SubscriptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/approvalmail/$subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var approvalEmailSubscription = new JObject();
-                var approvalEmailSubscriptionpropCount = 0;
-                approvalEmailSubscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                approvalEmailSubscriptionpropCount++;
-                var messageObject = new JObject();
-                var messageObjectpropCount = 0;
-                messageObjectpropCount++;
-                messageObject["To"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageto);
-                if (__workflow_approvalEmailSubscriptionmessagesubject != null)
-                {
-                    if (__workflow_approvalEmailSubscriptionmessagesubject != null)
-                    {
-                        messageObject["Subject"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessagesubject);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["Subject"] = "Approval Request";
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_approvalEmailSubscriptionmessageuserOptions != null)
-                {
-                    if (__workflow_approvalEmailSubscriptionmessageuserOptions != null)
-                    {
-                        messageObject["Options"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageuserOptions);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["Options"] = "Approve, Reject";
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_approvalEmailSubscriptionmessageheaderText != null)
-                {
-                    messageObject["HeaderText"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageheaderText);
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_approvalEmailSubscriptionmessageselectionText != null)
-                {
-                    messageObject["SelectionText"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageselectionText);
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_approvalEmailSubscriptionmessagebody != null)
-                {
-                    messageObject["Body"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessagebody);
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_approvalEmailSubscriptionmessageimportance != null)
-                {
-                    if (__workflow_approvalEmailSubscriptionmessageimportance != null)
-                    {
-                        messageObject["Importance"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageimportance);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["Importance"] = "Normal";
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_approvalEmailSubscriptionmessageattachments != null)
-                {
-                    messageObject["Attachments"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageattachments);
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_approvalEmailSubscriptionmessageuseOnlyHTMLMessage != null)
-                {
-                    messageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageuseOnlyHTMLMessage);
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_approvalEmailSubscriptionmessagehideHTMLMessage != null)
-                {
-                    if (__workflow_approvalEmailSubscriptionmessagehideHTMLMessage != null)
-                    {
-                        messageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessagehideHTMLMessage);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["HideHTMLMessage"] = false;
-                    messageObjectpropCount++;
-                }
-
-                if (__workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
-                {
-                    if (__workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
-                    {
-                        messageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog);
-                        messageObjectpropCount++;
-                    }
-
-                    messageObjectpropCount++;
-                }
-                else
-                {
-                    messageObject["ShowHTMLConfirmationDialog"] = false;
-                    messageObjectpropCount++;
-                }
-
-                if (messageObjectpropCount > 0)
-                {
-                    approvalEmailSubscription["Message"] = messageObject;
-                    approvalEmailSubscriptionpropCount++;
-                }
-
-                if (approvalEmailSubscriptionpropCount > 0)
-                {
-                    callPayload.Body = approvalEmailSubscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscription);
                 return new ApiConnectionAction<SubscriptionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMyContactPhoto(Expression<Func<string>> folder, Expression<Func<string>> id, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMyContactPhoto(Expression<Func<string>> folder, Expression<Func<string>> id, Expression<Func<string>> body)
         {
             var __workflow_folder = WorkflowExpression.Compile(folder, nameof(folder), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/me/contactFolders/{0}/contacts/{1}/photo/$value", __workflow_folder.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
@@ -592,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<MethodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
             var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -623,17 +184,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
                 if (__workflow_customHeader5 != null)
                     callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpEmailsManagement(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpEmailsManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
-            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -642,65 +202,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                var queryRequest = new JObject();
-                var queryRequestpropCount = 0;
-                if (__workflow_queryRequestjsonrpc != null)
-                {
-                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(__workflow_queryRequestjsonrpc);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestid != null)
-                {
-                    queryRequest["id"] = ExpressionConverter.ConvertO(__workflow_queryRequestid);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestmethod != null)
-                {
-                    queryRequest["method"] = ExpressionConverter.ConvertO(__workflow_queryRequestmethod);
-                    queryRequestpropCount++;
-                }
-
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (@paramsObjectpropCount > 0)
-                {
-                    queryRequest["params"] = @paramsObject;
-                    queryRequestpropCount++;
-                }
-
-                var resultObject = new JObject();
-                var resultObjectpropCount = 0;
-                if (resultObjectpropCount > 0)
-                {
-                    queryRequest["result"] = resultObject;
-                    queryRequestpropCount++;
-                }
-
-                var errorObject = new JObject();
-                var errorObjectpropCount = 0;
-                if (errorObjectpropCount > 0)
-                {
-                    queryRequest["error"] = errorObject;
-                    queryRequestpropCount++;
-                }
-
-                if (queryRequestpropCount > 0)
-                {
-                    callPayload.Body = queryRequest;
-                }
-
+                if (__workflow_queryRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
                 return new ApiConnectionAction<MCPQueryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpMeetingManagement(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpMeetingManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
-            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -709,65 +220,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                var queryRequest = new JObject();
-                var queryRequestpropCount = 0;
-                if (__workflow_queryRequestjsonrpc != null)
-                {
-                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(__workflow_queryRequestjsonrpc);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestid != null)
-                {
-                    queryRequest["id"] = ExpressionConverter.ConvertO(__workflow_queryRequestid);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestmethod != null)
-                {
-                    queryRequest["method"] = ExpressionConverter.ConvertO(__workflow_queryRequestmethod);
-                    queryRequestpropCount++;
-                }
-
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (@paramsObjectpropCount > 0)
-                {
-                    queryRequest["params"] = @paramsObject;
-                    queryRequestpropCount++;
-                }
-
-                var resultObject = new JObject();
-                var resultObjectpropCount = 0;
-                if (resultObjectpropCount > 0)
-                {
-                    queryRequest["result"] = resultObject;
-                    queryRequestpropCount++;
-                }
-
-                var errorObject = new JObject();
-                var errorObjectpropCount = 0;
-                if (errorObjectpropCount > 0)
-                {
-                    queryRequest["error"] = errorObject;
-                    queryRequestpropCount++;
-                }
-
-                if (queryRequestpropCount > 0)
-                {
-                    callPayload.Body = queryRequest;
-                }
-
+                if (__workflow_queryRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
                 return new ApiConnectionAction<MCPQueryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpContactsManagement(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpContactsManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
-            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -776,55 +238,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                var queryRequest = new JObject();
-                var queryRequestpropCount = 0;
-                if (__workflow_queryRequestjsonrpc != null)
-                {
-                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(__workflow_queryRequestjsonrpc);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestid != null)
-                {
-                    queryRequest["id"] = ExpressionConverter.ConvertO(__workflow_queryRequestid);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestmethod != null)
-                {
-                    queryRequest["method"] = ExpressionConverter.ConvertO(__workflow_queryRequestmethod);
-                    queryRequestpropCount++;
-                }
-
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (@paramsObjectpropCount > 0)
-                {
-                    queryRequest["params"] = @paramsObject;
-                    queryRequestpropCount++;
-                }
-
-                var resultObject = new JObject();
-                var resultObjectpropCount = 0;
-                if (resultObjectpropCount > 0)
-                {
-                    queryRequest["result"] = resultObject;
-                    queryRequestpropCount++;
-                }
-
-                var errorObject = new JObject();
-                var errorObjectpropCount = 0;
-                if (errorObjectpropCount > 0)
-                {
-                    queryRequest["error"] = errorObject;
-                    queryRequestpropCount++;
-                }
-
-                if (queryRequestpropCount > 0)
-                {
-                    callPayload.Body = queryRequest;
-                }
-
+                if (__workflow_queryRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
                 return new ApiConnectionAction<MCPQueryResponse>(callPayload);
             });
         }
@@ -883,9 +298,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<CalendarGetTablesV2Response, ApiConnectionActionConfiguration> CalendarGetTables()
+        public IBodyWorkflowAction<CalendarGetTablesResponse, ApiConnectionActionConfiguration> CalendarGetTables()
         {
-            return new DeferredBodyAction<CalendarGetTablesV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CalendarGetTablesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/v1.0/me/calendars";
                 var apiCallHttpMethod = "get";
@@ -893,309 +308,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 callPayload.Queries["skip"] = Convert.ToString(0);
                 callPayload.Queries["top"] = Convert.ToString(256);
                 callPayload.Queries["orderBy"] = Convert.ToString("name");
-                return new ApiConnectionAction<CalendarGetTablesV2Response>(callPayload);
+                return new ApiConnectionAction<CalendarGetTablesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<GraphCalendarEventClientReceive, ApiConnectionActionConfiguration> CalendarPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<string>> itemsubject, Expression<Func<string>> itemstartTime, Expression<Func<string>> itemendTime, Expression<Func<itemtimeZoneInput>> itemtimeZone, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemresourceAttendees = null, Expression<Func<string>> itembody = null, Expression<Func<string[]>> itemcategories = null, Expression<Func<string>> itemlocation = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<bool>> itemisAllDayEvent = null, Expression<Func<itemrecurrenceInput>> itemrecurrence = null, Expression<Func<itemselectedDaysOfWeekInputItem[]>> itemselectedDaysOfWeek = null, Expression<Func<string>> itemrecurrenceEndDate = null, Expression<Func<int>> itemnumberOfOccurrences = null, Expression<Func<int>> itemreminder = null, Expression<Func<bool>> itemisReminderOn = null, Expression<Func<itemshowAsInput>> itemshowAs = null, Expression<Func<bool>> itemresponseRequested = null, Expression<Func<itemsensitivityInput>> itemsensitivity = null)
+        public IBodyWorkflowAction<GraphCalendarEventClientReceive, ApiConnectionActionConfiguration> CalendarPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<CalendarPatchItemItemInput>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_itemsubject = WorkflowExpression.Compile(itemsubject, nameof(itemsubject), required: true);
-            var __workflow_itemstartTime = WorkflowExpression.Compile(itemstartTime, nameof(itemstartTime), required: true);
-            var __workflow_itemendTime = WorkflowExpression.Compile(itemendTime, nameof(itemendTime), required: true);
-            var __workflow_itemtimeZone = WorkflowExpression.Compile(itemtimeZone, nameof(itemtimeZone), required: true);
-            var __workflow_itemrequiredAttendees = WorkflowExpression.Compile(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
-            var __workflow_itemoptionalAttendees = WorkflowExpression.Compile(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
-            var __workflow_itemresourceAttendees = WorkflowExpression.Compile(itemresourceAttendees, nameof(itemresourceAttendees), required: false);
-            var __workflow_itembody = WorkflowExpression.Compile(itembody, nameof(itembody), required: false);
-            var __workflow_itemcategories = WorkflowExpression.Compile(itemcategories, nameof(itemcategories), required: false);
-            var __workflow_itemlocation = WorkflowExpression.Compile(itemlocation, nameof(itemlocation), required: false);
-            var __workflow_itemimportance = WorkflowExpression.Compile(itemimportance, nameof(itemimportance), required: false);
-            var __workflow_itemisAllDayEvent = WorkflowExpression.Compile(itemisAllDayEvent, nameof(itemisAllDayEvent), required: false);
-            var __workflow_itemrecurrence = WorkflowExpression.Compile(itemrecurrence, nameof(itemrecurrence), required: false);
-            var __workflow_itemselectedDaysOfWeek = WorkflowExpression.Compile(itemselectedDaysOfWeek, nameof(itemselectedDaysOfWeek), required: false);
-            var __workflow_itemrecurrenceEndDate = WorkflowExpression.Compile(itemrecurrenceEndDate, nameof(itemrecurrenceEndDate), required: false);
-            var __workflow_itemnumberOfOccurrences = WorkflowExpression.Compile(itemnumberOfOccurrences, nameof(itemnumberOfOccurrences), required: false);
-            var __workflow_itemreminder = WorkflowExpression.Compile(itemreminder, nameof(itemreminder), required: false);
-            var __workflow_itemisReminderOn = WorkflowExpression.Compile(itemisReminderOn, nameof(itemisReminderOn), required: false);
-            var __workflow_itemshowAs = WorkflowExpression.Compile(itemshowAs, nameof(itemshowAs), required: false);
-            var __workflow_itemresponseRequested = WorkflowExpression.Compile(itemresponseRequested, nameof(itemresponseRequested), required: false);
-            var __workflow_itemsensitivity = WorkflowExpression.Compile(itemsensitivity, nameof(itemsensitivity), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<GraphCalendarEventClientReceive, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v4/tables/{0}/items/{1}", __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var item = new JObject();
-                var itempropCount = 0;
-                itempropCount++;
-                item["subject"] = ExpressionConverter.ConvertO(__workflow_itemsubject);
-                itempropCount++;
-                item["start"] = ExpressionConverter.ConvertO(__workflow_itemstartTime);
-                itempropCount++;
-                item["end"] = ExpressionConverter.ConvertO(__workflow_itemendTime);
-                itempropCount++;
-                item["timeZone"] = ExpressionConverter.ConvertO(__workflow_itemtimeZone);
-                if (__workflow_itemrequiredAttendees != null)
-                {
-                    item["requiredAttendees"] = ExpressionConverter.ConvertO(__workflow_itemrequiredAttendees);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemoptionalAttendees != null)
-                {
-                    item["optionalAttendees"] = ExpressionConverter.ConvertO(__workflow_itemoptionalAttendees);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemresourceAttendees != null)
-                {
-                    item["resourceAttendees"] = ExpressionConverter.ConvertO(__workflow_itemresourceAttendees);
-                    itempropCount++;
-                }
-
-                if (__workflow_itembody != null)
-                {
-                    item["body"] = ExpressionConverter.ConvertO(__workflow_itembody);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemcategories != null)
-                {
-                    item["categories"] = ExpressionConverter.ConvertO(__workflow_itemcategories);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemlocation != null)
-                {
-                    item["location"] = ExpressionConverter.ConvertO(__workflow_itemlocation);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemimportance != null)
-                {
-                    item["importance"] = ExpressionConverter.ConvertO(__workflow_itemimportance);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemisAllDayEvent != null)
-                {
-                    item["isAllDay"] = ExpressionConverter.ConvertO(__workflow_itemisAllDayEvent);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemrecurrence != null)
-                {
-                    item["recurrence"] = ExpressionConverter.ConvertO(__workflow_itemrecurrence);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemselectedDaysOfWeek != null)
-                {
-                    item["selectedDaysOfWeek"] = ExpressionConverter.ConvertO(__workflow_itemselectedDaysOfWeek);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemrecurrenceEndDate != null)
-                {
-                    item["recurrenceEnd"] = ExpressionConverter.ConvertO(__workflow_itemrecurrenceEndDate);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemnumberOfOccurrences != null)
-                {
-                    item["numberOfOccurences"] = ExpressionConverter.ConvertO(__workflow_itemnumberOfOccurrences);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemreminder != null)
-                {
-                    item["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(__workflow_itemreminder);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemisReminderOn != null)
-                {
-                    item["isReminderOn"] = ExpressionConverter.ConvertO(__workflow_itemisReminderOn);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemshowAs != null)
-                {
-                    item["showAs"] = ExpressionConverter.ConvertO(__workflow_itemshowAs);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemresponseRequested != null)
-                {
-                    item["responseRequested"] = ExpressionConverter.ConvertO(__workflow_itemresponseRequested);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemsensitivity != null)
-                {
-                    item["sensitivity"] = ExpressionConverter.ConvertO(__workflow_itemsensitivity);
-                    itempropCount++;
-                }
-
-                if (itempropCount > 0)
-                {
-                    callPayload.Body = item;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<GraphCalendarEventClientReceive>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<GraphCalendarEventClientReceive, ApiConnectionActionConfiguration> CalendarPostItem(Expression<Func<string>> table, Expression<Func<string>> itemsubject, Expression<Func<string>> itemstartTime, Expression<Func<string>> itemendTime, Expression<Func<itemtimeZoneInput>> itemtimeZone, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemresourceAttendees = null, Expression<Func<string>> itembody = null, Expression<Func<string[]>> itemcategories = null, Expression<Func<string>> itemlocation = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<bool>> itemisAllDayEvent = null, Expression<Func<itemrecurrenceInput>> itemrecurrence = null, Expression<Func<itemselectedDaysOfWeekInputItem[]>> itemselectedDaysOfWeek = null, Expression<Func<string>> itemrecurrenceEndDate = null, Expression<Func<int>> itemnumberOfOccurrences = null, Expression<Func<int>> itemreminder = null, Expression<Func<bool>> itemisReminderOn = null, Expression<Func<itemshowAsInput>> itemshowAs = null, Expression<Func<bool>> itemresponseRequested = null, Expression<Func<itemsensitivityInput>> itemsensitivity = null)
+        public IBodyWorkflowAction<GraphCalendarEventClientReceive, ApiConnectionActionConfiguration> CalendarPostItem(Expression<Func<string>> table, Expression<Func<CalendarPatchItemItemInput>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_itemsubject = WorkflowExpression.Compile(itemsubject, nameof(itemsubject), required: true);
-            var __workflow_itemstartTime = WorkflowExpression.Compile(itemstartTime, nameof(itemstartTime), required: true);
-            var __workflow_itemendTime = WorkflowExpression.Compile(itemendTime, nameof(itemendTime), required: true);
-            var __workflow_itemtimeZone = WorkflowExpression.Compile(itemtimeZone, nameof(itemtimeZone), required: true);
-            var __workflow_itemrequiredAttendees = WorkflowExpression.Compile(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
-            var __workflow_itemoptionalAttendees = WorkflowExpression.Compile(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
-            var __workflow_itemresourceAttendees = WorkflowExpression.Compile(itemresourceAttendees, nameof(itemresourceAttendees), required: false);
-            var __workflow_itembody = WorkflowExpression.Compile(itembody, nameof(itembody), required: false);
-            var __workflow_itemcategories = WorkflowExpression.Compile(itemcategories, nameof(itemcategories), required: false);
-            var __workflow_itemlocation = WorkflowExpression.Compile(itemlocation, nameof(itemlocation), required: false);
-            var __workflow_itemimportance = WorkflowExpression.Compile(itemimportance, nameof(itemimportance), required: false);
-            var __workflow_itemisAllDayEvent = WorkflowExpression.Compile(itemisAllDayEvent, nameof(itemisAllDayEvent), required: false);
-            var __workflow_itemrecurrence = WorkflowExpression.Compile(itemrecurrence, nameof(itemrecurrence), required: false);
-            var __workflow_itemselectedDaysOfWeek = WorkflowExpression.Compile(itemselectedDaysOfWeek, nameof(itemselectedDaysOfWeek), required: false);
-            var __workflow_itemrecurrenceEndDate = WorkflowExpression.Compile(itemrecurrenceEndDate, nameof(itemrecurrenceEndDate), required: false);
-            var __workflow_itemnumberOfOccurrences = WorkflowExpression.Compile(itemnumberOfOccurrences, nameof(itemnumberOfOccurrences), required: false);
-            var __workflow_itemreminder = WorkflowExpression.Compile(itemreminder, nameof(itemreminder), required: false);
-            var __workflow_itemisReminderOn = WorkflowExpression.Compile(itemisReminderOn, nameof(itemisReminderOn), required: false);
-            var __workflow_itemshowAs = WorkflowExpression.Compile(itemshowAs, nameof(itemshowAs), required: false);
-            var __workflow_itemresponseRequested = WorkflowExpression.Compile(itemresponseRequested, nameof(itemresponseRequested), required: false);
-            var __workflow_itemsensitivity = WorkflowExpression.Compile(itemsensitivity, nameof(itemsensitivity), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<GraphCalendarEventClientReceive, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v4/tables/{0}/items", __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var item = new JObject();
-                var itempropCount = 0;
-                itempropCount++;
-                item["subject"] = ExpressionConverter.ConvertO(__workflow_itemsubject);
-                itempropCount++;
-                item["start"] = ExpressionConverter.ConvertO(__workflow_itemstartTime);
-                itempropCount++;
-                item["end"] = ExpressionConverter.ConvertO(__workflow_itemendTime);
-                itempropCount++;
-                item["timeZone"] = ExpressionConverter.ConvertO(__workflow_itemtimeZone);
-                if (__workflow_itemrequiredAttendees != null)
-                {
-                    item["requiredAttendees"] = ExpressionConverter.ConvertO(__workflow_itemrequiredAttendees);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemoptionalAttendees != null)
-                {
-                    item["optionalAttendees"] = ExpressionConverter.ConvertO(__workflow_itemoptionalAttendees);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemresourceAttendees != null)
-                {
-                    item["resourceAttendees"] = ExpressionConverter.ConvertO(__workflow_itemresourceAttendees);
-                    itempropCount++;
-                }
-
-                if (__workflow_itembody != null)
-                {
-                    item["body"] = ExpressionConverter.ConvertO(__workflow_itembody);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemcategories != null)
-                {
-                    item["categories"] = ExpressionConverter.ConvertO(__workflow_itemcategories);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemlocation != null)
-                {
-                    item["location"] = ExpressionConverter.ConvertO(__workflow_itemlocation);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemimportance != null)
-                {
-                    item["importance"] = ExpressionConverter.ConvertO(__workflow_itemimportance);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemisAllDayEvent != null)
-                {
-                    item["isAllDay"] = ExpressionConverter.ConvertO(__workflow_itemisAllDayEvent);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemrecurrence != null)
-                {
-                    item["recurrence"] = ExpressionConverter.ConvertO(__workflow_itemrecurrence);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemselectedDaysOfWeek != null)
-                {
-                    item["selectedDaysOfWeek"] = ExpressionConverter.ConvertO(__workflow_itemselectedDaysOfWeek);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemrecurrenceEndDate != null)
-                {
-                    item["recurrenceEnd"] = ExpressionConverter.ConvertO(__workflow_itemrecurrenceEndDate);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemnumberOfOccurrences != null)
-                {
-                    item["numberOfOccurences"] = ExpressionConverter.ConvertO(__workflow_itemnumberOfOccurrences);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemreminder != null)
-                {
-                    item["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(__workflow_itemreminder);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemisReminderOn != null)
-                {
-                    item["isReminderOn"] = ExpressionConverter.ConvertO(__workflow_itemisReminderOn);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemshowAs != null)
-                {
-                    item["showAs"] = ExpressionConverter.ConvertO(__workflow_itemshowAs);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemresponseRequested != null)
-                {
-                    item["responseRequested"] = ExpressionConverter.ConvertO(__workflow_itemresponseRequested);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemsensitivity != null)
-                {
-                    item["sensitivity"] = ExpressionConverter.ConvertO(__workflow_itemsensitivity);
-                    itempropCount++;
-                }
-
-                if (itempropCount > 0)
-                {
-                    callPayload.Body = item;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<GraphCalendarEventClientReceive>(callPayload);
             });
         }
@@ -1266,732 +409,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<ContactResponseV2, ApiConnectionActionConfiguration> ContactPatchItem(Expression<Func<string>> folder, Expression<Func<string>> id, Expression<Func<string>> itemgivenName, Expression<Func<string[]>> itemhomePhones, Expression<Func<string>> itemid = null, Expression<Func<string>> itemparentFolderId = null, Expression<Func<string>> itembirthday = null, Expression<Func<string>> itemfileAs = null, Expression<Func<string>> itemdisplayName = null, Expression<Func<string>> iteminitials = null, Expression<Func<string>> itemmiddleName = null, Expression<Func<string>> itemnickname = null, Expression<Func<string>> itemsurname = null, Expression<Func<string>> itemtitle = null, Expression<Func<string>> itemgeneration = null, Expression<Func<EmailAddressV2[]>> itememailAddresses = null, Expression<Func<string[]>> itemiMAddresses = null, Expression<Func<string>> itemjobTitle = null, Expression<Func<string>> itemcompanyName = null, Expression<Func<string>> itemdepartment = null, Expression<Func<string>> itemofficeLocation = null, Expression<Func<string>> itemprofession = null, Expression<Func<string>> itembusinessHomePage = null, Expression<Func<string>> itemassistantName = null, Expression<Func<string>> itemmanager = null, Expression<Func<string[]>> itembusinessPhones = null, Expression<Func<string>> itemmobilePhone = null, Expression<Func<string>> itemhomeAddressstreet = null, Expression<Func<string>> itemhomeAddresscity = null, Expression<Func<string>> itemhomeAddressstate = null, Expression<Func<string>> itemhomeAddresscountryOrRegion = null, Expression<Func<string>> itemhomeAddresspostalCode = null, Expression<Func<string>> itembusinessAddressstreet = null, Expression<Func<string>> itembusinessAddresscity = null, Expression<Func<string>> itembusinessAddressstate = null, Expression<Func<string>> itembusinessAddresscountryOrRegion = null, Expression<Func<string>> itembusinessAddresspostalCode = null, Expression<Func<string>> itemotherAddressstreet = null, Expression<Func<string>> itemotherAddresscity = null, Expression<Func<string>> itemotherAddressstate = null, Expression<Func<string>> itemotherAddresscountryOrRegion = null, Expression<Func<string>> itemotherAddresspostalCode = null, Expression<Func<string>> itemyomiCompanyName = null, Expression<Func<string>> itemyomiGivenName = null, Expression<Func<string>> itemyomiSurname = null, Expression<Func<string[]>> itemcategories = null, Expression<Func<string>> itemchangeKey = null, Expression<Func<string>> itemcreatedTime = null, Expression<Func<string>> itemlastModifiedTime = null)
+        public IBodyWorkflowAction<ContactResponseV2, ApiConnectionActionConfiguration> ContactPatchItem(Expression<Func<string>> folder, Expression<Func<string>> id, Expression<Func<ContactPatchItemItemInput>> item)
         {
             var __workflow_folder = WorkflowExpression.Compile(folder, nameof(folder), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_itemgivenName = WorkflowExpression.Compile(itemgivenName, nameof(itemgivenName), required: true);
-            var __workflow_itemhomePhones = WorkflowExpression.Compile(itemhomePhones, nameof(itemhomePhones), required: true);
-            var __workflow_itemid = WorkflowExpression.Compile(itemid, nameof(itemid), required: false);
-            var __workflow_itemparentFolderId = WorkflowExpression.Compile(itemparentFolderId, nameof(itemparentFolderId), required: false);
-            var __workflow_itembirthday = WorkflowExpression.Compile(itembirthday, nameof(itembirthday), required: false);
-            var __workflow_itemfileAs = WorkflowExpression.Compile(itemfileAs, nameof(itemfileAs), required: false);
-            var __workflow_itemdisplayName = WorkflowExpression.Compile(itemdisplayName, nameof(itemdisplayName), required: false);
-            var __workflow_iteminitials = WorkflowExpression.Compile(iteminitials, nameof(iteminitials), required: false);
-            var __workflow_itemmiddleName = WorkflowExpression.Compile(itemmiddleName, nameof(itemmiddleName), required: false);
-            var __workflow_itemnickname = WorkflowExpression.Compile(itemnickname, nameof(itemnickname), required: false);
-            var __workflow_itemsurname = WorkflowExpression.Compile(itemsurname, nameof(itemsurname), required: false);
-            var __workflow_itemtitle = WorkflowExpression.Compile(itemtitle, nameof(itemtitle), required: false);
-            var __workflow_itemgeneration = WorkflowExpression.Compile(itemgeneration, nameof(itemgeneration), required: false);
-            var __workflow_itememailAddresses = WorkflowExpression.Compile(itememailAddresses, nameof(itememailAddresses), required: false);
-            var __workflow_itemiMAddresses = WorkflowExpression.Compile(itemiMAddresses, nameof(itemiMAddresses), required: false);
-            var __workflow_itemjobTitle = WorkflowExpression.Compile(itemjobTitle, nameof(itemjobTitle), required: false);
-            var __workflow_itemcompanyName = WorkflowExpression.Compile(itemcompanyName, nameof(itemcompanyName), required: false);
-            var __workflow_itemdepartment = WorkflowExpression.Compile(itemdepartment, nameof(itemdepartment), required: false);
-            var __workflow_itemofficeLocation = WorkflowExpression.Compile(itemofficeLocation, nameof(itemofficeLocation), required: false);
-            var __workflow_itemprofession = WorkflowExpression.Compile(itemprofession, nameof(itemprofession), required: false);
-            var __workflow_itembusinessHomePage = WorkflowExpression.Compile(itembusinessHomePage, nameof(itembusinessHomePage), required: false);
-            var __workflow_itemassistantName = WorkflowExpression.Compile(itemassistantName, nameof(itemassistantName), required: false);
-            var __workflow_itemmanager = WorkflowExpression.Compile(itemmanager, nameof(itemmanager), required: false);
-            var __workflow_itembusinessPhones = WorkflowExpression.Compile(itembusinessPhones, nameof(itembusinessPhones), required: false);
-            var __workflow_itemmobilePhone = WorkflowExpression.Compile(itemmobilePhone, nameof(itemmobilePhone), required: false);
-            var __workflow_itemhomeAddressstreet = WorkflowExpression.Compile(itemhomeAddressstreet, nameof(itemhomeAddressstreet), required: false);
-            var __workflow_itemhomeAddresscity = WorkflowExpression.Compile(itemhomeAddresscity, nameof(itemhomeAddresscity), required: false);
-            var __workflow_itemhomeAddressstate = WorkflowExpression.Compile(itemhomeAddressstate, nameof(itemhomeAddressstate), required: false);
-            var __workflow_itemhomeAddresscountryOrRegion = WorkflowExpression.Compile(itemhomeAddresscountryOrRegion, nameof(itemhomeAddresscountryOrRegion), required: false);
-            var __workflow_itemhomeAddresspostalCode = WorkflowExpression.Compile(itemhomeAddresspostalCode, nameof(itemhomeAddresspostalCode), required: false);
-            var __workflow_itembusinessAddressstreet = WorkflowExpression.Compile(itembusinessAddressstreet, nameof(itembusinessAddressstreet), required: false);
-            var __workflow_itembusinessAddresscity = WorkflowExpression.Compile(itembusinessAddresscity, nameof(itembusinessAddresscity), required: false);
-            var __workflow_itembusinessAddressstate = WorkflowExpression.Compile(itembusinessAddressstate, nameof(itembusinessAddressstate), required: false);
-            var __workflow_itembusinessAddresscountryOrRegion = WorkflowExpression.Compile(itembusinessAddresscountryOrRegion, nameof(itembusinessAddresscountryOrRegion), required: false);
-            var __workflow_itembusinessAddresspostalCode = WorkflowExpression.Compile(itembusinessAddresspostalCode, nameof(itembusinessAddresspostalCode), required: false);
-            var __workflow_itemotherAddressstreet = WorkflowExpression.Compile(itemotherAddressstreet, nameof(itemotherAddressstreet), required: false);
-            var __workflow_itemotherAddresscity = WorkflowExpression.Compile(itemotherAddresscity, nameof(itemotherAddresscity), required: false);
-            var __workflow_itemotherAddressstate = WorkflowExpression.Compile(itemotherAddressstate, nameof(itemotherAddressstate), required: false);
-            var __workflow_itemotherAddresscountryOrRegion = WorkflowExpression.Compile(itemotherAddresscountryOrRegion, nameof(itemotherAddresscountryOrRegion), required: false);
-            var __workflow_itemotherAddresspostalCode = WorkflowExpression.Compile(itemotherAddresspostalCode, nameof(itemotherAddresspostalCode), required: false);
-            var __workflow_itemyomiCompanyName = WorkflowExpression.Compile(itemyomiCompanyName, nameof(itemyomiCompanyName), required: false);
-            var __workflow_itemyomiGivenName = WorkflowExpression.Compile(itemyomiGivenName, nameof(itemyomiGivenName), required: false);
-            var __workflow_itemyomiSurname = WorkflowExpression.Compile(itemyomiSurname, nameof(itemyomiSurname), required: false);
-            var __workflow_itemcategories = WorkflowExpression.Compile(itemcategories, nameof(itemcategories), required: false);
-            var __workflow_itemchangeKey = WorkflowExpression.Compile(itemchangeKey, nameof(itemchangeKey), required: false);
-            var __workflow_itemcreatedTime = WorkflowExpression.Compile(itemcreatedTime, nameof(itemcreatedTime), required: false);
-            var __workflow_itemlastModifiedTime = WorkflowExpression.Compile(itemlastModifiedTime, nameof(itemlastModifiedTime), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<ContactResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/me/contactFolders/{0}/contacts/{1}", __workflow_folder.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var item = new JObject();
-                var itempropCount = 0;
-                if (__workflow_itemid != null)
-                {
-                    item["id"] = ExpressionConverter.ConvertO(__workflow_itemid);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemparentFolderId != null)
-                {
-                    item["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_itemparentFolderId);
-                    itempropCount++;
-                }
-
-                if (__workflow_itembirthday != null)
-                {
-                    item["birthday"] = ExpressionConverter.ConvertO(__workflow_itembirthday);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemfileAs != null)
-                {
-                    item["fileAs"] = ExpressionConverter.ConvertO(__workflow_itemfileAs);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemdisplayName != null)
-                {
-                    item["displayName"] = ExpressionConverter.ConvertO(__workflow_itemdisplayName);
-                    itempropCount++;
-                }
-
-                itempropCount++;
-                item["givenName"] = ExpressionConverter.ConvertO(__workflow_itemgivenName);
-                if (__workflow_iteminitials != null)
-                {
-                    item["initials"] = ExpressionConverter.ConvertO(__workflow_iteminitials);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemmiddleName != null)
-                {
-                    item["middleName"] = ExpressionConverter.ConvertO(__workflow_itemmiddleName);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemnickname != null)
-                {
-                    item["nickName"] = ExpressionConverter.ConvertO(__workflow_itemnickname);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemsurname != null)
-                {
-                    item["surname"] = ExpressionConverter.ConvertO(__workflow_itemsurname);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemtitle != null)
-                {
-                    item["title"] = ExpressionConverter.ConvertO(__workflow_itemtitle);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemgeneration != null)
-                {
-                    item["generation"] = ExpressionConverter.ConvertO(__workflow_itemgeneration);
-                    itempropCount++;
-                }
-
-                if (__workflow_itememailAddresses != null)
-                {
-                    item["emailAddresses"] = ExpressionConverter.ConvertO(__workflow_itememailAddresses);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemiMAddresses != null)
-                {
-                    item["imAddresses"] = ExpressionConverter.ConvertO(__workflow_itemiMAddresses);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemjobTitle != null)
-                {
-                    item["jobTitle"] = ExpressionConverter.ConvertO(__workflow_itemjobTitle);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemcompanyName != null)
-                {
-                    item["companyName"] = ExpressionConverter.ConvertO(__workflow_itemcompanyName);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemdepartment != null)
-                {
-                    item["department"] = ExpressionConverter.ConvertO(__workflow_itemdepartment);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemofficeLocation != null)
-                {
-                    item["officeLocation"] = ExpressionConverter.ConvertO(__workflow_itemofficeLocation);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemprofession != null)
-                {
-                    item["profession"] = ExpressionConverter.ConvertO(__workflow_itemprofession);
-                    itempropCount++;
-                }
-
-                if (__workflow_itembusinessHomePage != null)
-                {
-                    item["businessHomePage"] = ExpressionConverter.ConvertO(__workflow_itembusinessHomePage);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemassistantName != null)
-                {
-                    item["assistantName"] = ExpressionConverter.ConvertO(__workflow_itemassistantName);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemmanager != null)
-                {
-                    item["manager"] = ExpressionConverter.ConvertO(__workflow_itemmanager);
-                    itempropCount++;
-                }
-
-                itempropCount++;
-                item["homePhones"] = ExpressionConverter.ConvertO(__workflow_itemhomePhones);
-                if (__workflow_itembusinessPhones != null)
-                {
-                    item["businessPhones"] = ExpressionConverter.ConvertO(__workflow_itembusinessPhones);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemmobilePhone != null)
-                {
-                    item["mobilePhone"] = ExpressionConverter.ConvertO(__workflow_itemmobilePhone);
-                    itempropCount++;
-                }
-
-                var homeAddressObject = new JObject();
-                var homeAddressObjectpropCount = 0;
-                if (__workflow_itemhomeAddressstreet != null)
-                {
-                    homeAddressObject["street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
-                    homeAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscity != null)
-                {
-                    homeAddressObject["city"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
-                    homeAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddressstate != null)
-                {
-                    homeAddressObject["state"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
-                    homeAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscountryOrRegion != null)
-                {
-                    homeAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
-                    homeAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresspostalCode != null)
-                {
-                    homeAddressObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
-                    homeAddressObjectpropCount++;
-                }
-
-                if (homeAddressObjectpropCount > 0)
-                {
-                    item["homeAddress"] = homeAddressObject;
-                    itempropCount++;
-                }
-
-                var businessAddressObject = new JObject();
-                var businessAddressObjectpropCount = 0;
-                if (__workflow_itemhomeAddressstreet != null)
-                {
-                    businessAddressObject["street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscity != null)
-                {
-                    businessAddressObject["city"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddressstate != null)
-                {
-                    businessAddressObject["state"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscountryOrRegion != null)
-                {
-                    businessAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresspostalCode != null)
-                {
-                    businessAddressObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (businessAddressObjectpropCount > 0)
-                {
-                    item["businessAddress"] = businessAddressObject;
-                    itempropCount++;
-                }
-
-                var otherAddressObject = new JObject();
-                var otherAddressObjectpropCount = 0;
-                if (__workflow_itemhomeAddressstreet != null)
-                {
-                    otherAddressObject["street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
-                    otherAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscity != null)
-                {
-                    otherAddressObject["city"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
-                    otherAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddressstate != null)
-                {
-                    otherAddressObject["state"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
-                    otherAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscountryOrRegion != null)
-                {
-                    otherAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
-                    otherAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresspostalCode != null)
-                {
-                    otherAddressObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
-                    otherAddressObjectpropCount++;
-                }
-
-                if (otherAddressObjectpropCount > 0)
-                {
-                    item["otherAddress"] = otherAddressObject;
-                    itempropCount++;
-                }
-
-                if (__workflow_itemyomiCompanyName != null)
-                {
-                    item["yomiCompanyName"] = ExpressionConverter.ConvertO(__workflow_itemyomiCompanyName);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemyomiGivenName != null)
-                {
-                    item["yomiGivenName"] = ExpressionConverter.ConvertO(__workflow_itemyomiGivenName);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemyomiSurname != null)
-                {
-                    item["yomiSurname"] = ExpressionConverter.ConvertO(__workflow_itemyomiSurname);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemcategories != null)
-                {
-                    item["categories"] = ExpressionConverter.ConvertO(__workflow_itemcategories);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemchangeKey != null)
-                {
-                    item["changeKey"] = ExpressionConverter.ConvertO(__workflow_itemchangeKey);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemcreatedTime != null)
-                {
-                    item["createdDateTime"] = ExpressionConverter.ConvertO(__workflow_itemcreatedTime);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemlastModifiedTime != null)
-                {
-                    item["lastModifiedDateTime"] = ExpressionConverter.ConvertO(__workflow_itemlastModifiedTime);
-                    itempropCount++;
-                }
-
-                if (itempropCount > 0)
-                {
-                    callPayload.Body = item;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<ContactResponseV2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<ContactResponseV2, ApiConnectionActionConfiguration> ContactPostItem(Expression<Func<string>> folder, Expression<Func<string>> itemgivenName, Expression<Func<string[]>> itemhomePhones, Expression<Func<string>> itemid = null, Expression<Func<string>> itemparentFolderId = null, Expression<Func<string>> itembirthday = null, Expression<Func<string>> itemfileAs = null, Expression<Func<string>> itemdisplayName = null, Expression<Func<string>> iteminitials = null, Expression<Func<string>> itemmiddleName = null, Expression<Func<string>> itemnickname = null, Expression<Func<string>> itemsurname = null, Expression<Func<string>> itemtitle = null, Expression<Func<string>> itemgeneration = null, Expression<Func<EmailAddressV2[]>> itememailAddresses = null, Expression<Func<string[]>> itemiMAddresses = null, Expression<Func<string>> itemjobTitle = null, Expression<Func<string>> itemcompanyName = null, Expression<Func<string>> itemdepartment = null, Expression<Func<string>> itemofficeLocation = null, Expression<Func<string>> itemprofession = null, Expression<Func<string>> itembusinessHomePage = null, Expression<Func<string>> itemassistantName = null, Expression<Func<string>> itemmanager = null, Expression<Func<string[]>> itembusinessPhones = null, Expression<Func<string>> itemmobilePhone = null, Expression<Func<string>> itemhomeAddressstreet = null, Expression<Func<string>> itemhomeAddresscity = null, Expression<Func<string>> itemhomeAddressstate = null, Expression<Func<string>> itemhomeAddresscountryOrRegion = null, Expression<Func<string>> itemhomeAddresspostalCode = null, Expression<Func<string>> itembusinessAddressstreet = null, Expression<Func<string>> itembusinessAddresscity = null, Expression<Func<string>> itembusinessAddressstate = null, Expression<Func<string>> itembusinessAddresscountryOrRegion = null, Expression<Func<string>> itembusinessAddresspostalCode = null, Expression<Func<string>> itemotherAddressstreet = null, Expression<Func<string>> itemotherAddresscity = null, Expression<Func<string>> itemotherAddressstate = null, Expression<Func<string>> itemotherAddresscountryOrRegion = null, Expression<Func<string>> itemotherAddresspostalCode = null, Expression<Func<string>> itemyomiCompanyName = null, Expression<Func<string>> itemyomiGivenName = null, Expression<Func<string>> itemyomiSurname = null, Expression<Func<string[]>> itemcategories = null, Expression<Func<string>> itemchangeKey = null, Expression<Func<string>> itemcreatedTime = null, Expression<Func<string>> itemlastModifiedTime = null)
+        public IBodyWorkflowAction<ContactResponseV2, ApiConnectionActionConfiguration> ContactPostItem(Expression<Func<string>> folder, Expression<Func<ContactPatchItemItemInput>> item)
         {
             var __workflow_folder = WorkflowExpression.Compile(folder, nameof(folder), required: true);
-            var __workflow_itemgivenName = WorkflowExpression.Compile(itemgivenName, nameof(itemgivenName), required: true);
-            var __workflow_itemhomePhones = WorkflowExpression.Compile(itemhomePhones, nameof(itemhomePhones), required: true);
-            var __workflow_itemid = WorkflowExpression.Compile(itemid, nameof(itemid), required: false);
-            var __workflow_itemparentFolderId = WorkflowExpression.Compile(itemparentFolderId, nameof(itemparentFolderId), required: false);
-            var __workflow_itembirthday = WorkflowExpression.Compile(itembirthday, nameof(itembirthday), required: false);
-            var __workflow_itemfileAs = WorkflowExpression.Compile(itemfileAs, nameof(itemfileAs), required: false);
-            var __workflow_itemdisplayName = WorkflowExpression.Compile(itemdisplayName, nameof(itemdisplayName), required: false);
-            var __workflow_iteminitials = WorkflowExpression.Compile(iteminitials, nameof(iteminitials), required: false);
-            var __workflow_itemmiddleName = WorkflowExpression.Compile(itemmiddleName, nameof(itemmiddleName), required: false);
-            var __workflow_itemnickname = WorkflowExpression.Compile(itemnickname, nameof(itemnickname), required: false);
-            var __workflow_itemsurname = WorkflowExpression.Compile(itemsurname, nameof(itemsurname), required: false);
-            var __workflow_itemtitle = WorkflowExpression.Compile(itemtitle, nameof(itemtitle), required: false);
-            var __workflow_itemgeneration = WorkflowExpression.Compile(itemgeneration, nameof(itemgeneration), required: false);
-            var __workflow_itememailAddresses = WorkflowExpression.Compile(itememailAddresses, nameof(itememailAddresses), required: false);
-            var __workflow_itemiMAddresses = WorkflowExpression.Compile(itemiMAddresses, nameof(itemiMAddresses), required: false);
-            var __workflow_itemjobTitle = WorkflowExpression.Compile(itemjobTitle, nameof(itemjobTitle), required: false);
-            var __workflow_itemcompanyName = WorkflowExpression.Compile(itemcompanyName, nameof(itemcompanyName), required: false);
-            var __workflow_itemdepartment = WorkflowExpression.Compile(itemdepartment, nameof(itemdepartment), required: false);
-            var __workflow_itemofficeLocation = WorkflowExpression.Compile(itemofficeLocation, nameof(itemofficeLocation), required: false);
-            var __workflow_itemprofession = WorkflowExpression.Compile(itemprofession, nameof(itemprofession), required: false);
-            var __workflow_itembusinessHomePage = WorkflowExpression.Compile(itembusinessHomePage, nameof(itembusinessHomePage), required: false);
-            var __workflow_itemassistantName = WorkflowExpression.Compile(itemassistantName, nameof(itemassistantName), required: false);
-            var __workflow_itemmanager = WorkflowExpression.Compile(itemmanager, nameof(itemmanager), required: false);
-            var __workflow_itembusinessPhones = WorkflowExpression.Compile(itembusinessPhones, nameof(itembusinessPhones), required: false);
-            var __workflow_itemmobilePhone = WorkflowExpression.Compile(itemmobilePhone, nameof(itemmobilePhone), required: false);
-            var __workflow_itemhomeAddressstreet = WorkflowExpression.Compile(itemhomeAddressstreet, nameof(itemhomeAddressstreet), required: false);
-            var __workflow_itemhomeAddresscity = WorkflowExpression.Compile(itemhomeAddresscity, nameof(itemhomeAddresscity), required: false);
-            var __workflow_itemhomeAddressstate = WorkflowExpression.Compile(itemhomeAddressstate, nameof(itemhomeAddressstate), required: false);
-            var __workflow_itemhomeAddresscountryOrRegion = WorkflowExpression.Compile(itemhomeAddresscountryOrRegion, nameof(itemhomeAddresscountryOrRegion), required: false);
-            var __workflow_itemhomeAddresspostalCode = WorkflowExpression.Compile(itemhomeAddresspostalCode, nameof(itemhomeAddresspostalCode), required: false);
-            var __workflow_itembusinessAddressstreet = WorkflowExpression.Compile(itembusinessAddressstreet, nameof(itembusinessAddressstreet), required: false);
-            var __workflow_itembusinessAddresscity = WorkflowExpression.Compile(itembusinessAddresscity, nameof(itembusinessAddresscity), required: false);
-            var __workflow_itembusinessAddressstate = WorkflowExpression.Compile(itembusinessAddressstate, nameof(itembusinessAddressstate), required: false);
-            var __workflow_itembusinessAddresscountryOrRegion = WorkflowExpression.Compile(itembusinessAddresscountryOrRegion, nameof(itembusinessAddresscountryOrRegion), required: false);
-            var __workflow_itembusinessAddresspostalCode = WorkflowExpression.Compile(itembusinessAddresspostalCode, nameof(itembusinessAddresspostalCode), required: false);
-            var __workflow_itemotherAddressstreet = WorkflowExpression.Compile(itemotherAddressstreet, nameof(itemotherAddressstreet), required: false);
-            var __workflow_itemotherAddresscity = WorkflowExpression.Compile(itemotherAddresscity, nameof(itemotherAddresscity), required: false);
-            var __workflow_itemotherAddressstate = WorkflowExpression.Compile(itemotherAddressstate, nameof(itemotherAddressstate), required: false);
-            var __workflow_itemotherAddresscountryOrRegion = WorkflowExpression.Compile(itemotherAddresscountryOrRegion, nameof(itemotherAddresscountryOrRegion), required: false);
-            var __workflow_itemotherAddresspostalCode = WorkflowExpression.Compile(itemotherAddresspostalCode, nameof(itemotherAddresspostalCode), required: false);
-            var __workflow_itemyomiCompanyName = WorkflowExpression.Compile(itemyomiCompanyName, nameof(itemyomiCompanyName), required: false);
-            var __workflow_itemyomiGivenName = WorkflowExpression.Compile(itemyomiGivenName, nameof(itemyomiGivenName), required: false);
-            var __workflow_itemyomiSurname = WorkflowExpression.Compile(itemyomiSurname, nameof(itemyomiSurname), required: false);
-            var __workflow_itemcategories = WorkflowExpression.Compile(itemcategories, nameof(itemcategories), required: false);
-            var __workflow_itemchangeKey = WorkflowExpression.Compile(itemchangeKey, nameof(itemchangeKey), required: false);
-            var __workflow_itemcreatedTime = WorkflowExpression.Compile(itemcreatedTime, nameof(itemcreatedTime), required: false);
-            var __workflow_itemlastModifiedTime = WorkflowExpression.Compile(itemlastModifiedTime, nameof(itemlastModifiedTime), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<ContactResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/me/contactFolders/{0}/contacts", __workflow_folder.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var item = new JObject();
-                var itempropCount = 0;
-                if (__workflow_itemid != null)
-                {
-                    item["id"] = ExpressionConverter.ConvertO(__workflow_itemid);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemparentFolderId != null)
-                {
-                    item["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_itemparentFolderId);
-                    itempropCount++;
-                }
-
-                if (__workflow_itembirthday != null)
-                {
-                    item["birthday"] = ExpressionConverter.ConvertO(__workflow_itembirthday);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemfileAs != null)
-                {
-                    item["fileAs"] = ExpressionConverter.ConvertO(__workflow_itemfileAs);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemdisplayName != null)
-                {
-                    item["displayName"] = ExpressionConverter.ConvertO(__workflow_itemdisplayName);
-                    itempropCount++;
-                }
-
-                itempropCount++;
-                item["givenName"] = ExpressionConverter.ConvertO(__workflow_itemgivenName);
-                if (__workflow_iteminitials != null)
-                {
-                    item["initials"] = ExpressionConverter.ConvertO(__workflow_iteminitials);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemmiddleName != null)
-                {
-                    item["middleName"] = ExpressionConverter.ConvertO(__workflow_itemmiddleName);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemnickname != null)
-                {
-                    item["nickName"] = ExpressionConverter.ConvertO(__workflow_itemnickname);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemsurname != null)
-                {
-                    item["surname"] = ExpressionConverter.ConvertO(__workflow_itemsurname);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemtitle != null)
-                {
-                    item["title"] = ExpressionConverter.ConvertO(__workflow_itemtitle);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemgeneration != null)
-                {
-                    item["generation"] = ExpressionConverter.ConvertO(__workflow_itemgeneration);
-                    itempropCount++;
-                }
-
-                if (__workflow_itememailAddresses != null)
-                {
-                    item["emailAddresses"] = ExpressionConverter.ConvertO(__workflow_itememailAddresses);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemiMAddresses != null)
-                {
-                    item["imAddresses"] = ExpressionConverter.ConvertO(__workflow_itemiMAddresses);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemjobTitle != null)
-                {
-                    item["jobTitle"] = ExpressionConverter.ConvertO(__workflow_itemjobTitle);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemcompanyName != null)
-                {
-                    item["companyName"] = ExpressionConverter.ConvertO(__workflow_itemcompanyName);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemdepartment != null)
-                {
-                    item["department"] = ExpressionConverter.ConvertO(__workflow_itemdepartment);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemofficeLocation != null)
-                {
-                    item["officeLocation"] = ExpressionConverter.ConvertO(__workflow_itemofficeLocation);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemprofession != null)
-                {
-                    item["profession"] = ExpressionConverter.ConvertO(__workflow_itemprofession);
-                    itempropCount++;
-                }
-
-                if (__workflow_itembusinessHomePage != null)
-                {
-                    item["businessHomePage"] = ExpressionConverter.ConvertO(__workflow_itembusinessHomePage);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemassistantName != null)
-                {
-                    item["assistantName"] = ExpressionConverter.ConvertO(__workflow_itemassistantName);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemmanager != null)
-                {
-                    item["manager"] = ExpressionConverter.ConvertO(__workflow_itemmanager);
-                    itempropCount++;
-                }
-
-                itempropCount++;
-                item["homePhones"] = ExpressionConverter.ConvertO(__workflow_itemhomePhones);
-                if (__workflow_itembusinessPhones != null)
-                {
-                    item["businessPhones"] = ExpressionConverter.ConvertO(__workflow_itembusinessPhones);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemmobilePhone != null)
-                {
-                    item["mobilePhone"] = ExpressionConverter.ConvertO(__workflow_itemmobilePhone);
-                    itempropCount++;
-                }
-
-                var homeAddressObject = new JObject();
-                var homeAddressObjectpropCount = 0;
-                if (__workflow_itemhomeAddressstreet != null)
-                {
-                    homeAddressObject["street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
-                    homeAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscity != null)
-                {
-                    homeAddressObject["city"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
-                    homeAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddressstate != null)
-                {
-                    homeAddressObject["state"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
-                    homeAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscountryOrRegion != null)
-                {
-                    homeAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
-                    homeAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresspostalCode != null)
-                {
-                    homeAddressObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
-                    homeAddressObjectpropCount++;
-                }
-
-                if (homeAddressObjectpropCount > 0)
-                {
-                    item["homeAddress"] = homeAddressObject;
-                    itempropCount++;
-                }
-
-                var businessAddressObject = new JObject();
-                var businessAddressObjectpropCount = 0;
-                if (__workflow_itemhomeAddressstreet != null)
-                {
-                    businessAddressObject["street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscity != null)
-                {
-                    businessAddressObject["city"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddressstate != null)
-                {
-                    businessAddressObject["state"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscountryOrRegion != null)
-                {
-                    businessAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresspostalCode != null)
-                {
-                    businessAddressObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (businessAddressObjectpropCount > 0)
-                {
-                    item["businessAddress"] = businessAddressObject;
-                    itempropCount++;
-                }
-
-                var otherAddressObject = new JObject();
-                var otherAddressObjectpropCount = 0;
-                if (__workflow_itemhomeAddressstreet != null)
-                {
-                    otherAddressObject["street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
-                    otherAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscity != null)
-                {
-                    otherAddressObject["city"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
-                    otherAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddressstate != null)
-                {
-                    otherAddressObject["state"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
-                    otherAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresscountryOrRegion != null)
-                {
-                    otherAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
-                    otherAddressObjectpropCount++;
-                }
-
-                if (__workflow_itemhomeAddresspostalCode != null)
-                {
-                    otherAddressObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
-                    otherAddressObjectpropCount++;
-                }
-
-                if (otherAddressObjectpropCount > 0)
-                {
-                    item["otherAddress"] = otherAddressObject;
-                    itempropCount++;
-                }
-
-                if (__workflow_itemyomiCompanyName != null)
-                {
-                    item["yomiCompanyName"] = ExpressionConverter.ConvertO(__workflow_itemyomiCompanyName);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemyomiGivenName != null)
-                {
-                    item["yomiGivenName"] = ExpressionConverter.ConvertO(__workflow_itemyomiGivenName);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemyomiSurname != null)
-                {
-                    item["yomiSurname"] = ExpressionConverter.ConvertO(__workflow_itemyomiSurname);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemcategories != null)
-                {
-                    item["categories"] = ExpressionConverter.ConvertO(__workflow_itemcategories);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemchangeKey != null)
-                {
-                    item["changeKey"] = ExpressionConverter.ConvertO(__workflow_itemchangeKey);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemcreatedTime != null)
-                {
-                    item["createdDateTime"] = ExpressionConverter.ConvertO(__workflow_itemcreatedTime);
-                    itempropCount++;
-                }
-
-                if (__workflow_itemlastModifiedTime != null)
-                {
-                    item["lastModifiedDateTime"] = ExpressionConverter.ConvertO(__workflow_itemlastModifiedTime);
-                    itempropCount++;
-                }
-
-                if (itempropCount > 0)
-                {
-                    callPayload.Body = item;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<ContactResponseV2>(callPayload);
             });
         }
@@ -2029,110 +472,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<FindMeetingTimesV2Response, ApiConnectionActionConfiguration> FindMeetingTimes(Expression<Func<string>> bodyrequiredAttendees = null, Expression<Func<string>> bodyoptionalAttendees = null, Expression<Func<string>> bodyresourceAttendees = null, Expression<Func<int>> bodymeetingDuration = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodymaxCandidates = null, Expression<Func<string>> bodyminimumAttendeePercentage = null, Expression<Func<bool>> bodyisOrganizerOptional = null, Expression<Func<bodyactivityDomainInput>> bodyactivityDomain = null)
+        public IBodyWorkflowAction<FindMeetingTimesResponse, ApiConnectionActionConfiguration> FindMeetingTimes(Expression<Func<FindMeetingTimesBodyInput>> body)
         {
-            var __workflow_bodyrequiredAttendees = WorkflowExpression.Compile(bodyrequiredAttendees, nameof(bodyrequiredAttendees), required: false);
-            var __workflow_bodyoptionalAttendees = WorkflowExpression.Compile(bodyoptionalAttendees, nameof(bodyoptionalAttendees), required: false);
-            var __workflow_bodyresourceAttendees = WorkflowExpression.Compile(bodyresourceAttendees, nameof(bodyresourceAttendees), required: false);
-            var __workflow_bodymeetingDuration = WorkflowExpression.Compile(bodymeetingDuration, nameof(bodymeetingDuration), required: false);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodymaxCandidates = WorkflowExpression.Compile(bodymaxCandidates, nameof(bodymaxCandidates), required: false);
-            var __workflow_bodyminimumAttendeePercentage = WorkflowExpression.Compile(bodyminimumAttendeePercentage, nameof(bodyminimumAttendeePercentage), required: false);
-            var __workflow_bodyisOrganizerOptional = WorkflowExpression.Compile(bodyisOrganizerOptional, nameof(bodyisOrganizerOptional), required: false);
-            var __workflow_bodyactivityDomain = WorkflowExpression.Compile(bodyactivityDomain, nameof(bodyactivityDomain), required: false);
-            return new DeferredBodyAction<FindMeetingTimesV2Response, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<FindMeetingTimesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/beta/me/findMeetingTimes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyrequiredAttendees != null)
-                {
-                    body["RequiredAttendees"] = ExpressionConverter.ConvertO(__workflow_bodyrequiredAttendees);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoptionalAttendees != null)
-                {
-                    body["OptionalAttendees"] = ExpressionConverter.ConvertO(__workflow_bodyoptionalAttendees);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresourceAttendees != null)
-                {
-                    body["ResourceAttendees"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAttendees);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymeetingDuration != null)
-                {
-                    body["MeetingDuration"] = ExpressionConverter.ConvertO(__workflow_bodymeetingDuration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartTime != null)
-                {
-                    body["Start"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendTime != null)
-                {
-                    body["End"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaxCandidates != null)
-                {
-                    body["MaxCandidates"] = ExpressionConverter.ConvertO(__workflow_bodymaxCandidates);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyminimumAttendeePercentage != null)
-                {
-                    body["MinimumAttendeePercentage"] = ExpressionConverter.ConvertO(__workflow_bodyminimumAttendeePercentage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisOrganizerOptional != null)
-                {
-                    body["IsOrganizerOptional"] = ExpressionConverter.ConvertO(__workflow_bodyisOrganizerOptional);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactivityDomain != null)
-                {
-                    if (__workflow_bodyactivityDomain != null)
-                    {
-                        body["ActivityDomain"] = ExpressionConverter.ConvertO(__workflow_bodyactivityDomain);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["ActivityDomain"] = "Work";
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<FindMeetingTimesV2Response>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<FindMeetingTimesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Flag(Expression<Func<string>> messageId, Expression<Func<string>> mailboxAddress = null, Expression<Func<bodyflagflagStatusInput>> bodyflagflagStatus = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Flag(Expression<Func<string>> messageId, Expression<Func<string>> mailboxAddress = null, Expression<Func<FlagBodyInput>> body = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_mailboxAddress = WorkflowExpression.Compile(mailboxAddress, nameof(mailboxAddress), required: false);
-            var __workflow_bodyflagflagStatus = WorkflowExpression.Compile(bodyflagflagStatus, nameof(bodyflagflagStatus), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/me/messages/{0}/flag", __workflow_messageId.WithUrlEncoding(1)));
@@ -2140,48 +498,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_mailboxAddress != null)
                     callPayload.Queries["mailboxAddress"] = ExpressionConverter.Convert(__workflow_mailboxAddress);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var flagObject = new JObject();
-                var flagObjectpropCount = 0;
-                if (__workflow_bodyflagflagStatus != null)
-                {
-                    if (__workflow_bodyflagflagStatus != null)
-                    {
-                        flagObject["flagStatus"] = ExpressionConverter.ConvertO(__workflow_bodyflagflagStatus);
-                        flagObjectpropCount++;
-                    }
-
-                    flagObjectpropCount++;
-                }
-                else
-                {
-                    flagObject["flagStatus"] = "flagged";
-                    flagObjectpropCount++;
-                }
-
-                if (flagObjectpropCount > 0)
-                {
-                    body["flag"] = flagObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ForwardEmail(Expression<Func<string>> messageId, Expression<Func<string>> bodyto, Expression<Func<string>> mailboxAddress = null, Expression<Func<string>> bodycomment = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ForwardEmail(Expression<Func<string>> messageId, Expression<Func<ForwardEmailBodyInput>> body, Expression<Func<string>> mailboxAddress = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_mailboxAddress = WorkflowExpression.Compile(mailboxAddress, nameof(mailboxAddress), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2195,34 +523,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
                 if (__workflow_fetchSensitivityLabelMetadata != null)
                     callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(__workflow_fetchSensitivityLabelMetadata);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycomment != null)
-                {
-                    body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["ToRecipients"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<GetAttachmentV2Response, ApiConnectionActionConfiguration> GetAttachment(Expression<Func<string>> messageId, Expression<Func<string>> attachmentId, Expression<Func<string>> mailboxAddress = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
+        public IBodyWorkflowAction<GetAttachmentResponse, ApiConnectionActionConfiguration> GetAttachment(Expression<Func<string>> messageId, Expression<Func<string>> attachmentId, Expression<Func<string>> mailboxAddress = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             var __workflow_mailboxAddress = WorkflowExpression.Compile(mailboxAddress, nameof(mailboxAddress), required: false);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
-            return new DeferredBodyAction<GetAttachmentV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetAttachmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/me/messages/{0}/attachments/{1}", __workflow_messageId.WithUrlEncoding(1), __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2233,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
                 if (__workflow_fetchSensitivityLabelMetadata != null)
                     callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(__workflow_fetchSensitivityLabelMetadata);
-                return new ApiConnectionAction<GetAttachmentV2Response>(callPayload);
+                return new ApiConnectionAction<GetAttachmentResponse>(callPayload);
             });
         }
 
@@ -2267,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<BatchResponseGraphClientReceiveMessage, ApiConnectionActionConfiguration> GetEmails(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<string>> subjectFilter = null, Expression<Func<bool>> fetchOnlyUnread = null, Expression<Func<string>> mailboxAddress = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> searchQuery = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<BatchResponseGraphClientReceiveMessage, ApiConnectionActionConfiguration> GetEmails(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<CreateGraphOnFlaggedEmailPokeSubscriptionImportanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<string>> subjectFilter = null, Expression<Func<bool>> fetchOnlyUnread = null, Expression<Func<string>> mailboxAddress = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> searchQuery = null, Expression<Func<int>> top = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -2358,72 +672,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<GetMailTipsV2Response, ApiConnectionActionConfiguration> GetMailTips(Expression<Func<string[]>> bodyemailAddresses)
+        public IBodyWorkflowAction<GetMailTipsResponse, ApiConnectionActionConfiguration> GetMailTips(Expression<Func<GetMailTipsBodyInput>> body)
         {
-            var __workflow_bodyemailAddresses = WorkflowExpression.Compile(bodyemailAddresses, nameof(bodyemailAddresses), required: true);
-            return new DeferredBodyAction<GetMailTipsV2Response, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<GetMailTipsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/v1.0/me/getMailTips";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["MailTipsOptions"] = "automaticReplies, deliveryRestriction, externalMemberCount, mailboxFullStatus, maxMessageSize, moderationStatus, totalMemberCount";
-                bodypropCount++;
-                bodypropCount++;
-                body["EmailAddresses"] = ExpressionConverter.ConvertO(__workflow_bodyemailAddresses);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<GetMailTipsV2Response>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<GetMailTipsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<GetRoomListsV2Response, ApiConnectionActionConfiguration> GetRoomLists()
+        public IBodyWorkflowAction<GetRoomListsResponse, ApiConnectionActionConfiguration> GetRoomLists()
         {
-            return new DeferredBodyAction<GetRoomListsV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetRoomListsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/beta/me/findRoomLists";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetRoomListsV2Response>(callPayload);
+                return new ApiConnectionAction<GetRoomListsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<GetRoomsV2Response, ApiConnectionActionConfiguration> GetRooms()
+        public IBodyWorkflowAction<GetRoomsResponse, ApiConnectionActionConfiguration> GetRooms()
         {
-            return new DeferredBodyAction<GetRoomsV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetRoomsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/beta/me/findRooms";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetRoomsV2Response>(callPayload);
+                return new ApiConnectionAction<GetRoomsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<GetRoomsInRoomListV2Response, ApiConnectionActionConfiguration> GetRoomsInRoomList(Expression<Func<string>> roomList)
+        public IBodyWorkflowAction<GetRoomsInRoomListResponse, ApiConnectionActionConfiguration> GetRoomsInRoomList(Expression<Func<string>> roomList)
         {
             var __workflow_roomList = WorkflowExpression.Compile(roomList, nameof(roomList), required: true);
-            return new DeferredBodyAction<GetRoomsInRoomListV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetRoomsInRoomListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/beta/me/findRooms(RoomList='{0}')", __workflow_roomList.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetRoomsInRoomListV2Response>(callPayload);
+                return new ApiConnectionAction<GetRoomsInRoomListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MarkAsRead(Expression<Func<string>> messageId, Expression<Func<bool>> bodymarkAs, Expression<Func<string>> mailboxAddress = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MarkAsRead(Expression<Func<string>> messageId, Expression<Func<string>> mailboxAddress = null, Expression<Func<MarkAsReadBodyInput>> body = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            var __workflow_bodymarkAs = WorkflowExpression.Compile(bodymarkAs, nameof(bodymarkAs), required: true);
             var __workflow_mailboxAddress = WorkflowExpression.Compile(mailboxAddress, nameof(mailboxAddress), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v3/v1.0/me/messages/{0}/markAsRead", __workflow_messageId.WithUrlEncoding(1)));
@@ -2431,15 +735,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_mailboxAddress != null)
                     callPayload.Queries["mailboxAddress"] = ExpressionConverter.Convert(__workflow_mailboxAddress);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["isRead"] = ExpressionConverter.ConvertO(__workflow_bodymarkAs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -2463,17 +760,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyTo(Expression<Func<string>> messageId, Expression<Func<string>> replyParametersto = null, Expression<Func<string>> replyParameterscC = null, Expression<Func<string>> replyParametersbCC = null, Expression<Func<string>> replyParameterssubject = null, Expression<Func<string>> replyParametersbody = null, Expression<Func<bool>> replyParametersreplyAll = null, Expression<Func<replyParametersimportanceInput>> replyParametersimportance = null, Expression<Func<ClientSendAttachmentInput[]>> replyParametersattachments = null, Expression<Func<string>> mailboxAddress = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyTo(Expression<Func<string>> messageId, Expression<Func<ReplyParametersInput>> replyParameters, Expression<Func<string>> mailboxAddress = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            var __workflow_replyParametersto = WorkflowExpression.Compile(replyParametersto, nameof(replyParametersto), required: false);
-            var __workflow_replyParameterscC = WorkflowExpression.Compile(replyParameterscC, nameof(replyParameterscC), required: false);
-            var __workflow_replyParametersbCC = WorkflowExpression.Compile(replyParametersbCC, nameof(replyParametersbCC), required: false);
-            var __workflow_replyParameterssubject = WorkflowExpression.Compile(replyParameterssubject, nameof(replyParameterssubject), required: false);
-            var __workflow_replyParametersbody = WorkflowExpression.Compile(replyParametersbody, nameof(replyParametersbody), required: false);
-            var __workflow_replyParametersreplyAll = WorkflowExpression.Compile(replyParametersreplyAll, nameof(replyParametersreplyAll), required: false);
-            var __workflow_replyParametersimportance = WorkflowExpression.Compile(replyParametersimportance, nameof(replyParametersimportance), required: false);
-            var __workflow_replyParametersattachments = WorkflowExpression.Compile(replyParametersattachments, nameof(replyParametersattachments), required: false);
+            var __workflow_replyParameters = WorkflowExpression.Compile(replyParameters, nameof(replyParameters), required: true);
             var __workflow_mailboxAddress = WorkflowExpression.Compile(mailboxAddress, nameof(mailboxAddress), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -2482,367 +772,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_mailboxAddress != null)
                     callPayload.Queries["mailboxAddress"] = ExpressionConverter.Convert(__workflow_mailboxAddress);
-                var replyParameters = new JObject();
-                var replyParameterspropCount = 0;
-                if (__workflow_replyParametersto != null)
-                {
-                    replyParameters["To"] = ExpressionConverter.ConvertO(__workflow_replyParametersto);
-                    replyParameterspropCount++;
-                }
-
-                if (__workflow_replyParameterscC != null)
-                {
-                    replyParameters["Cc"] = ExpressionConverter.ConvertO(__workflow_replyParameterscC);
-                    replyParameterspropCount++;
-                }
-
-                if (__workflow_replyParametersbCC != null)
-                {
-                    replyParameters["Bcc"] = ExpressionConverter.ConvertO(__workflow_replyParametersbCC);
-                    replyParameterspropCount++;
-                }
-
-                if (__workflow_replyParameterssubject != null)
-                {
-                    replyParameters["Subject"] = ExpressionConverter.ConvertO(__workflow_replyParameterssubject);
-                    replyParameterspropCount++;
-                }
-
-                if (__workflow_replyParametersbody != null)
-                {
-                    replyParameters["Body"] = ExpressionConverter.ConvertO(__workflow_replyParametersbody);
-                    replyParameterspropCount++;
-                }
-
-                if (__workflow_replyParametersreplyAll != null)
-                {
-                    replyParameters["ReplyAll"] = ExpressionConverter.ConvertO(__workflow_replyParametersreplyAll);
-                    replyParameterspropCount++;
-                }
-
-                if (__workflow_replyParametersimportance != null)
-                {
-                    replyParameters["Importance"] = ExpressionConverter.ConvertO(__workflow_replyParametersimportance);
-                    replyParameterspropCount++;
-                }
-
-                if (__workflow_replyParametersattachments != null)
-                {
-                    replyParameters["Attachments"] = ExpressionConverter.ConvertO(__workflow_replyParametersattachments);
-                    replyParameterspropCount++;
-                }
-
-                if (replyParameterspropCount > 0)
-                {
-                    callPayload.Body = replyParameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_replyParameters);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RespondToEvent(Expression<Func<string>> eventId, Expression<Func<responseInput>> response, Expression<Func<string>> bodycomment = null, Expression<Func<bool>> bodysendResponse = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RespondToEvent(Expression<Func<string>> eventId, Expression<Func<ResponseInput>> response, Expression<Func<RespondToEventBodyInput>> body = null)
         {
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             var __workflow_response = WorkflowExpression.Compile(response, nameof(response), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodysendResponse = WorkflowExpression.Compile(bodysendResponse, nameof(bodysendResponse), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/me/events/{0}/{1}", __workflow_eventId.WithUrlEncoding(1), __workflow_response.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycomment != null)
-                {
-                    body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysendResponse != null)
-                {
-                    if (__workflow_bodysendResponse != null)
-                    {
-                        body["SendResponse"] = ExpressionConverter.ConvertO(__workflow_bodysendResponse);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["SendResponse"] = true;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<string>> emailMessageto, Expression<Func<string>> emailMessagesubject, Expression<Func<string>> emailMessagebody, Expression<Func<string>> emailMessagefromSendAs = null, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagebCC = null, Expression<Func<ClientSendAttachmentInput[]>> emailMessageattachments = null, Expression<Func<string>> emailMessagesensitivity = null, Expression<Func<string>> emailMessagereplyTo = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<SendEmailEmailMessageInput>> emailMessage)
         {
-            var __workflow_emailMessageto = WorkflowExpression.Compile(emailMessageto, nameof(emailMessageto), required: true);
-            var __workflow_emailMessagesubject = WorkflowExpression.Compile(emailMessagesubject, nameof(emailMessagesubject), required: true);
-            var __workflow_emailMessagebody = WorkflowExpression.Compile(emailMessagebody, nameof(emailMessagebody), required: true);
-            var __workflow_emailMessagefromSendAs = WorkflowExpression.Compile(emailMessagefromSendAs, nameof(emailMessagefromSendAs), required: false);
-            var __workflow_emailMessagecC = WorkflowExpression.Compile(emailMessagecC, nameof(emailMessagecC), required: false);
-            var __workflow_emailMessagebCC = WorkflowExpression.Compile(emailMessagebCC, nameof(emailMessagebCC), required: false);
-            var __workflow_emailMessageattachments = WorkflowExpression.Compile(emailMessageattachments, nameof(emailMessageattachments), required: false);
-            var __workflow_emailMessagesensitivity = WorkflowExpression.Compile(emailMessagesensitivity, nameof(emailMessagesensitivity), required: false);
-            var __workflow_emailMessagereplyTo = WorkflowExpression.Compile(emailMessagereplyTo, nameof(emailMessagereplyTo), required: false);
-            var __workflow_emailMessageimportance = WorkflowExpression.Compile(emailMessageimportance, nameof(emailMessageimportance), required: false);
+            var __workflow_emailMessage = WorkflowExpression.Compile(emailMessage, nameof(emailMessage), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/Mail";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var emailMessage = new JObject();
-                var emailMessagepropCount = 0;
-                emailMessagepropCount++;
-                emailMessage["To"] = ExpressionConverter.ConvertO(__workflow_emailMessageto);
-                emailMessagepropCount++;
-                emailMessage["Subject"] = ExpressionConverter.ConvertO(__workflow_emailMessagesubject);
-                emailMessagepropCount++;
-                emailMessage["Body"] = ExpressionConverter.ConvertO(__workflow_emailMessagebody);
-                if (__workflow_emailMessagefromSendAs != null)
-                {
-                    emailMessage["From"] = ExpressionConverter.ConvertO(__workflow_emailMessagefromSendAs);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagecC != null)
-                {
-                    emailMessage["Cc"] = ExpressionConverter.ConvertO(__workflow_emailMessagecC);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagebCC != null)
-                {
-                    emailMessage["Bcc"] = ExpressionConverter.ConvertO(__workflow_emailMessagebCC);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessageattachments != null)
-                {
-                    emailMessage["Attachments"] = ExpressionConverter.ConvertO(__workflow_emailMessageattachments);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagesensitivity != null)
-                {
-                    emailMessage["Sensitivity"] = ExpressionConverter.ConvertO(__workflow_emailMessagesensitivity);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagereplyTo != null)
-                {
-                    emailMessage["ReplyTo"] = ExpressionConverter.ConvertO(__workflow_emailMessagereplyTo);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessageimportance != null)
-                {
-                    if (__workflow_emailMessageimportance != null)
-                    {
-                        emailMessage["Importance"] = ExpressionConverter.ConvertO(__workflow_emailMessageimportance);
-                        emailMessagepropCount++;
-                    }
-
-                    emailMessagepropCount++;
-                }
-                else
-                {
-                    emailMessage["Importance"] = "Normal";
-                    emailMessagepropCount++;
-                }
-
-                if (emailMessagepropCount > 0)
-                {
-                    callPayload.Body = emailMessage;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_emailMessage);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<SetAutomaticRepliesSettingV2Response, ApiConnectionActionConfiguration> SetAutomaticRepliesSetting(Expression<Func<bodyautomaticRepliesSettingstatusInput>> bodyautomaticRepliesSettingstatus, Expression<Func<bodyautomaticRepliesSettingexternalAudienceInput>> bodyautomaticRepliesSettingexternalAudience, Expression<Func<string>> bodyautomaticRepliesSettingstartTimedateTime = null, Expression<Func<string>> bodyautomaticRepliesSettingstartTimetimeZone = null, Expression<Func<string>> bodyautomaticRepliesSettingendTimedateTime = null, Expression<Func<string>> bodyautomaticRepliesSettingendTimetimeZone = null, Expression<Func<string>> bodyautomaticRepliesSettinginternalReplyMessage = null, Expression<Func<string>> bodyautomaticRepliesSettingexternalReplyMessage = null)
+        public IBodyWorkflowAction<SetAutomaticRepliesSettingResponse, ApiConnectionActionConfiguration> SetAutomaticRepliesSetting(Expression<Func<SetAutomaticRepliesSettingBodyInput>> body)
         {
-            var __workflow_bodyautomaticRepliesSettingstatus = WorkflowExpression.Compile(bodyautomaticRepliesSettingstatus, nameof(bodyautomaticRepliesSettingstatus), required: true);
-            var __workflow_bodyautomaticRepliesSettingexternalAudience = WorkflowExpression.Compile(bodyautomaticRepliesSettingexternalAudience, nameof(bodyautomaticRepliesSettingexternalAudience), required: true);
-            var __workflow_bodyautomaticRepliesSettingstartTimedateTime = WorkflowExpression.Compile(bodyautomaticRepliesSettingstartTimedateTime, nameof(bodyautomaticRepliesSettingstartTimedateTime), required: false);
-            var __workflow_bodyautomaticRepliesSettingstartTimetimeZone = WorkflowExpression.Compile(bodyautomaticRepliesSettingstartTimetimeZone, nameof(bodyautomaticRepliesSettingstartTimetimeZone), required: false);
-            var __workflow_bodyautomaticRepliesSettingendTimedateTime = WorkflowExpression.Compile(bodyautomaticRepliesSettingendTimedateTime, nameof(bodyautomaticRepliesSettingendTimedateTime), required: false);
-            var __workflow_bodyautomaticRepliesSettingendTimetimeZone = WorkflowExpression.Compile(bodyautomaticRepliesSettingendTimetimeZone, nameof(bodyautomaticRepliesSettingendTimetimeZone), required: false);
-            var __workflow_bodyautomaticRepliesSettinginternalReplyMessage = WorkflowExpression.Compile(bodyautomaticRepliesSettinginternalReplyMessage, nameof(bodyautomaticRepliesSettinginternalReplyMessage), required: false);
-            var __workflow_bodyautomaticRepliesSettingexternalReplyMessage = WorkflowExpression.Compile(bodyautomaticRepliesSettingexternalReplyMessage, nameof(bodyautomaticRepliesSettingexternalReplyMessage), required: false);
-            return new DeferredBodyAction<SetAutomaticRepliesSettingV2Response, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<SetAutomaticRepliesSettingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/v1.0/me/mailboxSettings";
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var automaticRepliesSettingObject = new JObject();
-                var automaticRepliesSettingObjectpropCount = 0;
-                automaticRepliesSettingObjectpropCount++;
-                automaticRepliesSettingObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticRepliesSettingstatus);
-                automaticRepliesSettingObjectpropCount++;
-                automaticRepliesSettingObject["externalAudience"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticRepliesSettingexternalAudience);
-                var scheduledStartDateTimeObject = new JObject();
-                var scheduledStartDateTimeObjectpropCount = 0;
-                if (__workflow_bodyautomaticRepliesSettingstartTimedateTime != null)
-                {
-                    scheduledStartDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticRepliesSettingstartTimedateTime);
-                    scheduledStartDateTimeObjectpropCount++;
-                }
-
-                if (__workflow_bodyautomaticRepliesSettingstartTimetimeZone != null)
-                {
-                    scheduledStartDateTimeObject["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticRepliesSettingstartTimetimeZone);
-                    scheduledStartDateTimeObjectpropCount++;
-                }
-
-                if (scheduledStartDateTimeObjectpropCount > 0)
-                {
-                    automaticRepliesSettingObject["scheduledStartDateTime"] = scheduledStartDateTimeObject;
-                    automaticRepliesSettingObjectpropCount++;
-                }
-
-                var scheduledEndDateTimeObject = new JObject();
-                var scheduledEndDateTimeObjectpropCount = 0;
-                if (__workflow_bodyautomaticRepliesSettingendTimedateTime != null)
-                {
-                    scheduledEndDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticRepliesSettingendTimedateTime);
-                    scheduledEndDateTimeObjectpropCount++;
-                }
-
-                if (__workflow_bodyautomaticRepliesSettingendTimetimeZone != null)
-                {
-                    scheduledEndDateTimeObject["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticRepliesSettingendTimetimeZone);
-                    scheduledEndDateTimeObjectpropCount++;
-                }
-
-                if (scheduledEndDateTimeObjectpropCount > 0)
-                {
-                    automaticRepliesSettingObject["scheduledEndDateTime"] = scheduledEndDateTimeObject;
-                    automaticRepliesSettingObjectpropCount++;
-                }
-
-                if (__workflow_bodyautomaticRepliesSettinginternalReplyMessage != null)
-                {
-                    automaticRepliesSettingObject["internalReplyMessage"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticRepliesSettinginternalReplyMessage);
-                    automaticRepliesSettingObjectpropCount++;
-                }
-
-                if (__workflow_bodyautomaticRepliesSettingexternalReplyMessage != null)
-                {
-                    automaticRepliesSettingObject["externalReplyMessage"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticRepliesSettingexternalReplyMessage);
-                    automaticRepliesSettingObjectpropCount++;
-                }
-
-                if (automaticRepliesSettingObjectpropCount > 0)
-                {
-                    body["automaticRepliesSetting"] = automaticRepliesSettingObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<SetAutomaticRepliesSettingV2Response>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<SetAutomaticRepliesSettingResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SharedMailboxSendEmail(Expression<Func<string>> emailMessageoriginalMailboxAddress, Expression<Func<string>> emailMessageto, Expression<Func<string>> emailMessagesubject, Expression<Func<string>> emailMessagebody, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagebCC = null, Expression<Func<ClientSendAttachmentInput[]>> emailMessageattachments = null, Expression<Func<string>> emailMessagesensitivity = null, Expression<Func<string>> emailMessagereplyTo = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SharedMailboxSendEmail(Expression<Func<SharedMailboxSendEmailEmailMessageInput>> emailMessage)
         {
-            var __workflow_emailMessageoriginalMailboxAddress = WorkflowExpression.Compile(emailMessageoriginalMailboxAddress, nameof(emailMessageoriginalMailboxAddress), required: true);
-            var __workflow_emailMessageto = WorkflowExpression.Compile(emailMessageto, nameof(emailMessageto), required: true);
-            var __workflow_emailMessagesubject = WorkflowExpression.Compile(emailMessagesubject, nameof(emailMessagesubject), required: true);
-            var __workflow_emailMessagebody = WorkflowExpression.Compile(emailMessagebody, nameof(emailMessagebody), required: true);
-            var __workflow_emailMessagecC = WorkflowExpression.Compile(emailMessagecC, nameof(emailMessagecC), required: false);
-            var __workflow_emailMessagebCC = WorkflowExpression.Compile(emailMessagebCC, nameof(emailMessagebCC), required: false);
-            var __workflow_emailMessageattachments = WorkflowExpression.Compile(emailMessageattachments, nameof(emailMessageattachments), required: false);
-            var __workflow_emailMessagesensitivity = WorkflowExpression.Compile(emailMessagesensitivity, nameof(emailMessagesensitivity), required: false);
-            var __workflow_emailMessagereplyTo = WorkflowExpression.Compile(emailMessagereplyTo, nameof(emailMessagereplyTo), required: false);
-            var __workflow_emailMessageimportance = WorkflowExpression.Compile(emailMessageimportance, nameof(emailMessageimportance), required: false);
+            var __workflow_emailMessage = WorkflowExpression.Compile(emailMessage, nameof(emailMessage), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/SharedMailbox/Mail";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var emailMessage = new JObject();
-                var emailMessagepropCount = 0;
-                emailMessagepropCount++;
-                emailMessage["MailboxAddress"] = ExpressionConverter.ConvertO(__workflow_emailMessageoriginalMailboxAddress);
-                emailMessagepropCount++;
-                emailMessage["To"] = ExpressionConverter.ConvertO(__workflow_emailMessageto);
-                emailMessagepropCount++;
-                emailMessage["Subject"] = ExpressionConverter.ConvertO(__workflow_emailMessagesubject);
-                emailMessagepropCount++;
-                emailMessage["Body"] = ExpressionConverter.ConvertO(__workflow_emailMessagebody);
-                if (__workflow_emailMessagecC != null)
-                {
-                    emailMessage["Cc"] = ExpressionConverter.ConvertO(__workflow_emailMessagecC);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagebCC != null)
-                {
-                    emailMessage["Bcc"] = ExpressionConverter.ConvertO(__workflow_emailMessagebCC);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessageattachments != null)
-                {
-                    emailMessage["Attachments"] = ExpressionConverter.ConvertO(__workflow_emailMessageattachments);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagesensitivity != null)
-                {
-                    emailMessage["Sensitivity"] = ExpressionConverter.ConvertO(__workflow_emailMessagesensitivity);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagereplyTo != null)
-                {
-                    emailMessage["ReplyTo"] = ExpressionConverter.ConvertO(__workflow_emailMessagereplyTo);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessageimportance != null)
-                {
-                    if (__workflow_emailMessageimportance != null)
-                    {
-                        emailMessage["Importance"] = ExpressionConverter.ConvertO(__workflow_emailMessageimportance);
-                        emailMessagepropCount++;
-                    }
-
-                    emailMessagepropCount++;
-                }
-                else
-                {
-                    emailMessage["Importance"] = "Normal";
-                    emailMessagepropCount++;
-                }
-
-                if (emailMessagepropCount > 0)
-                {
-                    callPayload.Body = emailMessage;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_emailMessage);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -2890,26 +879,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Subscribe.Queries["pastDays"] = Convert.ToString(50);
                 if (__workflow_pastDays != null)
                     input.Subscribe.Queries["pastDays"] = ExpressionConverter.Convert(__workflow_pastDays);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    input.Subscribe.Body = subscription;
-                }
-
+                input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<GraphCalendarEventListWithActionType>(input);
             });
         }
 
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration> OnCalendarNewItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration> OnCalendarNewItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v3/tables/{0}/onnewitems", __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -2920,17 +901,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GraphCalendarEventListClientReceive>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration> OnCalendarUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration> OnCalendarUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v3/tables/{0}/onupdateditems", __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -2941,11 +922,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GraphCalendarEventListClientReceive>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionTriggerConfiguration> OnFlaggedEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionTriggerConfiguration> OnFlaggedEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<CreateGraphOnFlaggedEmailPokeSubscriptionImportanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -3010,20 +991,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
                 if (__workflow_fetchOnlyWithAttachment != null)
                     input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    input.Subscribe.Body = subscription;
-                }
-
+                input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionTriggerConfiguration> OnNewEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionTriggerConfiguration> OnNewEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<OnNewEmailImportanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -3088,20 +1061,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
                 if (__workflow_fetchOnlyWithAttachment != null)
                     input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    input.Subscribe.Body = subscription;
-                }
-
+                input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionTriggerConfiguration> OnNewEmailMentioningMe(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionTriggerConfiguration> OnNewEmailMentioningMe(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<CreateGraphOnFlaggedEmailPokeSubscriptionImportanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -3164,24 +1129,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
                 if (__workflow_fetchOnlyWithAttachment != null)
                     input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    input.Subscribe.Body = subscription;
-                }
-
+                input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
             });
         }
 
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration> OnUpcomingEvents(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration> OnUpcomingEvents(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_lookAheadTimeInMinutes = WorkflowExpression.Compile(lookAheadTimeInMinutes, nameof(lookAheadTimeInMinutes), required: false);
-            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GraphCalendarEventListClientReceive, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v3/Events/OnUpcomingEvents";
                 var apiCallHttpMethod = "get";
@@ -3190,11 +1147,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 callPayload.Queries["lookAheadTimeInMinutes"] = Convert.ToString(15);
                 if (__workflow_lookAheadTimeInMinutes != null)
                     callPayload.Queries["lookAheadTimeInMinutes"] = ExpressionConverter.Convert(__workflow_lookAheadTimeInMinutes);
-                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<GraphCalendarEventListClientReceive>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionTriggerConfiguration> OnSharedMailboxNewEmail(Expression<Func<string>> mailboxAddress, Expression<Func<string>> folderId = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> hasAttachments = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionPollingTriggerConfiguration> OnSharedMailboxNewEmail(Expression<Func<string>> mailboxAddress, Expression<Func<string>> folderId = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<CreateGraphOnFlaggedEmailPokeSubscriptionImportanceInput>> importance = null, Expression<Func<bool>> hasAttachments = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
             var __workflow_mailboxAddress = WorkflowExpression.Compile(mailboxAddress, nameof(mailboxAddress), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: false);
@@ -3206,7 +1163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             var __workflow_hasAttachments = WorkflowExpression.Compile(hasAttachments, nameof(hasAttachments), required: false);
             var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
             var __workflow_subjectFilter = WorkflowExpression.Compile(subjectFilter, nameof(subjectFilter), required: false);
-            return new DeferredBodyTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerBatchResponseGraphClientReceiveMessage, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/SharedMailbox/Mail/OnNewEmail";
                 var apiCallHttpMethod = "get";
@@ -3234,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(__workflow_includeAttachments);
                 if (__workflow_subjectFilter != null)
                     callPayload.Queries["subjectFilter"] = ExpressionConverter.Convert(__workflow_subjectFilter);
-                return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerBatchResponseGraphClientReceiveMessage>(callPayload);
             });
         }
     }
@@ -3326,16 +1283,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Value { get; set; }
     }
 
-    public class ClientSendAttachmentInput
+    public class DraftMessageInput
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Body { get; set; }
+
+        [JsonProperty("From")]
+        public string FromSendAs { get; set; }
+
+        [JsonProperty("Cc")]
+        public string CC { get; set; }
+
+        [JsonProperty("Bcc")]
+        public string BCC { get; set; }
+        public ClientSendAttachment[] Attachments { get; set; }
+        public string Sensitivity { get; set; }
+        public string ReplyTo { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public DraftMessageInputImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.DraftMessageInputImportanceType.Normal;
+    }
+
+    public class ClientSendAttachment
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("ContentBytes")]
-        public WorkflowBinaryContent Content { get; set; }
+        [JsonProperty("ContentBytes", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum draftMessageimportanceInput
+    public enum DraftMessageInputImportanceType
     {
         Low,
         Normal,
@@ -3372,8 +1357,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string NotificationUrl { get; set; }
     }
 
+    public class OptionsEmailSubscriptionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public MessageWithOptions Message { get; set; } = new MessageWithOptions();
+    }
+
+    public class MessageWithOptions
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; } = "Your input is required";
+
+        [JsonProperty("Options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserOptions { get; set; } = "Choice1, Choice2, Choice3";
+        public string HeaderText { get; set; }
+        public string SelectionText { get; set; }
+        public string Body { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public MessageWithOptionsImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.MessageWithOptionsImportanceType.Normal;
+        public ClientSendAttachment[] Attachments { get; set; }
+        public bool? UseOnlyHTMLMessage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideHTMLMessage { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowHTMLConfirmationDialog { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideMicrosoftFooter { get; set; } = false;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum optionsEmailSubscriptionmessageimportanceInput
+    public enum MessageWithOptionsImportanceType
+    {
+        Low,
+        Normal,
+        High
+    }
+
+    public class ApprovalEmailSubscriptionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public ApprovalMessage Message { get; set; } = new ApprovalMessage();
+    }
+
+    public class ApprovalMessage
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; } = "Approval Request";
+
+        [JsonProperty("Options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserOptions { get; set; } = "Approve, Reject";
+        public string HeaderText { get; set; }
+        public string SelectionText { get; set; }
+        public string Body { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public ApprovalMessageImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.ApprovalMessageImportanceType.Normal;
+        public ClientSendAttachment[] Attachments { get; set; }
+        public bool? UseOnlyHTMLMessage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideHTMLMessage { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowHTMLConfirmationDialog { get; set; } = false;
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ApprovalMessageImportanceType
     {
         Low,
         Normal,
@@ -3381,15 +1447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum approvalEmailSubscriptionmessageimportanceInput
-    {
-        Low,
-        Normal,
-        High
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         POST,
@@ -3399,6 +1457,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     }
 
     public class MCPQueryResponse
+    {
+        [JsonProperty("jsonrpc")]
+        public string Jsonrpc { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("method")]
+        public string Method { get; set; }
+
+        [JsonProperty("params")]
+        public JToken Params { get; set; }
+
+        [JsonProperty("result")]
+        public JToken Result { get; set; }
+
+        [JsonProperty("error")]
+        public JToken Error { get; set; }
+    }
+
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }
@@ -3597,13 +1676,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public GraphCalendarEventClientReceive[] Value { get; set; }
     }
 
-    public class CalendarGetTablesV2Response
+    public class CalendarGetTablesResponse
     {
         [JsonProperty("value")]
-        public CalendarGetTablesV2ResponseValueTypeItem[] Value { get; set; }
+        public CalendarGetTablesResponseValueTypeItem[] Value { get; set; }
     }
 
-    public class CalendarGetTablesV2ResponseValueTypeItem
+    public class CalendarGetTablesResponseValueTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3612,10 +1691,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Name { get; set; }
 
         [JsonProperty("owner")]
-        public EmailAddressV2 Owner { get; set; }
+        public CalendarGetTablesEmailAddressV2Response Owner { get; set; }
     }
 
-    public class EmailAddressV2
+    public class CalendarGetTablesEmailAddressV2Response
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3624,8 +1703,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Address { get; set; }
     }
 
+    public class CalendarPatchItemItemInput
+    {
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartTime { get; set; }
+
+        [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndTime { get; set; }
+
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ItemInputTimeZoneType TimeZone { get; set; }
+
+        [JsonProperty("requiredAttendees")]
+        public string RequiredAttendees { get; set; }
+
+        [JsonProperty("optionalAttendees")]
+        public string OptionalAttendees { get; set; }
+
+        [JsonProperty("resourceAttendees")]
+        public string ResourceAttendees { get; set; }
+
+        [JsonProperty("body")]
+        public string Body { get; set; }
+
+        [JsonProperty("categories")]
+        public string[] Categories { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("importance")]
+        public ItemInputImportanceType? Importance { get; set; }
+
+        [JsonProperty("isAllDay")]
+        public bool? IsAllDayEvent { get; set; }
+
+        [JsonProperty("recurrence")]
+        public ItemInputRecurrenceType? Recurrence { get; set; }
+
+        [JsonProperty("selectedDaysOfWeek")]
+        public ItemInputSelectedDaysOfWeekTypeItem[] SelectedDaysOfWeek { get; set; }
+
+        [JsonProperty("recurrenceEnd")]
+        public string RecurrenceEndDate { get; set; }
+
+        [JsonProperty("numberOfOccurences")]
+        public int? NumberOfOccurrences { get; set; }
+
+        [JsonProperty("reminderMinutesBeforeStart")]
+        public int? Reminder { get; set; }
+
+        [JsonProperty("isReminderOn")]
+        public bool? IsReminderOn { get; set; }
+
+        [JsonProperty("showAs")]
+        public ItemInputShowAsType? ShowAs { get; set; }
+
+        [JsonProperty("responseRequested")]
+        public bool? ResponseRequested { get; set; }
+
+        [JsonProperty("sensitivity")]
+        public ItemInputSensitivityType? Sensitivity { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum itemtimeZoneInput
+    public enum ItemInputTimeZoneType
     {
         [EnumMember(Value = "")]
         None,
@@ -3904,7 +2049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum itemimportanceInput
+    public enum ItemInputImportanceType
     {
         [EnumMember(Value = "low")]
         Low,
@@ -3915,7 +2060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum itemrecurrenceInput
+    public enum ItemInputRecurrenceType
     {
         [EnumMember(Value = "none")]
         None,
@@ -3930,7 +2075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum itemselectedDaysOfWeekInputItem
+    public enum ItemInputSelectedDaysOfWeekTypeItem
     {
         Sunday,
         Monday,
@@ -3942,7 +2087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum itemshowAsInput
+    public enum ItemInputShowAsType
     {
         [EnumMember(Value = "free")]
         Free,
@@ -3959,7 +2104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum itemsensitivityInput
+    public enum ItemInputSensitivityType
     {
         [EnumMember(Value = "normal")]
         Normal,
@@ -4010,7 +2155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Generation { get; set; }
 
         [JsonProperty("emailAddresses")]
-        public EmailAddressV2[] EmailAddresses { get; set; }
+        public CalendarGetTablesEmailAddressV2Response[] EmailAddresses { get; set; }
 
         [JsonProperty("imAddresses")]
         public string[] IMAddresses { get; set; }
@@ -4049,13 +2194,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string MobilePhone { get; set; }
 
         [JsonProperty("homeAddress")]
-        public PhysicalAddressV2 HomeAddress { get; set; }
+        public ContactGetItemPhysicalAddressV2Response HomeAddress { get; set; }
 
         [JsonProperty("businessAddress")]
-        public PhysicalAddressV2 BusinessAddress { get; set; }
+        public ContactGetItemPhysicalAddressV2Response BusinessAddress { get; set; }
 
         [JsonProperty("otherAddress")]
-        public PhysicalAddressV2 OtherAddress { get; set; }
+        public ContactGetItemPhysicalAddressV2Response OtherAddress { get; set; }
 
         [JsonProperty("yomiCompanyName")]
         public string YomiCompanyName { get; set; }
@@ -4079,7 +2224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string LastModifiedTime { get; set; }
     }
 
-    public class PhysicalAddressV2
+    public class ContactGetItemPhysicalAddressV2Response
     {
         [JsonProperty("street")]
         public string Street { get; set; }
@@ -4121,7 +2266,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string ParentFolderId { get; set; }
     }
 
-    public class FindMeetingTimesV2Response
+    public class ContactPatchItemItemInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("parentFolderId")]
+        public string ParentFolderId { get; set; }
+
+        [JsonProperty("birthday")]
+        public string Birthday { get; set; }
+
+        [JsonProperty("fileAs")]
+        public string FileAs { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("givenName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GivenName { get; set; }
+
+        [JsonProperty("initials")]
+        public string Initials { get; set; }
+
+        [JsonProperty("middleName")]
+        public string MiddleName { get; set; }
+
+        [JsonProperty("nickName")]
+        public string Nickname { get; set; }
+
+        [JsonProperty("surname")]
+        public string Surname { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("generation")]
+        public string Generation { get; set; }
+
+        [JsonProperty("emailAddresses")]
+        public ContactPatchItemEmailAddressV2[] EmailAddresses { get; set; }
+
+        [JsonProperty("imAddresses")]
+        public string[] IMAddresses { get; set; }
+
+        [JsonProperty("jobTitle")]
+        public string JobTitle { get; set; }
+
+        [JsonProperty("companyName")]
+        public string CompanyName { get; set; }
+
+        [JsonProperty("department")]
+        public string Department { get; set; }
+
+        [JsonProperty("officeLocation")]
+        public string OfficeLocation { get; set; }
+
+        [JsonProperty("profession")]
+        public string Profession { get; set; }
+
+        [JsonProperty("businessHomePage")]
+        public string BusinessHomePage { get; set; }
+
+        [JsonProperty("assistantName")]
+        public string AssistantName { get; set; }
+
+        [JsonProperty("manager")]
+        public string Manager { get; set; }
+
+        [JsonProperty("homePhones", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] HomePhones { get; set; }
+
+        [JsonProperty("businessPhones")]
+        public string[] BusinessPhones { get; set; }
+
+        [JsonProperty("mobilePhone")]
+        public string MobilePhone { get; set; }
+
+        [JsonProperty("homeAddress")]
+        public ContactPatchItemPhysicalAddressV2 HomeAddress { get; set; }
+
+        [JsonProperty("businessAddress")]
+        public ContactPatchItemPhysicalAddressV2 BusinessAddress { get; set; }
+
+        [JsonProperty("otherAddress")]
+        public ContactPatchItemPhysicalAddressV2 OtherAddress { get; set; }
+
+        [JsonProperty("yomiCompanyName")]
+        public string YomiCompanyName { get; set; }
+
+        [JsonProperty("yomiGivenName")]
+        public string YomiGivenName { get; set; }
+
+        [JsonProperty("yomiSurname")]
+        public string YomiSurname { get; set; }
+
+        [JsonProperty("categories")]
+        public string[] Categories { get; set; }
+
+        [JsonProperty("changeKey")]
+        public string ChangeKey { get; set; }
+
+        [JsonProperty("createdDateTime")]
+        public string CreatedTime { get; set; }
+
+        [JsonProperty("lastModifiedDateTime")]
+        public string LastModifiedTime { get; set; }
+    }
+
+    public class ContactPatchItemEmailAddressV2
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+    }
+
+    public class ContactPatchItemPhysicalAddressV2
+    {
+        [JsonProperty("street")]
+        public string Street { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("countryOrRegion")]
+        public string CountryOrRegion { get; set; }
+
+        [JsonProperty("postalCode")]
+        public string PostalCode { get; set; }
+    }
+
+    public class FindMeetingTimesResponse
     {
         [JsonProperty("emptySuggestionsReason")]
         public string EmptySuggestionsReason { get; set; }
@@ -4223,8 +2503,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string PostalCode { get; set; }
     }
 
+    public class FindMeetingTimesBodyInput
+    {
+        public string RequiredAttendees { get; set; }
+        public string OptionalAttendees { get; set; }
+        public string ResourceAttendees { get; set; }
+        public int? MeetingDuration { get; set; }
+
+        [JsonProperty("Start")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("End")]
+        public string EndTime { get; set; }
+        public int? MaxCandidates { get; set; }
+        public string MinimumAttendeePercentage { get; set; }
+        public bool? IsOrganizerOptional { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputActivityDomainType? ActivityDomain { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.BodyInputActivityDomainType.Work;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyactivityDomainInput
+    public enum BodyInputActivityDomainType
     {
         Work,
         Personal,
@@ -4232,8 +2532,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Unknown
     }
 
+    public class FlagBodyInput
+    {
+        [JsonProperty("flag", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFlagType Flag { get; set; } = new BodyInputFlagType();
+    }
+
+    public class BodyInputFlagType
+    {
+        [JsonProperty("flagStatus", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFlagTypeFlagStatusType? FlagStatus { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.BodyInputFlagTypeFlagStatusType.Flagged;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyflagflagStatusInput
+    public enum BodyInputFlagTypeFlagStatusType
     {
         [EnumMember(Value = "flagged")]
         Flagged,
@@ -4243,7 +2555,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Complete
     }
 
-    public class GetAttachmentV2Response
+    public class ForwardEmailBodyInput
+    {
+        public string Comment { get; set; }
+
+        [JsonProperty("ToRecipients", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+    }
+
+    public class GetAttachmentResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -4408,7 +2728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum importanceInput
+    public enum CreateGraphOnFlaggedEmailPokeSubscriptionImportanceInput
     {
         Any,
         Low,
@@ -4422,7 +2742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public GraphCalendarEventClientReceive[] Value { get; set; }
     }
 
-    public class GetMailTipsV2Response
+    public class GetMailTipsResponse
     {
         [JsonProperty("value")]
         public MailTipsClientReceiveV2[] Value { get; set; }
@@ -4455,13 +2775,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string AutomaticRepliesMessage { get; set; }
     }
 
-    public class GetRoomListsV2Response
+    public class GetMailTipsBodyInput
     {
-        [JsonProperty("value")]
-        public GetRoomListsV2ResponseValueTypeItem[] Value { get; set; }
+        [JsonProperty("MailTipsOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string FlagsThatRepresentsTheMailtips { get; set; } = "automaticReplies, deliveryRestriction, externalMemberCount, mailboxFullStatus, maxMessageSize, moderationStatus, totalMemberCount";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] EmailAddresses { get; set; }
     }
 
-    public class GetRoomListsV2ResponseValueTypeItem
+    public class GetRoomListsResponse
+    {
+        [JsonProperty("value")]
+        public GetRoomListsResponseValueTypeItem[] Value { get; set; }
+    }
+
+    public class GetRoomListsResponseValueTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4470,13 +2799,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Address { get; set; }
     }
 
-    public class GetRoomsV2Response
+    public class GetRoomsResponse
     {
         [JsonProperty("value")]
-        public GetRoomsV2ResponseValueTypeItem[] Value { get; set; }
+        public GetRoomsResponseValueTypeItem[] Value { get; set; }
     }
 
-    public class GetRoomsV2ResponseValueTypeItem
+    public class GetRoomsResponseValueTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4485,23 +2814,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Address { get; set; }
     }
 
-    public class GetRoomsInRoomListV2Response
+    public class GetRoomsInRoomListResponse
     {
         [JsonProperty("value")]
-        public GetRoomsInRoomListV2ResponseValueTypeItem[] Value { get; set; }
+        public GetRoomsInRoomListResponseValueTypeItem[] Value { get; set; }
     }
 
-    public class GetRoomsInRoomListV2ResponseValueTypeItem
+    public class GetRoomsInRoomListResponseValueTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("address")]
         public string Address { get; set; }
+    }
+
+    public class MarkAsReadBodyInput
+    {
+        [JsonProperty("isRead", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool MarkAs { get; set; }
+    }
+
+    public class ReplyParametersInput
+    {
+        public string To { get; set; }
+
+        [JsonProperty("Cc")]
+        public string CC { get; set; }
+
+        [JsonProperty("Bcc")]
+        public string BCC { get; set; }
+        public string Subject { get; set; }
+        public string Body { get; set; }
+        public bool? ReplyAll { get; set; }
+        public ReplyParametersInputImportanceType? Importance { get; set; }
+        public ClientSendAttachment[] Attachments { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum replyParametersimportanceInput
+    public enum ReplyParametersInputImportanceType
     {
         Low,
         Normal,
@@ -4509,7 +2860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum responseInput
+    public enum ResponseInput
     {
         [EnumMember(Value = "accept")]
         Accept,
@@ -4519,33 +2870,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Decline
     }
 
+    public class RespondToEventBodyInput
+    {
+        public string Comment { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SendResponse { get; set; } = true;
+    }
+
+    public class SendEmailEmailMessageInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Body { get; set; }
+
+        [JsonProperty("From")]
+        public string FromSendAs { get; set; }
+
+        [JsonProperty("Cc")]
+        public string CC { get; set; }
+
+        [JsonProperty("Bcc")]
+        public string BCC { get; set; }
+        public ClientSendAttachment[] Attachments { get; set; }
+        public string Sensitivity { get; set; }
+        public string ReplyTo { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public EmailMessageInputImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.EmailMessageInputImportanceType.Normal;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum emailMessageimportanceInput
+    public enum EmailMessageInputImportanceType
     {
         Low,
         Normal,
         High
     }
 
-    public class SetAutomaticRepliesSettingV2Response
+    public class SetAutomaticRepliesSettingResponse
     {
         [JsonProperty("automaticRepliesSetting")]
-        public AutomaticRepliesSettingClientV2 AutomaticRepliesSetting { get; set; }
+        public SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2Response AutomaticRepliesSetting { get; set; }
     }
 
-    public class AutomaticRepliesSettingClientV2
+    public class SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2Response
     {
         [JsonProperty("status")]
-        public AutomaticRepliesSettingClientV2StatusType Status { get; set; }
+        public SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2StatusTypeResponse Status { get; set; }
 
         [JsonProperty("externalAudience")]
-        public AutomaticRepliesSettingClientV2ExternalAudienceType ExternalAudience { get; set; }
+        public SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2ExternalAudienceTypeResponse ExternalAudience { get; set; }
 
         [JsonProperty("scheduledStartDateTime")]
-        public AutomaticRepliesSettingClientV2StartTimeType StartTime { get; set; }
+        public SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2StartTimeTypeResponse StartTime { get; set; }
 
         [JsonProperty("scheduledEndDateTime")]
-        public AutomaticRepliesSettingClientV2EndTimeType EndTime { get; set; }
+        public SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2EndTimeTypeResponse EndTime { get; set; }
 
         [JsonProperty("internalReplyMessage")]
         public string InternalReplyMessage { get; set; }
@@ -4555,28 +2941,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AutomaticRepliesSettingClientV2StatusType
+    public enum SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2StatusTypeResponse
     {
         [EnumMember(Value = "disabled")]
         Disabled,
         [EnumMember(Value = "alwaysEnabled")]
         AlwaysEnabled,
         [EnumMember(Value = "scheduled")]
+        Scheduled2,
         Scheduled
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AutomaticRepliesSettingClientV2ExternalAudienceType
+    public enum SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2ExternalAudienceTypeResponse
     {
         [EnumMember(Value = "none")]
-        None,
+        None2,
         [EnumMember(Value = "contactsOnly")]
         ContactsOnly,
         [EnumMember(Value = "all")]
-        All
+        All,
+        None
     }
 
-    public class AutomaticRepliesSettingClientV2StartTimeType
+    public class SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2StartTimeTypeResponse
     {
         [JsonProperty("dateTime")]
         public string DateTime { get; set; }
@@ -4585,7 +2973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string TimeZone { get; set; }
     }
 
-    public class AutomaticRepliesSettingClientV2EndTimeType
+    public class SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2EndTimeTypeResponse
     {
         [JsonProperty("dateTime")]
         public string DateTime { get; set; }
@@ -4594,26 +2982,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string TimeZone { get; set; }
     }
 
+    public class SetAutomaticRepliesSettingBodyInput
+    {
+        [JsonProperty("automaticRepliesSetting", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2 AutomaticRepliesSetting { get; set; } = new SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2();
+    }
+
+    public class SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2
+    {
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2StatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2StatusType.Scheduled;
+
+        [JsonProperty("externalAudience", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2ExternalAudienceType ExternalAudience { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2ExternalAudienceType.None;
+
+        [JsonProperty("scheduledStartDateTime")]
+        public SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2StartTimeType StartTime { get; set; }
+
+        [JsonProperty("scheduledEndDateTime")]
+        public SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2EndTimeType EndTime { get; set; }
+
+        [JsonProperty("internalReplyMessage")]
+        public string InternalReplyMessage { get; set; }
+
+        [JsonProperty("externalReplyMessage")]
+        public string ExternalReplyMessage { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyautomaticRepliesSettingstatusInput
+    public enum SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2StatusType
     {
         [EnumMember(Value = "disabled")]
         Disabled,
         [EnumMember(Value = "alwaysEnabled")]
         AlwaysEnabled,
         [EnumMember(Value = "scheduled")]
+        Scheduled2,
         Scheduled
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyautomaticRepliesSettingexternalAudienceInput
+    public enum SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2ExternalAudienceType
     {
         [EnumMember(Value = "none")]
-        None,
+        None2,
         [EnumMember(Value = "contactsOnly")]
         ContactsOnly,
         [EnumMember(Value = "all")]
-        All
+        All,
+        None
+    }
+
+    public class SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2StartTimeType
+    {
+        [JsonProperty("dateTime")]
+        public string DateTime { get; set; }
+
+        [JsonProperty("timeZone")]
+        public string TimeZone { get; set; }
+    }
+
+    public class SetAutomaticRepliesSettingAutomaticRepliesSettingClientV2EndTimeType
+    {
+        [JsonProperty("dateTime")]
+        public string DateTime { get; set; }
+
+        [JsonProperty("timeZone")]
+        public string TimeZone { get; set; }
+    }
+
+    public class SharedMailboxSendEmailEmailMessageInput
+    {
+        [JsonProperty("MailboxAddress", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OriginalMailboxAddress { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Body { get; set; }
+
+        [JsonProperty("Cc")]
+        public string CC { get; set; }
+
+        [JsonProperty("Bcc")]
+        public string BCC { get; set; }
+        public ClientSendAttachment[] Attachments { get; set; }
+        public string Sensitivity { get; set; }
+        public string ReplyTo { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public EmailMessageInputImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.EmailMessageInputImportanceType.Normal;
     }
 
     public class GraphCalendarEventListWithActionType
@@ -4809,10 +3271,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Confidential
     }
 
+    public class SubscriptionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
     public class TriggerBatchResponseGraphClientReceiveMessage
     {
         [JsonProperty("value")]
         public GraphClientReceiveMessage[] Value { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum OnNewEmailImportanceInput
+    {
+        Any,
+        Low,
+        Normal,
+        High
     }
 }
 

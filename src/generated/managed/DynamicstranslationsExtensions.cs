@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
     public class DynamicstranslationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Download(Expression<Func<downloadTypeInput>> downloadType, Expression<Func<int>> translationId)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Download(Expression<Func<DownloadTypeInput>> downloadType, Expression<Func<int>> translationId)
         {
             var __workflow_downloadType = WorkflowExpression.Compile(downloadType, nameof(downloadType), required: true);
             var __workflow_translationId = WorkflowExpression.Compile(translationId, nameof(translationId), required: true);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum downloadTypeInput
+    public enum DownloadTypeInput
     {
         [EnumMember(Value = "translated")]
         Translated

@@ -54,12 +54,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> DeleteRecord(Expression<Func<int>> uri, Expression<Func<bool>> deleteRecordDetailsdeleteContents, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> deleteRecordDetailsnewHomeForContents = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> DeleteRecord(Expression<Func<int>> uri, Expression<Func<string>> userToImpersonate = null, Expression<Func<DeleteRecordDetailsInput>> deleteRecordDetails = null)
         {
             var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
-            var __workflow_deleteRecordDetailsdeleteContents = WorkflowExpression.Compile(deleteRecordDetailsdeleteContents, nameof(deleteRecordDetailsdeleteContents), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_deleteRecordDetailsnewHomeForContents = WorkflowExpression.Compile(deleteRecordDetailsnewHomeForContents, nameof(deleteRecordDetailsnewHomeForContents), required: false);
+            var __workflow_deleteRecordDetails = WorkflowExpression.Compile(deleteRecordDetails, nameof(deleteRecordDetails), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/DeleteRecord/{0}", __workflow_uri.WithUrlEncoding(1)));
@@ -67,27 +66,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var deleteRecordDetails = new JObject();
-                var deleteRecordDetailspropCount = 0;
-                deleteRecordDetailspropCount++;
-                deleteRecordDetails["DeleteContents"] = ExpressionConverter.ConvertO(__workflow_deleteRecordDetailsdeleteContents);
-                if (__workflow_deleteRecordDetailsnewHomeForContents != null)
-                {
-                    deleteRecordDetails["NewHomeForContents"] = ExpressionConverter.ConvertO(__workflow_deleteRecordDetailsnewHomeForContents);
-                    deleteRecordDetailspropCount++;
-                }
-
-                if (deleteRecordDetailspropCount > 0)
-                {
-                    callPayload.Body = deleteRecordDetails;
-                }
-
+                if (__workflow_deleteRecordDetails != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_deleteRecordDetails);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSearchById(Expression<Func<string>> id, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> descendantProperties = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<propertyValueInput>> propertyValue = null, Expression<Func<stringDisplayTypeInput>> stringDisplayType = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSearchById(Expression<Func<string>> id, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> descendantProperties = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<PropertyValueInput>> propertyValue = null, Expression<Func<StringDisplayTypeInput>> stringDisplayType = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
@@ -140,13 +126,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordReassignAction(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> recordnewAssignee, Expression<Func<int>> recordactionToReassign, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordReassignAction(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordReassignActionRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            var __workflow_recordnewAssignee = WorkflowExpression.Compile(recordnewAssignee, nameof(recordnewAssignee), required: true);
-            var __workflow_recordactionToReassign = WorkflowExpression.Compile(recordactionToReassign, nameof(recordactionToReassign), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordReassignAction";
@@ -154,52 +137,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                @recordpropCount++;
-                @record["NewAssignee"] = ExpressionConverter.ConvertO(__workflow_recordnewAssignee);
-                @recordpropCount++;
-                @record["RecordActionUri"] = ExpressionConverter.ConvertO(__workflow_recordactionToReassign);
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMLogResponse, ApiConnectionActionConfiguration> RecordClose(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> recordcontinueOnError = null, Expression<Func<bool>> recordencloseContents = null, Expression<Func<bool>> recordfinalizeContents = null, Expression<Func<bool>> recordlogErrorsOnly = null, Expression<Func<bool>> recordlogResults = null, Expression<Func<bool>> recordpurgeContentRevisions = null, Expression<Func<string>> recordspecificCloseDate = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMLogResponse, ApiConnectionActionConfiguration> RecordClose(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordCloseRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordcontinueOnError = WorkflowExpression.Compile(recordcontinueOnError, nameof(recordcontinueOnError), required: false);
-            var __workflow_recordencloseContents = WorkflowExpression.Compile(recordencloseContents, nameof(recordencloseContents), required: false);
-            var __workflow_recordfinalizeContents = WorkflowExpression.Compile(recordfinalizeContents, nameof(recordfinalizeContents), required: false);
-            var __workflow_recordlogErrorsOnly = WorkflowExpression.Compile(recordlogErrorsOnly, nameof(recordlogErrorsOnly), required: false);
-            var __workflow_recordlogResults = WorkflowExpression.Compile(recordlogResults, nameof(recordlogResults), required: false);
-            var __workflow_recordpurgeContentRevisions = WorkflowExpression.Compile(recordpurgeContentRevisions, nameof(recordpurgeContentRevisions), required: false);
-            var __workflow_recordspecificCloseDate = WorkflowExpression.Compile(recordspecificCloseDate, nameof(recordspecificCloseDate), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMLogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordClose";
@@ -207,146 +155,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                if (__workflow_recordcontinueOnError != null)
-                {
-                    if (__workflow_recordcontinueOnError != null)
-                    {
-                        @record["ContinueOnError"] = ExpressionConverter.ConvertO(__workflow_recordcontinueOnError);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["ContinueOnError"] = true;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordencloseContents != null)
-                {
-                    if (__workflow_recordencloseContents != null)
-                    {
-                        @record["EncloseContents"] = ExpressionConverter.ConvertO(__workflow_recordencloseContents);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["EncloseContents"] = true;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordfinalizeContents != null)
-                {
-                    if (__workflow_recordfinalizeContents != null)
-                    {
-                        @record["FinalizeContents"] = ExpressionConverter.ConvertO(__workflow_recordfinalizeContents);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["FinalizeContents"] = true;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordlogErrorsOnly != null)
-                {
-                    if (__workflow_recordlogErrorsOnly != null)
-                    {
-                        @record["LogErrorsOnly"] = ExpressionConverter.ConvertO(__workflow_recordlogErrorsOnly);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["LogErrorsOnly"] = false;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordlogResults != null)
-                {
-                    if (__workflow_recordlogResults != null)
-                    {
-                        @record["LogResults"] = ExpressionConverter.ConvertO(__workflow_recordlogResults);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["LogResults"] = true;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordpurgeContentRevisions != null)
-                {
-                    if (__workflow_recordpurgeContentRevisions != null)
-                    {
-                        @record["PurgeContentRevisions"] = ExpressionConverter.ConvertO(__workflow_recordpurgeContentRevisions);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["PurgeContentRevisions"] = true;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordspecificCloseDate != null)
-                {
-                    @record["SpecificCloseDate"] = ExpressionConverter.ConvertO(__workflow_recordspecificCloseDate);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMLogResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMLogResponse, ApiConnectionActionConfiguration> RecordReopen(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> recordcontinueOnError = null, Expression<Func<bool>> recordlogResults = null, Expression<Func<bool>> recordunfinalizeContents = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMLogResponse, ApiConnectionActionConfiguration> RecordReopen(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordReopenRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordcontinueOnError = WorkflowExpression.Compile(recordcontinueOnError, nameof(recordcontinueOnError), required: false);
-            var __workflow_recordlogResults = WorkflowExpression.Compile(recordlogResults, nameof(recordlogResults), required: false);
-            var __workflow_recordunfinalizeContents = WorkflowExpression.Compile(recordunfinalizeContents, nameof(recordunfinalizeContents), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMLogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordReopen";
@@ -354,79 +173,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                if (__workflow_recordcontinueOnError != null)
-                {
-                    if (__workflow_recordcontinueOnError != null)
-                    {
-                        @record["ContinueOnError"] = ExpressionConverter.ConvertO(__workflow_recordcontinueOnError);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["ContinueOnError"] = true;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordlogResults != null)
-                {
-                    if (__workflow_recordlogResults != null)
-                    {
-                        @record["LogResults"] = ExpressionConverter.ConvertO(__workflow_recordlogResults);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["LogResults"] = true;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordunfinalizeContents != null)
-                {
-                    if (__workflow_recordunfinalizeContents != null)
-                    {
-                        @record["UnfinalizeContents"] = ExpressionConverter.ConvertO(__workflow_recordunfinalizeContents);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["UnfinalizeContents"] = true;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMLogResponse>(callPayload);
             });
         }
@@ -453,17 +201,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachAction(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<int>> recordactionToAttach, Expression<Func<string>> userToImpersonate = null, Expression<Func<int>> recordassigneeUniqueId = null, Expression<Func<recordassigneeOptionInput>> recordassigneeOption = null, Expression<Func<string>> recordscheduleStartDate = null, Expression<Func<int>> recordexistingAction = null, Expression<Func<recordinsertPositionInput>> recordinsertPosition = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachAction(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordAttachActionRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            var __workflow_recordactionToAttach = WorkflowExpression.Compile(recordactionToAttach, nameof(recordactionToAttach), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordassigneeUniqueId = WorkflowExpression.Compile(recordassigneeUniqueId, nameof(recordassigneeUniqueId), required: false);
-            var __workflow_recordassigneeOption = WorkflowExpression.Compile(recordassigneeOption, nameof(recordassigneeOption), required: false);
-            var __workflow_recordscheduleStartDate = WorkflowExpression.Compile(recordscheduleStartDate, nameof(recordscheduleStartDate), required: false);
-            var __workflow_recordexistingAction = WorkflowExpression.Compile(recordexistingAction, nameof(recordexistingAction), required: false);
-            var __workflow_recordinsertPosition = WorkflowExpression.Compile(recordinsertPosition, nameof(recordinsertPosition), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordAttachAction";
@@ -471,97 +212,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                @recordpropCount++;
-                @record["ActionToAttach"] = ExpressionConverter.ConvertO(__workflow_recordactionToAttach);
-                if (__workflow_recordassigneeUniqueId != null)
-                {
-                    @record["NewAssignee"] = ExpressionConverter.ConvertO(__workflow_recordassigneeUniqueId);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordassigneeOption != null)
-                {
-                    if (__workflow_recordassigneeOption != null)
-                    {
-                        @record["AssigneeOption"] = ExpressionConverter.ConvertO(__workflow_recordassigneeOption);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["AssigneeOption"] = "OverrideExisting";
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordscheduleStartDate != null)
-                {
-                    @record["ScheduleStartDate"] = ExpressionConverter.ConvertO(__workflow_recordscheduleStartDate);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordexistingAction != null)
-                {
-                    @record["RecordAction"] = ExpressionConverter.ConvertO(__workflow_recordexistingAction);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordinsertPosition != null)
-                {
-                    if (__workflow_recordinsertPosition != null)
-                    {
-                        @record["InsertPos"] = ExpressionConverter.ConvertO(__workflow_recordinsertPosition);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["InsertPos"] = "After";
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordCompleteActions(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<recordcompleteInput>> recordcomplete, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> recordcompletePreviousActions = null, Expression<Func<string>> recordcompletionDate = null, Expression<Func<int>> recordrecordActionUniqueId = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordCompleteActions(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordCompleteActionsRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            var __workflow_recordcomplete = WorkflowExpression.Compile(recordcomplete, nameof(recordcomplete), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordcompletePreviousActions = WorkflowExpression.Compile(recordcompletePreviousActions, nameof(recordcompletePreviousActions), required: false);
-            var __workflow_recordcompletionDate = WorkflowExpression.Compile(recordcompletionDate, nameof(recordcompletionDate), required: false);
-            var __workflow_recordrecordActionUniqueId = WorkflowExpression.Compile(recordrecordActionUniqueId, nameof(recordrecordActionUniqueId), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordCompleteActions";
@@ -569,71 +230,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                @recordpropCount++;
-                @record["Complete"] = ExpressionConverter.ConvertO(__workflow_recordcomplete);
-                if (__workflow_recordcompletePreviousActions != null)
-                {
-                    if (__workflow_recordcompletePreviousActions != null)
-                    {
-                        @record["CompletePrevious"] = ExpressionConverter.ConvertO(__workflow_recordcompletePreviousActions);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["CompletePrevious"] = false;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordcompletionDate != null)
-                {
-                    @record["CompletionDate"] = ExpressionConverter.ConvertO(__workflow_recordcompletionDate);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordrecordActionUniqueId != null)
-                {
-                    @record["RecordActionUri"] = ExpressionConverter.ConvertO(__workflow_recordrecordActionUniqueId);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRemoveAllActions(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRemoveAllActions(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordRemoveAllActionsRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordRemoveAllActions";
@@ -641,43 +248,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRescheduleActions(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> recordfromBaseDate = null, Expression<Func<bool>> recorduseActualDurations = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRescheduleActions(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordRescheduleActionsRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordfromBaseDate = WorkflowExpression.Compile(recordfromBaseDate, nameof(recordfromBaseDate), required: false);
-            var __workflow_recorduseActualDurations = WorkflowExpression.Compile(recorduseActualDurations, nameof(recorduseActualDurations), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordRescheduleActions";
@@ -685,65 +266,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                if (__workflow_recordfromBaseDate != null)
-                {
-                    @record["FromBaseDate"] = ExpressionConverter.ConvertO(__workflow_recordfromBaseDate);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recorduseActualDurations != null)
-                {
-                    if (__workflow_recorduseActualDurations != null)
-                    {
-                        @record["UseActualDurations"] = ExpressionConverter.ConvertO(__workflow_recorduseActualDurations);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["UseActualDurations"] = true;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordDispose(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> recordcontinueOnError = null, Expression<Func<recordmethodOfDisposalInput>> recordmethodOfDisposal = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordDispose(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordDisposeRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordcontinueOnError = WorkflowExpression.Compile(recordcontinueOnError, nameof(recordcontinueOnError), required: false);
-            var __workflow_recordmethodOfDisposal = WorkflowExpression.Compile(recordmethodOfDisposal, nameof(recordmethodOfDisposal), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordDispose";
@@ -751,64 +284,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                if (__workflow_recordcontinueOnError != null)
-                {
-                    if (__workflow_recordcontinueOnError != null)
-                    {
-                        @record["ContinueOnError"] = ExpressionConverter.ConvertO(__workflow_recordcontinueOnError);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["ContinueOnError"] = false;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordmethodOfDisposal != null)
-                {
-                    @record["MethodOfDisposal"] = ExpressionConverter.ConvertO(__workflow_recordmethodOfDisposal);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordUndispose(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> recordcontinueOnError = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordUndispose(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordUndisposeRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordcontinueOnError = WorkflowExpression.Compile(recordcontinueOnError, nameof(recordcontinueOnError), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordUndispose";
@@ -816,59 +302,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                if (__workflow_recordcontinueOnError != null)
-                {
-                    if (__workflow_recordcontinueOnError != null)
-                    {
-                        @record["ContinueOnError"] = ExpressionConverter.ConvertO(__workflow_recordcontinueOnError);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["ContinueOnError"] = false;
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordCheckout(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> recordcomments = null, Expression<Func<string>> recordsaveCheckoutPathAs = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordCheckout(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordCheckoutRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordcomments = WorkflowExpression.Compile(recordcomments, nameof(recordcomments), required: false);
-            var __workflow_recordsaveCheckoutPathAs = WorkflowExpression.Compile(recordsaveCheckoutPathAs, nameof(recordsaveCheckoutPathAs), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordCheckout";
@@ -876,54 +320,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                if (__workflow_recordcomments != null)
-                {
-                    @record["Comments"] = ExpressionConverter.ConvertO(__workflow_recordcomments);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordsaveCheckoutPathAs != null)
-                {
-                    @record["SaveCheckoutPathAs"] = ExpressionConverter.ConvertO(__workflow_recordsaveCheckoutPathAs);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordUndoCheckout(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> recordcomments = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordUndoCheckout(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordUndoCheckoutRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordcomments = WorkflowExpression.Compile(recordcomments, nameof(recordcomments), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordUndoCheckout";
@@ -931,50 +338,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                if (__workflow_recordcomments != null)
-                {
-                    @record["Comments"] = ExpressionConverter.ConvertO(__workflow_recordcomments);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachContact(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> recordcontactType, Expression<Func<string>> recordcontactLocation, Expression<Func<bool>> recordsetAsPrimaryContact, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachContact(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordAttachContactRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            var __workflow_recordcontactType = WorkflowExpression.Compile(recordcontactType, nameof(recordcontactType), required: true);
-            var __workflow_recordcontactLocation = WorkflowExpression.Compile(recordcontactLocation, nameof(recordcontactLocation), required: true);
-            var __workflow_recordsetAsPrimaryContact = WorkflowExpression.Compile(recordsetAsPrimaryContact, nameof(recordsetAsPrimaryContact), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordAttachContact";
@@ -982,48 +356,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                @recordpropCount++;
-                @record["ContactType"] = ExpressionConverter.ConvertO(__workflow_recordcontactType);
-                @recordpropCount++;
-                @record["ContactLocation"] = ExpressionConverter.ConvertO(__workflow_recordcontactLocation);
-                @recordpropCount++;
-                @record["IsPrimary"] = ExpressionConverter.ConvertO(__workflow_recordsetAsPrimaryContact);
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachKeyword(Expression<Func<int>> recordRecord, Expression<Func<string>> recordthesaurusTerm, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachKeyword(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordAttachKeywordRecordInput>> @record = null)
         {
-            var __workflow_recordRecord = WorkflowExpression.Compile(recordRecord, nameof(recordRecord), required: true);
-            var __workflow_recordthesaurusTerm = WorkflowExpression.Compile(recordthesaurusTerm, nameof(recordthesaurusTerm), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordAttachKeyword";
@@ -1031,45 +374,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recordRecord);
-                @recordpropCount++;
-                @record["Keyword"] = ExpressionConverter.ConvertO(__workflow_recordthesaurusTerm);
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSetUserLabel(Expression<Func<int>> recordRecord, Expression<Func<string>> recorduserLabel, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> recordfavouriteType = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSetUserLabel(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordSetUserLabelRecordInput>> @record = null)
         {
-            var __workflow_recordRecord = WorkflowExpression.Compile(recordRecord, nameof(recordRecord), required: true);
-            var __workflow_recorduserLabel = WorkflowExpression.Compile(recorduserLabel, nameof(recorduserLabel), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordfavouriteType = WorkflowExpression.Compile(recordfavouriteType, nameof(recordfavouriteType), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordSetUserLabel";
@@ -1077,50 +392,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recordRecord);
-                @recordpropCount++;
-                @record["UserLabel"] = ExpressionConverter.ConvertO(__workflow_recorduserLabel);
-                if (__workflow_recordfavouriteType != null)
-                {
-                    @record["FavouriteType"] = ExpressionConverter.ConvertO(__workflow_recordfavouriteType);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRequestRendition(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> recordrenditionType, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRequestRendition(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordRequestRenditionRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            var __workflow_recordrenditionType = WorkflowExpression.Compile(recordrenditionType, nameof(recordrenditionType), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordRequestRendition";
@@ -1128,47 +410,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                @recordpropCount++;
-                @record["RenditionType"] = ExpressionConverter.ConvertO(__workflow_recordrenditionType);
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSetAssignee(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> recordnewAssignee = null, Expression<Func<recordassigneeTypeInput>> recordassigneeType = null, Expression<Func<string>> recorddueForReturnByDate = null, Expression<Func<string>> recordactualTimeChangeOccurred = null, Expression<Func<string>> recordproperties = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSetAssignee(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordSetAssigneeRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
-            var __workflow_recordnewAssignee = WorkflowExpression.Compile(recordnewAssignee, nameof(recordnewAssignee), required: false);
-            var __workflow_recordassigneeType = WorkflowExpression.Compile(recordassigneeType, nameof(recordassigneeType), required: false);
-            var __workflow_recorddueForReturnByDate = WorkflowExpression.Compile(recorddueForReturnByDate, nameof(recorddueForReturnByDate), required: false);
-            var __workflow_recordactualTimeChangeOccurred = WorkflowExpression.Compile(recordactualTimeChangeOccurred, nameof(recordactualTimeChangeOccurred), required: false);
-            var __workflow_recordproperties = WorkflowExpression.Compile(recordproperties, nameof(recordproperties), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordSetAssignee";
@@ -1176,71 +428,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userToImpersonate != null)
                     callPayload.Headers["userToImpersonate"] = ExpressionConverter.Convert(__workflow_userToImpersonate);
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                if (__workflow_recordnewAssignee != null)
-                {
-                    @record["NewAssignee"] = ExpressionConverter.ConvertO(__workflow_recordnewAssignee);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordassigneeType != null)
-                {
-                    if (__workflow_recordassigneeType != null)
-                    {
-                        @record["AssigneeType"] = ExpressionConverter.ConvertO(__workflow_recordassigneeType);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["AssigneeType"] = "AtLocation";
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recorddueForReturnByDate != null)
-                {
-                    @record["DueForReturnByDate"] = ExpressionConverter.ConvertO(__workflow_recorddueForReturnByDate);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordactualTimeChangeOccurred != null)
-                {
-                    @record["ActualTimeChangeOccurred"] = ExpressionConverter.ConvertO(__workflow_recordactualTimeChangeOccurred);
-                    @recordpropCount++;
-                }
-
-                if (__workflow_recordproperties != null)
-                {
-                    if (__workflow_recordproperties != null)
-                    {
-                        @record["Properties"] = ExpressionConverter.ConvertO(__workflow_recordproperties);
-                        @recordpropCount++;
-                    }
-
-                    @recordpropCount++;
-                }
-                else
-                {
-                    @record["Properties"] = "RecordTitle, RecordNumber";
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMLocationsResponse, ApiConnectionActionConfiguration> LocationSearch(Expression<Func<string>> q, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> applyDefaults = null, Expression<Func<bool>> countResults = null, Expression<Func<bool>> excludeCount = null, Expression<Func<string>> filter = null, Expression<Func<string>> fromSearch = null, Expression<Func<string>> descendantProperties = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> options = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<propertyValueInput>> propertyValue = null, Expression<Func<string>> pageSize = null, Expression<Func<string>> purpose = null, Expression<Func<string>> purposeExtra = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> start = null, Expression<Func<stringDisplayTypeInput>> stringDisplayType = null)
+        public IBodyWorkflowAction<CMLocationsResponse, ApiConnectionActionConfiguration> LocationSearch(Expression<Func<string>> q, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> applyDefaults = null, Expression<Func<bool>> countResults = null, Expression<Func<bool>> excludeCount = null, Expression<Func<string>> filter = null, Expression<Func<string>> fromSearch = null, Expression<Func<string>> descendantProperties = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> options = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<PropertyValueInput>> propertyValue = null, Expression<Func<string>> pageSize = null, Expression<Func<string>> purpose = null, Expression<Func<string>> purposeExtra = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> start = null, Expression<Func<StringDisplayTypeInput>> stringDisplayType = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
@@ -1309,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMLocationsResponse, ApiConnectionActionConfiguration> LocationSearchById(Expression<Func<string>> id, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> descendantProperties = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<propertyValueInput>> propertyValue = null, Expression<Func<stringDisplayTypeInput>> stringDisplayType = null)
+        public IBodyWorkflowAction<CMLocationsResponse, ApiConnectionActionConfiguration> LocationSearchById(Expression<Func<string>> id, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> descendantProperties = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<PropertyValueInput>> propertyValue = null, Expression<Func<StringDisplayTypeInput>> stringDisplayType = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
@@ -1344,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMLocationAddressUri, ApiConnectionActionConfiguration> FindLocationChildAddressUri(Expression<Func<string>> locationUri, Expression<Func<typeInput>> type = null, Expression<Func<string>> userToImpersonate = null)
+        public IBodyWorkflowAction<CMLocationAddressUri, ApiConnectionActionConfiguration> FindLocationChildAddressUri(Expression<Func<string>> locationUri, Expression<Func<TypeInput>> type = null, Expression<Func<string>> userToImpersonate = null)
         {
             var __workflow_locationUri = WorkflowExpression.Compile(locationUri, nameof(locationUri), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -1363,671 +558,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMEventData, ApiConnectionActionConfiguration> ReadEventData(Expression<Func<string>> rawEventDatacontent = null)
+        public IBodyWorkflowAction<CMEventData, ApiConnectionActionConfiguration> ReadEventData(Expression<Func<RawEventDataInput>> rawEventData = null)
         {
-            var __workflow_rawEventDatacontent = WorkflowExpression.Compile(rawEventDatacontent, nameof(rawEventDatacontent), required: false);
+            var __workflow_rawEventData = WorkflowExpression.Compile(rawEventData, nameof(rawEventData), required: false);
             return new DeferredBodyAction<CMEventData, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ReadEventData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var rawEventData = new JObject();
-                var rawEventDatapropCount = 0;
-                if (__workflow_rawEventDatacontent != null)
-                {
-                    rawEventData["Content"] = ExpressionConverter.ConvertO(__workflow_rawEventDatacontent);
-                    rawEventDatapropCount++;
-                }
-
-                if (rawEventDatapropCount > 0)
-                {
-                    callPayload.Body = rawEventData;
-                }
-
+                if (__workflow_rawEventData != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_rawEventData);
                 return new ApiConnectionAction<CMEventData>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> AddAccessControl(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> recordaccessControlListfunctionEnum = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesviewDocumentviewDocument = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesviewRecordviewMetadata = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesaddContentscontributeContents = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> AddAccessControl(Expression<Func<AddAccessControlRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            var __workflow_recordaccessControlListfunctionEnum = WorkflowExpression.Compile(recordaccessControlListfunctionEnum, nameof(recordaccessControlListfunctionEnum), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesviewDocumentviewDocument, nameof(recordaccessControlListfunctionProfilesviewDocumentviewDocument), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesviewRecordviewMetadata, nameof(recordaccessControlListfunctionProfilesviewRecordviewMetadata), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument, nameof(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata, nameof(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess, nameof(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord, nameof(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesaddContentscontributeContents, nameof(recordaccessControlListfunctionProfilesaddContentscontributeContents), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddAccessControl";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                var accessControlListObject = new JObject();
-                var accessControlListObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionEnum != null)
-                {
-                    if (__workflow_recordaccessControlListfunctionEnum != null)
-                    {
-                        accessControlListObject["FunctionEnum"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionEnum);
-                        accessControlListObjectpropCount++;
-                    }
-
-                    accessControlListObjectpropCount++;
-                }
-                else
-                {
-                    accessControlListObject["FunctionEnum"] = "RecordAccess";
-                    accessControlListObjectpropCount++;
-                }
-
-                var functionProfilesObject = new JObject();
-                var functionProfilesObjectpropCount = 0;
-                var viewDocumentObject = new JObject();
-                var viewDocumentObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument != null)
-                {
-                    viewDocumentObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument);
-                    viewDocumentObjectpropCount++;
-                }
-
-                if (viewDocumentObjectpropCount > 0)
-                {
-                    functionProfilesObject["ViewDocument"] = viewDocumentObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var viewRecordObject = new JObject();
-                var viewRecordObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata != null)
-                {
-                    viewRecordObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata);
-                    viewRecordObjectpropCount++;
-                }
-
-                if (viewRecordObjectpropCount > 0)
-                {
-                    functionProfilesObject["ViewRecord"] = viewRecordObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var updateDocumentObject = new JObject();
-                var updateDocumentObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument != null)
-                {
-                    updateDocumentObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument);
-                    updateDocumentObjectpropCount++;
-                }
-
-                if (updateDocumentObjectpropCount > 0)
-                {
-                    functionProfilesObject["UpdateDocument"] = updateDocumentObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var updateMetadataObject = new JObject();
-                var updateMetadataObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata != null)
-                {
-                    updateMetadataObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata);
-                    updateMetadataObjectpropCount++;
-                }
-
-                if (updateMetadataObjectpropCount > 0)
-                {
-                    functionProfilesObject["UpdateMetadata"] = updateMetadataObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var modifyAccessObject = new JObject();
-                var modifyAccessObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess != null)
-                {
-                    modifyAccessObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess);
-                    modifyAccessObjectpropCount++;
-                }
-
-                if (modifyAccessObjectpropCount > 0)
-                {
-                    functionProfilesObject["ModifyAccess"] = modifyAccessObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var destroyRecordObject = new JObject();
-                var destroyRecordObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord != null)
-                {
-                    destroyRecordObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord);
-                    destroyRecordObjectpropCount++;
-                }
-
-                if (destroyRecordObjectpropCount > 0)
-                {
-                    functionProfilesObject["DestroyRecord"] = destroyRecordObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var addContentsObject = new JObject();
-                var addContentsObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents != null)
-                {
-                    addContentsObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents);
-                    addContentsObjectpropCount++;
-                }
-
-                if (addContentsObjectpropCount > 0)
-                {
-                    functionProfilesObject["AddContents"] = addContentsObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                if (functionProfilesObjectpropCount > 0)
-                {
-                    accessControlListObject["FunctionProfiles"] = functionProfilesObject;
-                    accessControlListObjectpropCount++;
-                }
-
-                if (accessControlListObjectpropCount > 0)
-                {
-                    @record["AccessControlList"] = accessControlListObject;
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RemoveAccessControl(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> recordaccessControlListfunctionEnum = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesviewDocumentviewDocument = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesviewRecordviewMetadata = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesaddContentscontributeContents = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RemoveAccessControl(Expression<Func<AddAccessControlRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            var __workflow_recordaccessControlListfunctionEnum = WorkflowExpression.Compile(recordaccessControlListfunctionEnum, nameof(recordaccessControlListfunctionEnum), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesviewDocumentviewDocument, nameof(recordaccessControlListfunctionProfilesviewDocumentviewDocument), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesviewRecordviewMetadata, nameof(recordaccessControlListfunctionProfilesviewRecordviewMetadata), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument, nameof(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata, nameof(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess, nameof(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord, nameof(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesaddContentscontributeContents, nameof(recordaccessControlListfunctionProfilesaddContentscontributeContents), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RemoveAccessControl";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                var accessControlListObject = new JObject();
-                var accessControlListObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionEnum != null)
-                {
-                    if (__workflow_recordaccessControlListfunctionEnum != null)
-                    {
-                        accessControlListObject["FunctionEnum"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionEnum);
-                        accessControlListObjectpropCount++;
-                    }
-
-                    accessControlListObjectpropCount++;
-                }
-                else
-                {
-                    accessControlListObject["FunctionEnum"] = "RecordAccess";
-                    accessControlListObjectpropCount++;
-                }
-
-                var functionProfilesObject = new JObject();
-                var functionProfilesObjectpropCount = 0;
-                var viewDocumentObject = new JObject();
-                var viewDocumentObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument != null)
-                {
-                    viewDocumentObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument);
-                    viewDocumentObjectpropCount++;
-                }
-
-                if (viewDocumentObjectpropCount > 0)
-                {
-                    functionProfilesObject["ViewDocument"] = viewDocumentObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var viewRecordObject = new JObject();
-                var viewRecordObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata != null)
-                {
-                    viewRecordObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata);
-                    viewRecordObjectpropCount++;
-                }
-
-                if (viewRecordObjectpropCount > 0)
-                {
-                    functionProfilesObject["ViewRecord"] = viewRecordObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var updateDocumentObject = new JObject();
-                var updateDocumentObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument != null)
-                {
-                    updateDocumentObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument);
-                    updateDocumentObjectpropCount++;
-                }
-
-                if (updateDocumentObjectpropCount > 0)
-                {
-                    functionProfilesObject["UpdateDocument"] = updateDocumentObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var updateMetadataObject = new JObject();
-                var updateMetadataObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata != null)
-                {
-                    updateMetadataObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata);
-                    updateMetadataObjectpropCount++;
-                }
-
-                if (updateMetadataObjectpropCount > 0)
-                {
-                    functionProfilesObject["UpdateMetadata"] = updateMetadataObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var modifyAccessObject = new JObject();
-                var modifyAccessObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess != null)
-                {
-                    modifyAccessObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess);
-                    modifyAccessObjectpropCount++;
-                }
-
-                if (modifyAccessObjectpropCount > 0)
-                {
-                    functionProfilesObject["ModifyAccess"] = modifyAccessObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var destroyRecordObject = new JObject();
-                var destroyRecordObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord != null)
-                {
-                    destroyRecordObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord);
-                    destroyRecordObjectpropCount++;
-                }
-
-                if (destroyRecordObjectpropCount > 0)
-                {
-                    functionProfilesObject["DestroyRecord"] = destroyRecordObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var addContentsObject = new JObject();
-                var addContentsObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents != null)
-                {
-                    addContentsObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents);
-                    addContentsObjectpropCount++;
-                }
-
-                if (addContentsObjectpropCount > 0)
-                {
-                    functionProfilesObject["AddContents"] = addContentsObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                if (functionProfilesObjectpropCount > 0)
-                {
-                    accessControlListObject["FunctionProfiles"] = functionProfilesObject;
-                    accessControlListObjectpropCount++;
-                }
-
-                if (accessControlListObjectpropCount > 0)
-                {
-                    @record["AccessControlList"] = accessControlListObject;
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> SetAccessControl(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> recordaccessControlListfunctionEnum = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesviewDocumentviewDocument = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesviewRecordviewMetadata = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesaddContentscontributeContents = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> SetAccessControl(Expression<Func<AddAccessControlRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            var __workflow_recordaccessControlListfunctionEnum = WorkflowExpression.Compile(recordaccessControlListfunctionEnum, nameof(recordaccessControlListfunctionEnum), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesviewDocumentviewDocument, nameof(recordaccessControlListfunctionProfilesviewDocumentviewDocument), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesviewRecordviewMetadata, nameof(recordaccessControlListfunctionProfilesviewRecordviewMetadata), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument, nameof(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata, nameof(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess, nameof(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord, nameof(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesaddContentscontributeContents, nameof(recordaccessControlListfunctionProfilesaddContentscontributeContents), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SetAccessControl";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                var accessControlListObject = new JObject();
-                var accessControlListObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionEnum != null)
-                {
-                    if (__workflow_recordaccessControlListfunctionEnum != null)
-                    {
-                        accessControlListObject["FunctionEnum"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionEnum);
-                        accessControlListObjectpropCount++;
-                    }
-
-                    accessControlListObjectpropCount++;
-                }
-                else
-                {
-                    accessControlListObject["FunctionEnum"] = "RecordAccess";
-                    accessControlListObjectpropCount++;
-                }
-
-                var functionProfilesObject = new JObject();
-                var functionProfilesObjectpropCount = 0;
-                var viewDocumentObject = new JObject();
-                var viewDocumentObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument != null)
-                {
-                    viewDocumentObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument);
-                    viewDocumentObjectpropCount++;
-                }
-
-                if (viewDocumentObjectpropCount > 0)
-                {
-                    functionProfilesObject["ViewDocument"] = viewDocumentObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var viewRecordObject = new JObject();
-                var viewRecordObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata != null)
-                {
-                    viewRecordObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata);
-                    viewRecordObjectpropCount++;
-                }
-
-                if (viewRecordObjectpropCount > 0)
-                {
-                    functionProfilesObject["ViewRecord"] = viewRecordObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var updateDocumentObject = new JObject();
-                var updateDocumentObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument != null)
-                {
-                    updateDocumentObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument);
-                    updateDocumentObjectpropCount++;
-                }
-
-                if (updateDocumentObjectpropCount > 0)
-                {
-                    functionProfilesObject["UpdateDocument"] = updateDocumentObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var updateMetadataObject = new JObject();
-                var updateMetadataObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata != null)
-                {
-                    updateMetadataObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata);
-                    updateMetadataObjectpropCount++;
-                }
-
-                if (updateMetadataObjectpropCount > 0)
-                {
-                    functionProfilesObject["UpdateMetadata"] = updateMetadataObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var modifyAccessObject = new JObject();
-                var modifyAccessObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess != null)
-                {
-                    modifyAccessObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess);
-                    modifyAccessObjectpropCount++;
-                }
-
-                if (modifyAccessObjectpropCount > 0)
-                {
-                    functionProfilesObject["ModifyAccess"] = modifyAccessObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var destroyRecordObject = new JObject();
-                var destroyRecordObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord != null)
-                {
-                    destroyRecordObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord);
-                    destroyRecordObjectpropCount++;
-                }
-
-                if (destroyRecordObjectpropCount > 0)
-                {
-                    functionProfilesObject["DestroyRecord"] = destroyRecordObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var addContentsObject = new JObject();
-                var addContentsObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents != null)
-                {
-                    addContentsObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents);
-                    addContentsObjectpropCount++;
-                }
-
-                if (addContentsObjectpropCount > 0)
-                {
-                    functionProfilesObject["AddContents"] = addContentsObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                if (functionProfilesObjectpropCount > 0)
-                {
-                    accessControlListObject["FunctionProfiles"] = functionProfilesObject;
-                    accessControlListObjectpropCount++;
-                }
-
-                if (accessControlListObjectpropCount > 0)
-                {
-                    @record["AccessControlList"] = accessControlListObject;
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> InheritAccessControl(Expression<Func<int>> recorduniqueIdentifier, Expression<Func<string>> recordaccessControlListfunctionEnum = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesviewDocumentviewDocument = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesviewRecordviewMetadata = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = null, Expression<Func<AccessLocationsItem[]>> recordaccessControlListfunctionProfilesaddContentscontributeContents = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> InheritAccessControl(Expression<Func<AddAccessControlRecordInput>> @record = null)
         {
-            var __workflow_recorduniqueIdentifier = WorkflowExpression.Compile(recorduniqueIdentifier, nameof(recorduniqueIdentifier), required: true);
-            var __workflow_recordaccessControlListfunctionEnum = WorkflowExpression.Compile(recordaccessControlListfunctionEnum, nameof(recordaccessControlListfunctionEnum), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesviewDocumentviewDocument, nameof(recordaccessControlListfunctionProfilesviewDocumentviewDocument), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesviewRecordviewMetadata, nameof(recordaccessControlListfunctionProfilesviewRecordviewMetadata), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument, nameof(recordaccessControlListfunctionProfilesupdateDocumentupdateDocument), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata, nameof(recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess, nameof(recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord, nameof(recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord), required: false);
-            var __workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents = WorkflowExpression.Compile(recordaccessControlListfunctionProfilesaddContentscontributeContents, nameof(recordaccessControlListfunctionProfilesaddContentscontributeContents), required: false);
+            var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/InheritAccessControl";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                var @record = new JObject();
-                var @recordpropCount = 0;
-                @recordpropCount++;
-                @record["Uri"] = ExpressionConverter.ConvertO(__workflow_recorduniqueIdentifier);
-                var accessControlListObject = new JObject();
-                var accessControlListObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionEnum != null)
-                {
-                    if (__workflow_recordaccessControlListfunctionEnum != null)
-                    {
-                        accessControlListObject["FunctionEnum"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionEnum);
-                        accessControlListObjectpropCount++;
-                    }
-
-                    accessControlListObjectpropCount++;
-                }
-                else
-                {
-                    accessControlListObject["FunctionEnum"] = "RecordAccess";
-                    accessControlListObjectpropCount++;
-                }
-
-                var functionProfilesObject = new JObject();
-                var functionProfilesObjectpropCount = 0;
-                var viewDocumentObject = new JObject();
-                var viewDocumentObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument != null)
-                {
-                    viewDocumentObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesviewDocumentviewDocument);
-                    viewDocumentObjectpropCount++;
-                }
-
-                if (viewDocumentObjectpropCount > 0)
-                {
-                    functionProfilesObject["ViewDocument"] = viewDocumentObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var viewRecordObject = new JObject();
-                var viewRecordObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata != null)
-                {
-                    viewRecordObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesviewRecordviewMetadata);
-                    viewRecordObjectpropCount++;
-                }
-
-                if (viewRecordObjectpropCount > 0)
-                {
-                    functionProfilesObject["ViewRecord"] = viewRecordObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var updateDocumentObject = new JObject();
-                var updateDocumentObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument != null)
-                {
-                    updateDocumentObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesupdateDocumentupdateDocument);
-                    updateDocumentObjectpropCount++;
-                }
-
-                if (updateDocumentObjectpropCount > 0)
-                {
-                    functionProfilesObject["UpdateDocument"] = updateDocumentObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var updateMetadataObject = new JObject();
-                var updateMetadataObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata != null)
-                {
-                    updateMetadataObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesupdateMetadataupdateRecordMetadata);
-                    updateMetadataObjectpropCount++;
-                }
-
-                if (updateMetadataObjectpropCount > 0)
-                {
-                    functionProfilesObject["UpdateMetadata"] = updateMetadataObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var modifyAccessObject = new JObject();
-                var modifyAccessObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess != null)
-                {
-                    modifyAccessObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesmodifyAccessmodifyRecordAccess);
-                    modifyAccessObjectpropCount++;
-                }
-
-                if (modifyAccessObjectpropCount > 0)
-                {
-                    functionProfilesObject["ModifyAccess"] = modifyAccessObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var destroyRecordObject = new JObject();
-                var destroyRecordObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord != null)
-                {
-                    destroyRecordObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesdestroyRecorddestroyRecord);
-                    destroyRecordObjectpropCount++;
-                }
-
-                if (destroyRecordObjectpropCount > 0)
-                {
-                    functionProfilesObject["DestroyRecord"] = destroyRecordObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                var addContentsObject = new JObject();
-                var addContentsObjectpropCount = 0;
-                if (__workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents != null)
-                {
-                    addContentsObject["AccessLocations"] = ExpressionConverter.ConvertO(__workflow_recordaccessControlListfunctionProfilesaddContentscontributeContents);
-                    addContentsObjectpropCount++;
-                }
-
-                if (addContentsObjectpropCount > 0)
-                {
-                    functionProfilesObject["AddContents"] = addContentsObject;
-                    functionProfilesObjectpropCount++;
-                }
-
-                if (functionProfilesObjectpropCount > 0)
-                {
-                    accessControlListObject["FunctionProfiles"] = functionProfilesObject;
-                    accessControlListObjectpropCount++;
-                }
-
-                if (accessControlListObjectpropCount > 0)
-                {
-                    @record["AccessControlList"] = accessControlListObject;
-                    @recordpropCount++;
-                }
-
-                if (@recordpropCount > 0)
-                {
-                    callPayload.Body = @record;
-                }
-
+                if (__workflow_record != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_record);
                 return new ApiConnectionAction<CMRecordsResponse>(callPayload);
             });
         }
@@ -2495,8 +1099,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public JToken Meta { get; set; }
     }
 
+    public class DeleteRecordDetailsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool DeleteContents { get; set; } = false;
+        public string NewHomeForContents { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum propertyValueInput
+    public enum PropertyValueInput
     {
         Raw,
         String,
@@ -2504,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum stringDisplayTypeInput
+    public enum StringDisplayTypeInput
     {
         Default,
         DataEntry,
@@ -2516,6 +1127,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         ViewPane,
         WebPublish,
         WebService
+    }
+
+    public class RecordReassignActionRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string NewAssignee { get; set; }
+
+        [JsonProperty("RecordActionUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ActionToReassign { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
     public class CMLogResponse
@@ -2542,28 +1168,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public int UniqueIdentifier { get; set; }
     }
 
+    public class RecordCloseRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ContinueOnError { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? EncloseContents { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? FinalizeContents { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? LogErrorsOnly { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? LogResults { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? PurgeContentRevisions { get; set; } = true;
+        public string SpecificCloseDate { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
+    public class RecordReopenRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ContinueOnError { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? LogResults { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UnfinalizeContents { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
     public class GetFileFromUrlResponse
     {
         public string Filepath { get; set; }
         public string Message { get; set; }
     }
 
+    public class RecordAttachActionRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ActionToAttach { get; set; }
+
+        [JsonProperty("NewAssignee")]
+        public int? AssigneeUniqueId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public RecordInputAssigneeOptionType? AssigneeOption { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc.RecordInputAssigneeOptionType.OverrideExisting;
+        public string ScheduleStartDate { get; set; }
+
+        [JsonProperty("RecordAction")]
+        public int? ExistingAction { get; set; }
+
+        [JsonProperty("InsertPos", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RecordInputInsertPositionType? InsertPosition { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc.RecordInputInsertPositionType.After;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum recordassigneeOptionInput
+    public enum RecordInputAssigneeOptionType
     {
         OverrideExisting,
         OnlyIfNoneSpecified
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum recordinsertPositionInput
+    public enum RecordInputInsertPositionType
     {
         Before,
         After
     }
 
+    public class RecordCompleteActionsRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public RecordInputCompleteType Complete { get; set; }
+
+        [JsonProperty("CompletePrevious", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CompletePreviousActions { get; set; } = false;
+        public string CompletionDate { get; set; }
+
+        [JsonProperty("RecordActionUri")]
+        public int? RecordActionUniqueId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum recordcompleteInput
+    public enum RecordInputCompleteType
     {
         Current,
         All,
@@ -2571,8 +1287,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         ForUniqueIdentifier
     }
 
+    public class RecordRemoveAllActionsRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
+    public class RecordRescheduleActionsRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+        public string FromBaseDate { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UseActualDurations { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
+    public class RecordDisposeRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ContinueOnError { get; set; } = false;
+        public RecordInputMethodOfDisposalType? MethodOfDisposal { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum recordmethodOfDisposalInput
+    public enum RecordInputMethodOfDisposalType
     {
         None,
         Archived,
@@ -2580,8 +1331,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         Destroyed
     }
 
+    public class RecordUndisposeRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ContinueOnError { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
+    public class RecordCheckoutRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+        public string Comments { get; set; }
+        public string SaveCheckoutPathAs { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
+    public class RecordUndoCheckoutRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+        public string Comments { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
+    public class RecordAttachContactRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContactType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContactLocation { get; set; }
+
+        [JsonProperty("IsPrimary", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool SetAsPrimaryContact { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
+    public class RecordAttachKeywordRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Record { get; set; }
+
+        [JsonProperty("Keyword", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ThesaurusTerm { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
+    public class RecordSetUserLabelRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Record { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserLabel { get; set; }
+        public string FavouriteType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
+    public class RecordRequestRenditionRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RenditionType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
+    public class RecordSetAssigneeRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+        public string NewAssignee { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public RecordInputAssigneeTypeType? AssigneeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc.RecordInputAssigneeTypeType.AtLocation;
+        public string DueForReturnByDate { get; set; }
+        public string ActualTimeChangeOccurred { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Properties { get; set; } = "RecordTitle, RecordNumber";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum recordassigneeTypeInput
+    public enum RecordInputAssigneeTypeType
     {
         AtLocation,
         AtHome,
@@ -2622,7 +1476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         Street,
         [EnumMember(Value = "Postal")]
@@ -2669,10 +1523,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string ExtraDetails { get; set; }
     }
 
+    public class RawEventDataInput
+    {
+        public string Content { get; set; }
+    }
+
+    public class AddAccessControlRecordInput
+    {
+        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UniqueIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public AccessControlList AccessControlList { get; set; } = new AccessControlList();
+    }
+
+    public class AccessControlList
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FunctionEnum { get; set; } = "RecordAccess";
+        public FunctionProfiles FunctionProfiles { get; set; }
+    }
+
+    public class FunctionProfiles
+    {
+        public ViewDocumentInfo ViewDocument { get; set; }
+        public ViewRecord ViewRecord { get; set; }
+        public UpdateDocumentInfo UpdateDocument { get; set; }
+        public UpdateMetadata UpdateMetadata { get; set; }
+        public ModifyAccess ModifyAccess { get; set; }
+        public DestroyRecordInfo DestroyRecord { get; set; }
+        public AddContents AddContents { get; set; }
+    }
+
+    public class ViewDocumentInfo
+    {
+        [JsonProperty("AccessLocations")]
+        public AccessLocationsItem[] ViewDocument { get; set; }
+    }
+
     public class AccessLocationsItem
     {
         [JsonProperty("Uri")]
-        public int UniqueId { get; set; }
+        public int? UniqueId { get; set; }
+    }
+
+    public class ViewRecord
+    {
+        [JsonProperty("AccessLocations")]
+        public AccessLocationsItem[] ViewMetadata { get; set; }
+    }
+
+    public class UpdateDocumentInfo
+    {
+        [JsonProperty("AccessLocations")]
+        public AccessLocationsItem[] UpdateDocument { get; set; }
+    }
+
+    public class UpdateMetadata
+    {
+        [JsonProperty("AccessLocations")]
+        public AccessLocationsItem[] UpdateRecordMetadata { get; set; }
+    }
+
+    public class ModifyAccess
+    {
+        [JsonProperty("AccessLocations")]
+        public AccessLocationsItem[] ModifyRecordAccess { get; set; }
+    }
+
+    public class DestroyRecordInfo
+    {
+        [JsonProperty("AccessLocations")]
+        public AccessLocationsItem[] DestroyRecord { get; set; }
+    }
+
+    public class AddContents
+    {
+        [JsonProperty("AccessLocations")]
+        public AccessLocationsItem[] ContributeContents { get; set; }
     }
 }
 

@@ -40,176 +40,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNoteToIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestaddedBy, Expression<Func<string>> requestnote)
+        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNoteToIncident(Expression<Func<string>> incidentId, Expression<Func<AddNoteToIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            var __workflow_requestaddedBy = WorkflowExpression.Compile(requestaddedBy, nameof(requestaddedBy), required: true);
-            var __workflow_requestnote = WorkflowExpression.Compile(requestnote, nameof(requestnote), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<AddNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/incidents/{0}/notes", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["userId"] = ExpressionConverter.ConvertO(__workflow_requestaddedBy);
-                requestpropCount++;
-                request["note"] = ExpressionConverter.ConvertO(__workflow_requestnote);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<AddNoteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> AcknowledgeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestacknowledgedBy)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> AcknowledgeIncident(Expression<Func<string>> incidentId, Expression<Func<AcknowledgeIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            var __workflow_requestacknowledgedBy = WorkflowExpression.Compile(requestacknowledgedBy, nameof(requestacknowledgedBy), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<SingleIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action1/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["userId"] = ExpressionConverter.ConvertO(__workflow_requestacknowledgedBy);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<SingleIncident>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> ResolveIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestresolvedBy)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> ResolveIncident(Expression<Func<string>> incidentId, Expression<Func<ResolveIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            var __workflow_requestresolvedBy = WorkflowExpression.Compile(requestresolvedBy, nameof(requestresolvedBy), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<SingleIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action2/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["userId"] = ExpressionConverter.ConvertO(__workflow_requestresolvedBy);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<SingleIncident>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> ReassignIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestfromUser, Expression<Func<string>> requesttoUser)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> ReassignIncident(Expression<Func<string>> incidentId, Expression<Func<ReassignIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            var __workflow_requestfromUser = WorkflowExpression.Compile(requestfromUser, nameof(requestfromUser), required: true);
-            var __workflow_requesttoUser = WorkflowExpression.Compile(requesttoUser, nameof(requesttoUser), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<SingleIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action3/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["userId"] = ExpressionConverter.ConvertO(__workflow_requestfromUser);
-                requestpropCount++;
-                request["reassignUserId"] = ExpressionConverter.ConvertO(__workflow_requesttoUser);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<SingleIncident>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> SnoozeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestsnoozedBy, Expression<Func<int>> requestsnooze)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> SnoozeIncident(Expression<Func<string>> incidentId, Expression<Func<SnoozeIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            var __workflow_requestsnoozedBy = WorkflowExpression.Compile(requestsnoozedBy, nameof(requestsnoozedBy), required: true);
-            var __workflow_requestsnooze = WorkflowExpression.Compile(requestsnooze, nameof(requestsnooze), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<SingleIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action4/incidents/{0}/snooze", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["userId"] = ExpressionConverter.ConvertO(__workflow_requestsnoozedBy);
-                requestpropCount++;
-                request["duration"] = ExpressionConverter.ConvertO(__workflow_requestsnooze);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<SingleIncident>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> EscalateIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestescalatedBy, Expression<Func<string>> requestescalationPolicy)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> EscalateIncident(Expression<Func<string>> incidentId, Expression<Func<EscalateIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            var __workflow_requestescalatedBy = WorkflowExpression.Compile(requestescalatedBy, nameof(requestescalatedBy), required: true);
-            var __workflow_requestescalationPolicy = WorkflowExpression.Compile(requestescalationPolicy, nameof(requestescalationPolicy), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<SingleIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action5/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["userId"] = ExpressionConverter.ConvertO(__workflow_requestescalatedBy);
-                requestpropCount++;
-                request["policyId"] = ExpressionConverter.ConvertO(__workflow_requestescalationPolicy);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<SingleIncident>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<NewIncident, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<string>> requestserviceKey, Expression<Func<string>> requestdescription)
+        public IBodyWorkflowAction<NewIncident, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<CreateIncidentRequestInput>> request)
         {
-            var __workflow_requestserviceKey = WorkflowExpression.Compile(requestserviceKey, nameof(requestserviceKey), required: true);
-            var __workflow_requestdescription = WorkflowExpression.Compile(requestdescription, nameof(requestdescription), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<NewIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/incidents/create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["service_key"] = ExpressionConverter.ConvertO(__workflow_requestserviceKey);
-                requestpropCount++;
-                request["description"] = ExpressionConverter.ConvertO(__workflow_requestdescription);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<NewIncident>(callPayload);
             });
         }
@@ -217,60 +146,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
     public class PagerdutyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NotesResponse, ApiConnectionTriggerConfiguration> OnNewIncidentNote(Expression<Func<string>> incidentId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NotesResponse, ApiConnectionPollingTriggerConfiguration> OnNewIncidentNote(Expression<Func<string>> incidentId)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            return new DeferredBodyTrigger<NotesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NotesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger1/incidents/{0}/notes", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NotesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NotesResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnNewIncidentCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration> OnNewIncidentCreated()
         {
-            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger2/incidents";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IncidentsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentAssigned(Expression<Func<string>> userId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration> OnIncidentAssigned(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger3/incidents/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IncidentsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentAcknowledged(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration> OnIncidentAcknowledged()
         {
-            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger4/incidents";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IncidentsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentResolved(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration> OnIncidentResolved()
         {
-            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger5/incidents";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IncidentsResponse>(callPayload);
             });
         }
     }
@@ -629,16 +558,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string DateAndTimeTheNoteWasCreated { get; set; }
     }
 
+    public class AddNoteToIncidentRequestInput
+    {
+        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AddedBy { get; set; }
+
+        [JsonProperty("note", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Note { get; set; }
+    }
+
     public class SingleIncident
     {
         [JsonProperty("incident")]
         public Incident Incident { get; set; }
     }
 
+    public class AcknowledgeIncidentRequestInput
+    {
+        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AcknowledgedBy { get; set; }
+    }
+
+    public class ResolveIncidentRequestInput
+    {
+        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ResolvedBy { get; set; }
+    }
+
+    public class ReassignIncidentRequestInput
+    {
+        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FromUser { get; set; }
+
+        [JsonProperty("reassignUserId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ToUser { get; set; }
+    }
+
+    public class SnoozeIncidentRequestInput
+    {
+        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SnoozedBy { get; set; }
+
+        [JsonProperty("duration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Snooze { get; set; }
+    }
+
+    public class EscalateIncidentRequestInput
+    {
+        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EscalatedBy { get; set; }
+
+        [JsonProperty("policyId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EscalationPolicy { get; set; }
+    }
+
     public class NewIncident
     {
         [JsonProperty("incident_key")]
         public string Key { get; set; }
+    }
+
+    public class CreateIncidentRequestInput
+    {
+        [JsonProperty("service_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ServiceKey { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
     }
 
     public class NotesResponse

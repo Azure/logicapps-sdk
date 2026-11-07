@@ -13,180 +13,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
     public class FreshserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshservice")]
-        public IBodyWorkflowAction<AddNoteResponseV2, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketId, Expression<Func<string>> bodynote, Expression<Func<bool>> bodyisPrivate = null)
+        public IBodyWorkflowAction<AddNoteResponseV2, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketId, Expression<Func<AddNoteBodyInput>> body)
         {
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: true);
-            var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddNoteResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/tickets/{0}/notes", __workflow_ticketId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["body"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                if (__workflow_bodyisPrivate != null)
-                {
-                    body["private"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddNoteResponseV2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshservice")]
-        public IBodyWorkflowAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<string>> bodysubject, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<string>> bodydescription, Expression<Func<int>> bodyrequesterId = null, Expression<Func<string>> bodyrequesterEmail = null, Expression<Func<string>> bodyrequesterPhone = null, Expression<Func<string>> bodyrequesterName = null, Expression<Func<bodyurgencyInput>> bodyurgency = null, Expression<Func<bodyimpactInput>> bodyimpact = null, Expression<Func<bodysourceInput>> bodysource = null)
+        public IBodyWorkflowAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<CreateTicketBodyInput>> body)
         {
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodyrequesterId = WorkflowExpression.Compile(bodyrequesterId, nameof(bodyrequesterId), required: false);
-            var __workflow_bodyrequesterEmail = WorkflowExpression.Compile(bodyrequesterEmail, nameof(bodyrequesterEmail), required: false);
-            var __workflow_bodyrequesterPhone = WorkflowExpression.Compile(bodyrequesterPhone, nameof(bodyrequesterPhone), required: false);
-            var __workflow_bodyrequesterName = WorkflowExpression.Compile(bodyrequesterName, nameof(bodyrequesterName), required: false);
-            var __workflow_bodyurgency = WorkflowExpression.Compile(bodyurgency, nameof(bodyurgency), required: false);
-            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: false);
-            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/tickets";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyrequesterId != null)
-                {
-                    body["requester_id"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrequesterEmail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrequesterPhone != null)
-                {
-                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterPhone);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrequesterName != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterName);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                bodypropCount++;
-                body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                bodypropCount++;
-                body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                if (__workflow_bodyurgency != null)
-                {
-                    body["urgency"] = ExpressionConverter.ConvertO(__workflow_bodyurgency);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimpact != null)
-                {
-                    body["impact"] = ExpressionConverter.ConvertO(__workflow_bodyimpact);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysource != null)
-                {
-                    body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateTicketResponseV2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshservice")]
-        public IBodyWorkflowAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration> UpdateTicket(Expression<Func<int>> ticketId, Expression<Func<int>> bodyrequesterId = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodyurgencyInput>> bodyurgency = null, Expression<Func<bodyimpactInput>> bodyimpact = null, Expression<Func<bodysourceInput>> bodysource = null)
+        public IBodyWorkflowAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration> UpdateTicket(Expression<Func<int>> ticketId, Expression<Func<UpdateTicketBodyInput>> body)
         {
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
-            var __workflow_bodyrequesterId = WorkflowExpression.Compile(bodyrequesterId, nameof(bodyrequesterId), required: false);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyurgency = WorkflowExpression.Compile(bodyurgency, nameof(bodyurgency), required: false);
-            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: false);
-            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/tickets/{0}", __workflow_ticketId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyrequesterId != null)
-                {
-                    body["requester_id"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubject != null)
-                {
-                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyurgency != null)
-                {
-                    body["urgency"] = ExpressionConverter.ConvertO(__workflow_bodyurgency);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimpact != null)
-                {
-                    body["impact"] = ExpressionConverter.ConvertO(__workflow_bodyimpact);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysource != null)
-                {
-                    body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateTicketResponseV2>(callPayload);
             });
         }
@@ -194,14 +59,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
 
     public class FreshserviceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListTicketResponseV2[], ApiConnectionTriggerConfiguration> OnTicketCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTicketResponseV2[], ApiConnectionPollingTriggerConfiguration> OnTicketCreated()
         {
-            return new DeferredBodyTrigger<ListTicketResponseV2[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListTicketResponseV2[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/v2/tickets";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListTicketResponseV2[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListTicketResponseV2[]>(callPayload);
             });
         }
     }
@@ -240,6 +105,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
 
         [JsonProperty("ticket_id")]
         public int TicketId { get; set; }
+    }
+
+    public class AddNoteBodyInput
+    {
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Note { get; set; }
+
+        [JsonProperty("private")]
+        public bool? IsPrivate { get; set; }
     }
 
     public class CreateUpdateTicketResponseV2
@@ -305,8 +179,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         public string[] ToEmails { get; set; }
     }
 
+    public class CreateTicketBodyInput
+    {
+        [JsonProperty("requester_id")]
+        public int? RequesterId { get; set; }
+
+        [JsonProperty("email")]
+        public string RequesterEmail { get; set; }
+
+        [JsonProperty("phone")]
+        public string RequesterPhone { get; set; }
+
+        [JsonProperty("name")]
+        public string RequesterName { get; set; }
+
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputStatusType Status { get; set; }
+
+        [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputPriorityType Priority { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("urgency")]
+        public BodyInputUrgencyType? Urgency { get; set; }
+
+        [JsonProperty("impact")]
+        public BodyInputImpactType? Impact { get; set; }
+
+        [JsonProperty("source")]
+        public BodyInputSourceType? Source { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystatusInput
+    public enum BodyInputStatusType
     {
         Open,
         Pending,
@@ -315,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypriorityInput
+    public enum BodyInputPriorityType
     {
         Low,
         Medium,
@@ -324,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyurgencyInput
+    public enum BodyInputUrgencyType
     {
         Low,
         Medium,
@@ -332,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyimpactInput
+    public enum BodyInputImpactType
     {
         Low,
         Medium,
@@ -340,12 +250,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysourceInput
+    public enum BodyInputSourceType
     {
         Email,
         Portal,
         Phone,
         Chat
+    }
+
+    public class UpdateTicketBodyInput
+    {
+        [JsonProperty("requester_id")]
+        public int? RequesterId { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("status")]
+        public BodyInputStatusType? Status { get; set; }
+
+        [JsonProperty("priority")]
+        public BodyInputPriorityType? Priority { get; set; }
+
+        [JsonProperty("urgency")]
+        public BodyInputUrgencyType? Urgency { get; set; }
+
+        [JsonProperty("impact")]
+        public BodyInputImpactType? Impact { get; set; }
+
+        [JsonProperty("source")]
+        public BodyInputSourceType? Source { get; set; }
     }
 
     public class ListTicketResponseV2

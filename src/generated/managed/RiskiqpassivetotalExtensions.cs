@@ -150,58 +150,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<TagActionResponse, ApiConnectionActionConfiguration> DeleteTags()
+        public IBodyWorkflowAction<TagActionResponse, ApiConnectionActionConfiguration> DeleteTags(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<TagActionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/tags";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<TagActionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<TagActionResponse, ApiConnectionActionConfiguration> AddTags()
+        public IBodyWorkflowAction<TagActionResponse, ApiConnectionActionConfiguration> AddTags(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<TagActionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/tags";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<TagActionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<TagActionResponse, ApiConnectionActionConfiguration> SetTags()
+        public IBodyWorkflowAction<TagActionResponse, ApiConnectionActionConfiguration> SetTags(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<TagActionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/tags";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<TagActionResponse>(callPayload);
             });
         }
@@ -221,20 +206,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ClassificationInfo, ApiConnectionActionConfiguration> SetBulkClassificationStatus()
+        public IBodyWorkflowAction<ClassificationInfo, ApiConnectionActionConfiguration> SetBulkClassificationStatus(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ClassificationInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/bulk/classification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ClassificationInfo>(callPayload);
             });
         }
@@ -254,20 +234,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ClassificationInfo, ApiConnectionActionConfiguration> SetClassificationStatus()
+        public IBodyWorkflowAction<ClassificationInfo, ApiConnectionActionConfiguration> SetClassificationStatus(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ClassificationInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/classification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ClassificationInfo>(callPayload);
             });
         }
@@ -287,20 +262,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<CompromisedStatusResponse, ApiConnectionActionConfiguration> SetCompromisedStatus()
+        public IBodyWorkflowAction<CompromisedStatusResponse, ApiConnectionActionConfiguration> SetCompromisedStatus(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<CompromisedStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/ever-compromised";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<CompromisedStatusResponse>(callPayload);
             });
         }
@@ -320,20 +290,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<DynamicDnsResponse, ApiConnectionActionConfiguration> SetDynamicDNSStatus()
+        public IBodyWorkflowAction<DynamicDnsResponse, ApiConnectionActionConfiguration> SetDynamicDNSStatus(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<DynamicDnsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/dynamic-dns";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<DynamicDnsResponse>(callPayload);
             });
         }
@@ -367,20 +332,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<SinkholeStatusResponse, ApiConnectionActionConfiguration> SetSinkholeStatus()
+        public IBodyWorkflowAction<SinkholeStatusResponse, ApiConnectionActionConfiguration> SetSinkholeStatus(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<SinkholeStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/sinkhole";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<SinkholeStatusResponse>(callPayload);
             });
         }
@@ -433,115 +393,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<SingleArtifactResponse, ApiConnectionActionConfiguration> DeleteArtifact()
+        public IBodyWorkflowAction<SingleArtifactResponse, ApiConnectionActionConfiguration> DeleteArtifact(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<SingleArtifactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/artifact";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<SingleArtifactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<SingleArtifactResponse, ApiConnectionActionConfiguration> UpdateArtifact()
+        public IBodyWorkflowAction<SingleArtifactResponse, ApiConnectionActionConfiguration> UpdateArtifact(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<SingleArtifactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/artifact";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<SingleArtifactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<SingleArtifactResponse, ApiConnectionActionConfiguration> CreateArtifact()
+        public IBodyWorkflowAction<SingleArtifactResponse, ApiConnectionActionConfiguration> CreateArtifact(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<SingleArtifactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/artifact";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<SingleArtifactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BulkArtifactDelete()
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BulkArtifactDelete(Expression<Func<object>> artifacts)
         {
+            var __workflow_artifacts = WorkflowExpression.Compile(artifacts, nameof(artifacts), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/artifact/bulk";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var artifacts = new JObject();
-                var artifactspropCount = 0;
-                if (artifactspropCount > 0)
-                {
-                    callPayload.Body = artifacts;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_artifacts);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BulkArtifactUpdate()
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BulkArtifactUpdate(Expression<Func<object>> artifacts)
         {
+            var __workflow_artifacts = WorkflowExpression.Compile(artifacts, nameof(artifacts), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/artifact/bulk";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var artifacts = new JObject();
-                var artifactspropCount = 0;
-                if (artifactspropCount > 0)
-                {
-                    callPayload.Body = artifacts;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_artifacts);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BulkArtifactCreate()
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BulkArtifactCreate(Expression<Func<object>> artifacts)
         {
+            var __workflow_artifacts = WorkflowExpression.Compile(artifacts, nameof(artifacts), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/artifact/bulk";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var artifacts = new JObject();
-                var artifactspropCount = 0;
-                if (artifactspropCount > 0)
-                {
-                    callPayload.Body = artifacts;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_artifacts);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -595,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ArticlesListResponse, ApiConnectionActionConfiguration> GetArticles(Expression<Func<string>> sort = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<ArticlesListResponse, ApiConnectionActionConfiguration> GetArticles(Expression<Func<string>> sort = null, Expression<Func<OrderInput>> order = null, Expression<Func<int>> page = null)
         {
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
@@ -735,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindProject(Expression<Func<string>> project = null, Expression<Func<string>> owner = null, Expression<Func<string>> creator = null, Expression<Func<string>> organization = null, Expression<Func<visibilityInput>> visibility = null, Expression<Func<bool>> featured = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindProject(Expression<Func<string>> project = null, Expression<Func<string>> owner = null, Expression<Func<string>> creator = null, Expression<Func<string>> organization = null, Expression<Func<VisibilityInput>> visibility = null, Expression<Func<bool>> featured = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: false);
             var __workflow_owner = WorkflowExpression.Compile(owner, nameof(owner), required: false);
@@ -765,115 +695,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> DeleteProject()
+        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> DeleteProject(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/project";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ProjectResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> UpdateProject()
+        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/project";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ProjectResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> CreateProject()
+        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/project";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ProjectResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> RemoveProjectTags()
+        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> RemoveProjectTags(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/project/tag";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ProjectResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> AddProjectTags()
+        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> AddProjectTags(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/project/tag";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ProjectResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> SetProjectTags()
+        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> SetProjectTags(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/project/tag";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ProjectResponse>(callPayload);
             });
         }
@@ -907,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<SSLSearchResponse, ApiConnectionActionConfiguration> SearchSSLCertificates(Expression<Func<fieldInput>> field, Expression<Func<string>> query)
+        public IBodyWorkflowAction<SSLSearchResponse, ApiConnectionActionConfiguration> SearchSSLCertificates(Expression<Func<SearchSSLCertificatesFieldInput>> field, Expression<Func<string>> query)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
@@ -951,64 +851,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> RemoveArtifactTags()
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> RemoveArtifactTags(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/artifact/tag";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateArtifactTags()
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateArtifactTags(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/artifact/tag";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SetArtifactTags()
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SetArtifactTags(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/artifact/tag";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<TrackersSearchResponse, ApiConnectionActionConfiguration> SearchTrackers(Expression<Func<string>> query, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<TrackersSearchResponse, ApiConnectionActionConfiguration> SearchTrackers(Expression<Func<string>> query, Expression<Func<TypeInput>> type)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -1048,7 +933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<PairInfo, ApiConnectionActionConfiguration> GetPairs(Expression<Func<string>> query, Expression<Func<directionInput>> direction, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<PairInfo, ApiConnectionActionConfiguration> GetPairs(Expression<Func<string>> query, Expression<Func<DirectionInput>> direction, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> page = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_direction = WorkflowExpression.Compile(direction, nameof(direction), required: true);
@@ -1122,7 +1007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetAddressesByCookieDomain(Expression<Func<string>> domain, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetAddressesByCookieDomain(Expression<Func<string>> domain, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -1147,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetAddressesByCookieName(Expression<Func<string>> name, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetAddressesByCookieName(Expression<Func<string>> name, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -1172,7 +1057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetHostsByCookieDomain(Expression<Func<string>> domain, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetHostsByCookieDomain(Expression<Func<string>> domain, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -1197,7 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetHostsByCookieName(Expression<Func<string>> name, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetHostsByCookieName(Expression<Func<string>> name, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -1222,7 +1107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ComponentsSearchAddressesResponse, ApiConnectionActionConfiguration> GetAddressesByComponentName(Expression<Func<string>> name, Expression<Func<string>> version = null, Expression<Func<string>> category = null, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<ComponentsSearchAddressesResponse, ApiConnectionActionConfiguration> GetAddressesByComponentName(Expression<Func<string>> name, Expression<Func<string>> version = null, Expression<Func<string>> category = null, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
@@ -1253,7 +1138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ComponentsSearchHostsResponse, ApiConnectionActionConfiguration> GetHostsByComponentName(Expression<Func<string>> name, Expression<Func<string>> version = null, Expression<Func<string>> category = null, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<ComponentsSearchHostsResponse, ApiConnectionActionConfiguration> GetHostsByComponentName(Expression<Func<string>> name, Expression<Func<string>> version = null, Expression<Func<string>> category = null, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
@@ -1380,7 +1265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ResultListResponse, ApiConnectionActionConfiguration> SearchWHOIS(Expression<Func<string>> query, Expression<Func<fieldInput>> field)
+        public IBodyWorkflowAction<ResultListResponse, ApiConnectionActionConfiguration> SearchWHOIS(Expression<Func<string>> query, Expression<Func<SearchWHOISFieldInput>> field)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: true);
@@ -1551,7 +1436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<AttackSurfacePriorityResponse, ApiConnectionActionConfiguration> GetAttackSurfaceByLevel(Expression<Func<levelInput>> level)
+        public IBodyWorkflowAction<AttackSurfacePriorityResponse, ApiConnectionActionConfiguration> GetAttackSurfaceByLevel(Expression<Func<LevelInput>> level)
         {
             var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: true);
             return new DeferredBodyAction<AttackSurfacePriorityResponse, ApiConnectionActionConfiguration>(() =>
@@ -1625,7 +1510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<AttackSurfacePriorityResponse, ApiConnectionActionConfiguration> GetVendorsByLevel(Expression<Func<int>> id, Expression<Func<levelInput>> level)
+        public IBodyWorkflowAction<AttackSurfacePriorityResponse, ApiConnectionActionConfiguration> GetVendorsByLevel(Expression<Func<int>> id, Expression<Func<LevelInput>> level)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: true);
@@ -2394,16 +2279,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Id { get; set; }
 
         [JsonProperty("counts")]
-        public OrganizationCountsType Counts { get; set; }
+        public OrganizationInfoCountsType Counts { get; set; }
 
         [JsonProperty("freebies")]
-        public OrganizationFreebiesType Freebies { get; set; }
+        public OrganizationInfoFreebiesType Freebies { get; set; }
 
         [JsonProperty("profile")]
-        public OrganizationProfileType Profile { get; set; }
+        public OrganizationInfoProfileType Profile { get; set; }
 
         [JsonProperty("limits")]
-        public OrganizationLimitsType Limits { get; set; }
+        public OrganizationInfoLimitsType Limits { get; set; }
 
         [JsonProperty("quotaInterval")]
         public string QuotaInterval { get; set; }
@@ -2433,7 +2318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public JToken EventCodeExpiration { get; set; }
     }
 
-    public class OrganizationCountsType
+    public class OrganizationInfoCountsType
     {
         [JsonProperty("keyword_monitors")]
         public int KeywordMonitors { get; set; }
@@ -2454,7 +2339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public int ProjectsPublic { get; set; }
     }
 
-    public class OrganizationFreebiesType
+    public class OrganizationInfoFreebiesType
     {
         [JsonProperty("search_api")]
         public int SearchApi { get; set; }
@@ -2463,7 +2348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public int SearchWeb { get; set; }
     }
 
-    public class OrganizationProfileType
+    public class OrganizationInfoProfileType
     {
         [JsonProperty("analysis")]
         public string Analysis { get; set; }
@@ -2472,7 +2357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Workflow { get; set; }
     }
 
-    public class OrganizationLimitsType
+    public class OrganizationInfoLimitsType
     {
         [JsonProperty("search_api")]
         public int SearchApi { get; set; }
@@ -2622,7 +2507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public bool Active { get; set; }
 
         [JsonProperty("configuration")]
-        public SourceConfigurationType Configuration { get; set; }
+        public SourceInfoConfigurationType Configuration { get; set; }
 
         [JsonProperty("type")]
         public string[] Type { get; set; }
@@ -2646,7 +2531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public bool Auth { get; set; }
 
         [JsonProperty("authMethod")]
-        public SourceAuthMethodType AuthMethod { get; set; }
+        public SourceInfoAuthMethodType AuthMethod { get; set; }
 
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -2655,7 +2540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public JToken OrgConfiguration { get; set; }
     }
 
-    public class SourceConfigurationType
+    public class SourceInfoConfigurationType
     {
         [JsonProperty("settings")]
         public JToken Settings { get; set; }
@@ -2670,7 +2555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Token { get; set; }
     }
 
-    public class SourceAuthMethodType
+    public class SourceInfoAuthMethodType
     {
         [JsonProperty("apiKey")]
         public string ApiKey { get; set; }
@@ -2974,7 +2859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderInput
+    public enum OrderInput
     {
         [EnumMember(Value = "desc")]
         Desc,
@@ -3499,7 +3384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum visibilityInput
+    public enum VisibilityInput
     {
         [EnumMember(Value = "public")]
         Public,
@@ -3729,22 +3614,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldInput
+    public enum SearchSSLCertificatesFieldInput
     {
-        [EnumMember(Value = "email")]
-        Email,
-        [EnumMember(Value = "domain")]
-        Domain,
+        [EnumMember(Value = "issuerSurname")]
+        IssuerSurname,
+        [EnumMember(Value = "subjectOrganizationName")]
+        SubjectOrganizationName,
+        [EnumMember(Value = "issuerCountry")]
+        IssuerCountry,
+        [EnumMember(Value = "issuerOrganizationUnitName")]
+        IssuerOrganizationUnitName,
+        [EnumMember(Value = "fingerprint")]
+        Fingerprint,
+        [EnumMember(Value = "subjectOrganizationUnitName")]
+        SubjectOrganizationUnitName,
+        [EnumMember(Value = "serialNumber")]
+        SerialNumber,
+        [EnumMember(Value = "subjectEmailAddress")]
+        SubjectEmailAddress,
+        [EnumMember(Value = "subjectCountry")]
+        SubjectCountry,
+        [EnumMember(Value = "issuerGivenName")]
+        IssuerGivenName,
+        [EnumMember(Value = "subjectCommonName")]
+        SubjectCommonName,
+        [EnumMember(Value = "issuerCommonName")]
+        IssuerCommonName,
+        [EnumMember(Value = "issuerStateOrProvinceName")]
+        IssuerStateOrProvinceName,
+        [EnumMember(Value = "issuerProvince")]
+        IssuerProvince,
+        [EnumMember(Value = "subjectStateOrProvinceName")]
+        SubjectStateOrProvinceName,
+        [EnumMember(Value = "sha1")]
+        Sha1,
+        [EnumMember(Value = "subjectStreetAddress")]
+        SubjectStreetAddress,
+        [EnumMember(Value = "subjectSerialNumber")]
+        SubjectSerialNumber,
+        [EnumMember(Value = "issuerOrganizationName")]
+        IssuerOrganizationName,
+        [EnumMember(Value = "subjectSurname")]
+        SubjectSurname,
+        [EnumMember(Value = "subjectLocalityName")]
+        SubjectLocalityName,
+        [EnumMember(Value = "issuerStreetAddress")]
+        IssuerStreetAddress,
+        [EnumMember(Value = "issuerLocalityName")]
+        IssuerLocalityName,
+        [EnumMember(Value = "subjectGivenName")]
+        SubjectGivenName,
+        [EnumMember(Value = "subjectProvince")]
+        SubjectProvince,
+        [EnumMember(Value = "issuerSerialNumber")]
+        IssuerSerialNumber,
+        [EnumMember(Value = "issuerEmailAddress")]
+        IssuerEmailAddress,
         [EnumMember(Value = "name")]
         Name,
-        [EnumMember(Value = "organization")]
-        Organization,
-        [EnumMember(Value = "address")]
-        Address,
-        [EnumMember(Value = "phone")]
-        Phone,
-        [EnumMember(Value = "nameserver")]
-        Nameserver
+        [EnumMember(Value = "issuerAlternativeName")]
+        IssuerAlternativeName,
+        [EnumMember(Value = "subjectAlternativeName")]
+        SubjectAlternativeName
     }
 
     public class SSLSearchKeywordResponse
@@ -3814,7 +3745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "51laId")]
         _51laId,
@@ -3972,7 +3903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum directionInput
+    public enum DirectionInput
     {
         [EnumMember(Value = "children")]
         Children,
@@ -4074,7 +4005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "lastSeen")]
         LastSeen,
@@ -4337,6 +4268,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string RawText { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SearchWHOISFieldInput
+    {
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "name")]
+        Name,
+        [EnumMember(Value = "organization")]
+        Organization,
+        [EnumMember(Value = "address")]
+        Address,
+        [EnumMember(Value = "phone")]
+        Phone,
+        [EnumMember(Value = "nameserver")]
+        Nameserver
+    }
+
     public class EnrichmentBulkResponse
     {
         [JsonProperty("results")]
@@ -4560,7 +4510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum levelInput
+    public enum LevelInput
     {
         [EnumMember(Value = "high")]
         High,

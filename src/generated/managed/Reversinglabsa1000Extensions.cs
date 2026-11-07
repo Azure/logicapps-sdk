@@ -13,37 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
     public class Reversinglabsa1000Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveDetailedReport(Expression<Func<string[]>> bodyhashValues, Expression<Func<string[]>> bodyfields = null, Expression<Func<string>> bodyskipReanalysis = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveDetailedReport(Expression<Func<RetrieveDetailedReportBodyInput>> body)
         {
-            var __workflow_bodyhashValues = WorkflowExpression.Compile(bodyhashValues, nameof(bodyhashValues), required: true);
-            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
-            var __workflow_bodyskipReanalysis = WorkflowExpression.Compile(bodyskipReanalysis, nameof(bodyskipReanalysis), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/samples/v2/list/details/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["hash_values"] = ExpressionConverter.ConvertO(__workflow_bodyhashValues);
-                if (__workflow_bodyfields != null)
-                {
-                    body["fields"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyskipReanalysis != null)
-                {
-                    body["skip_reanalysis"] = ExpressionConverter.ConvertO(__workflow_bodyskipReanalysis);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -65,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveDynamicAnalysisReport(Expression<Func<string>> hashValue, Expression<Func<formatInput>> format, Expression<Func<endpointInput>> endpoint)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveDynamicAnalysisReport(Expression<Func<string>> hashValue, Expression<Func<FormatInput>> format, Expression<Func<EndpointInput>> endpoint)
         {
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -80,52 +58,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveSummaryReport(Expression<Func<string[]>> bodyhashValues, Expression<Func<string[]>> bodyfields = null, Expression<Func<string>> bodyincludeNetworkthreatintelligence = null, Expression<Func<string>> bodyskipReanalysis = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveSummaryReport(Expression<Func<RetrieveSummaryReportBodyInput>> body)
         {
-            var __workflow_bodyhashValues = WorkflowExpression.Compile(bodyhashValues, nameof(bodyhashValues), required: true);
-            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
-            var __workflow_bodyincludeNetworkthreatintelligence = WorkflowExpression.Compile(bodyincludeNetworkthreatintelligence, nameof(bodyincludeNetworkthreatintelligence), required: false);
-            var __workflow_bodyskipReanalysis = WorkflowExpression.Compile(bodyskipReanalysis, nameof(bodyskipReanalysis), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/samples/v2/list/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["hash_values"] = ExpressionConverter.ConvertO(__workflow_bodyhashValues);
-                if (__workflow_bodyfields != null)
-                {
-                    body["fields"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyincludeNetworkthreatintelligence != null)
-                {
-                    body["include_networkthreatintelligence"] = ExpressionConverter.ConvertO(__workflow_bodyincludeNetworkthreatintelligence);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyskipReanalysis != null)
-                {
-                    body["skip_reanalysis"] = ExpressionConverter.ConvertO(__workflow_bodyskipReanalysis);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveProcessingStatusFiles(Expression<Func<string[]>> bodyhashValues, Expression<Func<string>> status = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveProcessingStatusFiles(Expression<Func<RetrieveProcessingStatusFilesBodyInput>> body, Expression<Func<string>> status = null)
         {
-            var __workflow_bodyhashValues = WorkflowExpression.Compile(bodyhashValues, nameof(bodyhashValues), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -134,15 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_status != null)
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["hash_values"] = ExpressionConverter.ConvertO(__workflow_bodyhashValues);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -161,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveClassificationForSample(Expression<Func<string>> hashValue, Expression<Func<localonlyInput>> localonly = null, Expression<Func<avScannersInput>> avScanners = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveClassificationForSample(Expression<Func<string>> hashValue, Expression<Func<LocalonlyInput>> localonly = null, Expression<Func<AvScannersInput>> avScanners = null)
         {
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_localonly = WorkflowExpression.Compile(localonly, nameof(localonly), required: false);
@@ -322,48 +263,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PerformAdvancedSearch(Expression<Func<string>> bodyquery = null, Expression<Func<int>> bodypage = null, Expression<Func<int>> bodyrecordsPerPage = null, Expression<Func<string>> bodysort = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PerformAdvancedSearch(Expression<Func<PerformAdvancedSearchBodyInput>> body = null)
         {
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
-            var __workflow_bodypage = WorkflowExpression.Compile(bodypage, nameof(bodypage), required: false);
-            var __workflow_bodyrecordsPerPage = WorkflowExpression.Compile(bodyrecordsPerPage, nameof(bodyrecordsPerPage), required: false);
-            var __workflow_bodysort = WorkflowExpression.Compile(bodysort, nameof(bodysort), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/samples/v2/search/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyquery != null)
-                {
-                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypage != null)
-                {
-                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrecordsPerPage != null)
-                {
-                    body["records_per_page"] = ExpressionConverter.ConvertO(__workflow_bodyrecordsPerPage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysort != null)
-                {
-                    body["sort"] = ExpressionConverter.ConvertO(__workflow_bodysort);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -382,47 +291,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteUserTagsFromSample(Expression<Func<string>> sampleHash, Expression<Func<string[]>> bodytags)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteUserTagsFromSample(Expression<Func<string>> sampleHash, Expression<Func<CreateUserTagsForSampleBodyInput>> body)
         {
             var __workflow_sampleHash = WorkflowExpression.Compile(sampleHash, nameof(sampleHash), required: true);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/tag/{0}/", __workflow_sampleHash.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUserTagsForSample(Expression<Func<string>> sampleHash, Expression<Func<string[]>> bodytags)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUserTagsForSample(Expression<Func<string>> sampleHash, Expression<Func<CreateUserTagsForSampleBodyInput>> body)
         {
             var __workflow_sampleHash = WorkflowExpression.Compile(sampleHash, nameof(sampleHash), required: true);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/tag/{0}/", __workflow_sampleHash.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -570,8 +463,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
     {
     }
 
+    public class RetrieveDetailedReportBodyInput
+    {
+        [JsonProperty("hash_values", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] HashValues { get; set; }
+
+        [JsonProperty("fields")]
+        public string[] Fields { get; set; }
+
+        [JsonProperty("skip_reanalysis")]
+        public string SkipReanalysis { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "html")]
         Html,
@@ -580,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum endpointInput
+    public enum EndpointInput
     {
         [EnumMember(Value = "create")]
         Create,
@@ -590,16 +495,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         Status
     }
 
-    public enum localonlyInput
+    public class RetrieveSummaryReportBodyInput
+    {
+        [JsonProperty("hash_values", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] HashValues { get; set; }
+
+        [JsonProperty("fields")]
+        public string[] Fields { get; set; }
+
+        [JsonProperty("include_networkthreatintelligence")]
+        public string IncludeNetworkthreatintelligence { get; set; }
+
+        [JsonProperty("skip_reanalysis")]
+        public string SkipReanalysis { get; set; }
+    }
+
+    public class RetrieveProcessingStatusFilesBodyInput
+    {
+        [JsonProperty("hash_values", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] HashValues { get; set; }
+    }
+
+    public enum LocalonlyInput
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum avScannersInput
+    public enum AvScannersInput
     {
         _0 = 0,
         _1 = 1
+    }
+
+    public class PerformAdvancedSearchBodyInput
+    {
+        [JsonProperty("query")]
+        public string Query { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("records_per_page")]
+        public int? RecordsPerPage { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+    }
+
+    public class CreateUserTagsForSampleBodyInput
+    {
+        [JsonProperty("tags", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Tags { get; set; }
     }
 }
 

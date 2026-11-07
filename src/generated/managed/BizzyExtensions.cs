@@ -13,73 +13,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     public class BizzyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReply(Expression<Func<string>> contentreplyText, Expression<Func<string>> contentreplyActivity, Expression<Func<bool>> contentshowInChat = null, Expression<Func<string>> contentcustomChannelData = null, Expression<Func<string>> contentsignalResponseJSON = null, Expression<Func<string>> contentmessageId = null)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReply(Expression<Func<SendReplyContentInput>> content)
         {
-            var __workflow_contentreplyText = WorkflowExpression.Compile(contentreplyText, nameof(contentreplyText), required: true);
-            var __workflow_contentreplyActivity = WorkflowExpression.Compile(contentreplyActivity, nameof(contentreplyActivity), required: true);
-            var __workflow_contentshowInChat = WorkflowExpression.Compile(contentshowInChat, nameof(contentshowInChat), required: false);
-            var __workflow_contentcustomChannelData = WorkflowExpression.Compile(contentcustomChannelData, nameof(contentcustomChannelData), required: false);
-            var __workflow_contentsignalResponseJSON = WorkflowExpression.Compile(contentsignalResponseJSON, nameof(contentsignalResponseJSON), required: false);
-            var __workflow_contentmessageId = WorkflowExpression.Compile(contentmessageId, nameof(contentmessageId), required: false);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/reply";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var content = new JObject();
-                var contentpropCount = 0;
-                contentpropCount++;
-                content["message"] = ExpressionConverter.ConvertO(__workflow_contentreplyText);
-                contentpropCount++;
-                content["activityJson"] = ExpressionConverter.ConvertO(__workflow_contentreplyActivity);
-                if (__workflow_contentshowInChat != null)
-                {
-                    if (__workflow_contentshowInChat != null)
-                    {
-                        content["showInChat"] = ExpressionConverter.ConvertO(__workflow_contentshowInChat);
-                        contentpropCount++;
-                    }
-
-                    contentpropCount++;
-                }
-                else
-                {
-                    content["showInChat"] = true;
-                    contentpropCount++;
-                }
-
-                if (__workflow_contentcustomChannelData != null)
-                {
-                    content["customChannelDataJson"] = ExpressionConverter.ConvertO(__workflow_contentcustomChannelData);
-                    contentpropCount++;
-                }
-
-                if (__workflow_contentsignalResponseJSON != null)
-                {
-                    content["signalResponse"] = ExpressionConverter.ConvertO(__workflow_contentsignalResponseJSON);
-                    contentpropCount++;
-                }
-
-                if (__workflow_contentmessageId != null)
-                {
-                    content["messageId"] = ExpressionConverter.ConvertO(__workflow_contentmessageId);
-                    contentpropCount++;
-                }
-
-                if (contentpropCount > 0)
-                {
-                    callPayload.Body = content;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<BotReplyResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReplyWithAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReplyWithAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content)
         {
             var __workflow_selectedCard = WorkflowExpression.Compile(selectedCard, nameof(selectedCard), required: true);
-            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/triggers/bot/adaptiveCards/{0}/replyWithAdaptiveCard", __workflow_selectedCard.WithUrlEncoding(1)));
@@ -100,987 +51,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/triggers/bot/adaptiveCards/{0}/generateAdaptiveCard", __workflow_selectedCard.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
+                if (__workflow_content != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReplyWithAdaptiveCardSet(Expression<Func<cardSetdisplayStyleInput>> cardSetdisplayStyle, Expression<Func<string>> cardSetreplyActivity, Expression<Func<bool>> cardSetshowInTab = null, Expression<Func<string>> cardSettabButtonLabel = null, Expression<Func<string>> cardSettabButtonMessage = null)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReplyWithAdaptiveCardSet(Expression<Func<CardSetInput>> cardSet)
         {
-            var __workflow_cardSetdisplayStyle = WorkflowExpression.Compile(cardSetdisplayStyle, nameof(cardSetdisplayStyle), required: true);
-            var __workflow_cardSetreplyActivity = WorkflowExpression.Compile(cardSetreplyActivity, nameof(cardSetreplyActivity), required: true);
-            var __workflow_cardSetshowInTab = WorkflowExpression.Compile(cardSetshowInTab, nameof(cardSetshowInTab), required: false);
-            var __workflow_cardSettabButtonLabel = WorkflowExpression.Compile(cardSettabButtonLabel, nameof(cardSettabButtonLabel), required: false);
-            var __workflow_cardSettabButtonMessage = WorkflowExpression.Compile(cardSettabButtonMessage, nameof(cardSettabButtonMessage), required: false);
+            var __workflow_cardSet = WorkflowExpression.Compile(cardSet, nameof(cardSet), required: true);
             return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/adaptiveCards/sendCardSet";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var cardSet = new JObject();
-                var cardSetpropCount = 0;
-                var cardsObject = new JObject();
-                var cardsObjectpropCount = 0;
-                if (cardsObjectpropCount > 0)
-                {
-                    cardSet["cards"] = cardsObject;
-                    cardSetpropCount++;
-                }
-
-                cardSetpropCount++;
-                cardSet["displayStyle"] = ExpressionConverter.ConvertO(__workflow_cardSetdisplayStyle);
-                cardSetpropCount++;
-                cardSet["activityJson"] = ExpressionConverter.ConvertO(__workflow_cardSetreplyActivity);
-                if (__workflow_cardSetshowInTab != null)
-                {
-                    if (__workflow_cardSetshowInTab != null)
-                    {
-                        cardSet["showInTab"] = ExpressionConverter.ConvertO(__workflow_cardSetshowInTab);
-                        cardSetpropCount++;
-                    }
-
-                    cardSetpropCount++;
-                }
-                else
-                {
-                    cardSet["showInTab"] = false;
-                    cardSetpropCount++;
-                }
-
-                if (__workflow_cardSettabButtonLabel != null)
-                {
-                    cardSet["deepLinkButtonLabel"] = ExpressionConverter.ConvertO(__workflow_cardSettabButtonLabel);
-                    cardSetpropCount++;
-                }
-
-                if (__workflow_cardSettabButtonMessage != null)
-                {
-                    cardSet["deepLinkMessage"] = ExpressionConverter.ConvertO(__workflow_cardSettabButtonMessage);
-                    cardSetpropCount++;
-                }
-
-                if (cardSetpropCount > 0)
-                {
-                    callPayload.Body = cardSet;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_cardSet);
                 return new ApiConnectionAction<BotReplyResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> UpdateAdaptiveCard(Expression<Func<string>> cardInforeplyActivity)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> UpdateAdaptiveCard(Expression<Func<CardInfoInput>> cardInfo)
         {
-            var __workflow_cardInforeplyActivity = WorkflowExpression.Compile(cardInforeplyActivity, nameof(cardInforeplyActivity), required: true);
+            var __workflow_cardInfo = WorkflowExpression.Compile(cardInfo, nameof(cardInfo), required: true);
             return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/adaptiveCards/updateCard";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var cardInfo = new JObject();
-                var cardInfopropCount = 0;
-                var cardObject = new JObject();
-                var cardObjectpropCount = 0;
-                if (cardObjectpropCount > 0)
-                {
-                    cardInfo["card"] = cardObject;
-                    cardInfopropCount++;
-                }
-
-                cardInfopropCount++;
-                cardInfo["activityJson"] = ExpressionConverter.ConvertO(__workflow_cardInforeplyActivity);
-                if (cardInfopropCount > 0)
-                {
-                    callPayload.Body = cardInfo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_cardInfo);
                 return new ApiConnectionAction<BotReplyResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotConversationStartResponse, ApiConnectionActionConfiguration> StartConversation(Expression<Func<string>> contenttargetBot, Expression<Func<string>> contentconversationText, Expression<Func<string>> contentuser)
+        public IBodyWorkflowAction<BotConversationStartResponse, ApiConnectionActionConfiguration> StartConversation(Expression<Func<StartConversationContentInput>> content)
         {
-            var __workflow_contenttargetBot = WorkflowExpression.Compile(contenttargetBot, nameof(contenttargetBot), required: true);
-            var __workflow_contentconversationText = WorkflowExpression.Compile(contentconversationText, nameof(contentconversationText), required: true);
-            var __workflow_contentuser = WorkflowExpression.Compile(contentuser, nameof(contentuser), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<BotConversationStartResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/startConversation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var content = new JObject();
-                var contentpropCount = 0;
-                contentpropCount++;
-                content["EnterpriseBot"] = ExpressionConverter.ConvertO(__workflow_contenttargetBot);
-                contentpropCount++;
-                content["message"] = ExpressionConverter.ConvertO(__workflow_contentconversationText);
-                contentpropCount++;
-                content["user"] = ExpressionConverter.ConvertO(__workflow_contentuser);
-                if (contentpropCount > 0)
-                {
-                    callPayload.Body = content;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<BotConversationStartResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotGroupConversationStartResponse, ApiConnectionActionConfiguration> StartGroupConversation(Expression<Func<string>> contenttargetBot, Expression<Func<string>> contentchannelName, Expression<Func<string>> contentconversationText)
+        public IBodyWorkflowAction<BotGroupConversationStartResponse, ApiConnectionActionConfiguration> StartGroupConversation(Expression<Func<StartGroupConversationContentInput>> content)
         {
-            var __workflow_contenttargetBot = WorkflowExpression.Compile(contenttargetBot, nameof(contenttargetBot), required: true);
-            var __workflow_contentchannelName = WorkflowExpression.Compile(contentchannelName, nameof(contentchannelName), required: true);
-            var __workflow_contentconversationText = WorkflowExpression.Compile(contentconversationText, nameof(contentconversationText), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<BotGroupConversationStartResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/startGroupConversation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var content = new JObject();
-                var contentpropCount = 0;
-                contentpropCount++;
-                content["EnterpriseBot"] = ExpressionConverter.ConvertO(__workflow_contenttargetBot);
-                var teamIdStrObject = new JObject();
-                var teamIdStrObjectpropCount = 0;
-                if (teamIdStrObjectpropCount > 0)
-                {
-                    content["teamIDStr"] = teamIdStrObject;
-                    contentpropCount++;
-                }
-
-                contentpropCount++;
-                content["channelId"] = ExpressionConverter.ConvertO(__workflow_contentchannelName);
-                contentpropCount++;
-                content["message"] = ExpressionConverter.ConvertO(__workflow_contentconversationText);
-                if (contentpropCount > 0)
-                {
-                    callPayload.Body = content;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<BotGroupConversationStartResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendBridgeEvent(Expression<Func<string>> contentreplyActivity)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendBridgeEvent(Expression<Func<SendBridgeEventContentInput>> content)
         {
-            var __workflow_contentreplyActivity = WorkflowExpression.Compile(contentreplyActivity, nameof(contentreplyActivity), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/sendBridgeEvent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var content = new JObject();
-                var contentpropCount = 0;
-                contentpropCount++;
-                content["activityJson"] = ExpressionConverter.ConvertO(__workflow_contentreplyActivity);
-                var eventObjectObject = new JObject();
-                var eventObjectObjectpropCount = 0;
-                if (eventObjectObjectpropCount > 0)
-                {
-                    content["eventObject"] = eventObjectObject;
-                    contentpropCount++;
-                }
-
-                if (contentpropCount > 0)
-                {
-                    callPayload.Body = content;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponse(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponse(Expression<Func<WebHookRegistrationsInputResponseWebHookInput>> webHook)
         {
-            var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
-            var __workflow_webHookreplyActivity = WorkflowExpression.Compile(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            var __workflow_webHookacceptResponseFrom = WorkflowExpression.Compile(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
-                webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
-                if (__workflow_webHookacceptResponseFrom != null)
-                {
-                    if (__workflow_webHookacceptResponseFrom != null)
-                    {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["acceptResponseFrom"] = "Original User";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookshowInChat != null)
-                {
-                    if (__workflow_webHookshowInChat != null)
-                    {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["showInChat"] = true;
-                    webHookpropCount++;
-                }
-
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionAction<WebHook>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseDATE(Expression<Func<webHookdateScopeInput>> webHookdateScope, Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseDATE(Expression<Func<WebHookRegistrationsInputResponseDATEWebHookInput>> webHook)
         {
-            var __workflow_webHookdateScope = WorkflowExpression.Compile(webHookdateScope, nameof(webHookdateScope), required: true);
-            var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
-            var __workflow_webHookreplyActivity = WorkflowExpression.Compile(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            var __workflow_webHookacceptResponseFrom = WorkflowExpression.Compile(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Date";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["dateScope"] = ExpressionConverter.ConvertO(__workflow_webHookdateScope);
-                webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
-                webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
-                if (__workflow_webHookacceptResponseFrom != null)
-                {
-                    if (__workflow_webHookacceptResponseFrom != null)
-                    {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["acceptResponseFrom"] = "Original User";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookallowBranching != null)
-                {
-                    if (__workflow_webHookallowBranching != null)
-                    {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["allowBranching"] = "No";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookshowInChat != null)
-                {
-                    if (__workflow_webHookshowInChat != null)
-                    {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["showInChat"] = true;
-                    webHookpropCount++;
-                }
-
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionAction<WebHook>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICE(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookchoiceValues, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICE(Expression<Func<WebHookRegistrationsInputResponseCHOICEWebHookInput>> webHook)
         {
-            var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
-            var __workflow_webHookchoiceValues = WorkflowExpression.Compile(webHookchoiceValues, nameof(webHookchoiceValues), required: true);
-            var __workflow_webHookreplyActivity = WorkflowExpression.Compile(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            var __workflow_webHookacceptResponseFrom = WorkflowExpression.Compile(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            var __workflow_webHooklistenForVoiceResponse = WorkflowExpression.Compile(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Choice";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
-                webHookpropCount++;
-                webHook["choices"] = ExpressionConverter.ConvertO(__workflow_webHookchoiceValues);
-                webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
-                if (__workflow_webHookacceptResponseFrom != null)
-                {
-                    if (__workflow_webHookacceptResponseFrom != null)
-                    {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["acceptResponseFrom"] = "Original User";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookallowBranching != null)
-                {
-                    if (__workflow_webHookallowBranching != null)
-                    {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["allowBranching"] = "No";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookshowInChat != null)
-                {
-                    if (__workflow_webHookshowInChat != null)
-                    {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["showInChat"] = true;
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHooklistenForVoiceResponse != null)
-                {
-                    if (__workflow_webHooklistenForVoiceResponse != null)
-                    {
-                        webHook["listenForInput"] = ExpressionConverter.ConvertO(__workflow_webHooklistenForVoiceResponse);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["listenForInput"] = false;
-                    webHookpropCount++;
-                }
-
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionAction<WebHook>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICELIST(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookiconURL = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICELIST(Expression<Func<WebHookRegistrationsInputResponseCHOICELISTWebHookInput>> webHook)
         {
-            var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
-            var __workflow_webHookreplyActivity = WorkflowExpression.Compile(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            var __workflow_webHookiconURL = WorkflowExpression.Compile(webHookiconURL, nameof(webHookiconURL), required: false);
-            var __workflow_webHookacceptResponseFrom = WorkflowExpression.Compile(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            var __workflow_webHooklistenForVoiceResponse = WorkflowExpression.Compile(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_ChoiceList";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookiconURL != null)
-                {
-                    webHook["icon"] = ExpressionConverter.ConvertO(__workflow_webHookiconURL);
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
-                var choicesObject = new JObject();
-                var choicesObjectpropCount = 0;
-                if (choicesObjectpropCount > 0)
-                {
-                    webHook["choices"] = choicesObject;
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
-                if (__workflow_webHookacceptResponseFrom != null)
-                {
-                    if (__workflow_webHookacceptResponseFrom != null)
-                    {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["acceptResponseFrom"] = "Original User";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookallowBranching != null)
-                {
-                    if (__workflow_webHookallowBranching != null)
-                    {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["allowBranching"] = "No";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookshowInChat != null)
-                {
-                    if (__workflow_webHookshowInChat != null)
-                    {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["showInChat"] = true;
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHooklistenForVoiceResponse != null)
-                {
-                    if (__workflow_webHooklistenForVoiceResponse != null)
-                    {
-                        webHook["listenForInput"] = ExpressionConverter.ConvertO(__workflow_webHooklistenForVoiceResponse);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["listenForInput"] = false;
-                    webHookpropCount++;
-                }
-
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionAction<WebHook>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponsePEOPLE(Expression<Func<string>> webHookmessage, Expression<Func<webHookmodeInput>> webHookmode, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooksearchString = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponsePEOPLE(Expression<Func<WebHookRegistrationsInputResponsePEOPLEWebHookInput>> webHook)
         {
-            var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
-            var __workflow_webHookmode = WorkflowExpression.Compile(webHookmode, nameof(webHookmode), required: true);
-            var __workflow_webHookreplyActivity = WorkflowExpression.Compile(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            var __workflow_webHooksearchString = WorkflowExpression.Compile(webHooksearchString, nameof(webHooksearchString), required: false);
-            var __workflow_webHookacceptResponseFrom = WorkflowExpression.Compile(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            var __workflow_webHooklistenForVoiceResponse = WorkflowExpression.Compile(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_People";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
-                webHookpropCount++;
-                webHook["mode"] = ExpressionConverter.ConvertO(__workflow_webHookmode);
-                if (__workflow_webHooksearchString != null)
-                {
-                    webHook["searchstr"] = ExpressionConverter.ConvertO(__workflow_webHooksearchString);
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
-                if (__workflow_webHookacceptResponseFrom != null)
-                {
-                    if (__workflow_webHookacceptResponseFrom != null)
-                    {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["acceptResponseFrom"] = "Original User";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookallowBranching != null)
-                {
-                    if (__workflow_webHookallowBranching != null)
-                    {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["allowBranching"] = "No";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookshowInChat != null)
-                {
-                    if (__workflow_webHookshowInChat != null)
-                    {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["showInChat"] = true;
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHooklistenForVoiceResponse != null)
-                {
-                    if (__workflow_webHooklistenForVoiceResponse != null)
-                    {
-                        webHook["listenForInput"] = ExpressionConverter.ConvertO(__workflow_webHooklistenForVoiceResponse);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["listenForInput"] = false;
-                    webHookpropCount++;
-                }
-
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionAction<WebHook>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseINTENTVECTOR(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHooklUISIntentVector, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseINTENTVECTOR(Expression<Func<WebHookRegistrationsInputResponseINTENTVECTORWebHookInput>> webHook)
         {
-            var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
-            var __workflow_webHooklUISIntentVector = WorkflowExpression.Compile(webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: true);
-            var __workflow_webHookreplyActivity = WorkflowExpression.Compile(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            var __workflow_webHookacceptResponseFrom = WorkflowExpression.Compile(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_IntentVector";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
-                webHookpropCount++;
-                webHook["intentVector"] = ExpressionConverter.ConvertO(__workflow_webHooklUISIntentVector);
-                webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
-                if (__workflow_webHookacceptResponseFrom != null)
-                {
-                    if (__workflow_webHookacceptResponseFrom != null)
-                    {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["acceptResponseFrom"] = "Original User";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookallowBranching != null)
-                {
-                    if (__workflow_webHookallowBranching != null)
-                    {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["allowBranching"] = "No";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookshowInChat != null)
-                {
-                    if (__workflow_webHookshowInChat != null)
-                    {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["showInChat"] = true;
-                    webHookpropCount++;
-                }
-
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionAction<WebHook>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseMEMORY(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookmemoryType, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookiconURL = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<string>> webHooktargetUser = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseMEMORY(Expression<Func<WebHookRegistrationsInputResponseMEMORYWebHookInput>> webHook)
         {
-            var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
-            var __workflow_webHookmemoryType = WorkflowExpression.Compile(webHookmemoryType, nameof(webHookmemoryType), required: true);
-            var __workflow_webHookreplyActivity = WorkflowExpression.Compile(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            var __workflow_webHookiconURL = WorkflowExpression.Compile(webHookiconURL, nameof(webHookiconURL), required: false);
-            var __workflow_webHookacceptResponseFrom = WorkflowExpression.Compile(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            var __workflow_webHooktargetUser = WorkflowExpression.Compile(webHooktargetUser, nameof(webHooktargetUser), required: false);
-            var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Memory";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
-                webHookpropCount++;
-                webHook["type"] = ExpressionConverter.ConvertO(__workflow_webHookmemoryType);
-                webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
-                if (__workflow_webHookiconURL != null)
-                {
-                    webHook["icon"] = ExpressionConverter.ConvertO(__workflow_webHookiconURL);
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookacceptResponseFrom != null)
-                {
-                    if (__workflow_webHookacceptResponseFrom != null)
-                    {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["acceptResponseFrom"] = "Original User";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHooktargetUser != null)
-                {
-                    webHook["targetUserMemory"] = ExpressionConverter.ConvertO(__workflow_webHooktargetUser);
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookallowBranching != null)
-                {
-                    if (__workflow_webHookallowBranching != null)
-                    {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["allowBranching"] = "No";
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookshowInChat != null)
-                {
-                    if (__workflow_webHookshowInChat != null)
-                    {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["showInChat"] = true;
-                    webHookpropCount++;
-                }
-
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionAction<WebHook>(callPayload);
             });
         }
@@ -1096,144 +236,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["selectedCard"] = ExpressionConverter.Convert(__workflow_selectedCard);
+                if (__workflow_webHook != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
+                return new ApiConnectionAction<WebHook>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInitiateBridge(Expression<Func<WebHookRegistrationsInitiateBridgeWebHookInput>> webHook)
+        {
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
+            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/triggers/webhooks/registerBridge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionAction<WebHook>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInitiateBridge(Expression<Func<webHookparticipantsInputItem[]>> webHookparticipants, Expression<Func<string>> webHookendChatCommand, Expression<Func<int>> webHookidleTimeout, Expression<Func<string[]>> webHookfilters = null)
+        public IBodyWorkflowAction<ResponseSaveBotMemory, ApiConnectionActionConfiguration> SaveBotMemory(Expression<Func<SaveBotMemoryContentInput>> content)
         {
-            var __workflow_webHookparticipants = WorkflowExpression.Compile(webHookparticipants, nameof(webHookparticipants), required: true);
-            var __workflow_webHookendChatCommand = WorkflowExpression.Compile(webHookendChatCommand, nameof(webHookendChatCommand), required: true);
-            var __workflow_webHookidleTimeout = WorkflowExpression.Compile(webHookidleTimeout, nameof(webHookidleTimeout), required: true);
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/triggers/webhooks/registerBridge";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["participants"] = ExpressionConverter.ConvertO(__workflow_webHookparticipants);
-                webHookpropCount++;
-                webHook["endBridgeCommand"] = ExpressionConverter.ConvertO(__workflow_webHookendChatCommand);
-                webHookpropCount++;
-                webHook["idleTimeoutDuration"] = ExpressionConverter.ConvertO(__workflow_webHookidleTimeout);
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
-                return new ApiConnectionAction<WebHook>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<ResponseSaveBotMemory, ApiConnectionActionConfiguration> SaveBotMemory(Expression<Func<string>> contentuserPrincipalName, Expression<Func<string>> contentmemoryType, Expression<Func<string>> contenttitle, Expression<Func<string>> contentvalue)
-        {
-            var __workflow_contentuserPrincipalName = WorkflowExpression.Compile(contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
-            var __workflow_contentmemoryType = WorkflowExpression.Compile(contentmemoryType, nameof(contentmemoryType), required: true);
-            var __workflow_contenttitle = WorkflowExpression.Compile(contenttitle, nameof(contenttitle), required: true);
-            var __workflow_contentvalue = WorkflowExpression.Compile(contentvalue, nameof(contentvalue), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<ResponseSaveBotMemory, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/saveBotMemory";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var content = new JObject();
-                var contentpropCount = 0;
-                contentpropCount++;
-                content["user"] = ExpressionConverter.ConvertO(__workflow_contentuserPrincipalName);
-                contentpropCount++;
-                content["type"] = ExpressionConverter.ConvertO(__workflow_contentmemoryType);
-                contentpropCount++;
-                content["title"] = ExpressionConverter.ConvertO(__workflow_contenttitle);
-                contentpropCount++;
-                content["value"] = ExpressionConverter.ConvertO(__workflow_contentvalue);
-                if (contentpropCount > 0)
-                {
-                    callPayload.Body = content;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<ResponseSaveBotMemory>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<ResponseDeleteBotMemory, ApiConnectionActionConfiguration> DeleteBotMemory(Expression<Func<string>> contentuserPrincipalName, Expression<Func<string>> contentmemoryType, Expression<Func<string>> contentvalue)
+        public IBodyWorkflowAction<ResponseDeleteBotMemory, ApiConnectionActionConfiguration> DeleteBotMemory(Expression<Func<DeleteBotMemoryContentInput>> content)
         {
-            var __workflow_contentuserPrincipalName = WorkflowExpression.Compile(contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
-            var __workflow_contentmemoryType = WorkflowExpression.Compile(contentmemoryType, nameof(contentmemoryType), required: true);
-            var __workflow_contentvalue = WorkflowExpression.Compile(contentvalue, nameof(contentvalue), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<ResponseDeleteBotMemory, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/deleteBotMemory";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var content = new JObject();
-                var contentpropCount = 0;
-                contentpropCount++;
-                content["user"] = ExpressionConverter.ConvertO(__workflow_contentuserPrincipalName);
-                contentpropCount++;
-                content["type"] = ExpressionConverter.ConvertO(__workflow_contentmemoryType);
-                contentpropCount++;
-                content["value"] = ExpressionConverter.ConvertO(__workflow_contentvalue);
-                if (contentpropCount > 0)
-                {
-                    callPayload.Body = content;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<ResponseDeleteBotMemory>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<MemoryItem[], ApiConnectionActionConfiguration> GetMemoryItemsByType(Expression<Func<string>> checkMemoryInfouserPrincipalName, Expression<Func<string>> checkMemoryInfomemoryType)
+        public IBodyWorkflowAction<MemoryItem[], ApiConnectionActionConfiguration> GetMemoryItemsByType(Expression<Func<CheckMemoryInfoInput>> checkMemoryInfo)
         {
-            var __workflow_checkMemoryInfouserPrincipalName = WorkflowExpression.Compile(checkMemoryInfouserPrincipalName, nameof(checkMemoryInfouserPrincipalName), required: true);
-            var __workflow_checkMemoryInfomemoryType = WorkflowExpression.Compile(checkMemoryInfomemoryType, nameof(checkMemoryInfomemoryType), required: true);
+            var __workflow_checkMemoryInfo = WorkflowExpression.Compile(checkMemoryInfo, nameof(checkMemoryInfo), required: true);
             return new DeferredBodyAction<MemoryItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/CheckMemoryByType";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var checkMemoryInfo = new JObject();
-                var checkMemoryInfopropCount = 0;
-                checkMemoryInfopropCount++;
-                checkMemoryInfo["user"] = ExpressionConverter.ConvertO(__workflow_checkMemoryInfouserPrincipalName);
-                checkMemoryInfopropCount++;
-                checkMemoryInfo["type"] = ExpressionConverter.ConvertO(__workflow_checkMemoryInfomemoryType);
-                if (checkMemoryInfopropCount > 0)
-                {
-                    callPayload.Body = checkMemoryInfo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_checkMemoryInfo);
                 return new ApiConnectionAction<MemoryItem[]>(callPayload);
             });
         }
@@ -1241,153 +301,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class BizzyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookkeywords = null, Expression<Func<string>> webHookDeprecatedLUISAPIKey = null, Expression<Func<string>> webHookDeprecatedLUISApp = null, Expression<Func<string>> webHookDeprecatedLUISIntent = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionPollingTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<WebHookRegistrationsPostWebHookInput>> webHook)
         {
-            var __workflow_webHooktriggerDescription = WorkflowExpression.Compile(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
-            var __workflow_webHookbotTriggerType = WorkflowExpression.Compile(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            var __workflow_webHookkeywords = WorkflowExpression.Compile(webHookkeywords, nameof(webHookkeywords), required: false);
-            var __workflow_webHookDeprecatedLUISAPIKey = WorkflowExpression.Compile(webHookDeprecatedLUISAPIKey, nameof(webHookDeprecatedLUISAPIKey), required: false);
-            var __workflow_webHookDeprecatedLUISApp = WorkflowExpression.Compile(webHookDeprecatedLUISApp, nameof(webHookDeprecatedLUISApp), required: false);
-            var __workflow_webHookDeprecatedLUISIntent = WorkflowExpression.Compile(webHookDeprecatedLUISIntent, nameof(webHookDeprecatedLUISIntent), required: false);
-            return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
+            return new DeferredBodyTrigger<WebHook, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/register";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["triggerDescription"] = ExpressionConverter.ConvertO(__workflow_webHooktriggerDescription);
-                webHookpropCount++;
-                webHook["triggerType"] = ExpressionConverter.ConvertO(__workflow_webHookbotTriggerType);
-                if (__workflow_webHookkeywords != null)
-                {
-                    webHook["keywords"] = ExpressionConverter.ConvertO(__workflow_webHookkeywords);
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookDeprecatedLUISAPIKey != null)
-                {
-                    webHook["luisApiKey"] = ExpressionConverter.ConvertO(__workflow_webHookDeprecatedLUISAPIKey);
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookDeprecatedLUISApp != null)
-                {
-                    webHook["luisAppId"] = ExpressionConverter.ConvertO(__workflow_webHookDeprecatedLUISApp);
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookDeprecatedLUISIntent != null)
-                {
-                    webHook["luisIntent"] = ExpressionConverter.ConvertO(__workflow_webHookDeprecatedLUISIntent);
-                    webHookpropCount++;
-                }
-
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
-                return new ApiConnectionTrigger<WebHook>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
+                return new ApiConnectionPollingTrigger<WebHook>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsVectorPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooklUISIntentVector = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionPollingTriggerConfiguration> WebHookRegistrationsVectorPost(Expression<Func<WebHookRegistrationsVectorPostWebHookInput>> webHook)
         {
-            var __workflow_webHooktriggerDescription = WorkflowExpression.Compile(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
-            var __workflow_webHookbotTriggerType = WorkflowExpression.Compile(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            var __workflow_webHooklUISIntentVector = WorkflowExpression.Compile(webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: false);
-            var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
+            return new DeferredBodyTrigger<WebHook, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerVector";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                webHookpropCount++;
-                webHook["triggerDescription"] = ExpressionConverter.ConvertO(__workflow_webHooktriggerDescription);
-                webHookpropCount++;
-                webHook["triggerType"] = ExpressionConverter.ConvertO(__workflow_webHookbotTriggerType);
-                if (__workflow_webHooklUISIntentVector != null)
-                {
-                    webHook["intentVector"] = ExpressionConverter.ConvertO(__workflow_webHooklUISIntentVector);
-                    webHookpropCount++;
-                }
-
-                if (__workflow_webHookallowBranching != null)
-                {
-                    if (__workflow_webHookallowBranching != null)
-                    {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
-                        webHookpropCount++;
-                    }
-
-                    webHookpropCount++;
-                }
-                else
-                {
-                    webHook["allowBranching"] = "No";
-                    webHookpropCount++;
-                }
-
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
-                return new ApiConnectionTrigger<WebHook>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
+                return new ApiConnectionPollingTrigger<WebHook>(callPayload);
             });
         }
     }
@@ -1398,11 +334,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string MessageId { get; set; }
     }
 
+    public class SendReplyContentInput
+    {
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyText { get; set; }
+
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
+
+        [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowInChat { get; set; } = true;
+
+        [JsonProperty("customChannelDataJson")]
+        public string CustomChannelData { get; set; }
+
+        [JsonProperty("signalResponse")]
+        public string SignalResponseJSON { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+    }
+
+    public class CardSetInput
+    {
+        [JsonProperty("cards", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken AdaptiveCardSet { get; set; }
+
+        [JsonProperty("displayStyle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CardSetInputDisplayStyleType DisplayStyle { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.CardSetInputDisplayStyleType.Carousel;
+
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
+
+        [JsonProperty("showInTab", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowInTab { get; set; } = false;
+
+        [JsonProperty("deepLinkButtonLabel")]
+        public string TabButtonLabel { get; set; }
+
+        [JsonProperty("deepLinkMessage")]
+        public string TabButtonMessage { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum cardSetdisplayStyleInput
+    public enum CardSetInputDisplayStyleType
     {
         Carousel,
         List
+    }
+
+    public class CardInfoInput
+    {
+        [JsonProperty("card", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken AdaptiveCard { get; set; }
+
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
     }
 
     public class BotConversationStartResponse
@@ -1412,6 +399,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
         [JsonProperty("activityJson")]
         public string ReplyActivity { get; set; }
+    }
+
+    public class StartConversationContentInput
+    {
+        [JsonProperty("EnterpriseBot", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TargetBot { get; set; } = "AtBot";
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConversationText { get; set; }
+
+        [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string User { get; set; }
     }
 
     public class BotGroupConversationStartResponse
@@ -1424,6 +423,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
         [JsonProperty("activityJson")]
         public string ReplyActivity { get; set; }
+    }
+
+    public class StartGroupConversationContentInput
+    {
+        [JsonProperty("EnterpriseBot", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TargetBot { get; set; } = "AtBot";
+
+        [JsonProperty("teamIDStr", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken ChannelListing { get; set; }
+
+        [JsonProperty("channelId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChannelName { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConversationText { get; set; }
+    }
+
+    public class SendBridgeEventContentInput
+    {
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
+
+        [JsonProperty("eventObject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken EventJSON { get; set; }
     }
 
     public class WebHook
@@ -1453,8 +476,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public JToken Properties { get; set; }
     }
 
+    public class WebHookRegistrationsInputResponseWebHookInput
+    {
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
+
+        [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
+
+        [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowInChat { get; set; } = true;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum webHookacceptResponseFromInput
+    public enum WebHookInputAcceptResponseFromType
     {
         [EnumMember(Value = "Original User")]
         OriginalUser,
@@ -1462,8 +512,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         AnyUser
     }
 
+    public class WebHookRegistrationsInputResponseDATEWebHookInput
+    {
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("dateScope", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputDateScopeType DateScope { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputDateScopeType.DateOnly;
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
+
+        [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
+
+        [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
+
+        [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowInChat { get; set; } = true;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum webHookdateScopeInput
+    public enum WebHookInputDateScopeType
     {
         [EnumMember(Value = "Date Only")]
         DateOnly,
@@ -1474,28 +557,238 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum webHookallowBranchingInput
+    public enum WebHookInputAllowBranchingType
     {
         No,
         Yes
     }
 
+    public class WebHookRegistrationsInputResponseCHOICEWebHookInput
+    {
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("choices", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChoiceValues { get; set; }
+
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
+
+        [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
+
+        [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
+
+        [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowInChat { get; set; } = true;
+
+        [JsonProperty("listenForInput", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ListenForVoiceResponse { get; set; } = false;
+    }
+
+    public class WebHookRegistrationsInputResponseCHOICELISTWebHookInput
+    {
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("icon")]
+        public string IconURL { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("choices", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken ChoiceValues { get; set; }
+
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
+
+        [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
+
+        [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
+
+        [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowInChat { get; set; } = true;
+
+        [JsonProperty("listenForInput", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ListenForVoiceResponse { get; set; } = false;
+    }
+
+    public class WebHookRegistrationsInputResponsePEOPLEWebHookInput
+    {
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputModeType Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputModeType.Single;
+
+        [JsonProperty("searchstr")]
+        public string SearchString { get; set; }
+
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
+
+        [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
+
+        [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
+
+        [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowInChat { get; set; } = true;
+
+        [JsonProperty("listenForInput", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ListenForVoiceResponse { get; set; } = false;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum webHookmodeInput
+    public enum WebHookInputModeType
     {
         Single,
         Multiple
     }
 
-    public class webHookparticipantsInputItem
+    public class WebHookRegistrationsInputResponseINTENTVECTORWebHookInput
     {
-        [JsonProperty("chatUserName")]
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("intentVector", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LUISIntentVector { get; set; }
+
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
+
+        [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
+
+        [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
+
+        [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowInChat { get; set; } = true;
+    }
+
+    public class WebHookRegistrationsInputResponseMEMORYWebHookInput
+    {
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MemoryType { get; set; }
+
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyActivity { get; set; }
+
+        [JsonProperty("icon")]
+        public string IconURL { get; set; }
+
+        [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
+
+        [JsonProperty("targetUserMemory")]
+        public string TargetUser { get; set; }
+
+        [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
+
+        [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowInChat { get; set; } = true;
+    }
+
+    public class WebHookRegistrationsInitiateBridgeWebHookInput
+    {
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("participants", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputParticipantsTypeItem[] Participants { get; set; }
+
+        [JsonProperty("endBridgeCommand", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndChatCommand { get; set; } = "#stop";
+
+        [JsonProperty("idleTimeoutDuration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int IdleTimeout { get; set; } = 3;
+    }
+
+    public class WebHookInputParticipantsTypeItem
+    {
+        [JsonProperty("chatUserName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
 
         [JsonProperty("chatInitiationMessage")]
         public string InitiationMessage { get; set; }
 
-        [JsonProperty("activityJson")]
+        [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReplyActivity { get; set; }
     }
 
@@ -1505,10 +798,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string BotMemorySaveResult { get; set; }
     }
 
+    public class SaveBotMemoryContentInput
+    {
+        [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserPrincipalName { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MemoryType { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Value { get; set; }
+    }
+
     public class ResponseDeleteBotMemory
     {
         [JsonProperty("text")]
         public string BotMemoryDeleteResult { get; set; }
+    }
+
+    public class DeleteBotMemoryContentInput
+    {
+        [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserPrincipalName { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MemoryType { get; set; }
+
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Value { get; set; }
     }
 
     public class MemoryItem
@@ -1520,11 +840,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string MemoryItemValue { get; set; }
     }
 
+    public class CheckMemoryInfoInput
+    {
+        [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserPrincipalName { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MemoryType { get; set; }
+    }
+
+    public class WebHookRegistrationsPostWebHookInput
+    {
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("triggerDescription", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TriggerDescription { get; set; }
+
+        [JsonProperty("triggerType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputBotTriggerTypeType BotTriggerType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputBotTriggerTypeType.Shared;
+
+        [JsonProperty("keywords")]
+        public string Keywords { get; set; }
+
+        [JsonProperty("luisApiKey")]
+        public string DeprecatedLUISAPIKey { get; set; }
+
+        [JsonProperty("luisAppId")]
+        public string DeprecatedLUISApp { get; set; }
+
+        [JsonProperty("luisIntent")]
+        public string DeprecatedLUISIntent { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum webHookbotTriggerTypeInput
+    public enum WebHookInputBotTriggerTypeType
     {
         Shared,
         Personal
+    }
+
+    public class WebHookRegistrationsVectorPostWebHookInput
+    {
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("triggerDescription", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TriggerDescription { get; set; }
+
+        [JsonProperty("triggerType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputBotTriggerTypeType BotTriggerType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputBotTriggerTypeType.Shared;
+
+        [JsonProperty("intentVector")]
+        public string LUISIntentVector { get; set; }
+
+        [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
     }
 }
 

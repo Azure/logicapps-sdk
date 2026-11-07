@@ -26,64 +26,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<string>> issueissuepriority = null, Expression<Func<issueissuetrackerInput>> issueissuetracker = null, Expression<Func<issueissuestatusInput>> issueissuestatus = null, Expression<Func<string>> issueissuesubject = null, Expression<Func<string>> issueissuedescription = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<IssueInput>> issue)
         {
             var __workflow_issueId = WorkflowExpression.Compile(issueId, nameof(issueId), required: true);
-            var __workflow_issueissuepriority = WorkflowExpression.Compile(issueissuepriority, nameof(issueissuepriority), required: false);
-            var __workflow_issueissuetracker = WorkflowExpression.Compile(issueissuetracker, nameof(issueissuetracker), required: false);
-            var __workflow_issueissuestatus = WorkflowExpression.Compile(issueissuestatus, nameof(issueissuestatus), required: false);
-            var __workflow_issueissuesubject = WorkflowExpression.Compile(issueissuesubject, nameof(issueissuesubject), required: false);
-            var __workflow_issueissuedescription = WorkflowExpression.Compile(issueissuedescription, nameof(issueissuedescription), required: false);
+            var __workflow_issue = WorkflowExpression.Compile(issue, nameof(issue), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issues/{0}.json", __workflow_issueId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var issue = new JObject();
-                var issuepropCount = 0;
-                var issueObject = new JObject();
-                var issueObjectpropCount = 0;
-                if (__workflow_issueissuepriority != null)
-                {
-                    issueObject["priority_id"] = ExpressionConverter.ConvertO(__workflow_issueissuepriority);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_issueissuetracker != null)
-                {
-                    issueObject["tracker_id"] = ExpressionConverter.ConvertO(__workflow_issueissuetracker);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_issueissuestatus != null)
-                {
-                    issueObject["status_id"] = ExpressionConverter.ConvertO(__workflow_issueissuestatus);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_issueissuesubject != null)
-                {
-                    issueObject["subject"] = ExpressionConverter.ConvertO(__workflow_issueissuesubject);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_issueissuedescription != null)
-                {
-                    issueObject["description"] = ExpressionConverter.ConvertO(__workflow_issueissuedescription);
-                    issueObjectpropCount++;
-                }
-
-                if (issueObjectpropCount > 0)
-                {
-                    issue["issue"] = issueObject;
-                    issuepropCount++;
-                }
-
-                if (issuepropCount > 0)
-                {
-                    callPayload.Body = issue;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_issue);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -129,40 +81,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 
     public class RedmineTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListProjectsResponse, ApiConnectionTriggerConfiguration> OnNewProject(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponse, ApiConnectionPollingTriggerConfiguration> OnNewProject()
         {
-            return new DeferredBodyTrigger<ListProjectsResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListProjectsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/new_project_trigger/projects.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListProjectsResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListProjectsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListIssuesResponse, ApiConnectionTriggerConfiguration> OnNewIssue(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListIssuesResponse, ApiConnectionPollingTriggerConfiguration> OnNewIssue(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyTrigger<ListIssuesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListIssuesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/new_issue_trigger/issues.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
-                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListIssuesResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListIssuesResponse, ApiConnectionTriggerConfiguration> OnUpdatedIssue(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListIssuesResponse, ApiConnectionPollingTriggerConfiguration> OnUpdatedIssue(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyTrigger<ListIssuesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListIssuesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/resolved_issue_trigger/issues.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
-                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListIssuesResponse>(callPayload);
             });
         }
     }
@@ -266,8 +218,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         public string Author { get; set; }
     }
 
+    public class IssueInput
+    {
+        [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
+        public IssueInputIssueType Issue { get; set; }
+    }
+
+    public class IssueInputIssueType
+    {
+        [JsonProperty("priority_id")]
+        public string Priority { get; set; }
+
+        [JsonProperty("tracker_id")]
+        public IssueInputIssueTypeTrackerType? Tracker { get; set; }
+
+        [JsonProperty("status_id")]
+        public IssueInputIssueTypeStatusType? Status { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum issueissuetrackerInput
+    public enum IssueInputIssueTypeTrackerType
     {
         Bug,
         Feature,
@@ -275,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum issueissuestatusInput
+    public enum IssueInputIssueTypeStatusType
     {
         New,
         [EnumMember(Value = "In Progress")]

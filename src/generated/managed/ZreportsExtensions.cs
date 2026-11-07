@@ -27,59 +27,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
     public class ZreportsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionPollingTriggerConfiguration> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<BodyInput>> body)
         {
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
-            var __workflow_bodystoreIds = WorkflowExpression.Compile(bodystoreIds, nameof(bodystoreIds), required: false);
-            return new DeferredBodyTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<CreateWebhookResponseBody, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/despatch-advice-hooks", __workflow_brandId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystoreIds != null)
-                {
-                    body["storeIds"] = ExpressionConverter.ConvertO(__workflow_bodystoreIds);
-                    bodypropCount++;
-                }
-
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<CreateWebhookResponseBody>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration> NewInvoice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionPollingTriggerConfiguration> NewInvoice(Expression<Func<string>> brandId, Expression<Func<BodyInput>> body)
         {
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
-            var __workflow_bodystoreIds = WorkflowExpression.Compile(bodystoreIds, nameof(bodystoreIds), required: false);
-            return new DeferredBodyTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<CreateWebhookResponseBody, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/invoice-hooks", __workflow_brandId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystoreIds != null)
-                {
-                    body["storeIds"] = ExpressionConverter.ConvertO(__workflow_bodystoreIds);
-                    bodypropCount++;
-                }
-
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<CreateWebhookResponseBody>(callPayload);
             });
         }
     }
@@ -106,6 +78,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("storeIds")]
+        public string StoreIds { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

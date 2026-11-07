@@ -65,107 +65,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput, ApiConnectionActionConfiguration> EncryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
+        public IBodyWorkflowAction<KeyEncryptOutput, ApiConnectionActionConfiguration> EncryptData(Expression<Func<string>> keyName, Expression<Func<EncryptDataOperationInputInput>> operationInput)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
-            var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            var __workflow_operationInputrawData = WorkflowExpression.Compile(operationInputrawData, nameof(operationInputrawData), required: true);
+            var __workflow_operationInput = WorkflowExpression.Compile(operationInput, nameof(operationInput), required: true);
             return new DeferredBodyAction<KeyEncryptOutput, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/encrypt", __workflow_keyName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var operationInput = new JObject();
-                var operationInputpropCount = 0;
-                operationInputpropCount++;
-                operationInput["algorithm"] = ExpressionConverter.ConvertO(__workflow_operationInputalgorithm);
-                operationInputpropCount++;
-                operationInput["rawData"] = ExpressionConverter.ConvertO(__workflow_operationInputrawData);
-                if (operationInputpropCount > 0)
-                {
-                    callPayload.Body = operationInput;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_operationInput);
                 return new ApiConnectionAction<KeyEncryptOutput>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput, ApiConnectionActionConfiguration> EncryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
+        public IBodyWorkflowAction<KeyEncryptOutput, ApiConnectionActionConfiguration> EncryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<EncryptDataOperationInputInput>> operationInput)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
-            var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            var __workflow_operationInputrawData = WorkflowExpression.Compile(operationInputrawData, nameof(operationInputrawData), required: true);
+            var __workflow_operationInput = WorkflowExpression.Compile(operationInput, nameof(operationInput), required: true);
             return new DeferredBodyAction<KeyEncryptOutput, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/versions/{1}/encrypt", __workflow_keyName.WithUrlEncoding(1), __workflow_keyVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var operationInput = new JObject();
-                var operationInputpropCount = 0;
-                operationInputpropCount++;
-                operationInput["algorithm"] = ExpressionConverter.ConvertO(__workflow_operationInputalgorithm);
-                operationInputpropCount++;
-                operationInput["rawData"] = ExpressionConverter.ConvertO(__workflow_operationInputrawData);
-                if (operationInputpropCount > 0)
-                {
-                    callPayload.Body = operationInput;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_operationInput);
                 return new ApiConnectionAction<KeyEncryptOutput>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput, ApiConnectionActionConfiguration> DecryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
+        public IBodyWorkflowAction<KeyDecryptOutput, ApiConnectionActionConfiguration> DecryptData(Expression<Func<string>> keyName, Expression<Func<DecryptDataOperationInputInput>> operationInput)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
-            var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            var __workflow_operationInputencryptedData = WorkflowExpression.Compile(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
+            var __workflow_operationInput = WorkflowExpression.Compile(operationInput, nameof(operationInput), required: true);
             return new DeferredBodyAction<KeyDecryptOutput, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/decrypt", __workflow_keyName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var operationInput = new JObject();
-                var operationInputpropCount = 0;
-                operationInputpropCount++;
-                operationInput["algorithm"] = ExpressionConverter.ConvertO(__workflow_operationInputalgorithm);
-                operationInputpropCount++;
-                operationInput["encryptedData"] = ExpressionConverter.ConvertO(__workflow_operationInputencryptedData);
-                if (operationInputpropCount > 0)
-                {
-                    callPayload.Body = operationInput;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_operationInput);
                 return new ApiConnectionAction<KeyDecryptOutput>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput, ApiConnectionActionConfiguration> DecryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
+        public IBodyWorkflowAction<KeyDecryptOutput, ApiConnectionActionConfiguration> DecryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<DecryptDataOperationInputInput>> operationInput)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
-            var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            var __workflow_operationInputencryptedData = WorkflowExpression.Compile(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
+            var __workflow_operationInput = WorkflowExpression.Compile(operationInput, nameof(operationInput), required: true);
             return new DeferredBodyAction<KeyDecryptOutput, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/versions/{1}/decrypt", __workflow_keyName.WithUrlEncoding(1), __workflow_keyVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var operationInput = new JObject();
-                var operationInputpropCount = 0;
-                operationInputpropCount++;
-                operationInput["algorithm"] = ExpressionConverter.ConvertO(__workflow_operationInputalgorithm);
-                operationInputpropCount++;
-                operationInput["encryptedData"] = ExpressionConverter.ConvertO(__workflow_operationInputencryptedData);
-                if (operationInputpropCount > 0)
-                {
-                    callPayload.Body = operationInput;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_operationInput);
                 return new ApiConnectionAction<KeyDecryptOutput>(callPayload);
             });
         }
@@ -299,8 +255,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         public string EncryptedData { get; set; }
     }
 
+    public class EncryptDataOperationInputInput
+    {
+        [JsonProperty("algorithm", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OperationInputInputAlgorithmType Algorithm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault.OperationInputInputAlgorithmType.RSAOAEP256;
+
+        [JsonProperty("rawData", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RawData { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum operationInputalgorithmInput
+    public enum OperationInputInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP-256")]
         RSAOAEP256,
@@ -314,6 +279,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
     {
         [JsonProperty("rawData")]
         public string RawData { get; set; }
+    }
+
+    public class DecryptDataOperationInputInput
+    {
+        [JsonProperty("algorithm", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OperationInputInputAlgorithmType Algorithm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault.OperationInputInputAlgorithmType.RSAOAEP256;
+
+        [JsonProperty("encryptedData", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EncryptedData { get; set; }
     }
 
     public class SecretMetadataCollection

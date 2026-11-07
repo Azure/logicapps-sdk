@@ -25,328 +25,182 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<RunPluginForFileResponse, ApiConnectionActionConfiguration> RunPluginForFile(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<RunPluginForFileResponse, ApiConnectionActionConfiguration> RunPluginForFile(Expression<Func<RunPluginForFileBodyInput>> body = null)
         {
-            var __workflow_bodyplugin = WorkflowExpression.Compile(bodyplugin, nameof(bodyplugin), required: false);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RunPluginForFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/powerauto/run_file";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyplugin != null)
-                {
-                    body["plugin"] = ExpressionConverter.ConvertO(__workflow_bodyplugin);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RunPluginForFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<RunPluginTextResponse, ApiConnectionActionConfiguration> RunPluginText(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<RunPluginTextResponse, ApiConnectionActionConfiguration> RunPluginText(Expression<Func<RunPluginTextBodyInput>> body = null)
         {
-            var __workflow_bodyplugin = WorkflowExpression.Compile(bodyplugin, nameof(bodyplugin), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RunPluginTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/powerauto/run_text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyplugin != null)
-                {
-                    body["plugin"] = ExpressionConverter.ConvertO(__workflow_bodyplugin);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RunPluginTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse, ApiConnectionActionConfiguration> ExtractDataFromInvoice(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse, ApiConnectionActionConfiguration> ExtractDataFromInvoice(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataFromInvoiceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/invoices";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractDataFromInvoiceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse, ApiConnectionActionConfiguration> ExtractDataPurchaseOrders(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse, ApiConnectionActionConfiguration> ExtractDataPurchaseOrders(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataPurchaseOrdersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/purchase_order";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractDataPurchaseOrdersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataBillofLadingResponse, ApiConnectionActionConfiguration> ExtractDataBillofLading(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataBillofLadingResponse, ApiConnectionActionConfiguration> ExtractDataBillofLading(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataBillofLadingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/bill_of_lading";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractDataBillofLadingResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataCVResponse, ApiConnectionActionConfiguration> ExtractDataCV(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataCVResponse, ApiConnectionActionConfiguration> ExtractDataCV(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataCVResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/cv";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractDataCVResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<DetectDocumentTypeResponse, ApiConnectionActionConfiguration> DetectDocumentType(Expression<Func<doctypeInput>> doctype, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<DetectDocumentTypeResponse, ApiConnectionActionConfiguration> DetectDocumentType(Expression<Func<DoctypeInput>> doctype, Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
             var __workflow_doctype = WorkflowExpression.Compile(doctype, nameof(doctype), required: true);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DetectDocumentTypeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/actions/doctype_{0}", __workflow_doctype.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DetectDocumentTypeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse, ApiConnectionActionConfiguration> ExtractDataBusinessCards(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse, ApiConnectionActionConfiguration> ExtractDataBusinessCards(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataBusinessCardsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/business_cards";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractDataBusinessCardsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractQRCodeResponse, ApiConnectionActionConfiguration> ExtractQRCode(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractQRCodeResponse, ApiConnectionActionConfiguration> ExtractQRCode(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractQRCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/qrcodes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractQRCodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse, ApiConnectionActionConfiguration> ExtractBarcodeFromFile(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse, ApiConnectionActionConfiguration> ExtractBarcodeFromFile(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractBarcodeFromFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/barcodes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileUrl != null)
-                {
-                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractBarcodeFromFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<DetectResponseColdEmailResponse, ApiConnectionActionConfiguration> DetectResponseColdEmail(Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<DetectResponseColdEmailResponse, ApiConnectionActionConfiguration> DetectResponseColdEmail(Expression<Func<DetectResponseColdEmailBodyInput>> body = null)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DetectResponseColdEmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/cold_response";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DetectResponseColdEmailResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataHAROResponse, ApiConnectionActionConfiguration> ExtractDataHARO(Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<ExtractDataHAROResponse, ApiConnectionActionConfiguration> ExtractDataHARO(Expression<Func<DetectResponseColdEmailBodyInput>> body = null)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataHAROResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/haro";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractDataHAROResponse>(callPayload);
             });
         }
@@ -371,10 +225,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public JToken Outputs { get; set; }
     }
 
+    public class RunPluginForFileBodyInput
+    {
+        [JsonProperty("plugin")]
+        public string Plugin { get; set; }
+
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
+    }
+
     public class RunPluginTextResponse
     {
         [JsonProperty("outputs")]
         public JToken Outputs { get; set; }
+    }
+
+    public class RunPluginTextBodyInput
+    {
+        [JsonProperty("plugin")]
+        public string Plugin { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 
     public class ExtractDataFromInvoiceResponse
@@ -427,6 +299,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 
         [JsonProperty("name")]
         public string Name { get; set; }
+    }
+
+    public class DetectDocumentTypeBodyInput
+    {
+        [JsonProperty("file_url")]
+        public string FileUrl { get; set; }
     }
 
     public class ExtractDataPurchaseOrdersResponse
@@ -554,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum doctypeInput
+    public enum DoctypeInput
     {
         [EnumMember(Value = "legal")]
         Legal,
@@ -634,6 +512,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
     {
         public string RawJSON { get; set; }
         public string Result { get; set; }
+    }
+
+    public class DetectResponseColdEmailBodyInput
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 
     public class ExtractDataHAROResponse

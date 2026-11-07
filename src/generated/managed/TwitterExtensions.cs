@@ -161,7 +161,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_tweetText != null)
                     callPayload.Queries["tweetText"] = ExpressionConverter.Convert(__workflow_tweetText);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TweetResponseModel>(callPayload);
             });
         }
@@ -187,16 +188,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
 
     public class TwitterTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel, ApiConnectionTriggerConfiguration> OnNewTweet(Expression<Func<string>> searchQuery, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel, ApiConnectionPollingTriggerConfiguration> OnNewTweet(Expression<Func<string>> searchQuery)
         {
             var __workflow_searchQuery = WorkflowExpression.Compile(searchQuery, nameof(searchQuery), required: true);
-            return new DeferredBodyTrigger<TriggerBatchResponseTweetModel, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggerBatchResponseTweetModel, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/onnewtweet";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(__workflow_searchQuery);
-                return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<TriggerBatchResponseTweetModel>(callPayload);
             });
         }
     }

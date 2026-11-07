@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Photo, ApiConnectionActionConfiguration> PhotoGetRandom(Expression<Func<string>> collections = null, Expression<Func<string>> topics = null, Expression<Func<string>> username = null, Expression<Func<string>> query = null, Expression<Func<orientationInput>> orientation = null, Expression<Func<contentFilterInput>> contentFilter = null)
+        public IBodyWorkflowAction<Photo, ApiConnectionActionConfiguration> PhotoGetRandom(Expression<Func<string>> collections = null, Expression<Func<string>> topics = null, Expression<Func<string>> username = null, Expression<Func<string>> query = null, Expression<Func<OrientationInput>> orientation = null, Expression<Func<ContentFilterInput>> contentFilter = null)
         {
             var __workflow_collections = WorkflowExpression.Compile(collections, nameof(collections), required: false);
             var __workflow_topics = WorkflowExpression.Compile(topics, nameof(topics), required: false);
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orientationInput
+    public enum OrientationInput
     {
         [EnumMember(Value = "landscape")]
         Landscape,
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum contentFilterInput
+    public enum ContentFilterInput
     {
         [EnumMember(Value = "low")]
         Low,

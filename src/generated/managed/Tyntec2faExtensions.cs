@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
     public class Tyntec2faActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<SendOTPResponse, ApiConnectionActionConfiguration> SendOTP(Expression<Func<string>> number, Expression<Func<string>> text = null, Expression<Func<int>> pinLength = null, Expression<Func<viaInput>> via = null, Expression<Func<int>> applicationId = null, Expression<Func<string>> language = null, Expression<Func<string>> country = null, Expression<Func<string>> otpCode = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
+        public IBodyWorkflowAction<SendOTPResponse, ApiConnectionActionConfiguration> SendOTP(Expression<Func<string>> number, Expression<Func<string>> text = null, Expression<Func<int>> pinLength = null, Expression<Func<ViaInput>> via = null, Expression<Func<int>> applicationId = null, Expression<Func<string>> language = null, Expression<Func<string>> country = null, Expression<Func<string>> otpCode = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
         {
             var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<ResendOTPResponse, ApiConnectionActionConfiguration> ResendOTP(Expression<Func<string>> otpId, Expression<Func<viaInput>> via = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
+        public IBodyWorkflowAction<ResendOTPResponse, ApiConnectionActionConfiguration> ResendOTP(Expression<Func<string>> otpId, Expression<Func<ViaInput>> via = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
         {
             var __workflow_otpId = WorkflowExpression.Compile(otpId, nameof(otpId), required: true);
             var __workflow_via = WorkflowExpression.Compile(via, nameof(via), required: false);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum viaInput
+    public enum ViaInput
     {
         AUTO,
         VOICE,

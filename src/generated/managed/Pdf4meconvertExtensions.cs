@@ -13,467 +13,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class Pdf4meconvertActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodyindexFilePath = null, Expression<Func<bodylayoutInput>> bodylayout = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<double>> bodyscale = null, Expression<Func<string>> bodytopMargin = null, Expression<Func<string>> bodybottomMargin = null, Expression<Func<string>> bodyleftMargin = null, Expression<Func<string>> bodyrightMargin = null, Expression<Func<bool>> bodyprintBackground = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<ConvertHtmlToPdfBodyInput>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodydocName = WorkflowExpression.Compile(bodydocName, nameof(bodydocName), required: true);
-            var __workflow_bodyindexFilePath = WorkflowExpression.Compile(bodyindexFilePath, nameof(bodyindexFilePath), required: false);
-            var __workflow_bodylayout = WorkflowExpression.Compile(bodylayout, nameof(bodylayout), required: false);
-            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodyscale = WorkflowExpression.Compile(bodyscale, nameof(bodyscale), required: false);
-            var __workflow_bodytopMargin = WorkflowExpression.Compile(bodytopMargin, nameof(bodytopMargin), required: false);
-            var __workflow_bodybottomMargin = WorkflowExpression.Compile(bodybottomMargin, nameof(bodybottomMargin), required: false);
-            var __workflow_bodyleftMargin = WorkflowExpression.Compile(bodyleftMargin, nameof(bodyleftMargin), required: false);
-            var __workflow_bodyrightMargin = WorkflowExpression.Compile(bodyrightMargin, nameof(bodyrightMargin), required: false);
-            var __workflow_bodyprintBackground = WorkflowExpression.Compile(bodyprintBackground, nameof(bodyprintBackground), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertHtmlToPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                bodypropCount++;
-                body["docName"] = ExpressionConverter.ConvertO(__workflow_bodydocName);
-                if (__workflow_bodyindexFilePath != null)
-                {
-                    body["indexFilePath"] = ExpressionConverter.ConvertO(__workflow_bodyindexFilePath);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylayout != null)
-                {
-                    if (__workflow_bodylayout != null)
-                    {
-                        body["layout"] = ExpressionConverter.ConvertO(__workflow_bodylayout);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["layout"] = "Portrait";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformat != null)
-                {
-                    if (__workflow_bodyformat != null)
-                    {
-                        body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["format"] = "A4";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyscale != null)
-                {
-                    if (__workflow_bodyscale != null)
-                    {
-                        body["scale"] = ExpressionConverter.ConvertO(__workflow_bodyscale);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["scale"] = 0.8;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytopMargin != null)
-                {
-                    if (__workflow_bodytopMargin != null)
-                    {
-                        body["topMargin"] = ExpressionConverter.ConvertO(__workflow_bodytopMargin);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["topMargin"] = "40px";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybottomMargin != null)
-                {
-                    if (__workflow_bodybottomMargin != null)
-                    {
-                        body["bottomMargin"] = ExpressionConverter.ConvertO(__workflow_bodybottomMargin);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["bottomMargin"] = "40px";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyleftMargin != null)
-                {
-                    if (__workflow_bodyleftMargin != null)
-                    {
-                        body["leftMargin"] = ExpressionConverter.ConvertO(__workflow_bodyleftMargin);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["leftMargin"] = "40px";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrightMargin != null)
-                {
-                    if (__workflow_bodyrightMargin != null)
-                    {
-                        body["rightMargin"] = ExpressionConverter.ConvertO(__workflow_bodyrightMargin);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["rightMargin"] = "40px";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprintBackground != null)
-                {
-                    if (__workflow_bodyprintBackground != null)
-                    {
-                        body["printBackground"] = ExpressionConverter.ConvertO(__workflow_bodyprintBackground);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["printBackground"] = true;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertJsonToExcel(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<int>> bodyfirstRow = null, Expression<Func<int>> bodyfirstColumn = null, Expression<Func<string>> bodyworksheetName = null, Expression<Func<bool>> bodyconvertNumberAndDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodynumberFormat = null, Expression<Func<bool>> bodyignoreNullValues = null, Expression<Func<bool>> bodyisTitleBold = null, Expression<Func<bool>> bodyisTitleWrapText = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertJsonToExcel(Expression<Func<ConvertJsonToExcelBodyInput>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
-            var __workflow_bodyfirstRow = WorkflowExpression.Compile(bodyfirstRow, nameof(bodyfirstRow), required: false);
-            var __workflow_bodyfirstColumn = WorkflowExpression.Compile(bodyfirstColumn, nameof(bodyfirstColumn), required: false);
-            var __workflow_bodyworksheetName = WorkflowExpression.Compile(bodyworksheetName, nameof(bodyworksheetName), required: false);
-            var __workflow_bodyconvertNumberAndDate = WorkflowExpression.Compile(bodyconvertNumberAndDate, nameof(bodyconvertNumberAndDate), required: false);
-            var __workflow_bodydateFormat = WorkflowExpression.Compile(bodydateFormat, nameof(bodydateFormat), required: false);
-            var __workflow_bodynumberFormat = WorkflowExpression.Compile(bodynumberFormat, nameof(bodynumberFormat), required: false);
-            var __workflow_bodyignoreNullValues = WorkflowExpression.Compile(bodyignoreNullValues, nameof(bodyignoreNullValues), required: false);
-            var __workflow_bodyisTitleBold = WorkflowExpression.Compile(bodyisTitleBold, nameof(bodyisTitleBold), required: false);
-            var __workflow_bodyisTitleWrapText = WorkflowExpression.Compile(bodyisTitleWrapText, nameof(bodyisTitleWrapText), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertJsonToExcel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfirstRow != null)
-                {
-                    if (__workflow_bodyfirstRow != null)
-                    {
-                        body["firstRow"] = ExpressionConverter.ConvertO(__workflow_bodyfirstRow);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["firstRow"] = 0;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfirstColumn != null)
-                {
-                    if (__workflow_bodyfirstColumn != null)
-                    {
-                        body["firstColumn"] = ExpressionConverter.ConvertO(__workflow_bodyfirstColumn);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["firstColumn"] = 0;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyworksheetName != null)
-                {
-                    if (__workflow_bodyworksheetName != null)
-                    {
-                        body["worksheetName"] = ExpressionConverter.ConvertO(__workflow_bodyworksheetName);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["worksheetName"] = "Sheet1";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconvertNumberAndDate != null)
-                {
-                    if (__workflow_bodyconvertNumberAndDate != null)
-                    {
-                        body["convertNumberAndDate"] = ExpressionConverter.ConvertO(__workflow_bodyconvertNumberAndDate);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["convertNumberAndDate"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydateFormat != null)
-                {
-                    body["dateFormat"] = ExpressionConverter.ConvertO(__workflow_bodydateFormat);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynumberFormat != null)
-                {
-                    body["numberFormat"] = ExpressionConverter.ConvertO(__workflow_bodynumberFormat);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyignoreNullValues != null)
-                {
-                    if (__workflow_bodyignoreNullValues != null)
-                    {
-                        body["ignoreNullValues"] = ExpressionConverter.ConvertO(__workflow_bodyignoreNullValues);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["ignoreNullValues"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisTitleBold != null)
-                {
-                    if (__workflow_bodyisTitleBold != null)
-                    {
-                        body["isTitleBold"] = ExpressionConverter.ConvertO(__workflow_bodyisTitleBold);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["isTitleBold"] = true;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisTitleWrapText != null)
-                {
-                    if (__workflow_bodyisTitleWrapText != null)
-                    {
-                        body["isTitleWrapText"] = ExpressionConverter.ConvertO(__workflow_bodyisTitleWrapText);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["isTitleWrapText"] = true;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertMdToPdf(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodymdFilePath = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertMdToPdf(Expression<Func<ConvertMdToPdfBodyInput>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodydocName = WorkflowExpression.Compile(bodydocName, nameof(bodydocName), required: true);
-            var __workflow_bodymdFilePath = WorkflowExpression.Compile(bodymdFilePath, nameof(bodymdFilePath), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertMdToPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                bodypropCount++;
-                body["docName"] = ExpressionConverter.ConvertO(__workflow_bodydocName);
-                if (__workflow_bodymdFilePath != null)
-                {
-                    body["mdFilePath"] = ExpressionConverter.ConvertO(__workflow_bodymdFilePath);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertToPdf(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertToPdf(Expression<Func<ConvertToPdfBodyInput>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertToPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertUrlToPdf(Expression<Func<string>> bodywebUrl, Expression<Func<bodyauthTypeInput>> bodyauthType = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodypassword = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertUrlToPdf(Expression<Func<ConvertUrlToPdfBodyInput>> body = null)
         {
-            var __workflow_bodywebUrl = WorkflowExpression.Compile(bodywebUrl, nameof(bodywebUrl), required: true);
-            var __workflow_bodyauthType = WorkflowExpression.Compile(bodyauthType, nameof(bodyauthType), required: false);
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertUrlToPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["webUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebUrl);
-                if (__workflow_bodyauthType != null)
-                {
-                    if (__workflow_bodyauthType != null)
-                    {
-                        body["authType"] = ExpressionConverter.ConvertO(__workflow_bodyauthType);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["authType"] = "NoAuth";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyusername != null)
-                {
-                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertVisio(Expression<Func<schemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertVisio(Expression<Func<SchemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
         {
             var __workflow_schemaVal = WorkflowExpression.Compile(schemaVal, nameof(schemaVal), required: false);
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: false);
@@ -485,118 +100,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 callPayload.Queries["schemaVal"] = Convert.ToString("PDF");
                 if (__workflow_schemaVal != null)
                     callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(__workflow_schemaVal);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
+                if (__workflow_operation != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWordToPdfForm(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWordToPdfForm(Expression<Func<ConvertToPdfBodyInput>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertWordToPdfForm";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreatePdfA(Expression<Func<bodycomplianceInput>> bodycompliance, Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodyallowUpgrade = null, Expression<Func<bool>> bodyallowDowngrade = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreatePdfA(Expression<Func<CreatePdfABodyInput>> body = null)
         {
-            var __workflow_bodycompliance = WorkflowExpression.Compile(bodycompliance, nameof(bodycompliance), required: true);
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
-            var __workflow_bodyallowUpgrade = WorkflowExpression.Compile(bodyallowUpgrade, nameof(bodyallowUpgrade), required: false);
-            var __workflow_bodyallowDowngrade = WorkflowExpression.Compile(bodyallowDowngrade, nameof(bodyallowDowngrade), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/PdfA";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["compliance"] = ExpressionConverter.ConvertO(__workflow_bodycompliance);
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyallowUpgrade != null)
-                {
-                    if (__workflow_bodyallowUpgrade != null)
-                    {
-                        body["allowUpgrade"] = ExpressionConverter.ConvertO(__workflow_bodyallowUpgrade);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["allowUpgrade"] = true;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyallowDowngrade != null)
-                {
-                    if (__workflow_bodyallowDowngrade != null)
-                    {
-                        body["allowDowngrade"] = ExpressionConverter.ConvertO(__workflow_bodyallowDowngrade);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["allowDowngrade"] = true;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -612,247 +147,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToExcel(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyqualityTypeInput>> bodyqualityType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodymergeAllSheets = null, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bool>> bodyisAsync = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToExcel(Expression<Func<PdfToExcelBodyInput>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyqualityType = WorkflowExpression.Compile(bodyqualityType, nameof(bodyqualityType), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodymergeAllSheets = WorkflowExpression.Compile(bodymergeAllSheets, nameof(bodymergeAllSheets), required: false);
-            var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            var __workflow_bodyisAsync = WorkflowExpression.Compile(bodyisAsync, nameof(bodyisAsync), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToExcel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["qualityType"] = ExpressionConverter.ConvertO(__workflow_bodyqualityType);
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymergeAllSheets != null)
-                {
-                    if (__workflow_bodymergeAllSheets != null)
-                    {
-                        body["mergeAllSheets"] = ExpressionConverter.ConvertO(__workflow_bodymergeAllSheets);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["mergeAllSheets"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoutputFormat != null)
-                {
-                    if (__workflow_bodyoutputFormat != null)
-                    {
-                        body["outputFormat"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["outputFormat"] = "";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAsync != null)
-                {
-                    if (__workflow_bodyisAsync != null)
-                    {
-                        body["isAsync"] = ExpressionConverter.ConvertO(__workflow_bodyisAsync);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["isAsync"] = false;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToPowerPoint(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodyqualityTypeInput>> bodyqualityType = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyisAsync = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToPowerPoint(Expression<Func<PdfToPowerPointBodyInput>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
-            var __workflow_bodyqualityType = WorkflowExpression.Compile(bodyqualityType, nameof(bodyqualityType), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyisAsync = WorkflowExpression.Compile(bodyisAsync, nameof(bodyisAsync), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToPowerPoint";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyqualityType != null)
-                {
-                    if (__workflow_bodyqualityType != null)
-                    {
-                        body["qualityType"] = ExpressionConverter.ConvertO(__workflow_bodyqualityType);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["qualityType"] = "High";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAsync != null)
-                {
-                    if (__workflow_bodyisAsync != null)
-                    {
-                        body["isAsync"] = ExpressionConverter.ConvertO(__workflow_bodyisAsync);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["isAsync"] = false;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToWord(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyqualityTypeInput>> bodyqualityType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyisAsync = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToWord(Expression<Func<PdfToWordBodyInput>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyqualityType = WorkflowExpression.Compile(bodyqualityType, nameof(bodyqualityType), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyisAsync = WorkflowExpression.Compile(bodyisAsync, nameof(bodyisAsync), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["qualityType"] = ExpressionConverter.ConvertO(__workflow_bodyqualityType);
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAsync != null)
-                {
-                    if (__workflow_bodyisAsync != null)
-                    {
-                        body["isAsync"] = ExpressionConverter.ConvertO(__workflow_bodyisAsync);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["isAsync"] = false;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -862,8 +203,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     {
     }
 
+    public class ConvertHtmlToPdfBodyInput
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
+
+        [JsonProperty("docName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocName { get; set; }
+
+        [JsonProperty("indexFilePath")]
+        public string IndexFilePath { get; set; }
+
+        [JsonProperty("layout", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputLayoutType? Layout { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputLayoutType.Portrait;
+
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputFormatType.A4;
+
+        [JsonProperty("scale", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Scale { get; set; } = 0.8;
+
+        [JsonProperty("topMargin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TopMargin { get; set; } = "40px";
+
+        [JsonProperty("bottomMargin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BottomMargin { get; set; } = "40px";
+
+        [JsonProperty("leftMargin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LeftMargin { get; set; } = "40px";
+
+        [JsonProperty("rightMargin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RightMargin { get; set; } = "40px";
+
+        [JsonProperty("printBackground", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? PrintBackground { get; set; } = true;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylayoutInput
+    public enum BodyInputLayoutType
     {
         [EnumMember(Value = "")]
         None,
@@ -872,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyformatInput
+    public enum BodyInputFormatType
     {
         [EnumMember(Value = "")]
         None,
@@ -889,15 +266,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         A6
     }
 
+    public class ConvertJsonToExcelBodyInput
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputDocumentType Document { get; set; }
+
+        [JsonProperty("firstRow", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? FirstRow { get; set; } = 0;
+
+        [JsonProperty("firstColumn", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? FirstColumn { get; set; } = 0;
+
+        [JsonProperty("worksheetName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorksheetName { get; set; } = "Sheet1";
+
+        [JsonProperty("convertNumberAndDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ConvertNumberAndDate { get; set; } = false;
+
+        [JsonProperty("dateFormat")]
+        public string DateFormat { get; set; }
+
+        [JsonProperty("numberFormat")]
+        public string NumberFormat { get; set; }
+
+        [JsonProperty("ignoreNullValues", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IgnoreNullValues { get; set; } = false;
+
+        [JsonProperty("isTitleBold", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsTitleBold { get; set; } = true;
+
+        [JsonProperty("isTitleWrapText", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsTitleWrapText { get; set; } = true;
+    }
+
+    public class BodyInputDocumentType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
+    public class ConvertMdToPdfBodyInput
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
+
+        [JsonProperty("docName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocName { get; set; }
+
+        [JsonProperty("mdFilePath")]
+        public string MdFilePath { get; set; }
+    }
+
+    public class ConvertToPdfBodyInput
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputDocumentType Document { get; set; }
+    }
+
+    public class ConvertUrlToPdfBodyInput
+    {
+        [JsonProperty("webUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WebUrl { get; set; }
+
+        [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputAuthTypeType? AuthType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputAuthTypeType.NoAuth;
+
+        [JsonProperty("username")]
+        public string Username { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyauthTypeInput
+    public enum BodyInputAuthTypeType
     {
         NoAuth,
         SharePointLogin
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum schemaValInput
+    public enum SchemaValInput
     {
         PDF,
         BMP,
@@ -910,8 +365,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         VSDX
     }
 
+    public class CreatePdfABodyInput
+    {
+        [JsonProperty("compliance", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputComplianceType Compliance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputComplianceType.PdfA1b;
+
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputDocumentType Document { get; set; }
+
+        [JsonProperty("allowUpgrade", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AllowUpgrade { get; set; } = true;
+
+        [JsonProperty("allowDowngrade", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AllowDowngrade { get; set; } = true;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycomplianceInput
+    public enum BodyInputComplianceType
     {
         PdfA1b,
         PdfA1a,
@@ -923,20 +396,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         PdfA3a
     }
 
+    public class PdfToExcelBodyInput
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputDocumentType Document { get; set; }
+
+        [JsonProperty("qualityType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputQualityTypeType QualityType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputQualityTypeType.Draft;
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("mergeAllSheets", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? MergeAllSheets { get; set; } = false;
+
+        [JsonProperty("outputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputOutputFormatType? OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputOutputFormatType.None;
+
+        [JsonProperty("isAsync", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsAsync { get; set; } = false;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyqualityTypeInput
+    public enum BodyInputQualityTypeType
     {
         Draft,
         High
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyoutputFormatInput
+    public enum BodyInputOutputFormatType
     {
         [EnumMember(Value = "")]
         None,
         Excel,
         CSV
+    }
+
+    public class PdfToPowerPointBodyInput
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputDocumentType Document { get; set; }
+
+        [JsonProperty("qualityType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputQualityTypeType? QualityType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputQualityTypeType.High;
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("isAsync", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsAsync { get; set; } = false;
+    }
+
+    public class PdfToWordBodyInput
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputDocumentType Document { get; set; }
+
+        [JsonProperty("qualityType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputQualityTypeType QualityType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputQualityTypeType.Draft;
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("isAsync", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsAsync { get; set; } = false;
     }
 }
 

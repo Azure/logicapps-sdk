@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             });
         }
 
-        public IBodyWorkflowTrigger<int, SpecifiedNumberOfMessagesAvailableTriggerConfiguration> SpecifiedNumberOfMessagesAvailable(Expression<Func<object>> queueName, Expression<Func<int>> threshold, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<int, SpecifiedNumberOfMessagesAvailableTriggerConfiguration> SpecifiedNumberOfMessagesAvailable(Expression<Func<object>> queueName, Expression<Func<int>> threshold)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_threshold = WorkflowExpression.Compile(threshold, nameof(threshold), required: true);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "specifiedNumberOfMessagesAvailable", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyTrigger<int, SpecifiedNumberOfMessagesAvailableTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<int, SpecifiedNumberOfMessagesAvailableTriggerConfiguration>(serviceProviderInput, isPolling: true);
             });
         }
     }
@@ -250,11 +250,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
-    public sealed class SpecifiedNumberOfMessagesAvailableTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
+    public sealed class SpecifiedNumberOfMessagesAvailableTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, IRecurrenceConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
 
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
     }
 
     public class ReceiveQueueMessagesOutput

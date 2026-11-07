@@ -26,31 +26,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        public IBodyWorkflowAction<SurveyMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, Expression<Func<string>> messageId, Expression<Func<string>> bodyscheduledDate = null)
+        public IBodyWorkflowAction<SurveyMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, Expression<Func<string>> messageId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             var __workflow_collectorId = WorkflowExpression.Compile(collectorId, nameof(collectorId), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SurveyMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collectors/{0}/messages/{1}/send", __workflow_collectorId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["surveyId"] = ExpressionConverter.Convert(__workflow_surveyId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyscheduledDate != null)
-                {
-                    body["scheduled_date"] = ExpressionConverter.ConvertO(__workflow_bodyscheduledDate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SurveyMessageResponse>(callPayload);
             });
         }
@@ -94,61 +83,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
 
     public class SurveymonkeycanadaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewSurveysItem[], ApiConnectionTriggerConfiguration> OnSurveyCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSurveysItem[], ApiConnectionPollingTriggerConfiguration> OnSurveyCreated()
         {
-            return new DeferredBodyTrigger<NewSurveysItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewSurveysItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger1/surveys";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NewSurveysItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewSurveysItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewCollectorsItem[], ApiConnectionTriggerConfiguration> OnSurveyCollectorCreated(Expression<Func<string>> surveyId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewCollectorsItem[], ApiConnectionPollingTriggerConfiguration> OnSurveyCollectorCreated(Expression<Func<string>> surveyId)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
-            return new DeferredBodyTrigger<NewCollectorsItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewCollectorsItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger2/surveys/{0}/collectors", __workflow_surveyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NewCollectorsItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<NewCollectorsItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SurveyResponsesItem[], ApiConnectionTriggerConfiguration> OnNewResponseAddedCollector(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[], ApiConnectionPollingTriggerConfiguration> OnNewResponseAddedCollector(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             var __workflow_collectorId = WorkflowExpression.Compile(collectorId, nameof(collectorId), required: true);
-            return new DeferredBodyTrigger<SurveyResponsesItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SurveyResponsesItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger3/collectors/{0}/responses/bulk", __workflow_collectorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["surveyId"] = ExpressionConverter.Convert(__workflow_surveyId);
-                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SurveyResponsesItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SurveyResponsesItem[], ApiConnectionTriggerConfiguration> OnNewResponseAddedSurvey(Expression<Func<string>> surveyId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[], ApiConnectionPollingTriggerConfiguration> OnNewResponseAddedSurvey(Expression<Func<string>> surveyId)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
-            return new DeferredBodyTrigger<SurveyResponsesItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SurveyResponsesItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger4/surveys/{0}/responses/bulk", __workflow_surveyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SurveyResponsesItem[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<SurveyResponsesItem[], ApiConnectionTriggerConfiguration> OnNewResponseToQuestionAdded(Expression<Func<string>> surveyId, Expression<Func<string>> pageIds = null, Expression<Func<string>> questionIds = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[], ApiConnectionPollingTriggerConfiguration> OnNewResponseToQuestionAdded(Expression<Func<string>> surveyId, Expression<Func<string>> pageIds = null, Expression<Func<string>> questionIds = null)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             var __workflow_pageIds = WorkflowExpression.Compile(pageIds, nameof(pageIds), required: false);
             var __workflow_questionIds = WorkflowExpression.Compile(questionIds, nameof(questionIds), required: false);
-            return new DeferredBodyTrigger<SurveyResponsesItem[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<SurveyResponsesItem[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger5/surveys/{0}/responses/bulk", __workflow_surveyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -157,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
                     callPayload.Queries["page_ids"] = ExpressionConverter.Convert(__workflow_pageIds);
                 if (__workflow_questionIds != null)
                     callPayload.Queries["question_ids"] = ExpressionConverter.Convert(__workflow_questionIds);
-                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<SurveyResponsesItem[]>(callPayload);
             });
         }
     }
@@ -229,6 +218,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
 
         [JsonProperty("type")]
         public string Type { get; set; }
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("scheduled_date")]
+        public string ScheduledDate { get; set; }
     }
 
     public class GetResponseDetailsResponse

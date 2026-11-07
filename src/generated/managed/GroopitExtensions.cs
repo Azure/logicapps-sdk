@@ -122,76 +122,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
 
     public class GroopitTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToReports(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<subscribeupdateType0Created1EditedInput>> subscribeupdateType0Created1Edited, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration> SubscribeToReports(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            var __workflow_subscribeupdateType0Created1Edited = WorkflowExpression.Compile(subscribeupdateType0Created1Edited, nameof(subscribeupdateType0Created1Edited), required: true);
-            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
+            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/forms/{1}/reports/subscribe", __workflow_groupId.WithUrlEncoding(1), __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscribe = new JObject();
-                var subscribepropCount = 0;
-                subscribe["Callback"] = "#{listCallbackUrl()}";
-                subscribepropCount++;
-                subscribepropCount++;
-                subscribe["EventType"] = ExpressionConverter.ConvertO(__workflow_subscribeupdateType0Created1Edited);
-                if (subscribepropCount > 0)
-                {
-                    callPayload.Body = subscribe;
-                }
-
-                return new ApiConnectionTrigger<GroopItWebhookDTO>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribe);
+                return new ApiConnectionPollingTrigger<GroopItWebhookDTO>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToReports2(Expression<Func<string>> groupId, Expression<Func<subscribeupdateType0Created1EditedInput>> subscribeupdateType0Created1Edited, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration> SubscribeToReports2(Expression<Func<string>> groupId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_subscribeupdateType0Created1Edited = WorkflowExpression.Compile(subscribeupdateType0Created1Edited, nameof(subscribeupdateType0Created1Edited), required: true);
-            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
+            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/reports/subscribe", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscribe = new JObject();
-                var subscribepropCount = 0;
-                subscribe["Callback"] = "#{listCallbackUrl()}";
-                subscribepropCount++;
-                subscribepropCount++;
-                subscribe["EventType"] = ExpressionConverter.ConvertO(__workflow_subscribeupdateType0Created1Edited);
-                if (subscribepropCount > 0)
-                {
-                    callPayload.Body = subscribe;
-                }
-
-                return new ApiConnectionTrigger<GroopItWebhookDTO>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribe);
+                return new ApiConnectionPollingTrigger<GroopItWebhookDTO>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToLinkedMembers(Expression<Func<string>> groupId, Expression<Func<subscribeeventTypeInput>> subscribeeventType, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration> SubscribeToLinkedMembers(Expression<Func<string>> groupId, Expression<Func<SubscribeToLinkedMembersSubscribeInput>> subscribe)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_subscribeeventType = WorkflowExpression.Compile(subscribeeventType, nameof(subscribeeventType), required: true);
-            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
+            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/linked-members/subscribe", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscribe = new JObject();
-                var subscribepropCount = 0;
-                subscribe["Callback"] = "#{listCallbackUrl()}";
-                subscribepropCount++;
-                subscribepropCount++;
-                subscribe["EventType"] = ExpressionConverter.ConvertO(__workflow_subscribeeventType);
-                if (subscribepropCount > 0)
-                {
-                    callPayload.Body = subscribe;
-                }
-
-                return new ApiConnectionTrigger<GroopItWebhookDTO>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribe);
+                return new ApiConnectionPollingTrigger<GroopItWebhookDTO>(callPayload);
             });
         }
     }
@@ -376,13 +346,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         _2 = 2
     }
 
-    public enum subscribeupdateType0Created1EditedInput
+    public class SubscribeToReports2SubscribeInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("EventType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubscribeInputUpdateType0Created1EditedType UpdateType0Created1Edited { get; set; }
+    }
+
+    public enum SubscribeInputUpdateType0Created1EditedType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum subscribeeventTypeInput
+    public class SubscribeToLinkedMembersSubscribeInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubscribeInputEventTypeType EventType { get; set; }
+    }
+
+    public enum SubscribeInputEventTypeType
     {
         _0 = 0,
         _1 = 1,

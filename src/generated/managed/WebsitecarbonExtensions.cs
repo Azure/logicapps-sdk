@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
-        public IBodyWorkflowAction<DataAnalysisResponse, ApiConnectionActionConfiguration> DataAnalysis(Expression<Func<int>> bytes, Expression<Func<greenInput>> green)
+        public IBodyWorkflowAction<DataAnalysisResponse, ApiConnectionActionConfiguration> DataAnalysis(Expression<Func<int>> bytes, Expression<Func<GreenInput>> green)
         {
             var __workflow_bytes = WorkflowExpression.Compile(bytes, nameof(bytes), required: true);
             var __workflow_green = WorkflowExpression.Compile(green, nameof(green), required: true);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
         public bool Green { get; set; }
     }
 
-    public enum greenInput
+    public enum GreenInput
     {
         _0 = 0,
         _1 = 1
