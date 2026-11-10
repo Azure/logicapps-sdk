@@ -1,11 +1,19 @@
 parameters:
-- name: official
+# true when the job runs under the OneBranch governed templates; false for 1ES templates.
+- name: oneBranch
+  type: boolean
+  default: false
+- name: sign
   type: boolean
   default: false
 
 jobs:
 - job: build
   displayName: Build
+
+  ${{ if eq(parameters.oneBranch, true) }}:
+    pool:
+      type: windows
 
   variables:
   - name: pack_dir
@@ -14,14 +22,23 @@ jobs:
     readonly: true
     value: |
         src\Microsoft.Azure.Workflows.Sdk.csproj
+  - ${{ if eq(parameters.oneBranch, true) }}:
+    - name: ob_outputDirectory
+      value: $(pack_dir)
+    # Consumed by eng/ci/nuget-publish.yml.
+    - name: ob_artifactBaseName
+      value: drop_packages
+    - name: ob_sdl_codeql_compiled_enabled
+      value: true
 
-  templateContext:
-    outputParentDirectory: $(Build.ArtifactStagingDirectory)
-    outputs:
-    - output: pipelineArtifact
-      displayName: Publish logs
-      path: $(pack_dir)
-      artifact: drop_packages
+  ${{ if ne(parameters.oneBranch, true) }}:
+    templateContext:
+      outputParentDirectory: $(Build.ArtifactStagingDirectory)
+      outputs:
+      - output: pipelineArtifact
+        displayName: Publish packages
+        path: $(pack_dir)
+        artifact: drop_packages
 
   steps:
     - template: /eng/ci/templates/steps/install-dotnet.yml@self
@@ -48,15 +65,14 @@ jobs:
         projects: tests/Microsoft.Azure.Workflows.Sdk.Tests/Microsoft.Azure.Workflows.Sdk.Tests.csproj
         arguments: -c $(configuration) -v m --no-build --no-restore
 
-    - ${{ if eq(parameters.official, true) }}:
-      - template: ci/sign-files.yml@eng
-        parameters:
-          displayName: Sign assemblies
-          folderPath: out/bin/src
-          minimatch: true
-          pattern: |
-            **/Microsoft.Azure.Workflows.Sdk*.dll
-          signType: dll
+    - ${{ if eq(parameters.sign, true) }}:
+      - task: onebranch.pipeline.signing@1
+        displayName: Sign assemblies
+        inputs:
+          command: sign
+          signing_profile: external_distribution
+          search_root: $(Build.SourcesDirectory)/out/bin/src
+          files_to_sign: '**/Microsoft.Azure.Workflows.Sdk*.dll'
 
     - task: DotNetCoreCLI@2
       displayName: Pack
@@ -66,13 +82,14 @@ jobs:
         arguments: -c $(configuration) -v m -o $(pack_dir) --no-build
         projects: $(pack_projects)
 
-    - ${{ if eq(parameters.official, true) }}:
-      - template: ci/sign-files.yml@eng
-        parameters:
-          displayName: Sign nuget packages
-          folderPath: $(pack_dir)
-          pattern: Microsoft.Azure.Workflows.Sdk*.nupkg
-          signType: nuget
+    - ${{ if eq(parameters.sign, true) }}:
+      - task: onebranch.pipeline.signing@1
+        displayName: Sign nuget packages
+        inputs:
+          command: sign
+          cp_code: CP-401405
+          search_root: $(pack_dir)
+          files_to_sign: Microsoft.Azure.Workflows.Sdk*.nupkg
 
     - task: PowerShell@2
       displayName: Validate package-only C# workflow consumer
