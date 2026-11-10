@@ -28,7 +28,7 @@ resources:
 variables:
 - template: /eng/ci/templates/variables/build.yml@self
 - name: WindowsContainerImage
-  value: onebranch.azurecr.io/windows/ltsc2022/vse2022:latest
+  value: onebranch.azurecr.io/windows/ltsc2025/vse2026:latest
 - name: pack_dir
   value: $(Build.SourcesDirectory)\out\official-packages
 - name: pack_projects
@@ -40,7 +40,7 @@ extends:
   parameters:
     featureFlags:
       WindowsHostVersion:
-        Version: 2022
+        Version: 2025
       EnableCDPxPAT: false
 
     stages:
