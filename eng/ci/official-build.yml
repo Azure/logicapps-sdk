@@ -38,6 +38,10 @@ variables:
 extends:
   template: v2/OneBranch.Official.CrossPlat.yml@templates
   parameters:
+    globalSdl:
+      tsa:
+        enabled: false
+
     featureFlags:
       WindowsHostVersion:
         Version: 2025
@@ -78,7 +82,18 @@ extends:
           inputs:
             command: test
             projects: tests/Microsoft.Azure.Workflows.Sdk.Tests/Microsoft.Azure.Workflows.Sdk.Tests.csproj
-            arguments: -c $(configuration) -v m --no-build --no-restore
+            publishTestResults: false
+            arguments: -c $(configuration) -v m --no-build --no-restore --logger trx --results-directory "$(Agent.TempDirectory)"
+
+        - task: PublishTestResults@2
+          displayName: Publish test results
+          condition: succeededOrFailed()
+          inputs:
+            testResultsFormat: VSTest
+            testResultsFiles: '*.trx'
+            searchFolder: $(Agent.TempDirectory)
+            mergeTestResults: true
+            failTaskOnFailedTests: true
 
         - task: onebranch.pipeline.signing@1
           displayName: Sign assemblies
