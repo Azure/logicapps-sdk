@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     public class EduframeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Account, ApiConnectionActionConfiguration> PostAccounts(Expression<Func<PostAccountsBodyInput>> body = null)
+        public IBodyWorkflowAction<Account, ApiConnectionActionConfiguration> PostAccounts(Expression<Func<PostAccountsBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Account, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/accounts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Account>(callPayload);
             });
         }
@@ -61,31 +60,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Authentication, ApiConnectionActionConfiguration> PostAuthentication(Expression<Func<PostAuthenticationBodyInput>> body = null)
+        public IBodyWorkflowAction<Authentication, ApiConnectionActionConfiguration> PostAuthentication(Expression<Func<PostAuthenticationBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Authentication, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/authentications";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Authentication>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Category, ApiConnectionActionConfiguration> PostCategories(Expression<Func<PostCategoriesBodyInput>> body = null)
+        public IBodyWorkflowAction<Category, ApiConnectionActionConfiguration> PostCategories(Expression<Func<PostCategoriesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Category, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/categories";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Category>(callPayload);
             });
         }
@@ -127,16 +124,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Course, ApiConnectionActionConfiguration> PostCourses(Expression<Func<PostCoursesBodyInput>> body = null)
+        public IBodyWorkflowAction<Course, ApiConnectionActionConfiguration> PostCourses(Expression<Func<PostCoursesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Course, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/courses";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Course>(callPayload);
             });
         }
@@ -178,16 +174,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> PostUsers(Expression<Func<PostUsersBodyInput>> body = null)
+        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> PostUsers(Expression<Func<PostUsersBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<User, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<User>(callPayload);
             });
         }
@@ -264,16 +259,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> PostInvoices(Expression<Func<PostInvoicesBodyInput>> body = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> PostInvoices(Expression<Func<PostInvoicesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoices";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
@@ -332,16 +326,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<InvoiceVat, ApiConnectionActionConfiguration> PostInvoiceVats(Expression<Func<PostInvoiceVatsBodyInput>> body = null)
+        public IBodyWorkflowAction<InvoiceVat, ApiConnectionActionConfiguration> PostInvoiceVats(Expression<Func<PostInvoiceVatsBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InvoiceVat, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoice_vats";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InvoiceVat>(callPayload);
             });
         }
@@ -486,6 +479,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class PostAccountsBodyInput
     {
+        public PostAccountsBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -498,6 +496,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class PostAccountsAddressInfo
     {
+        public PostAccountsAddressInfo(string address, string postalCode, string city, string country)
+        {
+            this.Address = address;
+            this.PostalCode = postalCode;
+            this.City = city;
+            this.Country = country;
+        }
+
         [JsonProperty("id")]
         public int? Id { get; set; }
 
@@ -549,6 +555,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class PostAuthenticationBodyInput
     {
+        public PostAuthenticationBodyInput(int userId, BodyInputAuthenticationProviderTypeType authenticationProviderType, string uid)
+        {
+            this.UserId = userId;
+            this.AuthenticationProviderType = authenticationProviderType;
+            this.Uid = uid;
+        }
+
         [JsonProperty("user_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UserId { get; set; }
 
@@ -622,6 +635,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class PostCategoriesBodyInput
     {
+        public PostCategoriesBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("id")]
         public int? Id { get; set; }
 
@@ -744,6 +762,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class PostCoursesBodyInput
     {
+        public PostCoursesBodyInput(string name, double categoryId, string code)
+        {
+            this.Name = name;
+            this.CategoryId = categoryId;
+            this.Code = code;
+        }
+
         [JsonProperty("id")]
         public int? Id { get; set; }
 
@@ -918,6 +943,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class PostUsersBodyInput
     {
+        public PostUsersBodyInput(string firstName, string lastName, string email)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
+        }
+
         [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -1102,6 +1134,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class PostInvoicesBodyInput
     {
+        public PostInvoicesBodyInput(double accountId, BodyInputCurrencyType currency, PostInvoicesInvoiceItem[] invoiceItemsAttributes)
+        {
+            this.AccountId = accountId;
+            this.Currency = currency;
+            this.InvoiceItemsAttributes = invoiceItemsAttributes;
+        }
+
         [JsonProperty("account_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public double AccountId { get; set; }
 
@@ -1132,6 +1171,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class PostInvoicesInvoiceItem
     {
+        public PostInvoicesInvoiceItem(double units, string name, string unitPrice)
+        {
+            this.Units = units;
+            this.Name = name;
+            this.UnitPrice = unitPrice;
+        }
+
         [JsonProperty("id")]
         public int? Id { get; set; }
 
@@ -1171,6 +1217,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class PostInvoiceVatsBodyInput
     {
+        public PostInvoiceVatsBodyInput(string name, string percentage)
+        {
+            this.Name = name;
+            this.Percentage = percentage;
+        }
+
         [JsonProperty("id")]
         public int? Id { get; set; }
 
@@ -1399,6 +1451,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class PostWebhooksBodyInput
     {
+        public PostWebhooksBodyInput(BodyInputEventsTypeItem[] events)
+        {
+            this.Events = events;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 

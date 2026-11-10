@@ -392,6 +392,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
     public class SignrequestQuickCreateCreateDataInput
     {
+        public SignrequestQuickCreateCreateDataInput(SignrequestQuickCreateCreateSigner[] signers)
+        {
+            this.Signers = signers;
+        }
+
         [JsonProperty("auto_delete_days")]
         public int? AutoDeleteDays { get; set; }
 
@@ -518,6 +523,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
     public class SignrequestQuickCreateCreateRequiredAttachment
     {
+        public SignrequestQuickCreateCreateRequiredAttachment(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -527,6 +537,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
     public class SignrequestQuickCreateCreateSigner
     {
+        public SignrequestQuickCreateCreateSigner(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("after_document")]
         public string AfterDocument { get; set; }
 
@@ -650,6 +665,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
     public class SignrequestQuickCreateCreateSignerInputs
     {
+        public SignrequestQuickCreateCreateSignerInputs(int pageIndex)
+        {
+            this.PageIndex = pageIndex;
+        }
+
         [JsonProperty("checkbox_value")]
         public bool? CheckboxValue { get; set; }
 
@@ -817,6 +837,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
     public class WebhooksCreateDataInput
     {
+        public WebhooksCreateDataInput(DataInputEventTypeType eventType)
+        {
+            this.EventType = eventType;
+        }
+
         [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 

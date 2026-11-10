@@ -205,6 +205,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
 
     public class CreateToDoListBodyInput
     {
+        public CreateToDoListBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }

@@ -25,17 +25,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
-        public IBodyWorkflowAction<ActionResponse, ApiConnectionActionConfiguration> Action(Expression<Func<string>> actionId, Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<ActionResponse, ApiConnectionActionConfiguration> Action(Expression<Func<string>> actionId, Expression<Func<BodyInput>> body)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ActionResponse>(callPayload);
             });
         }
@@ -95,6 +94,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
 
     public class BodyInput
     {
+        public BodyInput(string instructions)
+        {
+            this.Instructions = instructions;
+        }
+
         [JsonProperty("instructions", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Instructions { get; set; }
 

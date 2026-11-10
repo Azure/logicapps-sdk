@@ -72,17 +72,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
-        public IBodyWorkflowAction<DataValue, ApiConnectionActionConfiguration> DatasourcesDatasourceCreateValue(Expression<Func<int>> id, Expression<Func<DatasourcesDatasourceCreateValueBodyInput>> body = null)
+        public IBodyWorkflowAction<DataValue, ApiConnectionActionConfiguration> DatasourcesDatasourceCreateValue(Expression<Func<int>> id, Expression<Func<DatasourcesDatasourceCreateValueBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DataValue, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Datasources/{0}/values", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DataValue>(callPayload);
             });
         }
@@ -128,48 +127,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
-        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksUpdate(Expression<Func<int>> id, Expression<Func<TasksCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksUpdate(Expression<Func<int>> id, Expression<Func<TasksCreateBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TaskInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Tasks/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TaskInfo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
-        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksCreate(Expression<Func<TasksCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksCreate(Expression<Func<TasksCreateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TaskInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Tasks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TaskInfo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
-        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksCreateSubTask(Expression<Func<int>> id, Expression<Func<TasksCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksCreateSubTask(Expression<Func<int>> id, Expression<Func<TasksCreateBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TaskInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Tasks/{0}/SubTasks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TaskInfo>(callPayload);
             });
         }
@@ -301,6 +297,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
 
     public class DatasourcesDatasourceCreateValueBodyInput
     {
+        public DatasourcesDatasourceCreateValueBodyInput(double value, string valueDate)
+        {
+            this.Value = value;
+            this.ValueDate = valueDate;
+        }
+
         [JsonProperty("areaId")]
         public int? AreaId { get; set; }
 
@@ -393,6 +395,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
 
     public class TasksCreateBodyInput
     {
+        public TasksCreateBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("externalId")]
         public string ExternalId { get; set; }
 

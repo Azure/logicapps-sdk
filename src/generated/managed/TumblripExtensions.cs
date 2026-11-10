@@ -2174,6 +2174,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
 
     public class PostDeleteBodyInput
     {
+        public PostDeleteBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -3422,6 +3427,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
 
     public class PostLikeBodyInput
     {
+        public PostLikeBodyInput(string id, string reblogKey)
+        {
+            this.Id = id;
+            this.ReblogKey = reblogKey;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 

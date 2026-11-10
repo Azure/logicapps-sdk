@@ -64,6 +64,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
 
     public class CardbodyInput
     {
+        public CardbodyInput(string[] recipients, string heading, string adaptiveCard)
+        {
+            this.Recipients = recipients;
+            this.Heading = heading;
+            this.AdaptiveCard = adaptiveCard;
+        }
+
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Recipients { get; set; }
 

@@ -41,16 +41,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/services/app/ExternalTask/CreateExternalProject";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateProjectResponse>(callPayload);
             });
         }
@@ -526,6 +525,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class CreateTaskBodyInput
     {
+        public CreateTaskBodyInput(string apiKey, string title)
+        {
+            this.ApiKey = apiKey;
+            this.Title = title;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -726,6 +731,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class AlertBodyInput
     {
+        public AlertBodyInput(string apiKey, string alertToEmail, string title, string message)
+        {
+            this.ApiKey = apiKey;
+            this.AlertToEmail = alertToEmail;
+            this.Title = title;
+            this.Message = message;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -835,6 +848,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class CreateProjectBodyInput
     {
+        public CreateProjectBodyInput(string projectName, string creatorEmail, string apiKey, CreateProjectBodyInputFilesTypeItem[] files)
+        {
+            this.ProjectName = projectName;
+            this.CreatorEmail = creatorEmail;
+            this.ApiKey = apiKey;
+            this.Files = files;
+        }
+
         [JsonProperty("projectName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
 
@@ -952,6 +973,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class UpdateTaskBodyInput
     {
+        public UpdateTaskBodyInput(string apiKey, string taskId, string toEmail, string title)
+        {
+            this.ApiKey = apiKey;
+            this.TaskId = taskId;
+            this.ToEmail = toEmail;
+            this.Title = title;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -1029,6 +1058,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class CreateContactNoteBodyInput
     {
+        public CreateContactNoteBodyInput(string apiKey, string ownerEmail, string contactEmail, string notes)
+        {
+            this.ApiKey = apiKey;
+            this.OwnerEmail = ownerEmail;
+            this.ContactEmail = contactEmail;
+            this.Notes = notes;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -1044,6 +1081,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class CreateCompanyBodyInput
     {
+        public CreateCompanyBodyInput(string apiKey, string companyName, string userEmail)
+        {
+            this.ApiKey = apiKey;
+            this.CompanyName = companyName;
+            this.UserEmail = userEmail;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -1125,6 +1169,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class CreateContactBodyInput
     {
+        public CreateContactBodyInput(string apiKey, string ownerEmailAddress, string contactEmailAddress1, string firstName)
+        {
+            this.ApiKey = apiKey;
+            this.OwnerEmailAddress = ownerEmailAddress;
+            this.ContactEmailAddress1 = contactEmailAddress1;
+            this.FirstName = firstName;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -1179,6 +1231,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class CreateContactPhoneBodyInput
     {
+        public CreateContactPhoneBodyInput(string apiKey, string contactEmail, string userEmail, string phone, BodyInputPhoneTypeType phoneType)
+        {
+            this.ApiKey = apiKey;
+            this.ContactEmail = contactEmail;
+            this.UserEmail = userEmail;
+            this.Phone = phone;
+            this.PhoneType = phoneType;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -1210,6 +1271,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class CreateContactAddressBodyInput
     {
+        public CreateContactAddressBodyInput(string apiKey, string contactEmail, string userEmail, BodyInputAddressTypeType addressType)
+        {
+            this.ApiKey = apiKey;
+            this.ContactEmail = contactEmail;
+            this.UserEmail = userEmail;
+            this.AddressType = addressType;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -1253,6 +1322,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class CreateContactFamilyBodyInput
     {
+        public CreateContactFamilyBodyInput(string apiKey, string contactEmail, string userEmail, string firstName, BodyInputRelationshipType relationship)
+        {
+            this.ApiKey = apiKey;
+            this.ContactEmail = contactEmail;
+            this.UserEmail = userEmail;
+            this.FirstName = firstName;
+            this.Relationship = relationship;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -1565,6 +1643,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class CreateTaskCommentExtBodyInput
     {
+        public CreateTaskCommentExtBodyInput(string apiKey, string userEmail, string taskId, string comment)
+        {
+            this.ApiKey = apiKey;
+            this.UserEmail = userEmail;
+            this.TaskId = taskId;
+            this.Comment = comment;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -1625,6 +1711,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class UpdateProjectBodyInput
     {
+        public UpdateProjectBodyInput(string apiKey, string projectId, string projectName, string currentUserEmail)
+        {
+            this.ApiKey = apiKey;
+            this.ProjectId = projectId;
+            this.ProjectName = projectName;
+            this.CurrentUserEmail = currentUserEmail;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -1948,6 +2042,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class CreateProjectFromTemplateExtBodyInput
     {
+        public CreateProjectFromTemplateExtBodyInput(string apiKey, string templateId, string creatorEmail, string projectName)
+        {
+            this.ApiKey = apiKey;
+            this.TemplateId = templateId;
+            this.CreatorEmail = creatorEmail;
+            this.ProjectName = projectName;
+        }
+
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -1981,6 +2083,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class BodyInputMembersTypeItem
     {
+        public BodyInputMembersTypeItem(string roleId, string memberEmail)
+        {
+            this.RoleId = roleId;
+            this.MemberEmail = memberEmail;
+        }
+
         [JsonProperty("roleId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoleId { get; set; }
 

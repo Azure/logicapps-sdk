@@ -712,6 +712,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
 
     public class SubmitRunBodyInput
     {
+        public SubmitRunBodyInput(string dataPipeline)
+        {
+            this.DataPipeline = dataPipeline;
+        }
+
         [JsonProperty("dataPipelineItem", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataPipeline { get; set; }
 
@@ -895,6 +900,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
 
     public class TimeConversionHelperDataInput
     {
+        public TimeConversionHelperDataInput(string dateTime)
+        {
+            this.DateTime = dateTime;
+        }
+
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }
     }
@@ -1024,6 +1034,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
 
     public class CreateFeatureReportBodyInput
     {
+        public CreateFeatureReportBodyInput(string survey, string featureLayer, string reportTemplate, CreateFeatureReportBodyInputValueType value)
+        {
+            this.Survey = survey;
+            this.FeatureLayer = featureLayer;
+            this.ReportTemplate = reportTemplate;
+            this.Value = value;
+        }
+
         [JsonProperty("surveyItemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Survey { get; set; }
 
@@ -1069,6 +1087,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
 
     public class GeocodeAddressesDataInput
     {
+        public GeocodeAddressesDataInput(string addresses)
+        {
+            this.Addresses = addresses;
+        }
+
         [JsonProperty("addresses", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Addresses { get; set; }
     }
@@ -1120,6 +1143,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
 
     public class RoutingInput
     {
+        public RoutingInput(string routingStops)
+        {
+            this.RoutingStops = routingStops;
+        }
+
         [JsonProperty("stops", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoutingStops { get; set; }
     }

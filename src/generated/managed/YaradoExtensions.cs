@@ -87,6 +87,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
 
     public class BodyInput
     {
+        public BodyInput(string robotId, string taskFileId)
+        {
+            this.RobotId = robotId;
+            this.TaskFileId = taskFileId;
+        }
+
         [JsonProperty("robot_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RobotId { get; set; }
 

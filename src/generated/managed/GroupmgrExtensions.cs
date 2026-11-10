@@ -158,6 +158,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
     public class GroupMgrGroupApprovalBodyInput
     {
+        public GroupMgrGroupApprovalBodyInput(string listItemId)
+        {
+            this.ListItemId = listItemId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListItemId { get; set; }
 
@@ -176,6 +181,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
     public class GroupMgrCreateGroupBodyInput
     {
+        public GroupMgrCreateGroupBodyInput(string displayName, string email, string[] owners)
+        {
+            this.DisplayName = displayName;
+            this.Email = email;
+            this.Owners = owners;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -207,6 +219,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
     public class GroupMgrUpdateGroupBodyInput
     {
+        public GroupMgrUpdateGroupBodyInput(string groupId)
+        {
+            this.GroupId = groupId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupId { get; set; }
         public string DisplayName { get; set; }
@@ -235,12 +252,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
     public class GroupMgrDeleteGroupBodyInput
     {
+        public GroupMgrDeleteGroupBodyInput(string listItemId)
+        {
+            this.ListItemId = listItemId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListItemId { get; set; }
     }
 
     public class GroupMgrArchiveGroupBodyInput
     {
+        public GroupMgrArchiveGroupBodyInput(string listItemId)
+        {
+            this.ListItemId = listItemId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListItemId { get; set; }
 
@@ -259,6 +286,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
     public class GroupMgrGroupRequestedBodyInput
     {
+        public GroupMgrGroupRequestedBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

@@ -578,6 +578,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
 
     public class QueryParametersInput
     {
+        public QueryParametersInput(string sOQLQuery)
+        {
+            this.SOQLQuery = sOQLQuery;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SOQLQuery { get; set; }
 
@@ -838,6 +843,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
 
     public class BodyInput
     {
+        public BodyInput(BodyInputStateType state)
+        {
+            this.State = state;
+        }
+
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputStateType State { get; set; }
     }
@@ -984,6 +994,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
 
     public class ParametersInput
     {
+        public ParametersInput(string objectEntity, ParametersInputOperationType operation)
+        {
+            this.ObjectEntity = objectEntity;
+            this.Operation = operation;
+        }
+
         [JsonProperty("object", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectEntity { get; set; }
 

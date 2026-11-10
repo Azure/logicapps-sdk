@@ -394,12 +394,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class CreateOpportunityBodyInput
     {
+        public CreateOpportunityBodyInput(CreateOpportunityBodyInputOpportunityType opportunity)
+        {
+            this.Opportunity = opportunity;
+        }
+
         [JsonProperty("opportunity", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateOpportunityBodyInputOpportunityType Opportunity { get; set; }
     }
 
     public class CreateOpportunityBodyInputOpportunityType
     {
+        public CreateOpportunityBodyInputOpportunityType(string name, BodyInputOpportunityTypePartyType party, CreateOpportunityBodyInputOpportunityTypeMilestoneType milestone)
+        {
+            this.Name = name;
+            this.Party = party;
+            this.Milestone = milestone;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -430,12 +442,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class BodyInputOpportunityTypePartyType
     {
+        public BodyInputOpportunityTypePartyType(int partyId)
+        {
+            this.PartyId = partyId;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PartyId { get; set; }
     }
 
     public class CreateOpportunityBodyInputOpportunityTypeMilestoneType
     {
+        public CreateOpportunityBodyInputOpportunityTypeMilestoneType(int id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
     }
@@ -511,6 +533,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class UpdateOpportunityBodyInputOpportunityTypeMilestoneType
     {
+        public UpdateOpportunityBodyInputOpportunityTypeMilestoneType(int milestoneId)
+        {
+            this.MilestoneId = milestoneId;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int MilestoneId { get; set; }
     }
@@ -628,12 +655,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class CreateOrganisationBodyInput
     {
+        public CreateOrganisationBodyInput(CreateOrganisationBodyInputPartyType party)
+        {
+            this.Party = party;
+        }
+
         [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateOrganisationBodyInputPartyType Party { get; set; } = new CreateOrganisationBodyInputPartyType();
+        public CreateOrganisationBodyInputPartyType Party { get; set; }
     }
 
     public class CreateOrganisationBodyInputPartyType
     {
+        public CreateOrganisationBodyInputPartyType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -947,12 +984,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class CreateTaskBodyInput
     {
+        public CreateTaskBodyInput(CreateTaskBodyInputTaskObjectType taskObject)
+        {
+            this.TaskObject = taskObject;
+        }
+
         [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateTaskBodyInputTaskObjectType TaskObject { get; set; }
     }
 
     public class CreateTaskBodyInputTaskObjectType
     {
+        public CreateTaskBodyInputTaskObjectType(string description, string dueDate)
+        {
+            this.Description = description;
+            this.DueDate = dueDate;
+        }
+
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
 
@@ -1118,12 +1166,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class CreatePersonBodyInput
     {
+        public CreatePersonBodyInput(CreatePersonBodyInputPartyType party)
+        {
+            this.Party = party;
+        }
+
         [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePersonBodyInputPartyType Party { get; set; } = new CreatePersonBodyInputPartyType();
+        public CreatePersonBodyInputPartyType Party { get; set; }
     }
 
     public class CreatePersonBodyInputPartyType
     {
+        public CreatePersonBodyInputPartyType(string lastName)
+        {
+            this.LastName = lastName;
+        }
+
         [JsonProperty("lastName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LastName { get; set; }
 
@@ -1175,6 +1233,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class BodyInputPartyTypeOrganisationType
     {
+        public BodyInputPartyTypeOrganisationType(int id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
     }

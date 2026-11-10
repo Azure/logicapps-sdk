@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ADDREGISTRANTBodyInput().ToJToken();
                 return new ApiConnectionAction<ADDREGISTRANTResponse>(callPayload);
             });
         }

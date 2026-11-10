@@ -735,6 +735,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
 
     public class AddCommentBodyInput
     {
+        public AddCommentBodyInput(string comment)
+        {
+            this.Comment = comment;
+        }
+
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
     }
@@ -759,6 +764,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
 
     public class ProjectInput
     {
+        public ProjectInput(string projectKey, string name, ProjectInputTypeType type, string leadId)
+        {
+            this.ProjectKey = projectKey;
+            this.Name = name;
+            this.Type = type;
+            this.LeadId = leadId;
+        }
+
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectKey { get; set; }
 

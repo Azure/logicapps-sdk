@@ -183,6 +183,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
 
     public class DevicesCreateBodyInput
     {
+        public DevicesCreateBodyInput(string deviceName, DevicesCreateDeviceTemplateReference deviceTemplate)
+        {
+            this.DeviceName = deviceName;
+            this.DeviceTemplate = deviceTemplate;
+        }
+
         [JsonProperty("id")]
         public string DeviceId { get; set; }
 
@@ -201,6 +207,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
 
     public class DevicesCreateDeviceTemplateReference
     {
+        public DevicesCreateDeviceTemplateReference(string deviceTemplateId, string deviceTemplateVersion)
+        {
+            this.DeviceTemplateId = deviceTemplateId;
+            this.DeviceTemplateVersion = deviceTemplateVersion;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceTemplateId { get; set; }
 
@@ -256,6 +268,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
 
     public class ActionsCreateBodyInput
     {
+        public ActionsCreateBodyInput(string rule)
+        {
+            this.Rule = rule;
+        }
+
         [JsonProperty("id")]
         public string ActionId { get; set; }
 

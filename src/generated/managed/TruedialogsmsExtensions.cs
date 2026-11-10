@@ -421,6 +421,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
     public class CampaignPushBodyInput
     {
+        public CampaignPushBodyInput(string[] channels, string[] targets, string message)
+        {
+            this.Channels = channels;
+            this.Targets = targets;
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Channels { get; set; }
 

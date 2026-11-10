@@ -383,6 +383,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
 
     public class ParseJDViaFileContentBodyInput
     {
+        public ParseJDViaFileContentBodyInput(string fileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -2258,6 +2264,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
 
     public class ParseJDViaUrlBodyInput
     {
+        public ParseJDViaUrlBodyInput(string url, string fileName)
+        {
+            this.Url = url;
+            this.FileName = fileName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 

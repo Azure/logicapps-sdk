@@ -394,6 +394,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
     public class AddEmploymentBodyInput
     {
+        public AddEmploymentBodyInput(string fullName, string email, string companyId)
+        {
+            this.FullName = fullName;
+            this.Email = email;
+            this.CompanyId = companyId;
+        }
+
         [JsonProperty("job_title")]
         public string JobTitle { get; set; }
 
@@ -478,6 +485,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
     public class DeleteEmploymentBodyInput
     {
+        public DeleteEmploymentBodyInput(string companyId)
+        {
+            this.CompanyId = companyId;
+        }
+
         [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CompanyId { get; set; }
     }
@@ -571,6 +583,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
     public class UpdateLeaveBodyInput
     {
+        public UpdateLeaveBodyInput(string companyId, string typeId)
+        {
+            this.CompanyId = companyId;
+            this.TypeId = typeId;
+        }
+
         [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CompanyId { get; set; }
 
@@ -607,6 +625,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
     public class RequestLeaveBodyInput
     {
+        public RequestLeaveBodyInput(string companyId, string from, string to, string typeId)
+        {
+            this.CompanyId = companyId;
+            this.From = from;
+            this.To = to;
+            this.TypeId = typeId;
+        }
+
         [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CompanyId { get; set; }
 
@@ -631,6 +657,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
     public class RequestLeaveBodyInputLeaveBreakdownsTypeItem
     {
+        public RequestLeaveBodyInputLeaveBreakdownsTypeItem(string ownerId)
+        {
+            this.OwnerId = ownerId;
+        }
+
         [JsonProperty("owner_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OwnerId { get; set; }
 

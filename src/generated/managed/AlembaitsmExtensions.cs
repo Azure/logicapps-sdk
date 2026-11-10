@@ -125,6 +125,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alembaitsm
 
     public class BodyInput
     {
+        public BodyInput(string eventHandling, int entity, string payloadColumns)
+        {
+            this.EventHandling = eventHandling;
+            this.Entity = entity;
+            this.PayloadColumns = payloadColumns;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PayloadUrl { get; set; } = "#{listCallbackUrl()}";
 

@@ -1613,6 +1613,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qppngintegrationhub
 
     public class RequestBodyOfWebhookInput
     {
+        public RequestBodyOfWebhookInput(string webhookName)
+        {
+            this.WebhookName = webhookName;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WebhookName { get; set; }
 

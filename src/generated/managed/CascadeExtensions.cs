@@ -518,12 +518,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
 
     public class CreateGoalBodyInput
     {
+        public CreateGoalBodyInput(CreateGoalBodyInputGoalType goal)
+        {
+            this.Goal = goal;
+        }
+
         [JsonProperty("goal", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateGoalBodyInputGoalType Goal { get; set; }
     }
 
     public class CreateGoalBodyInputGoalType
     {
+        public CreateGoalBodyInputGoalType(string action, string details, string startTime, string endTime, BodyInputGoalTypeWeightIdType weightId)
+        {
+            this.Action = action;
+            this.Details = details;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.WeightId = weightId;
+        }
+
         [JsonProperty("role_id")]
         public int? RoleId { get; set; }
 
@@ -993,12 +1007,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
 
     public class CreateRiskBodyInput
     {
+        public CreateRiskBodyInput(CreateRiskBodyInputIssueType issue)
+        {
+            this.Issue = issue;
+        }
+
         [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateRiskBodyInputIssueType Issue { get; set; }
     }
 
     public class CreateRiskBodyInputIssueType
     {
+        public CreateRiskBodyInputIssueType(string issue, int goalId)
+        {
+            this.Issue = issue;
+            this.GoalId = goalId;
+        }
+
         [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Issue { get; set; }
 
@@ -1274,12 +1299,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
 
     public class CreateTaskBodyInput
     {
+        public CreateTaskBodyInput(CreateTaskBodyInputTaskObjectType taskObject)
+        {
+            this.TaskObject = taskObject;
+        }
+
         [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateTaskBodyInputTaskObjectType TaskObject { get; set; }
     }
 
     public class CreateTaskBodyInputTaskObjectType
     {
+        public CreateTaskBodyInputTaskObjectType(string taskObject, int goalId)
+        {
+            this.TaskObject = taskObject;
+            this.GoalId = goalId;
+        }
+
         [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskObject { get; set; }
 
@@ -1444,6 +1480,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
 
     public class UpdateTaskBodyInput
     {
+        public UpdateTaskBodyInput(UpdateTaskBodyInputTaskObjectType taskObject)
+        {
+            this.TaskObject = taskObject;
+        }
+
         [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateTaskBodyInputTaskObjectType TaskObject { get; set; }
     }
@@ -1552,12 +1593,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
 
     public class CreateUpdateBodyInput
     {
+        public CreateUpdateBodyInput(CreateUpdateBodyInputUpdateType update)
+        {
+            this.Update = update;
+        }
+
         [JsonProperty("update", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateUpdateBodyInputUpdateType Update { get; set; }
     }
 
     public class CreateUpdateBodyInputUpdateType
     {
+        public CreateUpdateBodyInputUpdateType(string comment, int goalId)
+        {
+            this.Comment = comment;
+            this.GoalId = goalId;
+        }
+
         [JsonProperty("comment", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
 
@@ -1654,6 +1706,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
 
     public class UpdateUpdateBodyInput
     {
+        public UpdateUpdateBodyInput(UpdateUpdateBodyInputUpdateType update)
+        {
+            this.Update = update;
+        }
+
         [JsonProperty("update", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateUpdateBodyInputUpdateType Update { get; set; }
     }

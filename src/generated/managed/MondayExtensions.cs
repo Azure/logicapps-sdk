@@ -422,6 +422,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class CreateItemBodyInput
     {
+        public CreateItemBodyInput(string workspaceId, string boardId, string groupId, string itemName)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardId = boardId;
+            this.GroupId = groupId;
+            this.ItemName = itemName;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -446,6 +454,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class DuplicateBoardBodyInput
     {
+        public DuplicateBoardBodyInput(string sourceWorkspaceId, string sourceBoardId)
+        {
+            this.SourceWorkspaceId = sourceWorkspaceId;
+            this.SourceBoardId = sourceBoardId;
+        }
+
         [JsonProperty("sourceWorkspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceWorkspaceId { get; set; }
 
@@ -499,6 +513,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class CreateBoardBodyInput
     {
+        public CreateBoardBodyInput(string workspaceId, string boardName)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardName = boardName;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -532,6 +552,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class CreateColumnBodyInput
     {
+        public CreateColumnBodyInput(string workspaceId, string boardId, string title, BodyInputColumnTypeType columnType)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardId = boardId;
+            this.Title = title;
+            this.ColumnType = columnType;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -633,6 +661,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class CreateGroupBodyInput
     {
+        public CreateGroupBodyInput(string workspaceId, string boardId, string groupName)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardId = boardId;
+            this.GroupName = groupName;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -663,6 +698,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class UpdateItemColumnBodyInput
     {
+        public UpdateItemColumnBodyInput(string workspaceId, string boardId, string columnId, string itemId, JToken columnValues)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardId = boardId;
+            this.ColumnId = columnId;
+            this.ItemId = itemId;
+            this.ColumnValues = columnValues;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -699,6 +743,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class UpdateMultipleItemColumnsBodyInput
     {
+        public UpdateMultipleItemColumnsBodyInput(string workspaceId, string boardId, string itemId)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardId = boardId;
+            this.ItemId = itemId;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -735,6 +786,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class MoveItemToGroupBodyInput
     {
+        public MoveItemToGroupBodyInput(string workspaceId, string boardId, string groupId, string itemId)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardId = boardId;
+            this.GroupId = groupId;
+            this.ItemId = itemId;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -768,6 +827,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class CreateNotificationBodyInput
     {
+        public CreateNotificationBodyInput(string userId, string targetId, string text)
+        {
+            this.UserId = userId;
+            this.TargetId = targetId;
+            this.Text = text;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
 
@@ -807,6 +873,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class CreateSubitemBodyInput
     {
+        public CreateSubitemBodyInput(string workspaceId, string boardId, string parentItemId, string itemName)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardId = boardId;
+            this.ParentItemId = parentItemId;
+            this.ItemName = itemName;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -843,6 +917,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class CreateUpdateBodyInput
     {
+        public CreateUpdateBodyInput(string workspaceId, string boardId, string groupId, string itemId, string body)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardId = boardId;
+            this.GroupId = groupId;
+            this.ItemId = itemId;
+            this.Body = body;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -879,6 +962,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class CreateWorkspaceBodyInput
     {
+        public CreateWorkspaceBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -933,6 +1021,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class WebhookAnyColumnChangesBodyInput
     {
+        public WebhookAnyColumnChangesBodyInput(string workspaceId, string boardId)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardId = boardId;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -945,6 +1039,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class WebhookColumnChangesBodyInput
     {
+        public WebhookColumnChangesBodyInput(string workspaceId, string boardId, string columnId)
+        {
+            this.WorkspaceId = workspaceId;
+            this.BoardId = boardId;
+            this.ColumnId = columnId;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 

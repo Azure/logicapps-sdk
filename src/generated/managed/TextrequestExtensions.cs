@@ -1772,6 +1772,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
 
     public class TextingWebhookBodyInput
     {
+        public TextingWebhookBodyInput(BodyInputEventType @event)
+        {
+            this.Event = @event;
+        }
+
         [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
 

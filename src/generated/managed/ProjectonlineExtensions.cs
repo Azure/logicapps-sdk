@@ -264,6 +264,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
     public class ProjInput
     {
+        public ProjInput(string projectName)
+        {
+            this.ProjectName = projectName;
+        }
+
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
 
@@ -318,12 +323,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
     public class TaskInput
     {
+        public TaskInput(TaskParameters parameters)
+        {
+            this.Parameters = parameters;
+        }
+
         [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
         public TaskParameters Parameters { get; set; }
     }
 
     public class TaskParameters
     {
+        public TaskParameters(string taskName)
+        {
+            this.TaskName = taskName;
+        }
+
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskName { get; set; }
 
@@ -389,6 +404,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
     public class ResourceInput
     {
+        public ResourceInput(string resourceName)
+        {
+            this.ResourceName = resourceName;
+        }
+
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResourceName { get; set; }
 

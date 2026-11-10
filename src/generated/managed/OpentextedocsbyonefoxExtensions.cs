@@ -551,6 +551,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class UpdateDocumentContentBodyInput
     {
+        public UpdateDocumentContentBodyInput(string fileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -695,12 +701,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class SimpleSearchBodyInput
     {
+        public SimpleSearchBodyInput(string searchValue)
+        {
+            this.SearchValue = searchValue;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchValue { get; set; }
     }
 
     public class AdvancedSearchBodyInput
     {
+        public AdvancedSearchBodyInput(string query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 
@@ -725,6 +741,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class TrusteeWrite
     {
+        public TrusteeWrite(string id, string[] accessRights)
+        {
+            this.Id = id;
+            this.AccessRights = accessRights;
+        }
+
         [JsonProperty("trusteeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -753,6 +775,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class CreateDocumentBodyInput
     {
+        public CreateDocumentBodyInput(DocumentMetadataV2 metadata, File @file)
+        {
+            this.Metadata = metadata;
+            this.File = @file;
+        }
+
         [JsonProperty("parentId")]
         public string ParentId { get; set; }
 
@@ -765,6 +793,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class DocumentMetadataV2
     {
+        public DocumentMetadataV2(string displayName, JToken fields)
+        {
+            this.DisplayName = displayName;
+            this.Fields = fields;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -777,6 +811,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class File
     {
+        public File(string fileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -786,6 +826,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class CreateFolderBodyInput
     {
+        public CreateFolderBodyInput(string name, JToken fields)
+        {
+            this.Name = name;
+            this.Fields = fields;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -801,12 +847,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class CreateLookupEntryBodyInput
     {
+        public CreateLookupEntryBodyInput(JToken fields)
+        {
+            this.Fields = fields;
+        }
+
         [JsonProperty("fields", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Fields { get; set; }
     }
 
     public class UpdateDocumentBodyInput
     {
+        public UpdateDocumentBodyInput(DocumentMetadataV2 metadata, File @file)
+        {
+            this.Metadata = metadata;
+            this.File = @file;
+        }
+
         [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         public DocumentMetadataV2 Metadata { get; set; }
 
@@ -816,6 +873,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class UpdateDocumentPropertiesBodyInput
     {
+        public UpdateDocumentPropertiesBodyInput(string displayName, JToken fields)
+        {
+            this.DisplayName = displayName;
+            this.Fields = fields;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -828,6 +891,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class UpdateFolderBodyInput
     {
+        public UpdateFolderBodyInput(string name, JToken fields)
+        {
+            this.Name = name;
+            this.Fields = fields;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

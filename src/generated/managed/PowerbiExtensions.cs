@@ -282,6 +282,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_exportPayloadPowerBIReport != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_exportPayloadPowerBIReport);
+                else
+                    callPayload.Body = new ExportPayloadPowerBIReportInput().ToJToken();
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -299,6 +301,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_exportPayloadPaginatedReport != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_exportPayloadPaginatedReport);
+                else
+                    callPayload.Body = new ExportPayloadPaginatedReportInput().ToJToken();
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -334,6 +338,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
     public class ScorecardInput
     {
+        public ScorecardInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -426,6 +435,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
     public class CreateGoalGoalInput
     {
+        public CreateGoalGoalInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -516,6 +530,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
     public class SpecificationInput
     {
+        public SpecificationInput(string queryText)
+        {
+            this.QueryText = queryText;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string QueryText { get; set; }
 
@@ -534,6 +553,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
     public class GoalValueCheckinCheckinInput
     {
+        public GoalValueCheckinCheckinInput(string date)
+        {
+            this.Date = date;
+        }
+
         [JsonProperty("timestamp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
 
@@ -688,6 +712,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
     public class EffectiveIdentity
     {
+        public EffectiveIdentity(string username)
+        {
+            this.Username = username;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
@@ -709,6 +738,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
     public class IdentityBlob
     {
+        public IdentityBlob(string value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }

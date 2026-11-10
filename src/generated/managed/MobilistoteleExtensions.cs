@@ -880,6 +880,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
 
     public class DialBodyInput
     {
+        public DialBodyInput(string destination, int contactId)
+        {
+            this.Destination = destination;
+            this.ContactId = contactId;
+        }
+
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Destination { get; set; }
 

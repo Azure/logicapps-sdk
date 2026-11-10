@@ -124,31 +124,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> AddSubscriber(Expression<Func<AddSubscriberBodyInput>> body = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> AddSubscriber(Expression<Func<AddSubscriberBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscribers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Subscriber>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UpdateSubscriber(Expression<Func<AddSubscriberBodyInput>> body = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UpdateSubscriber(Expression<Func<AddSubscriberBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscribers";
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Subscriber>(callPayload);
             });
         }
@@ -176,6 +174,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new UnsubscribeSubscriberBodyInput().ToJToken();
                 return new ApiConnectionAction<Subscriber>(callPayload);
             });
         }
@@ -346,6 +346,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
 
     public class AddSubscriberBodyInput
     {
+        public AddSubscriberBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 

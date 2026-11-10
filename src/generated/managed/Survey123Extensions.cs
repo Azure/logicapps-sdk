@@ -181,6 +181,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
 
     public class CreateFeatureReportBodyInput
     {
+        public CreateFeatureReportBodyInput(string survey, string featureLayer, string reportTemplate, CreateFeatureReportBodyInputValueType value)
+        {
+            this.Survey = survey;
+            this.FeatureLayer = featureLayer;
+            this.ReportTemplate = reportTemplate;
+            this.Value = value;
+        }
+
         [JsonProperty("surveyItemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Survey { get; set; }
 

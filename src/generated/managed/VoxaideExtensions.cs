@@ -191,6 +191,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
 
     public class CreateReasonBodyInput
     {
+        public CreateReasonBodyInput(string name, string[] questions)
+        {
+            this.Name = name;
+            this.Questions = questions;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -284,6 +290,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
 
     public class PlaceCallBodyInput
     {
+        public PlaceCallBodyInput(string reasonId, Contact contact)
+        {
+            this.ReasonId = reasonId;
+            this.Contact = contact;
+        }
+
         [JsonProperty("reasonId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReasonId { get; set; }
 
@@ -299,6 +311,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
 
     public class Contact
     {
+        public Contact(string phone)
+        {
+            this.Phone = phone;
+        }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 

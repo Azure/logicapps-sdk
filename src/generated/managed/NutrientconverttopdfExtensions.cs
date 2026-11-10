@@ -193,6 +193,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class ConvertInputDataInput
     {
+        public ConvertInputDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -254,6 +260,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class InputCadDataInput
     {
+        public InputCadDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -347,6 +359,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class InputEmailDataInput
     {
+        public InputEmailDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -452,6 +470,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class InputExcelDataInput
     {
+        public InputExcelDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -535,6 +559,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class ConvertHtmlInputDataInput
     {
+        public ConvertHtmlInputDataInput(string sourceURLOrHTML)
+        {
+            this.SourceURLOrHTML = sourceURLOrHTML;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -591,6 +620,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class InputInfopathDataInput
     {
+        public InputInfopathDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -750,6 +785,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class InputPdfDataInput
     {
+        public InputPdfDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -804,6 +845,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class InputPowerpointDataInput
     {
+        public InputPowerpointDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -890,6 +937,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class InputVisioDataInput
     {
+        public InputVisioDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -948,6 +1001,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class InputWordDataInput
     {
+        public InputWordDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 

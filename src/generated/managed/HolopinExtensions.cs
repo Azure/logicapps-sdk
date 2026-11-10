@@ -81,6 +81,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
 
     public class BodyInput
     {
+        public BodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
     }

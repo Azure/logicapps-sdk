@@ -1778,6 +1778,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
 
     public class BodyInput
     {
+        public BodyInput(string geometry)
+        {
+            this.Geometry = geometry;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; } = "Feature";
 

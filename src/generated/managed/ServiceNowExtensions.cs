@@ -871,6 +871,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
 
     public class BodyInput
     {
+        public BodyInput(int sysparmQuantity)
+        {
+            this.SysparmQuantity = sysparmQuantity;
+        }
+
         [JsonProperty("sysparm_quantity", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SysparmQuantity { get; set; }
 

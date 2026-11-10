@@ -309,12 +309,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class CancelBodyInput
     {
+        public CancelBodyInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
     }
 
     public class GetPartyStatusBodyInput
     {
+        public GetPartyStatusBodyInput(string documentId, string partyId)
+        {
+            this.DocumentId = documentId;
+            this.PartyId = partyId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -324,6 +335,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class UpdatePartyEmailBodyInput
     {
+        public UpdatePartyEmailBodyInput(string documentId, string partyId, string partyEmail)
+        {
+            this.DocumentId = documentId;
+            this.PartyId = partyId;
+            this.PartyEmail = partyEmail;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -336,6 +354,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class UpdateDocJsonBodyInput
     {
+        public UpdateDocJsonBodyInput(string documentId, string documentJson)
+        {
+            this.DocumentId = documentId;
+            this.DocumentJson = documentJson;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -345,6 +369,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class AppendFileBodyInput
     {
+        public AppendFileBodyInput(string documentId, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdfContent)
+        {
+            this.DocumentId = documentId;
+            this.PdfContent = pdfContent;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -354,6 +384,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class NewFromPdfBodyInput
     {
+        public NewFromPdfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdfContent)
+        {
+            this.PdfContent = pdfContent;
+        }
+
         [JsonProperty("pdfContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfContent { get; set; }
 
@@ -372,6 +407,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class AddPartyBodyInput
     {
+        public AddPartyBodyInput(string documentId, string partyEmail)
+        {
+            this.DocumentId = documentId;
+            this.PartyEmail = partyEmail;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -460,6 +501,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class SetAuthorAttachmentBodyInput
     {
+        public SetAuthorAttachmentBodyInput(string documentId, string attachmentName, BodyInputRequiredType @required, BodyInputAddToSealedFileType addToSealedFile)
+        {
+            this.DocumentId = documentId;
+            this.AttachmentName = attachmentName;
+            this.Required = @required;
+            this.AddToSealedFile = addToSealedFile;
+        }
+
         [JsonProperty("fileId")]
         public string FileId { get; set; }
 
@@ -495,6 +544,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class StartAndOnDocumentSignBodyInput
     {
+        public StartAndOnDocumentSignBodyInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 

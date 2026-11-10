@@ -207,6 +207,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
 
     public class ContentInput
     {
+        public ContentInput(string contentValue)
+        {
+            this.ContentValue = contentValue;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContentValue { get; set; }
     }
@@ -445,6 +450,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
 
     public class BodyInputItem
     {
+        public BodyInputItem(BodyInputItemContentTypeType contentType, string reviewContent, string contentId)
+        {
+            this.ContentType = contentType;
+            this.ReviewContent = reviewContent;
+            this.ContentId = contentId;
+        }
+
         [JsonProperty("Type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputItemContentTypeType ContentType { get; set; }
 
@@ -468,6 +480,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
 
     public class BodyInputItemOptionalMetadataTypeItem
     {
+        public BodyInputItemOptionalMetadataTypeItem(string keyParameter, string valueParameter)
+        {
+            this.KeyParameter = keyParameter;
+            this.ValueParameter = valueParameter;
+        }
+
         [JsonProperty("Key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string KeyParameter { get; set; }
 

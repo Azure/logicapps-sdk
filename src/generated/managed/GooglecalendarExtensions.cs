@@ -265,6 +265,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
     public class NewEventInput
     {
+        public NewEventInput(string startTime, string endTime)
+        {
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("summary")]
         public string Title { get; set; }
 

@@ -13,18 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
     public class UipathorchestratorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto, ApiConnectionActionConfiguration> StartJobs(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<StartJobsBodyInput>> body = null)
+        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto, ApiConnectionActionConfiguration> StartJobs(Expression<Func<StartJobsBodyInput>> body, Expression<Func<int>> xUIPATHOrganizationUnitId)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ODataValueOfIEnumerableOfJobDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUIPATHOrganizationUnitId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ODataValueOfIEnumerableOfJobDto>(callPayload);
             });
         }
@@ -42,6 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
                 callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUIPATHOrganizationUnitId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new AddQueueItemBodyInput().ToJToken();
                 return new ApiConnectionAction<QueueItemDto>(callPayload);
             });
         }
@@ -401,12 +402,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
 
     public class StartJobsBodyInput
     {
+        public StartJobsBodyInput(BodyInputStartInfoType startInfo)
+        {
+            this.StartInfo = startInfo;
+        }
+
         [JsonProperty("startInfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputStartInfoType StartInfo { get; set; } = new BodyInputStartInfoType();
+        public BodyInputStartInfoType StartInfo { get; set; }
     }
 
     public class BodyInputStartInfoType
     {
+        public BodyInputStartInfoType(string processName, int jobsCount)
+        {
+            this.ProcessName = processName;
+            this.JobsCount = jobsCount;
+        }
+
         [JsonProperty("ReleaseKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProcessName { get; set; }
 

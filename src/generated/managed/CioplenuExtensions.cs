@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
 
     public class TaskDataInput
     {
+        public TaskDataInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

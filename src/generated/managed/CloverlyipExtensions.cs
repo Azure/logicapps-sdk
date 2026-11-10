@@ -307,6 +307,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class DirectCarbonBodyInput
     {
+        public DirectCarbonBodyInput(DirectCarbonBodyInputWeightType weight)
+        {
+            this.Weight = weight;
+        }
+
         [JsonProperty("weight", DefaultValueHandling = DefaultValueHandling.Include)]
         public DirectCarbonBodyInputWeightType Weight { get; set; }
 
@@ -319,6 +324,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class DirectCarbonBodyInputWeightType
     {
+        public DirectCarbonBodyInputWeightType(double value, BodyInputWeightTypeUnitsType units)
+        {
+            this.Value = value;
+            this.Units = units;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 
@@ -448,6 +459,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class DirectTransactionBodyInput
     {
+        public DirectTransactionBodyInput(DirectTransactionBodyInputCurrencyType currency)
+        {
+            this.Currency = currency;
+        }
+
         [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Include)]
         public DirectTransactionBodyInputCurrencyType Currency { get; set; }
 
@@ -463,6 +479,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class DirectTransactionBodyInputCurrencyType
     {
+        public DirectTransactionBodyInputCurrencyType(double value, string units)
+        {
+            this.Value = value;
+            this.Units = units;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 
@@ -883,6 +905,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class CalculateFreightBodyInputWeightType
     {
+        public CalculateFreightBodyInputWeightType(double value, string units)
+        {
+            this.Value = value;
+            this.Units = units;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 
@@ -994,6 +1022,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class CalculateFlightBodyInput
     {
+        public CalculateFlightBodyInput(string[] airports)
+        {
+            this.Airports = airports;
+        }
+
         [JsonProperty("airports", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Airports { get; set; }
 
@@ -1099,6 +1132,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class CalculateVehicleBodyInput
     {
+        public CalculateVehicleBodyInput(CalculateVehicleBodyInputDistanceType distance, BodyInputFuelEfficiencyType fuelEfficiency)
+        {
+            this.Distance = distance;
+            this.FuelEfficiency = fuelEfficiency;
+        }
+
         [JsonProperty("distance", DefaultValueHandling = DefaultValueHandling.Include)]
         public CalculateVehicleBodyInputDistanceType Distance { get; set; }
 
@@ -1114,6 +1153,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class CalculateVehicleBodyInputDistanceType
     {
+        public CalculateVehicleBodyInputDistanceType(double value, string units)
+        {
+            this.Value = value;
+            this.Units = units;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 
@@ -1123,6 +1168,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class BodyInputFuelEfficiencyType
     {
+        public BodyInputFuelEfficiencyType(double value, string units, string of)
+        {
+            this.Value = value;
+            this.Units = units;
+            this.Of = of;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 
@@ -1228,6 +1280,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class CalculateElectricityBodyInput
     {
+        public CalculateElectricityBodyInput(BodyInputEnergyType energy)
+        {
+            this.Energy = energy;
+        }
+
         [JsonProperty("energy", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputEnergyType Energy { get; set; }
 
@@ -1240,6 +1297,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class BodyInputEnergyType
     {
+        public BodyInputEnergyType(double value, BodyInputEnergyTypeUnitsType units)
+        {
+            this.Value = value;
+            this.Units = units;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 
@@ -1454,6 +1517,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
     public class ConvertEstimateBodyInput
     {
+        public ConvertEstimateBodyInput(string transactionId)
+        {
+            this.TransactionId = transactionId;
+        }
+
         [JsonProperty("transaction_ID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TransactionId { get; set; }
     }

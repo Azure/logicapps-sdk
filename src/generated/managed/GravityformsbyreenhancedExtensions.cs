@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 
     public class WebhookInput
     {
+        public WebhookInput(string form)
+        {
+            this.Form = form;
+        }
+
         [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 

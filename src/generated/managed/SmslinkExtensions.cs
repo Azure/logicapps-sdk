@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
 
     public class BodyInput
     {
+        public BodyInput(string to, string message)
+        {
+            this.To = to;
+            this.Message = message;
+        }
+
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 

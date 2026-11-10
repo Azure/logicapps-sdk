@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new NewProfileBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -40,6 +42,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new UpdatedProfileBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -54,6 +58,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ArchivedProfileBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -68,6 +74,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new DeletedProfileBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -82,6 +90,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new NewFormSubmissionBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -96,6 +106,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new UpdatedFormSubmissionBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -110,6 +122,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new DeletedFormSubmissionBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -124,6 +138,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new NewReservationBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -138,6 +154,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new UpdatedReservationBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -152,6 +170,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new DeletedReservationBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -166,6 +186,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new NewSequenceBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -180,6 +202,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new UpdatedSequenceBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -194,6 +218,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vome
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new DeletedSequenceBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }

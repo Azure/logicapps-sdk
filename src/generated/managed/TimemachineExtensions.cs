@@ -1778,6 +1778,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class SetModuleQuizSettingsBodyInput
     {
+        public SetModuleQuizSettingsBodyInput(string questionType)
+        {
+            this.QuestionType = questionType;
+        }
+
         [JsonProperty("questionType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string QuestionType { get; set; }
 
@@ -2003,6 +2008,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class CreateUserBodyInput
     {
+        public CreateUserBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -2075,6 +2085,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class AddLessonQuestionBodyInput
     {
+        public AddLessonQuestionBodyInput(BodyInputTypeType type, string text)
+        {
+            this.Type = type;
+            this.Text = text;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputTypeType Type { get; set; }
 
@@ -2102,6 +2118,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class QuestionOptionInput
     {
+        public QuestionOptionInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
@@ -2111,12 +2132,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class ReorderLessonQuestionsBodyInput
     {
+        public ReorderLessonQuestionsBodyInput(string[] questionIds)
+        {
+            this.QuestionIds = questionIds;
+        }
+
         [JsonProperty("questionIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] QuestionIds { get; set; }
     }
 
     public class MoveTopicBodyInput
     {
+        public MoveTopicBodyInput(string targetModuleId)
+        {
+            this.TargetModuleId = targetModuleId;
+        }
+
         [JsonProperty("targetModuleId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetModuleId { get; set; }
 
@@ -2165,6 +2196,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class AssignDocumentsToExpertBodyInput
     {
+        public AssignDocumentsToExpertBodyInput(string[] documentIds)
+        {
+            this.DocumentIds = documentIds;
+        }
+
         [JsonProperty("documentIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] DocumentIds { get; set; }
     }
@@ -2267,6 +2303,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class AddLearningByteToTopicBodyInput
     {
+        public AddLearningByteToTopicBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2390,6 +2431,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class GenerateCourseContentBodyInput
     {
+        public GenerateCourseContentBodyInput(string[] topicIds)
+        {
+            this.TopicIds = topicIds;
+        }
+
         [JsonProperty("topicIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] TopicIds { get; set; }
     }
@@ -2489,6 +2535,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class AddLessonToLearningByteBodyInput
     {
+        public AddLessonToLearningByteBodyInput(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
@@ -2549,6 +2600,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class AssignRolesToCourseBodyInput
     {
+        public AssignRolesToCourseBodyInput(string[] roleIds)
+        {
+            this.RoleIds = roleIds;
+        }
+
         [JsonProperty("roleIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] RoleIds { get; set; }
     }
@@ -2564,6 +2620,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class AskExpertBodyInput
     {
+        public AskExpertBodyInput(string question)
+        {
+            this.Question = question;
+        }
+
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
     }
@@ -2633,6 +2694,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class CreateRoleInDepartmentBodyInput
     {
+        public CreateRoleInDepartmentBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2645,6 +2711,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class AssignUserToRoleBodyInput
     {
+        public AssignUserToRoleBodyInput(string userId)
+        {
+            this.UserId = userId;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
     }
@@ -2765,6 +2836,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class CreateDemoTrainingBodyInput
     {
+        public CreateDemoTrainingBodyInput(string name, BodyInputTrainingTypeType trainingType, string videoFileId)
+        {
+            this.Name = name;
+            this.TrainingType = trainingType;
+            this.VideoFileId = videoFileId;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2801,6 +2879,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class UpdateDemoTrainingAvailabilityBodyInput
     {
+        public UpdateDemoTrainingAvailabilityBodyInput(bool available)
+        {
+            this.Available = available;
+        }
+
         [JsonProperty("available", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Available { get; set; }
     }
@@ -2900,6 +2983,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class CreateCourseBodyInput
     {
+        public CreateCourseBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -2951,12 +3039,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class ReorderModulesInCourseBodyInput
     {
+        public ReorderModulesInCourseBodyInput(string[] moduleIds)
+        {
+            this.ModuleIds = moduleIds;
+        }
+
         [JsonProperty("moduleIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ModuleIds { get; set; }
     }
 
     public class RegenerateCourseItemBodyInput
     {
+        public RegenerateCourseItemBodyInput(BodyInputTargetType target, string targetId)
+        {
+            this.Target = target;
+            this.TargetId = targetId;
+        }
+
         [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputTargetType Target { get; set; }
 
@@ -2996,6 +3095,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class GenerateCourseBodyInput
     {
+        public GenerateCourseBodyInput(string name, ModuleInput[] modules)
+        {
+            this.Name = name;
+            this.Modules = modules;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -3008,6 +3113,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class ModuleInput
     {
+        public ModuleInput(string name, TopicInput[] topics)
+        {
+            this.Name = name;
+            this.Topics = topics;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -3020,6 +3131,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class TopicInput
     {
+        public TopicInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

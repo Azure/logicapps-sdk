@@ -217,6 +217,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new WebhookBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -447,12 +449,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
 
     public class AssignAProvisioningPolicyToAGroupBodyInput
     {
+        public AssignAProvisioningPolicyToAGroupBodyInput(BodyInputAssignmentsTypeItem[] assignments)
+        {
+            this.Assignments = assignments;
+        }
+
         [JsonProperty("assignments", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputAssignmentsTypeItem[] Assignments { get; set; }
     }
 
     public class BodyInputAssignmentsTypeItem
     {
+        public BodyInputAssignmentsTypeItem(BodyInputAssignmentsTypeItemTargetType target)
+        {
+            this.Target = target;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -462,6 +474,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
 
     public class BodyInputAssignmentsTypeItemTargetType
     {
+        public BodyInputAssignmentsTypeItemTargetType(string groupId)
+        {
+            this.GroupId = groupId;
+        }
+
         [JsonProperty("groupId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupId { get; set; }
 
@@ -567,6 +584,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
 
     public class CreateAProvisioningPolicyBodyInput
     {
+        public CreateAProvisioningPolicyBodyInput(string displayName, string description, BodyInputDomainJoinConfigurationsTypeItem[] domainJoinConfigurations, string imageId, string imageDisplayName, BodyInputImageTypeType imageType, BodyInputProvisioningTypeType provisioningType, CreateAProvisioningPolicyBodyInputWindowsSettingType windowsSetting)
+        {
+            this.DisplayName = displayName;
+            this.Description = description;
+            this.DomainJoinConfigurations = domainJoinConfigurations;
+            this.ImageId = imageId;
+            this.ImageDisplayName = imageDisplayName;
+            this.ImageType = imageType;
+            this.ProvisioningType = provisioningType;
+            this.WindowsSetting = windowsSetting;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -643,6 +672,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
 
     public class CreateAProvisioningPolicyBodyInputWindowsSettingType
     {
+        public CreateAProvisioningPolicyBodyInputWindowsSettingType(string locale)
+        {
+            this.Locale = locale;
+        }
+
         [JsonProperty("locale", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Locale { get; set; }
     }

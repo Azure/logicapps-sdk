@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_data != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_data);
+                else
+                    callPayload.Body = new FormsCreateDataInput().ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -212,16 +214,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MarketingEmailsCreate(Expression<Func<MarketingEmailsCreateBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MarketingEmailsCreate(Expression<Func<MarketingEmailsCreateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/marketing-emails/v1/emails/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -482,6 +483,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
     public class FormsUpdateDataInput
     {
+        public FormsUpdateDataInput(string id, string createdAt, string updatedAt)
+        {
+            this.Id = id;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
+        }
+
         [JsonProperty("formType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FormType { get; set; } = "hubspot";
 
@@ -515,6 +523,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
     public class MarketingEventsUpdateCreateOrUpdateDataInput
     {
+        public MarketingEventsUpdateCreateOrUpdateDataInput(string eventName, string eventOrganizer, string externalAccountId, string externalEventId)
+        {
+            this.EventName = eventName;
+            this.EventOrganizer = eventOrganizer;
+            this.ExternalAccountId = externalAccountId;
+            this.ExternalEventId = externalEventId;
+        }
+
         [JsonProperty("eventName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventName { get; set; }
 
@@ -607,6 +623,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
     public class MarketingEmailsCreateBodyInput
     {
+        public MarketingEmailsCreateBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

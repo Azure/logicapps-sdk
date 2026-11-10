@@ -84,6 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
 
     public class RequestInput
     {
+        public RequestInput(string from)
+        {
+            this.From = from;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
         public string[] To { get; set; }

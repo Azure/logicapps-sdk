@@ -42,6 +42,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
 
     public class BodyInput
     {
+        public BodyInput(string template)
+        {
+            this.Template = template;
+        }
+
         [JsonProperty("xml")]
         public string Xml { get; set; }
 

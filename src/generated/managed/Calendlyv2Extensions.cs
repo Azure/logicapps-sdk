@@ -38,16 +38,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration> CreateInviteeNoShow(Expression<Func<CreateInviteeNoShowBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration> CreateInviteeNoShow(Expression<Func<CreateInviteeNoShowBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invitee_no_shows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInviteeNoShowResponse>(callPayload);
             });
         }
@@ -81,30 +80,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
     public class Calendlyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookSubscription(Expression<Func<CreateWebhookSubscriptionBodyInput>> body = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookSubscription(Expression<Func<CreateWebhookSubscriptionBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook_subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger<CreateWebhookSubscriptionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<CreateWebhookSubscriptionRoutingFormSubmissionBodyInput>> body = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionPollingTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<CreateWebhookSubscriptionRoutingFormSubmissionBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook_subscriptions/routing_form_submission";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(callPayload);
             });
         }
@@ -259,6 +256,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
     public class CreateInviteeNoShowBodyInput
     {
+        public CreateInviteeNoShowBodyInput(string invitee)
+        {
+            this.Invitee = invitee;
+        }
+
         [JsonProperty("invitee", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Invitee { get; set; }
     }
@@ -361,6 +363,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
     public class CreateWebhookSubscriptionBodyInput
     {
+        public CreateWebhookSubscriptionBodyInput(CreateWebhookSubscriptionBodyInputEventsTypeItem[] events)
+        {
+            this.Events = events;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
@@ -476,6 +483,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
     public class CreateWebhookSubscriptionRoutingFormSubmissionBodyInput
     {
+        public CreateWebhookSubscriptionRoutingFormSubmissionBodyInput(CreateWebhookSubscriptionRoutingFormSubmissionBodyInputEventsTypeItem[] events)
+        {
+            this.Events = events;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 

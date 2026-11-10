@@ -248,6 +248,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
 
     public class BodyInput
     {
+        public BodyInput(string processName, string ticketStatusName)
+        {
+            this.ProcessName = processName;
+            this.TicketStatusName = ticketStatusName;
+        }
+
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 

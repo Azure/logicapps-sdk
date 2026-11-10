@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     public class BlackbaudlistsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<AppendIDsToListBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<AppendIDsToListBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list/v1/appendidstolist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -48,6 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
 
     public class AppendIDsToListBodyInput
     {
+        public AppendIDsToListBodyInput(BodyInputListTypeType listType, string list, string[] idS)
+        {
+            this.ListType = listType;
+            this.List = list;
+            this.IdS = idS;
+        }
+
         [JsonProperty("list_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputListTypeType ListType { get; set; }
 
@@ -75,6 +81,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
 
     public class CreateListFromIDsBodyInput
     {
+        public CreateListFromIDsBodyInput(string name, string description, BodyInputListTypeType listType, BodyInputPermissionsType permissions, string[] idS)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.ListType = listType;
+            this.Permissions = permissions;
+            this.IdS = idS;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

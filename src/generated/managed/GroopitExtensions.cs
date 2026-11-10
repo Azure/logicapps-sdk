@@ -348,6 +348,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
 
     public class SubscribeToReports2SubscribeInput
     {
+        public SubscribeToReports2SubscribeInput(SubscribeInputUpdateType0Created1EditedType updateType0Created1Edited)
+        {
+            this.UpdateType0Created1Edited = updateType0Created1Edited;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callback { get; set; } = "#{listCallbackUrl()}";
 
@@ -363,6 +368,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
 
     public class SubscribeToLinkedMembersSubscribeInput
     {
+        public SubscribeToLinkedMembersSubscribeInput(SubscribeInputEventTypeType eventType)
+        {
+            this.EventType = eventType;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callback { get; set; } = "#{listCallbackUrl()}";
 

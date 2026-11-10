@@ -227,6 +227,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
 
     public class VideoCreateBodyInput
     {
+        public VideoCreateBodyInput(BodyInputInputTypeItem[] input)
+        {
+            this.Input = input;
+        }
+
         [JsonProperty("test")]
         public bool? Test { get; set; }
 
@@ -263,6 +268,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
 
     public class BodyInputInputTypeItem
     {
+        public BodyInputInputTypeItem(string scriptText, string avatar, string background)
+        {
+            this.ScriptText = scriptText;
+            this.Avatar = avatar;
+            this.Background = background;
+        }
+
         [JsonProperty("scriptText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScriptText { get; set; }
 
@@ -506,6 +518,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
 
     public class VideoCreateTemplateBodyInput
     {
+        public VideoCreateTemplateBodyInput(string templateId)
+        {
+            this.TemplateId = templateId;
+        }
+
         [JsonProperty("title")]
         public string Title { get; set; }
 

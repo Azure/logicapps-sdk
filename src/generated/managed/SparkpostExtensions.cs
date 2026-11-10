@@ -116,18 +116,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class AddUserToRecipientListRequestInput
     {
+        public AddUserToRecipientListRequestInput(Recipient recipient)
+        {
+            this.Recipient = recipient;
+        }
+
         [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
         public Recipient Recipient { get; set; }
     }
 
     public class Recipient
     {
+        public Recipient(Address address)
+        {
+            this.Address = address;
+        }
+
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public Address Address { get; set; }
     }
 
     public class Address
     {
+        public Address(string emailAddress)
+        {
+            this.EmailAddress = emailAddress;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
 
@@ -143,6 +158,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class SendEmailToRecipientListRequestInput
     {
+        public SendEmailToRecipientListRequestInput(EmailRecipientList recipients, EmailTemplateList content)
+        {
+            this.Recipients = recipients;
+            this.Content = content;
+        }
+
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
         public EmailRecipientList Recipients { get; set; }
 
@@ -155,18 +176,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class EmailRecipientList
     {
+        public EmailRecipientList(string recipient)
+        {
+            this.Recipient = recipient;
+        }
+
         [JsonProperty("list_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Recipient { get; set; }
     }
 
     public class EmailTemplateList
     {
+        public EmailTemplateList(string template)
+        {
+            this.Template = template;
+        }
+
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Template { get; set; }
     }
 
     public class SendEmailToRecipientRequestInput
     {
+        public SendEmailToRecipientRequestInput(EmailTemplateList content, EmailRecipient[] recipients)
+        {
+            this.Content = content;
+            this.Recipients = recipients;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public EmailTemplateList Content { get; set; }
 
@@ -176,6 +213,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class EmailRecipient
     {
+        public EmailRecipient(string emailAddress)
+        {
+            this.EmailAddress = emailAddress;
+        }
+
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
     }

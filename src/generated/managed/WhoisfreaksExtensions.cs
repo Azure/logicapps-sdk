@@ -435,18 +435,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
 
     public class BulkDomainAvailabilityLookupBodyInput
     {
+        public BulkDomainAvailabilityLookupBodyInput(string[] domainNames)
+        {
+            this.DomainNames = domainNames;
+        }
+
         [JsonProperty("domainNames", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] DomainNames { get; set; }
     }
 
     public class BulkIpGeolocationLookupBodyInput
     {
+        public BulkIpGeolocationLookupBodyInput(string[] ips)
+        {
+            this.Ips = ips;
+        }
+
         [JsonProperty("ips", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Ips { get; set; }
     }
 
     public class BulkDomainLookupBodyInput
     {
+        public BulkDomainLookupBodyInput(string[] domainNames)
+        {
+            this.DomainNames = domainNames;
+        }
+
         [JsonProperty("domainNames", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] DomainNames { get; set; }
 

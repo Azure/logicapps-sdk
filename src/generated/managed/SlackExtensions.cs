@@ -174,6 +174,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
 
     public class MessageInput
     {
+        public MessageInput(string channelName, string messageText)
+        {
+            this.ChannelName = channelName;
+            this.MessageText = messageText;
+        }
+
         [JsonProperty("channel", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
 

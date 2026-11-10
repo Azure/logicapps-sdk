@@ -13,17 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
     public class HuggingfaceipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ModelId(Expression<Func<string>> modelId, Expression<Func<ModelIdBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ModelId(Expression<Func<string>> modelId, Expression<Func<ModelIdBodyInput>> body)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -58,46 +57,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<AnswerResponse, ApiConnectionActionConfiguration> Answer(Expression<Func<AnswerBodyInput>> body = null)
+        public IBodyWorkflowAction<AnswerResponse, ApiConnectionActionConfiguration> Answer(Expression<Func<AnswerBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AnswerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deepset/roberta-base-squad2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AnswerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<double[], ApiConnectionActionConfiguration> SentenceSimilarity(Expression<Func<SentenceSimilarityBodyInput>> body = null)
+        public IBodyWorkflowAction<double[], ApiConnectionActionConfiguration> SentenceSimilarity(Expression<Func<SentenceSimilarityBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<double[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sentence-transformers/all-MiniLM-L6-v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<double[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TextClassificationResponseItemItem[][], ApiConnectionActionConfiguration> TextClassification(Expression<Func<FillMaskBodyInput>> body = null)
+        public IBodyWorkflowAction<TextClassificationResponseItemItem[][], ApiConnectionActionConfiguration> TextClassification(Expression<Func<FillMaskBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TextClassificationResponseItemItem[][], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/distilbert-base-uncased-finetuned-sst-2-english";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TextClassificationResponseItemItem[][]>(callPayload);
             });
         }
@@ -118,31 +114,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TokenClassificationResponseItem[], ApiConnectionActionConfiguration> TokenClassification(Expression<Func<TokenClassificationBodyInput>> body = null)
+        public IBodyWorkflowAction<TokenClassificationResponseItem[], ApiConnectionActionConfiguration> TokenClassification(Expression<Func<TokenClassificationBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TokenClassificationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dbmdz/bert-large-cased-finetuned-conll03-english";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TokenClassificationResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TranslationResponseItem[], ApiConnectionActionConfiguration> Translation(Expression<Func<FillMaskBodyInput>> body = null)
+        public IBodyWorkflowAction<TranslationResponseItem[], ApiConnectionActionConfiguration> Translation(Expression<Func<FillMaskBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TranslationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/t5-base";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TranslationResponseItem[]>(callPayload);
             });
         }
@@ -163,16 +157,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<ConversationalResponse, ApiConnectionActionConfiguration> Conversational(Expression<Func<ConversationalBodyInput>> body = null)
+        public IBodyWorkflowAction<ConversationalResponse, ApiConnectionActionConfiguration> Conversational(Expression<Func<ConversationalBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConversationalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/microsoft/DialoGPT-large";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConversationalResponse>(callPayload);
             });
         }
@@ -184,6 +177,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
     public class ModelIdBodyInput
     {
+        public ModelIdBodyInput(string inputs)
+        {
+            this.Inputs = inputs;
+        }
+
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Inputs { get; set; }
 
@@ -226,6 +224,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
     public class FillMaskBodyInput
     {
+        public FillMaskBodyInput(string inputs)
+        {
+            this.Inputs = inputs;
+        }
+
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Inputs { get; set; }
 
@@ -295,12 +298,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
     public class AnswerBodyInput
     {
+        public AnswerBodyInput(AnswerBodyInputInputsType inputs)
+        {
+            this.Inputs = inputs;
+        }
+
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public AnswerBodyInputInputsType Inputs { get; set; }
     }
 
     public class AnswerBodyInputInputsType
     {
+        public AnswerBodyInputInputsType(string question, string context)
+        {
+            this.Question = question;
+            this.Context = context;
+        }
+
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
 
@@ -310,6 +324,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
     public class SentenceSimilarityBodyInput
     {
+        public SentenceSimilarityBodyInput(SentenceSimilarityBodyInputInputsType inputs)
+        {
+            this.Inputs = inputs;
+        }
+
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public SentenceSimilarityBodyInputInputsType Inputs { get; set; }
 
@@ -319,6 +338,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
     public class SentenceSimilarityBodyInputInputsType
     {
+        public SentenceSimilarityBodyInputInputsType(string sourceSentence, string[] sentences)
+        {
+            this.SourceSentence = sourceSentence;
+            this.Sentences = sentences;
+        }
+
         [JsonProperty("source_sentence", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSentence { get; set; }
 
@@ -361,6 +386,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
     public class TokenClassificationBodyInput
     {
+        public TokenClassificationBodyInput(string inputs)
+        {
+            this.Inputs = inputs;
+        }
+
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Inputs { get; set; }
 
@@ -436,6 +466,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
     public class ConversationalBodyInput
     {
+        public ConversationalBodyInput(ConversationalBodyInputInputsType inputs)
+        {
+            this.Inputs = inputs;
+        }
+
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public ConversationalBodyInputInputsType Inputs { get; set; }
 
@@ -448,6 +483,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
     public class ConversationalBodyInputInputsType
     {
+        public ConversationalBodyInputInputsType(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("past_user_inputs")]
         public string[] PastUserInputs { get; set; }
 

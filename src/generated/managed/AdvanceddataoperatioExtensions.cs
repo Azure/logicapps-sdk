@@ -41,46 +41,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Concatenate(Expression<Func<ConcatenateBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Concatenate(Expression<Func<ConcatenateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Concatenate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CSharpEvaluate(Expression<Func<CSharpEvaluateBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CSharpEvaluate(Expression<Func<CSharpEvaluateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CSharpEvaluate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CSharpScriptExecute(Expression<Func<CSharpScriptExecuteBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CSharpScriptExecute(Expression<Func<CSharpScriptExecuteBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CSharpScriptExecute";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -100,121 +97,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Distinct(Expression<Func<DistinctBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Distinct(Expression<Func<DistinctBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Distinct";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Expert(Expression<Func<ExpertBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Expert(Expression<Func<ExpertBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Expert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FilterObjectArray(Expression<Func<FilterObjectArrayBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FilterObjectArray(Expression<Func<FilterObjectArrayBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FilterObjectArray";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FlattenObjectArray(Expression<Func<FlattenObjectArrayBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FlattenObjectArray(Expression<Func<FlattenObjectArrayBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FlattenObjectArray";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetDataSchema(Expression<Func<GetDataSchemaBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetDataSchema(Expression<Func<GetDataSchemaBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetDataSchema";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GZipCompress(Expression<Func<GZipCompressBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GZipCompress(Expression<Func<GZipCompressBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GZipCompress";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GZipDecompress(Expression<Func<GZipCompressBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GZipDecompress(Expression<Func<GZipCompressBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GZipDecompress";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Join(Expression<Func<JoinBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Join(Expression<Func<JoinBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Join";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
@@ -318,76 +307,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> RegexMatches(Expression<Func<RegexMatchesBodyInput>> body = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> RegexMatches(Expression<Func<RegexMatchesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RegexMatches";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SimpleConcatenate(Expression<Func<SimpleConcatenateBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SimpleConcatenate(Expression<Func<SimpleConcatenateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SimpleConcatenate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SimpleDistinct(Expression<Func<SimpleDistinctBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SimpleDistinct(Expression<Func<SimpleDistinctBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SimpleDistinct";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> SortObjectArray(Expression<Func<SortObjectArrayBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> SortObjectArray(Expression<Func<SortObjectArrayBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SortObjectArray";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Split(Expression<Func<SplitBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> Split(Expression<Func<SplitBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Split";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
@@ -435,16 +419,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<ZipArchiveDecompressResponseItem[], ApiConnectionActionConfiguration> ZipArchiveDecompress(Expression<Func<ZipArchiveDecompressBodyInput>> body = null)
+        public IBodyWorkflowAction<ZipArchiveDecompressResponseItem[], ApiConnectionActionConfiguration> ZipArchiveDecompress(Expression<Func<ZipArchiveDecompressBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ZipArchiveDecompressResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ZipArchiveDecompress";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ZipArchiveDecompressResponseItem[]>(callPayload);
             });
         }
@@ -456,6 +439,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class AggregateBodyInput
     {
+        public AggregateBodyInput(BodyInputAggregationTypeType aggregationType, string[] aggregateBy, string[] aggregateOn, JToken[] data)
+        {
+            this.AggregationType = aggregationType;
+            this.AggregateBy = aggregateBy;
+            this.AggregateOn = aggregateOn;
+            this.Data = data;
+        }
+
         [JsonProperty("aggregationType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputAggregationTypeType AggregationType { get; set; }
 
@@ -502,6 +493,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class CartesianJoinBodyInput
     {
+        public CartesianJoinBodyInput(JToken data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("filter")]
         public string Filter { get; set; }
 
@@ -520,6 +516,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class ConcatenateBodyInput
     {
+        public ConcatenateBodyInput(string field, bool ignoreEmpty, JToken[] data)
+        {
+            this.Field = field;
+            this.IgnoreEmpty = ignoreEmpty;
+            this.Data = data;
+        }
+
         [JsonProperty("field", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Field { get; set; }
 
@@ -547,12 +550,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class CSharpEvaluateBodyInput
     {
+        public CSharpEvaluateBodyInput(string expression)
+        {
+            this.Expression = expression;
+        }
+
         [JsonProperty("expression", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Expression { get; set; }
     }
 
     public class CSharpScriptExecuteBodyInput
     {
+        public CSharpScriptExecuteBodyInput(string script)
+        {
+            this.Script = script;
+        }
+
         [JsonProperty("script", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Script { get; set; }
 
@@ -565,6 +578,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class CsvToJsonBodyInput
     {
+        public CsvToJsonBodyInput(string data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("headerRow")]
         public bool? HeaderRow { get; set; }
 
@@ -609,6 +627,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class DistinctBodyInput
     {
+        public DistinctBodyInput(string[] fields, JToken[] data)
+        {
+            this.Fields = fields;
+            this.Data = data;
+        }
+
         [JsonProperty("fields", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Fields { get; set; }
 
@@ -630,6 +654,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class ExpertBodyInput
     {
+        public ExpertBodyInput(string query, JToken data)
+        {
+            this.Query = query;
+            this.Data = data;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 
@@ -645,6 +675,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class FilterObjectArrayBodyInput
     {
+        public FilterObjectArrayBodyInput(string filter, JToken[] data)
+        {
+            this.Filter = filter;
+            this.Data = data;
+        }
+
         [JsonProperty("filter", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filter { get; set; }
 
@@ -654,6 +690,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class FlattenObjectArrayBodyInput
     {
+        public FlattenObjectArrayBodyInput(string delimiter, bool balancedOutput, JToken[] data)
+        {
+            this.Delimiter = delimiter;
+            this.BalancedOutput = balancedOutput;
+            this.Data = data;
+        }
+
         [JsonProperty("delimiter", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Delimiter { get; set; }
 
@@ -678,6 +721,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class GetDataSchemaBodyInput
     {
+        public GetDataSchemaBodyInput(JToken[] data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("filter")]
         public string Filter { get; set; }
 
@@ -696,12 +744,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class GZipCompressBodyInput
     {
+        public GZipCompressBodyInput(string data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Data { get; set; }
     }
 
     public class JoinBodyInput
     {
+        public JoinBodyInput(BodyInputJoinTypeType joinType, string[] joinFields, string[] fields, JToken data)
+        {
+            this.JoinType = joinType;
+            this.JoinFields = joinFields;
+            this.Fields = fields;
+            this.Data = data;
+        }
+
         [JsonProperty("joinType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputJoinTypeType JoinType { get; set; }
 
@@ -739,6 +800,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class JsonSchemaValidateBodyInput
     {
+        public JsonSchemaValidateBodyInput(JToken schema, JToken data)
+        {
+            this.Schema = schema;
+            this.Data = data;
+        }
+
         [JsonProperty("schema", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Schema { get; set; }
 
@@ -748,6 +815,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class JsonToTableBodyInput
     {
+        public JsonToTableBodyInput(JToken data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("path")]
         public string Path { get; set; }
 
@@ -772,6 +844,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class JsonToTextBodyInput
     {
+        public JsonToTextBodyInput(JToken[] data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("headerRow")]
         public bool? HeaderRow { get; set; }
 
@@ -796,6 +873,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class JsonToCsvBodyInput
     {
+        public JsonToCsvBodyInput(JToken[] data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("headerRow")]
         public bool? HeaderRow { get; set; }
 
@@ -823,6 +905,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class JsonPropertiesToNameValuePairArrayBodyInput
     {
+        public JsonPropertiesToNameValuePairArrayBodyInput(JToken data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Data { get; set; }
     }
@@ -875,6 +962,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class LevenshteinDistanceBodyInput
     {
+        public LevenshteinDistanceBodyInput(string baseValue, string[] comparisonValues)
+        {
+            this.BaseValue = baseValue;
+            this.ComparisonValues = comparisonValues;
+        }
+
         [JsonProperty("baseValue", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BaseValue { get; set; }
 
@@ -933,6 +1026,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class ParquetToJsonBodyInput
     {
+        public ParquetToJsonBodyInput(string data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("validateOnly")]
         public bool? ValidateOnly { get; set; }
 
@@ -960,6 +1058,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class RegexMatchesBodyInput
     {
+        public RegexMatchesBodyInput(string pattern, string data)
+        {
+            this.Pattern = pattern;
+            this.Data = data;
+        }
+
         [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pattern { get; set; }
 
@@ -981,6 +1085,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class SimpleConcatenateBodyInput
     {
+        public SimpleConcatenateBodyInput(string[] data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("separator")]
         public string Separator { get; set; }
 
@@ -1012,6 +1121,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class SimpleDistinctBodyInput
     {
+        public SimpleDistinctBodyInput(string field, JToken[] data)
+        {
+            this.Field = field;
+            this.Data = data;
+        }
+
         [JsonProperty("field", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Field { get; set; }
 
@@ -1033,6 +1148,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class SortObjectArrayBodyInput
     {
+        public SortObjectArrayBodyInput(JToken sortOrder, JToken[] data)
+        {
+            this.SortOrder = sortOrder;
+            this.Data = data;
+        }
+
         [JsonProperty("sortOrder", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken SortOrder { get; set; }
 
@@ -1042,6 +1163,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class SplitBodyInput
     {
+        public SplitBodyInput(JToken[] splits, JToken[] data)
+        {
+            this.Splits = splits;
+            this.Data = data;
+        }
+
         [JsonProperty("splits", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Splits { get; set; }
 
@@ -1063,6 +1190,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class TextToJsonBodyInput
     {
+        public TextToJsonBodyInput(string data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("headerRow")]
         public bool? HeaderRow { get; set; }
 
@@ -1093,6 +1225,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class TransformBodyInput
     {
+        public TransformBodyInput(JToken transformations, JToken[] data)
+        {
+            this.Transformations = transformations;
+            this.Data = data;
+        }
+
         [JsonProperty("transformations", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Transformations { get; set; }
 
@@ -1117,6 +1255,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class XmlToJsonBodyInput
     {
+        public XmlToJsonBodyInput(string data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("primaryLoopAtElement")]
         public string PrimaryLoopAtElement { get; set; }
 
@@ -1162,6 +1305,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 
     public class ZipArchiveDecompressBodyInput
     {
+        public ZipArchiveDecompressBodyInput(string data, bool getFileContents)
+        {
+            this.Data = data;
+            this.GetFileContents = getFileContents;
+        }
+
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Data { get; set; }
 

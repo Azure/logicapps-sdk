@@ -500,12 +500,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
 
     public class UpdateDocumentBodyInput
     {
+        public UpdateDocumentBodyInput(BodyInputRequestsType requests)
+        {
+            this.Requests = requests;
+        }
+
         [JsonProperty("requests", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputRequestsType Requests { get; set; } = new BodyInputRequestsType();
+        public BodyInputRequestsType Requests { get; set; }
     }
 
     public class BodyInputRequestsType
     {
+        public BodyInputRequestsType(string requestName)
+        {
+            this.RequestName = requestName;
+        }
+
         [JsonProperty("request_type_id")]
         public string RequestTypeId { get; set; }
 
@@ -614,6 +624,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
 
     public class ZohoSignTriggersBodyInput
     {
+        public ZohoSignTriggersBodyInput(BodyInputWebhookActionsType webhookActions)
+        {
+            this.WebhookActions = webhookActions;
+        }
+
         [JsonProperty("webhook_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 

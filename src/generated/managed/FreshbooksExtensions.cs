@@ -240,12 +240,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
     public class AddExpenseBodyInput
     {
+        public AddExpenseBodyInput(AddExpenseBodyInputExpenseType expense)
+        {
+            this.Expense = expense;
+        }
+
         [JsonProperty("expense", DefaultValueHandling = DefaultValueHandling.Include)]
         public AddExpenseBodyInputExpenseType Expense { get; set; }
     }
 
     public class AddExpenseBodyInputExpenseType
     {
+        public AddExpenseBodyInputExpenseType(AddExpenseBodyInputExpenseTypeAmountType amount, int category, int staff, string date)
+        {
+            this.Amount = amount;
+            this.Category = category;
+            this.Staff = staff;
+            this.Date = date;
+        }
+
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public AddExpenseBodyInputExpenseTypeAmountType Amount { get; set; }
 
@@ -267,6 +280,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
     public class AddExpenseBodyInputExpenseTypeAmountType
     {
+        public AddExpenseBodyInputExpenseTypeAmountType(string amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Amount { get; set; }
 
@@ -457,6 +475,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
     public class UpdateExpenseBodyInput
     {
+        public UpdateExpenseBodyInput(UpdateExpenseBodyInputExpenseType expense)
+        {
+            this.Expense = expense;
+        }
+
         [JsonProperty("expense", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateExpenseBodyInputExpenseType Expense { get; set; }
     }
@@ -601,6 +624,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
     public class AddClientBodyInput
     {
+        public AddClientBodyInput(BodyInputClientType client)
+        {
+            this.Client = client;
+        }
+
         [JsonProperty("client", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputClientType Client { get; set; }
     }

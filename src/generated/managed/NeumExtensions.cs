@@ -28,17 +28,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "neum")]
-        public IBodyWorkflowAction<PipelineTestResponse, ApiConnectionActionConfiguration> PipelineTest(Expression<Func<string>> pipelineId, Expression<Func<PipelineTestBodyInput>> body = null)
+        public IBodyWorkflowAction<PipelineTestResponse, ApiConnectionActionConfiguration> PipelineTest(Expression<Func<string>> pipelineId, Expression<Func<PipelineTestBodyInput>> body)
         {
             var __workflow_pipelineId = WorkflowExpression.Compile(pipelineId, nameof(pipelineId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PipelineTestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pipelines/{0}/search", __workflow_pipelineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PipelineTestResponse>(callPayload);
             });
         }
@@ -113,6 +112,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
 
     public class BodyInputSourceType
     {
+        public BodyInputSourceType(string sourceName)
+        {
+            this.SourceName = sourceName;
+        }
+
         [JsonProperty("source_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceName { get; set; }
 
@@ -122,6 +126,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
 
     public class BodyInputSourceTypeMetadataType
     {
+        public BodyInputSourceTypeMetadataType(string connectionString, string containerName)
+        {
+            this.ConnectionString = connectionString;
+            this.ContainerName = containerName;
+        }
+
         [JsonProperty("connection_string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionString { get; set; }
 
@@ -131,6 +141,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
 
     public class BodyInputEmbedType
     {
+        public BodyInputEmbedType(string embedName)
+        {
+            this.EmbedName = embedName;
+        }
+
         [JsonProperty("embed_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmbedName { get; set; }
 
@@ -140,6 +155,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
 
     public class BodyInputEmbedTypeMetadataType
     {
+        public BodyInputEmbedTypeMetadataType(string apiKey, string organization)
+        {
+            this.ApiKey = apiKey;
+            this.Organization = organization;
+        }
+
         [JsonProperty("api_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -149,6 +170,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
 
     public class BodyInputSinkType
     {
+        public BodyInputSinkType(string sinkName)
+        {
+            this.SinkName = sinkName;
+        }
+
         [JsonProperty("sink_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SinkName { get; set; }
 
@@ -158,6 +184,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
 
     public class BodyInputSinkTypeMetadataType
     {
+        public BodyInputSinkTypeMetadataType(string apiKey, string environment, string index, string @namespace)
+        {
+            this.ApiKey = apiKey;
+            this.Environment = environment;
+            this.Index = index;
+            this.Namespace = @namespace;
+        }
+
         [JsonProperty("api_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
 
@@ -188,6 +222,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
 
     public class PipelineTestBodyInput
     {
+        public PipelineTestBodyInput(string query, int numberOfResults)
+        {
+            this.Query = query;
+            this.NumberOfResults = numberOfResults;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 

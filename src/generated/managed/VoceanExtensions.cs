@@ -334,6 +334,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
 
     public class AddIdeaBodyInput
     {
+        public AddIdeaBodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }

@@ -213,6 +213,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
     public class SendMessageRequestBodyInput
     {
+        public SendMessageRequestBodyInput(string sender, string content, SendMessageRequestBodyInputRecipientsTypeItem[] recipients)
+        {
+            this.Sender = sender;
+            this.Content = content;
+            this.Recipients = recipients;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sender { get; set; }
 
@@ -241,6 +248,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
     public class SendMessageRequestBodyInputRecipientsTypeItem
     {
+        public SendMessageRequestBodyInputRecipientsTypeItem(string address)
+        {
+            this.Address = address;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
         public JToken Personalization { get; set; }
@@ -283,6 +295,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
     public class SendDiscussionReplyMessageRequestBodyInput
     {
+        public SendDiscussionReplyMessageRequestBodyInput(string threadId, string content)
+        {
+            this.ThreadId = threadId;
+            this.Content = content;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ThreadId { get; set; }
 
@@ -293,6 +311,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
     public class CreateWhatsappTemplateRequestBodyInput
     {
+        public CreateWhatsappTemplateRequestBodyInput(string displayName, string rawContent, string category, string language)
+        {
+            this.DisplayName = displayName;
+            this.RawContent = rawContent;
+            this.Category = category;
+            this.Language = language;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -346,6 +372,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
     public class SendWhatsappTemplateMessageRequestBodyInput
     {
+        public SendWhatsappTemplateMessageRequestBodyInput(string templateName, SendWhatsappTemplateMessageRequestBodyInputRecipientsTypeItem[] recipients)
+        {
+            this.TemplateName = templateName;
+            this.Recipients = recipients;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateName { get; set; }
 
@@ -364,6 +396,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
     public class SendWhatsappTemplateMessageRequestBodyInputRecipientsTypeItem
     {
+        public SendWhatsappTemplateMessageRequestBodyInputRecipientsTypeItem(string address)
+        {
+            this.Address = address;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
     }
@@ -488,6 +525,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
     public class CreateGroupContactRequestBodyInput
     {
+        public CreateGroupContactRequestBodyInput(string phone)
+        {
+            this.Phone = phone;
+        }
+
         [JsonProperty("active", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Active { get; set; } = true;
 

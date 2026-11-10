@@ -61,6 +61,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
 
     public class RepfabricCreateContactBodyInput
     {
+        public RepfabricCreateContactBodyInput(string domainName, string contactFirstName, string contactLastName)
+        {
+            this.DomainName = domainName;
+            this.ContactFirstName = contactFirstName;
+            this.ContactLastName = contactLastName;
+        }
+
         [JsonProperty("domain-name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }
 
@@ -148,6 +155,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
 
     public class RepfabricCreateCompanyBodyInput
     {
+        public RepfabricCreateCompanyBodyInput(string domainName)
+        {
+            this.DomainName = domainName;
+        }
+
         [JsonProperty("domain-name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }
 
@@ -217,6 +229,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
 
     public class RepfabricCreateQuoteBodyInput
     {
+        public RepfabricCreateQuoteBodyInput(string domainName, string quotesBaseUrl, string authQuotes)
+        {
+            this.DomainName = domainName;
+            this.QuotesBaseUrl = quotesBaseUrl;
+            this.AuthQuotes = authQuotes;
+        }
+
         [JsonProperty("domain-name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }
 

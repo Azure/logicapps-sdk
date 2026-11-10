@@ -13,17 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itglue
     public class ItglueActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itglue")]
-        public IBodyWorkflowAction<PostOrganizationTypeResponse, ApiConnectionActionConfiguration> PostOrganizationType(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<PostOrganizationTypeResponse, ApiConnectionActionConfiguration> PostOrganizationType(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostOrganizationTypeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/organization_types";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/vnd.api+json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostOrganizationTypeResponse>(callPayload);
             });
         }
@@ -42,18 +41,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itglue
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itglue")]
-        public IBodyWorkflowAction<PatchOrganizationTypeResponse, ApiConnectionActionConfiguration> PatchOrganizationType(Expression<Func<int>> objectId, Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<PatchOrganizationTypeResponse, ApiConnectionActionConfiguration> PatchOrganizationType(Expression<Func<int>> objectId, Expression<Func<BodyInput>> body)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PatchOrganizationTypeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organization_types/{0}", __workflow_objectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/vnd.api+json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PatchOrganizationTypeResponse>(callPayload);
             });
         }
@@ -105,12 +103,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itglue
 
     public class BodyInput
     {
+        public BodyInput(OrganizationTypesCreate data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OrganizationTypesCreate Data { get; set; } = new OrganizationTypesCreate();
+        public OrganizationTypesCreate Data { get; set; }
     }
 
     public class OrganizationTypesCreate
     {
+        public OrganizationTypesCreate(OrganizationTypesCreateNameType name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal OrganizationTypesCreateTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Itglue.OrganizationTypesCreateTypeType.OrganizationTypes;
 
@@ -127,6 +135,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itglue
 
     public class OrganizationTypesCreateNameType
     {
+        public OrganizationTypesCreateNameType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }

@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
 
     public class ActionExecutedBodyInput
     {
+        public ActionExecutedBodyInput(string actionName)
+        {
+            this.ActionName = actionName;
+        }
+
         [JsonProperty("actionName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActionName { get; set; }
 

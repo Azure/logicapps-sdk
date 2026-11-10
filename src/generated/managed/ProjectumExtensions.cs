@@ -75,6 +75,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
 
     public class GenerationInfoInput
     {
+        public GenerationInfoInput(string dataMap, string @file)
+        {
+            this.DataMap = dataMap;
+            this.File = @file;
+        }
+
         [JsonProperty("dataMap", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataMap { get; set; }
 

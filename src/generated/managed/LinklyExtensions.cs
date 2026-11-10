@@ -360,6 +360,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
 
     public class CreateConversionBodyInput
     {
+        public CreateConversionBodyInput(string eventName)
+        {
+            this.EventName = eventName;
+        }
+
         [JsonProperty("amount_cents")]
         public int? AmountCents { get; set; }
 

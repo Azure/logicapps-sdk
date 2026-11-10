@@ -27,32 +27,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateAirmeetResponse, ApiConnectionActionConfiguration> CreateAirmeet(Expression<Func<CreateAirmeetBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateAirmeetResponse, ApiConnectionActionConfiguration> CreateAirmeet(Expression<Func<CreateAirmeetBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateAirmeetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/airmeet";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateAirmeetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateSpeakerResponse, ApiConnectionActionConfiguration> CreateSpeaker(Expression<Func<string>> airmeetId, Expression<Func<CreateSpeakerBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateSpeakerResponse, ApiConnectionActionConfiguration> CreateSpeaker(Expression<Func<string>> airmeetId, Expression<Func<CreateSpeakerBodyInput>> body)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSpeakerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airmeet/{0}/speaker", __workflow_airmeetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSpeakerResponse>(callPayload);
             });
         }
@@ -186,49 +184,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateBoothResponse, ApiConnectionActionConfiguration> CreateBooth(Expression<Func<string>> airmeetId, Expression<Func<CreateBoothBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateBoothResponse, ApiConnectionActionConfiguration> CreateBooth(Expression<Func<string>> airmeetId, Expression<Func<CreateBoothBodyInput>> body)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateBoothResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airmeet/{0}/booths", __workflow_airmeetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateBoothResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<AddAuthorizedAttendeeResponse, ApiConnectionActionConfiguration> AddAuthorizedAttendee(Expression<Func<string>> airmeetId, Expression<Func<AddAuthorizedAttendeeBodyInput>> body = null)
+        public IBodyWorkflowAction<AddAuthorizedAttendeeResponse, ApiConnectionActionConfiguration> AddAuthorizedAttendee(Expression<Func<string>> airmeetId, Expression<Func<AddAuthorizedAttendeeBodyInput>> body)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddAuthorizedAttendeeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airmeet/{0}/attendee", __workflow_airmeetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddAuthorizedAttendeeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateSessionResponse, ApiConnectionActionConfiguration> CreateSession(Expression<Func<string>> airmeetId, Expression<Func<CreateSessionBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateSessionResponse, ApiConnectionActionConfiguration> CreateSession(Expression<Func<string>> airmeetId, Expression<Func<CreateSessionBodyInput>> body)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSessionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airmeet/{0}/session", __workflow_airmeetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSessionResponse>(callPayload);
             });
         }
@@ -294,6 +289,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
 
     public class CreateAirmeetBodyInput
     {
+        public CreateAirmeetBodyInput(string hostEmail, string eventName, string shortDesc, BodyInputTimingType timing)
+        {
+            this.HostEmail = hostEmail;
+            this.EventName = eventName;
+            this.ShortDesc = shortDesc;
+            this.Timing = timing;
+        }
+
         [JsonProperty("hostEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HostEmail { get; set; }
 
@@ -316,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         internal string EventType { get; set; } = "MEETUP";
 
         [JsonProperty("timing", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputTimingType Timing { get; set; } = new BodyInputTimingType();
+        public BodyInputTimingType Timing { get; set; }
 
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputConfigType Config { get; set; } = new BodyInputConfigType();
@@ -335,6 +338,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
 
     public class BodyInputTimingType
     {
+        public BodyInputTimingType(int startTime, int endTime)
+        {
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("startTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public int StartTime { get; set; }
 
@@ -365,6 +374,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
 
     public class CreateSpeakerBodyInput
     {
+        public CreateSpeakerBodyInput(string name, string email)
+        {
+            this.Name = name;
+            this.Email = email;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -743,6 +758,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
 
     public class CreateBoothBodyInput
     {
+        public CreateBoothBodyInput(string name, BodyInputExhibitorInfoTypeItem[] exhibitorInfo)
+        {
+            this.Name = name;
+            this.ExhibitorInfo = exhibitorInfo;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -758,6 +779,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
 
     public class BodyInputExhibitorInfoTypeItem
     {
+        public BodyInputExhibitorInfoTypeItem(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -799,6 +825,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
 
     public class AddAuthorizedAttendeeBodyInput
     {
+        public AddAuthorizedAttendeeBodyInput(string email, string firstName, string lastName)
+        {
+            this.Email = email;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -858,6 +891,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
 
     public class CreateSessionBodyInput
     {
+        public CreateSessionBodyInput(int sessionStartTime, string hostEmail)
+        {
+            this.SessionStartTime = sessionStartTime;
+            this.HostEmail = hostEmail;
+        }
+
         [JsonProperty("sessionTitle")]
         public string SessionTitle { get; set; }
 

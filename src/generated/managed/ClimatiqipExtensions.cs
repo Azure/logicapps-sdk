@@ -874,12 +874,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
     public class FreightFlightBodyInput
     {
+        public FreightFlightBodyInput(BodyInputLegsTypeItem[] legs)
+        {
+            this.Legs = legs;
+        }
+
         [JsonProperty("legs", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputLegsTypeItem[] Legs { get; set; }
     }
 
     public class BodyInputLegsTypeItem
     {
+        public BodyInputLegsTypeItem(string from, string to)
+        {
+            this.From = from;
+            this.To = to;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -1123,6 +1134,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
     public class ComputeCPUBodyInput
     {
+        public ComputeCPUBodyInput(int cpuCount, string region, int cpuLoad, int duration)
+        {
+            this.CpuCount = cpuCount;
+            this.Region = region;
+            this.CpuLoad = cpuLoad;
+            this.Duration = duration;
+        }
+
         [JsonProperty("cpu_count", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CpuCount { get; set; }
 
@@ -1213,6 +1232,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
     public class ComputeStorageBodyInput
     {
+        public ComputeStorageBodyInput(string region, int data, int duration)
+        {
+            this.Region = region;
+            this.Data = data;
+            this.Duration = duration;
+        }
+
         [JsonProperty("region", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Region { get; set; }
 
@@ -1315,6 +1341,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
     public class ComputeMemoryBodyInput
     {
+        public ComputeMemoryBodyInput(string region, int data, int duration)
+        {
+            this.Region = region;
+            this.Data = data;
+            this.Duration = duration;
+        }
+
         [JsonProperty("region", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Region { get; set; }
 
@@ -1513,6 +1546,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
     public class CustomBodyInput
     {
+        public CustomBodyInput(BodyInputCustomActivityType customActivity)
+        {
+            this.CustomActivity = customActivity;
+        }
+
         [JsonProperty("custom_activity", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputCustomActivityType CustomActivity { get; set; }
 
@@ -1522,6 +1560,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
     public class BodyInputCustomActivityType
     {
+        public BodyInputCustomActivityType(string label)
+        {
+            this.Label = label;
+        }
+
         [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
 
@@ -1624,6 +1667,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
     public class CustomBatchBodyInputItem
     {
+        public CustomBatchBodyInputItem(BodyInputItemCustomActivityType customActivity)
+        {
+            this.CustomActivity = customActivity;
+        }
+
         [JsonProperty("custom_activity", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputItemCustomActivityType CustomActivity { get; set; }
 
@@ -1633,6 +1681,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
     public class BodyInputItemCustomActivityType
     {
+        public BodyInputItemCustomActivityType(string label)
+        {
+            this.Label = label;
+        }
+
         [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
 

@@ -210,6 +210,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
 
     public class CopyAssetBodyInput
     {
+        public CopyAssetBodyInput(string sourceAssetPath, string destinationAssetPath)
+        {
+            this.SourceAssetPath = sourceAssetPath;
+            this.DestinationAssetPath = destinationAssetPath;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceAssetPath { get; set; }
 

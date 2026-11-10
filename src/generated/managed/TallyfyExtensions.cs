@@ -458,6 +458,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
 
     public class InviteUserToOrganizationBodyInput
     {
+        public InviteUserToOrganizationBodyInput(string firstName, string lastName, string email, string message, BodyInputRoleType role)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
+            this.Message = message;
+            this.Role = role;
+        }
+
         [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -596,6 +605,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
 
     public class CreateRunBodyInput
     {
+        public CreateRunBodyInput(string name, string checklistId)
+        {
+            this.Name = name;
+            this.ChecklistId = checklistId;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -608,6 +623,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
 
     public class CompletedOneOffTaskBodyInput
     {
+        public CompletedOneOffTaskBodyInput(string taskId)
+        {
+            this.TaskId = taskId;
+        }
+
         [JsonProperty("task_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskId { get; set; }
 
@@ -617,6 +637,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
 
     public class CommentTaskBodyInput
     {
+        public CommentTaskBodyInput(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
 
@@ -664,6 +689,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
 
     public class CreateTaskBodyInput
     {
+        public CreateTaskBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("owners")]
         public BodyInputOwnersType Owners { get; set; }
 

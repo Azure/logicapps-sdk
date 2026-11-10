@@ -25,16 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<PixelBodyInput>> body = null)
+        public IBodyWorkflowAction<PixelResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<PixelBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PixelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/pixel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PixelResponse>(callPayload);
             });
         }
@@ -82,16 +81,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkResponse, ApiConnectionActionConfiguration> Link(Expression<Func<LinkBodyInput>> body = null)
+        public IBodyWorkflowAction<LinkResponse, ApiConnectionActionConfiguration> Link(Expression<Func<LinkBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/shorten";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LinkResponse>(callPayload);
             });
         }
@@ -228,16 +226,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagResponse, ApiConnectionActionConfiguration> Tag(Expression<Func<TagBodyInput>> body = null)
+        public IBodyWorkflowAction<TagResponse, ApiConnectionActionConfiguration> Tag(Expression<Func<TagBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TagResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/tag";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TagResponse>(callPayload);
             });
         }
@@ -269,17 +266,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagPutResponse, ApiConnectionActionConfiguration> TagPut(Expression<Func<string>> tagId, Expression<Func<TagBodyInput>> body = null)
+        public IBodyWorkflowAction<TagPutResponse, ApiConnectionActionConfiguration> TagPut(Expression<Func<string>> tagId, Expression<Func<TagBodyInput>> body)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TagPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/tag/{0}", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TagPutResponse>(callPayload);
             });
         }
@@ -333,6 +329,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
 
     public class PixelBodyInput
     {
+        public PixelBodyInput(string name, string pixelId, string pixelType)
+        {
+            this.Name = name;
+            this.PixelId = pixelId;
+            this.PixelType = pixelType;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -453,6 +456,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
 
     public class LinkBodyInput
     {
+        public LinkBodyInput(string longUrl)
+        {
+            this.LongUrl = longUrl;
+        }
+
         [JsonProperty("long_url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LongUrl { get; set; }
 
@@ -818,6 +826,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
 
     public class TagBodyInput
     {
+        public TagBodyInput(string tag)
+        {
+            this.Tag = tag;
+        }
+
         [JsonProperty("tag", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Tag { get; set; }
     }

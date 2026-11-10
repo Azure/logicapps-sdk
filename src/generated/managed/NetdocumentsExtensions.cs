@@ -881,6 +881,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
 
     public class RenameBodyInputStandardAttributesType
     {
+        public RenameBodyInputStandardAttributesType(string newName)
+        {
+            this.NewName = newName;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NewName { get; set; }
     }
@@ -962,6 +967,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
 
     public class LookupEntryBodyInputAccessType
     {
+        public LookupEntryBodyInputAccessType(bool filteredPermissions, bool forcePermssions)
+        {
+            this.FilteredPermissions = filteredPermissions;
+            this.ForcePermssions = forcePermssions;
+        }
+
         [JsonProperty("filtered_permissions", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool FilteredPermissions { get; set; }
 
@@ -974,6 +985,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
 
     public class LookupEntryBodyInputAccessTypePermissionsTypeItem
     {
+        public LookupEntryBodyInputAccessTypePermissionsTypeItem(bool view, bool edit, bool share, bool administer, bool noAccess, bool cabinetDefault, string principal)
+        {
+            this.View = view;
+            this.Edit = edit;
+            this.Share = share;
+            this.Administer = administer;
+            this.NoAccess = noAccess;
+            this.CabinetDefault = cabinetDefault;
+            this.Principal = principal;
+        }
+
         [JsonProperty("view", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool View { get; set; }
 

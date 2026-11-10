@@ -33,6 +33,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
 
     public class AnalysisRequestInput
     {
+        public AnalysisRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string fileName)
+        {
+            this.File = @file;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 

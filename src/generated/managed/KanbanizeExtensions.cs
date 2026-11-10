@@ -396,6 +396,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbanize
 
     public class SetCustomFieldBodyInput
     {
+        public SetCustomFieldBodyInput(int boardId, int fieldId, string values)
+        {
+            this.BoardId = boardId;
+            this.FieldId = fieldId;
+            this.Values = values;
+        }
+
         [JsonProperty("board_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int BoardId { get; set; }
 
@@ -408,12 +415,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbanize
 
     public class BlockCardBodyInput
     {
+        public BlockCardBodyInput(BodyInputBlockReasonType blockReason)
+        {
+            this.BlockReason = blockReason;
+        }
+
         [JsonProperty("block_reason", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputBlockReasonType BlockReason { get; set; }
     }
 
     public class BodyInputBlockReasonType
     {
+        public BodyInputBlockReasonType(string reasonId)
+        {
+            this.ReasonId = reasonId;
+        }
+
         [JsonProperty("reason_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReasonId { get; set; }
 
@@ -423,6 +440,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbanize
 
     public class LinkCardBodyInput
     {
+        public LinkCardBodyInput(BodyInputLinkTypeType linkType, int linkedCardId)
+        {
+            this.LinkType = linkType;
+            this.LinkedCardId = linkedCardId;
+        }
+
         [JsonProperty("link_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputLinkTypeType LinkType { get; set; }
 
@@ -477,6 +500,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbanize
 
     public class UploadAttachmentBodyInput
     {
+        public UploadAttachmentBodyInput(string fileName, string content)
+        {
+            this.FileName = fileName;
+            this.Content = content;
+        }
+
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -523,6 +552,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbanize
 
     public class AddCommentBodyInput
     {
+        public AddCommentBodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }
@@ -603,6 +637,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbanize
 
     public class LogTimeBodyInput
     {
+        public LogTimeBodyInput(string cardId, BodyInputTimeUnitType timeUnit, int time)
+        {
+            this.CardId = cardId;
+            this.TimeUnit = timeUnit;
+            this.Time = time;
+        }
+
         [JsonProperty("card_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CardId { get; set; }
 
@@ -627,6 +668,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbanize
 
     public class MoveCardBodyInput
     {
+        public MoveCardBodyInput(int boardId, int workflowId, JToken columnId, JToken laneId)
+        {
+            this.BoardId = boardId;
+            this.WorkflowId = workflowId;
+            this.ColumnId = columnId;
+            this.LaneId = laneId;
+        }
+
         [JsonProperty("board_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int BoardId { get; set; }
 
@@ -666,6 +715,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbanize
 
     public class CardHookBodyInput
     {
+        public CardHookBodyInput(string boardId)
+        {
+            this.BoardId = boardId;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 

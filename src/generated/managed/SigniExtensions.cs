@@ -207,6 +207,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
 
     public class SignContractFromProvidedFileV2NewBodyInput
     {
+        public SignContractFromProvidedFileV2NewBodyInput(string fileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, BodyInputPeopleTypeItem[] people)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+            this.People = people;
+        }
+
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -250,6 +257,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
 
     public class BodyInputPeopleTypeItem
     {
+        public BodyInputPeopleTypeItem(string signerEmail, BodyInputPeopleTypeItemContractRoleType contractRole, bool proposerOrNot)
+        {
+            this.SignerEmail = signerEmail;
+            this.ContractRole = contractRole;
+            this.ProposerOrNot = proposerOrNot;
+        }
+
         [JsonProperty("street")]
         public string SignerStreet { get; set; }
 
@@ -403,6 +417,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
 
     public class SignContractFromProvidedFileV2NewWaitBodyInput
     {
+        public SignContractFromProvidedFileV2NewWaitBodyInput(string fileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, BodyInputPeopleTypeItem[] people)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+            this.People = people;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
@@ -529,6 +550,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
 
     public class SignContractFromProvidedFileBodyInput
     {
+        public SignContractFromProvidedFileBodyInput(int signatureSignerPage, string signerEMail, BodyInputSignerTypeType signerType, string contractSignDate, string authorEMail, string fileName, string contractName, string signerPhone, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string signerSurname, string signerFirstName, int signatureSignerX, int signatureSignerY)
+        {
+            this.SignatureSignerPage = signatureSignerPage;
+            this.SignerEMail = signerEMail;
+            this.SignerType = signerType;
+            this.ContractSignDate = contractSignDate;
+            this.AuthorEMail = authorEMail;
+            this.FileName = fileName;
+            this.ContractName = contractName;
+            this.SignerPhone = signerPhone;
+            this.File = @file;
+            this.SignerSurname = signerSurname;
+            this.SignerFirstName = signerFirstName;
+            this.SignatureSignerX = signatureSignerX;
+            this.SignatureSignerY = signatureSignerY;
+        }
+
         [JsonProperty("sign_negotiator[position][page]", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SignatureSignerPage { get; set; }
 
@@ -651,6 +689,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
 
     public class SignContractFromTemplateBodyInput
     {
+        public SignContractFromTemplateBodyInput(BodyInputPersonTypeType personType, string emailSigner, string templateId, string contractName, bool negotiatorSign, bool proposerSign, string emailAuthor)
+        {
+            this.PersonType = personType;
+            this.EmailSigner = emailSigner;
+            this.TemplateId = templateId;
+            this.ContractName = contractName;
+            this.NegotiatorSign = negotiatorSign;
+            this.ProposerSign = proposerSign;
+            this.EmailAuthor = emailAuthor;
+        }
+
         [JsonProperty("street")]
         public string Street { get; set; }
 

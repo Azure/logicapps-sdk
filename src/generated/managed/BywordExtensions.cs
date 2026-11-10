@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
     public class BywordActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticleResponse, ApiConnectionActionConfiguration> Article(Expression<Func<ArticleBodyInput>> body = null)
+        public IBodyWorkflowAction<ArticleResponse, ApiConnectionActionConfiguration> Article(Expression<Func<ArticleBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArticleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create_article";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ArticleResponse>(callPayload);
             });
         }
@@ -53,6 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ArticlesBodyInput().ToJToken();
                 return new ApiConnectionAction<ArticlesResponseItem[]>(callPayload);
             });
         }
@@ -73,6 +74,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
 
     public class ArticleBodyInput
     {
+        public ArticleBodyInput(string input)
+        {
+            this.Input = input;
+        }
+
         [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputModeType Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Byword.BodyInputModeType.Keyword;
 

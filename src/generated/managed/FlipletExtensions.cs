@@ -171,6 +171,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
 
     public class BodyInput
     {
+        public BodyInput(bool append, JToken[] entries)
+        {
+            this.Append = append;
+            this.Entries = entries;
+        }
+
         [JsonProperty("append", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Append { get; set; }
 

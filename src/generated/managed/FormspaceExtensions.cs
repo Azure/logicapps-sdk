@@ -95,6 +95,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formspace
 
     public class WhenInvokedByWorkflowSubscriptionInput
     {
+        public WhenInvokedByWorkflowSubscriptionInput(string nameInFormspace)
+        {
+            this.NameInFormspace = nameInFormspace;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NameInFormspace { get; set; }
 

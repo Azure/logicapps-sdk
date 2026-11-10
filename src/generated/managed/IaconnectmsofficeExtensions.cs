@@ -1972,6 +1972,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSWordOpenDocumentInput
     {
+        public MSWordOpenDocumentInput(string filename)
+        {
+            this.Filename = filename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
 
@@ -2009,6 +2014,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSWordSaveAsDocumentInput
     {
+        public MSWordSaveAsDocumentInput(string saveFilename)
+        {
+            this.SaveFilename = saveFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string DocumentName { get; set; }
@@ -2032,6 +2042,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSWordTypeTextInput
     {
+        public MSWordTypeTextInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
 
@@ -2130,6 +2145,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSWordUpdateBookmarkInput
     {
+        public MSWordUpdateBookmarkInput(string bookmarkName)
+        {
+            this.BookmarkName = bookmarkName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string DocumentName { get; set; }
@@ -2263,6 +2283,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSWordExportDocumentAsPDFInput
     {
+        public MSWordExportDocumentAsPDFInput(string saveFileName)
+        {
+            this.SaveFileName = saveFileName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string DocumentName { get; set; }
@@ -2342,6 +2367,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSWordExecuteCommandBarObjectInput
     {
+        public MSWordExecuteCommandBarObjectInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
 
@@ -2363,6 +2393,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSWordSetDocumentSensitivityLabelInput
     {
+        public MSWordSetDocumentSensitivityLabelInput(string labelId)
+        {
+            this.LabelId = labelId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string DocumentName { get; set; }
@@ -2567,6 +2602,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelGoToCellInput
     {
+        public MSExcelGoToCellInput(string cellReference)
+        {
+            this.CellReference = cellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -2586,6 +2626,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelGetCellValueInput
     {
+        public MSExcelGetCellValueInput(string cellReference)
+        {
+            this.CellReference = cellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -2605,6 +2650,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelGetCellValue2Input
     {
+        public MSExcelGetCellValue2Input(string cellReference)
+        {
+            this.CellReference = cellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -2624,6 +2674,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelGetCellTextInput
     {
+        public MSExcelGetCellTextInput(string cellReference)
+        {
+            this.CellReference = cellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -2638,6 +2693,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelSetCellValueInput
     {
+        public MSExcelSetCellValueInput(string cellReference)
+        {
+            this.CellReference = cellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -2663,6 +2723,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelFindNextCellWithValueInput
     {
+        public MSExcelFindNextCellWithValueInput(MSExcelFindNextCellWithValueInputDirectionType direction, string searchValue)
+        {
+            this.Direction = direction;
+            this.SearchValue = searchValue;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -2713,6 +2779,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelFindNextEmptyCellInput
     {
+        public MSExcelFindNextEmptyCellInput(MSExcelFindNextEmptyCellInputDirectionType direction)
+        {
+            this.Direction = direction;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -2831,6 +2902,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelSaveWorkbookAsInput
     {
+        public MSExcelSaveWorkbookAsInput(string saveFilename)
+        {
+            this.SaveFilename = saveFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -2881,6 +2957,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelSaveWorkbookAsCSVInput
     {
+        public MSExcelSaveWorkbookAsCSVInput(string saveFilename)
+        {
+            this.SaveFilename = saveFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -2902,6 +2983,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelSaveWorkbookAsWithPasswordInput
     {
+        public MSExcelSaveWorkbookAsWithPasswordInput(string saveFilename, string password)
+        {
+            this.SaveFilename = saveFilename;
+            this.Password = password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3011,6 +3098,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelSaveCurrentWorkbookAsCSVInput
     {
+        public MSExcelSaveCurrentWorkbookAsCSVInput(string saveFilename)
+        {
+            this.SaveFilename = saveFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
 
@@ -3164,6 +3256,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelEvaluateExpressionInput
     {
+        public MSExcelEvaluateExpressionInput(string expression)
+        {
+            this.Expression = expression;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
 
@@ -3209,6 +3306,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelWriteCollectionInput
     {
+        public MSExcelWriteCollectionInput(string cellReference, string collectionToWriteJSON)
+        {
+            this.CellReference = cellReference;
+            this.CollectionToWriteJSON = collectionToWriteJSON;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3229,6 +3332,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelWriteCollectionWithDatesInput
     {
+        public MSExcelWriteCollectionWithDatesInput(string cellReference, string collectionToWriteJSON)
+        {
+            this.CellReference = cellReference;
+            this.CollectionToWriteJSON = collectionToWriteJSON;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3269,6 +3378,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelFormatCellInput
     {
+        public MSExcelFormatCellInput(string cellReference, string cellFormat)
+        {
+            this.CellReference = cellReference;
+            this.CellFormat = cellFormat;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3286,6 +3401,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelFormatCurrentCellInput
     {
+        public MSExcelFormatCurrentCellInput(string cellFormat)
+        {
+            this.CellFormat = cellFormat;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
 
@@ -3298,6 +3418,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelSelectCellRangeInput
     {
+        public MSExcelSelectCellRangeInput(string cellReference)
+        {
+            this.CellReference = cellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3444,6 +3569,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelRunMacroInput
     {
+        public MSExcelRunMacroInput(string macroName)
+        {
+            this.MacroName = macroName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
 
@@ -3470,6 +3600,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelAddMacroToWorkbookInput
     {
+        public MSExcelAddMacroToWorkbookInput(string macroCode)
+        {
+            this.MacroCode = macroCode;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3494,6 +3629,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelSetCalculationModeInput
     {
+        public MSExcelSetCalculationModeInput(int calculationMode)
+        {
+            this.CalculationMode = calculationMode;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
 
@@ -3506,6 +3646,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelExecuteCommandBarObjectInput
     {
+        public MSExcelExecuteCommandBarObjectInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
 
@@ -3527,6 +3672,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelCopyBetweenCellsInput
     {
+        public MSExcelCopyBetweenCellsInput(string sourceCellReference, string targetCellReference)
+        {
+            this.SourceCellReference = sourceCellReference;
+            this.TargetCellReference = targetCellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SourceHandle { get; set; } = 0;
         public string SourceWorkbookName { get; set; }
@@ -3573,6 +3724,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelCutBetweenCellsInput
     {
+        public MSExcelCutBetweenCellsInput(string sourceCellReference, string targetCellReference)
+        {
+            this.SourceCellReference = sourceCellReference;
+            this.TargetCellReference = targetCellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SourceHandle { get; set; } = 0;
         public string SourceWorkbookName { get; set; }
@@ -3661,6 +3818,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelGetAndSetCellValueInput
     {
+        public MSExcelGetAndSetCellValueInput(string sourceCellReference, string targetCellReference)
+        {
+            this.SourceCellReference = sourceCellReference;
+            this.TargetCellReference = targetCellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SourceHandle { get; set; } = 0;
         public string SourceWorkbookName { get; set; }
@@ -3689,6 +3852,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelGetAndSetCellValue2Input
     {
+        public MSExcelGetAndSetCellValue2Input(string sourceCellReference, string targetCellReference)
+        {
+            this.SourceCellReference = sourceCellReference;
+            this.TargetCellReference = targetCellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SourceHandle { get; set; } = 0;
         public string SourceWorkbookName { get; set; }
@@ -3717,6 +3886,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelGetAndSetCellTextInput
     {
+        public MSExcelGetAndSetCellTextInput(string sourceCellReference, string targetCellReference)
+        {
+            this.SourceCellReference = sourceCellReference;
+            this.TargetCellReference = targetCellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SourceHandle { get; set; } = 0;
         public string SourceWorkbookName { get; set; }
@@ -3745,6 +3920,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelCheckOLEObjectInput
     {
+        public MSExcelCheckOLEObjectInput(string oLEObjectName)
+        {
+            this.OLEObjectName = oLEObjectName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3771,6 +3951,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelInputTextIntoOLEObjectInput
     {
+        public MSExcelInputTextIntoOLEObjectInput(string oLEObjectName)
+        {
+            this.OLEObjectName = oLEObjectName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3795,6 +3980,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelSetCellBackgroundColourInput
     {
+        public MSExcelSetCellBackgroundColourInput(string cellReference, int colourIndex)
+        {
+            this.CellReference = cellReference;
+            this.ColourIndex = colourIndex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3817,6 +4008,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelGetCellBackgroundColourInput
     {
+        public MSExcelGetCellBackgroundColourInput(string cellReference)
+        {
+            this.CellReference = cellReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3836,6 +4032,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelGetOLEObjectValueInput
     {
+        public MSExcelGetOLEObjectValueInput(string oLEObjectName)
+        {
+            this.OLEObjectName = oLEObjectName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3855,6 +4056,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelDoesOLEObjectExistInput
     {
+        public MSExcelDoesOLEObjectExistInput(string oLEObjectName)
+        {
+            this.OLEObjectName = oLEObjectName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3875,6 +4081,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelPressOLEObjectInput
     {
+        public MSExcelPressOLEObjectInput(string oLEObjectName)
+        {
+            this.OLEObjectName = oLEObjectName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3898,6 +4109,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelSetWorksheetSensitivityLabelInput
     {
+        public MSExcelSetWorksheetSensitivityLabelInput(string labelId)
+        {
+            this.LabelId = labelId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -3956,6 +4172,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSExcelWriteArrayInput
     {
+        public MSExcelWriteArrayInput(string cellReference, string arrayToWriteJSON)
+        {
+            this.CellReference = cellReference;
+            this.ArrayToWriteJSON = arrayToWriteJSON;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Handle { get; set; } = 0;
         public string WorkbookName { get; set; }
@@ -4096,6 +4318,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSOutlookMarkEmailAsReadInput
     {
+        public MSOutlookMarkEmailAsReadInput(string entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         [JsonProperty("EntryID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
 
@@ -4115,6 +4342,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSOutlookGetEmailBodyInput
     {
+        public MSOutlookGetEmailBodyInput(string entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         [JsonProperty("EntryID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
 
@@ -4133,6 +4365,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSOutlookGetEmailAttachmentFilenamesInput
     {
+        public MSOutlookGetEmailAttachmentFilenamesInput(string entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         [JsonProperty("EntryID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
 
@@ -4154,6 +4391,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSOutlookSaveEmailAttachmentsAsFileInput
     {
+        public MSOutlookSaveEmailAttachmentsAsFileInput(string entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         [JsonProperty("EntryID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
         public string SaveFolderPath { get; set; }
@@ -4174,6 +4416,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSOutlookDeleteEmailInput
     {
+        public MSOutlookDeleteEmailInput(string entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         [JsonProperty("EntryID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
 
@@ -4183,6 +4430,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSOutlookMoveEmailInput
     {
+        public MSOutlookMoveEmailInput(string entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         [JsonProperty("EntryID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
         public string DestinationFolder { get; set; }
@@ -4237,6 +4489,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSOutlookReplyToEmailInput
     {
+        public MSOutlookReplyToEmailInput(string entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         [JsonProperty("EntryID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
 
@@ -4273,6 +4530,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSOutlookForwardEmailInput
     {
+        public MSOutlookForwardEmailInput(string entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         [JsonProperty("EntryID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
         public string To { get; set; }
@@ -4385,6 +4647,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
     public class MSOutlookExecuteCommandBarObjectInput
     {
+        public MSOutlookExecuteCommandBarObjectInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 

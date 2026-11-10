@@ -165,6 +165,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
 
     public class CreateWorkOrdersBodyInputItem
     {
+        public CreateWorkOrdersBodyInputItem(string workOrderType, string deviceId, string locatable, string startDate, string endDate)
+        {
+            this.WorkOrderType = workOrderType;
+            this.DeviceId = deviceId;
+            this.Locatable = locatable;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
+
         [JsonProperty("workOrderNumber")]
         public string WorkOrderNumber { get; set; }
 
@@ -241,6 +250,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
 
     public class CreateJobSiteBodyInputItem
     {
+        public CreateJobSiteBodyInputItem(string name, string address)
+        {
+            this.Name = name;
+            this.Address = address;
+        }
+
         [JsonProperty("siteID")]
         public string SiteId { get; set; }
 
@@ -272,6 +287,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
 
     public class CreateTimeClockBodyInputItem
     {
+        public CreateTimeClockBodyInputItem(string deviceId, string timeClockSentTime, string stageName)
+        {
+            this.DeviceId = deviceId;
+            this.TimeClockSentTime = timeClockSentTime;
+            this.StageName = stageName;
+        }
+
         [JsonProperty("deviceID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceId { get; set; }
 
@@ -300,6 +322,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
 
     public class UpdateTimeClockBodyInputItem
     {
+        public UpdateTimeClockBodyInputItem(string txnId, string deviceId, string timeClockSentTime, string stageName)
+        {
+            this.TxnId = txnId;
+            this.DeviceId = deviceId;
+            this.TimeClockSentTime = timeClockSentTime;
+            this.StageName = stageName;
+        }
+
         [JsonProperty("txnID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TxnId { get; set; }
 

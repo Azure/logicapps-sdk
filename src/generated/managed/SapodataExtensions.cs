@@ -241,6 +241,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
 
     public class AdHocRequestEntryInputInput
     {
+        public AdHocRequestEntryInputInput(AdHocRequestEntryInputInputHttpMethodType httpMethod)
+        {
+            this.HttpMethod = httpMethod;
+        }
+
         [JsonProperty("httpMethod", DefaultValueHandling = DefaultValueHandling.Include)]
         public AdHocRequestEntryInputInputHttpMethodType HttpMethod { get; set; }
 
@@ -281,6 +286,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
 
     public class AdHocBulkRequestEntryInputInput
     {
+        public AdHocBulkRequestEntryInputInput(AdHocBulkRequestEntryInputInputHttpMethodType httpMethod)
+        {
+            this.HttpMethod = httpMethod;
+        }
+
         [JsonProperty("httpMethod", DefaultValueHandling = DefaultValueHandling.Include)]
         public AdHocBulkRequestEntryInputInputHttpMethodType HttpMethod { get; set; }
 

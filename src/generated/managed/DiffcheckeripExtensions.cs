@@ -122,6 +122,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
 
     public class CheckTextBodyInput
     {
+        public CheckTextBodyInput(string left, string right)
+        {
+            this.Left = left;
+            this.Right = right;
+        }
+
         [JsonProperty("left", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Left { get; set; }
 
@@ -146,6 +152,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
 
     public class CheckImageBodyInput
     {
+        public CheckImageBodyInput(string leftImage, string rightImage)
+        {
+            this.LeftImage = leftImage;
+            this.RightImage = rightImage;
+        }
+
         [JsonProperty("left_image", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LeftImage { get; set; }
 

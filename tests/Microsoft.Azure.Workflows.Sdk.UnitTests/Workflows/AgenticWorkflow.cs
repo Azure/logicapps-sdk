@@ -70,12 +70,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             agent.AddTool(toolContext =>
                 {
                     return WorkflowActions.Managed.Office365("outlook").SendEmail(
-                        emailMessage: () => new SendEmailEmailMessageInput
-                        {
-                            To = toolContext.Parameters.Recipient,
-                            Subject = toolContext.Parameters.Subject,
-                            Body = toolContext.Parameters.Body,
-                        });
+                        emailMessage: () => new SendEmailEmailMessageInput(
+                            toolContext.Parameters.Recipient,
+                            toolContext.Parameters.Subject,
+                            toolContext.Parameters.Body));
                 },
                description: "This tool will send an email",
                parameters: new EmailParameters());

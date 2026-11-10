@@ -72,6 +72,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
                     callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = (JToken.Parse("{\"filter\":{\"name\":\"consequat sunt magna in\",\"unit\":\"dolor incididunt aute \",\"isString\":false,\"isStep\":true,\"metadata\":{\"adipisicing_5\":\"esse sint fugiat Lorem\",\"consequat_1\":\"enim Duis\"},\"assetIds\":[363848954441724,793045462540095,1261042166839739],\"assetExternalIds\":[\"my.known.id\"],\"rootAssetIds\":[343099548723932,88483999203217],\"assetSubtreeIds\":[{\"id\":4211006077124470}],\"dataSetIds\":[{\"id\":6354138669857534}],\"externalIdPrefix\":\"my.known.prefix\",\"createdTime\":{\"max\":62632439,\"min\":6703914},\"lastUpdatedTime\":{\"max\":89135725,\"min\":9586224}},\"advancedFilter\":{\"and\":[{\"value\":\"\\u003CCircular reference to #/components/schemas/TimeSeriesFilterLanguage detected\\u003E\"}]},\"limit\":100,\"cursor\":\"4zj0Vy2fo0NtNMb229mI9r1V3YG5NBL752kQz1cKtwo\",\"partition\":\"1/10\",\"sort\":[{\"property\":[\"ut commodo ut qui\"],\"order\":\"desc\",\"nulls\":\"auto\"}]}")).ToJToken();
                 return new ApiConnectionAction<FilterTimeSeriesResponse>(callPayload);
             });
         }
@@ -96,6 +98,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
                     callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = (JToken.Parse("{\"filter\":{\"name\":\"dolore Duis reprehenderit in velit\",\"unit\":\"reprehenderit velit\",\"isString\":false,\"isStep\":false,\"metadata\":{\"nisi_c\":\"ipsum\"},\"assetIds\":[363848954441724,793045462540095,1261042166839739],\"assetExternalIds\":[\"my.known.id\"],\"rootAssetIds\":[343099548723932,88483999203217],\"assetSubtreeIds\":[{\"id\":5739678374793478}],\"dataSetIds\":[{\"id\":1013419334254488}],\"externalIdPrefix\":\"my.known.prefix\",\"createdTime\":{\"max\":23053915,\"min\":16855291},\"lastUpdatedTime\":{\"max\":35295875,\"min\":48926022}},\"search\":{\"name\":\"non in minim fugiat ma\",\"description\":\"dolor veniam in\",\"query\":\"some other\"},\"limit\":100}")).ToJToken();
                 return new ApiConnectionAction<SearchTimeSeriesResponse>(callPayload);
             });
         }

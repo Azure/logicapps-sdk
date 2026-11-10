@@ -42,6 +42,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
 
     public class BodyInput
     {
+        public BodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 

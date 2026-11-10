@@ -531,6 +531,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
 
     public class BodyInput
     {
+        public BodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 

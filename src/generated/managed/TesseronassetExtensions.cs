@@ -100,6 +100,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
 
     public class AddAssetBodyInput
     {
+        public AddAssetBodyInput(int assetTemplateId, BodyInputFieldsTypeItem[] fields)
+        {
+            this.AssetTemplateId = assetTemplateId;
+            this.Fields = fields;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int AssetTemplateId { get; set; }
         public int? EnterpriseId { get; set; }
@@ -116,6 +122,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
 
     public class BodyInputFieldsTypeItem
     {
+        public BodyInputFieldsTypeItem(string fieldName, string value)
+        {
+            this.FieldName = fieldName;
+            this.Value = value;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldName { get; set; }
 
@@ -142,6 +154,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
 
     public class UpdateAssetBodyInput
     {
+        public UpdateAssetBodyInput(int assetId, int assetTemplateId, BodyInputFieldsTypeItem[] fields)
+        {
+            this.AssetId = assetId;
+            this.AssetTemplateId = assetTemplateId;
+            this.Fields = fields;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int AssetId { get; set; }
 
@@ -212,6 +231,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
 
     public class GetAssetSearchBodyInput
     {
+        public GetAssetSearchBodyInput(int assetTemplateId)
+        {
+            this.AssetTemplateId = assetTemplateId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int Skip { get; set; } = 0;
 
@@ -279,6 +303,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
 
     public class GetAssetInfoBodyInput
     {
+        public GetAssetInfoBodyInput(int assetId)
+        {
+            this.AssetId = assetId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int AssetId { get; set; }
         public bool? IncludeAccessAuditedFieldValues { get; set; }
@@ -331,6 +360,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
 
     public class GetConfigBodyInput
     {
+        public GetConfigBodyInput(int assetTemplateId)
+        {
+            this.AssetTemplateId = assetTemplateId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int AssetTemplateId { get; set; }
         public int? EnterpriseId { get; set; }

@@ -84,6 +84,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
 
     public class CallRequestBodyInput
     {
+        public CallRequestBodyInput(string from, string to, string answerURL)
+        {
+            this.From = from;
+            this.To = to;
+            this.AnswerURL = answerURL;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -180,6 +187,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
 
     public class SMSRequestBodyInput
     {
+        public SMSRequestBodyInput(string from, string to, string message)
+        {
+            this.From = from;
+            this.To = to;
+            this.Message = message;
+        }
+
         [JsonProperty("src", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 

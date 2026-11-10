@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
     public class PerplexityaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perplexityai")]
-        public IBodyWorkflowAction<CompletionResponse, ApiConnectionActionConfiguration> Completion(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<CompletionResponse, ApiConnectionActionConfiguration> Completion(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CompletionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/completions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CompletionResponse>(callPayload);
             });
         }
@@ -100,6 +99,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
 
     public class BodyInput
     {
+        public BodyInput(BodyInputMessagesTypeItem[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputModelType Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai.BodyInputModelType.Mistral7bInstruct;
 
@@ -144,6 +148,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
 
     public class BodyInputMessagesTypeItem
     {
+        public BodyInputMessagesTypeItem(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputMessagesTypeItemRoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai.BodyInputMessagesTypeItemRoleType.System;
 

@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 
     public class BodyInput
     {
+        public BodyInput(string actionConfigId)
+        {
+            this.ActionConfigId = actionConfigId;
+        }
+
         [JsonProperty("actionConfigId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActionConfigId { get; set; }
 

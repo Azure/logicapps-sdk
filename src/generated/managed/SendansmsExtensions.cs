@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
     public class SendansmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<BodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<BodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_xTopMessageKey = WorkflowExpression.Compile(xTopMessageKey, nameof(xTopMessageKey), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages";
@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
                 callPayload.Headers["X-TopMessage-Key"] = ExpressionConverter.Convert(__workflow_xTopMessageKey);
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -39,12 +38,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
 
     public class BodyInput
     {
+        public BodyInput(BodyInputDataType data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputDataType Data { get; set; }
     }
 
     public class BodyInputDataType
     {
+        public BodyInputDataType(string from, string[] to, string text)
+        {
+            this.From = from;
+            this.To = to;
+            this.Text = text;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 

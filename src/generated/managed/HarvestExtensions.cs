@@ -307,12 +307,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
     public class AddNewContactBodyInput
     {
+        public AddNewContactBodyInput(BodyInputContactType contact)
+        {
+            this.Contact = contact;
+        }
+
         [JsonProperty("contact", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputContactType Contact { get; set; }
     }
 
     public class BodyInputContactType
     {
+        public BodyInputContactType(int clientId, string firstName, string lastName)
+        {
+            this.ClientId = clientId;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [JsonProperty("client_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ClientId { get; set; }
 
@@ -391,12 +403,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
     public class AddNewClientBodyInput
     {
+        public AddNewClientBodyInput(BodyInputClientType client)
+        {
+            this.Client = client;
+        }
+
         [JsonProperty("client", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputClientType Client { get; set; }
     }
 
     public class BodyInputClientType
     {
+        public BodyInputClientType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -412,12 +434,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
     public class CreateUserBodyInput
     {
+        public CreateUserBodyInput(CreateUserBodyInputUserType user)
+        {
+            this.User = user;
+        }
+
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserBodyInputUserType User { get; set; } = new CreateUserBodyInputUserType();
+        public CreateUserBodyInputUserType User { get; set; }
     }
 
     public class CreateUserBodyInputUserType
     {
+        public CreateUserBodyInputUserType(string email, string firstName, string lastName)
+        {
+            this.Email = email;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -493,6 +527,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
     public class UpdateTimeEntryBodyInput
     {
+        public UpdateTimeEntryBodyInput(string projectId, string taskId)
+        {
+            this.ProjectId = projectId;
+            this.TaskId = taskId;
+        }
+
         [JsonProperty("project_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
 
@@ -514,6 +554,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
     public class CreateTimeEntryBodyInput
     {
+        public CreateTimeEntryBodyInput(string projectId, string taskId)
+        {
+            this.ProjectId = projectId;
+            this.TaskId = taskId;
+        }
+
         [JsonProperty("notes")]
         public string Notes { get; set; }
 
@@ -616,12 +662,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
     public class AddUserToProjectBodyInput
     {
+        public AddUserToProjectBodyInput(AddUserToProjectBodyInputUserType user)
+        {
+            this.User = user;
+        }
+
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public AddUserToProjectBodyInputUserType User { get; set; }
     }
 
     public class AddUserToProjectBodyInputUserType
     {
+        public AddUserToProjectBodyInputUserType(int userId)
+        {
+            this.UserId = userId;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UserId { get; set; }
     }

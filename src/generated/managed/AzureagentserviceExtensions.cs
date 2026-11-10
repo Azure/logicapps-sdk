@@ -394,6 +394,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
     public class CreateRunRequestBodyInput
     {
+        public CreateRunRequestBodyInput(string assistantId)
+        {
+            this.AssistantId = assistantId;
+        }
+
         [JsonProperty("assistant_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AssistantId { get; set; }
 
@@ -1064,6 +1069,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
     public class InvokeAgentOpenAIResponseTextFormatConfiguration
     {
+        public InvokeAgentOpenAIResponseTextFormatConfiguration(InvokeAgentOpenAIResponseTextFormatConfigurationType type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public InvokeAgentOpenAIResponseTextFormatConfigurationType Type { get; set; }
     }
@@ -1081,6 +1091,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
     public class InvokeAgentOpenAITool
     {
+        public InvokeAgentOpenAITool(InvokeAgentOpenAIToolType type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public InvokeAgentOpenAIToolType Type { get; set; }
     }
@@ -1132,6 +1147,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
     public class InvokeAgentOpenAIPrompt
     {
+        public InvokeAgentOpenAIPrompt(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1172,6 +1192,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
     public class BodyInputConversationType
     {
+        public BodyInputConversationType(BodyInputConversationTypeConversationIdType conversationId)
+        {
+            this.ConversationId = conversationId;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputConversationTypeConversationIdType ConversationId { get; set; }
     }
@@ -1185,6 +1210,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
     public class AgentReference
     {
+        public AgentReference(AgentReferenceTypeType type, string name, string version)
+        {
+            this.Type = type;
+            this.Name = name;
+            this.Version = version;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public AgentReferenceTypeType Type { get; set; }
 

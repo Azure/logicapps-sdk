@@ -2670,6 +2670,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
 
     public class UsersPartlistsUpdateBodyInput
     {
+        public UsersPartlistsUpdateBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("is_buildable")]
         public bool? IsBuildable { get; set; }
 

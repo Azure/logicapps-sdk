@@ -31,16 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesPOST(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesPOST(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Package, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/packages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Package>(callPayload);
             });
         }
@@ -74,17 +73,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesByPackageIdPOST(Expression<Func<string>> packageId, Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesByPackageIdPOST(Expression<Func<string>> packageId, Expression<Func<BodyInput>> body)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Package, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Package>(callPayload);
             });
         }
@@ -259,6 +257,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
 
     public class BodyInput
     {
+        public BodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 

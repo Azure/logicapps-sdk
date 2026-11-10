@@ -990,6 +990,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arm
 
     public class ResourceGroupsPatchParametersInput
     {
+        public ResourceGroupsPatchParametersInput(string location)
+        {
+            this.Location = location;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 

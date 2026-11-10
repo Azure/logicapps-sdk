@@ -111,6 +111,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
 
     public class CreateDocumentUploadBodyInput
     {
+        public CreateDocumentUploadBodyInput(string fileName)
+        {
+            this.FileName = fileName;
+        }
+
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -187,6 +192,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
 
     public class CreateVendorUploadBodyInput
     {
+        public CreateVendorUploadBodyInput(string fileName)
+        {
+            this.FileName = fileName;
+        }
+
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
     }

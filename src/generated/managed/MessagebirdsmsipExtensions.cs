@@ -61,16 +61,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "messagebirdsmsip")]
-        public IBodyWorkflowAction<MessagesResponse, ApiConnectionActionConfiguration> Messages(Expression<Func<MessagesBodyInput>> body = null)
+        public IBodyWorkflowAction<MessagesResponse, ApiConnectionActionConfiguration> Messages(Expression<Func<MessagesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MessagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MessagesResponse>(callPayload);
             });
         }
@@ -384,6 +383,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
 
     public class MessagesBodyInput
     {
+        public MessagesBodyInput(string[] recipients, string originator, string body)
+        {
+            this.Recipients = recipients;
+            this.Originator = originator;
+            this.Body = body;
+        }
+
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Recipients { get; set; }
 

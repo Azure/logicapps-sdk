@@ -63,6 +63,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slascone
 
     public class BodyInput
     {
+        public BodyInput(BodyInputEventsTypeItem[] events)
+        {
+            this.Events = events;
+        }
+
         [JsonProperty("active", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Active { get; set; } = true;
 

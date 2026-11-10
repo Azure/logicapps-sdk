@@ -239,6 +239,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class CalculateBusinessDaysBodyInput
     {
+        public CalculateBusinessDaysBodyInput(string startDate, string endDate)
+        {
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
+
         [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
 
@@ -284,6 +290,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class CalculateAgeBodyInput
     {
+        public CalculateAgeBodyInput(string birthDate)
+        {
+            this.BirthDate = birthDate;
+        }
+
         [JsonProperty("birthDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BirthDate { get; set; }
 
@@ -320,6 +331,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class CalculateWorkingHoursBodyInput
     {
+        public CalculateWorkingHoursBodyInput(string startDateTime, string endDateTime)
+        {
+            this.StartDateTime = startDateTime;
+            this.EndDateTime = endDateTime;
+        }
+
         [JsonProperty("startDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDateTime { get; set; }
 
@@ -368,6 +385,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class ConvertTimeZonesBodyInput
     {
+        public ConvertTimeZonesBodyInput(string dateTime, CalculateGlobalWorkingHoursTimeZoneEnum fromTimeZone, CalculateGlobalWorkingHoursTimeZoneEnum toTimeZone)
+        {
+            this.DateTime = dateTime;
+            this.FromTimeZone = fromTimeZone;
+            this.ToTimeZone = toTimeZone;
+        }
+
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }
 
@@ -652,6 +676,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class CalculateProjectDurationBodyInput
     {
+        public CalculateProjectDurationBodyInput(string startDate, string endDate)
+        {
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
+
         [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
 
@@ -700,6 +730,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class Milestone
     {
+        public Milestone(string name, string date)
+        {
+            this.Name = name;
+            this.Date = date;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -709,6 +745,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class Holiday
     {
+        public Holiday(string date)
+        {
+            this.Date = date;
+        }
+
         [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
 
@@ -842,6 +883,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class CalculatePayrollPeriodsBodyInput
     {
+        public CalculatePayrollPeriodsBodyInput(string startDate, BodyInputPeriodTypeType periodType)
+        {
+            this.StartDate = startDate;
+            this.PeriodType = periodType;
+        }
+
         [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
 
@@ -945,6 +992,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class GetTimeZoneInfoBodyInput
     {
+        public GetTimeZoneInfoBodyInput(CalculateGlobalWorkingHoursTimeZoneEnum[] timeZones)
+        {
+            this.TimeZones = timeZones;
+        }
+
         [JsonProperty("timeZones", DefaultValueHandling = DefaultValueHandling.Include)]
         public CalculateGlobalWorkingHoursTimeZoneEnum[] TimeZones { get; set; }
 
@@ -1024,6 +1076,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class DeadlineCalculationBodyInput
     {
+        public DeadlineCalculationBodyInput(string deadlineDate)
+        {
+            this.DeadlineDate = deadlineDate;
+        }
+
         [JsonProperty("deadlineDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeadlineDate { get; set; }
 
@@ -1096,6 +1153,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class CrossTzDurationBodyInput
     {
+        public CrossTzDurationBodyInput(string startDateTime, CalculateGlobalWorkingHoursTimeZoneEnum startTimeZone, string endDateTime, CalculateGlobalWorkingHoursTimeZoneEnum endTimeZone)
+        {
+            this.StartDateTime = startDateTime;
+            this.StartTimeZone = startTimeZone;
+            this.EndDateTime = endDateTime;
+            this.EndTimeZone = endTimeZone;
+        }
+
         [JsonProperty("startDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDateTime { get; set; }
 
@@ -1138,6 +1203,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class CalculateGlobalWorkingHoursBodyInput
     {
+        public CalculateGlobalWorkingHoursBodyInput(string startDateTime, string endDateTime, CalculateGlobalWorkingHoursTimeZoneEnum[] timeZones)
+        {
+            this.StartDateTime = startDateTime;
+            this.EndDateTime = endDateTime;
+            this.TimeZones = timeZones;
+        }
+
         [JsonProperty("startDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDateTime { get; set; }
 
@@ -1512,6 +1584,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class CalculateMeetingTimesBodyInput
     {
+        public CalculateMeetingTimesBodyInput(CalculateMeetingTimesParticipantLocalTime[] participants, int durationMinutes)
+        {
+            this.Participants = participants;
+            this.DurationMinutes = durationMinutes;
+        }
+
         [JsonProperty("participants", DefaultValueHandling = DefaultValueHandling.Include)]
         public CalculateMeetingTimesParticipantLocalTime[] Participants { get; set; }
 
@@ -1611,6 +1689,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class DateRange
     {
+        public DateRange(string startDate, string endDate)
+        {
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
+
         [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
 
@@ -1620,6 +1704,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class TimeSlot
     {
+        public TimeSlot(string startTime, string endTime)
+        {
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("startTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartTime { get; set; }
 
@@ -1693,6 +1783,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class ValidateDstCalculationsBodyInput
     {
+        public ValidateDstCalculationsBodyInput(DstCalculation[] calculations)
+        {
+            this.Calculations = calculations;
+        }
+
         [JsonProperty("calculations", DefaultValueHandling = DefaultValueHandling.Include)]
         public DstCalculation[] Calculations { get; set; }
 
@@ -1705,6 +1800,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class DstCalculation
     {
+        public DstCalculation(string calculationId, DstCalculationTimeZoneType timeZone, string startDateTime, string endDateTime)
+        {
+            this.CalculationId = calculationId;
+            this.TimeZone = timeZone;
+            this.StartDateTime = startDateTime;
+            this.EndDateTime = endDateTime;
+        }
+
         [JsonProperty("calculationId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CalculationId { get; set; }
 
@@ -2290,6 +2393,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class CalculateDstTransitionBodyInput
     {
+        public CalculateDstTransitionBodyInput(BodyInputTimeZoneType timeZone, int year)
+        {
+            this.TimeZone = timeZone;
+            this.Year = year;
+        }
+
         [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputTimeZoneType TimeZone { get; set; }
 
@@ -2619,6 +2728,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class GetDstHistoryBodyInput
     {
+        public GetDstHistoryBodyInput(CalculateGlobalWorkingHoursTimeZoneEnum[] timeZones)
+        {
+            this.TimeZones = timeZones;
+        }
+
         [JsonProperty("timeZones", DefaultValueHandling = DefaultValueHandling.Include)]
         public CalculateGlobalWorkingHoursTimeZoneEnum[] TimeZones { get; set; }
 

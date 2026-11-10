@@ -91,6 +91,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
 
     public class BodyInput
     {
+        public BodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }

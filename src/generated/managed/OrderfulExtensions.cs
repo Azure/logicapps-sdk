@@ -54,16 +54,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
 
     public class OrderfulTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CommunicationChannelCreationResponse, ApiConnectionPollingTriggerConfiguration> CommunicationChannel(Expression<Func<CommunicationChannelRequestBodyInput>> communicationChannelRequestBody = null)
+        public IBodyWorkflowTrigger<CommunicationChannelCreationResponse, ApiConnectionPollingTriggerConfiguration> CommunicationChannel(Expression<Func<CommunicationChannelRequestBodyInput>> communicationChannelRequestBody)
         {
-            var __workflow_communicationChannelRequestBody = WorkflowExpression.Compile(communicationChannelRequestBody, nameof(communicationChannelRequestBody), required: false);
+            var __workflow_communicationChannelRequestBody = WorkflowExpression.Compile(communicationChannelRequestBody, nameof(communicationChannelRequestBody), required: true);
             return new DeferredBodyTrigger<CommunicationChannelCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/destinations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_communicationChannelRequestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_communicationChannelRequestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_communicationChannelRequestBody);
                 return new ApiConnectionPollingTrigger<CommunicationChannelCreationResponse>(callPayload);
             });
         }
@@ -77,6 +76,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
 
     public class CommunicationChannelRequestBodyInput
     {
+        public CommunicationChannelRequestBodyInput(string name, int ownerId)
+        {
+            this.Name = name;
+            this.OwnerId = ownerId;
+        }
+
         [JsonProperty("isActive", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsActive { get; set; } = true;
 

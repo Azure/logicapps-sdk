@@ -747,6 +747,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint365
 
     public class ParametersInput
     {
+        public ParametersInput(string sourceList, string targetBusinessModule, int targetBusinessModuleItem, string targetList, string outputFilename)
+        {
+            this.SourceList = sourceList;
+            this.TargetBusinessModule = targetBusinessModule;
+            this.TargetBusinessModuleItem = targetBusinessModuleItem;
+            this.TargetList = targetList;
+            this.OutputFilename = outputFilename;
+        }
+
         [JsonProperty("Items")]
         public JToken[] Documents { get; set; }
         public ParametersInputPdfFormatType? PdfFormat { get; set; }
@@ -819,6 +828,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint365
 
     public class ActionInput
     {
+        public ActionInput(bool isPublic, string groupAlias, string groupDisplayName)
+        {
+            this.IsPublic = isPublic;
+            this.GroupAlias = groupAlias;
+            this.GroupDisplayName = groupDisplayName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsPublic { get; set; }
 
@@ -984,6 +1000,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint365
 
     public class CopyDocumentModelInput
     {
+        public CopyDocumentModelInput(CopyDocumentModelInputModeType mode, string targetBusinessModule, int targetEntity, string targetList, CopyDocumentModelInputNamingConflictBehaviorType namingConflictBehavior)
+        {
+            this.Mode = mode;
+            this.TargetBusinessModule = targetBusinessModule;
+            this.TargetEntity = targetEntity;
+            this.TargetList = targetList;
+            this.NamingConflictBehavior = namingConflictBehavior;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public CopyDocumentModelInputModeType Mode { get; set; }
 
@@ -1067,6 +1092,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint365
 
     public class DocumentConvertToPDFParameterInput
     {
+        public DocumentConvertToPDFParameterInput(string destinationBusinessModule, int destinationEntity, string destinationLibrary, ParameterInputOutputExistsBehaviourType outputExistsBehaviour, DocumentConvertToPDFParameterInputPDFFormatType pDFFormat)
+        {
+            this.DestinationBusinessModule = destinationBusinessModule;
+            this.DestinationEntity = destinationEntity;
+            this.DestinationLibrary = destinationLibrary;
+            this.OutputExistsBehaviour = outputExistsBehaviour;
+            this.PDFFormat = pDFFormat;
+        }
+
         [JsonProperty("TargetBusinessModule", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DestinationBusinessModule { get; set; }
 
@@ -1345,6 +1379,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint365
 
     public class CompressToZIPFileModelInput
     {
+        public CompressToZIPFileModelInput(string destinationBusinessModule, int destinationEntity, string destinationLibrary, ModelInputOutputExistsBehaviourType outputExistsBehaviour)
+        {
+            this.DestinationBusinessModule = destinationBusinessModule;
+            this.DestinationEntity = destinationEntity;
+            this.DestinationLibrary = destinationLibrary;
+            this.OutputExistsBehaviour = outputExistsBehaviour;
+        }
+
         [JsonProperty("BusinessModuleId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DestinationBusinessModule { get; set; }
 
@@ -1388,6 +1430,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint365
 
     public class EntityActivityLogAddModelInput
     {
+        public EntityActivityLogAddModelInput(string title, string type, string typeId, string sourceType, string date, string businessModule, int entity)
+        {
+            this.Title = title;
+            this.Type = type;
+            this.TypeId = typeId;
+            this.SourceType = sourceType;
+            this.Date = date;
+            this.BusinessModule = businessModule;
+            this.Entity = entity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -1469,6 +1522,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint365
 
     public class WebHookInput
     {
+        public WebHookInput(WebHookInputPropertiesType properties)
+        {
+            this.Properties = properties;
+        }
+
         [JsonProperty("WebHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURI { get; set; } = "#{listCallbackUrl()}";
         public string Description { get; set; }
@@ -1479,6 +1537,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint365
 
     public class WebHookInputPropertiesType
     {
+        public WebHookInputPropertiesType(string businessModule, string triggerId)
+        {
+            this.BusinessModule = businessModule;
+            this.TriggerId = triggerId;
+        }
+
         [JsonProperty("BusinessModuleId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BusinessModule { get; set; }
 

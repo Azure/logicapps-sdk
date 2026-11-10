@@ -232,6 +232,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 
     public class CreateWorkflowRunBodyInput
     {
+        public CreateWorkflowRunBodyInput(string workflowId)
+        {
+            this.WorkflowId = workflowId;
+        }
+
         [JsonProperty("dueDate")]
         public string DueDate { get; set; }
 
@@ -247,6 +252,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 
     public class UpdateWorkflowRunBodyInput
     {
+        public UpdateWorkflowRunBodyInput(string name, bool shared, BodyInputStatusType status)
+        {
+            this.Name = name;
+            this.Shared = shared;
+            this.Status = status;
+        }
+
         [JsonProperty("dueDate")]
         public string DueDate { get; set; }
 
@@ -355,6 +367,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 
     public class CreateTaskStateChangedTriggerBodyInput
     {
+        public CreateTaskStateChangedTriggerBodyInput(BodyInputTaskStateType taskState)
+        {
+            this.TaskState = taskState;
+        }
+
         [JsonProperty("taskId")]
         public string TaskId { get; set; }
 

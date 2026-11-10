@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new GroupsSearchBodyInput().ToJToken();
                 return new ApiConnectionAction<GroupSearch>(callPayload);
             });
         }
@@ -51,6 +53,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new WorkflowExecutionsSearchBodyInput().ToJToken();
                 return new ApiConnectionAction<WorkflowExecutionsSearch>(callPayload);
             });
         }
@@ -81,6 +85,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new WorkflowsSearchBodyInput().ToJToken();
                 return new ApiConnectionAction<WorkflowsSearch>(callPayload);
             });
         }

@@ -1792,11 +1792,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class GeneratePatternInputInputItem
     {
+        public GeneratePatternInputInputItem(string input, GenerateSettings patternSettings)
+        {
+            this.Input = input;
+            this.PatternSettings = patternSettings;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Input { get; set; }
 
         [JsonProperty("PatternSetting", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateSettings PatternSettings { get; set; } = new GenerateSettings();
+        public GenerateSettings PatternSettings { get; set; }
 
         [JsonProperty("UID")]
         public string UId { get; set; }
@@ -1804,14 +1810,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class GenerateSettings
     {
+        public GenerateSettings(GenerateSettingsExcludeFromTokenTypeItem[] excludeFromToken, GenerateLetterSettings letterSettings, GenerateNumberSettings numberSettings)
+        {
+            this.ExcludeFromToken = excludeFromToken;
+            this.LetterSettings = letterSettings;
+            this.NumberSettings = numberSettings;
+        }
+
         [JsonProperty("DoNotTokenize", DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateSettingsExcludeFromTokenTypeItem[] ExcludeFromToken { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateLetterSettings LetterSettings { get; set; } = new GenerateLetterSettings();
+        public GenerateLetterSettings LetterSettings { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateNumberSettings NumberSettings { get; set; } = new GenerateNumberSettings();
+        public GenerateNumberSettings NumberSettings { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateSymbolSettings SymbolSettings { get; set; } = new GenerateSymbolSettings();
@@ -1836,6 +1849,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class GenerateLetterSettings
     {
+        public GenerateLetterSettings(GenerateLetterSettingsExcludeTypeItem[] exclude, GenerateLetterSettingsCollapseTypeItem[] collapse)
+        {
+            this.Exclude = exclude;
+            this.Collapse = collapse;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool CaseSensitive { get; set; } = true;
 
@@ -1865,6 +1884,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class GenerateNumberSettings
     {
+        public GenerateNumberSettings(GenerateNumberSettingsExcludeTypeItem[] exclude, GenerateNumberSettingsCollapseTypeItem[] collapse)
+        {
+            this.Exclude = exclude;
+            this.Collapse = collapse;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool NumberCategories { get; set; } = true;
 
@@ -2094,6 +2119,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class ScoringInputInputItem
     {
+        public ScoringInputInputItem(bool isDatum, string recordId, string recordSource, InputInputItemGroupFieldsTypeItem[] groupFields)
+        {
+            this.IsDatum = isDatum;
+            this.RecordId = recordId;
+            this.RecordSource = recordSource;
+            this.GroupFields = groupFields;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDatum { get; set; }
 
@@ -2109,11 +2142,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class InputInputItemGroupFieldsTypeItem
     {
+        public InputInputItemGroupFieldsTypeItem(string groupName, InputInputItemGroupFieldsTypeItemSettingsType settings, InputInputItemGroupFieldsTypeItemValuesTypeItem[] values)
+        {
+            this.GroupName = groupName;
+            this.Settings = settings;
+            this.Values = values;
+        }
+
         [JsonProperty("GroupFieldId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public InputInputItemGroupFieldsTypeItemSettingsType Settings { get; set; } = new InputInputItemGroupFieldsTypeItemSettingsType();
+        public InputInputItemGroupFieldsTypeItemSettingsType Settings { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public InputInputItemGroupFieldsTypeItemValuesTypeItem[] Values { get; set; }
@@ -2121,6 +2161,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class InputInputItemGroupFieldsTypeItemSettingsType
     {
+        public InputInputItemGroupFieldsTypeItemSettingsType(InputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType scoringType, InputInputItemGroupFieldsTypeItemSettingsTypeScoringMethodType scoringMethod, InputInputItemGroupFieldsTypeItemSettingsTypeComparisonAlgorithmType comparisonAlgorithm, bool caseSensitive, InputInputItemGroupFieldsTypeItemSettingsTypeAlphaSequenceType alphaSequence, bool replaceDoubleSpaceWithSingleSpace, bool removeAllWhitespace, bool trimString, bool includePunctuation, bool includeSymbols, bool includeNonPrinting, bool includeNumbers, bool includeLetters, bool applyWeighting, bool includePreTransformedDataForScoring, bool includeTokenForScoring, bool includeTransformsDataForScoring, bool autoPopulateTransformedValueWhenEmpty, bool autoPopulateTokenWhenEmpty)
+        {
+            this.ScoringType = scoringType;
+            this.ScoringMethod = scoringMethod;
+            this.ComparisonAlgorithm = comparisonAlgorithm;
+            this.CaseSensitive = caseSensitive;
+            this.AlphaSequence = alphaSequence;
+            this.ReplaceDoubleSpaceWithSingleSpace = replaceDoubleSpaceWithSingleSpace;
+            this.RemoveAllWhitespace = removeAllWhitespace;
+            this.TrimString = trimString;
+            this.IncludePunctuation = includePunctuation;
+            this.IncludeSymbols = includeSymbols;
+            this.IncludeNonPrinting = includeNonPrinting;
+            this.IncludeNumbers = includeNumbers;
+            this.IncludeLetters = includeLetters;
+            this.ApplyWeighting = applyWeighting;
+            this.IncludePreTransformedDataForScoring = includePreTransformedDataForScoring;
+            this.IncludeTokenForScoring = includeTokenForScoring;
+            this.IncludeTransformsDataForScoring = includeTransformsDataForScoring;
+            this.AutoPopulateTransformedValueWhenEmpty = autoPopulateTransformedValueWhenEmpty;
+            this.AutoPopulateTokenWhenEmpty = autoPopulateTokenWhenEmpty;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public InputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType ScoringType { get; set; }
 
@@ -2273,6 +2336,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class InputInputItemGroupFieldsTypeItemValuesTypeItem
     {
+        public InputInputItemGroupFieldsTypeItemValuesTypeItem(string value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
         public string TransformedValue { get; set; }
@@ -2341,6 +2409,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class SequenceTransformInputInputItem
     {
+        public SequenceTransformInputInputItem(string input, InputInputItemSettingsTypeItem[] settings)
+        {
+            this.Input = input;
+            this.Settings = settings;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Input { get; set; }
 
@@ -2353,6 +2427,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class InputInputItemSettingsTypeItem
     {
+        public InputInputItemSettingsTypeItem(InputInputItemSettingsTypeItemCategoryType category)
+        {
+            this.Category = category;
+        }
+
         [JsonProperty("EntityType", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputInputItemSettingsTypeItemCategoryType Category { get; set; }
 

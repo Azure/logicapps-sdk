@@ -891,11 +891,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class NewListRequestInput
     {
+        public NewListRequestInput(string listName, NewlistContact contact, string permissionReminder, NewlistCampaignDefaults campaignDefaults)
+        {
+            this.ListName = listName;
+            this.Contact = contact;
+            this.PermissionReminder = permissionReminder;
+            this.CampaignDefaults = campaignDefaults;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
 
         [JsonProperty("contact", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewlistContact Contact { get; set; } = new NewlistContact();
+        public NewlistContact Contact { get; set; }
 
         [JsonProperty("permission_reminder", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PermissionReminder { get; set; }
@@ -904,7 +912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? UseArchiveBar { get; set; }
 
         [JsonProperty("campaign_defaults", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewlistCampaignDefaults CampaignDefaults { get; set; } = new NewlistCampaignDefaults();
+        public NewlistCampaignDefaults CampaignDefaults { get; set; }
 
         [JsonProperty("notify_on_subscribe")]
         public string NotifyOnSubscribe { get; set; }
@@ -921,6 +929,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class NewlistContact
     {
+        public NewlistContact(string companyName, string addressLine1, string city, string state, string postalCode, string phoneNumber)
+        {
+            this.CompanyName = companyName;
+            this.AddressLine1 = addressLine1;
+            this.City = city;
+            this.State = state;
+            this.PostalCode = postalCode;
+            this.PhoneNumber = phoneNumber;
+        }
+
         [JsonProperty("company", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CompanyName { get; set; }
 
@@ -948,6 +966,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class NewlistCampaignDefaults
     {
+        public NewlistCampaignDefaults(string senderSName, string senderSEmailAddress, string subject)
+        {
+            this.SenderSName = senderSName;
+            this.SenderSEmailAddress = senderSEmailAddress;
+            this.Subject = subject;
+        }
+
         [JsonProperty("from_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SenderSName { get; set; }
 
@@ -1095,6 +1120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class BodyInput
     {
+        public BodyInput(NewMemberInListRequest[] members)
+        {
+            this.Members = members;
+        }
+
         [JsonProperty("members", DefaultValueHandling = DefaultValueHandling.Include)]
         public NewMemberInListRequest[] Members { get; set; }
 
@@ -1104,6 +1134,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class NewMemberInListRequest
     {
+        public NewMemberInListRequest(NewMemberInListRequestStatusType status, string emailAddress)
+        {
+            this.Status = status;
+            this.EmailAddress = emailAddress;
+        }
+
         [JsonProperty("email_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public NewMemberInListRequestEmailTypeType? EmailType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp.NewMemberInListRequestEmailTypeType.Html;
 
@@ -1280,6 +1316,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class NewMemberInListInput
     {
+        public NewMemberInListInput(NewMemberInListInputStatusType status, string emailAddress)
+        {
+            this.Status = status;
+            this.EmailAddress = emailAddress;
+        }
+
         [JsonProperty("email_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public NewMemberInListInputEmailTypeType? EmailType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp.NewMemberInListInputEmailTypeType.Html;
 
@@ -1330,6 +1372,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class NewCampaignRequestInput
     {
+        public NewCampaignRequestInput(NewCampaignRequestInputCampaignTypeType campaignType, NewcampaignRecipient recipients, NewcampaignSettingsV2 settings)
+        {
+            this.CampaignType = campaignType;
+            this.Recipients = recipients;
+            this.Settings = settings;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public NewCampaignRequestInputCampaignTypeType CampaignType { get; set; }
 
@@ -1371,6 +1420,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class NewcampaignRecipient
     {
+        public NewcampaignRecipient(string listId)
+        {
+            this.ListId = listId;
+        }
+
         [JsonProperty("list_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListId { get; set; }
 
@@ -1389,6 +1443,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class NewcampaignSettingsV2
     {
+        public NewcampaignSettingsV2(string campaignSubjectLine, string fromName, string replyToAddress)
+        {
+            this.CampaignSubjectLine = campaignSubjectLine;
+            this.FromName = fromName;
+            this.ReplyToAddress = replyToAddress;
+        }
+
         [JsonProperty("subject_line", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CampaignSubjectLine { get; set; }
 
@@ -1612,6 +1673,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class UpdateMemberInListRequestInput
     {
+        public UpdateMemberInListRequestInput(UpdateMemberInListRequestInputStatusType status)
+        {
+            this.Status = status;
+        }
+
         [JsonProperty("email_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateMemberInListRequestInputEmailTypeType? EmailType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp.UpdateMemberInListRequestInputEmailTypeType.Html;
 

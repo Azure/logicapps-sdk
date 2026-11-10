@@ -71,6 +71,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
 
     public class SmsRequestRequestInput
     {
+        public SmsRequestRequestInput(string sender, string text, string receiver)
+        {
+            this.Sender = sender;
+            this.Text = text;
+            this.Receiver = receiver;
+        }
+
         [JsonProperty("flash")]
         public bool? IsFlashSMS { get; set; }
 
@@ -142,6 +149,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
 
     public class SmsBulkRequestRequestInput
     {
+        public SmsBulkRequestRequestInput(string sender, string text, string[] receivers)
+        {
+            this.Sender = sender;
+            this.Text = text;
+            this.Receivers = receivers;
+        }
+
         [JsonProperty("flash")]
         public bool? IsFlashSMS { get; set; }
 

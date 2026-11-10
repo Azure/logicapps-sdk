@@ -65,6 +65,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
 
     public class BodyInput
     {
+        public BodyInput(string topic, string startTime, string endTime)
+        {
+            this.Topic = topic;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Topic { get; set; }
 

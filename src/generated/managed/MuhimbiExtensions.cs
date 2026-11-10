@@ -515,6 +515,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class CompositeWatermarkInputDataInput
     {
+        public CompositeWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string watermarkData)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.WatermarkData = watermarkData;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -533,6 +539,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class CompressPdfInputPdfDataInput
     {
+        public CompressPdfInputPdfDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -787,6 +799,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class ConvertInputDataInput
     {
+        public ConvertInputDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -848,6 +866,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class InputCadDataInput
     {
+        public InputCadDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -941,6 +965,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class InputEmailDataInput
     {
+        public InputEmailDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1046,6 +1076,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class InputExcelDataInput
     {
+        public InputExcelDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1129,6 +1165,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class ConvertHtmlInputDataInput
     {
+        public ConvertHtmlInputDataInput(string sourceURLOrHTML)
+        {
+            this.SourceURLOrHTML = sourceURLOrHTML;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1185,6 +1226,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class InputInfopathDataInput
     {
+        public InputInfopathDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1344,6 +1391,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class ConvertPdfaInputPdfDataInput
     {
+        public ConvertPdfaInputPdfDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1398,6 +1451,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class InputPowerpointDataInput
     {
+        public InputPowerpointDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1484,6 +1543,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class InputVisioDataInput
     {
+        public InputVisioDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1542,6 +1607,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class InputWordDataInput
     {
+        public InputWordDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1667,6 +1738,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class CopyMetadataInputDataInput
     {
+        public CopyMetadataInputDataInput(string siteUrl, string sourceFileUrl, string destinationFilePath)
+        {
+            this.SiteUrl = siteUrl;
+            this.SourceFileUrl = sourceFileUrl;
+            this.DestinationFilePath = destinationFilePath;
+        }
+
         [JsonProperty("site_url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SiteUrl { get; set; }
 
@@ -1694,6 +1772,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class EllipseWatermarkInputDataInput
     {
+        public EllipseWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -1815,6 +1900,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class InputFromPdfDataInput
     {
+        public InputFromPdfDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1844,6 +1935,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class ExtractTextInputPdfDataInput
     {
+        public ExtractTextInputPdfDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1862,6 +1959,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class ImageWatermarkInputDataInput
     {
+        public ImageWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent image, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.Image = image;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -1937,6 +2042,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class InputXmlDataInput
     {
+        public InputXmlDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -1995,6 +2106,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class ExtractKeyValuePairsInputPdfDataInput
     {
+        public ExtractKeyValuePairsInputPdfDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -2131,6 +2248,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class LineWatermarkInputDataInput
     {
+        public LineWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string xCoordinateStart, string yCoordinateStart, string xCoordinateEnd, string yCoordinateEnd)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.XCoordinateStart = xCoordinateStart;
+            this.YCoordinateStart = yCoordinateStart;
+            this.XCoordinateEnd = xCoordinateEnd;
+            this.YCoordinateEnd = yCoordinateEnd;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -2200,6 +2326,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class LinearBarcodeWatermarkInputDataInput
     {
+        public LinearBarcodeWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string barcodeContent, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.BarcodeContent = barcodeContent;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -2424,6 +2558,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class MergeSourceFile
     {
+        public MergeSourceFile(string name, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent content)
+        {
+            this.Name = name;
+            this.Content = content;
+        }
+
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2433,6 +2573,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class OcrPdfInputDataInput
     {
+        public OcrPdfInputDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -2542,6 +2688,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class OcrTextInputDataInput
     {
+        public OcrTextInputDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -2587,6 +2739,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class PdfWatermarkInputDataInput
     {
+        public PdfWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDFWatermark, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.PDFWatermark = pDFWatermark;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -2653,6 +2813,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class QrCodeWatermarkInputDataInput
     {
+        public QrCodeWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string content, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.Content = content;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -2837,6 +3005,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class RectangleWatermarkInputDataInput
     {
+        public RectangleWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -2909,6 +3084,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class RedactInputPdfDataInput
     {
+        public RedactInputPdfDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string redactPattern)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+            this.RedactPattern = redactPattern;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -2949,6 +3131,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class RedactSmartInputPdfDataInput
     {
+        public RedactSmartInputPdfDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -3012,6 +3200,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class RtfWatermarkInputDataInput
     {
+        public RtfWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string watermarkContent, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.WatermarkContent = watermarkContent;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -3087,6 +3283,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class SecurePdfInputDataInput
     {
+        public SecurePdfInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -3151,6 +3352,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class SplitPdfInputDataInput
     {
+        public SplitPdfInputDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -3184,6 +3391,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
     public class TextWatermarkInputDataInput
     {
+        public TextWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string watermarkContent, string fontFamilyName, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.WatermarkContent = watermarkContent;
+            this.FontFamilyName = fontFamilyName;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 

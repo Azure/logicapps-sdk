@@ -1658,6 +1658,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPInputTextIntoSAPElementInput
     {
+        public SAPInputTextIntoSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string TextToInput { get; set; }
@@ -1674,6 +1679,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPInputPasswordIntoSAPElementInput
     {
+        public SAPInputPasswordIntoSAPElementInput(string searchSAPElementId, string passwordToInput)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+            this.PasswordToInput = passwordToInput;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1710,6 +1721,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetElementPropertiesInput
     {
+        public SAPGetElementPropertiesInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1728,6 +1744,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPWaitForElementIdInput
     {
+        public SAPWaitForElementIdInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1753,6 +1774,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPWaitForWindowInput
     {
+        public SAPWaitForWindowInput(string searchSAPWindowTitle)
+        {
+            this.SearchSAPWindowTitle = searchSAPWindowTitle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPWindowTitle { get; set; }
 
@@ -1780,6 +1806,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetElementTextValueInput
     {
+        public SAPGetElementTextValueInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1789,6 +1820,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPPressSAPElementInput
     {
+        public SAPPressSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1798,6 +1834,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectSAPElementInput
     {
+        public SAPSelectSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1807,6 +1848,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPFocusSAPElementInput
     {
+        public SAPFocusSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1816,6 +1862,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPCheckSAPElementInput
     {
+        public SAPCheckSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1828,6 +1879,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPVisualiseSAPElementInput
     {
+        public SAPVisualiseSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1840,6 +1896,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPDrawRectangleAroundSAPElementInput
     {
+        public SAPDrawRectangleAroundSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1855,6 +1916,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSendCommandInput
     {
+        public SAPSendCommandInput(string sAPCommand)
+        {
+            this.SAPCommand = sAPCommand;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SAPCommand { get; set; }
 
@@ -1864,6 +1930,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPEnterTCodeInput
     {
+        public SAPEnterTCodeInput(string sAPTCode)
+        {
+            this.SAPTCode = sAPTCode;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SAPTCode { get; set; }
 
@@ -1873,6 +1944,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSendVKeyInput
     {
+        public SAPSendVKeyInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1888,6 +1964,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSendEnterVKeyInput
     {
+        public SAPSendEnterVKeyInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1900,6 +1981,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPWindowRestoreInput
     {
+        public SAPWindowRestoreInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1912,6 +1998,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPWindowMaximiseInput
     {
+        public SAPWindowMaximiseInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1924,6 +2015,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPWindowMinimiseInput
     {
+        public SAPWindowMinimiseInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1936,6 +2032,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPWindowCloseInput
     {
+        public SAPWindowCloseInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1948,6 +2049,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPBringWindowToFrontInput
     {
+        public SAPBringWindowToFrontInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -1969,6 +2075,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGlobalLeftMouseClickOnSAPElementInput
     {
+        public SAPGlobalLeftMouseClickOnSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2018,6 +2129,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGlobalRightMouseClickOnSAPElementInput
     {
+        public SAPGlobalRightMouseClickOnSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2067,6 +2183,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGlobalMiddleMouseClickOnSAPElementInput
     {
+        public SAPGlobalMiddleMouseClickOnSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2116,6 +2237,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGlobalDoubleLeftMouseClickOnSAPElementInput
     {
+        public SAPGlobalDoubleLeftMouseClickOnSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2168,6 +2294,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGlobalInputTextIntoSAPElementInput
     {
+        public SAPGlobalInputTextIntoSAPElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2214,6 +2345,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGlobalInputPasswordIntoSAPElementInput
     {
+        public SAPGlobalInputPasswordIntoSAPElementInput(string searchSAPElementId, string passwordToInput)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+            this.PasswordToInput = passwordToInput;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2262,6 +2399,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSetListSelectionByNameInput
     {
+        public SAPSetListSelectionByNameInput(string searchSAPElementId, string listItemName)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+            this.ListItemName = listItemName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2274,6 +2417,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSetListSelectionByKeyInput
     {
+        public SAPSetListSelectionByKeyInput(string searchSAPElementId, string listItemKey)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+            this.ListItemKey = listItemKey;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2295,6 +2444,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetListSelectionElementItemsInput
     {
+        public SAPGetListSelectionElementItemsInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2311,6 +2465,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetAllChildSAPElementPropertiesInput
     {
+        public SAPGetAllChildSAPElementPropertiesInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2360,6 +2519,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetSAPElementParentIdInput
     {
+        public SAPGetSAPElementParentIdInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2375,6 +2539,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetElementPropertiesAsListInput
     {
+        public SAPGetElementPropertiesAsListInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2392,6 +2561,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetSAPElementAtScreenCoordinateInput
     {
+        public SAPGetSAPElementAtScreenCoordinateInput(int screenX, int screenY)
+        {
+            this.ScreenX = screenX;
+            this.ScreenY = screenY;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ScreenX { get; set; }
 
@@ -2445,6 +2620,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetSAPTablePropertiesInput
     {
+        public SAPGetSAPTablePropertiesInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2464,6 +2644,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetSAPTableVisibleCellTextContentsAtIndexInput
     {
+        public SAPGetSAPTableVisibleCellTextContentsAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2510,6 +2695,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetSAPTableVisibleCellPropertiesAtIndexInput
     {
+        public SAPGetSAPTableVisibleCellPropertiesAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2525,6 +2715,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSetSAPTableVisibleCellTextContentsAtIndexInput
     {
+        public SAPSetSAPTableVisibleCellTextContentsAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2547,6 +2742,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPCheckSAPTableVisibleCellCheckboxAtIndexInput
     {
+        public SAPCheckSAPTableVisibleCellCheckboxAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2565,6 +2765,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPPressSAPTableVisibleCellAtIndexInput
     {
+        public SAPPressSAPTableVisibleCellAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2580,6 +2785,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPScrollSAPTableInput
     {
+        public SAPScrollSAPTableInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2604,6 +2814,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetTableVisibleTextContentsInput
     {
+        public SAPGetTableVisibleTextContentsInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2635,6 +2850,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectSAPTableRowInput
     {
+        public SAPSelectSAPTableRowInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2650,6 +2870,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectSAPTableColumnInput
     {
+        public SAPSelectSAPTableColumnInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2675,6 +2900,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetTreeNodesInput
     {
+        public SAPGetTreeNodesInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string ParentNodeKey { get; set; }
@@ -2688,6 +2918,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPDoubleClickTreeItemInput
     {
+        public SAPDoubleClickTreeItemInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchNodeKey { get; set; }
@@ -2714,6 +2949,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectTreeItemInput
     {
+        public SAPSelectTreeItemInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchNodeKey { get; set; }
@@ -2746,6 +2986,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPExpandTreeNodeInput
     {
+        public SAPExpandTreeNodeInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchNodeKey { get; set; }
@@ -2767,6 +3012,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPDeselectAllTreeNodesInput
     {
+        public SAPDeselectAllTreeNodesInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2776,6 +3026,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPPressKeyOnTreeInput
     {
+        public SAPPressKeyOnTreeInput(string searchSAPElementId, string key)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+            this.Key = key;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2788,6 +3044,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPOpenContextMenuOnTreeItemInput
     {
+        public SAPOpenContextMenuOnTreeItemInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchNodeKey { get; set; }
@@ -2821,6 +3082,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetTreeTextContentsInput
     {
+        public SAPGetTreeTextContentsInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2849,6 +3115,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSetTreeColumnWidthInput
     {
+        public SAPSetTreeColumnWidthInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchColumnName { get; set; }
@@ -2869,6 +3140,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPPressButtonOnTreeItemInput
     {
+        public SAPPressButtonOnTreeItemInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchNodeKey { get; set; }
@@ -2898,6 +3174,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPClickLinkOnTreeItemInput
     {
+        public SAPClickLinkOnTreeItemInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchNodeKey { get; set; }
@@ -2927,6 +3208,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPCheckTreeItemInput
     {
+        public SAPCheckTreeItemInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchNodeKey { get; set; }
@@ -2965,6 +3251,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetTreeColumnHeadersInput
     {
+        public SAPGetTreeColumnHeadersInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -2992,6 +3283,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetTreeItemPropertiesInput
     {
+        public SAPGetTreeItemPropertiesInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchNodeKey { get; set; }
@@ -3024,6 +3320,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetShellToolbarElementsInput
     {
+        public SAPGetShellToolbarElementsInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3033,6 +3334,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPPressShellToolbarElementInput
     {
+        public SAPPressShellToolbarElementInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchToolbarElementId { get; set; }
@@ -3053,6 +3359,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPPressShellToolbarElementContextButtonInput
     {
+        public SAPPressShellToolbarElementContextButtonInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchToolbarElementId { get; set; }
@@ -3073,6 +3384,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectShellToolbarMenuItemInput
     {
+        public SAPSelectShellToolbarMenuItemInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchToolbarElementId { get; set; }
@@ -3108,6 +3424,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetSAPGridViewPropertiesInput
     {
+        public SAPGetSAPGridViewPropertiesInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3125,6 +3446,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetSAPGridViewCellContentsAtIndexInput
     {
+        public SAPGetSAPGridViewCellContentsAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3166,6 +3492,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetSAPGridViewCellPropertiesAtIndexInput
     {
+        public SAPGetSAPGridViewCellPropertiesAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3186,6 +3517,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPDrawRectangleAroundSAPGridViewCellAtIndexInput
     {
+        public SAPDrawRectangleAroundSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3212,6 +3548,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGlobalLeftClickSAPGridViewCellAtIndexInput
     {
+        public SAPGlobalLeftClickSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3272,6 +3613,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGlobalRightClickSAPGridViewCellAtIndexInput
     {
+        public SAPGlobalRightClickSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3332,6 +3678,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGlobalDoubleLeftClickSAPGridViewCellAtIndexInput
     {
+        public SAPGlobalDoubleLeftClickSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3401,6 +3752,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetSAPGridViewColumnHeadersInput
     {
+        public SAPGetSAPGridViewColumnHeadersInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3410,6 +3766,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPClickSAPGridViewCellAtIndexInput
     {
+        public SAPClickSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3430,6 +3791,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPDoubleClickSAPGridViewCellAtIndexInput
     {
+        public SAPDoubleClickSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3450,6 +3816,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPPressSAPGridViewCellButtonAtIndexInput
     {
+        public SAPPressSAPGridViewCellButtonAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3470,6 +3841,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPCheckSAPGridViewCellCheckboxAtIndexInput
     {
+        public SAPCheckSAPGridViewCellCheckboxAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3498,6 +3874,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPModifySAPGridViewCellAtIndexInput
     {
+        public SAPModifySAPGridViewCellAtIndexInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3519,6 +3900,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSetSAPGridViewCurrentRowInput
     {
+        public SAPSetSAPGridViewCurrentRowInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3531,6 +3917,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPPressSAPGridViewColumnHeaderInput
     {
+        public SAPPressSAPGridViewColumnHeaderInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchColumnName { get; set; }
@@ -3553,6 +3944,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSetSAPGridViewFirstVisibleRowInput
     {
+        public SAPSetSAPGridViewFirstVisibleRowInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3565,6 +3961,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectSAPGridViewRowInput
     {
+        public SAPSelectSAPGridViewRowInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3580,6 +3981,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectSAPGridViewMultipleRowsInput
     {
+        public SAPSelectSAPGridViewMultipleRowsInput(string searchSAPElementId, string rowsToSelect)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+            this.RowsToSelect = rowsToSelect;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3592,6 +3999,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSetSAPGridViewCurrentColumnInput
     {
+        public SAPSetSAPGridViewCurrentColumnInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchColumnName { get; set; }
@@ -3609,6 +4021,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSetSAPGridViewCurrentCellInput
     {
+        public SAPSetSAPGridViewCurrentCellInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3629,6 +4046,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectSAPGridViewColumnInput
     {
+        public SAPSelectSAPGridViewColumnInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchColumnName { get; set; }
@@ -3655,6 +4077,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGridViewSelectAllInput
     {
+        public SAPGridViewSelectAllInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3664,6 +4091,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGridViewDeselectAllInput
     {
+        public SAPGridViewDeselectAllInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3678,6 +4110,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSetSAPGridViewFirstVisibleColumnInput
     {
+        public SAPSetSAPGridViewFirstVisibleColumnInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
         public string SearchColumnName { get; set; }
@@ -3695,6 +4132,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGridViewOpenContextMenuInput
     {
+        public SAPGridViewOpenContextMenuInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3722,6 +4164,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPGetGridViewTextContentsInput
     {
+        public SAPGetGridViewTextContentsInput(string searchSAPElementId)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3758,6 +4205,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectCalendarMonthInput
     {
+        public SAPSelectCalendarMonthInput(string searchSAPElementId, int month, int year)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+            this.Month = month;
+            this.Year = year;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3773,6 +4227,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectCalendarWeekInput
     {
+        public SAPSelectCalendarWeekInput(string searchSAPElementId, int week, int year)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+            this.Week = week;
+            this.Year = year;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3788,6 +4249,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPSelectCalendarRangeInput
     {
+        public SAPSelectCalendarRangeInput(string searchSAPElementId, string fromDateYYYYMMDD, string toDateYYYYMMDD)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+            this.FromDateYYYYMMDD = fromDateYYYYMMDD;
+            this.ToDateYYYYMMDD = toDateYYYYMMDD;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 
@@ -3803,6 +4271,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
     public class SAPFocusCalendarDateInput
     {
+        public SAPFocusCalendarDateInput(string searchSAPElementId, string dateYYYYMMDD)
+        {
+            this.SearchSAPElementId = searchSAPElementId;
+            this.DateYYYYMMDD = dateYYYYMMDD;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchSAPElementId { get; set; }
 

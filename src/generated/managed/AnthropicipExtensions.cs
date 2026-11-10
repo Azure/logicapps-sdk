@@ -13,17 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
     public class AnthropicipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anthropicip")]
-        public IBodyWorkflowAction<MessageResponse, ApiConnectionActionConfiguration> Message(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<MessageResponse, ApiConnectionActionConfiguration> Message(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["anthropic-version"] = Convert.ToString("2023-06-01");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MessageResponse>(callPayload);
             });
         }
@@ -95,6 +94,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
 
     public class BodyInput
     {
+        public BodyInput(BodyInputMessagesTypeItem[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputModelType Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip.BodyInputModelType.ClaudeOpus40;
 
@@ -148,6 +152,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
 
     public class BodyInputMessagesTypeItem
     {
+        public BodyInputMessagesTypeItem(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputMessagesTypeItemRoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip.BodyInputMessagesTypeItemRoleType.User;
 

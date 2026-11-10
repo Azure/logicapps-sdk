@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_hierarchiesBody != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_hierarchiesBody);
+                else
+                    callPayload.Body = new HierarchiesBodyInput().ToJToken();
                 return new ApiConnectionAction<string>(callPayload);
             });
         }

@@ -718,6 +718,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
 
     public class CreateEnvelopeBodyInput
     {
+        public CreateEnvelopeBodyInput(string name, string accountId, CreateEnvelopeBodyInputDocumentsTypeItem[] documents, CreateEnvelopeBodyInputRecipientsTypeItem[] recipients)
+        {
+            this.Name = name;
+            this.AccountId = accountId;
+            this.Documents = documents;
+            this.Recipients = recipients;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1392,6 +1400,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
 
     public class UseTemplateBodyInput
     {
+        public UseTemplateBodyInput(string accountId, UseTemplateBodyInputRecipientsTypeItem[] recipients)
+        {
+            this.AccountId = accountId;
+            this.Recipients = recipients;
+        }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -1480,6 +1494,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
 
     public class UseTemplateBodyInputRecipientsTypeItemFieldsTypeItem
     {
+        public UseTemplateBodyInputRecipientsTypeItemFieldsTypeItem(string fieldIdFromTemplate, string value)
+        {
+            this.FieldIdFromTemplate = fieldIdFromTemplate;
+            this.Value = value;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldIdFromTemplate { get; set; }
 

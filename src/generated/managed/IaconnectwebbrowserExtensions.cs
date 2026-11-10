@@ -1214,6 +1214,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserGetChromeDriverFolderInput
     {
+        public BrowserGetChromeDriverFolderInput(string directoryPath)
+        {
+            this.DirectoryPath = directoryPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
         public int? ChromeMajorVersion { get; set; }
@@ -1230,6 +1235,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserDownloadSuitableChromeDriverFromInternetInput
     {
+        public BrowserDownloadSuitableChromeDriverFromInternetInput(string chromeDriverDownloadParentFolder)
+        {
+            this.ChromeDriverDownloadParentFolder = chromeDriverDownloadParentFolder;
+        }
+
         public string ChromeBrowserEXE { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1273,6 +1283,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserUploadNewChromeDriverInput
     {
+        public BrowserUploadNewChromeDriverInput(string localChromeDriverFilePath)
+        {
+            this.LocalChromeDriverFilePath = localChromeDriverFilePath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LocalChromeDriverFilePath { get; set; }
 
@@ -1381,6 +1396,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserGetChromiumEdgeDriverFolderInput
     {
+        public BrowserGetChromiumEdgeDriverFolderInput(string directoryPath)
+        {
+            this.DirectoryPath = directoryPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
         public int? ChromiumEdgeMajorVersion { get; set; }
@@ -1411,6 +1431,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserDownloadSuitableChromiumEdgeDriverFromInternetInput
     {
+        public BrowserDownloadSuitableChromiumEdgeDriverFromInternetInput(string chromiumEdgeDriverDownloadParentFolder)
+        {
+            this.ChromiumEdgeDriverDownloadParentFolder = chromiumEdgeDriverDownloadParentFolder;
+        }
+
         public string ChromiumEdgeBrowserEXE { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1442,6 +1467,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserUploadNewChromiumEdgeDriverInput
     {
+        public BrowserUploadNewChromiumEdgeDriverInput(string localChromiumEdgeDriverFilePath)
+        {
+            this.LocalChromiumEdgeDriverFilePath = localChromiumEdgeDriverFilePath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LocalChromiumEdgeDriverFilePath { get; set; }
 
@@ -1549,6 +1579,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserSetWindowSizeInput
     {
+        public BrowserSetWindowSizeInput(int width, int height)
+        {
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int Width { get; set; }
 
@@ -1561,6 +1597,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserSetWindowPositionInput
     {
+        public BrowserSetWindowPositionInput(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int X { get; set; }
 
@@ -1588,6 +1630,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserNavigateToURLInput
     {
+        public BrowserNavigateToURLInput(string uRL)
+        {
+            this.URL = uRL;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string URL { get; set; }
 
@@ -2120,6 +2167,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserInputTextIntoMultipleElementsInput
     {
+        public BrowserInputTextIntoMultipleElementsInput(string inputElementsJSON)
+        {
+            this.InputElementsJSON = inputElementsJSON;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputElementsJSON { get; set; }
 
@@ -2129,6 +2181,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserPressCtrlKeyOnElementInput
     {
+        public BrowserPressCtrlKeyOnElementInput(string controlKey)
+        {
+            this.ControlKey = controlKey;
+        }
+
         public double? ParentElementHandle { get; set; }
         public double? SearchElementHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2311,6 +2368,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserCheckMultipleElementsInput
     {
+        public BrowserCheckMultipleElementsInput(string inputElementsJSON)
+        {
+            this.InputElementsJSON = inputElementsJSON;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputElementsJSON { get; set; }
 
@@ -2623,6 +2685,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserExecuteJavaScriptInput
     {
+        public BrowserExecuteJavaScriptInput(string javaScriptCode)
+        {
+            this.JavaScriptCode = javaScriptCode;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JavaScriptCode { get; set; }
 
@@ -3049,6 +3116,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserExecuteJavaScriptOnElementInput
     {
+        public BrowserExecuteJavaScriptOnElementInput(string javaScriptToExecute)
+        {
+            this.JavaScriptToExecute = javaScriptToExecute;
+        }
+
         public double? ParentElementHandle { get; set; }
         public double? SearchElementHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3239,6 +3311,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserSavePageToFileInput
     {
+        public BrowserSavePageToFileInput(string saveFilename)
+        {
+            this.SaveFilename = saveFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SaveFilename { get; set; }
 
@@ -3428,6 +3505,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserInputPasswordIntoElementInput
     {
+        public BrowserInputPasswordIntoElementInput(string passwordToInput)
+        {
+            this.PasswordToInput = passwordToInput;
+        }
+
         public double? ParentElementHandle { get; set; }
         public double? SearchElementHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3764,6 +3846,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserGetWebElementPropertiesAsListInput
     {
+        public BrowserGetWebElementPropertiesAsListInput(int elementHandle)
+        {
+            this.ElementHandle = elementHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ElementHandle { get; set; }
 

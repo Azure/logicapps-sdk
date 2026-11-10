@@ -95,18 +95,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<AddNoteBodyInput>> body = null)
+        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<AddNoteBodyInput>> body)
         {
             var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/add_note";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ticket_number"] = ExpressionConverter.Convert(__workflow_ticketNumber);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddNoteResponse>(callPayload);
             });
         }
@@ -124,6 +123,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CreateTicketWebhookBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -138,6 +139,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CreateTicketWebhookBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -152,6 +155,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new AddNoteWebhookBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -166,6 +171,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new AddReplyWebhookBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -270,6 +277,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
     public class CreateTicketBodyInput
     {
+        public CreateTicketBodyInput(string email, string description, string subject)
+        {
+            this.Email = email;
+            this.Description = description;
+            this.Subject = subject;
+        }
+
         public string Agent { get; set; }
         public string Category { get; set; }
 
@@ -365,6 +379,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
     public class AddNoteBodyInput
     {
+        public AddNoteBodyInput(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
         public string AgentEmail { get; set; }

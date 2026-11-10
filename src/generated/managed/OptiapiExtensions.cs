@@ -175,9 +175,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<GroupByAnArrayKeyResponse, ApiConnectionActionConfiguration> GroupByAnArrayKey(Expression<Func<CalculateAverageBodyInput>> body = null)
+        public IBodyWorkflowAction<GroupByAnArrayKeyResponse, ApiConnectionActionConfiguration> GroupByAnArrayKey(Expression<Func<CalculateAverageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GroupByAnArrayKeyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/group-by";
@@ -185,8 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GroupByAnArrayKeyResponse>(callPayload);
             });
         }
@@ -402,6 +401,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class CalculateAverageBodyInput
     {
+        public CalculateAverageBodyInput(string[] array, string key)
+        {
+            this.Array = array;
+            this.Key = key;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
 
@@ -417,6 +422,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class ChunkAnArrayBodyInput
     {
+        public ChunkAnArrayBodyInput(string[] array, int size)
+        {
+            this.Array = array;
+            this.Size = size;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
 
@@ -432,6 +443,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class CombineArrayBodyInput
     {
+        public CombineArrayBodyInput(string[] keys, string[] values)
+        {
+            this.Keys = keys;
+            this.Values = values;
+        }
+
         [JsonProperty("keys", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Keys { get; set; }
 
@@ -447,6 +464,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class CheckIfArrayContainAValueBodyInput
     {
+        public CheckIfArrayContainAValueBodyInput(string[] array, string key, string search)
+        {
+            this.Array = array;
+            this.Key = key;
+            this.Search = search;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
 
@@ -465,6 +489,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class FindDifferenceBetweenArraysBodyInput
     {
+        public FindDifferenceBetweenArraysBodyInput(string[] array, string[] compare)
+        {
+            this.Array = array;
+            this.Compare = compare;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
 
@@ -480,6 +510,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class FindDuplicatesInArraysBodyInput
     {
+        public FindDuplicatesInArraysBodyInput(string[] array)
+        {
+            this.Array = array;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
 
@@ -495,6 +530,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class FilterAnArrayBodyInput
     {
+        public FilterAnArrayBodyInput(string[] array)
+        {
+            this.Array = array;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
 
@@ -510,6 +550,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class FirstWhereWithinAnArrayBodyInput
     {
+        public FirstWhereWithinAnArrayBodyInput(string[] array, string key, string value)
+        {
+            this.Array = array;
+            this.Key = key;
+            this.Value = value;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
 
@@ -548,6 +595,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class FlattenAnArrayBodyInput
     {
+        public FlattenAnArrayBodyInput(string[] array)
+        {
+            this.Array = array;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
 
@@ -575,6 +627,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class SortAnArrayBodyInput
     {
+        public SortAnArrayBodyInput(string[] array)
+        {
+            this.Array = array;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
 
@@ -603,6 +660,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class AddOrSubtractFromTimeOrDatesBodyInput
     {
+        public AddOrSubtractFromTimeOrDatesBodyInput(string datetime)
+        {
+            this.Datetime = datetime;
+        }
+
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputActionType Action { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi.BodyInputActionType.Week;
 
@@ -648,6 +710,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class ConvertAStringToADatetimeObjectBodyInput
     {
+        public ConvertAStringToADatetimeObjectBodyInput(string @string)
+        {
+            this.String = @string;
+        }
+
         [JsonProperty("inputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputFormat { get; set; } = "dd.mm.yyyy";
 
@@ -669,6 +736,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class PerformOcrOnAScannedPdfOrImageFileBodyInput
     {
+        public PerformOcrOnAScannedPdfOrImageFileBodyInput(string @file, BodyInputOemType oem, BodyInputTypeType type)
+        {
+            this.File = @file;
+            this.Oem = oem;
+            this.Type = type;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string File { get; set; }
 
@@ -735,6 +809,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class CombineMultiplePdfFilesBodyInput
     {
+        public CombineMultiplePdfFilesBodyInput(string[] pdfs)
+        {
+            this.Pdfs = pdfs;
+        }
+
         [JsonProperty("pdfs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Pdfs { get; set; }
     }
@@ -797,12 +876,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class GetPdfMetadataInformationBodyInput
     {
+        public GetPdfMetadataInformationBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
+        {
+            this.Pdf = pdf;
+        }
+
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
     }
 
     public class ConvertAPdfFileToTextBodyInput
     {
+        public ConvertAPdfFileToTextBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
+        {
+            this.Pdf = pdf;
+        }
+
         [JsonProperty("endPage")]
         public int? EndPage { get; set; }
 
@@ -833,6 +922,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class SetPasswordOnAPdfFileBodyInput
     {
+        public SetPasswordOnAPdfFileBodyInput(string password, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
+        {
+            this.Password = password;
+            this.Pdf = pdf;
+        }
+
         [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
 
@@ -848,6 +943,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class ReplaceTextInStringBasedOnARegularExpressionBodyInput
     {
+        public ReplaceTextInStringBasedOnARegularExpressionBodyInput(string replacement, string text)
+        {
+            this.Replacement = replacement;
+            this.Text = text;
+        }
+
         [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pattern { get; set; } = "/string/i";
 
@@ -866,6 +967,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class FindValuesFromAStringBasedOnARegularExpressionBodyInput
     {
+        public FindValuesFromAStringBasedOnARegularExpressionBodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("group")]
         public int? Group { get; set; }
 
@@ -884,6 +990,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class ReplaceTextInStringBodyInput
     {
+        public ReplaceTextInStringBodyInput(string replace, string search, string text)
+        {
+            this.Replace = replace;
+            this.Search = search;
+            this.Text = text;
+        }
+
         [JsonProperty("replace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Replace { get; set; }
 

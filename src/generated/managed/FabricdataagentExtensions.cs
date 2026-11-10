@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fabricdataagent
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 if (__workflow_queryRequest != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
+                else
+                    callPayload.Body = new QueryRequestInput().ToJToken();
                 return new ApiConnectionAction<QueryResponse>(callPayload);
             });
         }

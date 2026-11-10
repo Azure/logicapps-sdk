@@ -248,6 +248,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
 
     public class CreatePostInput
     {
+        public CreatePostInput(string title, string content)
+        {
+            this.Title = title;
+            this.Content = content;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

@@ -1427,18 +1427,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<IsvContractResponseModel, ApiConnectionActionConfiguration> CreateISVContract(Expression<Func<string>> apiVersion, Expression<Func<CreateISVContractBodyInput>> body = null)
+        public IBodyWorkflowAction<IsvContractResponseModel, ApiConnectionActionConfiguration> CreateISVContract(Expression<Func<string>> apiVersion, Expression<Func<CreateISVContractBodyInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsvContractResponseModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/licensing/isvContracts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IsvContractResponseModel>(callPayload);
             });
         }
@@ -2213,6 +2212,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
     public class ExecuteRecommendationActionBodyInput
     {
+        public ExecuteRecommendationActionBodyInput(string recommendationName, JToken parameters)
+        {
+            this.RecommendationName = recommendationName;
+            this.Parameters = parameters;
+        }
+
         [JsonProperty("scenario", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecommendationName { get; set; }
 
@@ -2237,6 +2242,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
     public class SendAdvisorChatMessageBodyInput
     {
+        public SendAdvisorChatMessageBodyInput(string message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
 
@@ -2957,6 +2967,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
     public class ReassignCopilotAgentBodyInput
     {
+        public ReassignCopilotAgentBodyInput(string newOwnerAadUserId)
+        {
+            this.NewOwnerAadUserId = newOwnerAadUserId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string NewOwnerAadUserId { get; set; }
     }
@@ -2978,6 +2993,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
     public class SetConnectorConsentBypassBodyInput
     {
+        public SetConnectorConsentBypassBodyInput(bool adminConsentBypass)
+        {
+            this.AdminConsentBypass = adminConsentBypass;
+        }
+
         [JsonProperty("adminConsentBypass", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AdminConsentBypass { get; set; }
     }
@@ -3235,6 +3255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
     public class ToolsConnections
     {
+        public ToolsConnections(string botId, string botSchemaName, MakerEvaluationConnection[] connections)
+        {
+            this.BotId = botId;
+            this.BotSchemaName = botSchemaName;
+            this.Connections = connections;
+        }
+
         [JsonProperty("botId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BotId { get; set; }
 
@@ -3247,6 +3274,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
     public class MakerEvaluationConnection
     {
+        public MakerEvaluationConnection(string connectionId, string connectionReferenceName, string connectorId)
+        {
+            this.ConnectionId = connectionId;
+            this.ConnectionReferenceName = connectionReferenceName;
+            this.ConnectorId = connectorId;
+        }
+
         [JsonProperty("connectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionId { get; set; }
 
@@ -4690,6 +4724,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
     public class CreateISVContractBodyInput
     {
+        public CreateISVContractBodyInput(string name, CreateBillingPolicyBillingPolicyStatus status, string geo, CreateISVContractConsumerIdentityModel consumer, CreateISVContractBillingPolicyConditionsModel conditions, CreateBillingPolicyBillingInstrumentModel billingInstrument, CreateISVContractPowerAutomatePolicyModel powerAutomatePolicy)
+        {
+            this.Name = name;
+            this.Status = status;
+            this.Geo = geo;
+            this.Consumer = consumer;
+            this.Conditions = conditions;
+            this.BillingInstrument = billingInstrument;
+            this.PowerAutomatePolicy = powerAutomatePolicy;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -5627,6 +5672,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
     public class QueryResourcesBodyInput
     {
+        public QueryResourcesBodyInput(string tableName, Clause[] clauses)
+        {
+            this.TableName = tableName;
+            this.Clauses = clauses;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TableName { get; set; }
 
@@ -5637,6 +5688,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
     public class Clause
     {
+        public Clause(ClauseTypeType type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty("$type", DefaultValueHandling = DefaultValueHandling.Include)]
         public ClauseTypeType Type { get; set; }
     }

@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }

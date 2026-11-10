@@ -626,6 +626,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class CreateFundBodyInput
     {
+        public CreateFundBodyInput(string fundName)
+        {
+            this.FundName = fundName;
+        }
+
         [JsonProperty("external_database_id")]
         public string ExternalDatabaseId { get; set; }
 
@@ -979,6 +984,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class CreateGiftBodyInput
     {
+        public CreateGiftBodyInput(string giftAmount, string giftDate, string donorEmail, string donorName, string modeOfPayment, BodyInputPageType page, V1GivingApiGiftSplitAddOrEdit[] splits)
+        {
+            this.GiftAmount = giftAmount;
+            this.GiftDate = giftDate;
+            this.DonorEmail = donorEmail;
+            this.DonorName = donorName;
+            this.ModeOfPayment = modeOfPayment;
+            this.Page = page;
+            this.Splits = splits;
+        }
+
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftAmount { get; set; }
 
@@ -1069,6 +1085,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class V1GivingApiGiftSplitAddOrEdit
     {
+        public V1GivingApiGiftSplitAddOrEdit(string amount, V1GivingApiGiftSplitAddOrEditFundType fund)
+        {
+            this.Amount = amount;
+            this.Fund = fund;
+        }
+
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Amount { get; set; }
 
@@ -1078,6 +1100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class V1GivingApiGiftSplitAddOrEditFundType
     {
+        public V1GivingApiGiftSplitAddOrEditFundType(int fund)
+        {
+            this.Fund = fund;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Fund { get; set; }
     }
@@ -1188,6 +1215,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class CreateTouchpointCustomObjectBodyInput
     {
+        public CreateTouchpointCustomObjectBodyInput(string recordedAt, BodyInputTouchpointTypeType touchpointType)
+        {
+            this.RecordedAt = recordedAt;
+            this.TouchpointType = touchpointType;
+        }
+
         [JsonProperty("email")]
         public string Email { get; set; }
 
@@ -1212,6 +1245,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class BodyInputTouchpointTypeType
     {
+        public BodyInputTouchpointTypeType(int type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Type { get; set; }
     }
@@ -1321,6 +1359,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class CreateRecordBodyInput
     {
+        public CreateRecordBodyInput(string firstName, string lastName)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [JsonProperty("addresses")]
         public V1RecordApiAddressAdd[] Addresses { get; set; }
 
@@ -1354,6 +1398,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class V1RecordApiAddressAdd
     {
+        public V1RecordApiAddressAdd(string line1, string type)
+        {
+            this.Line1 = line1;
+            this.Type = type;
+        }
+
         [JsonProperty("line1", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Line1 { get; set; }
 
@@ -1419,6 +1469,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class V1RecordApiPhoneNumberAdd
     {
+        public V1RecordApiPhoneNumberAdd(string number, string type)
+        {
+            this.Number = number;
+            this.Type = type;
+        }
+
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Number { get; set; }
 
@@ -1541,6 +1597,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class CreateEventBodyInput
     {
+        public CreateEventBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -1628,6 +1689,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
 
     public class FormEntryCreateOrUpdateWebhookBodyInput
     {
+        public FormEntryCreateOrUpdateWebhookBodyInput(int form)
+        {
+            this.Form = form;
+        }
+
         [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
 

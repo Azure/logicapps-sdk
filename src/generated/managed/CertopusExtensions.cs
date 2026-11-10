@@ -99,6 +99,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
 
     public class BodyInput
     {
+        public BodyInput(string organisationId, string eventId, string categoryId)
+        {
+            this.OrganisationId = organisationId;
+            this.EventId = eventId;
+            this.CategoryId = categoryId;
+        }
+
         [JsonProperty("organisationId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OrganisationId { get; set; }
 

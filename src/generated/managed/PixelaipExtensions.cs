@@ -35,21 +35,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new UserBodyInput().ToJToken();
                 return new ApiConnectionAction<UserResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<TokenPutResponse, ApiConnectionActionConfiguration> TokenPut(Expression<Func<TokenPutBodyInput>> body = null)
+        public IBodyWorkflowAction<TokenPutResponse, ApiConnectionActionConfiguration> TokenPut(Expression<Func<TokenPutBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TokenPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TokenPutResponse>(callPayload);
             });
         }
@@ -96,16 +97,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphResponse, ApiConnectionActionConfiguration> Graph(Expression<Func<GraphBodyInput>> body = null)
+        public IBodyWorkflowAction<GraphResponse, ApiConnectionActionConfiguration> Graph(Expression<Func<GraphBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GraphResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GraphResponse>(callPayload);
             });
         }
@@ -123,6 +123,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
                 callPayload.Queries["graphID"] = ExpressionConverter.Convert(__workflow_graphId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new GraphPutBodyInput().ToJToken();
                 return new ApiConnectionAction<GraphPutResponse>(callPayload);
             });
         }
@@ -202,18 +204,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<string>> graphId, Expression<Func<PixelBodyInput>> body = null)
+        public IBodyWorkflowAction<PixelResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<string>> graphId, Expression<Func<PixelBodyInput>> body)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PixelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["graphID"] = ExpressionConverter.Convert(__workflow_graphId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PixelResponse>(callPayload);
             });
         }
@@ -418,6 +419,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
     public class TokenPutBodyInput
     {
+        public TokenPutBodyInput(string newToken)
+        {
+            this.NewToken = newToken;
+        }
+
         [JsonProperty("newToken", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NewToken { get; set; }
 
@@ -517,6 +523,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
     public class GraphBodyInput
     {
+        public GraphBodyInput(string id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -714,6 +726,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
     public class PixelBodyInput
     {
+        public PixelBodyInput(string date, string quantity)
+        {
+            this.Date = date;
+            this.Quantity = quantity;
+        }
+
         [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
 

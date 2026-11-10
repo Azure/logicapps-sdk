@@ -120,6 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
 
     public class BodyInput
     {
+        public BodyInput(string jobId)
+        {
+            this.JobId = jobId;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 

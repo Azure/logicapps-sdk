@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     public class QuickbaseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CreateAppResponse, ApiConnectionActionConfiguration> CreateApp(Expression<Func<CreateAppGeneratedInput>> generated = null)
+        public IBodyWorkflowAction<CreateAppResponse, ApiConnectionActionConfiguration> CreateApp(Expression<Func<CreateAppGeneratedInput>> generated)
         {
-            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
+            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: true);
             return new DeferredBodyAction<CreateAppResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/apps";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_generated != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
                 return new ApiConnectionAction<CreateAppResponse>(callPayload);
             });
         }
@@ -41,17 +40,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<DeleteAppResponse, ApiConnectionActionConfiguration> DeleteApp(Expression<Func<string>> appId, Expression<Func<DeleteAppGeneratedInput>> generated = null)
+        public IBodyWorkflowAction<DeleteAppResponse, ApiConnectionActionConfiguration> DeleteApp(Expression<Func<DeleteAppGeneratedInput>> generated, Expression<Func<string>> appId)
         {
+            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: true);
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
-            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
             return new DeferredBodyAction<DeleteAppResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/apps/{0}", __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_generated != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
                 return new ApiConnectionAction<DeleteAppResponse>(callPayload);
             });
         }
@@ -86,17 +84,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CopyAppResponse, ApiConnectionActionConfiguration> CopyApp(Expression<Func<string>> appId, Expression<Func<CopyAppGeneratedInput>> generated = null)
+        public IBodyWorkflowAction<CopyAppResponse, ApiConnectionActionConfiguration> CopyApp(Expression<Func<CopyAppGeneratedInput>> generated, Expression<Func<string>> appId)
         {
+            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: true);
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
-            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
             return new DeferredBodyAction<CopyAppResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/apps/{0}/copy", __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_generated != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
                 return new ApiConnectionAction<CopyAppResponse>(callPayload);
             });
         }
@@ -116,18 +113,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CreateTableResponse, ApiConnectionActionConfiguration> CreateTable(Expression<Func<string>> appId, Expression<Func<CreateTableGeneratedInput>> generated = null)
+        public IBodyWorkflowAction<CreateTableResponse, ApiConnectionActionConfiguration> CreateTable(Expression<Func<string>> appId, Expression<Func<CreateTableGeneratedInput>> generated)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
-            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
+            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: true);
             return new DeferredBodyAction<CreateTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tables";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["appId"] = ExpressionConverter.Convert(__workflow_appId);
-                if (__workflow_generated != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
                 return new ApiConnectionAction<CreateTableResponse>(callPayload);
             });
         }
@@ -197,17 +193,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CreateRelationshipResponse, ApiConnectionActionConfiguration> CreateRelationship(Expression<Func<string>> tableId, Expression<Func<CreateRelationshipGeneratedInput>> generated = null)
+        public IBodyWorkflowAction<CreateRelationshipResponse, ApiConnectionActionConfiguration> CreateRelationship(Expression<Func<CreateRelationshipGeneratedInput>> generated, Expression<Func<string>> tableId)
         {
+            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: true);
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
-            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
             return new DeferredBodyAction<CreateRelationshipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tables/{0}/relationship", __workflow_tableId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_generated != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
                 return new ApiConnectionAction<CreateRelationshipResponse>(callPayload);
             });
         }
@@ -315,35 +310,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<DeleteFieldsResponse, ApiConnectionActionConfiguration> DeleteFields(Expression<Func<string>> tableId, Expression<Func<DeleteFieldsGeneratedInput>> generated = null)
+        public IBodyWorkflowAction<DeleteFieldsResponse, ApiConnectionActionConfiguration> DeleteFields(Expression<Func<string>> tableId, Expression<Func<DeleteFieldsGeneratedInput>> generated)
         {
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
-            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
+            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: true);
             return new DeferredBodyAction<DeleteFieldsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fields";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["tableId"] = ExpressionConverter.Convert(__workflow_tableId);
-                if (__workflow_generated != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
                 return new ApiConnectionAction<DeleteFieldsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CreateFieldResponse, ApiConnectionActionConfiguration> CreateField(Expression<Func<string>> tableId, Expression<Func<CreateFieldGeneratedInput>> generated = null)
+        public IBodyWorkflowAction<CreateFieldResponse, ApiConnectionActionConfiguration> CreateField(Expression<Func<string>> tableId, Expression<Func<CreateFieldGeneratedInput>> generated)
         {
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
-            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
+            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: true);
             return new DeferredBodyAction<CreateFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["tableId"] = ExpressionConverter.Convert(__workflow_tableId);
-                if (__workflow_generated != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
                 return new ApiConnectionAction<CreateFieldResponse>(callPayload);
             });
         }
@@ -421,46 +414,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<RunFormulaResponse, ApiConnectionActionConfiguration> RunFormula(Expression<Func<RunFormulaGeneratedInput>> generated = null)
+        public IBodyWorkflowAction<RunFormulaResponse, ApiConnectionActionConfiguration> RunFormula(Expression<Func<RunFormulaGeneratedInput>> generated)
         {
-            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
+            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: true);
             return new DeferredBodyAction<RunFormulaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/formula/run";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_generated != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
                 return new ApiConnectionAction<RunFormulaResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<DeleteRecordsResponse, ApiConnectionActionConfiguration> DeleteRecords(Expression<Func<DeleteRecordsGeneratedInput>> generated = null)
+        public IBodyWorkflowAction<DeleteRecordsResponse, ApiConnectionActionConfiguration> DeleteRecords(Expression<Func<DeleteRecordsGeneratedInput>> generated)
         {
-            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
+            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: true);
             return new DeferredBodyAction<DeleteRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/records";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_generated != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
                 return new ApiConnectionAction<DeleteRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<RunQueryResponse, ApiConnectionActionConfiguration> RunQuery(Expression<Func<RunQueryGeneratedInput>> generated = null)
+        public IBodyWorkflowAction<RunQueryResponse, ApiConnectionActionConfiguration> RunQuery(Expression<Func<RunQueryGeneratedInput>> generated)
         {
-            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
+            var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: true);
             return new DeferredBodyAction<RunQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/records/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_generated != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generated);
                 return new ApiConnectionAction<RunQueryResponse>(callPayload);
             });
         }
@@ -601,6 +591,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class CreateAppGeneratedInput
     {
+        public CreateAppGeneratedInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("assignToken")]
         public bool? AssignToken { get; set; }
 
@@ -616,6 +611,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class Variable
     {
+        public Variable(string name, string value)
+        {
+            this.Name = name;
+            this.Value = value;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -664,6 +665,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class DeleteAppGeneratedInput
     {
+        public DeleteAppGeneratedInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -787,6 +793,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class CopyAppGeneratedInput
     {
+        public CopyAppGeneratedInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -923,6 +934,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class CreateTableGeneratedInput
     {
+        public CreateTableGeneratedInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1166,6 +1182,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class CreateRelationshipGeneratedInput
     {
+        public CreateRelationshipGeneratedInput(string parentTableId)
+        {
+            this.ParentTableId = parentTableId;
+        }
+
         [JsonProperty("summaryFields")]
         public SummaryField1[] SummaryFields { get; set; }
 
@@ -1181,6 +1202,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class SummaryField1
     {
+        public SummaryField1(AccumulationType accumulationType)
+        {
+            this.AccumulationType = accumulationType;
+        }
+
         [JsonProperty("summaryFid")]
         public double? SummaryFid { get; set; }
 
@@ -1549,6 +1575,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class DeleteFieldsGeneratedInput
     {
+        public DeleteFieldsGeneratedInput(int[] fieldIds)
+        {
+            this.FieldIds = fieldIds;
+        }
+
         [JsonProperty("fieldIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public int[] FieldIds { get; set; }
     }
@@ -1861,6 +1892,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class CreateFieldGeneratedInput
     {
+        public CreateFieldGeneratedInput(FieldType2 fieldType, string label)
+        {
+            this.FieldType = fieldType;
+            this.Label = label;
+        }
+
         [JsonProperty("audited")]
         public bool? Audited { get; set; }
 
@@ -2768,6 +2805,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class RunFormulaGeneratedInput
     {
+        public RunFormulaGeneratedInput(string formula, string from)
+        {
+            this.Formula = formula;
+            this.From = from;
+        }
+
         [JsonProperty("formula", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Formula { get; set; }
 
@@ -2786,6 +2829,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class DeleteRecordsGeneratedInput
     {
+        public DeleteRecordsGeneratedInput(string from, string where)
+        {
+            this.From = from;
+            this.Where = where;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -2819,6 +2868,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class RunQueryGeneratedInput
     {
+        public RunQueryGeneratedInput(string from)
+        {
+            this.From = from;
+        }
+
         [JsonProperty("options")]
         public Options Options { get; set; }
 

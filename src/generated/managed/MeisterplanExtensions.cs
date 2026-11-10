@@ -1835,6 +1835,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateOrUpdateTaskPayloadInput
     {
+        public CreateOrUpdateTaskPayloadInput(string key)
+        {
+            this.Key = key;
+        }
+
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
 
@@ -1904,6 +1909,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class AssignmentEntity
     {
+        public AssignmentEntity(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1932,6 +1942,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Sprint
     {
+        public Sprint(string key, string name)
+        {
+            this.Key = key;
+            this.Name = name;
+        }
+
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
 
@@ -1956,6 +1972,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class TaskDependency
     {
+        public TaskDependency(string taskKey)
+        {
+            this.TaskKey = taskKey;
+        }
+
         [JsonProperty("taskKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskKey { get; set; }
 
@@ -1973,12 +1994,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class TasksReplaceRequestInput
     {
+        public TasksReplaceRequestInput(TaskReplaceRequestItem[] items)
+        {
+            this.Items = items;
+        }
+
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public TaskReplaceRequestItem[] Items { get; set; }
     }
 
     public class TaskReplaceRequestItem
     {
+        public TaskReplaceRequestItem(string key, string name, TaskReplaceRequestItemStatusType status)
+        {
+            this.Key = key;
+            this.Name = name;
+            this.Status = status;
+        }
+
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
 
@@ -2083,6 +2116,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateMilestonePayloadInput
     {
+        public CreateMilestonePayloadInput(string name, string date)
+        {
+            this.Name = name;
+            this.Date = date;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2122,12 +2161,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class ReplaceMilestonesPayloadInput
     {
+        public ReplaceMilestonesPayloadInput(Milestone[] milestones)
+        {
+            this.Milestones = milestones;
+        }
+
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public Milestone[] Milestones { get; set; }
     }
 
     public class Milestone
     {
+        public Milestone(string name, string date)
+        {
+            this.Name = name;
+            this.Date = date;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2205,6 +2255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateFinancialsPayloadInput
     {
+        public CreateFinancialsPayloadInput(CreateFinancialActualsPayloadInputTypeType type, double amount, Timing timing)
+        {
+            this.Type = type;
+            this.Amount = amount;
+            this.Timing = timing;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateFinancialActualsPayloadInputTypeType Type { get; set; }
 
@@ -2231,6 +2288,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Timing
     {
+        public Timing(TimingOnType on)
+        {
+            this.On = on;
+        }
+
         [JsonProperty("on", DefaultValueHandling = DefaultValueHandling.Include)]
         public TimingOnType On { get; set; }
 
@@ -2258,12 +2320,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class ReplaceFinancialsPayloadInput
     {
+        public ReplaceFinancialsPayloadInput(FinancialEvent[] financials)
+        {
+            this.Financials = financials;
+        }
+
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public FinancialEvent[] Financials { get; set; }
     }
 
     public class FinancialEvent
     {
+        public FinancialEvent(FinancialEventTypeType type, double amount, Timing timing)
+        {
+            this.Type = type;
+            this.Amount = amount;
+            this.Timing = timing;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public FinancialEventTypeType Type { get; set; }
 
@@ -2325,6 +2399,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateFinancialActualsPayloadInput
     {
+        public CreateFinancialActualsPayloadInput(CreateFinancialActualsPayloadInputTypeType type, double amount, string bookingDate)
+        {
+            this.Type = type;
+            this.Amount = amount;
+            this.BookingDate = bookingDate;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateFinancialActualsPayloadInputTypeType Type { get; set; }
 
@@ -2343,12 +2424,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class ReplaceFinancialActualsPayloadInput
     {
+        public ReplaceFinancialActualsPayloadInput(FinancialActualsCreateOrReplaceRequest[] financialActuals)
+        {
+            this.FinancialActuals = financialActuals;
+        }
+
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public FinancialActualsCreateOrReplaceRequest[] FinancialActuals { get; set; }
     }
 
     public class FinancialActualsCreateOrReplaceRequest
     {
+        public FinancialActualsCreateOrReplaceRequest(FinancialActualsCreateOrReplaceRequestTypeType type, double amount, string bookingDate)
+        {
+            this.Type = type;
+            this.Amount = amount;
+            this.BookingDate = bookingDate;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public FinancialActualsCreateOrReplaceRequestTypeType Type { get; set; }
 
@@ -2427,6 +2520,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class AllocationCreateOrUpdateRequestInput
     {
+        public AllocationCreateOrUpdateRequestInput(AllocatedEntity allocatedEntity)
+        {
+            this.AllocatedEntity = allocatedEntity;
+        }
+
         [JsonProperty("allocatedEntity", DefaultValueHandling = DefaultValueHandling.Include)]
         public AllocatedEntity AllocatedEntity { get; set; }
 
@@ -2436,6 +2534,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class AllocatedEntity
     {
+        public AllocatedEntity(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2458,6 +2561,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class AllocationSegment
     {
+        public AllocationSegment(string start, string finish)
+        {
+            this.Start = start;
+            this.Finish = finish;
+        }
+
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Start { get; set; }
 
@@ -2476,12 +2585,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class AllocationReplaceRequestInput
     {
+        public AllocationReplaceRequestInput(Allocation[] items)
+        {
+            this.Items = items;
+        }
+
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public Allocation[] Items { get; set; }
     }
 
     public class Allocation
     {
+        public Allocation(AllocatedEntity allocatedEntity)
+        {
+            this.AllocatedEntity = allocatedEntity;
+        }
+
         [JsonProperty("allocatedEntity", DefaultValueHandling = DefaultValueHandling.Include)]
         public AllocatedEntity AllocatedEntity { get; set; }
 
@@ -2533,6 +2652,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateAbsencesPayloadInput
     {
+        public CreateAbsencesPayloadInput(string start, string finish)
+        {
+            this.Start = start;
+            this.Finish = finish;
+        }
+
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Start { get; set; }
 
@@ -2566,12 +2691,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class AbsencesInput
     {
+        public AbsencesInput(CreateAbsenceRequest[] absences)
+        {
+            this.Absences = absences;
+        }
+
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateAbsenceRequest[] Absences { get; set; }
     }
 
     public class CreateAbsenceRequest
     {
+        public CreateAbsenceRequest(string start, string finish)
+        {
+            this.Start = start;
+            this.Finish = finish;
+        }
+
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Start { get; set; }
 
@@ -2706,6 +2842,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateTeamPayloadInput
     {
+        public CreateTeamPayloadInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("resourceKey")]
         public string ResourceKey { get; set; }
 
@@ -2757,6 +2898,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CostRate
     {
+        public CostRate(double costPerHour, string costPerHourValidFrom)
+        {
+            this.CostPerHour = costPerHour;
+            this.CostPerHourValidFrom = costPerHourValidFrom;
+        }
+
         [JsonProperty("costPerHour", DefaultValueHandling = DefaultValueHandling.Include)]
         public double CostPerHour { get; set; }
 
@@ -2766,6 +2913,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Velocity
     {
+        public Velocity(double storyPointsPerPersonDay)
+        {
+            this.StoryPointsPerPersonDay = storyPointsPerPersonDay;
+        }
+
         [JsonProperty("storyPointsPerPersonDay", DefaultValueHandling = DefaultValueHandling.Include)]
         public double StoryPointsPerPersonDay { get; set; }
     }
@@ -2790,6 +2942,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class UpdateRoleCapacitiesPayloadInput
     {
+        public UpdateRoleCapacitiesPayloadInput(CapacitySegment[] segments)
+        {
+            this.Segments = segments;
+        }
+
         [JsonProperty("segments", DefaultValueHandling = DefaultValueHandling.Include)]
         public CapacitySegment[] Segments { get; set; }
     }
@@ -3052,6 +3209,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateProjectPayloadInput
     {
+        public CreateProjectPayloadInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("projectKey")]
         public string ProjectKey { get; set; }
 
@@ -3164,12 +3326,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Priority
     {
+        public Priority(RankCategory rankCategory)
+        {
+            this.RankCategory = rankCategory;
+        }
+
         [JsonProperty("rankCategory", DefaultValueHandling = DefaultValueHandling.Include)]
         public RankCategory RankCategory { get; set; }
     }
 
     public class RankCategory
     {
+        public RankCategory(RankCategoryCategoryType category, RankCategoryPositionType position)
+        {
+            this.Category = category;
+            this.Position = position;
+        }
+
         [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
         public RankCategoryCategoryType Category { get; set; }
 
@@ -3211,6 +3384,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateOrUpdateTaskManagementLinkPayloadInput
     {
+        public CreateOrUpdateTaskManagementLinkPayloadInput(string toolKey)
+        {
+            this.ToolKey = toolKey;
+        }
+
         [JsonProperty("toolKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ToolKey { get; set; }
 
@@ -3284,6 +3462,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateOrUpdateActualTimeWorkedPayloadInput
     {
+        public CreateOrUpdateActualTimeWorkedPayloadInput(BookedEntity bookedEntity, Bookings[] bookings)
+        {
+            this.BookedEntity = bookedEntity;
+            this.Bookings = bookings;
+        }
+
         [JsonProperty("bookedEntity", DefaultValueHandling = DefaultValueHandling.Include)]
         public BookedEntity BookedEntity { get; set; }
 
@@ -3296,6 +3480,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class BookedEntity
     {
+        public BookedEntity(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -3317,6 +3506,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Bookings
     {
+        public Bookings(string bookingDate, double hours)
+        {
+            this.BookingDate = bookingDate;
+            this.Hours = hours;
+        }
+
         [JsonProperty("bookingDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BookingDate { get; set; }
 
@@ -3415,6 +3610,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateProgramPayloadInput
     {
+        public CreateProgramPayloadInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("goal")]
         public BusinessGoal Goal { get; set; }
 
@@ -3466,6 +3666,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Priorities
     {
+        public Priorities(PriorityEntry[] items)
+        {
+            this.Items = items;
+        }
+
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public PriorityEntry[] Items { get; set; }
 
@@ -3475,6 +3680,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class PriorityEntry
     {
+        public PriorityEntry(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -3524,6 +3734,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateMilestoneDependencyPayloadInput
     {
+        public CreateMilestoneDependencyPayloadInput(string fromMilestoneId, string toMilestoneId)
+        {
+            this.FromMilestoneId = fromMilestoneId;
+            this.ToMilestoneId = toMilestoneId;
+        }
+
         [JsonProperty("fromMilestoneId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromMilestoneId { get; set; }
 
@@ -3573,6 +3789,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateRolePayloadInput
     {
+        public CreateRolePayloadInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -3718,6 +3939,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateResourcePayloadInput
     {
+        public CreateResourcePayloadInput(string lastName)
+        {
+            this.LastName = lastName;
+        }
+
         [JsonProperty("resourceKey")]
         public string ResourceKey { get; set; }
 
@@ -3817,6 +4043,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class UpdateCalendarDeviationsPayloadInput
     {
+        public UpdateCalendarDeviationsPayloadInput(CalendarDeviation[] deviations)
+        {
+            this.Deviations = deviations;
+        }
+
         [JsonProperty("start")]
         public string Start { get; set; }
 
@@ -3829,6 +4060,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CalendarDeviation
     {
+        public CalendarDeviation(double relativeCapacity)
+        {
+            this.RelativeCapacity = relativeCapacity;
+        }
+
         [JsonProperty("start")]
         public string Start { get; set; }
 
@@ -3856,6 +4092,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateObsTypePayloadInput
     {
+        public CreateObsTypePayloadInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -3886,6 +4127,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class ObsUnitCreateRequestInput
     {
+        public ObsUnitCreateRequestInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -3943,6 +4189,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateCalendarPayloadInput
     {
+        public CreateCalendarPayloadInput(string name, WorkingHours workingHours)
+        {
+            this.Name = name;
+            this.WorkingHours = workingHours;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -3955,6 +4207,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class WorkingHours
     {
+        public WorkingHours(double monday, double tuesday, double wednesday, double thursday, double friday, double saturday, double sunday)
+        {
+            this.Monday = monday;
+            this.Tuesday = tuesday;
+            this.Wednesday = wednesday;
+            this.Thursday = thursday;
+            this.Friday = friday;
+            this.Saturday = saturday;
+            this.Sunday = sunday;
+        }
+
         [JsonProperty("monday", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Monday { get; set; }
 
@@ -4000,6 +4263,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateCalendarExceptionsPayloadInput
     {
+        public CreateCalendarExceptionsPayloadInput(CalendarException[] exceptions)
+        {
+            this.Exceptions = exceptions;
+        }
+
         [JsonProperty("start")]
         public string Start { get; set; }
 
@@ -4012,6 +4280,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CalendarException
     {
+        public CalendarException(string date, double workingHours)
+        {
+            this.Date = date;
+            this.WorkingHours = workingHours;
+        }
+
         [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
 
@@ -4024,6 +4298,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class SetDefaultCalendarPayloadInput
     {
+        public SetDefaultCalendarPayloadInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -4174,6 +4453,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class AllocationUpdateRequestInput
     {
+        public AllocationUpdateRequestInput(AllocationSegment[] segments)
+        {
+            this.Segments = segments;
+        }
+
         [JsonProperty("segments", DefaultValueHandling = DefaultValueHandling.Include)]
         public AllocationSegment[] Segments { get; set; }
     }
@@ -4638,6 +4922,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateWebhookPayloadInput
     {
+        public CreateWebhookPayloadInput(PayloadInputEventTypesTypeItem[] eventTypes, string scenarioId)
+        {
+            this.EventTypes = eventTypes;
+            this.ScenarioId = scenarioId;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
 

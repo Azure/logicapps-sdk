@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
     public class HashgeneratoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashgeneratorip")]
-        public IBodyWorkflowAction<HashResponse, ApiConnectionActionConfiguration> Hash(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<HashResponse, ApiConnectionActionConfiguration> Hash(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<HashResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<HashResponse>(callPayload);
             });
         }
@@ -43,6 +42,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
 
     public class BodyInput
     {
+        public BodyInput(string @string)
+        {
+            this.String = @string;
+        }
+
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
 

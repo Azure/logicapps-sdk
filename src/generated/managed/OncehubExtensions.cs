@@ -79,6 +79,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
 
     public class BodyInput
     {
+        public BodyInput(string startTime, string guestTimeZone, BodyInputBookingFormType bookingForm)
+        {
+            this.StartTime = startTime;
+            this.GuestTimeZone = guestTimeZone;
+            this.BookingForm = bookingForm;
+        }
+
         [JsonProperty("start_time", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartTime { get; set; }
 
@@ -97,6 +104,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
 
     public class BodyInputBookingFormType
     {
+        public BodyInputBookingFormType(string name, string email)
+        {
+            this.Name = name;
+            this.Email = email;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

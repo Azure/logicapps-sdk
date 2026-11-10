@@ -112,6 +112,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
 
     public class AddUpdateTermBodyInput
     {
+        public AddUpdateTermBodyInput(string termlabel, string termsgroup, string termsset)
+        {
+            this.Termlabel = termlabel;
+            this.Termsgroup = termsgroup;
+            this.Termsset = termsset;
+        }
+
         [JsonProperty("isavailable", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Isavailable { get; set; } = true;
 
@@ -141,6 +148,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
 
     public class AddUpdateTermByKeyValueBodyInput
     {
+        public AddUpdateTermByKeyValueBodyInput(string keyvalue, string termlabel, string termsgroup, string termsset)
+        {
+            this.Keyvalue = keyvalue;
+            this.Termlabel = termlabel;
+            this.Termsgroup = termsgroup;
+            this.Termsset = termsset;
+        }
+
         [JsonProperty("isavailable", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Isavailable { get; set; } = true;
 
@@ -185,6 +200,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
 
     public class UploadTemplateBodyInput
     {
+        public UploadTemplateBodyInput(string templateId, string template)
+        {
+            this.TemplateId = templateId;
+            this.Template = template;
+        }
+
         [JsonProperty("templateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
 
@@ -203,6 +224,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
 
     public class GenerateDocumentBodyInput
     {
+        public GenerateDocumentBodyInput(string templateId, BodyInputOutputformatType outputformat, JToken data)
+        {
+            this.TemplateId = templateId;
+            this.Outputformat = outputformat;
+            this.Data = data;
+        }
+
         [JsonProperty("templateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
 

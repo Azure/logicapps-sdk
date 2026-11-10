@@ -1648,6 +1648,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 
     public class RelationshipsBodyInput
     {
+        public RelationshipsBodyInput(string relationshipTypeId, string leadModelItemId, string memberModelItemId, string modelId)
+        {
+            this.RelationshipTypeId = relationshipTypeId;
+            this.LeadModelItemId = leadModelItemId;
+            this.MemberModelItemId = memberModelItemId;
+            this.ModelId = modelId;
+        }
+
         [JsonProperty("relationshipTypeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RelationshipTypeId { get; set; }
 
@@ -2096,6 +2104,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 
     public class ObjectsBodyInput
     {
+        public ObjectsBodyInput(string objectTypeId, string modelId)
+        {
+            this.ObjectTypeId = objectTypeId;
+            this.ModelId = modelId;
+        }
+
         [JsonProperty("objectTypeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectTypeId { get; set; }
 
@@ -2225,6 +2239,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 
     public class PostWebhooksBodyInput
     {
+        public PostWebhooksBodyInput(string eventType)
+        {
+            this.EventType = eventType;
+        }
+
         [JsonProperty("secret")]
         public string Secret { get; set; }
 

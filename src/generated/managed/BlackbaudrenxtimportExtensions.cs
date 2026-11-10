@@ -271,6 +271,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
 
     public class CreateImportJobBodyInput
     {
+        public CreateImportJobBodyInput(string fileName)
+        {
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -376,6 +381,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
 
     public class StartImportJobBodyInput
     {
+        public StartImportJobBodyInput(string jobId)
+        {
+            this.JobId = jobId;
+        }
+
         [JsonProperty("job_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JobId { get; set; }
     }

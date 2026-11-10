@@ -160,12 +160,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
 
     public class GenerateTextBodyInputPromptType
     {
+        public GenerateTextBodyInputPromptType(string prompt)
+        {
+            this.Prompt = prompt;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
     }
 
     public class GenerateMessageBodyInput
     {
+        public GenerateMessageBodyInput(CountMessageTokensBodyInputPromptType prompt)
+        {
+            this.Prompt = prompt;
+        }
+
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public CountMessageTokensBodyInputPromptType Prompt { get; set; }
 
@@ -181,30 +191,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
 
     public class CountMessageTokensBodyInputPromptType
     {
+        public CountMessageTokensBodyInputPromptType(BodyInputPromptTypeMessagesTypeItem[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputPromptTypeMessagesTypeItem[] Messages { get; set; }
     }
 
     public class BodyInputPromptTypeMessagesTypeItem
     {
+        public BodyInputPromptTypeMessagesTypeItem(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 
     public class CountTextTokensBodyInput
     {
+        public CountTextTokensBodyInput(CountTextTokensBodyInputPromptType prompt)
+        {
+            this.Prompt = prompt;
+        }
+
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public CountTextTokensBodyInputPromptType Prompt { get; set; }
     }
 
     public class CountTextTokensBodyInputPromptType
     {
+        public CountTextTokensBodyInputPromptType(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }
 
     public class CountMessageTokensBodyInput
     {
+        public CountMessageTokensBodyInput(CountMessageTokensBodyInputPromptType prompt)
+        {
+            this.Prompt = prompt;
+        }
+
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public CountMessageTokensBodyInputPromptType Prompt { get; set; }
     }
@@ -223,6 +258,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
 
     public class EmbedTextBodyInput
     {
+        public EmbedTextBodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }

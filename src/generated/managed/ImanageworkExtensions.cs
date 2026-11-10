@@ -838,6 +838,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class GetPermissionsBodyInput
     {
+        public GetPermissionsBodyInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty("objectType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputObjectTypeType ObjectType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputObjectTypeType.Document;
 
@@ -961,6 +966,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class UpdateDefaultSecurityBodyInput
     {
+        public UpdateDefaultSecurityBodyInput(string objectId, string defaultSecurity)
+        {
+            this.ObjectId = objectId;
+            this.DefaultSecurity = defaultSecurity;
+        }
+
         [JsonProperty("objectType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputObjectTypeType ObjectType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputObjectTypeType.Document;
 
@@ -1007,6 +1018,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class UpdatePermissionsBodyInput
     {
+        public UpdatePermissionsBodyInput(string objectId, BodyInputAccessLevelType accessLevel)
+        {
+            this.ObjectId = objectId;
+            this.AccessLevel = accessLevel;
+        }
+
         [JsonProperty("objectType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputObjectTypeType ObjectType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputObjectTypeType.Document;
 
@@ -1087,6 +1104,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class CopyPermissionsBodyInput
     {
+        public CopyPermissionsBodyInput(BodyInputSourceObjectTypeType sourceObjectType, string sourceObjectId, BodyInputTargetObjectTypeType targetObjectType, string targetObjectId)
+        {
+            this.SourceObjectType = sourceObjectType;
+            this.SourceObjectId = sourceObjectId;
+            this.TargetObjectType = targetObjectType;
+            this.TargetObjectId = targetObjectId;
+        }
+
         [JsonProperty("sourceObjectType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputSourceObjectTypeType SourceObjectType { get; set; }
 
@@ -1409,6 +1434,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class CreateWorkspaceBodyInput
     {
+        public CreateWorkspaceBodyInput(string libraryId, string templateId, string name)
+        {
+            this.LibraryId = libraryId;
+            this.TemplateId = templateId;
+            this.Name = name;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -1558,6 +1590,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class UpdateWorkspaceBodyInput
     {
+        public UpdateWorkspaceBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1840,6 +1877,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class EditNVPBodyInput
     {
+        public EditNVPBodyInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty("objectType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputObjectTypeType ObjectType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputObjectTypeType.Document;
 
@@ -2001,6 +2043,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class SearchFoldersBodyInput
     {
+        public SearchFoldersBodyInput(string libraryId)
+        {
+            this.LibraryId = libraryId;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -2025,6 +2072,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class DownloadDocumentBodyInput
     {
+        public DownloadDocumentBodyInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -2127,6 +2179,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class GetUserDetailsBodyInput
     {
+        public GetUserDetailsBodyInput(string libraryId, string userId)
+        {
+            this.LibraryId = libraryId;
+            this.UserId = userId;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -2136,6 +2194,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class GetWorkspaceProfileBodyInput
     {
+        public GetWorkspaceProfileBodyInput(string workspaceId)
+        {
+            this.WorkspaceId = workspaceId;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
     }
@@ -2181,6 +2244,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class GetContainerChildrenBodyInput
     {
+        public GetContainerChildrenBodyInput(string containerId)
+        {
+            this.ContainerId = containerId;
+        }
+
         [JsonProperty("containerId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContainerId { get; set; }
 
@@ -2397,6 +2465,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class GetContainerProfileBodyInput
     {
+        public GetContainerProfileBodyInput(string containerId)
+        {
+            this.ContainerId = containerId;
+        }
+
         [JsonProperty("containerId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContainerId { get; set; }
     }
@@ -3135,6 +3208,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class UpdateDocumentProfileBodyInput
     {
+        public UpdateDocumentProfileBodyInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("alias")]
         public string Alias { get; set; }
 
@@ -3634,6 +3712,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class SearchWorkspacesBodyInput
     {
+        public SearchWorkspacesBodyInput(string libraryId)
+        {
+            this.LibraryId = libraryId;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -3783,6 +3866,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class AddDocumentReferenceBodyInput
     {
+        public AddDocumentReferenceBodyInput(string documentId, string folderId)
+        {
+            this.DocumentId = documentId;
+            this.FolderId = folderId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -4142,6 +4231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class MoveDocumentBodyInput
     {
+        public MoveDocumentBodyInput(string folderId, string documentId, string destinationFolderId)
+        {
+            this.FolderId = folderId;
+            this.DocumentId = documentId;
+            this.DestinationFolderId = destinationFolderId;
+        }
+
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderId { get; set; }
 
@@ -4396,6 +4492,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class CreateFormLinkBodyInput
     {
+        public CreateFormLinkBodyInput(string libraryId, string formId, string security)
+        {
+            this.LibraryId = libraryId;
+            this.FormId = formId;
+            this.Security = security;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -4414,6 +4517,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class UpdateWorkflowStateBodyInput
     {
+        public UpdateWorkflowStateBodyInput(string libraryId, string state)
+        {
+            this.LibraryId = libraryId;
+            this.State = state;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -6179,6 +6288,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class PromoteDocumentVersionBodyInput
     {
+        public PromoteDocumentVersionBodyInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -6588,12 +6702,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class GetDocumentVersionsBodyInput
     {
+        public GetDocumentVersionsBodyInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
     }
 
     public class SetCoreEMPropertiesForDocumentBodyInput
     {
+        public SetCoreEMPropertiesForDocumentBodyInput(string documentId, BodyInputEmPropertiesTypeItem[] emProperties)
+        {
+            this.DocumentId = documentId;
+            this.EmProperties = emProperties;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -6603,6 +6728,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class BodyInputEmPropertiesTypeItem
     {
+        public BodyInputEmPropertiesTypeItem(string key, string value)
+        {
+            this.Key = key;
+            this.Value = value;
+        }
+
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
 
@@ -6750,6 +6881,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class SearchCoreEMTaxonomyNodeValuesBodyInput
     {
+        public SearchCoreEMTaxonomyNodeValuesBodyInput(string libraryId, string taxonomyProperty)
+        {
+            this.LibraryId = libraryId;
+            this.TaxonomyProperty = taxonomyProperty;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -6792,6 +6929,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class AddDocumentHistoryEntryBodyInput
     {
+        public AddDocumentHistoryEntryBodyInput(string documentId, int activityCode)
+        {
+            this.DocumentId = documentId;
+            this.ActivityCode = activityCode;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -6948,6 +7091,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class CreateDocumentRelationBodyInput
     {
+        public CreateDocumentRelationBodyInput(string primaryDocumentId, string relatedDocumentId)
+        {
+            this.PrimaryDocumentId = primaryDocumentId;
+            this.RelatedDocumentId = relatedDocumentId;
+        }
+
         [JsonProperty("primaryDocumentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PrimaryDocumentId { get; set; }
 
@@ -6963,6 +7112,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class SingleSelectedDocumentBodyInput
     {
+        public SingleSelectedDocumentBodyInput(string workflowName, string description, string libraryId, string formId)
+        {
+            this.WorkflowName = workflowName;
+            this.Description = description;
+            this.LibraryId = libraryId;
+            this.FormId = formId;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
@@ -7005,6 +7162,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class MultipleSelectedDocumentsBodyInput
     {
+        public MultipleSelectedDocumentsBodyInput(string workflowName, string description, string libraryId, string formId)
+        {
+            this.WorkflowName = workflowName;
+            this.Description = description;
+            this.LibraryId = libraryId;
+            this.FormId = formId;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
@@ -7044,6 +7209,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class RegisterGenericWorkflowBodyInput
     {
+        public RegisterGenericWorkflowBodyInput(string workflowName, string description, string libraryId, string formId)
+        {
+            this.WorkflowName = workflowName;
+            this.Description = description;
+            this.LibraryId = libraryId;
+            this.FormId = formId;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
@@ -7077,6 +7250,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class MultipleSelectedWorkspacesBodyInput
     {
+        public MultipleSelectedWorkspacesBodyInput(string workflowName, string description, string libraryId, string formId)
+        {
+            this.WorkflowName = workflowName;
+            this.Description = description;
+            this.LibraryId = libraryId;
+            this.FormId = formId;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
@@ -7119,6 +7300,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class RegisterFormWorkflowBodyInput
     {
+        public RegisterFormWorkflowBodyInput(string workflowName, string description, string libraryId, string formId)
+        {
+            this.WorkflowName = workflowName;
+            this.Description = description;
+            this.LibraryId = libraryId;
+            this.FormId = formId;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 

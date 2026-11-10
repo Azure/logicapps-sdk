@@ -401,6 +401,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
 
     public class InputInput
     {
+        public InputInput(int groupId, string messageText)
+        {
+            this.GroupId = groupId;
+            this.MessageText = messageText;
+        }
+
         [JsonProperty("group_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int GroupId { get; set; }
 

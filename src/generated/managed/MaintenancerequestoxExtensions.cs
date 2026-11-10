@@ -37,6 +37,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maintenancerequestox
 
     public class BodyInput
     {
+        public BodyInput(string title, string description, string priority, string requestedBy, string date, string masterEmail, string apiKey)
+        {
+            this.Title = title;
+            this.Description = description;
+            this.Priority = priority;
+            this.RequestedBy = requestedBy;
+            this.Date = date;
+            this.MasterEmail = masterEmail;
+            this.ApiKey = apiKey;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

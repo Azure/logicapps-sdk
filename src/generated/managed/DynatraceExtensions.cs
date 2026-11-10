@@ -136,17 +136,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEventIngest(Expression<Func<PostEventIngestBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEventIngest(Expression<Func<PostEventIngestBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/events/ingest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json;charset=utf-8");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1193,6 +1192,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
 
     public class PostEventIngestBodyInput
     {
+        public PostEventIngestBodyInput(string eventType, string title)
+        {
+            this.EventType = eventType;
+            this.Title = title;
+        }
+
         [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventType { get; set; }
 

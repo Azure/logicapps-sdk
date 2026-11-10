@@ -49,16 +49,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 
     public class SpringglobalTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OnSurveyExecution(Expression<Func<BodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OnSurveyExecution(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook-service/subscribe/surveyexecution";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -90,6 +89,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 
     public class BodyInput
     {
+        public BodyInput(BodyInputParametersType parameters)
+        {
+            this.Parameters = parameters;
+        }
+
         [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callback { get; set; } = "#{listCallbackUrl()}";
 
@@ -99,6 +103,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 
     public class BodyInputParametersType
     {
+        public BodyInputParametersType(string surveyId, string publicationId)
+        {
+            this.SurveyId = surveyId;
+            this.PublicationId = publicationId;
+        }
+
         [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SurveyId { get; set; }
 

@@ -13,18 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
     public class KrokiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kroki")]
-        public IBodyWorkflowAction<DiagramResponse, ApiConnectionActionConfiguration> Diagram(Expression<Func<LibraryInput>> library, Expression<Func<string>> output, Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<DiagramResponse, ApiConnectionActionConfiguration> Diagram(Expression<Func<LibraryInput>> library, Expression<Func<string>> output, Expression<Func<BodyInput>> body)
         {
             var __workflow_library = WorkflowExpression.Compile(library, nameof(library), required: true);
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DiagramResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_library.WithUrlEncoding(1), __workflow_output.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DiagramResponse>(callPayload);
             });
         }
@@ -94,6 +93,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
 
     public class BodyInput
     {
+        public BodyInput(string diagramSource)
+        {
+            this.DiagramSource = diagramSource;
+        }
+
         [JsonProperty("diagram_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DiagramSource { get; set; }
 

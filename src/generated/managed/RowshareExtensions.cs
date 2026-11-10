@@ -131,30 +131,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
             });
         }
 
-        public IBodyWorkflowTrigger<RowStatusChangedResponse, ApiConnectionPollingTriggerConfiguration> RowStatusChanged(Expression<Func<RowStatusChangedBodyInput>> body = null)
+        public IBodyWorkflowTrigger<RowStatusChangedResponse, ApiConnectionPollingTriggerConfiguration> RowStatusChanged(Expression<Func<RowStatusChangedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<RowStatusChangedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/application/subscribe/8";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger<RowStatusChangedResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ColumnChangedResponse, ApiConnectionPollingTriggerConfiguration> ColumnChanged(Expression<Func<ColumnChangedBodyInput>> body = null)
+        public IBodyWorkflowTrigger<ColumnChangedResponse, ApiConnectionPollingTriggerConfiguration> ColumnChanged(Expression<Func<ColumnChangedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ColumnChangedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/application/subscribe/16";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger<ColumnChangedResponse>(callPayload);
             });
         }
@@ -201,6 +199,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
 
     public class AssignRowBodyInput
     {
+        public AssignRowBodyInput(string id, string ownerId)
+        {
+            this.Id = id;
+            this.OwnerId = ownerId;
+        }
+
         public string ListId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -224,6 +228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
 
     public class EditRowBodyInput
     {
+        public EditRowBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         public string ListId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -236,6 +245,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
 
     public class LinkRowBodyInput
     {
+        public LinkRowBodyInput(string id, BodyInputParentRowsTypeItem[] parentRows)
+        {
+            this.Id = id;
+            this.ParentRows = parentRows;
+        }
+
         public string ListId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -265,6 +280,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
 
     public class FindRowsBodyInput
     {
+        public FindRowsBodyInput(string listId, string columnName, string value)
+        {
+            this.ListId = listId;
+            this.ColumnName = columnName;
+            this.Value = value;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListId { get; set; }
 
@@ -315,6 +337,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
 
     public class RowStatusChangedBodyInput
     {
+        public RowStatusChangedBodyInput(string listId)
+        {
+            this.ListId = listId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
 
@@ -336,6 +363,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
 
     public class ColumnChangedBodyInput
     {
+        public ColumnChangedBodyInput(string listId, string columnId)
+        {
+            this.ListId = listId;
+            this.ColumnId = columnId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
 

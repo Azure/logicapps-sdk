@@ -13,31 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     public class JasperipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<CommandResponse, ApiConnectionActionConfiguration> Command(Expression<Func<CommandBodyInput>> body = null)
+        public IBodyWorkflowAction<CommandResponse, ApiConnectionActionConfiguration> Command(Expression<Func<CommandBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CommandResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/command";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CommandResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KeepWritingResponse, ApiConnectionActionConfiguration> KeepWriting(Expression<Func<KeepWritingBodyInput>> body = null)
+        public IBodyWorkflowAction<KeepWritingResponse, ApiConnectionActionConfiguration> KeepWriting(Expression<Func<KeepWritingBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<KeepWritingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/keep-writing";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<KeepWritingResponse>(callPayload);
             });
         }
@@ -79,6 +77,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new TemplateBodyInput().ToJToken();
                 return new ApiConnectionAction<TemplateResponse>(callPayload);
             });
         }
@@ -102,16 +102,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgeResponse, ApiConnectionActionConfiguration> Knowledge(Expression<Func<KnowledgeBodyInput>> body = null)
+        public IBodyWorkflowAction<KnowledgeResponse, ApiConnectionActionConfiguration> Knowledge(Expression<Func<KnowledgeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<KnowledgeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/knowledge";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<KnowledgeResponse>(callPayload);
             });
         }
@@ -171,16 +170,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<ToneResponse, ApiConnectionActionConfiguration> Tone(Expression<Func<ToneBodyInput>> body = null)
+        public IBodyWorkflowAction<ToneResponse, ApiConnectionActionConfiguration> Tone(Expression<Func<ToneBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ToneResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/tones";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ToneResponse>(callPayload);
             });
         }
@@ -255,6 +253,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
     public class CommandBodyInput
     {
+        public CommandBodyInput(CommandBodyInputInputsType inputs)
+        {
+            this.Inputs = inputs;
+        }
+
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public CommandBodyInputInputsType Inputs { get; set; }
 
@@ -264,6 +267,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
     public class CommandBodyInputInputsType
     {
+        public CommandBodyInputInputsType(string command)
+        {
+            this.Command = command;
+        }
+
         [JsonProperty("command", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Command { get; set; }
 
@@ -354,8 +362,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
     public class KeepWritingBodyInput
     {
+        public KeepWritingBodyInput(KeepWritingBodyInputInputsType inputs)
+        {
+            this.Inputs = inputs;
+        }
+
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KeepWritingBodyInputInputsType Inputs { get; set; } = new KeepWritingBodyInputInputsType();
+        public KeepWritingBodyInputInputsType Inputs { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
         public KeepWritingBodyInputOptionsType Options { get; set; } = new KeepWritingBodyInputOptionsType();
@@ -363,6 +376,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
     public class KeepWritingBodyInputInputsType
     {
+        public KeepWritingBodyInputInputsType(string value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputInputsTypeTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputInputsTypeTypeType.Text;
 
@@ -648,6 +666,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
     public class KnowledgeBodyInput
     {
+        public KnowledgeBodyInput(string name, string @file)
+        {
+            this.Name = name;
+            this.File = @file;
+        }
+
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
 
@@ -912,6 +936,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
     public class ToneBodyInput
     {
+        public ToneBodyInput(string name, string value)
+        {
+            this.Name = name;
+            this.Value = value;
+        }
+
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
 

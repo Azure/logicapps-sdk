@@ -464,14 +464,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 
     public class BodyInput
     {
+        public BodyInput(string subject, BodyInputStartType start, BodyInputEndType end)
+        {
+            this.Subject = subject;
+            this.Start = start;
+            this.End = end;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputStartType Start { get; set; } = new BodyInputStartType();
+        public BodyInputStartType Start { get; set; }
 
         [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputEndType End { get; set; } = new BodyInputEndType();
+        public BodyInputEndType End { get; set; }
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputBodyType Body { get; set; } = new BodyInputBodyType();
@@ -500,6 +507,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 
     public class BodyInputStartType
     {
+        public BodyInputStartType(string startTime)
+        {
+            this.StartTime = startTime;
+        }
+
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartTime { get; set; }
 
@@ -509,6 +521,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 
     public class BodyInputEndType
     {
+        public BodyInputEndType(string endTime)
+        {
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndTime { get; set; }
 

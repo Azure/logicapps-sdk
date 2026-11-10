@@ -157,6 +157,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
 
     public class LogAgentEventBodyInput
     {
+        public LogAgentEventBodyInput(string tenantId, string agentId, string tool)
+        {
+            this.TenantId = tenantId;
+            this.AgentId = agentId;
+            this.Tool = tool;
+        }
+
         [JsonProperty("tenantId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TenantId { get; set; }
 
@@ -202,12 +209,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
 
     public class LogAgentEventsBatchBodyInput
     {
+        public LogAgentEventsBatchBodyInput(EventIngest[] events)
+        {
+            this.Events = events;
+        }
+
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
         public EventIngest[] Events { get; set; }
     }
 
     public class EventIngest
     {
+        public EventIngest(string tenantId, string agentId, string tool)
+        {
+            this.TenantId = tenantId;
+            this.AgentId = agentId;
+            this.Tool = tool;
+        }
+
         [JsonProperty("tenantId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TenantId { get; set; }
 

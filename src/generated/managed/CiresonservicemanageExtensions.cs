@@ -218,6 +218,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CreateWebhookBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger<WebhookSettings>(callPayload);
             });
         }
@@ -233,6 +235,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CreateActionLogWebhookBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger<WebhookSettings>(callPayload);
             });
         }
@@ -287,6 +291,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
 
     public class CreateIncidentBodyInput
     {
+        public CreateIncidentBodyInput(string classification, string urgency, string impact, string source)
+        {
+            this.Classification = classification;
+            this.Urgency = urgency;
+            this.Impact = impact;
+            this.Source = source;
+        }
+
         public string Title { get; set; }
         public string Description { get; set; }
         public int? Priority { get; set; }
@@ -349,6 +361,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
 
     public class CreateServiceRequestBodyInput
     {
+        public CreateServiceRequestBodyInput(string area, string urgency, string source)
+        {
+            this.Area = area;
+            this.Urgency = urgency;
+            this.Source = source;
+        }
+
         public string Title { get; set; }
         public string Description { get; set; }
         public string Priority { get; set; }

@@ -208,6 +208,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
 
     public class TriggerActionBodyInput
     {
+        public TriggerActionBodyInput(int actionId, int activityId)
+        {
+            this.ActionId = actionId;
+            this.ActivityId = activityId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ActionId { get; set; }
 
@@ -272,6 +278,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
 
     public class TriggerISBodyInput
     {
+        public TriggerISBodyInput(string skillId)
+        {
+            this.SkillId = skillId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SkillId { get; set; }
     }
@@ -285,6 +296,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
 
     public class UpdateActionOutputBodyInput
     {
+        public UpdateActionOutputBodyInput(string output)
+        {
+            this.Output = output;
+        }
+
         [JsonProperty("output", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Output { get; set; }
 
@@ -307,6 +323,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
 
     public class LinkAsChildActivityBodyInput
     {
+        public LinkAsChildActivityBodyInput(int childId)
+        {
+            this.ChildId = childId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ChildId { get; set; }
     }
@@ -321,6 +342,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
 
     public class CreateActivityBodyInput
     {
+        public CreateActivityBodyInput(string name, string description, string cIId, string customerId)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.CIId = cIId;
+            this.CustomerId = customerId;
+        }
+
         [JsonProperty("pa_run_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RunId { get; set; } = "@{workflow().run.name}";
 
@@ -356,6 +385,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
 
     public class CreateaActivityLogBodyInput
     {
+        public CreateaActivityLogBodyInput(int activityId, int userId)
+        {
+            this.ActivityId = activityId;
+            this.UserId = userId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ActivityId { get; set; }
 

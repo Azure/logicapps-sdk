@@ -178,6 +178,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
 
     public class BodyInput
     {
+        public BodyInput(string image)
+        {
+            this.Image = image;
+        }
+
         [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Image { get; set; }
     }

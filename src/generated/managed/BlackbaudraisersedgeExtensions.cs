@@ -2157,16 +2157,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<AppendIDsToListBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<AppendIDsToListBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list/v1/appendidstolist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -2357,6 +2356,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentConsentBodyInput
     {
+        public CreateConstituentConsentBodyInput(string constituentId, string channel, BodyInputResponseType response, string date)
+        {
+            this.ConstituentId = constituentId;
+            this.Channel = channel;
+            this.Response = response;
+            this.Date = date;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -2472,6 +2479,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentSolicitCodeBodyInput
     {
+        public CreateConstituentSolicitCodeBodyInput(string constituentId, string solicitCode)
+        {
+            this.ConstituentId = constituentId;
+            this.SolicitCode = solicitCode;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -2613,6 +2626,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateActionBodyInput
     {
+        public CreateActionBodyInput(string constituentId, CreateActionBodyInputCategoryType category, string date)
+        {
+            this.ConstituentId = constituentId;
+            this.Category = category;
+            this.Date = date;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -2865,6 +2885,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateActionAttachmentBodyInput
     {
+        public CreateActionAttachmentBodyInput(string actionId, CreateActionAttachmentBodyInputTypeType type)
+        {
+            this.ActionId = actionId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActionId { get; set; }
 
@@ -2917,6 +2943,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateActionCustomFieldBodyInput
     {
+        public CreateActionCustomFieldBodyInput(string actionId, string category)
+        {
+            this.ActionId = actionId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActionId { get; set; }
 
@@ -2956,6 +2988,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentAddressBodyInput
     {
+        public CreateConstituentAddressBodyInput(string constituentId, string addressType)
+        {
+            this.ConstituentId = constituentId;
+            this.AddressType = addressType;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3109,6 +3147,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentAliasBodyInput
     {
+        public CreateConstituentAliasBodyInput(string constituentId, string alias)
+        {
+            this.ConstituentId = constituentId;
+            this.Alias = alias;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3136,6 +3180,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentCodeBodyInput
     {
+        public CreateConstituentCodeBodyInput(string constituentId, string constituentCode)
+        {
+            this.ConstituentId = constituentId;
+            this.ConstituentCode = constituentCode;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -4461,6 +4511,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class EditConstituentProfilePictureBodyInput
     {
+        public EditConstituentProfilePictureBodyInput(string fileName, string documentId, string thumbnailId)
+        {
+            this.FileName = fileName;
+            this.DocumentId = documentId;
+            this.ThumbnailId = thumbnailId;
+        }
+
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -4638,6 +4695,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentAttachmentBodyInput
     {
+        public CreateConstituentAttachmentBodyInput(string constituentId, CreateActionAttachmentBodyInputTypeType type)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -4671,6 +4734,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentCustomFieldBodyInput
     {
+        public CreateConstituentCustomFieldBodyInput(string constituentId, string category)
+        {
+            this.ConstituentId = constituentId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -4795,6 +4864,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentEducationBodyInput
     {
+        public CreateConstituentEducationBodyInput(string constituentId, string school)
+        {
+            this.ConstituentId = constituentId;
+            this.School = school;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -4966,6 +5041,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentEmailAddressBodyInput
     {
+        public CreateConstituentEmailAddressBodyInput(string constituentId, string emailType, string emailAddress)
+        {
+            this.ConstituentId = constituentId;
+            this.EmailType = emailType;
+            this.EmailAddress = emailAddress;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -5011,6 +5093,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentNoteBodyInput
     {
+        public CreateConstituentNoteBodyInput(string constituentId, string type, BodyInputDateType date)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+            this.Date = date;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -5062,6 +5151,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentOnlinePresenceBodyInput
     {
+        public CreateConstituentOnlinePresenceBodyInput(string constituentId, string type, string link)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+            this.Link = link;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -5101,6 +5197,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentPhoneBodyInput
     {
+        public CreateConstituentPhoneBodyInput(string constituentId, string type, string number)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+            this.Number = number;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -5146,6 +5249,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateConstituentRatingBodyInput
     {
+        public CreateConstituentRatingBodyInput(string constituentId, string source, string category, string date)
+        {
+            this.ConstituentId = constituentId;
+            this.Source = source;
+            this.Category = category;
+            this.Date = date;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -5212,6 +5323,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateIndividualConstituentBodyInput
     {
+        public CreateIndividualConstituentBodyInput(string lastName)
+        {
+            this.LastName = lastName;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal CreateIndividualConstituentBodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge.CreateIndividualConstituentBodyInputTypeType.Individual;
 
@@ -5296,6 +5412,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class BodyInputAddressType
     {
+        public BodyInputAddressType(string type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -5329,6 +5450,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class BodyInputPhoneType
     {
+        public BodyInputPhoneType(string type, string number)
+        {
+            this.Type = type;
+            this.Number = number;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -5341,6 +5468,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class BodyInputEmailType
     {
+        public BodyInputEmailType(string type, string address)
+        {
+            this.Type = type;
+            this.Address = address;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -5353,6 +5486,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class BodyInputOnlinePresenceType
     {
+        public BodyInputOnlinePresenceType(string type, string address)
+        {
+            this.Type = type;
+            this.Address = address;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -5395,6 +5534,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateIndividualRelationshipBodyInput
     {
+        public CreateIndividualRelationshipBodyInput(string constituentId, string relationId)
+        {
+            this.ConstituentId = constituentId;
+            this.RelationId = relationId;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -5434,6 +5579,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateOrganizationConstituentBodyInput
     {
+        public CreateOrganizationConstituentBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal CreateOrganizationConstituentBodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge.CreateOrganizationConstituentBodyInputTypeType.Organization;
 
@@ -5500,6 +5650,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateOrganizationRelationshipBodyInput
     {
+        public CreateOrganizationRelationshipBodyInput(string constituentId, string relationId)
+        {
+            this.ConstituentId = constituentId;
+            this.RelationId = relationId;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -5620,6 +5776,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateEventBodyInput
     {
+        public CreateEventBodyInput(string eventName, string startDate)
+        {
+            this.EventName = eventName;
+            this.StartDate = startDate;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventName { get; set; }
 
@@ -5662,6 +5824,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateEventBodyInputCategoryType
     {
+        public CreateEventBodyInputCategoryType(string category)
+        {
+            this.Category = category;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Category { get; set; }
     }
@@ -5866,6 +6033,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateEventFeeBodyInput
     {
+        public CreateEventFeeBodyInput(string name, double feeAmount, double contributionAmount)
+        {
+            this.Name = name;
+            this.FeeAmount = feeAmount;
+            this.ContributionAmount = contributionAmount;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -5952,6 +6126,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateEventParticipantOptionBodyInput
     {
+        public CreateEventParticipantOptionBodyInput(string name, BodyInputInputTypeType inputType)
+        {
+            this.Name = name;
+            this.InputType = inputType;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -6198,6 +6378,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateParticipantBodyInput
     {
+        public CreateParticipantBodyInput(string constituentId)
+        {
+            this.ConstituentId = constituentId;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -6269,12 +6454,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class BodyInputParticipationLevelType
     {
+        public BodyInputParticipationLevelType(string participationLevel)
+        {
+            this.ParticipationLevel = participationLevel;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParticipationLevel { get; set; }
     }
 
     public class EditParticipantOptionBodyInput
     {
+        public EditParticipantOptionBodyInput(string value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("option_value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
@@ -6415,6 +6610,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateParticipantDonationBodyInput
     {
+        public CreateParticipantDonationBodyInput(string giftId)
+        {
+            this.GiftId = giftId;
+        }
+
         [JsonProperty("gift_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftId { get; set; }
     }
@@ -6451,6 +6651,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateParticipantFeePaymentBodyInput
     {
+        public CreateParticipantFeePaymentBodyInput(string giftId, double appliedAmount)
+        {
+            this.GiftId = giftId;
+            this.AppliedAmount = appliedAmount;
+        }
+
         [JsonProperty("gift_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftId { get; set; }
 
@@ -6511,6 +6717,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateParticipantFeeBodyInput
     {
+        public CreateParticipantFeeBodyInput(string eventId, string fee, int quantity, double feeAmount, double contributionAmount)
+        {
+            this.EventId = eventId;
+            this.Fee = fee;
+            this.Quantity = quantity;
+            this.FeeAmount = feeAmount;
+            this.ContributionAmount = contributionAmount;
+        }
+
         [JsonProperty("event_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventId { get; set; }
 
@@ -6583,6 +6798,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateParticipantOptionBodyInput
     {
+        public CreateParticipantOptionBodyInput(string eventId, string option, JToken optionValue)
+        {
+            this.EventId = eventId;
+            this.Option = option;
+            this.OptionValue = optionValue;
+        }
+
         [JsonProperty("event_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventId { get; set; }
 
@@ -6756,6 +6978,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateAppealAttachmentBodyInput
     {
+        public CreateAppealAttachmentBodyInput(string appealId, CreateActionAttachmentBodyInputTypeType type)
+        {
+            this.AppealId = appealId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppealId { get; set; }
 
@@ -6789,6 +7017,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateAppealCustomFieldBodyInput
     {
+        public CreateAppealCustomFieldBodyInput(string appealId, string category)
+        {
+            this.AppealId = appealId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppealId { get; set; }
 
@@ -6968,6 +7202,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateCampaignAttachmentBodyInput
     {
+        public CreateCampaignAttachmentBodyInput(string campaignId, CreateActionAttachmentBodyInputTypeType type)
+        {
+            this.CampaignId = campaignId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CampaignId { get; set; }
 
@@ -7001,6 +7241,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateCampaignCustomFieldBodyInput
     {
+        public CreateCampaignCustomFieldBodyInput(string campaignId, string category)
+        {
+            this.CampaignId = campaignId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CampaignId { get; set; }
 
@@ -7025,6 +7271,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateFundraiserAssignmentBodyInput
     {
+        public CreateFundraiserAssignmentBodyInput(string fundraiserId, string constituentId)
+        {
+            this.FundraiserId = fundraiserId;
+            this.ConstituentId = constituentId;
+        }
+
         [JsonProperty("fundraiser_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundraiserId { get; set; }
 
@@ -7055,6 +7307,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateFundraiserAssignmentBodyInputAmountType
     {
+        public CreateFundraiserAssignmentBodyInputAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -7270,6 +7527,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateFundAttachmentBodyInput
     {
+        public CreateFundAttachmentBodyInput(string fundId, CreateActionAttachmentBodyInputTypeType type)
+        {
+            this.FundId = fundId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
@@ -7303,6 +7566,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateFundCustomFieldBodyInput
     {
+        public CreateFundCustomFieldBodyInput(string fundId, string category)
+        {
+            this.FundId = fundId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
@@ -7748,6 +8017,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateGiftBodyInput
     {
+        public CreateGiftBodyInput(string constituentId, CreateFundraiserAssignmentBodyInputAmountType amount, string date, CreateGiftBodyInputTypeType type, GiftApiGiftSplitAdd[] splits)
+        {
+            this.ConstituentId = constituentId;
+            this.Amount = amount;
+            this.Date = date;
+            this.Type = type;
+            this.Splits = splits;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -7816,6 +8094,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class GiftApiGiftSplitAdd
     {
+        public GiftApiGiftSplitAdd(string fundId, GiftApiGiftSplitAddAmountType amount)
+        {
+            this.FundId = fundId;
+            this.Amount = amount;
+        }
+
         [JsonProperty("campaign_id")]
         public string CampaignId { get; set; }
 
@@ -7834,6 +8118,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class GiftApiGiftSplitAddAmountType
     {
+        public GiftApiGiftSplitAddAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -7922,6 +8211,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class BodyInputReceiptsTypeAmountType
     {
+        public BodyInputReceiptsTypeAmountType(double receiptAmount)
+        {
+            this.ReceiptAmount = receiptAmount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double ReceiptAmount { get; set; }
     }
@@ -8041,6 +8335,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateGiftAttachmentBodyInput
     {
+        public CreateGiftAttachmentBodyInput(string giftId, CreateActionAttachmentBodyInputTypeType type)
+        {
+            this.GiftId = giftId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftId { get; set; }
 
@@ -8074,6 +8374,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateGiftCustomFieldBodyInput
     {
+        public CreateGiftCustomFieldBodyInput(string giftId, string category)
+        {
+            this.GiftId = giftId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftId { get; set; }
 
@@ -8266,12 +8572,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class AddGiftToBatchBodyInput
     {
+        public AddGiftToBatchBodyInput(BodyInputGiftsType gifts)
+        {
+            this.Gifts = gifts;
+        }
+
         [JsonProperty("gifts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputGiftsType Gifts { get; set; } = new BodyInputGiftsType();
+        public BodyInputGiftsType Gifts { get; set; }
     }
 
     public class BodyInputGiftsType
     {
+        public BodyInputGiftsType(string constituentId, BodyInputGiftsTypeAmountType amount, string date, BodyInputGiftsTypeTypeType type, GiftApiVirtualBatchGiftSplitAdd[] splits)
+        {
+            this.ConstituentId = constituentId;
+            this.Amount = amount;
+            this.Date = date;
+            this.Type = type;
+            this.Splits = splits;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -8326,6 +8646,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class BodyInputGiftsTypeAmountType
     {
+        public BodyInputGiftsTypeAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -8340,6 +8665,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class GiftApiVirtualBatchGiftSplitAdd
     {
+        public GiftApiVirtualBatchGiftSplitAdd(string fundId, GiftApiVirtualBatchGiftSplitAddAmountType amount)
+        {
+            this.FundId = fundId;
+            this.Amount = amount;
+        }
+
         [JsonProperty("campaign_id")]
         public string CampaignId { get; set; }
 
@@ -8358,6 +8689,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class GiftApiVirtualBatchGiftSplitAddAmountType
     {
+        public GiftApiVirtualBatchGiftSplitAddAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -8446,6 +8782,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class BodyInputGiftsTypeReceiptsTypeAmountType
     {
+        public BodyInputGiftsTypeReceiptsTypeAmountType(double receiptAmount)
+        {
+            this.ReceiptAmount = receiptAmount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double ReceiptAmount { get; set; }
     }
@@ -8518,6 +8859,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class AppendIDsToListBodyInput
     {
+        public AppendIDsToListBodyInput(BodyInputListTypeType listType, string list, string[] idS)
+        {
+            this.ListType = listType;
+            this.List = list;
+            this.IdS = idS;
+        }
+
         [JsonProperty("list_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputListTypeType ListType { get; set; }
 
@@ -8545,6 +8893,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateListFromIDsBodyInput
     {
+        public CreateListFromIDsBodyInput(string name, string description, BodyInputListTypeType listType, BodyInputPermissionsType permissions, string[] idS)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.ListType = listType;
+            this.Permissions = permissions;
+            this.IdS = idS;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -8679,6 +9036,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateOpportunityBodyInput
     {
+        public CreateOpportunityBodyInput(string constituentId, string purpose, string name)
+        {
+            this.ConstituentId = constituentId;
+            this.Purpose = purpose;
+            this.Name = name;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -8918,6 +9282,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateOpportunityAttachmentBodyInput
     {
+        public CreateOpportunityAttachmentBodyInput(string opportunityId, CreateActionAttachmentBodyInputTypeType type)
+        {
+            this.OpportunityId = opportunityId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OpportunityId { get; set; }
 
@@ -8951,6 +9321,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
     public class CreateOpportunityCustomFieldBodyInput
     {
+        public CreateOpportunityCustomFieldBodyInput(string opportunityId, string category)
+        {
+            this.OpportunityId = opportunityId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OpportunityId { get; set; }
 

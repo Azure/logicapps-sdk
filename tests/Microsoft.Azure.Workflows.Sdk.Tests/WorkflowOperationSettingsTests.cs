@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     using System.Linq;
     using Microsoft.CodeAnalysis;
     using Microsoft.CodeAnalysis.CSharp;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Office365;
     using Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus;
     using Newtonsoft.Json.Linq;
@@ -336,6 +337,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Equal(1, managedDefinition.Recurrence.Interval);
             Assert.Equal(FlowRecurrenceFrequency.Minute, serviceProviderDefinition.Recurrence.Frequency);
             Assert.Equal(1, serviceProviderDefinition.Recurrence.Interval);
+        }
+
+        [Fact]
+        public void OptionalManagedBodyMaterializesGeneratedCallbackValues()
+        {
+            var trigger = WorkflowTriggers.Managed
+                .Aletheia("connection")
+                .InsiderTrading();
+
+            var definition =
+                trigger.GetTriggerDefinition(FlowKind.Stateful);
+            var inputs =
+                Assert.IsType<ApiConnectionActionInput>(definition.Inputs);
+            var body = Assert.IsType<JObject>(inputs.Body);
+
+            Assert.Equal(
+                "#{listCallbackUrl()}",
+                body["endpoint"]?.Value<string>());
+            Assert.Null(body["issuer"]);
+        }
+
+        [Fact]
+        public void GeneratedInputConstructorsPreserveWorkflowExpressions()
+        {
+            var action = WorkflowActions.Managed
+                .Office365("connection")
+                .SendEmail(
+                    emailMessage: () =>
+                        new SendEmailEmailMessageInput(
+                            "recipient@example.com",
+                            "subject",
+                            "body"));
+
+            var definition =
+                action.GetActionDefinition("flow", FlowKind.Stateful);
+            var inputs =
+                Assert.IsType<ApiConnectionActionInput>(definition.Inputs);
+            var body = Assert.IsType<JValue>(inputs.Body).Value<string>();
+
+            Assert.Contains(
+                "new global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.SendEmailEmailMessageInput",
+                body);
+            Assert.Contains("\"recipient@example.com\"", body);
+            Assert.Contains("\"subject\"", body);
+            Assert.Contains("\"body\"", body);
         }
 
         [Fact]

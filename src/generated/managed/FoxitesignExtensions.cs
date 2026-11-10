@@ -337,6 +337,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
                 callPayload.Headers["Accept"] = Convert.ToString("application/vnd.ms-excel");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new DownloadReportBodyInput().ToJToken();
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -1108,6 +1110,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class CreateEnvelopefromURLBodyInput
     {
+        public CreateEnvelopefromURLBodyInput(string envelopeName, string[] fileUrls, string[] fileNames, Party[] parties, bool createEmbeddedSigningSession, bool processTextTags, bool processAcroFields)
+        {
+            this.EnvelopeName = envelopeName;
+            this.FileUrls = fileUrls;
+            this.FileNames = fileNames;
+            this.Parties = parties;
+            this.CreateEmbeddedSigningSession = createEmbeddedSigningSession;
+            this.ProcessTextTags = processTextTags;
+            this.ProcessAcroFields = processAcroFields;
+        }
+
         [JsonProperty("folderName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EnvelopeName { get; set; }
 
@@ -1276,6 +1289,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class Party
     {
+        public Party(string firstName, string lastName, string emailAddress, Permissions permission, int sequence)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.EmailAddress = emailAddress;
+            this.Permission = permission;
+            this.Sequence = sequence;
+        }
+
         [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -1361,12 +1383,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class DependentField
     {
+        public DependentField(DependentField1[] dependentFields)
+        {
+            this.DependentFields = dependentFields;
+        }
+
         [JsonProperty("dependentFields", DefaultValueHandling = DefaultValueHandling.Include)]
         public DependentField1[] DependentFields { get; set; }
     }
 
     public class DependentField1
     {
+        public DependentField1(string dependentFieldName, string parentFieldName, string parentFieldValue, string options)
+        {
+            this.DependentFieldName = dependentFieldName;
+            this.ParentFieldName = parentFieldName;
+            this.ParentFieldValue = parentFieldValue;
+            this.Options = options;
+        }
+
         [JsonProperty("dependentFieldName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DependentFieldName { get; set; }
 
@@ -1725,6 +1760,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class SendSignatureReminderBodyInput
     {
+        public SendSignatureReminderBodyInput(int envelopeId)
+        {
+            this.EnvelopeId = envelopeId;
+        }
+
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int EnvelopeId { get; set; }
     }
@@ -1737,6 +1777,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class EnvelopeIdentifiers
     {
+        public EnvelopeIdentifiers(int[] folderIds)
+        {
+            this.FolderIds = folderIds;
+        }
+
         [JsonProperty("folderIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public int[] FolderIds { get; set; }
     }
@@ -1860,6 +1905,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class CancelEnvelopeBodyInput
     {
+        public CancelEnvelopeBodyInput(int envelopeId, string reasonForCancellation)
+        {
+            this.EnvelopeId = envelopeId;
+            this.ReasonForCancellation = reasonForCancellation;
+        }
+
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int EnvelopeId { get; set; }
 
@@ -1893,6 +1944,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class GetTemplatesbyTemplateIdsBodyInput
     {
+        public GetTemplatesbyTemplateIdsBodyInput(int[] templateIds)
+        {
+            this.TemplateIds = templateIds;
+        }
+
         [JsonProperty("templateIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public int[] TemplateIds { get; set; }
     }
@@ -2433,6 +2489,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class CreateTemplatefromURLBodyInput
     {
+        public CreateTemplatefromURLBodyInput(string templateName, string templateURL, bool shareAll, int numberOfParties, TemplateParty[] parties)
+        {
+            this.TemplateName = templateName;
+            this.TemplateURL = templateURL;
+            this.ShareAll = shareAll;
+            this.NumberOfParties = numberOfParties;
+            this.Parties = parties;
+        }
+
         [JsonProperty("templateName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateName { get; set; }
 
@@ -2505,6 +2570,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class TemplateParty
     {
+        public TemplateParty(Permissions permission, int sequence, string recipientRole)
+        {
+            this.Permission = permission;
+            this.Sequence = sequence;
+            this.RecipientRole = recipientRole;
+        }
+
         [JsonProperty("permission", DefaultValueHandling = DefaultValueHandling.Include)]
         public Permissions Permission { get; set; }
 
@@ -2706,6 +2778,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class CreateTemplatefromBase64BodyInput
     {
+        public CreateTemplatefromBase64BodyInput(string templateName, string base64FileString, bool shareAll, int numberOfParties, TemplateParty[] parties)
+        {
+            this.TemplateName = templateName;
+            this.Base64FileString = base64FileString;
+            this.ShareAll = shareAll;
+            this.NumberOfParties = numberOfParties;
+            this.Parties = parties;
+        }
+
         [JsonProperty("templateName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateName { get; set; }
 
@@ -3217,6 +3298,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class CreateEnvelopefromTemplateBodyInput
     {
+        public CreateEnvelopefromTemplateBodyInput(int[] templateIds, Party[] parties)
+        {
+            this.TemplateIds = templateIds;
+            this.Parties = parties;
+        }
+
         [JsonProperty("folderName")]
         public string EnvelopeName { get; set; }
 
@@ -3517,6 +3604,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class CreateEmailGroupBodyInput
     {
+        public CreateEmailGroupBodyInput(string groupName, BodyInputPartiesTypeItem[] parties)
+        {
+            this.GroupName = groupName;
+            this.Parties = parties;
+        }
+
         [JsonProperty("emailGroupName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
 
@@ -3532,6 +3625,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class BodyInputPartiesTypeItem
     {
+        public BodyInputPartiesTypeItem(string firstName, string lastName, string email)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
+        }
+
         [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -3583,6 +3683,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class GetEmailGroupDetailsBodyInput
     {
+        public GetEmailGroupDetailsBodyInput(string[] emailGroupNames)
+        {
+            this.EmailGroupNames = emailGroupNames;
+        }
+
         [JsonProperty("emailGroupNames", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] EmailGroupNames { get; set; }
     }
@@ -4295,6 +4400,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class CreateEnvelopefromBase64BodyInput
     {
+        public CreateEnvelopefromBase64BodyInput(string envelopeName, string[] base64FileStrings, string[] fileNames, Party[] parties, bool createEmbeddedSigningSession, bool processTextTags, bool processAcroFields)
+        {
+            this.EnvelopeName = envelopeName;
+            this.Base64FileStrings = base64FileStrings;
+            this.FileNames = fileNames;
+            this.Parties = parties;
+            this.CreateEmbeddedSigningSession = createEmbeddedSigningSession;
+            this.ProcessTextTags = processTextTags;
+            this.ProcessAcroFields = processAcroFields;
+        }
+
         [JsonProperty("folderName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EnvelopeName { get; set; }
 
@@ -4973,6 +5089,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class TriggerEnvelopeSentBodyInput
     {
+        public TriggerEnvelopeSentBodyInput(string channelName)
+        {
+            this.ChannelName = channelName;
+        }
+
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
 
@@ -5002,6 +5123,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class TriggerEnvelopeViewedBodyInput
     {
+        public TriggerEnvelopeViewedBodyInput(string channelName)
+        {
+            this.ChannelName = channelName;
+        }
+
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
 
@@ -5023,6 +5149,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class TriggerEnvelopeSignedBodyInput
     {
+        public TriggerEnvelopeSignedBodyInput(string channelName)
+        {
+            this.ChannelName = channelName;
+        }
+
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
 
@@ -5044,6 +5175,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class TriggerEnvelopeCancelledBodyInput
     {
+        public TriggerEnvelopeCancelledBodyInput(string channelName)
+        {
+            this.ChannelName = channelName;
+        }
+
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
 
@@ -5065,6 +5201,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class TriggerEnvelopeExecutedBodyInput
     {
+        public TriggerEnvelopeExecutedBodyInput(string channelName)
+        {
+            this.ChannelName = channelName;
+        }
+
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
 
@@ -5086,6 +5227,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class TriggerEnvelopeDeletedBodyInput
     {
+        public TriggerEnvelopeDeletedBodyInput(string channelName)
+        {
+            this.ChannelName = channelName;
+        }
+
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
 

@@ -45,6 +45,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay
 
     public class BodyInput
     {
+        public BodyInput(DisplayMessageBlock[] blocks)
+        {
+            this.Blocks = blocks;
+        }
+
         [JsonProperty("boardId")]
         public string BoardId { get; set; }
 
@@ -72,6 +77,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay
 
     public class DisplayMessageBlock
     {
+        public DisplayMessageBlock(string message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
 

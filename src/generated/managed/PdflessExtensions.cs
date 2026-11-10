@@ -61,6 +61,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
 
     public class CommandInput
     {
+        public CommandInput(string templateId, string payload)
+        {
+            this.TemplateId = templateId;
+            this.Payload = payload;
+        }
+
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
 

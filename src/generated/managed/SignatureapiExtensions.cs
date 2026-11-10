@@ -585,6 +585,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class CreateEnvelopeBodyInput
     {
+        public CreateEnvelopeBodyInput(string envelopeTitle)
+        {
+            this.EnvelopeTitle = envelopeTitle;
+        }
+
         [JsonProperty("draft", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool DraftEnvelope { get; set; } = true;
 
@@ -730,6 +735,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddDocumentBodyInput
     {
+        public AddDocumentBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("title")]
         public string DocumentTitle { get; set; }
 
@@ -745,6 +755,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddDocumentDocxBodyInput
     {
+        public AddDocumentDocxBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("title")]
         public string DocumentTitle { get; set; }
 
@@ -760,6 +775,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddTemplateBodyInput
     {
+        public AddTemplateBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("title")]
         public string DocumentTitle { get; set; }
 
@@ -778,6 +798,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddTemplateDataBodyInput
     {
+        public AddTemplateDataBodyInput(string fieldName, string value)
+        {
+            this.FieldName = fieldName;
+            this.Value = value;
+        }
+
         [JsonProperty("field_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldName { get; set; }
 
@@ -787,6 +813,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddPlaceSignatureBodyInput
     {
+        public AddPlaceSignatureBodyInput(string placeKey, string recipientKey)
+        {
+            this.PlaceKey = placeKey;
+            this.RecipientKey = recipientKey;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "signature";
 
@@ -814,6 +846,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddPlaceInitialsBodyInput
     {
+        public AddPlaceInitialsBodyInput(string placeKey, string recipientKey)
+        {
+            this.PlaceKey = placeKey;
+            this.RecipientKey = recipientKey;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "initials";
 
@@ -841,6 +879,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddPlaceTextInputBodyInput
     {
+        public AddPlaceTextInputBodyInput(string placeKey, string recipientKey)
+        {
+            this.PlaceKey = placeKey;
+            this.RecipientKey = recipientKey;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "text_input";
 
@@ -892,6 +936,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddPlaceTextBodyInput
     {
+        public AddPlaceTextBodyInput(string placeKey, string value)
+        {
+            this.PlaceKey = placeKey;
+            this.Value = value;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "text";
 
@@ -922,6 +972,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddPlaceRecipientCompletedDateBodyInput
     {
+        public AddPlaceRecipientCompletedDateBodyInput(string placeKey, string recipientKey)
+        {
+            this.PlaceKey = placeKey;
+            this.RecipientKey = recipientKey;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "recipient_completed_date";
 
@@ -949,6 +1005,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddPlaceEnvelopeCompletedDateBodyInput
     {
+        public AddPlaceEnvelopeCompletedDateBodyInput(string placeKey)
+        {
+            this.PlaceKey = placeKey;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "envelope_completed_date";
 
@@ -1012,6 +1073,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class AddRecipientBodyInput
     {
+        public AddRecipientBodyInput(string recipientName, string recipientEmail, string recipientKey)
+        {
+            this.RecipientName = recipientName;
+            this.RecipientEmail = recipientEmail;
+            this.RecipientKey = recipientKey;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string RecipientType { get; set; } = "signer";
 
@@ -1111,8 +1179,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class CreateCeremonyCustomBodyInput
     {
+        public CreateCeremonyCustomBodyInput(CreateCeremonyCustomBodyInputAuthenticationType authentication)
+        {
+            this.Authentication = authentication;
+        }
+
         [JsonProperty("authentication", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCeremonyCustomBodyInputAuthenticationType Authentication { get; set; } = new CreateCeremonyCustomBodyInputAuthenticationType();
+        public CreateCeremonyCustomBodyInputAuthenticationType Authentication { get; set; }
 
         [JsonProperty("redirect_url")]
         public string RedirectURL { get; set; }
@@ -1123,6 +1196,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class CreateCeremonyCustomBodyInputAuthenticationType
     {
+        public CreateCeremonyCustomBodyInputAuthenticationType(string authenticationProvider, string[] authenticationData)
+        {
+            this.AuthenticationProvider = authenticationProvider;
+            this.AuthenticationData = authenticationData;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CeremonyType { get; set; } = "custom";
 

@@ -113,31 +113,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        public IBodyWorkflowAction<Conversion, ApiConnectionActionConfiguration> ConvertTime(Expression<Func<ConvertTimeBodyInput>> body = null)
+        public IBodyWorkflowAction<Conversion, ApiConnectionActionConfiguration> ConvertTime(Expression<Func<ConvertTimeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Conversion, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Conversion/ConvertTimeZone";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Conversion>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        public IBodyWorkflowAction<Translation, ApiConnectionActionConfiguration> LocalizeTime(Expression<Func<LocalizeTimeBodyInput>> body = null)
+        public IBodyWorkflowAction<Translation, ApiConnectionActionConfiguration> LocalizeTime(Expression<Func<LocalizeTimeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Translation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Conversion/Translate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Translation>(callPayload);
             });
         }
@@ -156,31 +154,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        public IBodyWorkflowAction<Calculation, ApiConnectionActionConfiguration> IncrementByTimespan(Expression<Func<DecrementByTimespanBodyInput>> body = null)
+        public IBodyWorkflowAction<Calculation, ApiConnectionActionConfiguration> IncrementByTimespan(Expression<Func<DecrementByTimespanBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Calculation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Calculation/custom/increment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Calculation>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        public IBodyWorkflowAction<Calculation, ApiConnectionActionConfiguration> DecrementByTimespan(Expression<Func<DecrementByTimespanBodyInput>> body = null)
+        public IBodyWorkflowAction<Calculation, ApiConnectionActionConfiguration> DecrementByTimespan(Expression<Func<DecrementByTimespanBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Calculation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Calculation/custom/decrement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Calculation>(callPayload);
             });
         }
@@ -411,6 +407,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
 
     public class ConvertTimeBodyInput
     {
+        public ConvertTimeBodyInput(string fromTimeZone, string dateTime, string toTimeZone, BodyInputDstAmbiguityType dstAmbiguity)
+        {
+            this.FromTimeZone = fromTimeZone;
+            this.DateTime = dateTime;
+            this.ToTimeZone = toTimeZone;
+            this.DstAmbiguity = dstAmbiguity;
+        }
+
         [JsonProperty("fromTimeZone", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromTimeZone { get; set; }
 
@@ -453,6 +457,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
 
     public class LocalizeTimeBodyInput
     {
+        public LocalizeTimeBodyInput(string dateTime, string languageCode)
+        {
+            this.DateTime = dateTime;
+            this.LanguageCode = languageCode;
+        }
+
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }
 
@@ -519,6 +529,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
 
     public class DecrementByTimespanBodyInput
     {
+        public DecrementByTimespanBodyInput(string timeZone, string dateTime, string timeSpan, BodyInputDstAmbiguityType dstAmbiguity)
+        {
+            this.TimeZone = timeZone;
+            this.DateTime = dateTime;
+            this.TimeSpan = timeSpan;
+            this.DstAmbiguity = dstAmbiguity;
+        }
+
         [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TimeZone { get; set; }
 

@@ -59,6 +59,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
     public class CreateAgentBodyInput
     {
+        public CreateAgentBodyInput(string agentId, string name)
+        {
+            this.AgentId = agentId;
+            this.Name = name;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentId { get; set; }
 
@@ -118,6 +124,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
     public class CreateAgentAgentGroupV2
     {
+        public CreateAgentAgentGroupV2(int groupId, CreateAgentAgentGroupV2PriorityType priority)
+        {
+            this.GroupId = groupId;
+            this.Priority = priority;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int GroupId { get; set; }
 
@@ -149,6 +161,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
     public class WorkSchedulerV2
     {
+        public WorkSchedulerV2(WorkScheduleEntryV2[] schedule)
+        {
+            this.Schedule = schedule;
+        }
+
         [JsonProperty("timezone")]
         public string TimeZone { get; set; }
 
@@ -158,6 +175,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
     public class WorkScheduleEntryV2
     {
+        public WorkScheduleEntryV2(WorkScheduleEntryV2DayType day, bool enabled, string start, string end)
+        {
+            this.Day = day;
+            this.Enabled = enabled;
+            this.Start = start;
+            this.End = end;
+        }
+
         [JsonProperty("day", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkScheduleEntryV2DayType Day { get; set; }
 
@@ -192,6 +217,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
     public class DeleteAgentBodyInput
     {
+        public DeleteAgentBodyInput(string agentId)
+        {
+            this.AgentId = agentId;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentId { get; set; }
     }

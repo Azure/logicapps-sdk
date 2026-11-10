@@ -154,6 +154,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
     public class ListInput
     {
+        public ListInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
     }
@@ -199,6 +204,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
     public class TaskInput
     {
+        public TaskInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

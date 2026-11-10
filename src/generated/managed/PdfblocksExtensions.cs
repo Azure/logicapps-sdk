@@ -33,12 +33,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
 
     public class BodyInput
     {
+        public BodyInput(BodyInputDocumentsTypeItem[] documents)
+        {
+            this.Documents = documents;
+        }
+
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputDocumentsTypeItem[] Documents { get; set; }
     }
 
     public class BodyInputDocumentsTypeItem
     {
+        public BodyInputDocumentsTypeItem(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 

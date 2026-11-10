@@ -1158,6 +1158,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class EntityFieldValuePair
     {
+        public EntityFieldValuePair(string uid, string value)
+        {
+            this.Uid = uid;
+            this.Value = value;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uid { get; set; }
 
@@ -1179,6 +1185,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class FinancialFieldValuePair
     {
+        public FinancialFieldValuePair(string uid, string value)
+        {
+            this.Uid = uid;
+            this.Value = value;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uid { get; set; }
 
@@ -1206,6 +1218,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class MilestoneFieldValuePair
     {
+        public MilestoneFieldValuePair(string uid, string value)
+        {
+            this.Uid = uid;
+            this.Value = value;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uid { get; set; }
 
@@ -1220,6 +1238,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class EventCreationInformationInput
     {
+        public EventCreationInformationInput(string siteURL)
+        {
+            this.SiteURL = siteURL;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SiteURL { get; set; }
 

@@ -547,6 +547,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class AgreementCreationInfoIdFileStreamInput
     {
+        public AgreementCreationInfoIdFileStreamInput(string agreementName, DocumentFileInfoFileStream[] @file, ParticipantCreateSetInfoV6[] participant)
+        {
+            this.AgreementName = agreementName;
+            this.File = @file;
+            this.Participant = participant;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgreementName { get; set; }
 
@@ -598,6 +605,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class DocumentFileInfoFileStream
     {
+        public DocumentFileInfoFileStream(string name, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent content)
+        {
+            this.Name = name;
+            this.Content = content;
+        }
+
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -614,6 +627,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class ParticipantCreateSetInfoV6
     {
+        public ParticipantCreateSetInfoV6(CreateAgreementByFileStreamMemberInfosV6[] member)
+        {
+            this.Member = member;
+        }
+
         [JsonProperty("memberInfos", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateAgreementByFileStreamMemberInfosV6[] Member { get; set; }
 
@@ -626,6 +644,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class CreateAgreementByFileStreamMemberInfosV6
     {
+        public CreateAgreementByFileStreamMemberInfosV6(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -1464,6 +1487,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class AgreementCreationInfoIdV6Input
     {
+        public AgreementCreationInfoIdV6Input(string agreementName, DocumentFileInfoId[] document, ParticipantCreateSetInfoV6[] participant)
+        {
+            this.AgreementName = agreementName;
+            this.Document = document;
+            this.Participant = participant;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgreementName { get; set; }
 
@@ -1515,6 +1545,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class DocumentFileInfoId
     {
+        public DocumentFileInfoId(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("transientDocumentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -1563,6 +1598,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class AgreementCreationInfoTemplateV6Input
     {
+        public AgreementCreationInfoTemplateV6Input(string agreementName, DocumentFileInfoTemplate[] library, ParticipantCreateSetInfoV6[] participant)
+        {
+            this.AgreementName = agreementName;
+            this.Library = library;
+            this.Participant = participant;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgreementName { get; set; }
 
@@ -1614,6 +1656,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class DocumentFileInfoTemplate
     {
+        public DocumentFileInfoTemplate(string libraryDocumentId)
+        {
+            this.LibraryDocumentId = libraryDocumentId;
+        }
+
         [JsonProperty("libraryDocumentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryDocumentId { get; set; }
     }
@@ -1662,6 +1709,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class AgreementCreationInfoUrlV6Input
     {
+        public AgreementCreationInfoUrlV6Input(string agreementName, DocumentFileInfoUrl[] document, ParticipantCreateSetInfoV6[] participant)
+        {
+            this.AgreementName = agreementName;
+            this.Document = document;
+            this.Participant = participant;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgreementName { get; set; }
 
@@ -1713,12 +1767,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class DocumentFileInfoUrl
     {
+        public DocumentFileInfoUrl(URLFileInfo urlFileInfo)
+        {
+            this.UrlFileInfo = urlFileInfo;
+        }
+
         [JsonProperty("urlFileInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public URLFileInfo UrlFileInfo { get; set; }
     }
 
     public class URLFileInfo
     {
+        public URLFileInfo(string url, string name, URLFileInfoMimeTypeType mimeType)
+        {
+            this.Url = url;
+            this.Name = name;
+            this.MimeType = mimeType;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1816,6 +1882,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class LibraryDocumentInfoIdInput
     {
+        public LibraryDocumentInfoIdInput(string templateName, LibraryDocumentFileInfoId[] document)
+        {
+            this.TemplateName = templateName;
+            this.Document = document;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateName { get; set; }
 
@@ -1856,6 +1928,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class LibraryDocumentFileInfoId
     {
+        public LibraryDocumentFileInfoId(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("transientDocumentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -1869,6 +1946,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class LibraryDocumentInfoUrlInput
     {
+        public LibraryDocumentInfoUrlInput(string templateName, LibraryDocumentFileInfoUrl[] document)
+        {
+            this.TemplateName = templateName;
+            this.Document = document;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateName { get; set; }
 
@@ -1909,6 +1992,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class LibraryDocumentFileInfoUrl
     {
+        public LibraryDocumentFileInfoUrl(URLFileInfo urlFileInfo)
+        {
+            this.UrlFileInfo = urlFileInfo;
+        }
+
         [JsonProperty("urlFileInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public URLFileInfo UrlFileInfo { get; set; }
     }
@@ -2265,6 +2353,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class CreateWebhookForAgreementCreatedEventWebhookCreationInfoInput
     {
+        public CreateWebhookForAgreementCreatedEventWebhookCreationInfoInput(string name, CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputScopeType scope)
+        {
+            this.Name = name;
+            this.Scope = scope;
+        }
+
         [JsonProperty("webhookUrlInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public WebhookUrlInfo WebhookUrlInfo { get; set; } = new WebhookUrlInfo();
 
@@ -2328,6 +2422,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInput
     {
+        public CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInput(string name, CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputScopeType scope)
+        {
+            this.Name = name;
+            this.Scope = scope;
+        }
+
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
 
@@ -2402,6 +2502,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class CreateWebhookForAgreementSignedEventWebhookCreationInfoInput
     {
+        public CreateWebhookForAgreementSignedEventWebhookCreationInfoInput(string name, CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputScopeType scope)
+        {
+            this.Name = name;
+            this.Scope = scope;
+        }
+
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
 
@@ -2460,6 +2566,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class CreateWebhookForAgreementStatusUpdatedWebhookCreationInfoInput
     {
+        public CreateWebhookForAgreementStatusUpdatedWebhookCreationInfoInput(string name, CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputScopeType scope, CreateWebhookForAgreementStatusUpdatedWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] webhookSubscriptionEvents)
+        {
+            this.Name = name;
+            this.Scope = scope;
+            this.WebhookSubscriptionEvents = webhookSubscriptionEvents;
+        }
+
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
 
@@ -2525,6 +2638,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class CreateWebhookGenericWebhookCreationInfoInput
     {
+        public CreateWebhookGenericWebhookCreationInfoInput(string name, CreateWebhookGenericWebhookCreationInfoInputScopeType scope, CreateWebhookForGroupEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] webhookSubscriptionEvents)
+        {
+            this.Name = name;
+            this.Scope = scope;
+            this.WebhookSubscriptionEvents = webhookSubscriptionEvents;
+        }
+
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
 
@@ -2691,6 +2811,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class CreateWebhookForWebFormAgreementEventWebhookCreationInfoInput
     {
+        public CreateWebhookForWebFormAgreementEventWebhookCreationInfoInput(string name, string resourceId, CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] webhookSubscriptionEvents)
+        {
+            this.Name = name;
+            this.ResourceId = resourceId;
+            this.WebhookSubscriptionEvents = webhookSubscriptionEvents;
+        }
+
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
 
@@ -2765,6 +2892,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class CreateWebhookForGroupEventWebhookCreationInfoInput
     {
+        public CreateWebhookForGroupEventWebhookCreationInfoInput(string name, CreateWebhookForGroupEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] webhookSubscriptionEvents)
+        {
+            this.Name = name;
+            this.WebhookSubscriptionEvents = webhookSubscriptionEvents;
+        }
+
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
 

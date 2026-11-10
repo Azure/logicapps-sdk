@@ -120,6 +120,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
 
     public class SendSMSMessageInput
     {
+        public SendSMSMessageInput(string messagetext, string[] recipients)
+        {
+            this.Messagetext = messagetext;
+            this.Recipients = recipients;
+        }
+
         [JsonProperty("senderid")]
         public string Senderid { get; set; }
 
@@ -153,6 +159,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
 
     public class OptoutCustomerMessageInput
     {
+        public OptoutCustomerMessageInput(string mobilenumber)
+        {
+            this.Mobilenumber = mobilenumber;
+        }
+
         [JsonProperty("mobilenumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Mobilenumber { get; set; }
 
@@ -219,6 +230,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
 
     public class ImportdataInput
     {
+        public ImportdataInput(string group, string mobilenumber)
+        {
+            this.Group = group;
+            this.Mobilenumber = mobilenumber;
+        }
+
         [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Group { get; set; }
 

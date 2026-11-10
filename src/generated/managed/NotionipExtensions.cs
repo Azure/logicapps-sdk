@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<SearchBodyInput>> body = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<SearchBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
@@ -149,8 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
             });
         }
@@ -775,6 +774,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
     public class SearchBodyInput
     {
+        public SearchBodyInput(string query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 
@@ -964,6 +968,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
     public class CreateaPageBodyInput
     {
+        public CreateaPageBodyInput(CreateaPageBodyInputParentType parent)
+        {
+            this.Parent = parent;
+        }
+
         [JsonProperty("parent", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateaPageBodyInputParentType Parent { get; set; }
 
@@ -979,6 +988,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
     public class CreateaPageBodyInputParentType
     {
+        public CreateaPageBodyInputParentType(string databaseId)
+        {
+            this.DatabaseId = databaseId;
+        }
+
         [JsonProperty("database_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DatabaseId { get; set; }
     }

@@ -166,6 +166,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
 
     public class PromptFormBodyInput
     {
+        public PromptFormBodyInput(BodyInputFormFieldsTypeItem[] formFields)
+        {
+            this.FormFields = formFields;
+        }
+
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
 
@@ -284,6 +289,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
 
     public class SubscriptionInput
     {
+        public SubscriptionInput(string bot, string flow)
+        {
+            this.Bot = bot;
+            this.Flow = flow;
+        }
+
         [JsonProperty("bot", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Bot { get; set; }
 

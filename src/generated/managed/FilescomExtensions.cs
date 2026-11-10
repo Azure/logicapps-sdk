@@ -1788,6 +1788,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
     public class PostGroupsGroupIdUsersBodyInput
     {
+        public PostGroupsGroupIdUsersBodyInput(string username)
+        {
+            this.Username = username;
+        }
+
         [JsonProperty("authentication_method")]
         public BodyInputAuthenticationMethodType? AuthenticationMethod { get; set; }
 
@@ -1992,6 +1997,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
     public class PostBundleNotificationsBodyInput
     {
+        public PostBundleNotificationsBodyInput(int bundleId)
+        {
+            this.BundleId = bundleId;
+        }
+
         [JsonProperty("bundle_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int BundleId { get; set; }
 
@@ -2043,6 +2053,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
     public class PostBundleRecipientsBodyInput
     {
+        public PostBundleRecipientsBodyInput(int bundleId, string recipient)
+        {
+            this.BundleId = bundleId;
+            this.Recipient = recipient;
+        }
+
         [JsonProperty("bundle_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int BundleId { get; set; }
 
@@ -2852,6 +2868,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
     public class PostBundlesBodyInput
     {
+        public PostBundlesBodyInput(string[] paths)
+        {
+            this.Paths = paths;
+        }
+
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -3749,6 +3770,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
     public class PostGroupsBodyInput
     {
+        public PostGroupsBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("admin_ids")]
         public string AdminIds { get; set; }
 

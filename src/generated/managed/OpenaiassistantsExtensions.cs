@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new AssistantBodyInput().ToJToken();
                 return new ApiConnectionAction<AssistantResponse>(callPayload);
             });
         }
@@ -101,19 +103,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<FileResponse, ApiConnectionActionConfiguration> File(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<FileBodyInput>> body = null)
+        public IBodyWorkflowAction<FileResponse, ApiConnectionActionConfiguration> File(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<FileBodyInput>> body)
         {
             var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
             var __workflow_assistantId = WorkflowExpression.Compile(assistantId, nameof(assistantId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/assistants/{0}/files", __workflow_assistantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FileResponse>(callPayload);
             });
         }
@@ -151,18 +152,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<ThreadResponse, ApiConnectionActionConfiguration> Thread(Expression<Func<string>> openAIBeta, Expression<Func<ThreadBodyInput>> body = null)
+        public IBodyWorkflowAction<ThreadResponse, ApiConnectionActionConfiguration> Thread(Expression<Func<string>> openAIBeta, Expression<Func<ThreadBodyInput>> body)
         {
             var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ThreadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threads";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ThreadResponse>(callPayload);
             });
         }
@@ -337,19 +337,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunResponse, ApiConnectionActionConfiguration> Run(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<RunBodyInput>> body = null)
+        public IBodyWorkflowAction<RunResponse, ApiConnectionActionConfiguration> Run(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<RunBodyInput>> body)
         {
             var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RunResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/threads/{0}/runs", __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RunResponse>(callPayload);
             });
         }
@@ -753,6 +752,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
 
     public class FileBodyInput
     {
+        public FileBodyInput(string fileId)
+        {
+            this.FileId = fileId;
+        }
+
         [JsonProperty("file_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileId { get; set; }
     }
@@ -801,12 +805,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
 
     public class ThreadBodyInput
     {
+        public ThreadBodyInput(BodyInputMessagesTypeItem[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputMessagesTypeItem[] Messages { get; set; }
     }
 
     public class BodyInputMessagesTypeItem
     {
+        public BodyInputMessagesTypeItem(string role, string content)
+        {
+            this.Role = role;
+            this.Content = content;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -1245,6 +1260,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
 
     public class RunBodyInput
     {
+        public RunBodyInput(string model)
+        {
+            this.Model = model;
+        }
+
         [JsonProperty("assistant_id")]
         public string AssistantId { get; set; }
 

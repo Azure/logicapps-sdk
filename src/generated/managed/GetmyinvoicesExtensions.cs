@@ -121,6 +121,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Getmyinvoices
 
     public class BodyInput
     {
+        public BodyInput(string apiKey)
+        {
+            this.ApiKey = apiKey;
+        }
+
         [JsonProperty("api_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
     }

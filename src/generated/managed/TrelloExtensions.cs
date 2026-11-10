@@ -1640,6 +1640,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
 
     public class CreateBoardBoardInput
     {
+        public CreateBoardBoardInput(string boardName)
+        {
+            this.BoardName = boardName;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BoardName { get; set; }
 
@@ -1679,6 +1684,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
 
     public class ListInput
     {
+        public ListInput(string listName, string boardId)
+        {
+            this.ListName = listName;
+            this.BoardId = boardId;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
 
@@ -1703,6 +1714,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
 
     public class NewCardInput
     {
+        public NewCardInput(string parentListId, string cardName)
+        {
+            this.ParentListId = parentListId;
+            this.CardName = cardName;
+        }
+
         [JsonProperty("idList", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentListId { get; set; }
 
@@ -1748,6 +1765,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
 
     public class UpdateCardInput
     {
+        public UpdateCardInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

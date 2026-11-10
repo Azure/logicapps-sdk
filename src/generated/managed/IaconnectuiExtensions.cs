@@ -1168,6 +1168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIADoesProcessHaveWindowInput
     {
+        public UIADoesProcessHaveWindowInput(string searchProcessName)
+        {
+            this.SearchProcessName = searchProcessName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchProcessName { get; set; }
 
@@ -1186,6 +1191,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetHandleForProcessMainWindowInput
     {
+        public UIAGetHandleForProcessMainWindowInput(string searchProcessName)
+        {
+            this.SearchProcessName = searchProcessName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchProcessName { get; set; }
 
@@ -1205,6 +1215,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAWaitForProcessMainWindowInput
     {
+        public UIAWaitForProcessMainWindowInput(string searchProcessName)
+        {
+            this.SearchProcessName = searchProcessName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchProcessName { get; set; }
 
@@ -1226,6 +1241,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetHandleForProcessIdMainWindowInput
     {
+        public UIAGetHandleForProcessIdMainWindowInput(int processId)
+        {
+            this.ProcessId = processId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ProcessId { get; set; }
 
@@ -1245,6 +1265,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAWaitForProcessIdMainWindowInput
     {
+        public UIAWaitForProcessIdMainWindowInput(int processId)
+        {
+            this.ProcessId = processId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ProcessId { get; set; }
 
@@ -1302,6 +1327,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIASetForegroundWindowInput
     {
+        public UIASetForegroundWindowInput(int windowHandle)
+        {
+            this.WindowHandle = windowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int WindowHandle { get; set; }
 
@@ -1320,6 +1350,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAMaximiseWindowInput
     {
+        public UIAMaximiseWindowInput(int windowHandle)
+        {
+            this.WindowHandle = windowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int WindowHandle { get; set; }
 
@@ -1329,6 +1364,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAMinimiseWindowInput
     {
+        public UIAMinimiseWindowInput(int windowHandle)
+        {
+            this.WindowHandle = windowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int WindowHandle { get; set; }
 
@@ -1338,6 +1378,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIASetWindowToNormalInput
     {
+        public UIASetWindowToNormalInput(int windowHandle)
+        {
+            this.WindowHandle = windowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int WindowHandle { get; set; }
 
@@ -1357,6 +1402,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIADoesElementExistInput
     {
+        public UIADoesElementExistInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -1457,6 +1507,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAWaitForElementInput
     {
+        public UIAWaitForElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -1567,6 +1622,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAWaitForElementToNotExistInput
     {
+        public UIAWaitForElementToNotExistInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -1659,6 +1719,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAPressElementInput
     {
+        public UIAPressElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -1705,6 +1770,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGlobalMouseClickOnElementInput
     {
+        public UIAGlobalMouseClickOnElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -1770,6 +1840,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGlobalRightMouseClickOnElementInput
     {
+        public UIAGlobalRightMouseClickOnElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -1835,6 +1910,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGlobalMiddleMouseClickOnElementInput
     {
+        public UIAGlobalMiddleMouseClickOnElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -1900,6 +1980,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGlobalDoubleLeftMouseClickOnElementInput
     {
+        public UIAGlobalDoubleLeftMouseClickOnElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -1968,6 +2053,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIASelectElementInput
     {
+        public UIASelectElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2002,6 +2092,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAInputPasswordIntoElementInput
     {
+        public UIAInputPasswordIntoElementInput(int parentWindowHandle, string passwordToInput)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+            this.PasswordToInput = passwordToInput;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2048,6 +2144,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAInputTextIntoElementInput
     {
+        public UIAInputTextIntoElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2098,6 +2199,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAInputTextIntoMultipleElementsInput
     {
+        public UIAInputTextIntoMultipleElementsInput(string inputElementsJSON)
+        {
+            this.InputElementsJSON = inputElementsJSON;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputElementsJSON { get; set; }
 
@@ -2107,6 +2213,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAInputReturnIntoElementInput
     {
+        public UIAInputReturnIntoElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2154,6 +2265,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAFocusElementInput
     {
+        public UIAFocusElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2188,6 +2304,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAToggleElementInput
     {
+        public UIAToggleElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2222,6 +2343,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIACheckElementInput
     {
+        public UIACheckElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2259,6 +2385,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIACheckMultipleElementsInput
     {
+        public UIACheckMultipleElementsInput(string inputElementsJSON)
+        {
+            this.InputElementsJSON = inputElementsJSON;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputElementsJSON { get; set; }
 
@@ -2273,6 +2404,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAIsElementCheckedInput
     {
+        public UIAIsElementCheckedInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2307,6 +2443,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIACloseElementWindowInput
     {
+        public UIACloseElementWindowInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2346,6 +2487,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetElementTextValueInput
     {
+        public UIAGetElementTextValueInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2385,6 +2531,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetElementValueInput
     {
+        public UIAGetElementValueInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2424,6 +2575,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetElementLabelValueInput
     {
+        public UIAGetElementLabelValueInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2485,6 +2641,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetElementPropertiesInput
     {
+        public UIAGetElementPropertiesInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2535,6 +2696,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetMultipleElementPropertiesInput
     {
+        public UIAGetMultipleElementPropertiesInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementLocalizedControlType { get; set; }
@@ -2590,6 +2756,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAExpandElementInput
     {
+        public UIAExpandElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2624,6 +2795,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIACollapseElementInput
     {
+        public UIACollapseElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2663,6 +2839,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIATakeScreenShotOfElementLocationInput
     {
+        public UIATakeScreenShotOfElementLocationInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2710,6 +2891,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIADrawRectangleAroundElementInput
     {
+        public UIADrawRectangleAroundElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2755,6 +2941,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetParentElementHandleInput
     {
+        public UIAGetParentElementHandleInput(int elementHandle)
+        {
+            this.ElementHandle = elementHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ElementHandle { get; set; }
 
@@ -2863,6 +3054,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetDataGridElementPropertiesInput
     {
+        public UIAGetDataGridElementPropertiesInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2907,6 +3103,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetListElementItemsInput
     {
+        public UIAGetListElementItemsInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2953,6 +3154,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAClickListElementItemByNameInput
     {
+        public UIAClickListElementItemByNameInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2995,6 +3201,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAClickListElementItemByIndexInput
     {
+        public UIAClickListElementItemByIndexInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3039,6 +3250,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIASetElementToNumericValueInput
     {
+        public UIASetElementToNumericValueInput(int parentWindowHandle, int newValue)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+            this.NewValue = newValue;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3085,6 +3302,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIASetElementToNumericRangeValueInput
     {
+        public UIASetElementToNumericRangeValueInput(int parentWindowHandle, double newValue)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+            this.NewValue = newValue;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3131,6 +3354,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGlobalPasswordInputIntoElementInput
     {
+        public UIAGlobalPasswordInputIntoElementInput(int parentWindowHandle, string passwordToInput)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+            this.PasswordToInput = passwordToInput;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3195,6 +3424,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGlobalTextInputIntoElementInput
     {
+        public UIAGlobalTextInputIntoElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3261,6 +3495,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetElementPropertiesAsListInput
     {
+        public UIAGetElementPropertiesAsListInput(int elementHandle)
+        {
+            this.ElementHandle = elementHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ElementHandle { get; set; }
 
@@ -3310,6 +3549,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetMultipleParentElementPropertiesInput
     {
+        public UIAGetMultipleParentElementPropertiesInput(int elementHandle)
+        {
+            this.ElementHandle = elementHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ElementHandle { get; set; }
 
@@ -3332,6 +3576,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIASearchForFirstParentElementInput
     {
+        public UIASearchForFirstParentElementInput(int elementHandle)
+        {
+            this.ElementHandle = elementHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ElementHandle { get; set; }
         public string SearchParentLocalizedControlType { get; set; }
@@ -3454,6 +3703,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIASetElementScrollPercentageInput
     {
+        public UIASetElementScrollPercentageInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3520,6 +3774,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetElementSearchColourRegionInput
     {
+        public UIAGetElementSearchColourRegionInput(int parentWindowHandle, string searchColour, int maxColourDeviation)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+            this.SearchColour = searchColour;
+            this.MaxColourDeviation = maxColourDeviation;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3576,6 +3837,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGlobalMouseClickElementSearchColourRegionInput
     {
+        public UIAGlobalMouseClickElementSearchColourRegionInput(int parentWindowHandle, string searchColour, int maxColourDeviation)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+            this.SearchColour = searchColour;
+            this.MaxColourDeviation = maxColourDeviation;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3719,6 +3987,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class SetUIAElementSearchModeInput
     {
+        public SetUIAElementSearchModeInput(SetUIAElementSearchModeInputUIAElementSearchModeType uIAElementSearchMode)
+        {
+            this.UIAElementSearchMode = uIAElementSearchMode;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public SetUIAElementSearchModeInputUIAElementSearchModeType UIAElementSearchMode { get; set; }
 
@@ -3770,6 +4043,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAGetElementPatternsInput
     {
+        public UIAGetElementPatternsInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3810,6 +4088,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAMoveElementInput
     {
+        public UIAMoveElementInput(int parentWindowHandle, int horizontalPosition, int verticalPosition)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+            this.HorizontalPosition = horizontalPosition;
+            this.VerticalPosition = verticalPosition;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3876,6 +4161,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIAResizeElementInput
     {
+        public UIAResizeElementInput(int parentWindowHandle, int newWidth, int newHeight)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+            this.NewWidth = newWidth;
+            this.NewHeight = newHeight;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3954,6 +4246,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
     public class UIALocateVisibleSearchImageWithinElementInput
     {
+        public UIALocateVisibleSearchImageWithinElementInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }

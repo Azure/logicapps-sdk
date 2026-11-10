@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
     public class IbmwatsontexttospeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<SynthesizeResponse, ApiConnectionActionConfiguration> Synthesize(Expression<Func<VoiceInput>> voice = null, Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<SynthesizeResponse, ApiConnectionActionConfiguration> Synthesize(Expression<Func<BodyInput>> body, Expression<Func<VoiceInput>> voice = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SynthesizeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/synthesize";
@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
                 callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
                 if (__workflow_voice != null)
                     callPayload.Queries["voice"] = ExpressionConverter.Convert(__workflow_voice);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SynthesizeResponse>(callPayload);
             });
         }
@@ -84,6 +83,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
     {
         [JsonProperty("base64")]
         public string Base64 { get; set; }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(string text)
+        {
+            this.Text = text;
+        }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -177,12 +187,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         ZhCNWangWeiVoice,
         [EnumMember(Value = "zh-CN_ZhangJingVoice")]
         ZhCNZhangJingVoice
-    }
-
-    public class BodyInput
-    {
-        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Text { get; set; }
     }
 
     public class ListVoicesResponse

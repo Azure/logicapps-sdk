@@ -108,6 +108,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 
     public class ValidateNotificationBodyInput
     {
+        public ValidateNotificationBodyInput(string payload)
+        {
+            this.Payload = payload;
+        }
+
         [JsonProperty("payload", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Payload { get; set; }
     }
@@ -225,6 +230,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 
     public class CRUDEntitiyBodyInput
     {
+        public CRUDEntitiyBodyInput(string @event)
+        {
+            this.Event = @event;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Event { get; set; }
 

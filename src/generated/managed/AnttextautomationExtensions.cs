@@ -33,6 +33,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
 
     public class PostBodyParameterInput
     {
+        public PostBodyParameterInput(string emailForAntTextBusiness, string antTextBusinessLicenseKey, string keyPhraseConfirmation, string templateId, string to)
+        {
+            this.EmailForAntTextBusiness = emailForAntTextBusiness;
+            this.AntTextBusinessLicenseKey = antTextBusinessLicenseKey;
+            this.KeyPhraseConfirmation = keyPhraseConfirmation;
+            this.TemplateId = templateId;
+            this.To = to;
+        }
+
         [JsonProperty("AntTextOwner", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailForAntTextBusiness { get; set; }
 

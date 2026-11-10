@@ -276,18 +276,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<AddGraphGroupMemberBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<AddGraphGroupMemberBodyInput>> body)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -942,6 +941,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
 
     public class AddGraphGroupMemberBodyInput
     {
+        public AddGraphGroupMemberBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("@odata.id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }

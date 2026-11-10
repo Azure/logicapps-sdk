@@ -396,6 +396,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new SubmitProcessResponseBodyInput().ToJToken();
                 return new ApiConnectionAction<SubmitProcessResponseResponse>(callPayload);
             });
         }
@@ -429,6 +431,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new SubmitProcessResponseBodyInput().ToJToken();
                 return new ApiConnectionAction<SubmitProcessResponseDraftResponse>(callPayload);
             });
         }
@@ -553,6 +557,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new UpdateProcessResponseBodyInput().ToJToken();
                 return new ApiConnectionAction<UpdateProcessResponseResponse>(callPayload);
             });
         }
@@ -570,6 +576,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CreateProcessResponseBodyInput().ToJToken();
                 return new ApiConnectionAction<CreateProcessResponseResponse>(callPayload);
             });
         }
@@ -1071,17 +1079,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "morta")]
-        public IBodyWorkflowAction<UpdateMultipleProcessSectionsResponse, ApiConnectionActionConfiguration> UpdateMultipleProcessSections(Expression<Func<string>> processId, Expression<Func<UpdateMultipleProcessSectionsBodyInput>> body = null)
+        public IBodyWorkflowAction<UpdateMultipleProcessSectionsResponse, ApiConnectionActionConfiguration> UpdateMultipleProcessSections(Expression<Func<string>> processId, Expression<Func<UpdateMultipleProcessSectionsBodyInput>> body)
         {
             var __workflow_processId = WorkflowExpression.Compile(processId, nameof(processId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateMultipleProcessSectionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/process/{0}/update-multiple-section", __workflow_processId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateMultipleProcessSectionsResponse>(callPayload);
             });
         }
@@ -1135,6 +1142,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new UpdateProcessSectionOrderBodyInput().ToJToken();
                 return new ApiConnectionAction<UpdateProcessSectionOrderResponse>(callPayload);
             });
         }
@@ -1227,18 +1236,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "morta")]
-        public IBodyWorkflowAction<ChangeUserRoleOnProjectResponse, ApiConnectionActionConfiguration> ChangeUserRoleOnProject(Expression<Func<string>> projectId, Expression<Func<string>> firebaseId, Expression<Func<ChangeUserRoleOnProjectBodyInput>> body = null)
+        public IBodyWorkflowAction<ChangeUserRoleOnProjectResponse, ApiConnectionActionConfiguration> ChangeUserRoleOnProject(Expression<Func<string>> projectId, Expression<Func<string>> firebaseId, Expression<Func<ChangeUserRoleOnProjectBodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_firebaseId = WorkflowExpression.Compile(firebaseId, nameof(firebaseId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChangeUserRoleOnProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/project/{0}/changeuserrole/{1}", __workflow_projectId.WithUrlEncoding(1), __workflow_firebaseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ChangeUserRoleOnProjectResponse>(callPayload);
             });
         }
@@ -2610,6 +2618,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class IntegrationsPassthroughApiCallBodyInput
     {
+        public IntegrationsPassthroughApiCallBodyInput(BodyInputMethodType method, string path, BodyInputSourceSystemType sourceSystem)
+        {
+            this.Method = method;
+            this.Path = path;
+            this.SourceSystem = sourceSystem;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -2952,6 +2967,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class DuplicateProcessBodyInput
     {
+        public DuplicateProcessBodyInput(string processId)
+        {
+            this.ProcessId = processId;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -3153,6 +3173,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateUserAccountBodyInput
     {
+        public UpdateUserAccountBodyInput(string oldPassword, string password, string passwordConfirm)
+        {
+            this.OldPassword = oldPassword;
+            this.Password = password;
+            this.PasswordConfirm = passwordConfirm;
+        }
+
         [JsonProperty("oldPassword", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OldPassword { get; set; }
 
@@ -3369,6 +3396,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateCommentThreadBodyInput
     {
+        public CreateCommentThreadBodyInput(string commentText, string referenceId, string referenceType)
+        {
+            this.CommentText = commentText;
+            this.ReferenceId = referenceId;
+            this.ReferenceType = referenceType;
+        }
+
         [JsonProperty("commentText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CommentText { get; set; }
 
@@ -3468,6 +3502,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateNotificationBodyInput
     {
+        public CreateNotificationBodyInput(string description, string projectId, CreateTrigger[] triggers, string webhookUrl)
+        {
+            this.Description = description;
+            this.ProjectId = projectId;
+            this.Triggers = triggers;
+            this.WebhookUrl = webhookUrl;
+        }
+
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
 
@@ -3489,6 +3531,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTrigger
     {
+        public CreateTrigger(string resource, string verb)
+        {
+            this.Resource = resource;
+            this.Verb = verb;
+        }
+
         [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Resource { get; set; }
 
@@ -3611,6 +3659,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateResourcePermissionsBodyInput
     {
+        public CreateResourcePermissionsBodyInput(BodyInputAttributeKindType attributeKind, string resourceId, BodyInputResourceKindType resourceKind, CreateResourcePermissionsBodyInputRoleType role)
+        {
+            this.AttributeKind = attributeKind;
+            this.ResourceId = resourceId;
+            this.ResourceKind = resourceKind;
+            this.Role = role;
+        }
+
         [JsonProperty("attributeId")]
         public string AttributeId { get; set; }
 
@@ -3815,6 +3871,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateProjectBodyInput
     {
+        public CreateProjectBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -3842,6 +3903,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateProcessBodyInput
     {
+        public CreateProcessBodyInput(string name, string projectId, string type)
+        {
+            this.Name = name;
+            this.ProjectId = projectId;
+            this.Type = type;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -4118,6 +4186,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableBodyInput
     {
+        public CreateTableBodyInput(CreateTableTableColumn[] columns, string name, string projectId)
+        {
+            this.Columns = columns;
+            this.Name = name;
+            this.ProjectId = projectId;
+        }
+
         [JsonProperty("columns", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateTableTableColumn[] Columns { get; set; }
 
@@ -4139,6 +4214,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableTableColumn
     {
+        public CreateTableTableColumn(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("aconexSynced")]
         public int? AconexSynced { get; set; }
 
@@ -4313,6 +4393,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateUserBodyInput
     {
+        public CreateUserBodyInput(string email, string name, string password)
+        {
+            this.Email = email;
+            this.Name = name;
+            this.Password = password;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -4508,6 +4595,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpsertTableRowsBodyInput
     {
+        public UpsertTableRowsBodyInput(TableRowAction[] rows, string upsertColumnName)
+        {
+            this.Rows = rows;
+            this.UpsertColumnName = upsertColumnName;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -4520,6 +4613,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class TableRowAction
     {
+        public TableRowAction(JToken rowData)
+        {
+            this.RowData = rowData;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -4711,6 +4809,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class PreviewTableRowInViewBodyInput
     {
+        public PreviewTableRowInViewBodyInput(JToken rowData)
+        {
+            this.RowData = rowData;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -5261,6 +5364,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class AddColumnToTableViewBodyInput
     {
+        public AddColumnToTableViewBodyInput(bool locked, string name, bool @required, double sortOrder)
+        {
+            this.Locked = locked;
+            this.Name = name;
+            this.Required = @required;
+            this.SortOrder = sortOrder;
+        }
+
         [JsonProperty("aconexSynced")]
         public int? AconexSynced { get; set; }
 
@@ -5405,6 +5516,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateDocumentTableCellsInViewBodyInput
     {
+        public UpdateDocumentTableCellsInViewBodyInput(UpdateDocumentTableCell[] cells)
+        {
+            this.Cells = cells;
+        }
+
         [JsonProperty("cells", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateDocumentTableCell[] Cells { get; set; }
 
@@ -5414,6 +5530,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateDocumentTableCell
     {
+        public UpdateDocumentTableCell(string columnName, string rowId)
+        {
+            this.ColumnName = columnName;
+            this.RowId = rowId;
+        }
+
         [JsonProperty("columnName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ColumnName { get; set; }
 
@@ -5501,6 +5623,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableRowsBodyInput
     {
+        public CreateTableRowsBodyInput(TableRowAction[] rows)
+        {
+            this.Rows = rows;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -5531,6 +5658,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateTableRowsBodyInput
     {
+        public UpdateTableRowsBodyInput(TableRowAction1[] rows)
+        {
+            this.Rows = rows;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -5540,6 +5672,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class TableRowAction1
     {
+        public TableRowAction1(string publicId, JToken rowData)
+        {
+            this.PublicId = publicId;
+            this.RowData = rowData;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -5726,6 +5864,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateCommentBodyInput
     {
+        public CreateCommentBodyInput(string commentText)
+        {
+            this.CommentText = commentText;
+        }
+
         [JsonProperty("commentText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CommentText { get; set; }
 
@@ -5897,6 +6040,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateMultipleProcessSectionsBodyInput
     {
+        public UpdateMultipleProcessSectionsBodyInput(ExtendedUpdateProcessSection[] sections)
+        {
+            this.Sections = sections;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -5906,6 +6054,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class ExtendedUpdateProcessSection
     {
+        public ExtendedUpdateProcessSection(string publicId)
+        {
+            this.PublicId = publicId;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -6131,6 +6284,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateMultipleProcessSectionsBodyInput
     {
+        public CreateMultipleProcessSectionsBodyInput(CreateProcessSection[] sections)
+        {
+            this.Sections = sections;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -6140,6 +6298,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateProcessSection
     {
+        public CreateProcessSection(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -6185,6 +6348,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class ChangeUserRoleOnProjectBodyInput
     {
+        public ChangeUserRoleOnProjectBodyInput(ChangeUserRoleOnProjectBodyInputRoleType role)
+        {
+            this.Role = role;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public ChangeUserRoleOnProjectBodyInputRoleType Role { get; set; }
     }
@@ -6487,6 +6655,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateProjectSecretBodyInput
     {
+        public CreateProjectSecretBodyInput(string name, string value)
+        {
+            this.Name = name;
+            this.Value = value;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -6643,6 +6817,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateProcessSectionBodyInput
     {
+        public CreateProcessSectionBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
@@ -6760,6 +6939,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class InviteUserToProjectBodyInput
     {
+        public InviteUserToProjectBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -7052,6 +7236,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableViewColour
     {
+        public CreateTableViewColour(string backgroundColour, string columnName, CreateTableViewColourFilterTypeType filterType, string fontColour)
+        {
+            this.BackgroundColour = backgroundColour;
+            this.ColumnName = columnName;
+            this.FilterType = filterType;
+            this.FontColour = fontColour;
+        }
+
         [JsonProperty("backgroundColour", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BackgroundColour { get; set; }
 
@@ -7261,6 +7453,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableViewFilter
     {
+        public CreateTableViewFilter(string columnName, CreateTableViewFilterFilterTypeType filterType)
+        {
+            this.ColumnName = columnName;
+            this.FilterType = filterType;
+        }
+
         [JsonProperty("columnId")]
         public string ColumnId { get; set; }
 
@@ -7323,6 +7521,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableViewGroup
     {
+        public CreateTableViewGroup(string columnName, string direction)
+        {
+            this.ColumnName = columnName;
+            this.Direction = direction;
+        }
+
         [JsonProperty("columnId")]
         public string ColumnId { get; set; }
 
@@ -7335,6 +7539,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableViewSort
     {
+        public CreateTableViewSort(string columnName, string direction)
+        {
+            this.ColumnName = columnName;
+            this.Direction = direction;
+        }
+
         [JsonProperty("columnId")]
         public string ColumnId { get; set; }
 
@@ -7392,12 +7602,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableIndexesBodyInput
     {
+        public CreateTableIndexesBodyInput(TableColumnIndex[] columns)
+        {
+            this.Columns = columns;
+        }
+
         [JsonProperty("columns", DefaultValueHandling = DefaultValueHandling.Include)]
         public TableColumnIndex[] Columns { get; set; }
     }
 
     public class TableColumnIndex
     {
+        public TableColumnIndex(string publicId)
+        {
+            this.PublicId = publicId;
+        }
+
         [JsonProperty("publicId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PublicId { get; set; }
     }
@@ -7422,6 +7642,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableColumnBodyInput
     {
+        public CreateTableColumnBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("aconexSynced")]
         public int? AconexSynced { get; set; }
 
@@ -7542,6 +7767,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableViewBodyInput
     {
+        public CreateTableViewBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("allowContributorDelete", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AllowContributorDelete { get; set; } = false;
 
@@ -7605,6 +7835,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class ViewColumn
     {
+        public ViewColumn(string columnName)
+        {
+            this.ColumnName = columnName;
+        }
+
         [JsonProperty("columnId")]
         public string ColumnId { get; set; }
 
@@ -7958,6 +8193,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UserAddTagBodyInput
     {
+        public UserAddTagBodyInput(string tagReferenceId)
+        {
+            this.TagReferenceId = tagReferenceId;
+        }
+
         [JsonProperty("tagReferenceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TagReferenceId { get; set; }
     }
@@ -8012,6 +8252,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateNotificationBodyInput
     {
+        public UpdateNotificationBodyInput(string webhookUrl)
+        {
+            this.WebhookUrl = webhookUrl;
+        }
+
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; } = null;
 
@@ -8030,6 +8275,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateTrigger
     {
+        public UpdateTrigger(string resource, string verb)
+        {
+            this.Resource = resource;
+            this.Verb = verb;
+        }
+
         [JsonProperty("publicId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PublicId { get; set; } = null;
 
@@ -8051,6 +8302,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateResourcePermissionsBodyInput
     {
+        public UpdateResourcePermissionsBodyInput(CreateResourcePermissionsBodyInputRoleType role)
+        {
+            this.Role = role;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 

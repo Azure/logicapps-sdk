@@ -161,6 +161,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class SendFeedbackBodyInput
     {
+        public SendFeedbackBodyInput(JToken conversationContext, JToken answerObject)
+        {
+            this.ConversationContext = conversationContext;
+            this.AnswerObject = answerObject;
+        }
+
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
 
@@ -176,6 +182,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class SendMessageBodyInput
     {
+        public SendMessageBodyInput(JToken conversationContext, string message)
+        {
+            this.ConversationContext = conversationContext;
+            this.Message = message;
+        }
+
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
 
@@ -185,6 +197,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class StartEscalationBodyInput
     {
+        public StartEscalationBodyInput(JToken conversationContext, string initialQuestion, JToken userProfile)
+        {
+            this.ConversationContext = conversationContext;
+            this.InitialQuestion = initialQuestion;
+            this.UserProfile = userProfile;
+        }
+
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
 
@@ -206,6 +225,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class SendAdaptiveBodyInput
     {
+        public SendAdaptiveBodyInput(JToken conversationContext, string adaptiveCardJson)
+        {
+            this.ConversationContext = conversationContext;
+            this.AdaptiveCardJson = adaptiveCardJson;
+        }
+
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
 
@@ -224,6 +249,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class SendMessageInputBodyInput
     {
+        public SendMessageInputBodyInput(JToken conversationContext, string question, bool fileWaiting)
+        {
+            this.ConversationContext = conversationContext;
+            this.Question = question;
+            this.FileWaiting = fileWaiting;
+        }
+
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
 
@@ -242,6 +274,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class SendMessageInputListBodyInput
     {
+        public SendMessageInputListBodyInput(JToken conversationContext, string question, string firstChoice, string secondChoice)
+        {
+            this.ConversationContext = conversationContext;
+            this.Question = question;
+            this.FirstChoice = firstChoice;
+            this.SecondChoice = secondChoice;
+        }
+
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
 
@@ -290,6 +330,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class SendMessageInputArrayBodyInput
     {
+        public SendMessageInputArrayBodyInput(JToken conversationContext, string question, JToken[] listOfChoices, string valueToSelectInList)
+        {
+            this.ConversationContext = conversationContext;
+            this.Question = question;
+            this.ListOfChoices = listOfChoices;
+            this.ValueToSelectInList = valueToSelectInList;
+        }
+
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
 

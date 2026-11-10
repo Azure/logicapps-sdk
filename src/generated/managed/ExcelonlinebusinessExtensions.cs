@@ -500,6 +500,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
 
     public class TableInput
     {
+        public TableInput(string tableRange)
+        {
+            this.TableRange = tableRange;
+        }
+
         public string TableName { get; set; }
 
         [JsonProperty("Range", DefaultValueHandling = DefaultValueHandling.Include)]

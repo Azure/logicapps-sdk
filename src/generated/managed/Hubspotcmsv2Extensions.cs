@@ -2283,6 +2283,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class ScheduleaBlogPosttobePublishedBodyInput
     {
+        public ScheduleaBlogPosttobePublishedBodyInput(string id, string publishDate)
+        {
+            this.Id = id;
+            this.PublishDate = publishDate;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2292,6 +2298,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class PostUpdatelanguagesofmultiLanguagegroup1BodyInput
     {
+        public PostUpdatelanguagesofmultiLanguagegroup1BodyInput(JToken languages, string primaryId)
+        {
+            this.Languages = languages;
+            this.PrimaryId = primaryId;
+        }
+
         [JsonProperty("languages", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Languages { get; set; }
 
@@ -2697,6 +2709,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CreateanewBlogBodyInput
     {
+        public CreateanewBlogBodyInput(string abStatus, string abTestId, string archivedAt, bool archivedInDashboard, JToken[] attachedStylesheets, string authorName, string blogAuthorId, string campaign, string categoryId, string contentGroupId, string contentTypeCategory, string created, string createdById, string currentState, bool currentlyPublished, string domain, string dynamicPageDataSourceId, string dynamicPageDataSourceType, string dynamicPageHubDbTableId, bool enableDomainStylesheets, bool enableGoogleAmpOutputOverride, bool enableLayoutStylesheets, string featuredImage, string featuredImageAltText, string folderId, string footerHtml, string headHtml, string htmlTitle, string id, bool includeDefaultCustomCss, string language, JToken layoutSections, string linkRelCanonicalUrl, string mabExperimentId, string metaDescription, string name, string pageExpiryDate, bool pageExpiryEnabled, string pageExpiryRedirectId, string pageExpiryRedirectUrl, string password, string postBody, string postSummary, string[] publicAccessRules, bool publicAccessRulesEnabled, string publishDate, string publishImmediately, string rssBody, string rssSummary, string slug, string state, string[] tagIds, JToken themeSettingsValues, string translatedFromId, JToken translations, string updated, string updatedById, string url, bool useFeaturedImage, JToken widgetContainers, JToken widgets)
+        {
+            this.AbStatus = abStatus;
+            this.AbTestId = abTestId;
+            this.ArchivedAt = archivedAt;
+            this.ArchivedInDashboard = archivedInDashboard;
+            this.AttachedStylesheets = attachedStylesheets;
+            this.AuthorName = authorName;
+            this.BlogAuthorId = blogAuthorId;
+            this.Campaign = campaign;
+            this.CategoryId = categoryId;
+            this.ContentGroupId = contentGroupId;
+            this.ContentTypeCategory = contentTypeCategory;
+            this.Created = created;
+            this.CreatedById = createdById;
+            this.CurrentState = currentState;
+            this.CurrentlyPublished = currentlyPublished;
+            this.Domain = domain;
+            this.DynamicPageDataSourceId = dynamicPageDataSourceId;
+            this.DynamicPageDataSourceType = dynamicPageDataSourceType;
+            this.DynamicPageHubDbTableId = dynamicPageHubDbTableId;
+            this.EnableDomainStylesheets = enableDomainStylesheets;
+            this.EnableGoogleAmpOutputOverride = enableGoogleAmpOutputOverride;
+            this.EnableLayoutStylesheets = enableLayoutStylesheets;
+            this.FeaturedImage = featuredImage;
+            this.FeaturedImageAltText = featuredImageAltText;
+            this.FolderId = folderId;
+            this.FooterHtml = footerHtml;
+            this.HeadHtml = headHtml;
+            this.HtmlTitle = htmlTitle;
+            this.Id = id;
+            this.IncludeDefaultCustomCss = includeDefaultCustomCss;
+            this.Language = language;
+            this.LayoutSections = layoutSections;
+            this.LinkRelCanonicalUrl = linkRelCanonicalUrl;
+            this.MabExperimentId = mabExperimentId;
+            this.MetaDescription = metaDescription;
+            this.Name = name;
+            this.PageExpiryDate = pageExpiryDate;
+            this.PageExpiryEnabled = pageExpiryEnabled;
+            this.PageExpiryRedirectId = pageExpiryRedirectId;
+            this.PageExpiryRedirectUrl = pageExpiryRedirectUrl;
+            this.Password = password;
+            this.PostBody = postBody;
+            this.PostSummary = postSummary;
+            this.PublicAccessRules = publicAccessRules;
+            this.PublicAccessRulesEnabled = publicAccessRulesEnabled;
+            this.PublishDate = publishDate;
+            this.PublishImmediately = publishImmediately;
+            this.RssBody = rssBody;
+            this.RssSummary = rssSummary;
+            this.Slug = slug;
+            this.State = state;
+            this.TagIds = tagIds;
+            this.ThemeSettingsValues = themeSettingsValues;
+            this.TranslatedFromId = translatedFromId;
+            this.Translations = translations;
+            this.Updated = updated;
+            this.UpdatedById = updatedById;
+            this.Url = url;
+            this.UseFeaturedImage = useFeaturedImage;
+            this.WidgetContainers = widgetContainers;
+            this.Widgets = widgets;
+        }
+
         [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AbStatus { get; set; }
 
@@ -2883,6 +2960,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CreateanewlanguagevariationBodyInput
     {
+        public CreateanewlanguagevariationBodyInput(string id, string language)
+        {
+            this.Id = id;
+            this.Language = language;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2892,6 +2975,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CloneaBlogBodyInput
     {
+        public CloneaBlogBodyInput(string id, string cloneName)
+        {
+            this.Id = id;
+            this.CloneName = cloneName;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -3111,18 +3200,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class DetachaBlogAuthorfromamultiLanguagegroupBodyInput
     {
+        public DetachaBlogAuthorfromamultiLanguagegroupBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
     public class ClonerowsinbatchBodyInput
     {
+        public ClonerowsinbatchBodyInput(string[] inputs)
+        {
+            this.Inputs = inputs;
+        }
+
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Inputs { get; set; }
     }
 
     public class AttachaBlogAuthortoamultiLanguagegroupBodyInput
     {
+        public AttachaBlogAuthortoamultiLanguagegroupBodyInput(string id, string language, string primaryId, string primaryLanguage)
+        {
+            this.Id = id;
+            this.Language = language;
+            this.PrimaryId = primaryId;
+            this.PrimaryLanguage = primaryLanguage;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -3420,6 +3527,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CreateanewBlogAuthorBodyInput
     {
+        public CreateanewBlogAuthorBodyInput(string avatar, string bio, string created, string deletedAt, string displayName, string email, string facebook, string fullName, string id, string language, string linkedin, string name, string slug, string translatedFromId, string twitter, string updated, string website)
+        {
+            this.Avatar = avatar;
+            this.Bio = bio;
+            this.Created = created;
+            this.DeletedAt = deletedAt;
+            this.DisplayName = displayName;
+            this.Email = email;
+            this.Facebook = facebook;
+            this.FullName = fullName;
+            this.Id = id;
+            this.Language = language;
+            this.Linkedin = linkedin;
+            this.Name = name;
+            this.Slug = slug;
+            this.TranslatedFromId = translatedFromId;
+            this.Twitter = twitter;
+            this.Updated = updated;
+            this.Website = website;
+        }
+
         [JsonProperty("avatar", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Avatar { get; set; }
 
@@ -3540,6 +3668,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class PostCreateanewlanguagevariationBodyInput
     {
+        public PostCreateanewlanguagevariationBodyInput(BlogAuthor blogAuthor, string id, string language, string primaryLanguage)
+        {
+            this.BlogAuthor = blogAuthor;
+            this.Id = id;
+            this.Language = language;
+            this.PrimaryLanguage = primaryLanguage;
+        }
+
         [JsonProperty("blogAuthor", DefaultValueHandling = DefaultValueHandling.Include)]
         public BlogAuthor BlogAuthor { get; set; }
 
@@ -3555,6 +3691,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class BlogAuthor
     {
+        public BlogAuthor(string avatar, string bio, string created, string deletedAt, string displayName, string email, string facebook, string fullName, string id, string language, string linkedin, string name, string slug, string translatedFromId, string twitter, string updated, string website)
+        {
+            this.Avatar = avatar;
+            this.Bio = bio;
+            this.Created = created;
+            this.DeletedAt = deletedAt;
+            this.DisplayName = displayName;
+            this.Email = email;
+            this.Facebook = facebook;
+            this.FullName = fullName;
+            this.Id = id;
+            this.Language = language;
+            this.Linkedin = linkedin;
+            this.Name = name;
+            this.Slug = slug;
+            this.TranslatedFromId = translatedFromId;
+            this.Twitter = twitter;
+            this.Updated = updated;
+            this.Website = website;
+        }
+
         [JsonProperty("avatar", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Avatar { get; set; }
 
@@ -3744,6 +3901,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class PostCreateanewlanguagevariation1BodyInput
     {
+        public PostCreateanewlanguagevariation1BodyInput(string id, string language, string primaryLanguage, string slug)
+        {
+            this.Id = id;
+            this.Language = language;
+            this.PrimaryLanguage = primaryLanguage;
+            this.Slug = slug;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -3876,6 +4041,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CreateanewBlogTagBodyInput
     {
+        public CreateanewBlogTagBodyInput(string created, string deletedAt, string id, string language, string name, string translatedFromId, string updated)
+        {
+            this.Created = created;
+            this.DeletedAt = deletedAt;
+            this.Id = id;
+            this.Language = language;
+            this.Name = name;
+            this.TranslatedFromId = translatedFromId;
+            this.Updated = updated;
+        }
+
         [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Created { get; set; }
 
@@ -3900,6 +4076,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class PostCreateanewlanguagevariation2BodyInput
     {
+        public PostCreateanewlanguagevariation2BodyInput(string id, string name, string language, string primaryLanguage)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Language = language;
+            this.PrimaryLanguage = primaryLanguage;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -4197,6 +4381,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CloneatableBodyInput
     {
+        public CloneatableBodyInput(string copyRows, string newName, string newLabel)
+        {
+            this.CopyRows = copyRows;
+            this.NewName = newName;
+            this.NewLabel = newLabel;
+        }
+
         [JsonProperty("copyRows", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CopyRows { get; set; }
 
@@ -4209,6 +4400,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CreateanewtableBodyInput
     {
+        public CreateanewtableBodyInput(string label, string name, bool useForPages, bool allowPublicApiAccess, bool allowChildTables, bool enableChildTablePages, Column5[] columns, JToken dynamicMetaTags)
+        {
+            this.Label = label;
+            this.Name = name;
+            this.UseForPages = useForPages;
+            this.AllowPublicApiAccess = allowPublicApiAccess;
+            this.AllowChildTables = allowChildTables;
+            this.EnableChildTablePages = enableChildTablePages;
+            this.Columns = columns;
+            this.DynamicMetaTags = dynamicMetaTags;
+        }
+
         [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
 
@@ -4236,6 +4439,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class Column5
     {
+        public Column5(string id, string label, string name, CreateanewtableOption[] options, string type, string foreignTableId, string foreignColumnId)
+        {
+            this.Id = id;
+            this.Label = label;
+            this.Name = name;
+            this.Options = options;
+            this.Type = type;
+            this.ForeignTableId = foreignTableId;
+            this.ForeignColumnId = foreignColumnId;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -4260,6 +4474,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CreateanewtableOption
     {
+        public CreateanewtableOption(string id, string name, string order, string type, string label)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Order = order;
+            this.Type = type;
+            this.Label = label;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -4344,6 +4567,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class ReplacesanexistingrowBodyInput
     {
+        public ReplacesanexistingrowBodyInput(JToken values, string path, string name, string childTableId, string displayIndex)
+        {
+            this.Values = values;
+            this.Path = path;
+            this.Name = name;
+            this.ChildTableId = childTableId;
+            this.DisplayIndex = displayIndex;
+        }
+
         [JsonProperty("values", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Values { get; set; }
 
@@ -4362,6 +4594,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class AddanewrowtoatableBodyInput
     {
+        public AddanewrowtoatableBodyInput(JToken values, string path, string name, string childTableId, int displayIndex)
+        {
+            this.Values = values;
+            this.Path = path;
+            this.Name = name;
+            this.ChildTableId = childTableId;
+            this.DisplayIndex = displayIndex;
+        }
+
         [JsonProperty("values", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Values { get; set; }
 
@@ -4986,6 +5227,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class EndanactiveABtestBodyInput
     {
+        public EndanactiveABtestBodyInput(string abTestId, string winnerId)
+        {
+            this.AbTestId = abTestId;
+            this.WinnerId = winnerId;
+        }
+
         [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AbTestId { get; set; }
 
@@ -4995,6 +5242,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CreateanewLandingPageBodyInput
     {
+        public CreateanewLandingPageBodyInput(string abStatus, string abTestId, string archivedAt, bool archivedInDashboard, JToken[] attachedStylesheets, string authorName, string campaign, string categoryId, string contentGroupId, string contentTypeCategory, string created, string createdById, string currentState, bool currentlyPublished, string domain, string dynamicPageDataSourceId, string dynamicPageDataSourceType, string dynamicPageHubDbTableId, bool enableDomainStylesheets, bool enableLayoutStylesheets, string featuredImage, string featuredImageAltText, string folderId, string footerHtml, string headHtml, string htmlTitle, string id, bool includeDefaultCustomCss, string language, JToken layoutSections, string linkRelCanonicalUrl, string mabExperimentId, string metaDescription, string name, string pageExpiryDate, bool pageExpiryEnabled, string pageExpiryRedirectId, string pageExpiryRedirectUrl, bool pageRedirected, string password, string[] publicAccessRules, bool publicAccessRulesEnabled, string publishDate, string publishImmediately, string slug, string state, string subCategory, string templatePath, JToken themeSettingsValues, string translatedFromId, JToken translations, string updated, string updatedById, string url, bool useFeaturedImage, JToken widgetContainers, JToken widgets)
+        {
+            this.AbStatus = abStatus;
+            this.AbTestId = abTestId;
+            this.ArchivedAt = archivedAt;
+            this.ArchivedInDashboard = archivedInDashboard;
+            this.AttachedStylesheets = attachedStylesheets;
+            this.AuthorName = authorName;
+            this.Campaign = campaign;
+            this.CategoryId = categoryId;
+            this.ContentGroupId = contentGroupId;
+            this.ContentTypeCategory = contentTypeCategory;
+            this.Created = created;
+            this.CreatedById = createdById;
+            this.CurrentState = currentState;
+            this.CurrentlyPublished = currentlyPublished;
+            this.Domain = domain;
+            this.DynamicPageDataSourceId = dynamicPageDataSourceId;
+            this.DynamicPageDataSourceType = dynamicPageDataSourceType;
+            this.DynamicPageHubDbTableId = dynamicPageHubDbTableId;
+            this.EnableDomainStylesheets = enableDomainStylesheets;
+            this.EnableLayoutStylesheets = enableLayoutStylesheets;
+            this.FeaturedImage = featuredImage;
+            this.FeaturedImageAltText = featuredImageAltText;
+            this.FolderId = folderId;
+            this.FooterHtml = footerHtml;
+            this.HeadHtml = headHtml;
+            this.HtmlTitle = htmlTitle;
+            this.Id = id;
+            this.IncludeDefaultCustomCss = includeDefaultCustomCss;
+            this.Language = language;
+            this.LayoutSections = layoutSections;
+            this.LinkRelCanonicalUrl = linkRelCanonicalUrl;
+            this.MabExperimentId = mabExperimentId;
+            this.MetaDescription = metaDescription;
+            this.Name = name;
+            this.PageExpiryDate = pageExpiryDate;
+            this.PageExpiryEnabled = pageExpiryEnabled;
+            this.PageExpiryRedirectId = pageExpiryRedirectId;
+            this.PageExpiryRedirectUrl = pageExpiryRedirectUrl;
+            this.PageRedirected = pageRedirected;
+            this.Password = password;
+            this.PublicAccessRules = publicAccessRules;
+            this.PublicAccessRulesEnabled = publicAccessRulesEnabled;
+            this.PublishDate = publishDate;
+            this.PublishImmediately = publishImmediately;
+            this.Slug = slug;
+            this.State = state;
+            this.SubCategory = subCategory;
+            this.TemplatePath = templatePath;
+            this.ThemeSettingsValues = themeSettingsValues;
+            this.TranslatedFromId = translatedFromId;
+            this.Translations = translations;
+            this.Updated = updated;
+            this.UpdatedById = updatedById;
+            this.Url = url;
+            this.UseFeaturedImage = useFeaturedImage;
+            this.WidgetContainers = widgetContainers;
+            this.Widgets = widgets;
+        }
+
         [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AbStatus { get; set; }
 
@@ -5352,6 +5660,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class PostCreateanewlanguagevariation3BodyInput
     {
+        public PostCreateanewlanguagevariation3BodyInput(string id, string language, string primaryLanguage)
+        {
+            this.Id = id;
+            this.Language = language;
+            this.PrimaryLanguage = primaryLanguage;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -5364,6 +5679,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CreateanewABtestvariationBodyInput
     {
+        public CreateanewABtestvariationBodyInput(string contentId, string variationName)
+        {
+            this.ContentId = contentId;
+            this.VariationName = variationName;
+        }
+
         [JsonProperty("contentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContentId { get; set; }
 
@@ -5373,6 +5694,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class PostRerunapreviousABtestBodyInput
     {
+        public PostRerunapreviousABtestBodyInput(string abTestId, string variationId)
+        {
+            this.AbTestId = abTestId;
+            this.VariationId = variationId;
+        }
+
         [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AbTestId { get; set; }
 
@@ -5493,6 +5820,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class CreateanewFolderBodyInput
     {
+        public CreateanewFolderBodyInput(string category, string created, string deletedAt, string id, string name, string parentFolderId, string updated)
+        {
+            this.Category = category;
+            this.Created = created;
+            this.DeletedAt = deletedAt;
+            this.Id = id;
+            this.Name = name;
+            this.ParentFolderId = parentFolderId;
+            this.Updated = updated;
+        }
+
         [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Category { get; set; }
 

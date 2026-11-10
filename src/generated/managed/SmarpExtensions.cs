@@ -57,6 +57,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
 
     public class BodyInput
     {
+        public BodyInput(string[] channelList)
+        {
+            this.ChannelList = channelList;
+        }
+
         [JsonProperty("body")]
         public string Body { get; set; }
 

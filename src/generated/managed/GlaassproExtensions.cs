@@ -393,6 +393,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
     public class UserRequestInput
     {
+        public UserRequestInput(string email, string firstName, string lastName, bool isAdmin, bool isReadOnly, bool isDocumentController, bool isFolderController, bool isManagerial)
+        {
+            this.Email = email;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.IsAdmin = isAdmin;
+            this.IsReadOnly = isReadOnly;
+            this.IsDocumentController = isDocumentController;
+            this.IsFolderController = isFolderController;
+            this.IsManagerial = isManagerial;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -423,6 +435,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
     public class UserPost2RequestInput
     {
+        public UserPost2RequestInput(bool active)
+        {
+            this.Active = active;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Active { get; set; }
     }
@@ -455,12 +472,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
     public class MetadataPostSwitchRequestInput
     {
+        public MetadataPostSwitchRequestInput(string label)
+        {
+            this.Label = label;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
     }
 
     public class SwitchesInputItem
     {
+        public SwitchesInputItem(string id, string label)
+        {
+            this.Id = id;
+            this.Label = label;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -563,6 +591,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
     public class CaseReplyBodyInput
     {
+        public CaseReplyBodyInput(string message, bool withoutNotification)
+        {
+            this.Message = message;
+            this.WithoutNotification = withoutNotification;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
 

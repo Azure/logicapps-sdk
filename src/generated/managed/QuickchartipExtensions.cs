@@ -225,6 +225,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
 
     public class ChartBodyInput
     {
+        public ChartBodyInput(string chart)
+        {
+            this.Chart = chart;
+        }
+
         [JsonProperty("chart", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Chart { get; set; }
 
@@ -328,6 +333,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
 
     public class GraphVizBodyInput
     {
+        public GraphVizBodyInput(string graph)
+        {
+            this.Graph = graph;
+        }
+
         [JsonProperty("graph", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Graph { get; set; }
 

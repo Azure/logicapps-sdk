@@ -126,6 +126,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woocommerce
 
     public class BodyInput
     {
+        public BodyInput(string resourceType, string triggerEvent)
+        {
+            this.ResourceType = resourceType;
+            this.TriggerEvent = triggerEvent;
+        }
+
         [JsonProperty("webhook_resource_schema", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResourceType { get; set; }
 

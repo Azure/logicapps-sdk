@@ -13,31 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
     public class Pdf4meimageActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompressImage(Expression<Func<CompressImageBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompressImage(Expression<Func<CompressImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CompressImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertImageFormat(Expression<Func<ConvertImageFormatBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertImageFormat(Expression<Func<ConvertImageFormatBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertImageFormat";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -74,51 +72,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = ("{\"docContent\":\"\"}").ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlipImage(Expression<Func<FlipImageBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlipImage(Expression<Func<FlipImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/FlipImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<ImageExtractTextResponse, ApiConnectionActionConfiguration> ImageExtractText(Expression<Func<ImageExtractTextBodyInput>> body = null)
+        public IBodyWorkflowAction<ImageExtractTextResponse, ApiConnectionActionConfiguration> ImageExtractText(Expression<Func<ImageExtractTextBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImageExtractTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ImageExtractText";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImageExtractTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RemoveExifTagsFromImage(Expression<Func<RemoveExifTagsFromImageBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RemoveExifTagsFromImage(Expression<Func<RemoveExifTagsFromImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/RemoveEXIFTagsFromImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -149,6 +146,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
 
     public class CompressImageBodyInput
     {
+        public CompressImageBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document, BodyInputImageTypeType imageType)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.ImageType = imageType;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -164,6 +168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
 
     public class BodyInputDocumentType
     {
+        public BodyInputDocumentType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -185,6 +194,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
 
     public class ConvertImageFormatBodyInput
     {
+        public ConvertImageFormatBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document, BodyInputCurrentImageFormatType currentImageFormat, BodyInputNewImageFormatType newImageFormat)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.CurrentImageFormat = currentImageFormat;
+            this.NewImageFormat = newImageFormat;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -227,6 +244,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
 
     public class FlipImageBodyInput
     {
+        public FlipImageBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document, BodyInputOrientationTypeType orientationType)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.OrientationType = orientationType;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -256,6 +280,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
 
     public class ImageExtractTextBodyInput
     {
+        public ImageExtractTextBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -277,6 +307,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
 
     public class RemoveExifTagsFromImageBodyInput
     {
+        public RemoveExifTagsFromImageBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document, BodyInputImageTypeType imageType)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.ImageType = imageType;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 

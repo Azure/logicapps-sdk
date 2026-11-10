@@ -194,6 +194,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
 
     public class EditSubscriptionBodyInput
     {
+        public EditSubscriptionBodyInput(string t)
+        {
+            this.T = t;
+        }
+
         [JsonProperty("t", DefaultValueHandling = DefaultValueHandling.Include)]
         public string T { get; set; }
     }

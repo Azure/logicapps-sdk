@@ -75,6 +75,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
 
     public class BodyInput
     {
+        public BodyInput(string cardname, string title, string description, JToken dynamicproperties)
+        {
+            this.Cardname = cardname;
+            this.Title = title;
+            this.Description = description;
+            this.Dynamicproperties = dynamicproperties;
+        }
+
         [JsonProperty("cardname", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Cardname { get; set; }
 

@@ -38,12 +38,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid
 
     public class BodyInput
     {
+        public BodyInput(BodyInputPropertiesType properties)
+        {
+            this.Properties = properties;
+        }
+
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputPropertiesType Properties { get; set; } = new BodyInputPropertiesType();
+        public BodyInputPropertiesType Properties { get; set; }
     }
 
     public class BodyInputPropertiesType
     {
+        public BodyInputPropertiesType(string resourceName)
+        {
+            this.ResourceName = resourceName;
+        }
+
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResourceName { get; set; }
 

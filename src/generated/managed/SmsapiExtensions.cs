@@ -75,6 +75,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsapi
 
     public class BodyInput
     {
+        public BodyInput(string message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
 

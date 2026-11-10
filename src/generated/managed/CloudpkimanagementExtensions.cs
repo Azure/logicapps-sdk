@@ -264,20 +264,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<NewRequestResponse, ApiConnectionActionConfiguration> NewRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<NewRequestBodyInput>> body = null)
+        public IBodyWorkflowAction<NewRequestResponse, ApiConnectionActionConfiguration> NewRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<NewRequestBodyInput>> body)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_powerapps = WorkflowExpression.Compile(powerapps, nameof(powerapps), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NewRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/requests", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["powerapps"] = ExpressionConverter.Convert(__workflow_powerapps);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NewRequestResponse>(callPayload);
             });
         }
@@ -314,6 +313,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/merge-patch+json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new UpdateRequestBodyInput().ToJToken();
                 return new ApiConnectionAction<UpdateRequestResponse>(callPayload);
             });
         }
@@ -342,20 +343,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<NewHookResponse, ApiConnectionActionConfiguration> NewHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<NewHookBodyInput>> body = null)
+        public IBodyWorkflowAction<NewHookResponse, ApiConnectionActionConfiguration> NewHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<NewHookBodyInput>> body)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_powerapps = WorkflowExpression.Compile(powerapps, nameof(powerapps), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NewHookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["powerapps"] = ExpressionConverter.Convert(__workflow_powerapps);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NewHookResponse>(callPayload);
             });
         }
@@ -1933,6 +1933,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
     public class NewRequestBodyInput
     {
+        public NewRequestBodyInput(string csr)
+        {
+            this.Csr = csr;
+        }
+
         [JsonProperty("csr", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Csr { get; set; }
 
@@ -2382,6 +2387,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
     public class NewHookBodyInput
     {
+        public NewHookBodyInput(BodyInputTypeType type, BodyInputEventsTypeItem[] events)
+        {
+            this.Type = type;
+            this.Events = events;
+        }
+
         [JsonProperty("email")]
         public string Email { get; set; }
 

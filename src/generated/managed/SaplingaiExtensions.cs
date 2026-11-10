@@ -122,6 +122,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
 
     public class MedicalSpellcheckBodyInput
     {
+        public MedicalSpellcheckBodyInput(string text, string sessionId)
+        {
+            this.Text = text;
+            this.SessionId = sessionId;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
@@ -161,6 +167,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
 
     public class AutocompleteBodyInput
     {
+        public AutocompleteBodyInput(string query, string sessionId)
+        {
+            this.Query = query;
+            this.SessionId = sessionId;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 
@@ -191,6 +203,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
 
     public class StatisticsBodyInput
     {
+        public StatisticsBodyInput(string text, string sessionId)
+        {
+            this.Text = text;
+            this.SessionId = sessionId;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
@@ -227,6 +245,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
 
     public class DetectAiBodyInput
     {
+        public DetectAiBodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 

@@ -875,6 +875,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 
     public class CreateUpdateWorkOrderBodyInputItem
     {
+        public CreateUpdateWorkOrderBodyInputItem(string warehouseName, string orderNumber, string customerPONumber, string vendorShipmentNumber, string deliveryDate, CreateUpdateWorkOrderBodyInputItemCustomerType customer)
+        {
+            this.WarehouseName = warehouseName;
+            this.OrderNumber = orderNumber;
+            this.CustomerPONumber = customerPONumber;
+            this.VendorShipmentNumber = vendorShipmentNumber;
+            this.DeliveryDate = deliveryDate;
+            this.Customer = customer;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string WarehouseName { get; set; }
 
@@ -912,6 +922,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 
     public class CreateUpdateWorkOrderBodyInputItemCustomerType
     {
+        public CreateUpdateWorkOrderBodyInputItemCustomerType(string customerNumber)
+        {
+            this.CustomerNumber = customerNumber;
+        }
+
         public string CustomerName { get; set; }
         public string CustomerAddress1 { get; set; }
         public string CustomerAddress2 { get; set; }
@@ -945,6 +960,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 
     public class CreateUpdateWorkOrderBodyInputItemLineItemsTypeItem
     {
+        public CreateUpdateWorkOrderBodyInputItemLineItemsTypeItem(int lineNumber, string itemNumber, BodyInputItemLineItemsTypeItemCoreItemTypeType coreItemType, double quantityOrdered)
+        {
+            this.LineNumber = lineNumber;
+            this.ItemNumber = itemNumber;
+            this.CoreItemType = coreItemType;
+            this.QuantityOrdered = quantityOrdered;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int LineNumber { get; set; }
 
@@ -974,6 +997,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 
     public class CreateUpdateWorkOrderBodyInputItemLineItemsTypeItemUomTypeType
     {
+        public CreateUpdateWorkOrderBodyInputItemLineItemsTypeItemUomTypeType(string uomDesc)
+        {
+            this.UomDesc = uomDesc;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UomDesc { get; set; }
         public int? SignificantDigits { get; set; }
@@ -1152,6 +1180,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 
     public class CreateInventoryRequestBodyInputItem
     {
+        public CreateInventoryRequestBodyInputItem(string itemNumber, string destinationWarehouseName)
+        {
+            this.ItemNumber = itemNumber;
+            this.DestinationWarehouseName = destinationWarehouseName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RequestGroup { get; set; } = "Tech Request";
 
@@ -1214,6 +1248,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 
     public class CreateInventoryAdjustmentBodyInputItem
     {
+        public CreateInventoryAdjustmentBodyInputItem(string binNumber, string itemNumber, string warehouse)
+        {
+            this.BinNumber = binNumber;
+            this.ItemNumber = itemNumber;
+            this.Warehouse = warehouse;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string BinNumber { get; set; }
 
@@ -1373,6 +1414,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 
     public class CreateItemBodyInputItem
     {
+        public CreateItemBodyInputItem(string itemNumber, BodyInputItemCoreItemTypeType coreItemType, string baseUom)
+        {
+            this.ItemNumber = itemNumber;
+            this.CoreItemType = coreItemType;
+            this.BaseUom = baseUom;
+        }
+
         public string WarehouseName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]

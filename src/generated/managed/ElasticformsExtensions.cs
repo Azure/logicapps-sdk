@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 
     public class FormAssignBodyInput
     {
+        public FormAssignBodyInput(string user, string form)
+        {
+            this.User = user;
+            this.Form = form;
+        }
+
         [JsonProperty("UserName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; }
 
@@ -76,6 +82,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 
     public class FormDataBodyInput
     {
+        public FormDataBodyInput(string form)
+        {
+            this.Form = form;
+        }
+
         [JsonProperty("FormUid", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Form { get; set; }
 
@@ -85,6 +96,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 
     public class RequestBodyOfWebhookInput
     {
+        public RequestBodyOfWebhookInput(string form)
+        {
+            this.Form = form;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TriggerUrl { get; set; } = "#{listCallbackUrl()}";
 

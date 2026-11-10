@@ -600,6 +600,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class InputParametersInput
     {
+        public InputParametersInput(string tableName)
+        {
+            this.TableName = tableName;
+        }
+
         [JsonProperty("tableName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TableName { get; set; }
 
@@ -700,6 +705,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class CallRfcSubscriptionInput
     {
+        public CallRfcSubscriptionInput(RfcCallParameters rfcCallParameters)
+        {
+            this.RfcCallParameters = rfcCallParameters;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public RfcCallParameters RfcCallParameters { get; set; }
 
@@ -709,6 +719,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class RfcCallParameters
     {
+        public RfcCallParameters(string rFCName)
+        {
+            this.RFCName = rFCName;
+        }
+
         [JsonProperty("RfcName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RFCName { get; set; }
 

@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
 
     public class MakeAnnouncementBodyInput
     {
+        public MakeAnnouncementBodyInput(string deviceId)
+        {
+            this.DeviceId = deviceId;
+        }
+
         [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceId { get; set; }
 
@@ -301,6 +306,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
 
     public class TriggerRoutineBodyInput
     {
+        public TriggerRoutineBodyInput(string deviceId)
+        {
+            this.DeviceId = deviceId;
+        }
+
         [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceId { get; set; }
     }
@@ -316,6 +326,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
 
     public class TriggerFlowBodyInput
     {
+        public TriggerFlowBodyInput(int flowId)
+        {
+            this.FlowId = flowId;
+        }
+
         [JsonProperty("flow", DefaultValueHandling = DefaultValueHandling.Include)]
         public int FlowId { get; set; }
     }

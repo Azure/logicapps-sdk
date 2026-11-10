@@ -75,12 +75,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
 
     public class FilesInput
     {
+        public FilesInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] FileContent { get; set; }
     }
 
     public class AddWatermarkTextFileInput
     {
+        public AddWatermarkTextFileInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string watermarkText)
+        {
+            this.FileContent = fileContent;
+            this.WatermarkText = watermarkText;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -90,6 +101,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
 
     public class AddPasswordFileInput
     {
+        public AddPasswordFileInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string password)
+        {
+            this.FileContent = fileContent;
+            this.Password = password;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -99,6 +116,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
 
     public class AddImageFileInput
     {
+        public AddImageFileInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent imageContent, double positionX, double positionY, string addType)
+        {
+            this.FileContent = fileContent;
+            this.ImageContent = imageContent;
+            this.PositionX = positionX;
+            this.PositionY = positionY;
+            this.AddType = addType;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 

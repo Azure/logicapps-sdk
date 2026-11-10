@@ -947,6 +947,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
 
     public class PostDataBodyInput
     {
+        public PostDataBodyInput(string deviceId, string variable, string value)
+        {
+            this.DeviceId = deviceId;
+            this.Variable = variable;
+            this.Value = value;
+        }
+
         [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceId { get; set; }
 

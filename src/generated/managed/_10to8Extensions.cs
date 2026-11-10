@@ -129,6 +129,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
     public class BodyInput
     {
+        public BodyInput(string startDateTime, string endDateTime, string name, string description)
+        {
+            this.StartDateTime = startDateTime;
+            this.EndDateTime = endDateTime;
+            this.Name = name;
+            this.Description = description;
+        }
+
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDateTime { get; set; }
 

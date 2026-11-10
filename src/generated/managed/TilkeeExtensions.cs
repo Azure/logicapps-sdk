@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
     public class TilkeeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectCreateResponse, ApiConnectionActionConfiguration> ProjectCreate(Expression<Func<ProjectCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<ProjectCreateResponse, ApiConnectionActionConfiguration> ProjectCreate(Expression<Func<ProjectCreateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ProjectCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/wrapper/token_from_files";
@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ProjectCreateResponse>(callPayload);
             });
         }
@@ -313,8 +312,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
     public class ProjectCreateBodyInput
     {
+        public ProjectCreateBodyInput(BodyInputProjectType project)
+        {
+            this.Project = project;
+        }
+
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputProjectType Project { get; set; } = new BodyInputProjectType();
+        public BodyInputProjectType Project { get; set; }
 
         [JsonProperty("documents")]
         public BodyInputDocumentsTypeItem[] Documents { get; set; }
@@ -325,6 +329,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
     public class BodyInputProjectType
     {
+        public BodyInputProjectType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 

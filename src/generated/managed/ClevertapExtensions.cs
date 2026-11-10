@@ -33,12 +33,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
 
     public class BodyInput
     {
+        public BodyInput(BodyInputDTypeItem[] d)
+        {
+            this.D = d;
+        }
+
         [JsonProperty("d", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputDTypeItem[] D { get; set; }
     }
 
     public class BodyInputDTypeItem
     {
+        public BodyInputDTypeItem(string cleverTapIdentity, BodyInputDTypeItemProfileDataType profileData)
+        {
+            this.CleverTapIdentity = cleverTapIdentity;
+            this.ProfileData = profileData;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string RecordType { get; set; } = "profile";
 

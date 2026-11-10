@@ -568,6 +568,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
 
     public class DtoRequestT10A005AV01CV02ValidateIbanInput
     {
+        public DtoRequestT10A005AV01CV02ValidateIbanInput(string iBAN)
+        {
+            this.IBAN = iBAN;
+        }
+
         [JsonProperty("iban", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IBAN { get; set; }
     }
@@ -613,6 +618,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
 
     public class DtoRequestT10A006AV01CV02ValidateVatIdInput
     {
+        public DtoRequestT10A006AV01CV02ValidateVatIdInput(string vATId)
+        {
+            this.VATId = vATId;
+        }
+
         [JsonProperty("vatId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string VATId { get; set; }
 

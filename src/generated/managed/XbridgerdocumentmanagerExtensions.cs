@@ -125,6 +125,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
 
     public class Convert2ModernPageRequestInput
     {
+        public Convert2ModernPageRequestInput(string fileContent, string siteUrl, string pageTitle, string author)
+        {
+            this.FileContent = fileContent;
+            this.SiteUrl = siteUrl;
+            this.PageTitle = pageTitle;
+            this.Author = author;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }
         public string FolderPath { get; set; }
@@ -147,6 +155,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
 
     public class Convert2NonModernPageRequestInput
     {
+        public Convert2NonModernPageRequestInput(string fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }
     }
@@ -158,6 +171,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
 
     public class ExportList2PDFRequestInput
     {
+        public ExportList2PDFRequestInput(string documentTitle, string data, string fieldArray)
+        {
+            this.DocumentTitle = documentTitle;
+            this.Data = data;
+            this.FieldArray = fieldArray;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentTitle { get; set; }
 
@@ -188,6 +208,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
 
     public class PDFMergeRequestInput
     {
+        public PDFMergeRequestInput(string fileContentArray)
+        {
+            this.FileContentArray = fileContentArray;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContentArray { get; set; }
     }
@@ -205,6 +230,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
 
     public class WordtopdfRequestInput
     {
+        public WordtopdfRequestInput(string fileContent, string fileName)
+        {
+            this.FileContent = fileContent;
+            this.FileName = fileName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }
 

@@ -194,6 +194,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
 
     public class CreateUserBodyInput
     {
+        public CreateUserBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -269,6 +274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
 
     public class CreateLeadBodyInput
     {
+        public CreateLeadBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 

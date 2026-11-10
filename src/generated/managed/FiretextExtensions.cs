@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Firetext
     public class FiretextActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "firetext")]
-        public IBodyWorkflowAction<SendsmsResponse, ApiConnectionActionConfiguration> Sendsms(Expression<Func<SendsmsBodyInput>> body = null)
+        public IBodyWorkflowAction<SendsmsResponse, ApiConnectionActionConfiguration> Sendsms(Expression<Func<SendsmsBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendsmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sendsms";
@@ -23,16 +23,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Firetext
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendsmsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "firetext")]
-        public IBodyWorkflowAction<SubscribeResponse, ApiConnectionActionConfiguration> Subscribe(Expression<Func<SubscribeBodyInput>> body = null)
+        public IBodyWorkflowAction<SubscribeResponse, ApiConnectionActionConfiguration> Subscribe(Expression<Func<SubscribeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscribeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscribe";
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Firetext
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubscribeResponse>(callPayload);
             });
         }
@@ -68,6 +66,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Firetext
 
     public class SendsmsBodyInput
     {
+        public SendsmsBodyInput(string from, string to)
+        {
+            this.From = from;
+            this.To = to;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -98,6 +102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Firetext
 
     public class SubscribeBodyInput
     {
+        public SubscribeBodyInput(string mobile)
+        {
+            this.Mobile = mobile;
+        }
+
         [JsonProperty("custom1")]
         public string Custom1 { get; set; }
 

@@ -41,6 +41,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
 
     public class BodyInput
     {
+        public BodyInput(BodyInputObjectTypeType objectType, BodyInputEventTypeType eventType)
+        {
+            this.ObjectType = objectType;
+            this.EventType = eventType;
+        }
+
         [JsonProperty("objCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputObjectTypeType ObjectType { get; set; }
 
@@ -88,6 +94,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
 
     public class BodyInputEventFiltersTypeItem
     {
+        public BodyInputEventFiltersTypeItem(string fieldName, string fieldValue)
+        {
+            this.FieldName = fieldName;
+            this.FieldValue = fieldValue;
+        }
+
         [JsonProperty("fieldName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldName { get; set; }
 

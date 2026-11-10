@@ -144,12 +144,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
 
     public class RequestBodyOfWebhookInput
     {
+        public RequestBodyOfWebhookInput(RequestBodyOfWebhookInputConfigType config)
+        {
+            this.Config = config;
+        }
+
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RequestBodyOfWebhookInputConfigType Config { get; set; } = new RequestBodyOfWebhookInputConfigType();
+        public RequestBodyOfWebhookInputConfigType Config { get; set; }
     }
 
     public class RequestBodyOfWebhookInputConfigType
     {
+        public RequestBodyOfWebhookInputConfigType(string table, RequestBodyOfWebhookInputConfigTypeTriggerTypeType triggerType)
+        {
+            this.Table = table;
+            this.TriggerType = triggerType;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 

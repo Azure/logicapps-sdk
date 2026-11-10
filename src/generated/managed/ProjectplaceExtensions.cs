@@ -13,33 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
     public class ProjectplaceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectplace")]
-        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<int>> boardId, Expression<Func<CreateCardBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<int>> boardId, Expression<Func<CreateCardBodyInput>> body)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/external_notifications/{0}/create_card", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCardResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectplace")]
-        public IBodyWorkflowAction<MoveCardResponse, ApiConnectionActionConfiguration> MoveCard(Expression<Func<int>> boardId, Expression<Func<MoveCardBodyInput>> body = null)
+        public IBodyWorkflowAction<MoveCardResponse, ApiConnectionActionConfiguration> MoveCard(Expression<Func<int>> boardId, Expression<Func<MoveCardBodyInput>> body)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MoveCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/external_notifications/{0}/move_card", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MoveCardResponse>(callPayload);
             });
         }
@@ -47,44 +45,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
     public class ProjectplaceTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SetWebhookCardCreate(Expression<Func<SetWebhookCardCreateBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SetWebhookCardCreate(Expression<Func<SetWebhookCardCreateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/external_notifications/0/hooks/set_power_hook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SetWebhookPropertiesChange(Expression<Func<SetWebhookPropertiesChangeBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SetWebhookPropertiesChange(Expression<Func<SetWebhookPropertiesChangeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/external_notifications/1/hooks/set_power_hook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SetWebhookCardDueDate(Expression<Func<SetWebhookCardDueDateBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SetWebhookCardDueDate(Expression<Func<SetWebhookCardDueDateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/external_notifications/2/hooks/set_power_hook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -146,6 +141,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
     public class CreateCardBodyInput
     {
+        public CreateCardBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("column_id")]
         public int? ColumnId { get; set; }
 
@@ -233,6 +233,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
     public class MoveCardBodyInput
     {
+        public MoveCardBodyInput(int cardId)
+        {
+            this.CardId = cardId;
+        }
+
         [JsonProperty("card_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CardId { get; set; }
 
@@ -245,6 +250,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
     public class SetWebhookCardCreateBodyInput
     {
+        public SetWebhookCardCreateBodyInput(int boardId)
+        {
+            this.BoardId = boardId;
+        }
+
         [JsonProperty("card_create", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CardCreate { get; set; } = true;
 
@@ -257,6 +267,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
     public class SetWebhookPropertiesChangeBodyInput
     {
+        public SetWebhookPropertiesChangeBodyInput(int boardId)
+        {
+            this.BoardId = boardId;
+        }
+
         [JsonProperty("card_blocked", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool CardBlocked { get; set; } = true;
 
@@ -284,6 +299,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
     public class SetWebhookCardDueDateBodyInput
     {
+        public SetWebhookCardDueDateBodyInput(int boardId)
+        {
+            this.BoardId = boardId;
+        }
+
         [JsonProperty("due_today", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool DueToday { get; set; } = true;
 

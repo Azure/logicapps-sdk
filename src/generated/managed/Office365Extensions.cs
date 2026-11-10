@@ -500,6 +500,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["mailboxAddress"] = ExpressionConverter.Convert(__workflow_mailboxAddress);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new FlagBodyInput().ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -723,11 +725,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MarkAsRead(Expression<Func<string>> messageId, Expression<Func<string>> mailboxAddress = null, Expression<Func<MarkAsReadBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MarkAsRead(Expression<Func<string>> messageId, Expression<Func<MarkAsReadBodyInput>> body, Expression<Func<string>> mailboxAddress = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_mailboxAddress = WorkflowExpression.Compile(mailboxAddress, nameof(mailboxAddress), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v3/v1.0/me/messages/{0}/markAsRead", __workflow_messageId.WithUrlEncoding(1)));
@@ -735,8 +737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_mailboxAddress != null)
                     callPayload.Queries["mailboxAddress"] = ExpressionConverter.Convert(__workflow_mailboxAddress);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -790,6 +791,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new RespondToEventBodyInput().ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1285,6 +1288,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class DraftMessageInput
     {
+        public DraftMessageInput(string to, string subject, string body)
+        {
+            this.To = to;
+            this.Subject = subject;
+            this.Body = body;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1312,6 +1322,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class ClientSendAttachment
     {
+        public ClientSendAttachment(string name, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent content)
+        {
+            this.Name = name;
+            this.Content = content;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1359,15 +1375,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class OptionsEmailSubscriptionInput
     {
+        public OptionsEmailSubscriptionInput(MessageWithOptions message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessageWithOptions Message { get; set; } = new MessageWithOptions();
+        public MessageWithOptions Message { get; set; }
     }
 
     public class MessageWithOptions
     {
+        public MessageWithOptions(string to)
+        {
+            this.To = to;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1405,15 +1431,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class ApprovalEmailSubscriptionInput
     {
+        public ApprovalEmailSubscriptionInput(ApprovalMessage message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ApprovalMessage Message { get; set; } = new ApprovalMessage();
+        public ApprovalMessage Message { get; set; }
     }
 
     public class ApprovalMessage
     {
+        public ApprovalMessage(string to)
+        {
+            this.To = to;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1705,6 +1741,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class CalendarPatchItemItemInput
     {
+        public CalendarPatchItemItemInput(string subject, string startTime, string endTime, ItemInputTimeZoneType timeZone)
+        {
+            this.Subject = subject;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.TimeZone = timeZone;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
@@ -2268,6 +2312,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class ContactPatchItemItemInput
     {
+        public ContactPatchItemItemInput(string givenName, string[] homePhones)
+        {
+            this.GivenName = givenName;
+            this.HomePhones = homePhones;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -2557,6 +2607,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class ForwardEmailBodyInput
     {
+        public ForwardEmailBodyInput(string to)
+        {
+            this.To = to;
+        }
+
         public string Comment { get; set; }
 
         [JsonProperty("ToRecipients", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2777,6 +2832,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class GetMailTipsBodyInput
     {
+        public GetMailTipsBodyInput(string[] emailAddresses)
+        {
+            this.EmailAddresses = emailAddresses;
+        }
+
         [JsonProperty("MailTipsOptions", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string FlagsThatRepresentsTheMailtips { get; set; } = "automaticReplies, deliveryRestriction, externalMemberCount, mailboxFullStatus, maxMessageSize, moderationStatus, totalMemberCount";
 
@@ -2831,6 +2891,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class MarkAsReadBodyInput
     {
+        public MarkAsReadBodyInput(bool markAs)
+        {
+            this.MarkAs = markAs;
+        }
+
         [JsonProperty("isRead", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool MarkAs { get; set; }
     }
@@ -2880,6 +2945,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class SendEmailEmailMessageInput
     {
+        public SendEmailEmailMessageInput(string to, string subject, string body)
+        {
+            this.To = to;
+            this.Subject = subject;
+            this.Body = body;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -3053,6 +3125,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class SharedMailboxSendEmailEmailMessageInput
     {
+        public SharedMailboxSendEmailEmailMessageInput(string originalMailboxAddress, string to, string subject, string body)
+        {
+            this.OriginalMailboxAddress = originalMailboxAddress;
+            this.To = to;
+            this.Subject = subject;
+            this.Body = body;
+        }
+
         [JsonProperty("MailboxAddress", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OriginalMailboxAddress { get; set; }
 

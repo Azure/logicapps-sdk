@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     public class LsegfinancialanalytiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<CreateJobBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<CreateJobBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateJobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/create-job";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateJobResponse>(callPayload);
             });
         }
@@ -42,11 +41,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkPyAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkPyAnalyticsBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkPyAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkPyAnalyticsBodyInput>> body)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_batchSize = WorkflowExpression.Compile(batchSize, nameof(batchSize), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/bulk-py-analytics";
@@ -54,18 +53,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Job name"] = ExpressionConverter.Convert(__workflow_jobName);
                 callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(__workflow_batchSize);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIndicData(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkIndicDataBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIndicData(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkIndicDataBodyInput>> body)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_batchSize = WorkflowExpression.Compile(batchSize, nameof(batchSize), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/bulk-indic-data";
@@ -73,25 +71,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Job name"] = ExpressionConverter.Convert(__workflow_jobName);
                 callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(__workflow_batchSize);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse, ApiConnectionActionConfiguration> UploadSecuritiesList(Expression<Func<string>> jobName, Expression<Func<UploadSecuritiesListBodyInput>> body = null)
+        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse, ApiConnectionActionConfiguration> UploadSecuritiesList(Expression<Func<string>> jobName, Expression<Func<UploadSecuritiesListBodyInput>> body)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UploadSecuritiesListDefaultResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/upload-securities-list";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Job name"] = ExpressionConverter.Convert(__workflow_jobName);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UploadSecuritiesListDefaultResponse>(callPayload);
             });
         }
@@ -127,11 +123,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<RetrieveBulkResultsResponse, ApiConnectionActionConfiguration> RetrieveBulkResults(Expression<Func<string>> jobName, Expression<Func<OutputFormatInput>> outputFormat, Expression<Func<RetrieveBulkResultsBodyInput>> body = null)
+        public IBodyWorkflowAction<RetrieveBulkResultsResponse, ApiConnectionActionConfiguration> RetrieveBulkResults(Expression<Func<string>> jobName, Expression<Func<OutputFormatInput>> outputFormat, Expression<Func<RetrieveBulkResultsBodyInput>> body)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_outputFormat = WorkflowExpression.Compile(outputFormat, nameof(outputFormat), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RetrieveBulkResultsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/retrieve-results-bulk";
@@ -139,48 +135,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Job name"] = ExpressionConverter.Convert(__workflow_jobName);
                 callPayload.Queries["Output format"] = ExpressionConverter.Convert(__workflow_outputFormat);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RetrieveBulkResultsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<IndicDataResponse, ApiConnectionActionConfiguration> IndicData(Expression<Func<IndicDataBodyInput>> body = null)
+        public IBodyWorkflowAction<IndicDataResponse, ApiConnectionActionConfiguration> IndicData(Expression<Func<IndicDataBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IndicDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/indic-data";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IndicDataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<PyAnalyticResponse, ApiConnectionActionConfiguration> PyAnalytics(Expression<Func<PyAnalyticsBodyInput>> body = null)
+        public IBodyWorkflowAction<PyAnalyticResponse, ApiConnectionActionConfiguration> PyAnalytics(Expression<Func<PyAnalyticsBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PyAnalyticResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/py-analytics";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PyAnalyticResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkScenarioAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkScenarioAnalyticsBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkScenarioAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkScenarioAnalyticsBodyInput>> body)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_batchSize = WorkflowExpression.Compile(batchSize, nameof(batchSize), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v3/bulk-scenario-analytics";
@@ -188,8 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Job name"] = ExpressionConverter.Convert(__workflow_jobName);
                 callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(__workflow_batchSize);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -210,6 +202,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
     public class CreateJobBodyInput
     {
+        public CreateJobBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("priority")]
         public int? Priority { get; set; }
 
@@ -228,6 +225,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
     public class BulkPyAnalyticsBodyInput
     {
+        public BulkPyAnalyticsBodyInput(string requestId)
+        {
+            this.RequestId = requestId;
+        }
+
         [JsonProperty("requestId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RequestId { get; set; }
 
@@ -323,6 +325,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
     public class BulkIndicDataBodyInput
     {
+        public BulkIndicDataBodyInput(string requestId)
+        {
+            this.RequestId = requestId;
+        }
+
         [JsonProperty("requestId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RequestId { get; set; }
     }
@@ -335,6 +342,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
     public class UploadSecuritiesListBodyInput
     {
+        public UploadSecuritiesListBodyInput(string securitiesList)
+        {
+            this.SecuritiesList = securitiesList;
+        }
+
         [JsonProperty("securitiesList", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SecuritiesList { get; set; }
 
@@ -350,6 +362,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
     public class CreateUdisBodyInput
     {
+        public CreateUdisBodyInput(string userInstruments)
+        {
+            this.UserInstruments = userInstruments;
+        }
+
         [JsonProperty("userInstruments", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserInstruments { get; set; }
     }
@@ -371,6 +388,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
     public class RetrieveBulkResultsBodyInput
     {
+        public RetrieveBulkResultsBodyInput(string payload)
+        {
+            this.Payload = payload;
+        }
+
         [JsonProperty("payload", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Payload { get; set; }
     }
@@ -800,6 +822,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
     public class IndicDataBodyInput
     {
+        public IndicDataBodyInput(string identifier)
+        {
+            this.Identifier = identifier;
+        }
+
         [JsonProperty("identifier", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identifier { get; set; }
 
@@ -1206,6 +1233,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
     public class PyAnalyticsBodyInput
     {
+        public PyAnalyticsBodyInput(string identifier, string level)
+        {
+            this.Identifier = identifier;
+            this.Level = level;
+        }
+
         [JsonProperty("identifier", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identifier { get; set; }
 
@@ -1260,6 +1293,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
     public class BulkScenarioAnalyticsBodyInput
     {
+        public BulkScenarioAnalyticsBodyInput(string requestId)
+        {
+            this.RequestId = requestId;
+        }
+
         [JsonProperty("requestId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RequestId { get; set; }
 

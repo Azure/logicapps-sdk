@@ -125,6 +125,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingsms
 
     public class SendSmsBodyInput
     {
+        public SendSmsBodyInput(string username, string message, string[] phoneNumbers)
+        {
+            this.Username = username;
+            this.Message = message;
+            this.PhoneNumbers = phoneNumbers;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 

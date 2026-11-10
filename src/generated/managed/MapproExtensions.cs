@@ -115,6 +115,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
 
     public class BodyInput
     {
+        public BodyInput(string title, string address, double latitude, double longitude)
+        {
+            this.Title = title;
+            this.Address = address;
+            this.Latitude = latitude;
+            this.Longitude = longitude;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

@@ -565,6 +565,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class CreateDocGroupEmbeddedInvitesInviteInputInvitesTypeItem
     {
+        public CreateDocGroupEmbeddedInvitesInviteInputInvitesTypeItem(int order, InviteInputInvitesTypeItemSignersTypeItem[] signers)
+        {
+            this.Order = order;
+            this.Signers = signers;
+        }
+
         [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
 
@@ -574,6 +580,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputInvitesTypeItemSignersTypeItem
     {
+        public InviteInputInvitesTypeItemSignersTypeItem(string email, InviteInputInvitesTypeItemSignersTypeItemDocumentsTypeItem[] documents)
+        {
+            this.Email = email;
+            this.Documents = documents;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -583,6 +595,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputInvitesTypeItemSignersTypeItemDocumentsTypeItem
     {
+        public InviteInputInvitesTypeItemSignersTypeItemDocumentsTypeItem(string documentId, InviteInputInvitesTypeItemSignersTypeItemDocumentsTypeItemActionType action)
+        {
+            this.DocumentId = documentId;
+            this.Action = action;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -602,6 +620,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputAdvancedTypeItem
     {
+        public InviteInputAdvancedTypeItem(string order, string email)
+        {
+            this.Order = order;
+            this.Email = email;
+        }
+
         [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Order { get; set; }
 
@@ -702,6 +726,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class GenerateDocGroupEmbeddedInviteLinkInviteInput
     {
+        public GenerateDocGroupEmbeddedInviteLinkInviteInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -753,6 +782,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class CreateEmbeddedInvitesInviteInputInvitesTypeItem
     {
+        public CreateEmbeddedInvitesInviteInputInvitesTypeItem(string signerEmail, string role)
+        {
+            this.SignerEmail = signerEmail;
+            this.Role = role;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SignerEmail { get; set; }
 
@@ -765,6 +800,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputInviteAdvancedParametersTypeItem
     {
+        public InviteInputInviteAdvancedParametersTypeItem(string role)
+        {
+            this.Role = role;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
@@ -930,6 +970,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class CreateDocGroupFromFilesBodyInput
     {
+        public CreateDocGroupFromFilesBodyInput(string documentGroupName)
+        {
+            this.DocumentGroupName = documentGroupName;
+        }
+
         [JsonProperty("group_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentGroupName { get; set; }
 
@@ -939,6 +984,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class BodyInputDocumentsTypeItem
     {
+        public BodyInputDocumentsTypeItem(string documentName, string fileContent)
+        {
+            this.DocumentName = documentName;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentName { get; set; }
 
@@ -1241,6 +1292,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class ReplaceToInputReplaceToTypeItem
     {
+        public ReplaceToInputReplaceToTypeItem(string role, string newEmail)
+        {
+            this.Role = role;
+            this.NewEmail = newEmail;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
@@ -1250,6 +1307,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class ReplaceToInputAdvancedParametersTypeItem
     {
+        public ReplaceToInputAdvancedParametersTypeItem(string role)
+        {
+            this.Role = role;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
@@ -1313,6 +1375,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class ReplaceToInputInviteActionAttributesTypeItem
     {
+        public ReplaceToInputInviteActionAttributesTypeItem(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("document_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -1446,6 +1513,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputSignersTypeItem
     {
+        public InviteInputSignersTypeItem(string role, int order)
+        {
+            this.Role = role;
+            this.Order = order;
+        }
+
         [JsonProperty("email")]
         public string Email { get; set; }
 
@@ -1464,6 +1537,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputSignerAdvancedPropertiesTypeItem
     {
+        public InviteInputSignerAdvancedPropertiesTypeItem(string role)
+        {
+            this.Role = role;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
@@ -1565,6 +1643,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputViewersTypeItem
     {
+        public InviteInputViewersTypeItem(string email, string role, int order)
+        {
+            this.Email = email;
+            this.Role = role;
+            this.Order = order;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -1577,6 +1662,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputViewerAdvancedPropertiesTypeItem
     {
+        public InviteInputViewerAdvancedPropertiesTypeItem(string role)
+        {
+            this.Role = role;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
@@ -1589,6 +1679,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputApproversTypeItem
     {
+        public InviteInputApproversTypeItem(string email, string role, int order)
+        {
+            this.Email = email;
+            this.Role = role;
+            this.Order = order;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -1601,6 +1698,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputApproverAdvancedPropertiesTypeItem
     {
+        public InviteInputApproverAdvancedPropertiesTypeItem(string role)
+        {
+            this.Role = role;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
@@ -1724,6 +1826,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputInviteStepsTypeItem
     {
+        public InviteInputInviteStepsTypeItem(int order, string roleName, InviteInputInviteStepsTypeItemActionType action, string documentId)
+        {
+            this.Order = order;
+            this.RoleName = roleName;
+            this.Action = action;
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
 
@@ -1855,6 +1965,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class InviteInputInviteEmailsTypeItem
     {
+        public InviteInputInviteEmailsTypeItem(int order, string email)
+        {
+            this.Order = order;
+            this.Email = email;
+        }
+
         [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
 

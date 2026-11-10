@@ -163,16 +163,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> AddReciept(Expression<Func<AddReceiptInputInput>> addReceiptInput = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> AddReciept(Expression<Func<AddReceiptInputInput>> addReceiptInput)
         {
-            var __workflow_addReceiptInput = WorkflowExpression.Compile(addReceiptInput, nameof(addReceiptInput), required: false);
+            var __workflow_addReceiptInput = WorkflowExpression.Compile(addReceiptInput, nameof(addReceiptInput), required: true);
             return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/receipt/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_addReceiptInput != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_addReceiptInput);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_addReceiptInput);
                 return new ApiConnectionAction<BaseResult>(callPayload);
             });
         }
@@ -242,17 +241,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<ReportUpdateStatusInputInput>> reportUpdateStatusInput = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<ReportUpdateStatusInputInput>> reportUpdateStatusInput)
         {
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
-            var __workflow_reportUpdateStatusInput = WorkflowExpression.Compile(reportUpdateStatusInput, nameof(reportUpdateStatusInput), required: false);
+            var __workflow_reportUpdateStatusInput = WorkflowExpression.Compile(reportUpdateStatusInput, nameof(reportUpdateStatusInput), required: true);
             return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/report/{0}/updateStatus/", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_reportUpdateStatusInput != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reportUpdateStatusInput);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_reportUpdateStatusInput);
                 return new ApiConnectionAction<BaseResult>(callPayload);
             });
         }
@@ -384,17 +382,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> AddQuickExpense(Expression<Func<string>> userId, Expression<Func<QuickExpenseInputInput>> quickExpenseInput = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> AddQuickExpense(Expression<Func<string>> userId, Expression<Func<QuickExpenseInputInput>> quickExpenseInput)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            var __workflow_quickExpenseInput = WorkflowExpression.Compile(quickExpenseInput, nameof(quickExpenseInput), required: false);
+            var __workflow_quickExpenseInput = WorkflowExpression.Compile(quickExpenseInput, nameof(quickExpenseInput), required: true);
             return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/quickexpense/{0}/", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_quickExpenseInput != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_quickExpenseInput);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_quickExpenseInput);
                 return new ApiConnectionAction<BaseResult>(callPayload);
             });
         }
@@ -655,16 +652,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> InviteUser(Expression<Func<UserInviteInputInput>> userInviteInput = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> InviteUser(Expression<Func<UserInviteInputInput>> userInviteInput)
         {
-            var __workflow_userInviteInput = WorkflowExpression.Compile(userInviteInput, nameof(userInviteInput), required: false);
+            var __workflow_userInviteInput = WorkflowExpression.Compile(userInviteInput, nameof(userInviteInput), required: true);
             return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/user/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_userInviteInput != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_userInviteInput);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_userInviteInput);
                 return new ApiConnectionAction<BaseResult>(callPayload);
             });
         }
@@ -700,16 +696,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration> UpdateProjectState(Expression<Func<UpdateProjectStateInputInput>> updateProjectStateInput = null)
+        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration> UpdateProjectState(Expression<Func<UpdateProjectStateInputInput>> updateProjectStateInput)
         {
-            var __workflow_updateProjectStateInput = WorkflowExpression.Compile(updateProjectStateInput, nameof(updateProjectStateInput), required: false);
+            var __workflow_updateProjectStateInput = WorkflowExpression.Compile(updateProjectStateInput, nameof(updateProjectStateInput), required: true);
             return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/projects/states/";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_updateProjectStateInput != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateProjectStateInput);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateProjectStateInput);
                 return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(callPayload);
             });
         }
@@ -992,6 +987,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public class AddOrUpdateProjectInput
     {
+        public AddOrUpdateProjectInput(bool hasBillable, bool isActive, string externalId, string name, string projectRef, bool forAllCompany)
+        {
+            this.HasBillable = hasBillable;
+            this.IsActive = isActive;
+            this.ExternalId = externalId;
+            this.Name = name;
+            this.ProjectRef = projectRef;
+            this.ForAllCompany = forAllCompany;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool HasBillable { get; set; }
         public string StartDate { get; set; }
@@ -1105,6 +1110,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public class AddReceiptInputInput
     {
+        public AddReceiptInputInput(string userId, string receiptContent, string receiptName)
+        {
+            this.UserId = userId;
+            this.ReceiptContent = receiptContent;
+            this.ReceiptName = receiptName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
 
@@ -1259,6 +1271,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public class ReportUpdateStatusInputInput
     {
+        public ReportUpdateStatusInputInput(ReportUpdateStatusInputInputOperationType operation, string message)
+        {
+            this.Operation = operation;
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public ReportUpdateStatusInputInputOperationType Operation { get; set; }
 
@@ -1477,6 +1495,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public class QuickExpenseInputInput
     {
+        public QuickExpenseInputInput(string fileToSend)
+        {
+            this.FileToSend = fileToSend;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileToSend { get; set; }
         public string Title { get; set; }
@@ -2248,6 +2271,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public class UserInviteInputInput
     {
+        public UserInviteInputInput(string lastName, string firstName, string mail, string language, UserInviteInputInputUserTypeType userType, UserInviteInputInputUserRoleType userRole)
+        {
+            this.LastName = lastName;
+            this.FirstName = firstName;
+            this.Mail = mail;
+            this.Language = language;
+            this.UserType = userType;
+            this.UserRole = userRole;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LastName { get; set; }
 
@@ -2328,6 +2361,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public class ValidatorInput
     {
+        public ValidatorInput(string mail)
+        {
+            this.Mail = mail;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Mail { get; set; }
         public double? MinimumAmount { get; set; }
@@ -2499,6 +2537,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public class UpdateProjectStateInputInput
     {
+        public UpdateProjectStateInputInput(string[] itemIds, bool projectState)
+        {
+            this.ItemIds = itemIds;
+            this.ProjectState = projectState;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ItemIds { get; set; }
 

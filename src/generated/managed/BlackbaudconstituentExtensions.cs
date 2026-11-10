@@ -1108,6 +1108,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentConsentBodyInput
     {
+        public CreateConstituentConsentBodyInput(string constituentId, string channel, BodyInputResponseType response, string date)
+        {
+            this.ConstituentId = constituentId;
+            this.Channel = channel;
+            this.Response = response;
+            this.Date = date;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -1223,6 +1231,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentSolicitCodeBodyInput
     {
+        public CreateConstituentSolicitCodeBodyInput(string constituentId, string solicitCode)
+        {
+            this.ConstituentId = constituentId;
+            this.SolicitCode = solicitCode;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -1256,6 +1270,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentAddressBodyInput
     {
+        public CreateConstituentAddressBodyInput(string constituentId, string addressType)
+        {
+            this.ConstituentId = constituentId;
+            this.AddressType = addressType;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -1409,6 +1429,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentAliasBodyInput
     {
+        public CreateConstituentAliasBodyInput(string constituentId, string alias)
+        {
+            this.ConstituentId = constituentId;
+            this.Alias = alias;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -1436,6 +1462,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentCodeBodyInput
     {
+        public CreateConstituentCodeBodyInput(string constituentId, string constituentCode)
+        {
+            this.ConstituentId = constituentId;
+            this.ConstituentCode = constituentCode;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -2889,6 +2921,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class EditConstituentProfilePictureBodyInput
     {
+        public EditConstituentProfilePictureBodyInput(string fileName, string documentId, string thumbnailId)
+        {
+            this.FileName = fileName;
+            this.DocumentId = documentId;
+            this.ThumbnailId = thumbnailId;
+        }
+
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -3010,6 +3049,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentAttachmentBodyInput
     {
+        public CreateConstituentAttachmentBodyInput(string constituentId, CreateConstituentAttachmentBodyInputTypeType type)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3068,6 +3113,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentCustomFieldBodyInput
     {
+        public CreateConstituentCustomFieldBodyInput(string constituentId, string category)
+        {
+            this.ConstituentId = constituentId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3191,6 +3242,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentEducationBodyInput
     {
+        public CreateConstituentEducationBodyInput(string constituentId, string school)
+        {
+            this.ConstituentId = constituentId;
+            this.School = school;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3362,6 +3419,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentEmailAddressBodyInput
     {
+        public CreateConstituentEmailAddressBodyInput(string constituentId, string emailType, string emailAddress)
+        {
+            this.ConstituentId = constituentId;
+            this.EmailType = emailType;
+            this.EmailAddress = emailAddress;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3407,6 +3471,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentNameFormatBodyInput
     {
+        public CreateConstituentNameFormatBodyInput(string constituentId, string type)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3446,6 +3516,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentNoteBodyInput
     {
+        public CreateConstituentNoteBodyInput(string constituentId, string type, BodyInputDateType date)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+            this.Date = date;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3500,6 +3577,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentOnlinePresenceBodyInput
     {
+        public CreateConstituentOnlinePresenceBodyInput(string constituentId, string type, string link)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+            this.Link = link;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3539,6 +3623,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentPhoneBodyInput
     {
+        public CreateConstituentPhoneBodyInput(string constituentId, string type, string number)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+            this.Number = number;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3578,6 +3669,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentPrimaryNameFormatBodyInput
     {
+        public CreateConstituentPrimaryNameFormatBodyInput(string constituentId, CreateConstituentPrimaryNameFormatBodyInputTypeType type)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3660,6 +3757,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateIndividualConstituentBodyInput
     {
+        public CreateIndividualConstituentBodyInput(string lastName)
+        {
+            this.LastName = lastName;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal CreateIndividualConstituentBodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent.CreateIndividualConstituentBodyInputTypeType.Individual;
 
@@ -3762,6 +3864,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class BodyInputAddressType
     {
+        public BodyInputAddressType(string type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -3795,6 +3902,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class BodyInputPhoneType
     {
+        public BodyInputPhoneType(string type, string number)
+        {
+            this.Type = type;
+            this.Number = number;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -3807,6 +3920,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class BodyInputEmailType
     {
+        public BodyInputEmailType(string type, string address)
+        {
+            this.Type = type;
+            this.Address = address;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -3819,6 +3938,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class BodyInputOnlinePresenceType
     {
+        public BodyInputOnlinePresenceType(string type, string address)
+        {
+            this.Type = type;
+            this.Address = address;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -3861,6 +3986,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateIndividualRelationshipBodyInput
     {
+        public CreateIndividualRelationshipBodyInput(string constituentId, string relationId)
+        {
+            this.ConstituentId = constituentId;
+            this.RelationId = relationId;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -3900,6 +4031,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateOrganizationConstituentBodyInput
     {
+        public CreateOrganizationConstituentBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal CreateOrganizationConstituentBodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent.CreateOrganizationConstituentBodyInputTypeType.Organization;
 
@@ -3987,6 +4123,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateOrganizationRelationshipBodyInput
     {
+        public CreateOrganizationRelationshipBodyInput(string constituentId, string relationId)
+        {
+            this.ConstituentId = constituentId;
+            this.RelationId = relationId;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -4029,6 +4171,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateFundraiserAssignmentBodyInput
     {
+        public CreateFundraiserAssignmentBodyInput(string fundraiserId, string constituentId)
+        {
+            this.FundraiserId = fundraiserId;
+            this.ConstituentId = constituentId;
+        }
+
         [JsonProperty("fundraiser_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundraiserId { get; set; }
 
@@ -4059,6 +4207,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class BodyInputAmountType
     {
+        public BodyInputAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -4221,6 +4374,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateConstituentTributeBodyInput
     {
+        public CreateConstituentTributeBodyInput(int constituentId, int tributeType)
+        {
+            this.ConstituentId = constituentId;
+            this.TributeType = tributeType;
+        }
+
         [JsonProperty("constituent_record_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ConstituentId { get; set; }
 
@@ -4320,6 +4479,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
 
     public class CreateTributeAcknowledgeeBodyInput
     {
+        public CreateTributeAcknowledgeeBodyInput(int tributeId)
+        {
+            this.TributeId = tributeId;
+        }
+
         [JsonProperty("tribute_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int TributeId { get; set; }
 

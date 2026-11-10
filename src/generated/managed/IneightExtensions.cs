@@ -2100,6 +2100,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class CraftsImportBodyInputItem
     {
+        public CraftsImportBodyInputItem(string craftId, string craftDescription, string tradeId)
+        {
+            this.CraftId = craftId;
+            this.CraftDescription = craftDescription;
+            this.TradeId = tradeId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CraftId { get; set; }
 
@@ -2138,6 +2145,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class EmployeesImportBodyInputItem
     {
+        public EmployeesImportBodyInputItem(string craftId, string employeeId, string firstName, string lastName)
+        {
+            this.CraftId = craftId;
+            this.EmployeeId = employeeId;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CraftId { get; set; }
         public string VendorCode { get; set; }
@@ -2179,6 +2194,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class EquipmentsImportBodyInputItem
     {
+        public EquipmentsImportBodyInputItem(string equipmentNumber, string ownershipType, string equipmentType, string equipmentDescription)
+        {
+            this.EquipmentNumber = equipmentNumber;
+            this.OwnershipType = ownershipType;
+            this.EquipmentType = equipmentType;
+            this.EquipmentDescription = equipmentDescription;
+        }
+
         public string EquipmentSystemStatus { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2220,6 +2243,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class EquipmentTypesImportBodyInputItem
     {
+        public EquipmentTypesImportBodyInputItem(string equipmentTypeId, string description, string equipmentCategoryId)
+        {
+            this.EquipmentTypeId = equipmentTypeId;
+            this.Description = description;
+            this.EquipmentCategoryId = equipmentCategoryId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EquipmentTypeId { get; set; }
 
@@ -2239,6 +2269,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class RolesImportBodyInputItem
     {
+        public RolesImportBodyInputItem(string roleName, string adminLevel, string sourceSystemId)
+        {
+            this.RoleName = roleName;
+            this.AdminLevel = adminLevel;
+            this.SourceSystemId = sourceSystemId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoleName { get; set; }
         public string Description { get; set; }
@@ -2259,6 +2296,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class TradesImportBodyInputItem
     {
+        public TradesImportBodyInputItem(string tradeDisplay, string tradeDescription)
+        {
+            this.TradeDisplay = tradeDisplay;
+            this.TradeDescription = tradeDescription;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TradeDisplay { get; set; }
 
@@ -2271,6 +2314,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class UsersImportBodyInputItem
     {
+        public UsersImportBodyInputItem(string firstName, string lastName, string emailAddress)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.EmailAddress = emailAddress;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -2297,6 +2347,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class UserRolesImportBodyInputItem
     {
+        public UserRolesImportBodyInputItem(string roleName, string userSourceSystemId)
+        {
+            this.RoleName = roleName;
+            this.UserSourceSystemId = userSourceSystemId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoleName { get; set; }
 
@@ -2309,6 +2365,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class ContactsImportBodyInputItem
     {
+        public ContactsImportBodyInputItem(string firstName, string lastName, string company, string primaryEmail, string sourceSystemId, string contactTypeReference)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Company = company;
+            this.PrimaryEmail = primaryEmail;
+            this.SourceSystemId = sourceSystemId;
+            this.ContactTypeReference = contactTypeReference;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -2347,6 +2413,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class CostCenterImportBodyInputItem
     {
+        public CostCenterImportBodyInputItem(string costCenterDisplayId, string costCenterDescription, string costCenterTypeDisplayId)
+        {
+            this.CostCenterDisplayId = costCenterDisplayId;
+            this.CostCenterDescription = costCenterDescription;
+            this.CostCenterTypeDisplayId = costCenterTypeDisplayId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CostCenterDisplayId { get; set; }
 
@@ -2362,6 +2435,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class AccountCodeImportBodyInputItem
     {
+        public AccountCodeImportBodyInputItem(string sourceSystemId, string sourceSystemName, string displayId, string accountCodeOperationType, string accountCodeDescription)
+        {
+            this.SourceSystemId = sourceSystemId;
+            this.SourceSystemName = sourceSystemName;
+            this.DisplayId = displayId;
+            this.AccountCodeOperationType = accountCodeOperationType;
+            this.AccountCodeDescription = accountCodeDescription;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSystemId { get; set; }
 
@@ -2447,6 +2529,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class UsersDeleteBodyInputItem
     {
+        public UsersDeleteBodyInputItem(string sourceSystemId)
+        {
+            this.SourceSystemId = sourceSystemId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSystemId { get; set; }
     }
@@ -2471,6 +2558,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class MarketsImportBodyInputItem
     {
+        public MarketsImportBodyInputItem(string name, string sourceSystemId)
+        {
+            this.Name = name;
+            this.SourceSystemId = sourceSystemId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string Description { get; set; }
@@ -2547,6 +2640,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class MaterialGroupImportBodyInputItem
     {
+        public MaterialGroupImportBodyInputItem(string groupDisplayId, string materialGroupName)
+        {
+            this.GroupDisplayId = groupDisplayId;
+            this.MaterialGroupName = materialGroupName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupDisplayId { get; set; }
 
@@ -2623,6 +2722,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class MaterialSetImportBodyInputItem
     {
+        public MaterialSetImportBodyInputItem(string materialDimensionReference, string materialSetName, string defaultSetDescription)
+        {
+            this.MaterialDimensionReference = materialDimensionReference;
+            this.MaterialSetName = materialSetName;
+            this.DefaultSetDescription = defaultSetDescription;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string MaterialDimensionReference { get; set; }
         public string ParentMaterialSetReference { get; set; }
@@ -2660,6 +2766,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class OrganizationsImportBodyInputItem
     {
+        public OrganizationsImportBodyInputItem(string organizationName, string organizationDescription, string parentOrganization)
+        {
+            this.OrganizationName = organizationName;
+            this.OrganizationDescription = organizationDescription;
+            this.ParentOrganization = parentOrganization;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OrganizationName { get; set; }
         public string SourceSystemName { get; set; }
@@ -2696,6 +2809,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class ProjectContactsImportBodyInputItem
     {
+        public ProjectContactsImportBodyInputItem(string contactSourceSystemId, string projectSourceSystemId)
+        {
+            this.ContactSourceSystemId = contactSourceSystemId;
+            this.ProjectSourceSystemId = projectSourceSystemId;
+        }
+
         public string ProjectDisplayId { get; set; }
         public string ContactPrimaryEmail { get; set; }
 
@@ -2709,6 +2828,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class ProjectCraftImportBodyInputItem
     {
+        public ProjectCraftImportBodyInputItem(string projectId, string craftId)
+        {
+            this.ProjectId = projectId;
+            this.CraftId = craftId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
 
@@ -2725,6 +2850,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class ProjectEmployeeBillingClassesImportBodyInputItem
     {
+        public ProjectEmployeeBillingClassesImportBodyInputItem(string projectEmployeeBillingClass, string sourceSystemId, string projectId)
+        {
+            this.ProjectEmployeeBillingClass = projectEmployeeBillingClass;
+            this.SourceSystemId = sourceSystemId;
+            this.ProjectId = projectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectEmployeeBillingClass { get; set; }
 
@@ -2744,6 +2876,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class ProjectEmployeesImportBodyInputItem
     {
+        public ProjectEmployeesImportBodyInputItem(string projectId, string employeeId)
+        {
+            this.ProjectId = projectId;
+            this.EmployeeId = employeeId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
 
@@ -2769,6 +2907,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class ProjectEquipmentBillingClassesImportBodyInputItem
     {
+        public ProjectEquipmentBillingClassesImportBodyInputItem(string projectEquipmentBillingClass, string sourceSystemId, string projectId)
+        {
+            this.ProjectEquipmentBillingClass = projectEquipmentBillingClass;
+            this.SourceSystemId = sourceSystemId;
+            this.ProjectId = projectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectEquipmentBillingClass { get; set; }
 
@@ -2786,6 +2931,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class ProjectEquipmentsImportBodyInputItem
     {
+        public ProjectEquipmentsImportBodyInputItem(string projectNumber, string equipmentNumber)
+        {
+            this.ProjectNumber = projectNumber;
+            this.EquipmentNumber = equipmentNumber;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectNumber { get; set; }
 
@@ -2809,6 +2960,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class ProjectEquipmentTypeImportBodyInputItem
     {
+        public ProjectEquipmentTypeImportBodyInputItem(string projectId, string equipmentTypeId)
+        {
+            this.ProjectId = projectId;
+            this.EquipmentTypeId = equipmentTypeId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
 
@@ -2820,6 +2977,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class ProjectImportBodyInputItem
     {
+        public ProjectImportBodyInputItem(string projectDisplayId, string projectName, string organizationSourceSystemId, string baseCurrency, string timeZone, string projectStatusName)
+        {
+            this.ProjectDisplayId = projectDisplayId;
+            this.ProjectName = projectName;
+            this.OrganizationSourceSystemId = organizationSourceSystemId;
+            this.BaseCurrency = baseCurrency;
+            this.TimeZone = timeZone;
+            this.ProjectStatusName = projectStatusName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectDisplayId { get; set; }
         public string SourceSystemId { get; set; }
@@ -2877,6 +3044,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class BodyInputItemProjectAttributesTypeItem
     {
+        public BodyInputItemProjectAttributesTypeItem(string attributeValue)
+        {
+            this.AttributeValue = attributeValue;
+        }
+
         public string AttributeName { get; set; }
         public string AttributeSourceSystemId { get; set; }
 
@@ -2924,6 +3096,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class BodyInputItemCustomListsTypeItem
     {
+        public BodyInputItemCustomListsTypeItem(string listName)
+        {
+            this.ListName = listName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
         public string[] FieldValues { get; set; }
@@ -2931,6 +3108,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class BodyInputItemFuelTypesTypeItem
     {
+        public BodyInputItemFuelTypesTypeItem(string fuelTypeDisplay, string uOMSourceSystemId, string currencyCode)
+        {
+            this.FuelTypeDisplay = fuelTypeDisplay;
+            this.UOMSourceSystemId = uOMSourceSystemId;
+            this.CurrencyCode = currencyCode;
+        }
+
         public bool? IsEstimatingResourceMapped { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2950,6 +3134,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class ProjectVendorsImportBodyInputItem
     {
+        public ProjectVendorsImportBodyInputItem(string vendorSourceSystemId, string projectSourceSystemId)
+        {
+            this.VendorSourceSystemId = vendorSourceSystemId;
+            this.ProjectSourceSystemId = projectSourceSystemId;
+        }
+
         public string ProjectDisplayId { get; set; }
         public string VendorCode { get; set; }
 
@@ -2963,6 +3153,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class UnionImportBodyInputItem
     {
+        public UnionImportBodyInputItem(string unionDisplayId, string unionDescription)
+        {
+            this.UnionDisplayId = unionDisplayId;
+            this.UnionDescription = unionDescription;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UnionDisplayId { get; set; }
 
@@ -2975,6 +3171,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class VendorsImportBodyInputItem
     {
+        public VendorsImportBodyInputItem(string vendorCode, string vendorDescription)
+        {
+            this.VendorCode = vendorCode;
+            this.VendorDescription = vendorDescription;
+        }
+
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
 

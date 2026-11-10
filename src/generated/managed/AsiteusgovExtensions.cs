@@ -104,6 +104,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteusgov
 
     public class BodyInput
     {
+        public BodyInput(string triggerName)
+        {
+            this.TriggerName = triggerName;
+        }
+
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
 

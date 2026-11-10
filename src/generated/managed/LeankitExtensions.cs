@@ -138,6 +138,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
 
     public class CreateBoardBodyInput
     {
+        public CreateBoardBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -153,6 +158,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
 
     public class CreateCardBodyInput
     {
+        public CreateCardBodyInput(string boardId, string type, string title)
+        {
+            this.BoardId = boardId;
+            this.Type = type;
+            this.Title = title;
+        }
+
         [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BoardId { get; set; }
 
@@ -396,6 +408,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
 
     public class AddCommentBodyInput
     {
+        public AddCommentBodyInput(string comment)
+        {
+            this.Comment = comment;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
     }

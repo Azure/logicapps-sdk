@@ -13,46 +13,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     public class Pdf4mebarcodeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddBarcode(Expression<Func<AddBarcodeBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddBarcode(Expression<Func<AddBarcodeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/AddBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Createbarcode(Expression<Func<CreatebarcodeBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Createbarcode(Expression<Func<CreatebarcodeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CreateBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateEpcQrCode(Expression<Func<CreateEpcQrCodeBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateEpcQrCode(Expression<Func<CreateEpcQrCodeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CreateEpcQrCode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -90,66 +87,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 callPayload.Headers["Content-type"] = ExpressionConverter.Convert(__workflow_contentType);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = ("{\"docContent\":\"\"}").ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<ReadBarcodesResponse, ApiConnectionActionConfiguration> ReadBarcodes(Expression<Func<ReadBarcodesBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadBarcodesResponse, ApiConnectionActionConfiguration> ReadBarcodes(Expression<Func<ReadBarcodesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadBarcodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadBarcodes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadBarcodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<ReadBarcodesFromImageResponse, ApiConnectionActionConfiguration> ReadBarcodesFromImage(Expression<Func<ReadBarcodesFromImageBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadBarcodesFromImageResponse, ApiConnectionActionConfiguration> ReadBarcodesFromImage(Expression<Func<ReadBarcodesFromImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadBarcodesFromImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadBarcodesFromImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadBarcodesFromImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReadSwissQrBill(Expression<Func<ReadBarcodesFromImageBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReadSwissQrBill(Expression<Func<ReadBarcodesFromImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadSwissQrBill";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<SplitDocByBarcodeResponse, ApiConnectionActionConfiguration> SplitDocByBarcode(Expression<Func<SplitDocByBarcodeBodyInput>> body = null)
+        public IBodyWorkflowAction<SplitDocByBarcodeResponse, ApiConnectionActionConfiguration> SplitDocByBarcode(Expression<Func<SplitDocByBarcodeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SplitDocByBarcodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SplitDocByBarcodeResponse>(callPayload);
             });
         }
@@ -161,6 +156,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 
     public class AddBarcodeBodyInput
     {
+        public AddBarcodeBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName, string text)
+        {
+            this.DocContent = docContent;
+            this.DocName = docName;
+            this.Text = text;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -233,6 +235,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 
     public class CreatebarcodeBodyInput
     {
+        public CreatebarcodeBodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("barcodeType", DefaultValueHandling = DefaultValueHandling.Include)]
         public AddBarcodeBodyInputBarcodeTypeType BarcodeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.AddBarcodeBodyInputBarcodeTypeType.QrCode;
 
@@ -245,12 +252,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 
     public class CreateEpcQrCodeBodyInput
     {
+        public CreateEpcQrCodeBodyInput(BodyInputEpcQrCodeActionType epcQrCodeAction)
+        {
+            this.EpcQrCodeAction = epcQrCodeAction;
+        }
+
         [JsonProperty("epcQrCodeAction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputEpcQrCodeActionType EpcQrCodeAction { get; set; } = new BodyInputEpcQrCodeActionType();
+        public BodyInputEpcQrCodeActionType EpcQrCodeAction { get; set; }
     }
 
     public class BodyInputEpcQrCodeActionType
     {
+        public BodyInputEpcQrCodeActionType(string receiverName, string iban, double amount)
+        {
+            this.ReceiverName = receiverName;
+            this.Iban = iban;
+            this.Amount = amount;
+        }
+
         [JsonProperty("serviceTag", DefaultValueHandling = DefaultValueHandling.Include)]
         internal BodyInputEpcQrCodeActionTypeServiceTagType ServiceTag { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeServiceTagType.BCD;
 
@@ -363,6 +382,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 
     public class ReadBarcodesBodyInput
     {
+        public ReadBarcodesBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document, BodyInputBarcodeTypeTypeItem[] barcodeType)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.BarcodeType = barcodeType;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -378,6 +404,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 
     public class BodyInputDocumentType
     {
+        public BodyInputDocumentType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -405,6 +436,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 
     public class ReadBarcodesFromImageBodyInput
     {
+        public ReadBarcodesFromImageBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -432,6 +469,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 
     public class SplitDocByBarcodeBodyInput
     {
+        public SplitDocByBarcodeBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document, string barcodeString)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.BarcodeString = barcodeString;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 

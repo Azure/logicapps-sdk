@@ -157,6 +157,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
 
     public class GetDocumentsReqInput
     {
+        public GetDocumentsReqInput(string executionId)
+        {
+            this.ExecutionId = executionId;
+        }
+
         [JsonProperty("executionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ExecutionId { get; set; }
     }
@@ -178,12 +183,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
 
     public class DownloadDocumentReqInput
     {
+        public DownloadDocumentReqInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
     }
 
     public class ExecuteFlowReqInput
     {
+        public ExecuteFlowReqInput(string flowId, JToken executionData)
+        {
+            this.FlowId = flowId;
+            this.ExecutionData = executionData;
+        }
+
         [JsonProperty("flowId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FlowId { get; set; }
 
@@ -199,6 +215,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
 
     public class ExportPackageReqInput
     {
+        public ExportPackageReqInput(ReqInputRecordTypeType recordType)
+        {
+            this.RecordType = recordType;
+        }
+
         [JsonProperty("recordType", DefaultValueHandling = DefaultValueHandling.Include)]
         public ReqInputRecordTypeType RecordType { get; set; }
 

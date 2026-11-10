@@ -218,6 +218,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
 
     public class SendSmsBodyInput
     {
+        public SendSmsBodyInput(string configurationName, string message, string numbers)
+        {
+            this.ConfigurationName = configurationName;
+            this.Message = message;
+            this.Numbers = numbers;
+        }
+
         [JsonProperty("configuration_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConfigurationName { get; set; }
 
@@ -302,6 +309,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
 
     public class SendSmsCampaignsBodyInput
     {
+        public SendSmsCampaignsBodyInput(string configurationName, string message, string availableGroups)
+        {
+            this.ConfigurationName = configurationName;
+            this.Message = message;
+            this.AvailableGroups = availableGroups;
+        }
+
         [JsonProperty("configuration_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConfigurationName { get; set; }
 
@@ -386,6 +400,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
 
     public class SendTransactionalEmailBodyInput
     {
+        public SendTransactionalEmailBodyInput(string from, string to, string subject)
+        {
+            this.From = from;
+            this.To = to;
+            this.Subject = subject;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -524,6 +545,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
 
     public class SendVoiceMessageBodyInput
     {
+        public SendVoiceMessageBodyInput(string name, int vmValidatedPhoneId, BodyInputTypeLocutionType typeLocution)
+        {
+            this.Name = name;
+            this.VmValidatedPhoneId = vmValidatedPhoneId;
+            this.TypeLocution = typeLocution;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -593,6 +621,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
 
     public class BodyInputTypeLocutionType
     {
+        public BodyInputTypeLocutionType(BodyInputTypeLocutionTypeTypeType type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputTypeLocutionTypeTypeType Type { get; set; }
     }
@@ -833,6 +866,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
 
     public class CreateContactBodyInput
     {
+        public CreateContactBodyInput(string number, string email)
+        {
+            this.Number = number;
+            this.Email = email;
+        }
+
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Number { get; set; }
 
@@ -1014,6 +1053,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
 
     public class Send2WaySmsBodyInput
     {
+        public Send2WaySmsBodyInput(string number, string enduserNumber, string message)
+        {
+            this.Number = number;
+            this.EnduserNumber = enduserNumber;
+            this.Message = message;
+        }
+
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Number { get; set; }
 

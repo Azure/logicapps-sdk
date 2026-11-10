@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CreateTaskBodyInput().ToJToken();
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
             });
         }
@@ -86,16 +88,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateReminderResponse, ApiConnectionActionConfiguration> CreateReminder(Expression<Func<CreateReminderBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateReminderResponse, ApiConnectionActionConfiguration> CreateReminder(Expression<Func<CreateReminderBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateReminderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/reminders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateReminderResponse>(callPayload);
             });
         }
@@ -202,6 +203,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
 
     public class CreateCommentBodyInput
     {
+        public CreateCommentBodyInput(string taskId)
+        {
+            this.TaskId = taskId;
+        }
+
         [JsonProperty("body")]
         public string Body { get; set; }
 
@@ -310,6 +316,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
 
     public class CreateReminderBodyInput
     {
+        public CreateReminderBodyInput(string taskId, int remindAt)
+        {
+            this.TaskId = taskId;
+            this.RemindAt = remindAt;
+        }
+
         [JsonProperty("task_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskId { get; set; }
 

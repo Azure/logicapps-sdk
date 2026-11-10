@@ -252,6 +252,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 
     public class SendMailBodyInput
     {
+        public SendMailBodyInput(string fromAddress, string toAddress)
+        {
+            this.FromAddress = fromAddress;
+            this.ToAddress = toAddress;
+        }
+
         [JsonProperty("fromAddress", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromAddress { get; set; }
 
@@ -340,6 +346,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 
     public class SaveDraftBodyInput
     {
+        public SaveDraftBodyInput(string fromAddress, string toAddress)
+        {
+            this.FromAddress = fromAddress;
+            this.ToAddress = toAddress;
+        }
+
         [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputModeType Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail.BodyInputModeType.Draft;
 
@@ -868,6 +880,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 
     public class NEWCONDITIONALMAILBodyInput
     {
+        public NEWCONDITIONALMAILBodyInput(BodyInputCriteriasTypeItem[] criterias)
+        {
+            this.Criterias = criterias;
+        }
+
         [JsonProperty("criterias", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputCriteriasTypeItem[] Criterias { get; set; }
 
@@ -877,6 +894,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 
     public class BodyInputCriteriasTypeItem
     {
+        public BodyInputCriteriasTypeItem(BodyInputCriteriasTypeItemLhsType lhs, BodyInputCriteriasTypeItemOperatorType @operator, string rhs)
+        {
+            this.Lhs = lhs;
+            this.Operator = @operator;
+            this.Rhs = rhs;
+        }
+
         [JsonProperty("lhs", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputCriteriasTypeItemLhsType Lhs { get; set; }
 

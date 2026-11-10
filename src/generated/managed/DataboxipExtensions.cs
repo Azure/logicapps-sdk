@@ -47,6 +47,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
 
     public class BodyInputItem
     {
+        public BodyInputItem(string metricKeyId, double value)
+        {
+            this.MetricKeyId = metricKeyId;
+            this.Value = value;
+        }
+
         [JsonProperty("metric_key_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MetricKeyId { get; set; }
 

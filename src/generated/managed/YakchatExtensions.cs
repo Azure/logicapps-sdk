@@ -78,6 +78,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 
     public class SendMessageBodyInput
     {
+        public SendMessageBodyInput(string inboxEmail, string messageText, string messageTo)
+        {
+            this.InboxEmail = inboxEmail;
+            this.MessageText = messageText;
+            this.MessageTo = messageTo;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InboxEmail { get; set; }
 
@@ -90,6 +97,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 
     public class BidirectionalMessageBodyInput
     {
+        public BidirectionalMessageBodyInput(string inboxEmail)
+        {
+            this.InboxEmail = inboxEmail;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InboxEmail { get; set; }
 

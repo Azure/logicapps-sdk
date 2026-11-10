@@ -832,18 +832,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<CreateTaskBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/tasks", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
             });
         }
@@ -1355,12 +1354,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
 
     public class FinishActionBodyInput
     {
+        public FinishActionBodyInput(BodyInputEndActionType endAction)
+        {
+            this.EndAction = endAction;
+        }
+
         [JsonProperty("end_action", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputEndActionType EndAction { get; set; }
     }
 
     public class BodyInputEndActionType
     {
+        public BodyInputEndActionType(string description)
+        {
+            this.Description = description;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
     }
@@ -3715,6 +3724,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
 
     public class CreateConfigurationItemLinkBodyInput
     {
+        public CreateConfigurationItemLinkBodyInput(string relationTypeId)
+        {
+            this.RelationTypeId = relationTypeId;
+        }
+
         public string Blocking { get; set; }
 
         [JsonProperty("Relation_Type_ID", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -6105,12 +6119,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
 
     public class UploadAndAttachADocumentToARequestIncidentBodyInput
     {
+        public UploadAndAttachADocumentToARequestIncidentBodyInput(BodyInputDocumentsTypeItem[] documents)
+        {
+            this.Documents = documents;
+        }
+
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputDocumentsTypeItem[] Documents { get; set; }
     }
 
     public class BodyInputDocumentsTypeItem
     {
+        public BodyInputDocumentsTypeItem(string filedata, string filename)
+        {
+            this.Filedata = filedata;
+            this.Filename = filename;
+        }
+
         [JsonProperty("filedata", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filedata { get; set; }
 
@@ -6151,6 +6176,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
 
     public class CreateTaskBodyInput
     {
+        public CreateTaskBodyInput(string actionTypeId)
+        {
+            this.ActionTypeId = actionTypeId;
+        }
+
         [JsonProperty("Elapsed_Time")]
         public string ElapsedTime { get; set; }
 

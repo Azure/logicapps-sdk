@@ -542,6 +542,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
     public class DomainCreateBodyInput
     {
+        public DomainCreateBodyInput(string domain)
+        {
+            this.Domain = domain;
+        }
+
         [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Domain { get; set; }
 
@@ -833,6 +838,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
     public class LinkShortenBodyInput
     {
+        public LinkShortenBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -998,6 +1008,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
     public class PixelCreateBodyInput
     {
+        public PixelCreateBodyInput(string type, string name, string tag)
+        {
+            this.Type = type;
+            this.Name = name;
+            this.Tag = tag;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -1019,6 +1036,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
     public class PixelUpdateBodyInput
     {
+        public PixelUpdateBodyInput(string tag)
+        {
+            this.Tag = tag;
+        }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -1212,6 +1234,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
     public class QRUpdateBodyInput
     {
+        public QRUpdateBodyInput(string data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("type")]
         public string Type { get; set; }
 
@@ -1550,6 +1577,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
     public class UserCreateBodyInput
     {
+        public UserCreateBodyInput(string username, string password, string email)
+        {
+            this.Username = username;
+            this.Password = password;
+            this.Email = email;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 

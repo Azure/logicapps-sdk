@@ -13,33 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
     public class StormboardActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        public IBodyWorkflowAction<CreateIdeaResponse, ApiConnectionActionConfiguration> CreateIdea(Expression<Func<CreateIdeaBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateIdeaResponse, ApiConnectionActionConfiguration> CreateIdea(Expression<Func<CreateIdeaBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateIdeaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ideas";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateIdeaResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        public IBodyWorkflowAction<CreateStormResponse, ApiConnectionActionConfiguration> CreateStorm(Expression<Func<CreateStormBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateStormResponse, ApiConnectionActionConfiguration> CreateStorm(Expression<Func<CreateStormBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateStormResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storms";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateStormResponse>(callPayload);
             });
         }
@@ -160,6 +158,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
 
     public class CreateIdeaBodyInput
     {
+        public CreateIdeaBodyInput(int stormid, string data)
+        {
+            this.Stormid = stormid;
+            this.Data = data;
+        }
+
         [JsonProperty("stormid", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Stormid { get; set; }
 
@@ -225,6 +229,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
 
     public class CreateStormBodyInput
     {
+        public CreateStormBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

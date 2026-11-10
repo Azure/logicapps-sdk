@@ -79,12 +79,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
                 var createEvent = WorkflowActions.Managed.Office365("office365").CalendarPostItem(
                     table: () => getCalendar.Body.Value[1].Id,
-                    item: () => new CalendarPatchItemItemInput
+                    item: () => new CalendarPatchItemItemInput(
+                        $"Job Interview with Contoso - {toolContext.Parameters.CandidateName}",
+                        "@agentParameters('MeetingStartTime')",
+                        "@agentParameters('MeetingEndTime')",
+                        ItemInputTimeZoneType.UTC0800PacificTimeUSCanada)
                     {
-                        Subject = $"Job Interview with Contoso - {toolContext.Parameters.CandidateName}",
-                        StartTime = "@agentParameters('MeetingStartTime')",
-                        EndTime = "@agentParameters('MeetingEndTime')",
-                        TimeZone = ItemInputTimeZoneType.UTC0800PacificTimeUSCanada,
                         RequiredAttendees = toolContext.Parameters.CandidateEmail,
                         Body = $"<p class=\"editor-paragraph\">Hi {toolContext.Parameters.CandidateName} ,</p><p class=\"editor-paragraph\"><br>I would like to invite you to interview for a position at Contoso.<br><br>Please accept or decline this meeting invite.<br><br>Regards,<br><br>Contoso Hiring Team</p>",
                     });

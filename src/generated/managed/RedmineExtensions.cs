@@ -220,6 +220,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 
     public class IssueInput
     {
+        public IssueInput(IssueInputIssueType issue)
+        {
+            this.Issue = issue;
+        }
+
         [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
         public IssueInputIssueType Issue { get; set; }
     }

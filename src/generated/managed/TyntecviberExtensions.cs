@@ -13,61 +13,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
     public class TyntecviberActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
-        public IBodyWorkflowAction<SendViberComplexResponse, ApiConnectionActionConfiguration> SendViberComplex(Expression<Func<SendViberComplexBodyInput>> body = null)
+        public IBodyWorkflowAction<SendViberComplexResponse, ApiConnectionActionConfiguration> SendViberComplex(Expression<Func<SendViberComplexBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendViberComplexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/viber/components";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendViberComplexResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
-        public IBodyWorkflowAction<SendViberFileResponse, ApiConnectionActionConfiguration> SendViberFile(Expression<Func<SendViberFileBodyInput>> body = null)
+        public IBodyWorkflowAction<SendViberFileResponse, ApiConnectionActionConfiguration> SendViberFile(Expression<Func<SendViberFileBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendViberFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/viber/file";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendViberFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
-        public IBodyWorkflowAction<SendViberImageResponse, ApiConnectionActionConfiguration> SendViberImage(Expression<Func<SendViberImageBodyInput>> body = null)
+        public IBodyWorkflowAction<SendViberImageResponse, ApiConnectionActionConfiguration> SendViberImage(Expression<Func<SendViberImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendViberImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/viber/image";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendViberImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
-        public IBodyWorkflowAction<SendViberTextResponse, ApiConnectionActionConfiguration> SendViberText(Expression<Func<SendViberTextBodyInput>> body = null)
+        public IBodyWorkflowAction<SendViberTextResponse, ApiConnectionActionConfiguration> SendViberText(Expression<Func<SendViberTextBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendViberTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/viber/text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendViberTextResponse>(callPayload);
             });
         }
@@ -113,6 +109,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 
     public class SendViberComplexBodyInput
     {
+        public SendViberComplexBodyInput(string from, string to, string rateType)
+        {
+            this.From = from;
+            this.To = to;
+            this.RateType = rateType;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -185,6 +188,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 
     public class SendViberFileBodyInput
     {
+        public SendViberFileBodyInput(string from, string to, string messagePurpose, SendViberFileBodyInputContentType content)
+        {
+            this.From = from;
+            this.To = to;
+            this.MessagePurpose = messagePurpose;
+            this.Content = content;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -198,11 +209,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         public string MessagePurpose { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendViberFileBodyInputContentType Content { get; set; } = new SendViberFileBodyInputContentType();
+        public SendViberFileBodyInputContentType Content { get; set; }
     }
 
     public class SendViberFileBodyInputContentType
     {
+        public SendViberFileBodyInputContentType(BodyInputContentTypeFileType @file)
+        {
+            this.File = @file;
+        }
+
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "file";
 
@@ -212,6 +228,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 
     public class BodyInputContentTypeFileType
     {
+        public BodyInputContentTypeFileType(string url, string filename, string filetype)
+        {
+            this.Url = url;
+            this.Filename = filename;
+            this.Filetype = filetype;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -233,6 +256,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 
     public class SendViberImageBodyInput
     {
+        public SendViberImageBodyInput(string from, string to, string rateType, SendViberImageBodyInputContentType content)
+        {
+            this.From = from;
+            this.To = to;
+            this.RateType = rateType;
+            this.Content = content;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -246,11 +277,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         public string RateType { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendViberImageBodyInputContentType Content { get; set; } = new SendViberImageBodyInputContentType();
+        public SendViberImageBodyInputContentType Content { get; set; }
     }
 
     public class SendViberImageBodyInputContentType
     {
+        public SendViberImageBodyInputContentType(BodyInputContentTypeImageType image)
+        {
+            this.Image = image;
+        }
+
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "image";
 
@@ -260,6 +296,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 
     public class BodyInputContentTypeImageType
     {
+        public BodyInputContentTypeImageType(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
     }
@@ -275,6 +316,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 
     public class SendViberTextBodyInput
     {
+        public SendViberTextBodyInput(string from, string to, string rateType, SendViberTextBodyInputContentType content)
+        {
+            this.From = from;
+            this.To = to;
+            this.RateType = rateType;
+            this.Content = content;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -288,11 +337,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         public string RateType { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendViberTextBodyInputContentType Content { get; set; } = new SendViberTextBodyInputContentType();
+        public SendViberTextBodyInputContentType Content { get; set; }
     }
 
     public class SendViberTextBodyInputContentType
     {
+        public SendViberTextBodyInputContentType(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "text";
 

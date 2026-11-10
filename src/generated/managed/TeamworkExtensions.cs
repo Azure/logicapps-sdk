@@ -296,12 +296,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
     public class CreateProjectBodyInput
     {
+        public CreateProjectBodyInput(BodyInputProjectType project)
+        {
+            this.Project = project;
+        }
+
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputProjectType Project { get; set; }
     }
 
     public class BodyInputProjectType
     {
+        public BodyInputProjectType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -458,12 +468,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
     public class CreateTaskBodyInput
     {
+        public CreateTaskBodyInput(CreateTaskBodyInputTodoItemType todoItem)
+        {
+            this.TodoItem = todoItem;
+        }
+
         [JsonProperty("todo-item", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateTaskBodyInputTodoItemType TodoItem { get; set; }
     }
 
     public class CreateTaskBodyInputTodoItemType
     {
+        public CreateTaskBodyInputTodoItemType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -657,12 +677,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
     public class CreateUserBodyInput
     {
+        public CreateUserBodyInput(BodyInputPersonType person)
+        {
+            this.Person = person;
+        }
+
         [JsonProperty("person", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputPersonType Person { get; set; }
     }
 
     public class BodyInputPersonType
     {
+        public BodyInputPersonType(string emailAddress, string firstName, string lastName, string username)
+        {
+            this.EmailAddress = emailAddress;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Username = username;
+        }
+
         [JsonProperty("email-address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
 

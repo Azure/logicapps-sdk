@@ -161,6 +161,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
 
     public class SendHttpRequestBodyInput
     {
+        public SendHttpRequestBodyInput(BodyInputMethodType method, string uri)
+        {
+            this.Method = method;
+            this.Uri = uri;
+        }
+
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputMethodType Method { get; set; }
 
@@ -186,6 +192,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
 
     public class BodyInputHeadersTypeItem
     {
+        public BodyInputHeadersTypeItem(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

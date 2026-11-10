@@ -1435,6 +1435,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestactions
 
     public class BodyInput
     {
+        public BodyInput(int workflowTaskId, string taskNote)
+        {
+            this.WorkflowTaskId = workflowTaskId;
+            this.TaskNote = taskNote;
+        }
+
         [JsonProperty("workflowTaskId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int WorkflowTaskId { get; set; }
 

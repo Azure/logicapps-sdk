@@ -1236,6 +1236,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class PermissionInput
     {
+        public PermissionInput(string linkType, string linkScope)
+        {
+            this.LinkType = linkType;
+            this.LinkScope = linkScope;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LinkType { get; set; }
 
@@ -1262,6 +1268,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class CopyFileAsyncParametersInput
     {
+        public CopyFileAsyncParametersInput(string fileToCopy, string destinationSiteAddress, string destinationFolder, int ifAnotherFileIsAlreadyThere)
+        {
+            this.FileToCopy = fileToCopy;
+            this.DestinationSiteAddress = destinationSiteAddress;
+            this.DestinationFolder = destinationFolder;
+            this.IfAnotherFileIsAlreadyThere = ifAnotherFileIsAlreadyThere;
+        }
+
         [JsonProperty("sourceFileId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileToCopy { get; set; }
 
@@ -1277,6 +1291,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class CopyFolderAsyncParametersInput
     {
+        public CopyFolderAsyncParametersInput(string folderToCopy, string destinationSiteAddress, string destinationFolder, int ifAnotherFolderIsAlreadyThere)
+        {
+            this.FolderToCopy = folderToCopy;
+            this.DestinationSiteAddress = destinationSiteAddress;
+            this.DestinationFolder = destinationFolder;
+            this.IfAnotherFolderIsAlreadyThere = ifAnotherFolderIsAlreadyThere;
+        }
+
         [JsonProperty("sourceFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderToCopy { get; set; }
 
@@ -1306,6 +1328,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class HttpRequestParametersInput
     {
+        public HttpRequestParametersInput(string uri)
+        {
+            this.Uri = uri;
+        }
+
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline.ParametersInputMethodType.GET;
 
@@ -1331,6 +1358,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class MoveFileAsyncParametersInput
     {
+        public MoveFileAsyncParametersInput(string fileToMove, string destinationSiteAddress, string destinationFolder, int ifAnotherFileIsAlreadyThere)
+        {
+            this.FileToMove = fileToMove;
+            this.DestinationSiteAddress = destinationSiteAddress;
+            this.DestinationFolder = destinationFolder;
+            this.IfAnotherFileIsAlreadyThere = ifAnotherFileIsAlreadyThere;
+        }
+
         [JsonProperty("sourceFileId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileToMove { get; set; }
 
@@ -1346,6 +1381,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class MoveFolderAsyncParametersInput
     {
+        public MoveFolderAsyncParametersInput(string folderToMove, string destinationSiteAddress, string destinationFolder, int ifAnotherFolderIsAlreadyThere)
+        {
+            this.FolderToMove = folderToMove;
+            this.DestinationSiteAddress = destinationSiteAddress;
+            this.DestinationFolder = destinationFolder;
+            this.IfAnotherFolderIsAlreadyThere = ifAnotherFolderIsAlreadyThere;
+        }
+
         [JsonProperty("sourceFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderToMove { get; set; }
 
@@ -1361,6 +1404,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class CreateNewDocumentSetParametersInput
     {
+        public CreateNewDocumentSetParametersInput(string documentSetPath, string contentTypeId)
+        {
+            this.DocumentSetPath = documentSetPath;
+            this.ContentTypeId = contentTypeId;
+        }
+
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentSetPath { get; set; }
 
@@ -1371,6 +1420,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class CreateNewFolderParametersInput
     {
+        public CreateNewFolderParametersInput(string folderPath)
+        {
+            this.FolderPath = folderPath;
+        }
+
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderPath { get; set; }
     }
@@ -1433,6 +1487,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class CheckInFileParameterInput
     {
+        public CheckInFileParameterInput(string comments, int checkInType)
+        {
+            this.Comments = comments;
+            this.CheckInType = checkInType;
+        }
+
         [JsonProperty("comment", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comments { get; set; }
 
@@ -1442,6 +1502,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class GrantAccessParameterInput
     {
+        public GrantAccessParameterInput(string recipients, string roles)
+        {
+            this.Recipients = recipients;
+            this.Roles = roles;
+        }
+
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Recipients { get; set; }
 

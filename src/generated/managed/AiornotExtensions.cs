@@ -150,6 +150,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
 
     public class BodyInput
     {
+        public BodyInput(string objectEntity)
+        {
+            this.ObjectEntity = objectEntity;
+        }
+
         [JsonProperty("object", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectEntity { get; set; }
     }

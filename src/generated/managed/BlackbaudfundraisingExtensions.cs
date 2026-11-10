@@ -861,6 +861,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
 
     public class CreateAppealAttachmentBodyInput
     {
+        public CreateAppealAttachmentBodyInput(string appealId, BodyInputTypeType type)
+        {
+            this.AppealId = appealId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppealId { get; set; }
 
@@ -919,6 +925,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
 
     public class CreateAppealCustomFieldBodyInput
     {
+        public CreateAppealCustomFieldBodyInput(string appealId, string category)
+        {
+            this.AppealId = appealId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppealId { get; set; }
 
@@ -1152,6 +1164,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
 
     public class CreateCampaignAttachmentBodyInput
     {
+        public CreateCampaignAttachmentBodyInput(string campaignId, BodyInputTypeType type)
+        {
+            this.CampaignId = campaignId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CampaignId { get; set; }
 
@@ -1188,6 +1206,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
 
     public class CreateCampaignCustomFieldBodyInput
     {
+        public CreateCampaignCustomFieldBodyInput(string campaignId, string category)
+        {
+            this.CampaignId = campaignId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CampaignId { get; set; }
 
@@ -1409,6 +1433,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
 
     public class CreateFundAttachmentBodyInput
     {
+        public CreateFundAttachmentBodyInput(string fundId, BodyInputTypeType type)
+        {
+            this.FundId = fundId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
@@ -1445,6 +1475,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
 
     public class CreateFundCustomFieldBodyInput
     {
+        public CreateFundCustomFieldBodyInput(string fundId, string category)
+        {
+            this.FundId = fundId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
@@ -1535,6 +1571,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
 
     public class CreateAppealBodyInput
     {
+        public CreateAppealBodyInput(string lookupId, string description)
+        {
+            this.LookupId = lookupId;
+            this.Description = description;
+        }
+
         [JsonProperty("appeal_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupId { get; set; }
 
@@ -1619,6 +1661,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
 
     public class CreateCampaignBodyInput
     {
+        public CreateCampaignBodyInput(string lookupId, string description)
+        {
+            this.LookupId = lookupId;
+            this.Description = description;
+        }
+
         [JsonProperty("campaign_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupId { get; set; }
 
@@ -1685,6 +1733,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
 
     public class CreateConstituentAppealBodyInput
     {
+        public CreateConstituentAppealBodyInput(int constituentId, string appealDescription)
+        {
+            this.ConstituentId = constituentId;
+            this.AppealDescription = appealDescription;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ConstituentId { get; set; }
 
@@ -1757,6 +1811,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
 
     public class CreateFundBodyInput
     {
+        public CreateFundBodyInput(string lookupId, string description)
+        {
+            this.LookupId = lookupId;
+            this.Description = description;
+        }
+
         [JsonProperty("fund_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupId { get; set; }
 

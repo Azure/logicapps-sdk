@@ -322,6 +322,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
 
     public class ContactsNewContactParametersInput
     {
+        public ContactsNewContactParametersInput(string email)
+        {
+            this.Email = email;
+        }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
@@ -350,6 +355,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
 
     public class ImagesNewImageParametersInput
     {
+        public ImagesNewImageParametersInput(string name, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent data)
+        {
+            this.Name = name;
+            this.Data = data;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string ContentType { get; set; }
@@ -404,6 +415,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
 
     public class CampaignsNewCampaignParametersInput
     {
+        public CampaignsNewCampaignParametersInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string Description { get; set; }
@@ -430,6 +446,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
 
     public class TemplatesNewTemplateParametersInput
     {
+        public TemplatesNewTemplateParametersInput(string name, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file)
+        {
+            this.Name = name;
+            this.File = @file;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string Subject { get; set; }
@@ -461,6 +483,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
 
     public class SentMessagesSendParametersInput
     {
+        public SentMessagesSendParametersInput(string to, string subject, string body, string fromSendAs)
+        {
+            this.To = to;
+            this.Subject = subject;
+            this.Body = body;
+            this.FromSendAs = fromSendAs;
+        }
+
         [JsonProperty("Campaign")]
         public int? SelectCampaign { get; set; }
 

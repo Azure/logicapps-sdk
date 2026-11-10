@@ -127,6 +127,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new TemplatesCreateBodyInput().ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -214,6 +216,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
 
     public class PagesPublishBodyInput
     {
+        public PagesPublishBodyInput(BodyInputActionType action)
+        {
+            this.Action = action;
+        }
+
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputActionType Action { get; set; }
     }
@@ -273,6 +280,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
 
     public class TemplatesUpdateBodyInput
     {
+        public TemplatesUpdateBodyInput(string source)
+        {
+            this.Source = source;
+        }
+
         [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Source { get; set; }
     }

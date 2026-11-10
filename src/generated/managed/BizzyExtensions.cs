@@ -336,6 +336,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class SendReplyContentInput
     {
+        public SendReplyContentInput(string replyText, string replyActivity)
+        {
+            this.ReplyText = replyText;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReplyText { get; set; }
 
@@ -357,6 +363,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class CardSetInput
     {
+        public CardSetInput(JToken adaptiveCardSet, string replyActivity)
+        {
+            this.AdaptiveCardSet = adaptiveCardSet;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("cards", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken AdaptiveCardSet { get; set; }
 
@@ -385,6 +397,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class CardInfoInput
     {
+        public CardInfoInput(JToken adaptiveCard, string replyActivity)
+        {
+            this.AdaptiveCard = adaptiveCard;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("card", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken AdaptiveCard { get; set; }
 
@@ -403,6 +421,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class StartConversationContentInput
     {
+        public StartConversationContentInput(string conversationText, string user)
+        {
+            this.ConversationText = conversationText;
+            this.User = user;
+        }
+
         [JsonProperty("EnterpriseBot", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetBot { get; set; } = "AtBot";
 
@@ -427,6 +451,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class StartGroupConversationContentInput
     {
+        public StartGroupConversationContentInput(JToken channelListing, string channelName, string conversationText)
+        {
+            this.ChannelListing = channelListing;
+            this.ChannelName = channelName;
+            this.ConversationText = conversationText;
+        }
+
         [JsonProperty("EnterpriseBot", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetBot { get; set; } = "AtBot";
 
@@ -442,6 +473,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class SendBridgeEventContentInput
     {
+        public SendBridgeEventContentInput(string replyActivity, JToken eventJSON)
+        {
+            this.ReplyActivity = replyActivity;
+            this.EventJSON = eventJSON;
+        }
+
         [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReplyActivity { get; set; }
 
@@ -478,6 +515,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookRegistrationsInputResponseWebHookInput
     {
+        public WebHookRegistrationsInputResponseWebHookInput(string message, string replyActivity)
+        {
+            this.Message = message;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -514,6 +557,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookRegistrationsInputResponseDATEWebHookInput
     {
+        public WebHookRegistrationsInputResponseDATEWebHookInput(string message, string replyActivity)
+        {
+            this.Message = message;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -565,6 +614,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookRegistrationsInputResponseCHOICEWebHookInput
     {
+        public WebHookRegistrationsInputResponseCHOICEWebHookInput(string message, string choiceValues, string replyActivity)
+        {
+            this.Message = message;
+            this.ChoiceValues = choiceValues;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -601,6 +657,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookRegistrationsInputResponseCHOICELISTWebHookInput
     {
+        public WebHookRegistrationsInputResponseCHOICELISTWebHookInput(string message, JToken choiceValues, string replyActivity)
+        {
+            this.Message = message;
+            this.ChoiceValues = choiceValues;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -640,6 +703,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookRegistrationsInputResponsePEOPLEWebHookInput
     {
+        public WebHookRegistrationsInputResponsePEOPLEWebHookInput(string message, string replyActivity)
+        {
+            this.Message = message;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -686,6 +755,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookRegistrationsInputResponseINTENTVECTORWebHookInput
     {
+        public WebHookRegistrationsInputResponseINTENTVECTORWebHookInput(string message, string lUISIntentVector, string replyActivity)
+        {
+            this.Message = message;
+            this.LUISIntentVector = lUISIntentVector;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -719,6 +795,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookRegistrationsInputResponseMEMORYWebHookInput
     {
+        public WebHookRegistrationsInputResponseMEMORYWebHookInput(string message, string memoryType, string replyActivity)
+        {
+            this.Message = message;
+            this.MemoryType = memoryType;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -758,6 +841,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookRegistrationsInitiateBridgeWebHookInput
     {
+        public WebHookRegistrationsInitiateBridgeWebHookInput(WebHookInputParticipantsTypeItem[] participants)
+        {
+            this.Participants = participants;
+        }
+
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -782,6 +870,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookInputParticipantsTypeItem
     {
+        public WebHookInputParticipantsTypeItem(string userName, string replyActivity)
+        {
+            this.UserName = userName;
+            this.ReplyActivity = replyActivity;
+        }
+
         [JsonProperty("chatUserName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
 
@@ -800,6 +894,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class SaveBotMemoryContentInput
     {
+        public SaveBotMemoryContentInput(string userPrincipalName, string memoryType, string title, string value)
+        {
+            this.UserPrincipalName = userPrincipalName;
+            this.MemoryType = memoryType;
+            this.Title = title;
+            this.Value = value;
+        }
+
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserPrincipalName { get; set; }
 
@@ -821,6 +923,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class DeleteBotMemoryContentInput
     {
+        public DeleteBotMemoryContentInput(string userPrincipalName, string memoryType, string value)
+        {
+            this.UserPrincipalName = userPrincipalName;
+            this.MemoryType = memoryType;
+            this.Value = value;
+        }
+
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserPrincipalName { get; set; }
 
@@ -842,6 +951,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class CheckMemoryInfoInput
     {
+        public CheckMemoryInfoInput(string userPrincipalName, string memoryType)
+        {
+            this.UserPrincipalName = userPrincipalName;
+            this.MemoryType = memoryType;
+        }
+
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserPrincipalName { get; set; }
 
@@ -851,6 +966,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookRegistrationsPostWebHookInput
     {
+        public WebHookRegistrationsPostWebHookInput(string triggerDescription)
+        {
+            this.TriggerDescription = triggerDescription;
+        }
+
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -891,6 +1011,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class WebHookRegistrationsVectorPostWebHookInput
     {
+        public WebHookRegistrationsVectorPostWebHookInput(string triggerDescription)
+        {
+            this.TriggerDescription = triggerDescription;
+        }
+
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 

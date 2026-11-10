@@ -49,6 +49,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
 
     public class CreateProductBodyInput
     {
+        public CreateProductBodyInput(string tREEId)
+        {
+            this.TREEId = tREEId;
+        }
+
         [JsonProperty("ID")]
         public string Id { get; set; }
 

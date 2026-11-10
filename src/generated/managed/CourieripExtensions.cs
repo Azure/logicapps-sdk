@@ -177,16 +177,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Brand(Expression<Func<BrandBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Brand(Expression<Func<BrandBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/brands";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -1131,6 +1130,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 
     public class BrandBodyInput
     {
+        public BrandBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 

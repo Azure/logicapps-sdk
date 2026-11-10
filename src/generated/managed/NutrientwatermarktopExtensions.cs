@@ -193,6 +193,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class CompositeWatermarkInputDataInput
     {
+        public CompositeWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string watermarkData)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.WatermarkData = watermarkData;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -211,6 +217,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class EllipseWatermarkInputDataInput
     {
+        public EllipseWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -332,6 +345,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class ImageWatermarkInputDataInput
     {
+        public ImageWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent image, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.Image = image;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -407,6 +428,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class LineWatermarkInputDataInput
     {
+        public LineWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string xCoordinateStart, string yCoordinateStart, string xCoordinateEnd, string yCoordinateEnd)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.XCoordinateStart = xCoordinateStart;
+            this.YCoordinateStart = yCoordinateStart;
+            this.XCoordinateEnd = xCoordinateEnd;
+            this.YCoordinateEnd = yCoordinateEnd;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -476,6 +506,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class LinearBarcodeWatermarkInputDataInput
     {
+        public LinearBarcodeWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string barcodeContent, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.BarcodeContent = barcodeContent;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -639,6 +677,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class PdfWatermarkInputDataInput
     {
+        public PdfWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDFWatermark, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.PDFWatermark = pDFWatermark;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -705,6 +751,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class QrCodeWatermarkInputDataInput
     {
+        public QrCodeWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string content, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.Content = content;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -889,6 +943,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class RectangleWatermarkInputDataInput
     {
+        public RectangleWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -961,6 +1022,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class RtfWatermarkInputDataInput
     {
+        public RtfWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string watermarkContent, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.WatermarkContent = watermarkContent;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 
@@ -1036,6 +1105,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class TextWatermarkInputDataInput
     {
+        public TextWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string watermarkContent, string fontFamilyName, string width, string height)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.WatermarkContent = watermarkContent;
+            this.FontFamilyName = fontFamilyName;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
 

@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new SendEventToForgeBodyInput().ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -70,6 +72,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
 
     public class CloseServiceCaseAtForgeBodyInput
     {
+        public CloseServiceCaseAtForgeBodyInput(string siteId, string resolutionText)
+        {
+            this.SiteId = siteId;
+            this.ResolutionText = resolutionText;
+        }
+
         [JsonProperty("siteId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SiteId { get; set; }
 

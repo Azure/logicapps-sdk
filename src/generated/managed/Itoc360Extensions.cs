@@ -60,6 +60,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360
 
     public class BodyInput
     {
+        public BodyInput(string title, string host)
+        {
+            this.Title = title;
+            this.Host = host;
+        }
+
         [JsonProperty("event_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputEventTypeType EventType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360.BodyInputEventTypeType.Alert;
 

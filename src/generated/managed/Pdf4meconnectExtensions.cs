@@ -13,211 +13,197 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
     public class Pdf4meconnectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddPageNumber(Expression<Func<AddPageNumberBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddPageNumber(Expression<Func<AddPageNumberBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/AddPageNumber";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddAttachmentToPdf(Expression<Func<AddAttachmentToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddAttachmentToPdf(Expression<Func<AddAttachmentToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/AddAttachmentToPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddBarcode(Expression<Func<AddBarcodeBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddBarcode(Expression<Func<AddBarcodeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/AddBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddFormField(Expression<Func<AddFormFieldBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddFormField(Expression<Func<AddFormFieldBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/AddFormField";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddHtmlHeaderFooter(Expression<Func<AddHtmlHeaderFooterBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddHtmlHeaderFooter(Expression<Func<AddHtmlHeaderFooterBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/AddHtmlHeaderFooter";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddMargin(Expression<Func<AddMarginBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddMargin(Expression<Func<AddMarginBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/AddMargin";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<ClassifyDocumentResponse, ApiConnectionActionConfiguration> ClassifyDocument(Expression<Func<ClassifyDocumentBodyInput>> body = null)
+        public IBodyWorkflowAction<ClassifyDocumentResponse, ApiConnectionActionConfiguration> ClassifyDocument(Expression<Func<ClassifyDocumentBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ClassifyDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ClassifyDocument";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ClassifyDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompressImage(Expression<Func<CompressImageBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompressImage(Expression<Func<CompressImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CompressImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<ConvertHtmlToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<ConvertHtmlToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertHtmlToPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertImageFormat(Expression<Func<ConvertImageFormatBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertImageFormat(Expression<Func<ConvertImageFormatBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertImageFormat";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertJsonToExcel(Expression<Func<ConvertJsonToExcelBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertJsonToExcel(Expression<Func<ConvertJsonToExcelBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertJsonToExcel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertMdToPdf(Expression<Func<ConvertMdToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertMdToPdf(Expression<Func<ConvertMdToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertMdToPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertToPdf(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertToPdf(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertToPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertUrlToPdf(Expression<Func<ConvertUrlToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertUrlToPdf(Expression<Func<ConvertUrlToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertUrlToPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -242,61 +228,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWordToPdfForm(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWordToPdfForm(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertWordToPdfForm";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Createbarcode(Expression<Func<CreatebarcodeBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Createbarcode(Expression<Func<CreatebarcodeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CreateBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateEpcQrCode(Expression<Func<CreateEpcQrCodeBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateEpcQrCode(Expression<Func<CreateEpcQrCodeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CreateEpcQrCode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreatePdfA(Expression<Func<CreatePdfABodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreatePdfA(Expression<Func<CreatePdfABodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/PdfA";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -333,336 +315,316 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = ("{\"docContent\":\"\"}").ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteBlankPages(Expression<Func<DeleteBlankPagesBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteBlankPages(Expression<Func<DeleteBlankPagesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/DeleteBlankPages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeletePages(Expression<Func<DeletePagesBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeletePages(Expression<Func<DeletePagesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/DeletePages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DigitalSignPdf(Expression<Func<DigitalSignPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DigitalSignPdf(Expression<Func<DigitalSignPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/DigitalSignPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DisableTrackChangesInWord(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DisableTrackChangesInWord(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/DisableTrackingChangesInWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EnableTrackChangesInWord(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EnableTrackChangesInWord(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/EnableTrackingChangesInWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<ExtractAttachmentFromPdfResponse, ApiConnectionActionConfiguration> ExtractAttachmentFromPdf(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<ExtractAttachmentFromPdfResponse, ApiConnectionActionConfiguration> ExtractAttachmentFromPdf(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExtractAttachmentFromPdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractAttachmentFromPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractAttachmentFromPdfResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExtractPages(Expression<Func<DeletePagesBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExtractPages(Expression<Func<DeletePagesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/Extract";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<ExtractPdfFormDataResponse, ApiConnectionActionConfiguration> ExtractPdfFormData(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<ExtractPdfFormDataResponse, ApiConnectionActionConfiguration> ExtractPdfFormData(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExtractPdfFormDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractPdfFormData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractPdfFormDataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<ExtractResourcesResponse, ApiConnectionActionConfiguration> ExtractResources(Expression<Func<ExtractResourcesBodyInput>> body = null)
+        public IBodyWorkflowAction<ExtractResourcesResponse, ApiConnectionActionConfiguration> ExtractResources(Expression<Func<ExtractResourcesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExtractResourcesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractResources";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractResourcesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<ExtractTableFromPdfResponse, ApiConnectionActionConfiguration> ExtractTableFromPdf(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<ExtractTableFromPdfResponse, ApiConnectionActionConfiguration> ExtractTableFromPdf(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExtractTableFromPdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractTableFromPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractTableFromPdfResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<ExtractTextByExpressionResponse, ApiConnectionActionConfiguration> ExtractTextByExpression(Expression<Func<ExtractTextByExpressionBodyInput>> body = null)
+        public IBodyWorkflowAction<ExtractTextByExpressionResponse, ApiConnectionActionConfiguration> ExtractTextByExpression(Expression<Func<ExtractTextByExpressionBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExtractTextByExpressionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractTextByExpression";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractTextByExpressionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<ExtractTextFromWordResponse, ApiConnectionActionConfiguration> ExtractTextFromWord(Expression<Func<ExtractTextFromWordBodyInput>> body = null)
+        public IBodyWorkflowAction<ExtractTextFromWordResponse, ApiConnectionActionConfiguration> ExtractTextFromWord(Expression<Func<ExtractTextFromWordBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExtractTextFromWordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractTextFromWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractTextFromWordResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FindAndReplace(Expression<Func<FindAndReplaceBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FindAndReplace(Expression<Func<FindAndReplaceBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/FindAndReplace";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlattenPdf(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlattenPdf(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/FlattenPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlipImage(Expression<Func<FlipImageBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlipImage(Expression<Func<FlipImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/FlipImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocumentFromPdf(Expression<Func<GenerateDocumentFromPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocumentFromPdf(Expression<Func<GenerateDocumentFromPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/GenerateDocumentFromPdfV2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<GenerateDocumentMultipleResponse, ApiConnectionActionConfiguration> GenerateDocumentMultiple(Expression<Func<GenerateDocumentMultipleBodyInput>> body = null)
+        public IBodyWorkflowAction<GenerateDocumentMultipleResponse, ApiConnectionActionConfiguration> GenerateDocumentMultiple(Expression<Func<GenerateDocumentMultipleBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerateDocumentMultipleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/GenerateDocumentMultiple";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerateDocumentMultipleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocumentSingle(Expression<Func<GenerateDocumentMultipleBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocumentSingle(Expression<Func<GenerateDocumentMultipleBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/GenerateDocumentSingle";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<GetPdfMetadataResponse, ApiConnectionActionConfiguration> GetPdfMetadata(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<GetPdfMetadataResponse, ApiConnectionActionConfiguration> GetPdfMetadata(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetPdfMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/GetPdfMetadata";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetPdfMetadataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<GetTrackedChangesInWordResponse, ApiConnectionActionConfiguration> GetTrackedChangesInWord(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<GetTrackedChangesInWordResponse, ApiConnectionActionConfiguration> GetTrackedChangesInWord(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetTrackedChangesInWordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/GetTrackingChangesInWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetTrackedChangesInWordResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImageStamp(Expression<Func<ImageStampBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImageStamp(Expression<Func<ImageStampBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ImageStamp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LinearizePdf(Expression<Func<LinearizePdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LinearizePdf(Expression<Func<LinearizePdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/LinearizePdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -682,31 +644,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeOverlay(Expression<Func<MergeOverlayBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeOverlay(Expression<Func<MergeOverlayBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/MergeOverlay";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Optimize(Expression<Func<OptimizeBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Optimize(Expression<Func<OptimizeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/Optimize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -727,61 +687,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfOcr(Expression<Func<PdfOcrBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfOcr(Expression<Func<PdfOcrBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertOcrPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToExcel(Expression<Func<PdfToExcelBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToExcel(Expression<Func<PdfToExcelBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToExcel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToPowerPoint(Expression<Func<PdfToPowerPointBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToPowerPoint(Expression<Func<PdfToPowerPointBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToPowerPoint";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToWord(Expression<Func<PdfToWordBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToWord(Expression<Func<PdfToWordBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -806,76 +762,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProtectDocument(Expression<Func<ProtectDocumentBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProtectDocument(Expression<Func<ProtectDocumentBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/Protect";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<ReadBarcodesResponse, ApiConnectionActionConfiguration> ReadBarcodes(Expression<Func<ReadBarcodesBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadBarcodesResponse, ApiConnectionActionConfiguration> ReadBarcodes(Expression<Func<ReadBarcodesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadBarcodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadBarcodes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadBarcodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RemoveExifTagsFromImage(Expression<Func<RemoveExifTagsFromImageBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RemoveExifTagsFromImage(Expression<Func<RemoveExifTagsFromImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/RemoveEXIFTagsFromImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RepairPdf(Expression<Func<ConvertToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RepairPdf(Expression<Func<ConvertToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/RepairPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReplaceTextWithImage(Expression<Func<ReplaceTextWithImageBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReplaceTextWithImage(Expression<Func<ReplaceTextWithImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReplaceTextWithImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -900,136 +851,127 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RotateDocument(Expression<Func<RotateDocumentBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RotateDocument(Expression<Func<RotateDocumentBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/Rotate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RotatePage(Expression<Func<RotatePageBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RotatePage(Expression<Func<RotatePageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/RotatePage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SignPdf(Expression<Func<SignPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SignPdf(Expression<Func<SignPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SignPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<SplitByTextResponse, ApiConnectionActionConfiguration> SplitByText(Expression<Func<SplitByTextBodyInput>> body = null)
+        public IBodyWorkflowAction<SplitByTextResponse, ApiConnectionActionConfiguration> SplitByText(Expression<Func<SplitByTextBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SplitByTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitByText";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SplitByTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<SplitDocByBarcodeResponse, ApiConnectionActionConfiguration> SplitDocByBarcode(Expression<Func<SplitDocByBarcodeBodyInput>> body = null)
+        public IBodyWorkflowAction<SplitDocByBarcodeResponse, ApiConnectionActionConfiguration> SplitDocByBarcode(Expression<Func<SplitDocByBarcodeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SplitDocByBarcodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SplitDocByBarcodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<SplitDocumentResponse, ApiConnectionActionConfiguration> SplitDocument(Expression<Func<SplitDocumentBodyInput>> body = null)
+        public IBodyWorkflowAction<SplitDocumentResponse, ApiConnectionActionConfiguration> SplitDocument(Expression<Func<SplitDocumentBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SplitDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SplitDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Stamp(Expression<Func<StampBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Stamp(Expression<Func<StampBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/Stamp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<StartPDF4meWfResponse, ApiConnectionActionConfiguration> StartPDF4meWf(Expression<Func<StartPDF4meWfBodyInput>> body = null)
+        public IBodyWorkflowAction<StartPDF4meWfResponse, ApiConnectionActionConfiguration> StartPDF4meWf(Expression<Func<StartPDF4meWfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StartPDF4meWfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExecuteWfTrigger";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<StartPDF4meWfResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconnect")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Unlock(Expression<Func<UnlockBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Unlock(Expression<Func<UnlockBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/Unlock";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -1053,6 +995,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class AddPageNumberBodyInput
     {
+        public AddPageNumberBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName)
+        {
+            this.DocContent = docContent;
+            this.DocName = docName;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1105,6 +1053,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class AddAttachmentToPdfBodyInput
     {
+        public AddAttachmentToPdfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, BodyInputAttachmentsTypeItem[] attachments)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.Attachments = attachments;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1117,6 +1072,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class AddAttachmentToPdfBodyInputDocumentType
     {
+        public AddAttachmentToPdfBodyInputDocumentType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -1132,12 +1092,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class BodyInputAttachmentsTypeItemDocumentType
     {
+        public BodyInputAttachmentsTypeItemDocumentType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
     public class AddBarcodeBodyInput
     {
+        public AddBarcodeBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName, string text)
+        {
+            this.DocContent = docContent;
+            this.DocName = docName;
+            this.Text = text;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1194,6 +1166,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class AddFormFieldBodyInput
     {
+        public AddFormFieldBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string fieldName)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.FieldName = fieldName;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1228,6 +1207,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class AddHtmlHeaderFooterBodyInput
     {
+        public AddHtmlHeaderFooterBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string htmlContent)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.HtmlContent = htmlContent;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1269,6 +1255,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class AddMarginBodyInput
     {
+        public AddMarginBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string marginLeft, string marginRight, string marginTop, string marginBottom)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.MarginLeft = marginLeft;
+            this.MarginRight = marginRight;
+            this.MarginTop = marginTop;
+            this.MarginBottom = marginBottom;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1296,6 +1292,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ClassifyDocumentBodyInput
     {
+        public ClassifyDocumentBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent)
+        {
+            this.DocContent = docContent;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1310,6 +1311,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class CompressImageBodyInput
     {
+        public CompressImageBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, BodyInputImageTypeType imageType)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.ImageType = imageType;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1340,6 +1348,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ConvertHtmlToPdfBodyInput
     {
+        public ConvertHtmlToPdfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName)
+        {
+            this.DocContent = docContent;
+            this.DocName = docName;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1403,6 +1417,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ConvertImageFormatBodyInput
     {
+        public ConvertImageFormatBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, BodyInputCurrentImageFormatType currentImageFormat, BodyInputNewImageFormatType newImageFormat)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.CurrentImageFormat = currentImageFormat;
+            this.NewImageFormat = newImageFormat;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1438,6 +1460,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ConvertJsonToExcelBodyInput
     {
+        public ConvertJsonToExcelBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1474,6 +1502,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ConvertMdToPdfBodyInput
     {
+        public ConvertMdToPdfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName)
+        {
+            this.DocContent = docContent;
+            this.DocName = docName;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1486,6 +1520,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ConvertToPdfBodyInput
     {
+        public ConvertToPdfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1495,6 +1535,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ConvertUrlToPdfBodyInput
     {
+        public ConvertUrlToPdfBodyInput(string webUrl)
+        {
+            this.WebUrl = webUrl;
+        }
+
         [JsonProperty("webUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WebUrl { get; set; }
 
@@ -1531,6 +1576,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class CreatebarcodeBodyInput
     {
+        public CreatebarcodeBodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("barcodeType", DefaultValueHandling = DefaultValueHandling.Include)]
         public AddBarcodeBodyInputBarcodeTypeType BarcodeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect.AddBarcodeBodyInputBarcodeTypeType.QrCode;
 
@@ -1543,12 +1593,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class CreateEpcQrCodeBodyInput
     {
+        public CreateEpcQrCodeBodyInput(BodyInputEpcQrCodeActionType epcQrCodeAction)
+        {
+            this.EpcQrCodeAction = epcQrCodeAction;
+        }
+
         [JsonProperty("epcQrCodeAction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputEpcQrCodeActionType EpcQrCodeAction { get; set; } = new BodyInputEpcQrCodeActionType();
+        public BodyInputEpcQrCodeActionType EpcQrCodeAction { get; set; }
     }
 
     public class BodyInputEpcQrCodeActionType
     {
+        public BodyInputEpcQrCodeActionType(string receiverName, string iban, double amount)
+        {
+            this.ReceiverName = receiverName;
+            this.Iban = iban;
+            this.Amount = amount;
+        }
+
         [JsonProperty("serviceTag", DefaultValueHandling = DefaultValueHandling.Include)]
         internal BodyInputEpcQrCodeActionTypeServiceTagType ServiceTag { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect.BodyInputEpcQrCodeActionTypeServiceTagType.BCD;
 
@@ -1636,6 +1698,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class CreatePdfABodyInput
     {
+        public CreatePdfABodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1674,6 +1742,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class DeleteBlankPagesBodyInput
     {
+        public DeleteBlankPagesBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1694,6 +1768,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class DeletePagesBodyInput
     {
+        public DeletePagesBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string pageNumbers)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.PageNumbers = pageNumbers;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1706,6 +1787,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class DigitalSignPdfBodyInput
     {
+        public DigitalSignPdfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent signCertificate, string signCertificatePassword)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.SignCertificate = signCertificate;
+            this.SignCertificatePassword = signCertificatePassword;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1790,6 +1879,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ExtractResourcesBodyInput
     {
+        public ExtractResourcesBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1826,6 +1921,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ExtractTextByExpressionBodyInput
     {
+        public ExtractTextByExpressionBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string expression)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.Expression = expression;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1853,6 +1955,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ExtractTextFromWordBodyInput
     {
+        public ExtractTextFromWordBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1874,6 +1982,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class FindAndReplaceBodyInput
     {
+        public FindAndReplaceBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string oldText, string newText)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.OldText = oldText;
+            this.NewText = newText;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1892,6 +2008,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class FlipImageBodyInput
     {
+        public FlipImageBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, BodyInputOrientationTypeType orientationType)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.OrientationType = orientationType;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -1912,6 +2035,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class GenerateDocumentFromPdfBodyInput
     {
+        public GenerateDocumentFromPdfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent templateDocContent, string templateDocName, string dataArray)
+        {
+            this.TemplateDocContent = templateDocContent;
+            this.TemplateDocName = templateDocName;
+            this.DataArray = dataArray;
+        }
+
         [JsonProperty("templateDocContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent TemplateDocContent { get; set; }
 
@@ -1942,6 +2072,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class GenerateDocumentMultipleBodyInput
     {
+        public GenerateDocumentMultipleBodyInput(string templateFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent templateFileData)
+        {
+            this.TemplateFileName = templateFileName;
+            this.TemplateFileData = templateFileData;
+        }
+
         [JsonProperty("templateFileType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputTemplateFileTypeType TemplateFileType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect.BodyInputTemplateFileTypeType.Docx;
 
@@ -2040,6 +2176,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ImageStampBodyInput
     {
+        public ImageStampBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent imageFile, string imageName)
+        {
+            this.DocContent = docContent;
+            this.DocName = docName;
+            this.ImageFile = imageFile;
+            this.ImageName = imageName;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2104,6 +2248,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class LinearizePdfBodyInput
     {
+        public LinearizePdfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2123,6 +2273,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class MergeBodyInput
     {
+        public MergeBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] DocContent { get; set; }
 
@@ -2132,6 +2288,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class MergeOverlayBodyInput
     {
+        public MergeOverlayBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent baseDocContent, string baseDocName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent layerDocContent, string layerDocName)
+        {
+            this.BaseDocContent = baseDocContent;
+            this.BaseDocName = baseDocName;
+            this.LayerDocContent = layerDocContent;
+            this.LayerDocName = layerDocName;
+        }
+
         [JsonProperty("baseDocContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BaseDocContent { get; set; }
 
@@ -2147,6 +2311,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class OptimizeBodyInput
     {
+        public OptimizeBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2192,6 +2362,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class PdfOcrBodyInput
     {
+        public PdfOcrBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2229,6 +2405,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class PdfToExcelBodyInput
     {
+        public PdfToExcelBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2262,6 +2444,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class PdfToPowerPointBodyInput
     {
+        public PdfToPowerPointBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2280,6 +2468,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class PdfToWordBodyInput
     {
+        public PdfToWordBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2317,6 +2511,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ProtectDocumentBodyInput
     {
+        public ProtectDocumentBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string password)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.Password = password;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2363,6 +2564,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ReadBarcodesBodyInput
     {
+        public ReadBarcodesBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, BodyInputBarcodeTypeTypeItem[] barcodeType)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.BarcodeType = barcodeType;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2390,6 +2598,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class RemoveExifTagsFromImageBodyInput
     {
+        public RemoveExifTagsFromImageBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, BodyInputImageTypeType imageType)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.ImageType = imageType;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2402,6 +2617,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class ReplaceTextWithImageBodyInput
     {
+        public ReplaceTextWithImageBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string replaceText)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.ReplaceText = replaceText;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2433,6 +2655,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class RotateDocumentBodyInput
     {
+        public RotateDocumentBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2454,6 +2682,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class RotatePageBodyInput
     {
+        public RotatePageBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName)
+        {
+            this.DocContent = docContent;
+            this.DocName = docName;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2469,6 +2703,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class SignPdfBodyInput
     {
+        public SignPdfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent imageFile, string imageName, string marginXInMM, string marginYInMM)
+        {
+            this.DocContent = docContent;
+            this.DocName = docName;
+            this.ImageFile = imageFile;
+            this.ImageName = imageName;
+            this.MarginXInMM = marginXInMM;
+            this.MarginYInMM = marginYInMM;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2526,6 +2770,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class SplitByTextBodyInput
     {
+        public SplitByTextBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string text)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.Text = text;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2578,6 +2829,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class SplitDocByBarcodeBodyInput
     {
+        public SplitDocByBarcodeBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string barcodeString)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.BarcodeString = barcodeString;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2658,6 +2916,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class SplitDocumentBodyInput
     {
+        public SplitDocumentBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2696,6 +2960,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class StampBodyInput
     {
+        public StampBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, AddAttachmentToPdfBodyInputDocumentType document, string text)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+            this.Text = text;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2762,6 +3033,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class StartPDF4meWfBodyInput
     {
+        public StartPDF4meWfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName, string wfName)
+        {
+            this.DocContent = docContent;
+            this.DocName = docName;
+            this.WfName = wfName;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2774,6 +3052,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class UnlockBodyInput
     {
+        public UnlockBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName, string password)
+        {
+            this.DocContent = docContent;
+            this.DocName = docName;
+            this.Password = password;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -2786,6 +3071,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class GetDocumentFromPDF4meBodyInput
     {
+        public GetDocumentFromPDF4meBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

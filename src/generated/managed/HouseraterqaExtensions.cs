@@ -44,6 +44,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
 
     public class UpdateInspectionBodyInput
     {
+        public UpdateInspectionBodyInput(string inspectionTemplateId, string builderId, string startTime, string endTime)
+        {
+            this.InspectionTemplateId = inspectionTemplateId;
+            this.BuilderId = builderId;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("inspectionTemplateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InspectionTemplateId { get; set; }
 

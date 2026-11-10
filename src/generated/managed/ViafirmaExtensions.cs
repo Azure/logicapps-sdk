@@ -61,6 +61,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
 
     public class SendSignRequestBodyInput
     {
+        public SendSignRequestBodyInput(string groupCode, BodyInputNotificationType notification, BodyInputDocumentType document)
+        {
+            this.GroupCode = groupCode;
+            this.Notification = notification;
+            this.Document = document;
+        }
+
         [JsonProperty("groupCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupCode { get; set; }
 
@@ -85,6 +92,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
 
     public class BodyInputNotificationType
     {
+        public BodyInputNotificationType(BodyInputNotificationTypeSharedLinkType sharedLink)
+        {
+            this.SharedLink = sharedLink;
+        }
+
         [JsonProperty("text")]
         public string Text { get; set; }
 
@@ -97,6 +109,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
 
     public class BodyInputNotificationTypeSharedLinkType
     {
+        public BodyInputNotificationTypeSharedLinkType(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -106,6 +123,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
 
     public class BodyInputDocumentType
     {
+        public BodyInputDocumentType(string templateCode)
+        {
+            this.TemplateCode = templateCode;
+        }
+
         [JsonProperty("templateCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateCode { get; set; }
     }
@@ -121,6 +143,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
 
     public class CreateSignRequestBodyInput
     {
+        public CreateSignRequestBodyInput(string groupCode, BodyInputDocumentType document)
+        {
+            this.GroupCode = groupCode;
+            this.Document = document;
+        }
+
         [JsonProperty("groupCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupCode { get; set; }
 

@@ -803,6 +803,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
     public class CreateEntryBodyInput
     {
+        public CreateEntryBodyInput(string nameFirst, string nameLast)
+        {
+            this.NameFirst = nameFirst;
+            this.NameLast = nameLast;
+        }
+
         [JsonProperty("AddressTypeID")]
         public int? AddressTypeId { get; set; }
 
@@ -2077,6 +2083,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
     public class CreateEntryApplicationBodyInput
     {
+        public CreateEntryApplicationBodyInput(int entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         public BodyInputAllocateOptionEnumType? AllocateOptionEnum { get; set; }
         public string ApplicationDate { get; set; }
 
@@ -3554,6 +3565,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
     public class CreateEntryEnrollmentBodyInput
     {
+        public CreateEntryEnrollmentBodyInput(int entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         public string Campus { get; set; }
         public string Comments { get; set; }
 
@@ -4115,6 +4131,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
     public class CreateBookingBodyInput
     {
+        public CreateBookingBodyInput(int entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         public int? AdditionalOccupantCount { get; set; }
         public string AutoAllocationDetail { get; set; }
         public BodyInputBookingLinkTypeEnumType? BookingLinkTypeEnum { get; set; }
@@ -4975,6 +4996,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
     public class CreateTransactionBodyInput
     {
+        public CreateTransactionBodyInput(double amount, int chargeGroupId)
+        {
+            this.Amount = amount;
+            this.ChargeGroupId = chargeGroupId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
         public CreateTransactionBodyInputCallTypeEnumType? CallTypeEnum { get; set; }
@@ -5404,6 +5431,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
     public class CreateRoomSpaceMaintenanceBodyInput
     {
+        public CreateRoomSpaceMaintenanceBodyInput(int roomSpaceId)
+        {
+            this.RoomSpaceId = roomSpaceId;
+        }
+
         public string AccountCode { get; set; }
         public string Cause { get; set; }
         public bool? Charge { get; set; }

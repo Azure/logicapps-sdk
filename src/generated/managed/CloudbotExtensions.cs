@@ -173,6 +173,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
 
     public class ExecuteBotBodyInput
     {
+        public ExecuteBotBodyInput(bool async)
+        {
+            this.Async = async;
+        }
+
         [JsonProperty("async", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Async { get; set; }
 

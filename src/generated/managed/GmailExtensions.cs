@@ -198,6 +198,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
 
     public class ReplyToAttachment
     {
+        public ReplyToAttachment(string name, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent content)
+        {
+            this.Name = name;
+            this.Content = content;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -208,6 +214,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
 
     public class EmailMessageInput
     {
+        public EmailMessageInput(string to)
+        {
+            this.To = to;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 

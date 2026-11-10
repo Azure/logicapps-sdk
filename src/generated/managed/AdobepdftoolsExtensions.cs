@@ -50,6 +50,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
 
     public class FilesArrayInput
     {
+        public FilesArrayInput(string mergedPDFFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] files)
+        {
+            this.MergedPDFFileName = mergedPDFFileName;
+            this.Files = files;
+        }
+
         [JsonProperty("outputFileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MergedPDFFileName { get; set; }
 

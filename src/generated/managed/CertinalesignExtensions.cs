@@ -573,6 +573,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
 
     public class CreateTransactionBodyInput
     {
+        public CreateTransactionBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -885,6 +890,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
 
     public class ListUsersBodyInput
     {
+        public ListUsersBodyInput(int pageNumber, int recordsPerPage)
+        {
+            this.PageNumber = pageNumber;
+            this.RecordsPerPage = recordsPerPage;
+        }
+
         [JsonProperty("pageNo", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageNumber { get; set; }
 

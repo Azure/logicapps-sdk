@@ -69,6 +69,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
 
     public class BodyInput
     {
+        public BodyInput(string fromPhoneNumber, BodyInputRecipientsTypeItem[] recipients, string message)
+        {
+            this.FromPhoneNumber = fromPhoneNumber;
+            this.Recipients = recipients;
+            this.Message = message;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromPhoneNumber { get; set; }
 
@@ -87,6 +94,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
 
     public class BodyInputRecipientsTypeItem
     {
+        public BodyInputRecipientsTypeItem(string to)
+        {
+            this.To = to;
+        }
+
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
     }

@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
     public class SupportivekoalaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<ImagesResponse, ApiConnectionActionConfiguration> Images(Expression<Func<ImagesBodyInput>> body = null)
+        public IBodyWorkflowAction<ImagesResponse, ApiConnectionActionConfiguration> Images(Expression<Func<ImagesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/images/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImagesResponse>(callPayload);
             });
         }
@@ -53,16 +52,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<TemplateResponse, ApiConnectionActionConfiguration> Template(Expression<Func<TemplateBodyInput>> body = null)
+        public IBodyWorkflowAction<TemplateResponse, ApiConnectionActionConfiguration> Template(Expression<Func<TemplateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/templates/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TemplateResponse>(callPayload);
             });
         }
@@ -120,6 +118,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
 
     public class ImagesBodyInput
     {
+        public ImagesBodyInput(string template)
+        {
+            this.Template = template;
+        }
+
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Template { get; set; }
 
@@ -242,6 +245,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
 
     public class TemplateBodyInput
     {
+        public TemplateBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

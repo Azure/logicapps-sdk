@@ -43,6 +43,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
 
     public class BodyInput
     {
+        public BodyInput(string phoneNumber, string messageText)
+        {
+            this.PhoneNumber = phoneNumber;
+            this.MessageText = messageText;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PhoneNumber { get; set; }
         public string ExternalId { get; set; }

@@ -213,8 +213,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
 
     public class SendMessageRequestInput
     {
-        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMessageInfoV2 Message { get; set; } = new SendMessageInfoV2();
+        [JsonProperty("message")]
+        public SendMessageInfoV2 Message { get; set; }
 
         [JsonProperty("send_at")]
         public string SendAt { get; set; }
@@ -228,6 +228,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
 
     public class SendMessageInfoV2
     {
+        public SendMessageInfoV2(string subject, string fromEmail, RecipientInfo[] sendTo)
+        {
+            this.Subject = subject;
+            this.FromEmail = fromEmail;
+            this.SendTo = sendTo;
+        }
+
         [JsonProperty("html")]
         public string ContentOfTheMessage { get; set; }
 
@@ -288,6 +295,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
 
     public class RecipientInfo
     {
+        public RecipientInfo(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 

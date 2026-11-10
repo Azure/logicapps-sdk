@@ -39,6 +39,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
 
     public class ProjectSettingsInput
     {
+        public ProjectSettingsInput(string customerId, string id, string name, int contactPhone, string contactEmail, string responsible, string[] services)
+        {
+            this.CustomerId = customerId;
+            this.Id = id;
+            this.Name = name;
+            this.ContactPhone = contactPhone;
+            this.ContactEmail = contactEmail;
+            this.Responsible = responsible;
+            this.Services = services;
+        }
+
         [JsonProperty("customerId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CustomerId { get; set; }
 

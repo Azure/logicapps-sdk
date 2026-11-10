@@ -208,16 +208,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateItemState(Expression<Func<CreateItemStateBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateItemState(Expression<Func<CreateItemStateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/universalqueues/v2/states";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -256,12 +255,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
 
     public class SetSessionFailedBodyInput
     {
+        public SetSessionFailedBodyInput(string details)
+        {
+            this.Details = details;
+        }
+
         [JsonProperty("details", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Details { get; set; }
     }
 
     public class AddLogToSessionBodyInput
     {
+        public AddLogToSessionBodyInput(AddLogToSessionBodyInputLevelType level, string message)
+        {
+            this.Level = level;
+            this.Message = message;
+        }
+
         [JsonProperty("level", DefaultValueHandling = DefaultValueHandling.Include)]
         public AddLogToSessionBodyInputLevelType Level { get; set; }
 
@@ -332,6 +342,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
 
     public class CreateItemStateBodyInput
     {
+        public CreateItemStateBodyInput(BodyInputStateType state, int queueId)
+        {
+            this.State = state;
+            this.QueueId = queueId;
+        }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 

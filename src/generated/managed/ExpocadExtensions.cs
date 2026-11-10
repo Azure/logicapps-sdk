@@ -956,6 +956,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
 
     public class BoothClassInput
     {
+        public BoothClassInput(string id, int keepWhenCombined, int countAsInventory)
+        {
+            this.Id = id;
+            this.KeepWhenCombined = keepWhenCombined;
+            this.CountAsInventory = countAsInventory;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
         public string Name { get; set; }
@@ -1050,6 +1057,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
 
     public class ExhibitorInput
     {
+        public ExhibitorInput(string exhibitorId)
+        {
+            this.ExhibitorId = exhibitorId;
+        }
+
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string City { get; set; }
@@ -1227,6 +1239,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
 
     public class RatePlanInput
     {
+        public RatePlanInput(string name, string shortCode, double grossRate, double fixedDiscountRate, double percentDiscountRate, bool isFixed)
+        {
+            this.Name = name;
+            this.ShortCode = shortCode;
+            this.GrossRate = grossRate;
+            this.FixedDiscountRate = fixedDiscountRate;
+            this.PercentDiscountRate = percentDiscountRate;
+            this.IsFixed = isFixed;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

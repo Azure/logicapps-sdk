@@ -155,6 +155,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
 
     public class BodyInputInputPersonTypePersonNameType
     {
+        public BodyInputInputPersonTypePersonNameType(JToken[] personNames)
+        {
+            this.PersonNames = personNames;
+        }
+
         [JsonProperty("nameFields", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] PersonNames { get; set; }
     }

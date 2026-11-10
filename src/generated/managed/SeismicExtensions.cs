@@ -112,18 +112,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> GenerateAsync(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<GenInputReqInput>> genInputReq = null)
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> GenerateAsync(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<GenInputReqInput>> genInputReq)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentVersionId = WorkflowExpression.Compile(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
-            var __workflow_genInputReq = WorkflowExpression.Compile(genInputReq, nameof(genInputReq), required: false);
+            var __workflow_genInputReq = WorkflowExpression.Compile(genInputReq, nameof(genInputReq), required: true);
             return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/livedocVersions/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentVersionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_genInputReq != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_genInputReq);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_genInputReq);
                 return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(callPayload);
             });
         }
@@ -551,6 +550,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 
     public class GenInputReqInput
     {
+        public GenInputReqInput(GenInputReqInputOutputsTypeItem[] outputs)
+        {
+            this.Outputs = outputs;
+        }
+
         [JsonProperty("adHocInputs")]
         public V2AdHocInputs[] AdHocInputs { get; set; }
 
@@ -569,6 +573,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 
     public class GenInputReqInputOutputsTypeItem
     {
+        public GenInputReqInputOutputsTypeItem(GenInputReqInputOutputsTypeItemFormatType format)
+        {
+            this.Format = format;
+        }
+
         [JsonProperty("docxOptions", DefaultValueHandling = DefaultValueHandling.Include)]
         public GenInputReqInputOutputsTypeItemDocxOptionsType DocxOptions { get; set; } = new GenInputReqInputOutputsTypeItemDocxOptionsType();
 
@@ -674,6 +683,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 
     public class GenInputReqInputOutputsTypeItemXlsxOptionsType
     {
+        public GenInputReqInputOutputsTypeItemXlsxOptionsType(string datasource)
+        {
+            this.Datasource = datasource;
+        }
+
         [JsonProperty("datasource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Datasource { get; set; }
     }

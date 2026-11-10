@@ -179,6 +179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
 
     public class BodyInput
     {
+        public BodyInput(string[] events)
+        {
+            this.Events = events;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Events { get; set; }
 

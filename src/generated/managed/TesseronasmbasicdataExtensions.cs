@@ -195,6 +195,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
 
     public class SetEnterpriseStatusBodyInput
     {
+        public SetEnterpriseStatusBodyInput(int enterpriseId, int statusId)
+        {
+            this.EnterpriseId = enterpriseId;
+            this.StatusId = statusId;
+        }
+
         [JsonProperty("enterpriseId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int EnterpriseId { get; set; }
 
@@ -212,6 +218,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
 
     public class ApiContactCreateContactBodyInput
     {
+        public ApiContactCreateContactBodyInput(string enterpriseReferenceNumber, string foreName, string surName)
+        {
+            this.EnterpriseReferenceNumber = enterpriseReferenceNumber;
+            this.ForeName = foreName;
+            this.SurName = surName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EnterpriseReferenceNumber { get; set; }
         public string Title { get; set; }
@@ -315,6 +328,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
 
     public class ApiContactUpdateContactBodyInput
     {
+        public ApiContactUpdateContactBodyInput(string enterpriseReferenceNumber, string foreName, string surName)
+        {
+            this.EnterpriseReferenceNumber = enterpriseReferenceNumber;
+            this.ForeName = foreName;
+            this.SurName = surName;
+        }
+
         [JsonProperty("contactId")]
         public string ContactId { get; set; }
 

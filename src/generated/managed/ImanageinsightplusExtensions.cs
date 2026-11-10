@@ -364,6 +364,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 
     public class GetCurationPropertiesForDocumentBodyInput
     {
+        public GetCurationPropertiesForDocumentBodyInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -379,6 +384,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 
     public class SetCurationPropertiesForDocumentBodyInput
     {
+        public SetCurationPropertiesForDocumentBodyInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -683,6 +693,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 
     public class SearchCurationTaxonomyNodeValuesBodyInput
     {
+        public SearchCurationTaxonomyNodeValuesBodyInput(string libraryId, string taxonomyProperty)
+        {
+            this.LibraryId = libraryId;
+            this.TaxonomyProperty = taxonomyProperty;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -819,6 +835,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 
     public class SearchKnowledgeDocumentsBodyInput
     {
+        public SearchKnowledgeDocumentsBodyInput(string libraryId)
+        {
+            this.LibraryId = libraryId;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -834,6 +855,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 
     public class BodyInputSearchFiltersTypeItem
     {
+        public BodyInputSearchFiltersTypeItem(string key, string value)
+        {
+            this.Key = key;
+            this.Value = value;
+        }
+
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
 

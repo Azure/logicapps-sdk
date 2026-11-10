@@ -59,6 +59,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
 
     public class BodyInput
     {
+        public BodyInput(string title, string templateId, string content, string[] audienceUsers)
+        {
+            this.Title = title;
+            this.TemplateId = templateId;
+            this.Content = content;
+            this.AudienceUsers = audienceUsers;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

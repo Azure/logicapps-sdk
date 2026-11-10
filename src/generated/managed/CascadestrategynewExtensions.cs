@@ -70,6 +70,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
 
     public class UpdateMeasure2BodyInput
     {
+        public UpdateMeasure2BodyInput(string workspaceId, string planId, double measureValue)
+        {
+            this.WorkspaceId = workspaceId;
+            this.PlanId = planId;
+            this.MeasureValue = measureValue;
+        }
+
         [JsonProperty("workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -88,6 +95,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
 
     public class UpdateMeasureHistoricalValue2BodyInput
     {
+        public UpdateMeasureHistoricalValue2BodyInput(string workspaceId, string planId)
+        {
+            this.WorkspaceId = workspaceId;
+            this.PlanId = planId;
+        }
+
         [JsonProperty("workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -115,6 +128,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
 
     public class UpdateAction2BodyInput
     {
+        public UpdateAction2BodyInput(string workspaceId, string planId, double actionValue)
+        {
+            this.WorkspaceId = workspaceId;
+            this.PlanId = planId;
+            this.ActionValue = actionValue;
+        }
+
         [JsonProperty("workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 

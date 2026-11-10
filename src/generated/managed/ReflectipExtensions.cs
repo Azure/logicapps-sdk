@@ -51,17 +51,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<LinkResponseItem[], ApiConnectionActionConfiguration> Link(Expression<Func<string>> graphId, Expression<Func<LinkBodyInput>> body = null)
+        public IBodyWorkflowAction<LinkResponseItem[], ApiConnectionActionConfiguration> Link(Expression<Func<string>> graphId, Expression<Func<LinkBodyInput>> body)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LinkResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graphs/{0}/links", __workflow_graphId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LinkResponseItem[]>(callPayload);
             });
         }
@@ -78,22 +77,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new DailyNotePutBodyInput().ToJToken();
                 return new ApiConnectionAction<DailyNotePutResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<NoteResponse, ApiConnectionActionConfiguration> Note(Expression<Func<string>> graphId, Expression<Func<NoteBodyInput>> body = null)
+        public IBodyWorkflowAction<NoteResponse, ApiConnectionActionConfiguration> Note(Expression<Func<string>> graphId, Expression<Func<NoteBodyInput>> body)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graphs/{0}/notes", __workflow_graphId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NoteResponse>(callPayload);
             });
         }
@@ -192,6 +192,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
 
     public class LinkBodyInput
     {
+        public LinkBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -240,6 +245,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
 
     public class NoteBodyInput
     {
+        public NoteBodyInput(string subject, string contentMarkdown)
+        {
+            this.Subject = subject;
+            this.ContentMarkdown = contentMarkdown;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 

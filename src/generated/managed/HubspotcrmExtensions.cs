@@ -542,6 +542,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
 
     public class CompaniesCreateBodyInputPropertiesType
     {
+        public CompaniesCreateBodyInputPropertiesType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("about_us")]
         public string AboutUs { get; set; }
 
@@ -806,6 +811,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
 
     public class CompaniesUpdatePropertiesInputPropertiesType
     {
+        public CompaniesUpdatePropertiesInputPropertiesType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("about_us")]
         public string AboutUs { get; set; }
 

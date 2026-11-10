@@ -954,6 +954,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubenterprise
                 callPayload.Headers["Accept"] = Convert.ToString("application/vnd.github.v3+json");
                 if (__workflow_requestBodyOfWebhook != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
+                else
+                    callPayload.Body = new RequestBodyOfWebhookInput().ToJToken();
                 return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
@@ -1135,6 +1137,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubenterprise
 
     public class IssueBasicDetailsInput
     {
+        public IssueBasicDetailsInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -1735,6 +1742,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubenterprise
 
     public class CreateRepositoryUsingTemplateBodyInput
     {
+        public CreateRepositoryUsingTemplateBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("owner")]
         public string Owner { get; set; }
 
@@ -1777,6 +1789,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubenterprise
 
     public class CreateReferenceBodyInput
     {
+        public CreateReferenceBodyInput(string reference, string sha)
+        {
+            this.Reference = reference;
+            this.Sha = sha;
+        }
+
         [JsonProperty("ref", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Reference { get; set; }
 
@@ -2280,6 +2298,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubenterprise
 
     public class CreatePullRequestBodyInput
     {
+        public CreatePullRequestBodyInput(string head, string @base)
+        {
+            this.Head = head;
+            this.Base = @base;
+        }
+
         [JsonProperty("title")]
         public string Title { get; set; }
 
@@ -2562,6 +2586,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubenterprise
 
     public class CreateOrUpdateFileBodyInput
     {
+        public CreateOrUpdateFileBodyInput(string commitMessage, string contentBase64)
+        {
+            this.CommitMessage = commitMessage;
+            this.ContentBase64 = contentBase64;
+        }
+
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CommitMessage { get; set; }
 
@@ -2631,6 +2661,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubenterprise
 
     public class StartTaskBodyInput
     {
+        public StartTaskBodyInput(string prompt)
+        {
+            this.Prompt = prompt;
+        }
+
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
 

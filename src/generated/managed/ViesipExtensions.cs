@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
     public class ViesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viesip")]
-        public IBodyWorkflowAction<CheckVATValidityResponse, ApiConnectionActionConfiguration> CheckVATValidity(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<CheckVATValidityResponse, ApiConnectionActionConfiguration> CheckVATValidity(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CheckVATValidityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/taxation_customs/vies/services/checkVatService";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CheckVATValidityResponse>(callPayload);
             });
         }
@@ -55,6 +54,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
 
     public class BodyInput
     {
+        public BodyInput(BodyInputCountryCodeType countryCode, string vatNumber)
+        {
+            this.CountryCode = countryCode;
+            this.VatNumber = vatNumber;
+        }
+
         [JsonProperty("countryCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputCountryCodeType CountryCode { get; set; }
 

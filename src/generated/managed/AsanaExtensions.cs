@@ -239,12 +239,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
     public class BodyInput
     {
+        public BodyInput(BodyInputDataType data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputDataType Data { get; set; }
     }
 
     public class BodyInputDataType
     {
+        public BodyInputDataType(string comment)
+        {
+            this.Comment = comment;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
     }
@@ -386,12 +396,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
     public class ProjectInput
     {
+        public ProjectInput(ProjectInputDataType data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ProjectInputDataType Data { get; set; } = new ProjectInputDataType();
+        public ProjectInputDataType Data { get; set; }
     }
 
     public class ProjectInputDataType
     {
+        public ProjectInputDataType(string projectName)
+        {
+            this.ProjectName = projectName;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
 
@@ -457,12 +477,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
     public class TaskInput
     {
+        public TaskInput(TaskInputDataType data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TaskInputDataType Data { get; set; } = new TaskInputDataType();
+        public TaskInputDataType Data { get; set; }
     }
 
     public class TaskInputDataType
     {
+        public TaskInputDataType(string taskName)
+        {
+            this.TaskName = taskName;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskName { get; set; }
 

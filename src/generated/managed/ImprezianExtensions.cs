@@ -25,16 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CampaignPostValue(Expression<Func<CampaignPostValueBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CampaignPostValue(Expression<Func<CampaignPostValueBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Campaign";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -731,6 +730,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
     public class CampaignPostValueBodyInput
     {
+        public CampaignPostValueBodyInput(string description, string expires)
+        {
+            this.Description = description;
+            this.Expires = expires;
+        }
+
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
 

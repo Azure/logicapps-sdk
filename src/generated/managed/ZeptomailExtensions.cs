@@ -254,6 +254,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 
     public class SendMailBodyInput
     {
+        public SendMailBodyInput(string mailAgent, FromAddress from, EmailAddressItems[] to, string subject)
+        {
+            this.MailAgent = mailAgent;
+            this.From = from;
+            this.To = to;
+            this.Subject = subject;
+        }
+
         [JsonProperty("mailagent_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MailAgent { get; set; }
 
@@ -287,6 +295,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 
     public class FromAddress
     {
+        public FromAddress(FromAddressAddressType address, string name)
+        {
+            this.Address = address;
+            this.Name = name;
+        }
+
         [JsonProperty("from-detail", DefaultValueHandling = DefaultValueHandling.Include)]
         public FromAddressAddressType Address { get; set; }
 
@@ -296,6 +310,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 
     public class FromAddressAddressType
     {
+        public FromAddressAddressType(string prefix, string domain)
+        {
+            this.Prefix = prefix;
+            this.Domain = domain;
+        }
+
         [JsonProperty("from-prefix", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prefix { get; set; }
 
@@ -311,6 +331,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 
     public class EmailAddress
     {
+        public EmailAddress(string address)
+        {
+            this.Address = address;
+        }
+
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
 
@@ -350,6 +375,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 
     public class SendTemplateMailBodyInput
     {
+        public SendTemplateMailBodyInput(string mailAgent, string mailTemplate, FromAddress from)
+        {
+            this.MailAgent = mailAgent;
+            this.MailTemplate = mailTemplate;
+            this.From = from;
+        }
+
         [JsonProperty("mailagent_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MailAgent { get; set; }
 

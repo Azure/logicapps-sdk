@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ahead
 
     public class BodyInput
     {
+        public BodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
         public string Text { get; set; }

@@ -122,6 +122,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
 
     public class ContentInput
     {
+        public ContentInput(string messageReference, string redactionMessage)
+        {
+            this.MessageReference = messageReference;
+            this.RedactionMessage = redactionMessage;
+        }
+
         [JsonProperty("messageRef", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MessageReference { get; set; }
 

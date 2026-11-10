@@ -33,6 +33,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Repfabricleadloader
 
     public class BodyInput
     {
+        public BodyInput(string domainName, string companyName, string contactFirstName, string contactCompanyName, string opportunityPrincipalName, string opportunityProgram)
+        {
+            this.DomainName = domainName;
+            this.CompanyName = companyName;
+            this.ContactFirstName = contactFirstName;
+            this.ContactCompanyName = contactCompanyName;
+            this.OpportunityPrincipalName = opportunityPrincipalName;
+            this.OpportunityProgram = opportunityProgram;
+        }
+
         [JsonProperty("domain-name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }
 

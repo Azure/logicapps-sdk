@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
 
     public class WebhookRequestBodyInput
     {
+        public WebhookRequestBodyInput(WebhookRequestBodyInputConditionsType conditions)
+        {
+            this.Conditions = conditions;
+        }
+
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "PROCESS_COMPLETED";
 
@@ -44,6 +49,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
 
     public class WebhookRequestBodyInputConditionsType
     {
+        public WebhookRequestBodyInputConditionsType(string template)
+        {
+            this.Template = template;
+        }
+
         [JsonProperty("templateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Template { get; set; }
     }

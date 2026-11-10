@@ -13,33 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
     public class OttobotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendAttachmentsToUrl(Expression<Func<SendAttachmentsToUrlBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendAttachmentsToUrl(Expression<Func<SendAttachmentsToUrlBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/attachments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
-        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> ReturnResultsToBot(Expression<Func<string>> returnResultURL, Expression<Func<ReturnResultsToBotBodyInput>> body = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> ReturnResultsToBot(Expression<Func<string>> returnResultURL, Expression<Func<ReturnResultsToBotBodyInput>> body)
         {
             var __workflow_returnResultURL = WorkflowExpression.Compile(returnResultURL, nameof(returnResultURL), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/skills/results";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["returnResultURL"] = ExpressionConverter.Convert(__workflow_returnResultURL);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Response>(callPayload);
             });
         }
@@ -51,6 +49,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
 
     public class SendAttachmentsToUrlBodyInput
     {
+        public SendAttachmentsToUrlBodyInput(string aPIURL, string attachmentURL, string attachmentFileName)
+        {
+            this.APIURL = aPIURL;
+            this.AttachmentURL = attachmentURL;
+            this.AttachmentFileName = attachmentFileName;
+        }
+
         [JsonProperty("additionalParameters", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken AdditionalParameters { get; set; } = JToken.Parse("{}");
 
@@ -75,6 +80,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
 
     public class ReturnResultsToBotBodyInput
     {
+        public ReturnResultsToBotBodyInput(string text, bool endRequest)
+        {
+            this.Text = text;
+            this.EndRequest = endRequest;
+        }
+
         [JsonProperty("adaptiveCard")]
         public AdaptiveCard AdaptiveCard { get; set; }
 
@@ -90,6 +101,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
 
     public class AdaptiveCard
     {
+        public AdaptiveCard(string adaptiveCardSchema, string adaptiveCardType, string adaptiveCardVersion)
+        {
+            this.AdaptiveCardSchema = adaptiveCardSchema;
+            this.AdaptiveCardType = adaptiveCardType;
+            this.AdaptiveCardVersion = adaptiveCardVersion;
+        }
+
         [JsonProperty("$schema", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AdaptiveCardSchema { get; set; }
 

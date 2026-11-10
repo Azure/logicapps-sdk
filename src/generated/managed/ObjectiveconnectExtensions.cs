@@ -192,6 +192,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
 
     public class BodyInput
     {
+        public BodyInput(string[] emails, string shareUuid)
+        {
+            this.Emails = emails;
+            this.ShareUuid = shareUuid;
+        }
+
         [JsonProperty("emails", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Emails { get; set; }
 

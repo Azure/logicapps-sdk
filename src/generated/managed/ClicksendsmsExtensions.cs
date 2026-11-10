@@ -333,12 +333,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class SmsSendBodyInput
     {
+        public SmsSendBodyInput(SmsSendBodyInputMessagesTypeItem[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
         public SmsSendBodyInputMessagesTypeItem[] Messages { get; set; }
     }
 
     public class SmsSendBodyInputMessagesTypeItem
     {
+        public SmsSendBodyInputMessagesTypeItem(string to, string body)
+        {
+            this.To = to;
+            this.Body = body;
+        }
+
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -384,6 +395,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class CreateListBodyInput
     {
+        public CreateListBodyInput(string listName)
+        {
+            this.ListName = listName;
+        }
+
         [JsonProperty("list_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
     }
@@ -564,12 +580,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class SendVoiceBodyInput
     {
+        public SendVoiceBodyInput(SendVoiceBodyInputMessagesTypeItem[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
         public SendVoiceBodyInputMessagesTypeItem[] Messages { get; set; }
     }
 
     public class SendVoiceBodyInputMessagesTypeItem
     {
+        public SendVoiceBodyInputMessagesTypeItem(string to, string body, BodyInputMessagesTypeItemVoiceType voice)
+        {
+            this.To = to;
+            this.Body = body;
+            this.Voice = voice;
+        }
+
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -708,6 +736,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class CreateListContactBodyInput
     {
+        public CreateListContactBodyInput(string firstName, string lastName, string phoneNumber)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.PhoneNumber = phoneNumber;
+        }
+
         [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -954,6 +989,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class SendMmsBodyInput
     {
+        public SendMmsBodyInput(SendMmsBodyInputMessagesTypeItem[] messages, string mediaFile)
+        {
+            this.Messages = messages;
+            this.MediaFile = mediaFile;
+        }
+
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
         public SendMmsBodyInputMessagesTypeItem[] Messages { get; set; }
 
@@ -963,6 +1004,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class SendMmsBodyInputMessagesTypeItem
     {
+        public SendMmsBodyInputMessagesTypeItem(string to, string subject, string body)
+        {
+            this.To = to;
+            this.Subject = subject;
+            this.Body = body;
+        }
+
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1083,6 +1131,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class SendFaxBodyInput
     {
+        public SendFaxBodyInput(SendFaxBodyInputMessagesTypeItem[] messages, string fileUrl)
+        {
+            this.Messages = messages;
+            this.FileUrl = fileUrl;
+        }
+
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
         public SendFaxBodyInputMessagesTypeItem[] Messages { get; set; }
 
@@ -1092,6 +1146,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class SendFaxBodyInputMessagesTypeItem
     {
+        public SendFaxBodyInputMessagesTypeItem(string to)
+        {
+            this.To = to;
+        }
+
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1155,6 +1214,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class UploadMediaBodyInput
     {
+        public UploadMediaBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
@@ -1374,6 +1438,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class SendLetterBodyInput
     {
+        public SendLetterBodyInput(string fileUrl, BodyInputColourType colour, BodyInputDuplexType duplex, BodyInputRecipientsTypeItem[] recipients)
+        {
+            this.FileUrl = fileUrl;
+            this.Colour = colour;
+            this.Duplex = duplex;
+            this.Recipients = recipients;
+        }
+
         [JsonProperty("file_url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileUrl { get; set; }
 
@@ -1422,6 +1494,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class BodyInputRecipientsTypeItem
     {
+        public BodyInputRecipientsTypeItem(string addressName, string addressCity, string addressState, string addressPostalCode, string addressCountry, int returnAddressId, string addressLine1)
+        {
+            this.AddressName = addressName;
+            this.AddressCity = addressCity;
+            this.AddressState = addressState;
+            this.AddressPostalCode = addressPostalCode;
+            this.AddressCountry = addressCountry;
+            this.ReturnAddressId = returnAddressId;
+            this.AddressLine1 = addressLine1;
+        }
+
         [JsonProperty("address_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressName { get; set; }
 
@@ -1584,6 +1667,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class SendPostcardBodyInput
     {
+        public SendPostcardBodyInput(BodyInputRecipientsTypeItem[] recipients, string[] fileUrls)
+        {
+            this.Recipients = recipients;
+            this.FileUrls = fileUrls;
+        }
+
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputRecipientsTypeItem[] Recipients { get; set; }
 

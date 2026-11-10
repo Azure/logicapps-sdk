@@ -564,6 +564,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class UpdateDocumentContentBodyInput
     {
+        public UpdateDocumentContentBodyInput(string fileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -705,12 +711,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class SimpleSearchBodyInput
     {
+        public SimpleSearchBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
     public class AdvancedSearchBodyInput
     {
+        public AdvancedSearchBodyInput(string query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 
@@ -723,6 +739,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class BodyInputItem
     {
+        public BodyInputItem(string name, string value)
+        {
+            this.Name = name;
+            this.Value = value;
+        }
+
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -744,6 +766,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class TrusteeWrite
     {
+        public TrusteeWrite(string id, TrusteeWriteAccessRightsTypeItem[] accessRights)
+        {
+            this.Id = id;
+            this.AccessRights = accessRights;
+        }
+
         [JsonProperty("trusteeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -796,6 +824,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class CreateBusinessWorkspaceBodyInput
     {
+        public CreateBusinessWorkspaceBodyInput(string parentId, string templateId, JToken fields)
+        {
+            this.ParentId = parentId;
+            this.TemplateId = templateId;
+            this.Fields = fields;
+        }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -811,6 +846,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class CreateDocumentBodyInput
     {
+        public CreateDocumentBodyInput(string parentId, DocumentMetadataV2 metadata, File @file)
+        {
+            this.ParentId = parentId;
+            this.Metadata = metadata;
+            this.File = @file;
+        }
+
         [JsonProperty("parentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentId { get; set; }
 
@@ -823,6 +865,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class DocumentMetadataV2
     {
+        public DocumentMetadataV2(string displayName, JToken fields)
+        {
+            this.DisplayName = displayName;
+            this.Fields = fields;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -835,6 +883,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class File
     {
+        public File(string fileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -844,6 +898,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class CreateFolderBodyInput
     {
+        public CreateFolderBodyInput(string name, string parentId, JToken fields)
+        {
+            this.Name = name;
+            this.ParentId = parentId;
+            this.Fields = fields;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -859,6 +920,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class UpdateBusinessWorkspaceBodyInput
     {
+        public UpdateBusinessWorkspaceBodyInput(string name, JToken fields)
+        {
+            this.Name = name;
+            this.Fields = fields;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -868,6 +935,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class UpdateDocumentBodyInput
     {
+        public UpdateDocumentBodyInput(DocumentMetadataV2 metadata, File @file)
+        {
+            this.Metadata = metadata;
+            this.File = @file;
+        }
+
         [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         public DocumentMetadataV2 Metadata { get; set; }
 
@@ -877,6 +950,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class UpdateDocumentPropertiesBodyInput
     {
+        public UpdateDocumentPropertiesBodyInput(string displayName, JToken fields)
+        {
+            this.DisplayName = displayName;
+            this.Fields = fields;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -889,6 +968,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class UpdateFolderBodyInput
     {
+        public UpdateFolderBodyInput(string name, JToken fields)
+        {
+            this.Name = name;
+            this.Fields = fields;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

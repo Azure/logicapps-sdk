@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
 
     public class AddBlacklistBodyInput
     {
+        public AddBlacklistBodyInput(string phone)
+        {
+            this.Phone = phone;
+        }
+
         [JsonProperty("phone", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Phone { get; set; }
     }
@@ -97,6 +102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
 
     public class AddContactBodyInput
     {
+        public AddContactBodyInput(string phone)
+        {
+            this.Phone = phone;
+        }
+
         [JsonProperty("address")]
         public string Address { get; set; }
 
@@ -142,6 +152,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
 
     public class SendSmsBodyInput
     {
+        public SendSmsBodyInput(string message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty("group_id")]
         public string GroupId { get; set; }
 

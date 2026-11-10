@@ -28,16 +28,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadDeleteResponse, ApiConnectionActionConfiguration> ThreadDelete(Expression<Func<ThreadDeleteBodyInput>> body = null)
+        public IBodyWorkflowAction<ThreadDeleteResponse, ApiConnectionActionConfiguration> ThreadDelete(Expression<Func<ThreadDeleteBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ThreadDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deleteThread";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ThreadDeleteResponse>(callPayload);
             });
         }
@@ -127,6 +126,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
 
     public class ThreadDeleteBodyInput
     {
+        public ThreadDeleteBodyInput(string threadId)
+        {
+            this.ThreadId = threadId;
+        }
+
         [JsonProperty("threadID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ThreadId { get; set; }
     }

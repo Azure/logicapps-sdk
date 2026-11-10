@@ -246,6 +246,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
 
     public class BodyInput
     {
+        public BodyInput(string masterEmail, string password, string vehicleNumber, string startDate, string endDate)
+        {
+            this.MasterEmail = masterEmail;
+            this.Password = password;
+            this.VehicleNumber = vehicleNumber;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
+
         [JsonProperty("master_email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MasterEmail { get; set; }
 

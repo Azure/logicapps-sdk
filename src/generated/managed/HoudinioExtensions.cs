@@ -56,6 +56,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
 
     public class BodyInput
     {
+        public BodyInput(string artifact)
+        {
+            this.Artifact = artifact;
+        }
+
         [JsonProperty("artifact", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Artifact { get; set; }
 

@@ -71,6 +71,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
 
     public class AttributeSynchronizationModelInput
     {
+        public AttributeSynchronizationModelInput(AttributeSynchronizationModelInputDirectionType direction)
+        {
+            this.Direction = direction;
+        }
+
         [JsonProperty("direction", DefaultValueHandling = DefaultValueHandling.Include)]
         public AttributeSynchronizationModelInputDirectionType Direction { get; set; }
     }

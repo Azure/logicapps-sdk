@@ -72,17 +72,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        public IBodyWorkflowAction<ActionsAvailabilityResponse, ApiConnectionActionConfiguration> ActionsAvailability(Expression<Func<string>> documentProcessId, Expression<Func<ActionsAvailabilityBodyInput>> body = null)
+        public IBodyWorkflowAction<ActionsAvailabilityResponse, ApiConnectionActionConfiguration> ActionsAvailability(Expression<Func<string>> documentProcessId, Expression<Func<ActionsAvailabilityBodyInput>> body)
         {
             var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionsAvailabilityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document-processes/{0}/actions", __workflow_documentProcessId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ActionsAvailabilityResponse>(callPayload);
             });
         }
@@ -331,6 +330,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
 
     public class DocumentProcessParticipantsBodyInput
     {
+        public DocumentProcessParticipantsBodyInput(BodyInputParticipantTypeType participantType)
+        {
+            this.ParticipantType = participantType;
+        }
+
         [JsonProperty("participantType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputParticipantTypeType ParticipantType { get; set; }
 
@@ -420,6 +424,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
 
     public class ActionsAvailabilityBodyInput
     {
+        public ActionsAvailabilityBodyInput(BodyInputEventTypeType eventType)
+        {
+            this.EventType = eventType;
+        }
+
         [JsonProperty("event_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputEventTypeType EventType { get; set; }
     }

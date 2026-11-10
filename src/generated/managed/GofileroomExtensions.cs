@@ -554,11 +554,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[], ApiConnectionActionConfiguration> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null, Expression<Func<PublishDocumentStatusBodyInput>> body = null)
+        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[], ApiConnectionActionConfiguration> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<PublishDocumentStatusBodyInput>> body, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PublishDocumentStatusResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/status", __workflow_documentId.WithUrlEncoding(1)));
@@ -566,8 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PublishDocumentStatusResponseItem[]>(callPayload);
             });
         }
@@ -752,10 +751,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateWorkflowResponse, ApiConnectionActionConfiguration> CreateWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<CreateWorkflowBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateWorkflowResponse, ApiConnectionActionConfiguration> CreateWorkflow(Expression<Func<CreateWorkflowBodyInput>> body, Expression<Func<string>> xAuthorization = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateWorkflowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firmflow/api/V1/Workflow/CreateWorkflow";
@@ -763,8 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateWorkflowResponse>(callPayload);
             });
         }
@@ -1865,6 +1863,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
     public class PublishDocumentStatusBodyInput
     {
+        public PublishDocumentStatusBodyInput(string isPublished)
+        {
+            this.IsPublished = isPublished;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string IsPublished { get; set; }
     }
@@ -2275,6 +2278,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
     public class LoginBodyInput
     {
+        public LoginBodyInput(string loginName, string password)
+        {
+            this.LoginName = loginName;
+            this.Password = password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LoginName { get; set; }
 
@@ -2305,6 +2314,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
     public class CreateWorkflowBodyInput
     {
+        public CreateWorkflowBodyInput(BodyInputFilingType filing)
+        {
+            this.Filing = filing;
+        }
+
         public string Drawer { get; set; }
         public string ServiceType { get; set; }
 
@@ -2341,6 +2355,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
     public class BodyInputFilingType
     {
+        public BodyInputFilingType(string description)
+        {
+            this.Description = description;
+        }
+
         [JsonProperty("workflowName")]
         public string WorkflowName { get; set; }
 

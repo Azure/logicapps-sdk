@@ -87,6 +87,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
 
     public class PayloadInput
     {
+        public PayloadInput(string inputFileB64)
+        {
+            this.InputFileB64 = inputFileB64;
+        }
+
         [JsonProperty("input_file_b64", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputFileB64 { get; set; }
 

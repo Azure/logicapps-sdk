@@ -214,6 +214,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
 
     public class GenerateTextContentBodyInputContentsTypeItem
     {
+        public GenerateTextContentBodyInputContentsTypeItem(GenerateTextContentBodyInputContentsTypeItemPartsTypeItem[] parts)
+        {
+            this.Parts = parts;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; } = "user";
 
@@ -223,6 +228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
 
     public class GenerateTextContentBodyInputContentsTypeItemPartsTypeItem
     {
+        public GenerateTextContentBodyInputContentsTypeItemPartsTypeItem(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }
@@ -415,6 +425,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
 
     public class GenerateMultiModalContentBodyInputContentsTypeItem
     {
+        public GenerateMultiModalContentBodyInputContentsTypeItem(JToken[] parts)
+        {
+            this.Parts = parts;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; } = "user";
 
@@ -544,6 +559,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
 
     public class GenerateEmbeddingBodyInput
     {
+        public GenerateEmbeddingBodyInput(BodyInputContentType content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ModelResourceName { get; set; } = "models/embedding-001";
 
@@ -598,12 +618,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
 
     public class BatchEmbedContentsBodyInput
     {
+        public BatchEmbedContentsBodyInput(BodyInputRequestsTypeItem[] requests)
+        {
+            this.Requests = requests;
+        }
+
         [JsonProperty("requests", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputRequestsTypeItem[] Requests { get; set; }
     }
 
     public class BodyInputRequestsTypeItem
     {
+        public BodyInputRequestsTypeItem(BodyInputRequestsTypeItemContentType content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; } = "models/embedding-001";
 

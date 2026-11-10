@@ -210,6 +210,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
 
     public class CreateRoomsBodyInput
     {
+        public CreateRoomsBodyInput(string name, string domainName)
+        {
+            this.Name = name;
+            this.DomainName = domainName;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -331,6 +337,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
 
     public class UpdateQCDIndicatorsValueBodyInput
     {
+        public UpdateQCDIndicatorsValueBodyInput(string boardId, JToken[] letters)
+        {
+            this.BoardId = boardId;
+            this.Letters = letters;
+        }
+
         [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BoardId { get; set; }
 
@@ -393,6 +405,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
 
     public class UpdateGaugeBodyInput
     {
+        public UpdateGaugeBodyInput(double value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 

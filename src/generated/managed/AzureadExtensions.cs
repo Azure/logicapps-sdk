@@ -276,6 +276,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
 
     public class CreateOffice365GroupBodyInput
     {
+        public CreateOffice365GroupBodyInput(string displayName, string description, string mailNickname, bool securityEnabled, bool mailEnabled)
+        {
+            this.DisplayName = displayName;
+            this.Description = description;
+            this.MailNickname = mailNickname;
+            this.SecurityEnabled = securityEnabled;
+            this.MailEnabled = mailEnabled;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -300,6 +309,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
 
     public class CreateSecurityGroupBodyInput
     {
+        public CreateSecurityGroupBodyInput(string displayName, string description, string mailNickname, bool securityEnabled, bool mailEnabled)
+        {
+            this.DisplayName = displayName;
+            this.Description = description;
+            this.MailNickname = mailNickname;
+            this.SecurityEnabled = securityEnabled;
+            this.MailEnabled = mailEnabled;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -486,6 +504,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
 
     public class CreateUserBodyInput
     {
+        public CreateUserBodyInput(bool accountEnabled, string displayName, string mailNickname, BodyInputPasswordProfileType passwordProfile, string userPrincipalName)
+        {
+            this.AccountEnabled = accountEnabled;
+            this.DisplayName = displayName;
+            this.MailNickname = mailNickname;
+            this.PasswordProfile = passwordProfile;
+            this.UserPrincipalName = userPrincipalName;
+        }
+
         [JsonProperty("accountEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AccountEnabled { get; set; }
 
@@ -528,6 +555,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
 
     public class BodyInputPasswordProfileType
     {
+        public BodyInputPasswordProfileType(string password)
+        {
+            this.Password = password;
+        }
+
         [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
     }
@@ -543,18 +575,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
 
     public class AddUserToGroupBodyInput
     {
+        public AddUserToGroupBodyInput(string userId)
+        {
+            this.UserId = userId;
+        }
+
         [JsonProperty("@odata.id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
     }
 
     public class AssignManagerBodyInput
     {
+        public AssignManagerBodyInput(string userIdOfTheManager)
+        {
+            this.UserIdOfTheManager = userIdOfTheManager;
+        }
+
         [JsonProperty("@odata.id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdOfTheManager { get; set; }
     }
 
     public class CreateGroupBodyInput
     {
+        public CreateGroupBodyInput(string displayName, string description, string mailNickname, BodyInputGroupTypesTypeItem[] groupTypes, bool securityEnabled, bool mailEnabled)
+        {
+            this.DisplayName = displayName;
+            this.Description = description;
+            this.MailNickname = mailNickname;
+            this.GroupTypes = groupTypes;
+            this.SecurityEnabled = securityEnabled;
+            this.MailEnabled = mailEnabled;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -589,6 +641,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
 
     public class CheckMemberGroupsBodyInput
     {
+        public CheckMemberGroupsBodyInput(string[] groupIds)
+        {
+            this.GroupIds = groupIds;
+        }
+
         [JsonProperty("groupIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] GroupIds { get; set; }
     }

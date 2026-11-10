@@ -313,6 +313,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
 
     public class ContactsBodyInput
     {
+        public ContactsBodyInput(string email, string firstName, string lastName, string phone)
+        {
+            this.Email = email;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Phone = phone;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -424,6 +432,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
 
     public class ContactListsBodyInput
     {
+        public ContactListsBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -553,6 +566,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
 
     public class TriggersBodyInput
     {
+        public TriggersBodyInput(string title, string triggerString, int contactListId)
+        {
+            this.Title = title;
+            this.TriggerString = triggerString;
+            this.ContactListId = contactListId;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

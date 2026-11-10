@@ -1286,9 +1286,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AdvancedSearch(Expression<Func<AdvancedSearchBodyInput>> body = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AdvancedSearch(Expression<Func<AdvancedSearchBodyInput>> body, Expression<Func<string>> contentType = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -1298,8 +1298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1859,18 +1858,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
     public class NetworkReputationApiBodyInput
     {
+        public NetworkReputationApiBodyInput(NetworkReputationApiBodyInputRlType rl)
+        {
+            this.Rl = rl;
+        }
+
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationApiBodyInputRlType Rl { get; set; } = new NetworkReputationApiBodyInputRlType();
+        public NetworkReputationApiBodyInputRlType Rl { get; set; }
     }
 
     public class NetworkReputationApiBodyInputRlType
     {
+        public NetworkReputationApiBodyInputRlType(NetworkReputationApiBodyInputRlTypeQueryType query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationApiBodyInputRlTypeQueryType Query { get; set; } = new NetworkReputationApiBodyInputRlTypeQueryType();
+        public NetworkReputationApiBodyInputRlTypeQueryType Query { get; set; }
     }
 
     public class NetworkReputationApiBodyInputRlTypeQueryType
     {
+        public NetworkReputationApiBodyInputRlTypeQueryType(BodyInputRlTypeQueryTypeNetworkLocationsTypeItem[] networkLocations)
+        {
+            this.NetworkLocations = networkLocations;
+        }
+
         [JsonProperty("network_locations", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputRlTypeQueryTypeNetworkLocationsTypeItem[] NetworkLocations { get; set; }
 
@@ -1880,6 +1894,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
     public class BodyInputRlTypeQueryTypeNetworkLocationsTypeItem
     {
+        public BodyInputRlTypeQueryTypeNetworkLocationsTypeItem(string networkLocation)
+        {
+            this.NetworkLocation = networkLocation;
+        }
+
         [JsonProperty("network_location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NetworkLocation { get; set; }
 
@@ -1900,12 +1919,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
     public class NetworkReputationUserOverrideBodyInput
     {
+        public NetworkReputationUserOverrideBodyInput(NetworkReputationUserOverrideBodyInputRlType rl)
+        {
+            this.Rl = rl;
+        }
+
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationUserOverrideBodyInputRlType Rl { get; set; } = new NetworkReputationUserOverrideBodyInputRlType();
+        public NetworkReputationUserOverrideBodyInputRlType Rl { get; set; }
     }
 
     public class NetworkReputationUserOverrideBodyInputRlType
     {
+        public NetworkReputationUserOverrideBodyInputRlType(NetworkReputationUserOverrideBodyInputRlTypeQueryType query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public NetworkReputationUserOverrideBodyInputRlTypeQueryType Query { get; set; }
 
@@ -1915,18 +1944,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
     public class NetworkReputationUserOverrideBodyInputRlTypeQueryType
     {
+        public NetworkReputationUserOverrideBodyInputRlTypeQueryType(BodyInputRlTypeQueryTypeUserOverrideType userOverride)
+        {
+            this.UserOverride = userOverride;
+        }
+
         [JsonProperty("user_override", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputRlTypeQueryTypeUserOverrideType UserOverride { get; set; }
     }
 
     public class BodyInputRlTypeQueryTypeUserOverrideType
     {
+        public BodyInputRlTypeQueryTypeUserOverrideType(BodyInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItem[] overrideNetworkLocations)
+        {
+            this.OverrideNetworkLocations = overrideNetworkLocations;
+        }
+
         [JsonProperty("override_network_locations", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItem[] OverrideNetworkLocations { get; set; }
     }
 
     public class BodyInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItem
     {
+        public BodyInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItem(string networkLocation, BodyInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItemTypeType type, string classification)
+        {
+            this.NetworkLocation = networkLocation;
+            this.Type = type;
+            this.Classification = classification;
+        }
+
         [JsonProperty("network_location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NetworkLocation { get; set; }
 
@@ -1949,6 +1995,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
     public class CreateYaraRulesetBodyInput
     {
+        public CreateYaraRulesetBodyInput(string rulesetName, string text, bool sampleAvailable)
+        {
+            this.RulesetName = rulesetName;
+            this.Text = text;
+            this.SampleAvailable = sampleAvailable;
+        }
+
         [JsonProperty("ruleset_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RulesetName { get; set; }
 
@@ -1961,12 +2014,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
     public class CancelYaraRetroHuntBodyInput
     {
+        public CancelYaraRetroHuntBodyInput(string rulesetName)
+        {
+            this.RulesetName = rulesetName;
+        }
+
         [JsonProperty("ruleset_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RulesetName { get; set; }
     }
 
     public class AdvancedSearchBodyInput
     {
+        public AdvancedSearchBodyInput(BodyInputQueryTypeItem[] query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputQueryTypeItem[] Query { get; set; }
 
@@ -1985,6 +2048,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
     public class BodyInputQueryTypeItem
     {
+        public BodyInputQueryTypeItem(string name, BodyInputQueryTypeItemCriteriaType criteria, string value)
+        {
+            this.Name = name;
+            this.Criteria = criteria;
+            this.Value = value;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

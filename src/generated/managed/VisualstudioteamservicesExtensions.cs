@@ -1011,6 +1011,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
     public class SearchRequestInput
     {
+        public SearchRequestInput(string searchText)
+        {
+            this.SearchText = searchText;
+        }
+
         [JsonProperty("searchText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchText { get; set; }
 
@@ -1614,6 +1619,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
     public class ConfigurationVariable
     {
+        public ConfigurationVariable(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string Value { get; set; }
@@ -1621,6 +1631,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
     public class ParametersInput
     {
+        public ParametersInput(string relativeURI)
+        {
+            this.RelativeURI = relativeURI;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices.ParametersInputMethodType.GET;
 
@@ -2240,6 +2255,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
     public class CommentInput
     {
+        public CommentInput(string commentText)
+        {
+            this.CommentText = commentText;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CommentText { get; set; }
     }
@@ -2255,6 +2275,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
     public class AddWorkItemLinkAsyncLinkRequestInput
     {
+        public AddWorkItemLinkAsyncLinkRequestInput(string targetURL)
+        {
+            this.TargetURL = targetURL;
+        }
+
         [JsonProperty("linkType", DefaultValueHandling = DefaultValueHandling.Include)]
         public LinkRequestInputLinkTypeType LinkType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices.LinkRequestInputLinkTypeType.SystemLinkTypesRelated;
 

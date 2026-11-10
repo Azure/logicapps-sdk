@@ -402,35 +402,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PutProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<ProjectRestrictionRebillingsInput>> projectRestrictionRebillings = null)
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PutProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<ProjectRestrictionRebillingsInput>> projectRestrictionRebillings)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_projectRestrictionRebillings = WorkflowExpression.Compile(projectRestrictionRebillings, nameof(projectRestrictionRebillings), required: false);
+            var __workflow_projectRestrictionRebillings = WorkflowExpression.Compile(projectRestrictionRebillings, nameof(projectRestrictionRebillings), required: true);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/ProjectRestrictionRebillings", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_id);
-                if (__workflow_projectRestrictionRebillings != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillings);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillings);
                 return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PostProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<ProjectRestrictionRebillingsInput>> projectRestrictionRebillings = null)
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PostProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<ProjectRestrictionRebillingsInput>> projectRestrictionRebillings)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
-            var __workflow_projectRestrictionRebillings = WorkflowExpression.Compile(projectRestrictionRebillings, nameof(projectRestrictionRebillings), required: false);
+            var __workflow_projectRestrictionRebillings = WorkflowExpression.Compile(projectRestrictionRebillings, nameof(projectRestrictionRebillings), required: true);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/ProjectRestrictionRebillings", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_projectRestrictionRebillings != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillings);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillings);
                 return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
             });
         }
@@ -1093,35 +1091,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PutTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<TimeTransactionsInput>> timeTransactions = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PutTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<TimeTransactionsInput>> timeTransactions)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_timeTransactions = WorkflowExpression.Compile(timeTransactions, nameof(timeTransactions), required: false);
+            var __workflow_timeTransactions = WorkflowExpression.Compile(timeTransactions, nameof(timeTransactions), required: true);
             return new DeferredBodyAction<TimeTransactionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeTransactions", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_id);
-                if (__workflow_timeTransactions != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_timeTransactions);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_timeTransactions);
                 return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PostTimeTransactions(Expression<Func<string>> division, Expression<Func<TimeTransactionsInput>> timeTransactions = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PostTimeTransactions(Expression<Func<string>> division, Expression<Func<TimeTransactionsInput>> timeTransactions)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
-            var __workflow_timeTransactions = WorkflowExpression.Compile(timeTransactions, nameof(timeTransactions), required: false);
+            var __workflow_timeTransactions = WorkflowExpression.Compile(timeTransactions, nameof(timeTransactions), required: true);
             return new DeferredBodyAction<TimeTransactionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeTransactions", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_timeTransactions != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_timeTransactions);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_timeTransactions);
                 return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
             });
         }
@@ -1580,6 +1576,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
 
     public class ProjectRestrictionRebillingsInput
     {
+        public ProjectRestrictionRebillingsInput(string costTypeRebill, string project)
+        {
+            this.CostTypeRebill = costTypeRebill;
+            this.Project = project;
+        }
+
         [JsonProperty("ID")]
         public string Id { get; set; }
 
@@ -2192,6 +2194,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
 
     public class TimeTransactionsInput
     {
+        public TimeTransactionsInput(string item, string project, double quantity)
+        {
+            this.Item = item;
+            this.Project = project;
+            this.Quantity = quantity;
+        }
+
         [JsonProperty("ID")]
         public string Id { get; set; }
         public string Account { get; set; }

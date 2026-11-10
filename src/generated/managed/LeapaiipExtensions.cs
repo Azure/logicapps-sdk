@@ -35,17 +35,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ImageResponse, ApiConnectionActionConfiguration> Image(Expression<Func<ModelIdInput>> modelId, Expression<Func<ImageBodyInput>> body = null)
+        public IBodyWorkflowAction<ImageResponse, ApiConnectionActionConfiguration> Image(Expression<Func<ModelIdInput>> modelId, Expression<Func<ImageBodyInput>> body)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImageResponse>(callPayload);
             });
         }
@@ -144,16 +143,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<MusicResponse, ApiConnectionActionConfiguration> Music(Expression<Func<MusicBodyInput>> body = null)
+        public IBodyWorkflowAction<MusicResponse, ApiConnectionActionConfiguration> Music(Expression<Func<MusicBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MusicResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/music";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MusicResponse>(callPayload);
             });
         }
@@ -323,6 +321,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
 
     public class ImageBodyInput
     {
+        public ImageBodyInput(string prompt)
+        {
+            this.Prompt = prompt;
+        }
+
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
 
@@ -569,6 +572,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
 
     public class MusicBodyInput
     {
+        public MusicBodyInput(string prompt, int duration)
+        {
+            this.Prompt = prompt;
+            this.Duration = duration;
+        }
+
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
 

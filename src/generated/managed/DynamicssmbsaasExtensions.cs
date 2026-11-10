@@ -535,6 +535,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
     public class FilterGroup
     {
+        public FilterGroup(string onThisField, FilterGroupOperatorType @operator, string value)
+        {
+            this.OnThisField = onThisField;
+            this.Operator = @operator;
+            this.Value = value;
+        }
+
         [JsonProperty("FilterField", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OnThisField { get; set; }
 

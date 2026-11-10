@@ -177,6 +177,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
 
     public class CreateConfigurationFromCopyReqInput
     {
+        public CreateConfigurationFromCopyReqInput(string targetId, string sourceId, string type)
+        {
+            this.TargetId = targetId;
+            this.SourceId = sourceId;
+            this.Type = type;
+        }
+
         [JsonProperty("targetId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetId { get; set; }
 
@@ -192,6 +199,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
 
     public class CreateConfigurationReqInput
     {
+        public CreateConfigurationReqInput(string id, string type, string configurationXml)
+        {
+            this.Id = id;
+            this.Type = type;
+            this.ConfigurationXml = configurationXml;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -204,6 +218,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
 
     public class CreateConfigurationFromChangesReqInput
     {
+        public CreateConfigurationFromChangesReqInput(string id, string type, string seriesId, string modelId)
+        {
+            this.Id = id;
+            this.Type = type;
+            this.SeriesId = seriesId;
+            this.ModelId = modelId;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -225,6 +247,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
 
     public class ChangeConfig
     {
+        public ChangeConfig(string type, string categoryId, string optionId)
+        {
+            this.Type = type;
+            this.CategoryId = categoryId;
+            this.OptionId = optionId;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -252,6 +281,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
 
     public class UpdateConfigurationFromChangesReqInput
     {
+        public UpdateConfigurationFromChangesReqInput(string id, string type)
+        {
+            this.Id = id;
+            this.Type = type;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 

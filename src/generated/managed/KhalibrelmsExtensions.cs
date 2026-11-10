@@ -92,16 +92,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "khalibrelms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BookCourse(Expression<Func<BodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BookCourse(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/o/kh-gateway/lms/v1.1/course/booking";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -485,6 +484,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
 
     public class BodyInput
     {
+        public BodyInput(int communityId, int courseId, string learnerEmail)
+        {
+            this.CommunityId = communityId;
+            this.CourseId = courseId;
+            this.LearnerEmail = learnerEmail;
+        }
+
         [JsonProperty("communityId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CommunityId { get; set; }
 

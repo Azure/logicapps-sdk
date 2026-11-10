@@ -224,6 +224,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
     public class CreateClientBodyInput
     {
+        public CreateClientBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -311,6 +316,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
     public class CreateProjectBodyInput
     {
+        public CreateProjectBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -389,6 +399,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
     public class CreateProjectTaskBodyInput
     {
+        public CreateProjectTaskBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("listName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; } = "Task list";
 
@@ -419,6 +434,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
     public class CreateTagBodyInput
     {
+        public CreateTagBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -560,6 +580,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
     public class CreateLogBodyInput
     {
+        public CreateLogBodyInput(string date)
+        {
+            this.Date = date;
+        }
+
         [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
 

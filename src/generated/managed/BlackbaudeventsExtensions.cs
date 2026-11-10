@@ -534,6 +534,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class CreateEventBodyInput
     {
+        public CreateEventBodyInput(string eventName, string startDate)
+        {
+            this.EventName = eventName;
+            this.StartDate = startDate;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventName { get; set; }
 
@@ -576,6 +582,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class BodyInputCategoryType
     {
+        public BodyInputCategoryType(string category)
+        {
+            this.Category = category;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Category { get; set; }
     }
@@ -811,6 +822,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class CreateEventAttachmentBodyInput
     {
+        public CreateEventAttachmentBodyInput(BodyInputTypeType type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputTypeType Type { get; set; }
 
@@ -893,6 +909,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class CreateEventFeeBodyInput
     {
+        public CreateEventFeeBodyInput(string name, double feeAmount, double contributionAmount)
+        {
+            this.Name = name;
+            this.FeeAmount = feeAmount;
+            this.ContributionAmount = contributionAmount;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -979,6 +1002,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class CreateEventParticipantOptionBodyInput
     {
+        public CreateEventParticipantOptionBodyInput(string name, BodyInputInputTypeType inputType)
+        {
+            this.Name = name;
+            this.InputType = inputType;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1234,6 +1263,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class CreateParticipantBodyInput
     {
+        public CreateParticipantBodyInput(string constituentId)
+        {
+            this.ConstituentId = constituentId;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -1308,12 +1342,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class BodyInputParticipationLevelType
     {
+        public BodyInputParticipationLevelType(string participationLevel)
+        {
+            this.ParticipationLevel = participationLevel;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParticipationLevel { get; set; }
     }
 
     public class EditParticipantOptionBodyInput
     {
+        public EditParticipantOptionBodyInput(string value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("option_value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
@@ -1460,6 +1504,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class CreateParticipantDonationBodyInput
     {
+        public CreateParticipantDonationBodyInput(string giftId)
+        {
+            this.GiftId = giftId;
+        }
+
         [JsonProperty("gift_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftId { get; set; }
     }
@@ -1496,6 +1545,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class CreateParticipantFeePaymentBodyInput
     {
+        public CreateParticipantFeePaymentBodyInput(string giftId, double appliedAmount)
+        {
+            this.GiftId = giftId;
+            this.AppliedAmount = appliedAmount;
+        }
+
         [JsonProperty("gift_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftId { get; set; }
 
@@ -1556,6 +1611,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class CreateParticipantFeeBodyInput
     {
+        public CreateParticipantFeeBodyInput(string eventId, string fee, int quantity, double feeAmount, double contributionAmount)
+        {
+            this.EventId = eventId;
+            this.Fee = fee;
+            this.Quantity = quantity;
+            this.FeeAmount = feeAmount;
+            this.ContributionAmount = contributionAmount;
+        }
+
         [JsonProperty("event_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventId { get; set; }
 
@@ -1640,6 +1704,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 
     public class CreateParticipantOptionBodyInput
     {
+        public CreateParticipantOptionBodyInput(string eventId, string option, JToken optionValue)
+        {
+            this.EventId = eventId;
+            this.Option = option;
+            this.OptionValue = optionValue;
+        }
+
         [JsonProperty("event_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventId { get; set; }
 

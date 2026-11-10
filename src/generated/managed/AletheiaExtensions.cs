@@ -334,6 +334,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new InsiderTradingBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }

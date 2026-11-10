@@ -200,6 +200,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
 
     public class AddInstructorResponseBodyInput
     {
+        public AddInstructorResponseBodyInput(string correlationId)
+        {
+            this.CorrelationId = correlationId;
+        }
+
         [JsonProperty("isSuccessful")]
         public bool? IsSuccessful { get; set; }
 
@@ -212,6 +217,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
 
     public class GetAttendanceResponseBodyInput
     {
+        public GetAttendanceResponseBodyInput(string correlationId)
+        {
+            this.CorrelationId = correlationId;
+        }
+
         [JsonProperty("isSuccessful")]
         public bool? IsSuccessful { get; set; }
 
@@ -233,6 +243,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
 
     public class LaunchSessionResponseBodyInput
     {
+        public LaunchSessionResponseBodyInput(string correlationId)
+        {
+            this.CorrelationId = correlationId;
+        }
+
         [JsonProperty("isSuccessful")]
         public bool? IsSuccessful { get; set; }
 
@@ -248,6 +263,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
 
     public class CreateSessionResponseBodyInput
     {
+        public CreateSessionResponseBodyInput(string correlationId)
+        {
+            this.CorrelationId = correlationId;
+        }
+
         [JsonProperty("isSuccessful")]
         public bool? IsSuccessful { get; set; }
 

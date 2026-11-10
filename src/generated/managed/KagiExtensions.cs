@@ -23,21 +23,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new SummarizeBodyInput().ToJToken();
                 return new ApiConnectionAction<SummarizeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<FastGPTResponse, ApiConnectionActionConfiguration> FastGPT(Expression<Func<FastGPTBodyInput>> body = null)
+        public IBodyWorkflowAction<FastGPTResponse, ApiConnectionActionConfiguration> FastGPT(Expression<Func<FastGPTBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FastGPTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/fastgpt";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FastGPTResponse>(callPayload);
             });
         }
@@ -288,6 +289,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
 
     public class FastGPTBodyInput
     {
+        public FastGPTBodyInput(string query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
     }

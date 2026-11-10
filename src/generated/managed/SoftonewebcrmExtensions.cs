@@ -280,16 +280,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO, ApiConnectionActionConfiguration> NoteCreate(Expression<Func<NoteCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO, ApiConnectionActionConfiguration> NoteCreate(Expression<Func<NoteCreateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TaskApiFeaturesNotesNoteDTO, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/task/Note";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO>(callPayload);
             });
         }
@@ -655,16 +654,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration> OpportunityCreate(Expression<Func<OpportunityCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration> OpportunityCreate(Expression<Func<OpportunityCreateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(callPayload);
             });
         }
@@ -843,16 +841,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO, ApiConnectionActionConfiguration> AccountCreate(Expression<Func<AccountCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO, ApiConnectionActionConfiguration> AccountCreate(Expression<Func<AccountCreateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDTO, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Account";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO>(callPayload);
             });
         }
@@ -977,212 +974,197 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
     public class SoftonewebcrmTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CallCreated(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CallCreated(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/call/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OpportunityUpdated(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OpportunityUpdated(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/opportunity/updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OpportunityDeleted(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OpportunityDeleted(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/opportunity/deleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OpportunityCreated(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> OpportunityCreated(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/opportunity/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> LeadUpdated(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> LeadUpdated(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/lead/updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> LeadDeleted(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> LeadDeleted(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/lead/deleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> LeadCreated(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> LeadCreated(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/lead/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TaskUpdated(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TaskUpdated(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/task/updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TaskDeleted(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TaskDeleted(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/task/deleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TaskCreated(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> TaskCreated(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/task/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> EventUpdated(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> EventUpdated(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/event/updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> EventDeleted(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> EventDeleted(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/event/deleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> EventCreated(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> EventCreated(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/event/created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CallDeleted(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CallDeleted(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/call/deleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CallUpdated(Expression<Func<CallCreatedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CallUpdated(Expression<Func<CallCreatedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/WebHook/register/call/updated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -1839,6 +1821,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
     public class NoteCreateBodyInput
     {
+        public NoteCreateBodyInput(string subject)
+        {
+            this.Subject = subject;
+        }
+
         [JsonProperty("taskType")]
         public CallUpdateTaskApiModelsEnumsTaskType? TaskType { get; set; }
 
@@ -2405,6 +2392,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
     public class LeadCreateSalesPipelineApiDTOsNameDTO
     {
+        public LeadCreateSalesPipelineApiDTOsNameDTO(string firstName)
+        {
+            this.FirstName = firstName;
+        }
+
         [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -2706,6 +2698,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
     public class OpportunityCreateBodyInput
     {
+        public OpportunityCreateBodyInput(string name, string closeDate)
+        {
+            this.Name = name;
+            this.CloseDate = closeDate;
+        }
+
         [JsonProperty("typeId")]
         public string TypeId { get; set; }
 
@@ -3235,6 +3233,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
     public class AccountCreateBodyInput
     {
+        public AccountCreateBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -4015,6 +4018,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
     public class CallCreatedBodyInput
     {
+        public CallCreatedBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 

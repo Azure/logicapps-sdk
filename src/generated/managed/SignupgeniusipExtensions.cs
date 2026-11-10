@@ -409,6 +409,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
 
     public class BodyInput
     {
+        public BodyInput(string emailaddress, string firstname, string lastname)
+        {
+            this.Emailaddress = emailaddress;
+            this.Firstname = firstname;
+            this.Lastname = lastname;
+        }
+
         [JsonProperty("emailaddress", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Emailaddress { get; set; }
 

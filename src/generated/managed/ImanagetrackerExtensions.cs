@@ -297,6 +297,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
     public class AddTaskBodyInput
     {
+        public AddTaskBodyInput(string contextWorkId, string contextId, string title)
+        {
+            this.ContextWorkId = contextWorkId;
+            this.ContextId = contextId;
+            this.Title = title;
+        }
+
         [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextWorkId { get; set; }
 
@@ -330,6 +337,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
     public class AssigneeInRequest
     {
+        public AssigneeInRequest(AssigneeInRequestTyType ty, string workId)
+        {
+            this.Ty = ty;
+            this.WorkId = workId;
+        }
+
         [JsonProperty("ty", DefaultValueHandling = DefaultValueHandling.Include)]
         public AssigneeInRequestTyType Ty { get; set; }
 
@@ -348,6 +361,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
     public class WorkObjectInRequest
     {
+        public WorkObjectInRequest(string wWstype, string wId)
+        {
+            this.WWstype = wWstype;
+            this.WId = wId;
+        }
+
         [JsonProperty("w_wstype", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WWstype { get; set; }
 
@@ -363,6 +382,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
     public class UpdateSingleTaskFieldBodyInput
     {
+        public UpdateSingleTaskFieldBodyInput(string contextWorkId, string taskId, string fieldType, string fieldId, JToken fieldData)
+        {
+            this.ContextWorkId = contextWorkId;
+            this.TaskId = taskId;
+            this.FieldType = fieldType;
+            this.FieldId = fieldId;
+            this.FieldData = fieldData;
+        }
+
         [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextWorkId { get; set; }
 
@@ -417,6 +445,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
     public class CreateTrackerBodyInput
     {
+        public CreateTrackerBodyInput(string contextWorkId, string name)
+        {
+            this.ContextWorkId = contextWorkId;
+            this.Name = name;
+        }
+
         [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextWorkId { get; set; }
 
@@ -441,6 +475,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
     public class AddCustomFieldBodyInput
     {
+        public AddCustomFieldBodyInput(string workspaceId, string contextId, string fieldTitle, string fieldType)
+        {
+            this.WorkspaceId = workspaceId;
+            this.ContextId = contextId;
+            this.FieldTitle = fieldTitle;
+            this.FieldType = fieldType;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 
@@ -477,6 +519,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
     public class ClearSingleTaskFieldBodyInput
     {
+        public ClearSingleTaskFieldBodyInput(string contextWorkId, string taskId, string fieldId)
+        {
+            this.ContextWorkId = contextWorkId;
+            this.TaskId = taskId;
+            this.FieldId = fieldId;
+        }
+
         [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextWorkId { get; set; }
 
@@ -495,6 +544,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
     public class ImportTrackerBodyInput
     {
+        public ImportTrackerBodyInput(string sourceWorkspaceId, string sourceTrackerId, string destinationWorkspaceId, string importType)
+        {
+            this.SourceWorkspaceId = sourceWorkspaceId;
+            this.SourceTrackerId = sourceTrackerId;
+            this.DestinationWorkspaceId = destinationWorkspaceId;
+            this.ImportType = importType;
+        }
+
         [JsonProperty("source_workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceWorkspaceId { get; set; }
 

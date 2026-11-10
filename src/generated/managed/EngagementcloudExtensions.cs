@@ -165,6 +165,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
 
     public class CreateAddressBookBodyInput
     {
+        public CreateAddressBookBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -211,6 +216,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
 
     public class CreateContactBodyInput
     {
+        public CreateContactBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("dataFields")]
         public BodyInputDataFieldsTypeItem[] DataFields { get; set; }
 
@@ -282,6 +292,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
 
     public class SendEmailCampaignBodyInput
     {
+        public SendEmailCampaignBodyInput(int campaignId)
+        {
+            this.CampaignId = campaignId;
+        }
+
         public int[] AddressBookIDs { get; set; }
 
         [JsonProperty("CampaignID", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -292,6 +307,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
 
     public class SendTransactionalEmailUsingTriggeredCampaginBodyInput
     {
+        public SendTransactionalEmailUsingTriggeredCampaginBodyInput(int campaignId, string[] toAddresses)
+        {
+            this.CampaignId = campaignId;
+            this.ToAddresses = toAddresses;
+        }
+
         [JsonProperty("CampaignID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CampaignId { get; set; }
         public BodyInputPersonalizationValuesTypeItem[] PersonalizationValues { get; set; }
@@ -329,6 +350,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
 
     public class CreateProgramEnrolmentBodyInput
     {
+        public CreateProgramEnrolmentBodyInput(int programId)
+        {
+            this.ProgramId = programId;
+        }
+
         public int[] AddressBooks { get; set; }
         public int[] Contacts { get; set; }
 
@@ -338,6 +364,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
 
     public class SendSmsMessageBodyInput
     {
+        public SendSmsMessageBodyInput(string message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
     }

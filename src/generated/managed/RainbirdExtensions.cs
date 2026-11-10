@@ -163,6 +163,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
 
     public class BodyInputItem
     {
+        public BodyInputItem(JToken subject, JToken relationship, JToken objectEntity, double certainty)
+        {
+            this.Subject = subject;
+            this.Relationship = relationship;
+            this.ObjectEntity = objectEntity;
+            this.Certainty = certainty;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Subject { get; set; }
 
@@ -178,6 +186,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
 
     public class QueryBodyInput
     {
+        public QueryBodyInput(string relationship)
+        {
+            this.Relationship = relationship;
+        }
+
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
@@ -196,6 +209,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
 
     public class BodyInputAnswersTypeItem
     {
+        public BodyInputAnswersTypeItem(JToken subject, JToken relationship, JToken objectEntity, double certainty)
+        {
+            this.Subject = subject;
+            this.Relationship = relationship;
+            this.ObjectEntity = objectEntity;
+            this.Certainty = certainty;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Subject { get; set; }
 

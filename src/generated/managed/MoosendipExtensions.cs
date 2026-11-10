@@ -961,6 +961,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
 
     public class UnsubscribeAccountBodyInput
     {
+        public UnsubscribeAccountBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
     }
@@ -994,6 +999,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
 
     public class UnsubscribeRemoveBulkBodyInput
     {
+        public UnsubscribeRemoveBulkBodyInput(string emails)
+        {
+            this.Emails = emails;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Emails { get; set; }
     }
@@ -1323,6 +1333,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
 
     public class CampaignTestBodyInput
     {
+        public CampaignTestBodyInput(string[] testEmails)
+        {
+            this.TestEmails = testEmails;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] TestEmails { get; set; }
     }
@@ -1491,6 +1506,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
 
     public class CampaignScheduleBodyInput
     {
+        public CampaignScheduleBodyInput(string dateTime)
+        {
+            this.DateTime = dateTime;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }
         public string Timezone { get; set; }

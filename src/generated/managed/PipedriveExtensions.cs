@@ -289,6 +289,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
 
     public class UpdateDealStatusBodyInput
     {
+        public UpdateDealStatusBodyInput(UpdateDealStatusBodyInputStatusType status)
+        {
+            this.Status = status;
+        }
+
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateDealStatusBodyInputStatusType Status { get; set; }
 
@@ -383,6 +388,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
 
     public class AddActivityBodyInput
     {
+        public AddActivityBodyInput(string type, string subject)
+        {
+            this.Type = type;
+            this.Subject = subject;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -587,6 +598,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
 
     public class AddDealBodyInput
     {
+        public AddDealBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -638,6 +654,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
 
     public class UpdateDealStageBodyInput
     {
+        public UpdateDealStageBodyInput(string pipelineId, string stageId)
+        {
+            this.PipelineId = pipelineId;
+            this.StageId = stageId;
+        }
+
         [JsonProperty("pipeline_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PipelineId { get; set; }
 

@@ -101,6 +101,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
 
     public class PurchaseTreesBodyInput
     {
+        public PurchaseTreesBodyInput(int number)
+        {
+            this.Number = number;
+        }
+
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Number { get; set; }
 
@@ -131,6 +136,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
 
     public class PurchaseOffsetsBodyInput
     {
+        public PurchaseOffsetsBodyInput(int number, string units)
+        {
+            this.Number = number;
+            this.Units = units;
+        }
+
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Number { get; set; }
 

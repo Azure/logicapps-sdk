@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
     public class TelephonyxtendedsrvActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Raw(Expression<Func<RawBodyInput>> body = null, Expression<Func<AcceptInput>> accept = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Raw(Expression<Func<RawBodyInput>> body, Expression<Func<AcceptInput>> accept = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_accept != null)
                     callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -62,107 +61,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallRecording(Expression<Func<CallRecordingBodyInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallRecording(Expression<Func<CallRecordingBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Toogle-Call-Recording";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ToggleAgentACDState(Expression<Func<ToggleAgentACDStateBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ToggleAgentACDState(Expression<Func<ToggleAgentACDStateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ACD-Toggle";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallNew(Expression<Func<CallNewBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallNew(Expression<Func<CallNewBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Call-New";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallHold(Expression<Func<CallEndBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallHold(Expression<Func<CallEndBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Call-Hold";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallEnd(Expression<Func<CallEndBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallEnd(Expression<Func<CallEndBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Call-End";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallTransfertoVoicemail(Expression<Func<CallEndBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallTransfertoVoicemail(Expression<Func<CallEndBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Call-Transfer-to-Voicemail";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallTransfer(Expression<Func<CallTransferBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallTransfer(Expression<Func<CallTransferBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Call-Transfer-to-Another-User";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -280,6 +272,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class RawBodyInput
     {
+        public RawBodyInput(string userId, string path)
+        {
+            this.UserId = userId;
+            this.Path = path;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
 
@@ -310,6 +308,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class UserCallsBodyInput
     {
+        public UserCallsBodyInput(string userId)
+        {
+            this.UserId = userId;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
     }
@@ -412,6 +415,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class CallRecordingBodyInput
     {
+        public CallRecordingBodyInput(string callId, string userId)
+        {
+            this.CallId = callId;
+            this.UserId = userId;
+        }
+
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Action { get; set; } = "record";
 
@@ -424,6 +433,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class ToggleAgentACDStateBodyInput
     {
+        public ToggleAgentACDStateBodyInput(string agentACDState)
+        {
+            this.AgentACDState = agentACDState;
+        }
+
         [JsonProperty("agentACDState", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentACDState { get; set; }
 
@@ -433,6 +447,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class CallNewBodyInput
     {
+        public CallNewBodyInput(string address)
+        {
+            this.Address = address;
+        }
+
         [JsonProperty("userID")]
         public string UserId { get; set; }
 
@@ -442,6 +461,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class CallEndBodyInput
     {
+        public CallEndBodyInput(string callId)
+        {
+            this.CallId = callId;
+        }
+
         [JsonProperty("userId")]
         public string UserId { get; set; }
 
@@ -451,6 +475,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class CallTransferBodyInput
     {
+        public CallTransferBodyInput(string callId, string address)
+        {
+            this.CallId = callId;
+            this.Address = address;
+        }
+
         [JsonProperty("userId")]
         public string UserId { get; set; }
 
@@ -472,6 +502,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class EventsBodyInput
     {
+        public EventsBodyInput(string @event)
+        {
+            this.Event = @event;
+        }
+
         [JsonProperty("userId")]
         public string UserId { get; set; }
 

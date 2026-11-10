@@ -320,6 +320,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
 
     public class RequestBodyInput
     {
+        public RequestBodyInput(EmailDataModel resourceData, string resourceType)
+        {
+            this.ResourceData = resourceData;
+            this.ResourceType = resourceType;
+        }
+
         [JsonProperty("resourceData", DefaultValueHandling = DefaultValueHandling.Include)]
         public EmailDataModel ResourceData { get; set; }
 

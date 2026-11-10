@@ -13,17 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     public class SolosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "solosign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateHMAC(Expression<Func<BodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateHMAC(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/generate-hmac";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -35,6 +34,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
 
     public class BodyInput
     {
+        public BodyInput(string requestString, string secretKey)
+        {
+            this.RequestString = requestString;
+            this.SecretKey = secretKey;
+        }
+
         [JsonProperty("request_string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RequestString { get; set; }
 

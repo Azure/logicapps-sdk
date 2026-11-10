@@ -170,6 +170,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
 
     public class BodyInput
     {
+        public BodyInput(string registrantEmail, string firstName, string lastName)
+        {
+            this.RegistrantEmail = registrantEmail;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RegistrantEmail { get; set; }
 

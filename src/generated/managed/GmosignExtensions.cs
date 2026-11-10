@@ -73,6 +73,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmosign
 
     public class BodyInput
     {
+        public BodyInput(string connectionTitle)
+        {
+            this.ConnectionTitle = connectionTitle;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionTitle { get; set; }
 

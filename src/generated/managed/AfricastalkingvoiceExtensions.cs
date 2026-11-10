@@ -56,6 +56,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
 
     public class BodyInput
     {
+        public BodyInput(string username, string from, string[] to, BodyInputActionsTypeItem[] actions)
+        {
+            this.Username = username;
+            this.From = from;
+            this.To = to;
+            this.Actions = actions;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
@@ -71,6 +79,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
 
     public class BodyInputActionsTypeItem
     {
+        public BodyInputActionsTypeItem(BodyInputActionsTypeItemActionTypeType actionType)
+        {
+            this.ActionType = actionType;
+        }
+
         [JsonProperty("actionType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputActionsTypeItemActionTypeType ActionType { get; set; }
 

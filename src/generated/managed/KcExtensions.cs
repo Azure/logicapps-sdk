@@ -771,6 +771,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
 
     public class CreateClientsBodyInput
     {
+        public CreateClientsBodyInput(string entityType, string clientCode, string partnerId, int divisionId)
+        {
+            this.EntityType = entityType;
+            this.ClientCode = clientCode;
+            this.PartnerId = partnerId;
+            this.DivisionId = divisionId;
+        }
+
         [JsonProperty("entityType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntityType { get; set; }
 
@@ -1384,6 +1392,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
 
     public class UpdateAContactBodyInput
     {
+        public UpdateAContactBodyInput(string firstName, string lastName)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [JsonProperty("salutation")]
         public string Salutation { get; set; }
 

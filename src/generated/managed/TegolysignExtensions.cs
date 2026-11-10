@@ -16,16 +16,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
 
     public class TegolysignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CompletelySigned(Expression<Func<BodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CompletelySigned(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/webhook/end-trigger";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -33,6 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
 
     public class BodyInput
     {
+        public BodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

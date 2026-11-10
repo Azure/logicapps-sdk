@@ -452,6 +452,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
     public class MarkdownStatsBodyInput
     {
+        public MarkdownStatsBodyInput(string markdownContent)
+        {
+            this.MarkdownContent = markdownContent;
+        }
+
         [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MarkdownContent { get; set; }
     }
@@ -929,6 +934,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
     public class MarkdownToStyledHtmlBodyInput
     {
+        public MarkdownToStyledHtmlBodyInput(string markdownContent)
+        {
+            this.MarkdownContent = markdownContent;
+        }
+
         [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MarkdownContent { get; set; }
 

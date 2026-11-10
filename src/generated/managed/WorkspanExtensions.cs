@@ -107,17 +107,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workspan")]
-        public IBodyWorkflowAction<ExternalIdResponse, ApiConnectionActionConfiguration> UpdateExternalId(Expression<Func<string>> objectId, Expression<Func<UpdateExternalIdRequestBodyInput>> requestBody = null)
+        public IBodyWorkflowAction<ExternalIdResponse, ApiConnectionActionConfiguration> UpdateExternalId(Expression<Func<string>> objectId, Expression<Func<UpdateExternalIdRequestBodyInput>> requestBody)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<ExternalIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/v1/object/{0}/external_id", __workflow_objectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<ExternalIdResponse>(callPayload);
             });
         }
@@ -164,6 +163,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_requestBody != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                else
+                    callPayload.Body = new GetReportDataRequestBodyInput().ToJToken();
                 return new ApiConnectionAction<ReportDataResponse>(callPayload);
             });
         }
@@ -354,6 +355,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
 
     public class UpdateExternalIdRequestBodyInput
     {
+        public UpdateExternalIdRequestBodyInput(string externalId)
+        {
+            this.ExternalId = externalId;
+        }
+
         [JsonProperty("field_name")]
         public string FieldName { get; set; }
 
@@ -375,6 +381,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
 
     public class AuditRequestBodyInput
     {
+        public AuditRequestBodyInput(AuditRequestBodyInputFieldNameType fieldName, AuditRequestBodyInputStatusCodeType statusCode, string message)
+        {
+            this.FieldName = fieldName;
+            this.StatusCode = statusCode;
+            this.Message = message;
+        }
+
         [JsonProperty("field_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public AuditRequestBodyInputFieldNameType FieldName { get; set; }
 
@@ -554,6 +567,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
 
     public class SubscribeSubscribeBodyInput
     {
+        public SubscribeSubscribeBodyInput(string eventName, string subscriberName)
+        {
+            this.EventName = eventName;
+            this.SubscriberName = subscriberName;
+        }
+
         [JsonProperty("webhook_settings", DefaultValueHandling = DefaultValueHandling.Include)]
         public SubscribeBodyInputWebhookSettingsType WebhookSettings { get; set; } = new SubscribeBodyInputWebhookSettingsType();
 
@@ -581,6 +600,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
 
     public class SubscribeObjectEventSubscribeBodyInput
     {
+        public SubscribeObjectEventSubscribeBodyInput(SubscribeBodyInputSubscribeToObjectEventsTypeItem[] subscribeToObjectEvents, string name, string selectIntegrationConfiguredInWorkSpan)
+        {
+            this.SubscribeToObjectEvents = subscribeToObjectEvents;
+            this.Name = name;
+            this.SelectIntegrationConfiguredInWorkSpan = selectIntegrationConfiguredInWorkSpan;
+        }
+
         [JsonProperty("subscriber_type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string SubscriberType { get; set; } = "webhook";
 
@@ -624,6 +650,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
 
     public class SubmitToPartnerCenterObjectEventSubscribeBodyInput
     {
+        public SubmitToPartnerCenterObjectEventSubscribeBodyInput(string name, string selectIntegrationConfiguredInWorkSpan)
+        {
+            this.Name = name;
+            this.SelectIntegrationConfiguredInWorkSpan = selectIntegrationConfiguredInWorkSpan;
+        }
+
         [JsonProperty("subscriber_type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string SubscriberType { get; set; } = "webhook";
 

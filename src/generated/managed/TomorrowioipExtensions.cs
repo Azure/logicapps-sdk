@@ -50,16 +50,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
-        public IBodyWorkflowAction<TimelineResponse, ApiConnectionActionConfiguration> Timeline(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<TimelineResponse, ApiConnectionActionConfiguration> Timeline(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TimelineResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/timelines";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TimelineResponse>(callPayload);
             });
         }
@@ -721,6 +720,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
 
     public class BodyInput
     {
+        public BodyInput(string location, string[] fields)
+        {
+            this.Location = location;
+            this.Fields = fields;
+        }
+
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Location { get; set; }
 

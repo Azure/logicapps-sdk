@@ -196,6 +196,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugami
 
     public class BodyInput
     {
+        public BodyInput(string targetId)
+        {
+            this.TargetId = targetId;
+        }
+
         [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Target { get; set; } = "Project";
 

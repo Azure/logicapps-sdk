@@ -1512,6 +1512,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CreateGroupBodyInput
     {
+        public CreateGroupBodyInput(string displayName)
+        {
+            this.DisplayName = displayName;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -1551,6 +1556,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class DeleteFileByIdBodyInput
     {
+        public DeleteFileByIdBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -1710,6 +1720,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class DeleteUserBodyInput
     {
+        public DeleteUserBodyInput(int id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
     }
@@ -1911,6 +1926,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class UpdateUserBodyInput
     {
+        public UpdateUserBodyInput(int id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
@@ -2080,6 +2100,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CreateUserBodyInput
     {
+        public CreateUserBodyInput(string userName, string email, CreateUserBodyInputNameType name, bool active, BodyInputUserTypeType userType, BodyInputAuthTypeType authType)
+        {
+            this.UserName = userName;
+            this.Email = email;
+            this.Name = name;
+            this.Active = active;
+            this.UserType = userType;
+            this.AuthType = authType;
+        }
+
         [JsonProperty("userName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
 
@@ -2122,6 +2152,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CreateUserBodyInputNameType
     {
+        public CreateUserBodyInputNameType(string givenName, string familyName)
+        {
+            this.GivenName = givenName;
+            this.FamilyName = familyName;
+        }
+
         [JsonProperty("givenName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GivenName { get; set; }
 
@@ -2140,6 +2176,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CreateFolderBodyInput
     {
+        public CreateFolderBodyInput(string path)
+        {
+            this.Path = path;
+        }
+
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
     }
@@ -2179,6 +2220,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CopyFileByPathBodyInput
     {
+        public CopyFileByPathBodyInput(string path, string destinationPath)
+        {
+            this.Path = path;
+            this.DestinationPath = destinationPath;
+        }
+
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
 
@@ -2221,6 +2268,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class FullGroupUpdateBodyInput
     {
+        public FullGroupUpdateBodyInput(string id, string displayName)
+        {
+            this.Id = id;
+            this.DisplayName = displayName;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2263,6 +2316,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class PartialGroupUpdateBodyInput
     {
+        public PartialGroupUpdateBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2302,6 +2360,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CopyFileByIdBodyInput
     {
+        public CopyFileByIdBodyInput(string id, string destinationPath)
+        {
+            this.Id = id;
+            this.DestinationPath = destinationPath;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2644,6 +2708,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class ModifyFolderOptionsBodyInput
     {
+        public ModifyFolderOptionsBodyInput(string path)
+        {
+            this.Path = path;
+        }
+
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
 
@@ -2694,6 +2763,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class UnlockFileByPathBodyInput
     {
+        public UnlockFileByPathBodyInput(string path, string lockToken)
+        {
+            this.Path = path;
+            this.LockToken = lockToken;
+        }
+
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
 
@@ -2712,6 +2787,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class UnlockFileByIdBodyInput
     {
+        public UnlockFileByIdBodyInput(string id, string lockToken)
+        {
+            this.Id = id;
+            this.LockToken = lockToken;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2721,6 +2802,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class GetFileContentByPathBodyInput
     {
+        public GetFileContentByPathBodyInput(string filePath)
+        {
+            this.FilePath = filePath;
+        }
+
         [JsonProperty("filePath", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FilePath { get; set; }
 
@@ -2730,6 +2816,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class GetFileContentByIdBodyInput
     {
+        public GetFileContentByIdBodyInput(string fileId)
+        {
+            this.FileId = fileId;
+        }
+
         [JsonProperty("fileId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileId { get; set; }
 
@@ -2751,6 +2842,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class SetMetadataByFileIdBodyInput
     {
+        public SetMetadataByFileIdBodyInput(string fileId, string namespaceName, string metadataName)
+        {
+            this.FileId = fileId;
+            this.NamespaceName = namespaceName;
+            this.MetadataName = metadataName;
+        }
+
         [JsonProperty("fileId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileId { get; set; }
 
@@ -2766,6 +2864,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class SetMetadataByFolderIdBodyInput
     {
+        public SetMetadataByFolderIdBodyInput(string folderId, string namespaceName, string metadataName, string metadataValue)
+        {
+            this.FolderId = folderId;
+            this.NamespaceName = namespaceName;
+            this.MetadataName = metadataName;
+            this.MetadataValue = metadataValue;
+        }
+
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderId { get; set; }
 
@@ -2830,6 +2936,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CreateNamespaceBodyInput
     {
+        public CreateNamespaceBodyInput(string name, BodyInputScopeType scope, BodyInputKeysTypeItem[] keys)
+        {
+            this.Name = name;
+            this.Scope = scope;
+            this.Keys = keys;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2856,6 +2969,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class BodyInputKeysTypeItem
     {
+        public BodyInputKeysTypeItem(string name, BodyInputKeysTypeItemTypeType type, string helpText)
+        {
+            this.Name = name;
+            this.Type = type;
+            this.HelpText = helpText;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2892,6 +3012,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class UpdateNamespaceAttributesBodyInput
     {
+        public UpdateNamespaceAttributesBodyInput(string @namespace)
+        {
+            this.Namespace = @namespace;
+        }
+
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
 
@@ -2922,6 +3047,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class UpdateNamespaceKeysBodyInput
     {
+        public UpdateNamespaceKeysBodyInput(string @namespace, string key, string helpText)
+        {
+            this.Namespace = @namespace;
+            this.Key = key;
+            this.HelpText = helpText;
+        }
+
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
 
@@ -2961,12 +3093,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class GetNamespaceBodyInput
     {
+        public GetNamespaceBodyInput(string @namespace)
+        {
+            this.Namespace = @namespace;
+        }
+
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
     }
 
     public class DeleteNamespaceBodyInput
     {
+        public DeleteNamespaceBodyInput(string @namespace)
+        {
+            this.Namespace = @namespace;
+        }
+
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
 
@@ -3048,6 +3190,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class MarkFolderAsProjectBodyInput
     {
+        public MarkFolderAsProjectBodyInput(string rootFolderId, string name, CreateProjectFromTemplateBodyInputStatusType status)
+        {
+            this.RootFolderId = rootFolderId;
+            this.Name = name;
+            this.Status = status;
+        }
+
         [JsonProperty("rootFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RootFolderId { get; set; }
 
@@ -3099,6 +3248,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CreateProjectFromTemplateBodyInput
     {
+        public CreateProjectFromTemplateBodyInput(string parentFolderId, string templateFolderId, string folderName, string name, CreateProjectFromTemplateBodyInputStatusType status)
+        {
+            this.ParentFolderId = parentFolderId;
+            this.TemplateFolderId = templateFolderId;
+            this.FolderName = folderName;
+            this.Name = name;
+            this.Status = status;
+        }
+
         [JsonProperty("parentFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentFolderId { get; set; }
 
@@ -3156,12 +3314,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class GetProjectByIdBodyInput
     {
+        public GetProjectByIdBodyInput(string projectId)
+        {
+            this.ProjectId = projectId;
+        }
+
         [JsonProperty("projectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
     }
 
     public class UpdateProjectByIdBodyInput
     {
+        public UpdateProjectByIdBodyInput(string name, string projectId, CreateProjectFromTemplateBodyInputStatusType status)
+        {
+            this.Name = name;
+            this.ProjectId = projectId;
+            this.Status = status;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -3213,6 +3383,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class GetProjectByRootFolderIdBodyInput
     {
+        public GetProjectByRootFolderIdBodyInput(string rootFolderId)
+        {
+            this.RootFolderId = rootFolderId;
+        }
+
         [JsonProperty("rootFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RootFolderId { get; set; }
     }
@@ -3225,6 +3400,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CleanupProjectBodyInput
     {
+        public CleanupProjectBodyInput(string projectId, bool deleteLinks)
+        {
+            this.ProjectId = projectId;
+            this.DeleteLinks = deleteLinks;
+        }
+
         [JsonProperty("projectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
 
@@ -3240,6 +3421,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CreateMetadataKeyBodyInput
     {
+        public CreateMetadataKeyBodyInput(string @namespace, string key, CreateMetadataKeyBodyInputTypeType type, string helpText)
+        {
+            this.Namespace = @namespace;
+            this.Key = key;
+            this.Type = type;
+            this.HelpText = helpText;
+        }
+
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
 
@@ -3264,6 +3453,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class DeleteMetadataKeyBodyInput
     {
+        public DeleteMetadataKeyBodyInput(string @namespace, string key)
+        {
+            this.Namespace = @namespace;
+            this.Key = key;
+        }
+
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
 
@@ -3276,6 +3471,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class GetMetadataByFileIdBodyInput
     {
+        public GetMetadataByFileIdBodyInput(string fileId, string @namespace)
+        {
+            this.FileId = fileId;
+            this.Namespace = @namespace;
+        }
+
         [JsonProperty("fileId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileId { get; set; }
 
@@ -3285,6 +3486,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class GetMetadataByFolderIdBodyInput
     {
+        public GetMetadataByFolderIdBodyInput(string folderId, string @namespace)
+        {
+            this.FolderId = folderId;
+            this.Namespace = @namespace;
+        }
+
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderId { get; set; }
 
@@ -3314,6 +3521,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class BodyInputHasKeyTypeItem
     {
+        public BodyInputHasKeyTypeItem(string @namespace, string keyName)
+        {
+            this.Namespace = @namespace;
+            this.KeyName = keyName;
+        }
+
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
 
@@ -3323,6 +3536,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class BodyInputKeyWithValueTypeItem
     {
+        public BodyInputKeyWithValueTypeItem(string @namespace, string keyName, string value)
+        {
+            this.Namespace = @namespace;
+            this.KeyName = keyName;
+            this.Value = value;
+        }
+
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
 
@@ -3353,6 +3573,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class GetEffectivePermissionsBodyInput
     {
+        public GetEffectivePermissionsBodyInput(string path, string username)
+        {
+            this.Path = path;
+            this.Username = username;
+        }
+
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
 
@@ -3362,6 +3588,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class SetFolderPermissionsBodyInput
     {
+        public SetFolderPermissionsBodyInput(string path)
+        {
+            this.Path = path;
+        }
+
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
 
@@ -3401,6 +3632,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class DeepLinksByIdBodyInput
     {
+        public DeepLinksByIdBodyInput(string id, DeepLinksByIdBodyInputTypeType type)
+        {
+            this.Id = id;
+            this.Type = type;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -3470,6 +3707,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class DeleteLinkBodyInput
     {
+        public DeleteLinkBodyInput(string linkId)
+        {
+            this.LinkId = linkId;
+        }
+
         [JsonProperty("linkId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LinkId { get; set; }
     }
@@ -3518,6 +3760,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CreateLinkBodyInput
     {
+        public CreateLinkBodyInput(string path, CreateLinkBodyInputTypeType type)
+        {
+            this.Path = path;
+            this.Type = type;
+        }
+
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
 
@@ -3638,6 +3886,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class AskDocumentQuestionBodyInput
     {
+        public AskDocumentQuestionBodyInput(string entryId, string question)
+        {
+            this.EntryId = entryId;
+            this.Question = question;
+        }
+
         [JsonProperty("entryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
 
@@ -3683,6 +3937,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class SummarizeDocumentBodyInput
     {
+        public SummarizeDocumentBodyInput(string entryId)
+        {
+            this.EntryId = entryId;
+        }
+
         [JsonProperty("entryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
 
@@ -3704,6 +3963,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class CopilotAskBodyInput
     {
+        public CopilotAskBodyInput(string question, AISelectedItems selectedItems)
+        {
+            this.Question = question;
+            this.SelectedItems = selectedItems;
+        }
+
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
 
@@ -3740,6 +4005,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class AskKnowledgeBaseBodyInput
     {
+        public AskKnowledgeBaseBodyInput(string kbId, string question)
+        {
+            this.KbId = kbId;
+            this.Question = question;
+        }
+
         [JsonProperty("kbId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string KbId { get; set; }
 
@@ -3968,6 +4239,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class HybridSearchBodyInput
     {
+        public HybridSearchBodyInput(double semanticWeight, string query)
+        {
+            this.SemanticWeight = semanticWeight;
+            this.Query = query;
+        }
+
         [JsonProperty("semanticWeight", DefaultValueHandling = DefaultValueHandling.Include)]
         public double SemanticWeight { get; set; }
 
@@ -4064,6 +4341,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class AskAgentBodyInput
     {
+        public AskAgentBodyInput(string agentId, string question)
+        {
+            this.AgentId = agentId;
+            this.Question = question;
+        }
+
         [JsonProperty("agentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentId { get; set; }
 
@@ -4121,6 +4404,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class GetAgentExecutionStatusBodyInput
     {
+        public GetAgentExecutionStatusBodyInput(string agentId, string requestId)
+        {
+            this.AgentId = agentId;
+            this.RequestId = requestId;
+        }
+
         [JsonProperty("agentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentId { get; set; }
 
@@ -4305,6 +4594,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class SearchBodyInput
     {
+        public SearchBodyInput(string query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 

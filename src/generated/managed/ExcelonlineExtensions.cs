@@ -397,6 +397,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
 
     public class TableInput
     {
+        public TableInput(string tableRange)
+        {
+            this.TableRange = tableRange;
+        }
+
         public string TableName { get; set; }
 
         [JsonProperty("Range", DefaultValueHandling = DefaultValueHandling.Include)]

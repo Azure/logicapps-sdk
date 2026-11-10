@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
 
     public class BodyInput
     {
+        public BodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDFFileContent)
+        {
+            this.PDFFileContent = pDFFileContent;
+        }
+
         [JsonProperty("PdfFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFileContent { get; set; }
 

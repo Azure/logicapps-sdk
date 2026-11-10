@@ -128,6 +128,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
 
     public class BodyInput
     {
+        public BodyInput(string triggerName)
+        {
+            this.TriggerName = triggerName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Acknowledge { get; set; } = "FireAndForget";
 

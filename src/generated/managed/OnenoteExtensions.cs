@@ -264,6 +264,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
 
     public class BodyInput
     {
+        public BodyInput(string nameOfTheNewSection)
+        {
+            this.NameOfTheNewSection = nameOfTheNewSection;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NameOfTheNewSection { get; set; }
     }

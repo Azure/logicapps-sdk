@@ -849,31 +849,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquad")]
-        public IBodyWorkflowAction<Quotation, ApiConnectionActionConfiguration> Quotations(Expression<Func<QuotationsEntityInput>> entity = null)
+        public IBodyWorkflowAction<Quotation, ApiConnectionActionConfiguration> Quotations(Expression<Func<QuotationsEntityInput>> entity)
         {
-            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             return new DeferredBodyAction<Quotation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/2/quotations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_entity != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_entity);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entity);
                 return new ApiConnectionAction<Quotation>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquad")]
-        public IBodyWorkflowAction<Quotation, ApiConnectionActionConfiguration> QuotationsUpdate(Expression<Func<QuotationInput>> quotation = null)
+        public IBodyWorkflowAction<Quotation, ApiConnectionActionConfiguration> QuotationsUpdate(Expression<Func<QuotationInput>> quotation)
         {
-            var __workflow_quotation = WorkflowExpression.Compile(quotation, nameof(quotation), required: false);
+            var __workflow_quotation = WorkflowExpression.Compile(quotation, nameof(quotation), required: true);
             return new DeferredBodyAction<Quotation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/2/quotations";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_quotation != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_quotation);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_quotation);
                 return new ApiConnectionAction<Quotation>(callPayload);
             });
         }
@@ -3947,6 +3945,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
 
     public class QuotationsEntityInput
     {
+        public QuotationsEntityInput(QuotationsQuotationLine[] lines)
+        {
+            this.Lines = lines;
+        }
+
         [JsonProperty("createdDate")]
         public string CreatedDate { get; set; }
 
@@ -4390,6 +4393,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
 
     public class QuotationInput
     {
+        public QuotationInput(QuotationsQuotationLine[] lines)
+        {
+            this.Lines = lines;
+        }
+
         [JsonProperty("createdDate")]
         public string CreatedDate { get; set; }
 

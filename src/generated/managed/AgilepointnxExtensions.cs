@@ -26,16 +26,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IBodyWorkflowAction<CreateProcInstResponse, ApiConnectionActionConfiguration> CreateProcInst(Expression<Func<CreateProcInstBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateProcInstResponse, ApiConnectionActionConfiguration> CreateProcInst(Expression<Func<CreateProcInstBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateProcInstResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Workflow/CreateProcInst";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateProcInstResponse>(callPayload);
             });
         }
@@ -57,17 +56,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetCustomAttr(Expression<Func<string>> cUSTOMId, Expression<Func<GetCustomAttrBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetCustomAttr(Expression<Func<string>> cUSTOMId, Expression<Func<GetCustomAttrBodyInput>> body)
         {
             var __workflow_cUSTOMId = WorkflowExpression.Compile(cUSTOMId, nameof(cUSTOMId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Workflow/GetCustomAttr/{0}", __workflow_cUSTOMId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -98,16 +96,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IBodyWorkflowAction<GetRegisteredUserbyNameResponse, ApiConnectionActionConfiguration> GetRegisteredUserbyName(Expression<Func<GetRegisteredUserbyNameBodyInput>> body = null)
+        public IBodyWorkflowAction<GetRegisteredUserbyNameResponse, ApiConnectionActionConfiguration> GetRegisteredUserbyName(Expression<Func<GetRegisteredUserbyNameBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetRegisteredUserbyNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Admin/GetRegisterUser";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetRegisteredUserbyNameResponse>(callPayload);
             });
         }
@@ -124,6 +121,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CompleteManualWorkItemBodyInput().ToJToken();
                 return new ApiConnectionAction<CompleteManualWorkItemResponse>(callPayload);
             });
         }
@@ -310,6 +309,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
 
     public class CreateProcInstBodyInput
     {
+        public CreateProcInstBodyInput(string processId, string procInstName, string workObjId, string initiator)
+        {
+            this.ProcessId = processId;
+            this.ProcInstName = procInstName;
+            this.WorkObjId = workObjId;
+            this.Initiator = initiator;
+        }
+
         [JsonProperty("ProcessID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProcessId { get; set; }
 
@@ -351,6 +358,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
 
     public class GetCustomAttrBodyInput
     {
+        public GetCustomAttrBodyInput(string attrName)
+        {
+            this.AttrName = attrName;
+        }
+
         [JsonProperty("attrName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AttrName { get; set; }
     }
@@ -439,6 +451,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
 
     public class GetRegisteredUserbyNameBodyInput
     {
+        public GetRegisteredUserbyNameBodyInput(string userName)
+        {
+            this.UserName = userName;
+        }
+
         [JsonProperty("userName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
     }
@@ -548,6 +565,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
 
     public class TriggerByAgilePointProcessInstanceCreationBodyInput
     {
+        public TriggerByAgilePointProcessInstanceCreationBodyInput(string name, string[] targetApplications)
+        {
+            this.Name = name;
+            this.TargetApplications = targetApplications;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

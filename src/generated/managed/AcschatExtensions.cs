@@ -283,6 +283,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
 
     public class SendChatBodyInput
     {
+        public SendChatBodyInput(string content, string senderDisplayName)
+        {
+            this.Content = content;
+            this.SenderDisplayName = senderDisplayName;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
 
@@ -397,6 +403,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
 
     public class CreateChatBodyInput
     {
+        public CreateChatBodyInput(string topic)
+        {
+            this.Topic = topic;
+        }
+
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Topic { get; set; }
 

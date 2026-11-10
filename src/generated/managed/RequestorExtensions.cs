@@ -13,31 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
     public class RequestorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTicket(Expression<Func<CreateTicketBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTicket(Expression<Func<CreateTicketBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Tickets/NewTicket";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Account/CreateRequestorUser";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -180,6 +178,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
 
     public class CreateTicketBodyInput
     {
+        public CreateTicketBodyInput(int type, int serviceId, string subject, string message, string submitterEmail)
+        {
+            this.Type = type;
+            this.ServiceId = serviceId;
+            this.Subject = subject;
+            this.Message = message;
+            this.SubmitterEmail = submitterEmail;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int Type { get; set; }
 
@@ -199,6 +206,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
 
     public class CreateUserBodyInput
     {
+        public CreateUserBodyInput(string userName)
+        {
+            this.UserName = userName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
         public string Email { get; set; }

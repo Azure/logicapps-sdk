@@ -1557,6 +1557,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 
     public class ThreatMapActorsBodyInput
     {
+        public ThreatMapActorsBodyInput(string[] actors, string[] categories, string[] watchlists)
+        {
+            this.Actors = actors;
+            this.Categories = categories;
+            this.Watchlists = watchlists;
+        }
+
         [JsonProperty("actors", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Actors { get; set; }
 
@@ -1659,6 +1666,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 
     public class ThreatMapMalwareBodyInput
     {
+        public ThreatMapMalwareBodyInput(string[] malware, string[] categories, string[] watchlists)
+        {
+            this.Malware = malware;
+            this.Categories = categories;
+            this.Watchlists = watchlists;
+        }
+
         [JsonProperty("malware", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Malware { get; set; }
 

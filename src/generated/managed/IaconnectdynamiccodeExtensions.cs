@@ -719,6 +719,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class ImportAssemblyFromLocalFileInput
     {
+        public ImportAssemblyFromLocalFileInput(string localAssemblyFilePath, string assemblyName)
+        {
+            this.LocalAssemblyFilePath = localAssemblyFilePath;
+            this.AssemblyName = assemblyName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LocalAssemblyFilePath { get; set; }
 
@@ -734,6 +740,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class AddAssemblySearchFolderInput
     {
+        public AddAssemblySearchFolderInput(string folderPath)
+        {
+            this.FolderPath = folderPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderPath { get; set; }
 
@@ -765,6 +776,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class IsPowerShellModuleInstalledInput
     {
+        public IsPowerShellModuleInstalledInput(string powerShellModuleName)
+        {
+            this.PowerShellModuleName = powerShellModuleName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PowerShellModuleName { get; set; }
 
@@ -888,6 +904,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetRegexMatchInput
     {
+        public GetRegexMatchInput(string textToMatch, string regex)
+        {
+            this.TextToMatch = textToMatch;
+            this.Regex = regex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TextToMatch { get; set; }
 
@@ -912,6 +934,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetRegexMatchesInput
     {
+        public GetRegexMatchesInput(string textToMatch, string regex)
+        {
+            this.TextToMatch = textToMatch;
+            this.Regex = regex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TextToMatch { get; set; }
 
@@ -942,6 +970,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetRegexSplitInput
     {
+        public GetRegexSplitInput(string textToSplit, string regex)
+        {
+            this.TextToSplit = textToSplit;
+            this.Regex = regex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TextToSplit { get; set; }
 
@@ -975,6 +1009,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetRegexGroupMatchesInput
     {
+        public GetRegexGroupMatchesInput(string textToMatch, string regex)
+        {
+            this.TextToMatch = textToMatch;
+            this.Regex = regex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TextToMatch { get; set; }
 
@@ -999,6 +1039,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class CreateJSONFromInputVariablesInput
     {
+        public CreateJSONFromInputVariablesInput(CreateJSONFromInputVariablesInputInputVariablesTypeItem[] inputVariables)
+        {
+            this.InputVariables = inputVariables;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateJSONFromInputVariablesInputInputVariablesTypeItem[] InputVariables { get; set; }
 
@@ -1033,6 +1078,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetJSONTableFromStringArrayInput
     {
+        public GetJSONTableFromStringArrayInput(string[] inputArray, string columnName)
+        {
+            this.InputArray = inputArray;
+            this.ColumnName = columnName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] InputArray { get; set; }
 
@@ -1052,6 +1103,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class FilterJSONTableInput
     {
+        public FilterJSONTableInput(string jSONTable, string filter)
+        {
+            this.JSONTable = jSONTable;
+            this.Filter = filter;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONTable { get; set; }
 
@@ -1080,6 +1137,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class FilterTableInput
     {
+        public FilterTableInput(JToken[] inputTable, string filter)
+        {
+            this.InputTable = inputTable;
+            this.Filter = filter;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] InputTable { get; set; }
 
@@ -1108,6 +1171,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class SortTableInput
     {
+        public SortTableInput(JToken[] inputTable, string sortColumnName)
+        {
+            this.InputTable = inputTable;
+            this.SortColumnName = sortColumnName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] InputTable { get; set; }
 
@@ -1135,6 +1204,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class SortJSONTableInput
     {
+        public SortJSONTableInput(string jSONTable, string sortColumnName)
+        {
+            this.JSONTable = jSONTable;
+            this.SortColumnName = sortColumnName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONTable { get; set; }
 
@@ -1162,6 +1237,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetTableFromStringArrayInput
     {
+        public GetTableFromStringArrayInput(string[] inputArray, string columnName)
+        {
+            this.InputArray = inputArray;
+            this.ColumnName = columnName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] InputArray { get; set; }
 
@@ -1181,6 +1262,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetTableFromJSONInput
     {
+        public GetTableFromJSONInput(string jSONTable)
+        {
+            this.JSONTable = jSONTable;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONTable { get; set; }
 
@@ -1202,6 +1288,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class SortStringArrayInput
     {
+        public SortStringArrayInput(string[] inputArray)
+        {
+            this.InputArray = inputArray;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] InputArray { get; set; }
 
@@ -1220,6 +1311,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class FilterStringArrayInput
     {
+        public FilterStringArrayInput(string[] inputArray, string columnName, string filter)
+        {
+            this.InputArray = inputArray;
+            this.ColumnName = columnName;
+            this.Filter = filter;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] InputArray { get; set; }
 
@@ -1238,6 +1336,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class InsertRowInStringArrayInput
     {
+        public InsertRowInStringArrayInput(string[] inputArray, int rowIndex)
+        {
+            this.InputArray = inputArray;
+            this.RowIndex = rowIndex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] InputArray { get; set; }
 
@@ -1255,6 +1359,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class InsertRowInTableInput
     {
+        public InsertRowInTableInput(JToken[] inputTable, int rowIndex)
+        {
+            this.InputTable = inputTable;
+            this.RowIndex = rowIndex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] InputTable { get; set; }
 
@@ -1272,6 +1382,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class InsertRowInJSONTableInput
     {
+        public InsertRowInJSONTableInput(string jSONTable, int rowIndex)
+        {
+            this.JSONTable = jSONTable;
+            this.RowIndex = rowIndex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONTable { get; set; }
 
@@ -1289,6 +1405,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class InsertRowInJSONTableFromInputVariablesInput
     {
+        public InsertRowInJSONTableFromInputVariablesInput(string jSONTable, int rowIndex, InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItem[] rowToInsertInputVariables)
+        {
+            this.JSONTable = jSONTable;
+            this.RowIndex = rowIndex;
+            this.RowToInsertInputVariables = rowToInsertInputVariables;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONTable { get; set; }
 
@@ -1325,6 +1448,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class DeleteItemsInStringArrayInput
     {
+        public DeleteItemsInStringArrayInput(string[] inputArray, int startItemIndex)
+        {
+            this.InputArray = inputArray;
+            this.StartItemIndex = startItemIndex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] InputArray { get; set; }
 
@@ -1344,6 +1473,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class DeleteRowsInTableInput
     {
+        public DeleteRowsInTableInput(JToken[] inputTable, int startRowIndex)
+        {
+            this.InputTable = inputTable;
+            this.StartRowIndex = startRowIndex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] InputTable { get; set; }
 
@@ -1363,6 +1498,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class DeleteRowsInJSONTableInput
     {
+        public DeleteRowsInJSONTableInput(string jSONTable, int startRowIndex)
+        {
+            this.JSONTable = jSONTable;
+            this.StartRowIndex = startRowIndex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONTable { get; set; }
 
@@ -1382,6 +1523,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class RenameColumnInTableInput
     {
+        public RenameColumnInTableInput(JToken[] inputTable, string sourceColumnName, string newColumnName)
+        {
+            this.InputTable = inputTable;
+            this.SourceColumnName = sourceColumnName;
+            this.NewColumnName = newColumnName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] InputTable { get; set; }
 
@@ -1401,6 +1549,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class RenameColumnInJSONTableInput
     {
+        public RenameColumnInJSONTableInput(string jSONTable, string sourceColumnName, string newColumnName)
+        {
+            this.JSONTable = jSONTable;
+            this.SourceColumnName = sourceColumnName;
+            this.NewColumnName = newColumnName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONTable { get; set; }
 
@@ -1420,6 +1575,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class DeleteColumnsInTableInput
     {
+        public DeleteColumnsInTableInput(JToken[] inputTable)
+        {
+            this.InputTable = inputTable;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] InputTable { get; set; }
         public int? StartColumnIndex { get; set; }
@@ -1438,6 +1598,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class DeleteColumnsInJSONTableInput
     {
+        public DeleteColumnsInJSONTableInput(string jSONTable)
+        {
+            this.JSONTable = jSONTable;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONTable { get; set; }
         public int? StartColumnIndex { get; set; }
@@ -1455,6 +1620,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetStringArrayFromTableColumnInput
     {
+        public GetStringArrayFromTableColumnInput(JToken[] inputTable)
+        {
+            this.InputTable = inputTable;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] InputTable { get; set; }
         public int? ColumnIndex { get; set; }
@@ -1469,6 +1639,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetStringArrayFromJSONTableColumnInput
     {
+        public GetStringArrayFromJSONTableColumnInput(string jSONTable)
+        {
+            this.JSONTable = jSONTable;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONTable { get; set; }
         public int? ColumnIndex { get; set; }
@@ -1482,6 +1657,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetStringFromJSONTableCellInput
     {
+        public GetStringFromJSONTableCellInput(string jSONTable)
+        {
+            this.JSONTable = jSONTable;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONTable { get; set; }
         public int? RowIndex { get; set; }
@@ -1529,6 +1709,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class LoadIAConnectLookupTableInput
     {
+        public LoadIAConnectLookupTableInput(string path)
+        {
+            this.Path = path;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
 
@@ -1568,6 +1753,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class RemoveIAConnectLookupTableInput
     {
+        public RemoveIAConnectLookupTableInput(string lookupTableName)
+        {
+            this.LookupTableName = lookupTableName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupTableName { get; set; }
 
@@ -1594,6 +1784,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class LookupValueFromIAConnectLookupTableInput
     {
+        public LookupValueFromIAConnectLookupTableInput(string lookupTableName, string searchResultValueColumnName)
+        {
+            this.LookupTableName = lookupTableName;
+            this.SearchResultValueColumnName = searchResultValueColumnName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupTableName { get; set; }
         public string InputDataJSON { get; set; }
@@ -1621,6 +1817,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class LookupColumnsFromIAConnectLookupTableInput
     {
+        public LookupColumnsFromIAConnectLookupTableInput(string lookupTableName, string searchResultTableColumnName)
+        {
+            this.LookupTableName = lookupTableName;
+            this.SearchResultTableColumnName = searchResultTableColumnName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupTableName { get; set; }
         public string InputDataJSON { get; set; }
@@ -1685,6 +1887,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetColumnFromIAConnectListInput
     {
+        public GetColumnFromIAConnectListInput(string listName)
+        {
+            this.ListName = listName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
 
@@ -1722,6 +1929,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetIAConnectListContentsInput
     {
+        public GetIAConnectListContentsInput(string listName)
+        {
+            this.ListName = listName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
 
@@ -1746,6 +1958,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class LookupDataCellsFromIAConnectLookupTableInput
     {
+        public LookupDataCellsFromIAConnectLookupTableInput(string lookupTableName)
+        {
+            this.LookupTableName = lookupTableName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupTableName { get; set; }
         public string InputDataJSON { get; set; }
@@ -1778,6 +1995,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetIAConnectLookupTableContentsInput
     {
+        public GetIAConnectLookupTableContentsInput(string lookupTableName)
+        {
+            this.LookupTableName = lookupTableName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupTableName { get; set; }
 
@@ -1801,6 +2023,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class UploadCSVToIAConnectLookupTableInput
     {
+        public UploadCSVToIAConnectLookupTableInput(string lookupTableName, string cSVData)
+        {
+            this.LookupTableName = lookupTableName;
+            this.CSVData = cSVData;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupTableName { get; set; }
 
@@ -1819,6 +2047,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class UploadCSVToIAConnectListInput
     {
+        public UploadCSVToIAConnectListInput(string listName, string cSVData)
+        {
+            this.ListName = listName;
+            this.CSVData = cSVData;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
 
@@ -1836,6 +2070,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class ConvertArrayToJSONInput
     {
+        public ConvertArrayToJSONInput(JToken[] inputObject)
+        {
+            this.InputObject = inputObject;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] InputObject { get; set; }
     }

@@ -119,6 +119,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = (JToken.Parse("{\"name\":\"New Task\",\"type\":\"task\",\"description\":\"Task created from the API\"}")).ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -148,6 +150,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = (JToken.Parse("{\"id\":\"example-id-1234\"}")).ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }

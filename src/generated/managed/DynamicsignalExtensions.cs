@@ -753,6 +753,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
 
     public class GetUserByEmailBodyInput
     {
+        public GetUserByEmailBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -1455,6 +1460,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
 
     public class CreateBodyInput
     {
+        public CreateBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -1573,6 +1583,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
 
     public class AddImageToBodyInput
     {
+        public AddImageToBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
     }
@@ -1831,6 +1846,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
 
     public class ManagePostsBodyInput
     {
+        public ManagePostsBodyInput(string[] postIDs)
+        {
+            this.PostIDs = postIDs;
+        }
+
         [JsonProperty("postIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] PostIDs { get; set; }
 

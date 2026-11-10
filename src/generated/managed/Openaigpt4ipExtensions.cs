@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     public class Openaigpt4ipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ChatResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<ChatBodyInput>> body = null)
+        public IBodyWorkflowAction<ChatResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<ChatBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/chat/completions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ChatResponse>(callPayload);
             });
         }
@@ -40,16 +39,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<FineTuningResponse, ApiConnectionActionConfiguration> FineTuning(Expression<Func<FineTuningBodyInput>> body = null)
+        public IBodyWorkflowAction<FineTuningResponse, ApiConnectionActionConfiguration> FineTuning(Expression<Func<FineTuningBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FineTuningResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/fine_tuning/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FineTuningResponse>(callPayload);
             });
         }
@@ -100,61 +98,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ModerationResponse, ApiConnectionActionConfiguration> Moderation(Expression<Func<ModerationBodyInput>> body = null)
+        public IBodyWorkflowAction<ModerationResponse, ApiConnectionActionConfiguration> Moderation(Expression<Func<ModerationBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ModerationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/moderations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ModerationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<EmbedResponse, ApiConnectionActionConfiguration> Embed(Expression<Func<EmbedBodyInput>> body = null)
+        public IBodyWorkflowAction<EmbedResponse, ApiConnectionActionConfiguration> Embed(Expression<Func<EmbedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmbedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/embeddings";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EmbedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<AudioSpeechResponse, ApiConnectionActionConfiguration> AudioSpeech(Expression<Func<AudioSpeechBodyInput>> body = null)
+        public IBodyWorkflowAction<AudioSpeechResponse, ApiConnectionActionConfiguration> AudioSpeech(Expression<Func<AudioSpeechBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AudioSpeechResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/audio/speech";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AudioSpeechResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ImageResponse, ApiConnectionActionConfiguration> Image(Expression<Func<ImageBodyInput>> body = null)
+        public IBodyWorkflowAction<ImageResponse, ApiConnectionActionConfiguration> Image(Expression<Func<ImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/images/generations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImageResponse>(callPayload);
             });
         }
@@ -220,6 +214,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
     public class ChatBodyInput
     {
+        public ChatBodyInput(BodyInputMessagesTypeItem[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; } = "gpt-4-turbo";
 
@@ -253,6 +252,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
     public class BodyInputMessagesTypeItem
     {
+        public BodyInputMessagesTypeItem(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; } = "user";
 
@@ -367,6 +371,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
     public class FineTuningBodyInput
     {
+        public FineTuningBodyInput(string trainingFile, string model)
+        {
+            this.TrainingFile = trainingFile;
+            this.Model = model;
+        }
+
         [JsonProperty("training_file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TrainingFile { get; set; }
 
@@ -613,6 +623,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
     public class ModerationBodyInput
     {
+        public ModerationBodyInput(string input)
+        {
+            this.Input = input;
+        }
+
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Input { get; set; }
 
@@ -667,6 +682,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
     public class EmbedBodyInput
     {
+        public EmbedBodyInput(string input)
+        {
+            this.Input = input;
+        }
+
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Input { get; set; }
 
@@ -700,6 +720,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
     public class AudioSpeechBodyInput
     {
+        public AudioSpeechBodyInput(string input)
+        {
+            this.Input = input;
+        }
+
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public AudioSpeechBodyInputModelType Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip.AudioSpeechBodyInputModelType.Tts1;
 
@@ -775,6 +800,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
     public class ImageBodyInput
     {
+        public ImageBodyInput(string prompt)
+        {
+            this.Prompt = prompt;
+        }
+
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public ImageBodyInputModelType? Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip.ImageBodyInputModelType.DallE2;
 

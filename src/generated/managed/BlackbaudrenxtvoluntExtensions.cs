@@ -685,6 +685,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
 
     public class CreateVolunteerInterestBodyInput
     {
+        public CreateVolunteerInterestBodyInput(string constituentId, string interest)
+        {
+            this.ConstituentId = constituentId;
+            this.Interest = interest;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -700,6 +706,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
 
     public class CreateVolunteerSkillBodyInput
     {
+        public CreateVolunteerSkillBodyInput(string constituentId, string description)
+        {
+            this.ConstituentId = constituentId;
+            this.Description = description;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -757,6 +769,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
 
     public class CreateVolunteerTypeBodyInput
     {
+        public CreateVolunteerTypeBodyInput(string constituentId, string type)
+        {
+            this.ConstituentId = constituentId;
+            this.Type = type;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 

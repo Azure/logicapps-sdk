@@ -60,6 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
 
     public class RequestInput
     {
+        public RequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("title")]
         public string Title { get; set; }
 

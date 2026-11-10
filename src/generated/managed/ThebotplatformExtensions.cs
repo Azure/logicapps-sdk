@@ -142,12 +142,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
 
     public class SetUserAttributeBodyInput
     {
+        public SetUserAttributeBodyInput(SetUserAttributeBodyInputDataType data)
+        {
+            this.Data = data;
+        }
+
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetUserAttributeBodyInputDataType Data { get; set; } = new SetUserAttributeBodyInputDataType();
+        public SetUserAttributeBodyInputDataType Data { get; set; }
     }
 
     public class SetUserAttributeBodyInputDataType
     {
+        public SetUserAttributeBodyInputDataType(SetUserAttributeBodyInputDataTypeAttributesType attributes)
+        {
+            this.Attributes = attributes;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal SetUserAttributeBodyInputDataTypeTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform.SetUserAttributeBodyInputDataTypeTypeType.User;
 
@@ -164,12 +174,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
 
     public class SetUserAttributeBodyInputDataTypeAttributesType
     {
+        public SetUserAttributeBodyInputDataTypeAttributesType(BodyInputDataTypeAttributesTypeStateTypeItem[] state)
+        {
+            this.State = state;
+        }
+
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputDataTypeAttributesTypeStateTypeItem[] State { get; set; }
     }
 
     public class BodyInputDataTypeAttributesTypeStateTypeItem
     {
+        public BodyInputDataTypeAttributesTypeStateTypeItem(BodyInputDataTypeAttributesTypeStateTypeItemUserattributeType userattribute)
+        {
+            this.Userattribute = userattribute;
+        }
+
         [JsonProperty("userattribute", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputDataTypeAttributesTypeStateTypeItemUserattributeType Userattribute { get; set; }
 
@@ -179,6 +199,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
 
     public class BodyInputDataTypeAttributesTypeStateTypeItemUserattributeType
     {
+        public BodyInputDataTypeAttributesTypeStateTypeItemUserattributeType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }

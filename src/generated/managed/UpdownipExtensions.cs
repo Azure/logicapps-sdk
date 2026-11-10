@@ -220,6 +220,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Updownip
 
     public class BodyInput
     {
+        public BodyInput(BodyInputTypeType type, string value)
+        {
+            this.Type = type;
+            this.Value = value;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputTypeType Type { get; set; }
 

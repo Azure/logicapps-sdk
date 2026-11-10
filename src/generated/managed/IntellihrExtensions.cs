@@ -364,6 +364,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
 
     public class BodyInput
     {
+        public BodyInput(string endDate, string turnoverType)
+        {
+            this.EndDate = endDate;
+            this.TurnoverType = turnoverType;
+        }
+
         [JsonProperty("endDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndDate { get; set; }
 

@@ -165,6 +165,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 
     public class SendSmsBodyInput
     {
+        public SendSmsBodyInput(string to, string message)
+        {
+            this.To = to;
+            this.Message = message;
+        }
+
         [JsonProperty("source_number")]
         public string SourceNumber { get; set; }
 
@@ -329,6 +335,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 
     public class SendMmsBodyInput
     {
+        public SendMmsBodyInput(string to, string message)
+        {
+            this.To = to;
+            this.Message = message;
+        }
+
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 

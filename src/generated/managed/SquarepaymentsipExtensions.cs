@@ -1342,6 +1342,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
     public class ApplePayRegisterBodyInput
     {
+        public ApplePayRegisterBodyInput(string domainName)
+        {
+            this.DomainName = domainName;
+        }
+
         [JsonProperty("domain_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }
     }

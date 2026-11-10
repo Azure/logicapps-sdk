@@ -569,6 +569,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendTextMessageToMultipleContactsBodyInput
     {
+        public SendTextMessageToMultipleContactsBodyInput(string[] to, string body)
+        {
+            this.To = to;
+            this.Body = body;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
 
@@ -609,6 +615,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class ScheduleReviewTextMessageForContactsBodyInput
     {
+        public ScheduleReviewTextMessageForContactsBodyInput(string[] to, string body, string googlePlaceId, string scheduledDate, string scheduledTime)
+        {
+            this.To = to;
+            this.Body = body;
+            this.GooglePlaceId = googlePlaceId;
+            this.ScheduledDate = scheduledDate;
+            this.ScheduledTime = scheduledTime;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
 
@@ -652,6 +667,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendTextMessageToMultipleGroupsBodyInput
     {
+        public SendTextMessageToMultipleGroupsBodyInput(string[] groupName, string body)
+        {
+            this.GroupName = groupName;
+            this.Body = body;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] GroupName { get; set; }
 
@@ -686,6 +707,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendReviewTextGroupsBodyInput
     {
+        public SendReviewTextGroupsBodyInput(string[] groupName, string body, string placeId)
+        {
+            this.GroupName = groupName;
+            this.Body = body;
+            this.PlaceId = placeId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] GroupName { get; set; }
 
@@ -736,6 +764,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class ScheduleMessageForAContactBodyInput
     {
+        public ScheduleMessageForAContactBodyInput(string to, string body, string scheduledDate, string scheduledTime)
+        {
+            this.To = to;
+            this.Body = body;
+            this.ScheduledDate = scheduledDate;
+            this.ScheduledTime = scheduledTime;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -789,6 +825,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class ScheduleMessageForGroupsBodyInput
     {
+        public ScheduleMessageForGroupsBodyInput(string[] to, string body, string scheduledDate, string scheduledTime)
+        {
+            this.To = to;
+            this.Body = body;
+            this.ScheduledDate = scheduledDate;
+            this.ScheduledTime = scheduledTime;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
 
@@ -842,6 +886,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class ScheduleReviewMessageForAContactBodyInput
     {
+        public ScheduleReviewMessageForAContactBodyInput(string to, string body, string googlePlaceId, string scheduledDate, string scheduledTime)
+        {
+            this.To = to;
+            this.Body = body;
+            this.GooglePlaceId = googlePlaceId;
+            this.ScheduledDate = scheduledDate;
+            this.ScheduledTime = scheduledTime;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -898,6 +951,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class ScheduleReviewGroupsBodyInput
     {
+        public ScheduleReviewGroupsBodyInput(string[] groupName, string body, string placeId, string scheduledDate, string scheduledTime)
+        {
+            this.GroupName = groupName;
+            this.Body = body;
+            this.PlaceId = placeId;
+            this.ScheduledDate = scheduledDate;
+            this.ScheduledTime = scheduledTime;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] GroupName { get; set; }
 
@@ -948,6 +1010,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendTextMessageBodyInput
     {
+        public SendTextMessageBodyInput(string to, string body)
+        {
+            this.To = to;
+            this.Body = body;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1056,6 +1124,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendReviewSingleContactBodyInput
     {
+        public SendReviewSingleContactBodyInput(string to, string body, string googlePlaceId)
+        {
+            this.To = to;
+            this.Body = body;
+            this.GooglePlaceId = googlePlaceId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1106,6 +1181,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendReviewTextMultipleContactsBodyInput
     {
+        public SendReviewTextMultipleContactsBodyInput(string[] to, string body, string googlePlaceId)
+        {
+            this.To = to;
+            this.Body = body;
+            this.GooglePlaceId = googlePlaceId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
 
@@ -1156,6 +1238,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendTextEventReminderToAGroupBodyInput
     {
+        public SendTextEventReminderToAGroupBodyInput(string to, string reminderText, string eventDate, int day, string time)
+        {
+            this.To = to;
+            this.ReminderText = reminderText;
+            this.EventDate = eventDate;
+            this.Day = day;
+            this.Time = time;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1212,6 +1303,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendTextMessageEventReminderToMultipleContactsBodyInput
     {
+        public SendTextMessageEventReminderToMultipleContactsBodyInput(string[] to, string reminderText, string eventDate, int day, string time)
+        {
+            this.To = to;
+            this.ReminderText = reminderText;
+            this.EventDate = eventDate;
+            this.Day = day;
+            this.Time = time;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
 
@@ -1268,6 +1368,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendTextMessageEventReminderToGroupsBodyInput
     {
+        public SendTextMessageEventReminderToGroupsBodyInput(string[] groupName, string reminderText, string eventDate, int day, string time)
+        {
+            this.GroupName = groupName;
+            this.ReminderText = reminderText;
+            this.EventDate = eventDate;
+            this.Day = day;
+            this.Time = time;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] GroupName { get; set; }
 
@@ -1355,6 +1464,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class ScheduleReviewTextMessageForAGroupBodyInput
     {
+        public ScheduleReviewTextMessageForAGroupBodyInput(string to, string body, string placeId, string scheduledDate, string scheduledTime)
+        {
+            this.To = to;
+            this.Body = body;
+            this.PlaceId = placeId;
+            this.ScheduledDate = scheduledDate;
+            this.ScheduledTime = scheduledTime;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1473,6 +1591,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendReviewTextMessageToAGroupBodyInput
     {
+        public SendReviewTextMessageToAGroupBodyInput(string to, string body, string placeId)
+        {
+            this.To = to;
+            this.Body = body;
+            this.PlaceId = placeId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1553,6 +1678,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendTextToANewGroupBodyInput
     {
+        public SendTextToANewGroupBodyInput(string[] to, string body, string groupName)
+        {
+            this.To = to;
+            this.Body = body;
+            this.GroupName = groupName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
 
@@ -1596,6 +1728,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class ScheduleTextForANewGroupBodyInput
     {
+        public ScheduleTextForANewGroupBodyInput(string[] to, string body, string groupName, string scheduledDate, string scheduledTime)
+        {
+            this.To = to;
+            this.Body = body;
+            this.GroupName = groupName;
+            this.ScheduledDate = scheduledDate;
+            this.ScheduledTime = scheduledTime;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
 
@@ -1645,6 +1786,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendTextEventReminderToNewGroupBodyInput
     {
+        public SendTextEventReminderToNewGroupBodyInput(string[] to, string reminderText, string groupName, string eventDate, int day, string time)
+        {
+            this.To = to;
+            this.ReminderText = reminderText;
+            this.GroupName = groupName;
+            this.EventDate = eventDate;
+            this.Day = day;
+            this.Time = time;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
 
@@ -1704,6 +1855,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendMessageToANewContactBodyInput
     {
+        public SendMessageToANewContactBodyInput(string contactNumber, string message)
+        {
+            this.ContactNumber = contactNumber;
+            this.Message = message;
+        }
+
         public string ContactName { get; set; }
         public string ContactLastName { get; set; }
 
@@ -1754,6 +1911,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class ScheduleReviewTextMessageToANewContactBodyInput
     {
+        public ScheduleReviewTextMessageToANewContactBodyInput(string contactNumber, string reviewText, string googlePlaceId, string scheduledDate, string scheduledTime)
+        {
+            this.ContactNumber = contactNumber;
+            this.ReviewText = reviewText;
+            this.GooglePlaceId = googlePlaceId;
+            this.ScheduledDate = scheduledDate;
+            this.ScheduledTime = scheduledTime;
+        }
+
         public string ContactName { get; set; }
         public string ContactLastName { get; set; }
 
@@ -1813,6 +1979,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendReviewTextMessageToANewContactBodyInput
     {
+        public SendReviewTextMessageToANewContactBodyInput(string contactNumber, string reviewText, string placeId)
+        {
+            this.ContactNumber = contactNumber;
+            this.ReviewText = reviewText;
+            this.PlaceId = placeId;
+        }
+
         public string ContactName { get; set; }
         public string ContactLastName { get; set; }
 
@@ -1866,6 +2039,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class ScheduleReviewToANewGroupBodyInput
     {
+        public ScheduleReviewToANewGroupBodyInput(string[] to, string reviewText, string groupName, string placeId, string scheduledDate, string scheduledTime)
+        {
+            this.To = to;
+            this.ReviewText = reviewText;
+            this.GroupName = groupName;
+            this.PlaceId = placeId;
+            this.ScheduledDate = scheduledDate;
+            this.ScheduledTime = scheduledTime;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
 
@@ -1925,6 +2108,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendReviewToANewGroupBodyInput
     {
+        public SendReviewToANewGroupBodyInput(string[] to, string reviewText, string groupName, string placeId)
+        {
+            this.To = to;
+            this.ReviewText = reviewText;
+            this.GroupName = groupName;
+            this.PlaceId = placeId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
 
@@ -1978,6 +2169,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class ScheduleTextForANewContactBodyInput
     {
+        public ScheduleTextForANewContactBodyInput(string contactNumber, string message, string scheduledDate, string scheduledTime)
+        {
+            this.ContactNumber = contactNumber;
+            this.Message = message;
+            this.ScheduledDate = scheduledDate;
+            this.ScheduledTime = scheduledTime;
+        }
+
         public string ContactName { get; set; }
         public string ContactLastName { get; set; }
 
@@ -2027,6 +2226,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class CreateAContactBodyInput
     {
+        public CreateAContactBodyInput(string phone)
+        {
+            this.Phone = phone;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Phone { get; set; }
         public string Name { get; set; }
@@ -2072,6 +2276,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendMessageEventReminderToANewContactBodyInput
     {
+        public SendMessageEventReminderToANewContactBodyInput(string contactNumber, string reminderText, string eventDate, int day, string time)
+        {
+            this.ContactNumber = contactNumber;
+            this.ReminderText = reminderText;
+            this.EventDate = eventDate;
+            this.Day = day;
+            this.Time = time;
+        }
+
         public string ContactName { get; set; }
         public string ContactLastName { get; set; }
 
@@ -2125,6 +2338,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class UpdateAPowerTextorContactBodyInput
     {
+        public UpdateAPowerTextorContactBodyInput(string contact)
+        {
+            this.Contact = contact;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Contact { get; set; }
         public string UpdatedContactName { get; set; }
@@ -2173,6 +2391,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class SendMessageToMultipleNumbersBodyInput
     {
+        public SendMessageToMultipleNumbersBodyInput(string contactNumber, string body)
+        {
+            this.ContactNumber = contactNumber;
+            this.Body = body;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactNumber { get; set; }
 

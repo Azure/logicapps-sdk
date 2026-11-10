@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new GetCustomLocationsByImageNameBodyInput().ToJToken();
                 return new ApiConnectionAction<GetCustomLocationsByImageNameResponse>(callPayload);
             });
         }

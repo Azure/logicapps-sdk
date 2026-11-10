@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
 
     public class ContentInput
     {
+        public ContentInput(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }

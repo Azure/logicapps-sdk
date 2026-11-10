@@ -312,6 +312,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 
     public class DataExchangeLookupBodyInput
     {
+        public DataExchangeLookupBodyInput(bool details)
+        {
+            this.Details = details;
+        }
+
         [JsonProperty("lookupName")]
         public string LookupName { get; set; }
 
@@ -333,6 +338,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 
     public class ExportDataBodyInput
     {
+        public ExportDataBodyInput(string packageName)
+        {
+            this.PackageName = packageName;
+        }
+
         [JsonProperty("namedContext")]
         public string NamedContext { get; set; }
 
@@ -360,6 +370,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 
     public class ExportDataWithDataSourceBodyInput
     {
+        public ExportDataWithDataSourceBodyInput(string dataSource)
+        {
+            this.DataSource = dataSource;
+        }
+
         [JsonProperty("namedContext")]
         public string NamedContext { get; set; }
 
@@ -394,6 +409,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 
     public class TriggerCartBodyInput
     {
+        public TriggerCartBodyInput(string cartName, BodyInputTypeOfActionType typeOfAction)
+        {
+            this.CartName = cartName;
+            this.TypeOfAction = typeOfAction;
+        }
+
         [JsonProperty("cartName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CartName { get; set; }
 
@@ -439,6 +460,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 
     public class TriggerReturnBodyInput
     {
+        public TriggerReturnBodyInput(string returnName, string typeOfAction)
+        {
+            this.ReturnName = returnName;
+            this.TypeOfAction = typeOfAction;
+        }
+
         [JsonProperty("returnName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReturnName { get; set; }
 
@@ -464,6 +491,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 
     public class CheckTriggerStatusBodyInput
     {
+        public CheckTriggerStatusBodyInput(string returnOrCartName)
+        {
+            this.ReturnOrCartName = returnOrCartName;
+        }
+
         [JsonProperty("returnOrCartName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReturnOrCartName { get; set; }
     }
@@ -489,6 +521,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 
     public class ImportDataBodyInput
     {
+        public ImportDataBodyInput(string packageName, string fileContents, string fileName, BodyInputImportTransactionTypeType importTransactionType, bool recognizeFunctionalCurrency, bool stopOnLookupErrors)
+        {
+            this.PackageName = packageName;
+            this.FileContents = fileContents;
+            this.FileName = fileName;
+            this.ImportTransactionType = importTransactionType;
+            this.RecognizeFunctionalCurrency = recognizeFunctionalCurrency;
+            this.StopOnLookupErrors = stopOnLookupErrors;
+        }
+
         [JsonProperty("entityCode")]
         public string EntityCode { get; set; }
 
@@ -598,6 +640,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 
     public class GetJobHistoryBodyInput
     {
+        public GetJobHistoryBodyInput(string jobToken)
+        {
+            this.JobToken = jobToken;
+        }
+
         [JsonProperty("jobToken", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JobToken { get; set; }
 
@@ -625,6 +672,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 
     public class GetGmtDiagnosticsBodyInput
     {
+        public GetGmtDiagnosticsBodyInput(string gmtSetting, string gmtDiagnosticName)
+        {
+            this.GmtSetting = gmtSetting;
+            this.GmtDiagnosticName = gmtDiagnosticName;
+        }
+
         [JsonProperty("gmtSetting", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GmtSetting { get; set; }
 
@@ -634,6 +687,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 
     public class ReturnCalculationDetailsBodyInput
     {
+        public ReturnCalculationDetailsBodyInput(string returnName)
+        {
+            this.ReturnName = returnName;
+        }
+
         [JsonProperty("returnName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReturnName { get; set; }
 

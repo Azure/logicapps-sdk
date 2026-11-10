@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
 
     public class BodyInput
     {
+        public BodyInput(string botAuthorizationToken)
+        {
+            this.BotAuthorizationToken = botAuthorizationToken;
+        }
+
         [JsonProperty("botToken", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BotAuthorizationToken { get; set; }
 

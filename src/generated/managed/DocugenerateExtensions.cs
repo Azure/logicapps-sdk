@@ -313,6 +313,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
 
     public class GenerateDocumentBodyInput
     {
+        public GenerateDocumentBodyInput(string templateId, string data)
+        {
+            this.TemplateId = templateId;
+            this.Data = data;
+        }
+
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
 

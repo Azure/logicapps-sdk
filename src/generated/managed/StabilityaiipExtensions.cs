@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationImageImageResponse, ApiConnectionActionConfiguration> GenerationImageImage(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationImageImageBodyInput>> body = null)
+        public IBodyWorkflowAction<GenerationImageImageResponse, ApiConnectionActionConfiguration> GenerationImageImage(Expression<Func<string>> engineId, Expression<Func<GenerationImageImageBodyInput>> body, Expression<Func<string>> organization = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GenerationImageImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image", __workflow_engineId.WithUrlEncoding(1)));
@@ -87,18 +87,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_organization != null)
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerationImageImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationUpscaleResponse, ApiConnectionActionConfiguration> GenerationUpscale(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationUpscaleBodyInput>> body = null)
+        public IBodyWorkflowAction<GenerationUpscaleResponse, ApiConnectionActionConfiguration> GenerationUpscale(Expression<Func<string>> engineId, Expression<Func<GenerationUpscaleBodyInput>> body, Expression<Func<string>> organization = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GenerationUpscaleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image/upscale", __workflow_engineId.WithUrlEncoding(1)));
@@ -108,18 +107,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_organization != null)
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerationUpscaleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationMaskResponse, ApiConnectionActionConfiguration> GenerationMask(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationMaskBodyInput>> body = null)
+        public IBodyWorkflowAction<GenerationMaskResponse, ApiConnectionActionConfiguration> GenerationMask(Expression<Func<string>> engineId, Expression<Func<GenerationMaskBodyInput>> body, Expression<Func<string>> organization = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GenerationMaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image/masking", __workflow_engineId.WithUrlEncoding(1)));
@@ -129,38 +127,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_organization != null)
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerationMaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<StableImageCoreResponse, ApiConnectionActionConfiguration> StableImageCore(Expression<Func<StableImageCoreBodyInput>> body = null)
+        public IBodyWorkflowAction<StableImageCoreResponse, ApiConnectionActionConfiguration> StableImageCore(Expression<Func<StableImageCoreBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StableImageCoreResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/core";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<StableImageCoreResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<StableDiffusionResponse, ApiConnectionActionConfiguration> StableDiffusion(Expression<Func<StableDiffusionBodyInput>> body = null)
+        public IBodyWorkflowAction<StableDiffusionResponse, ApiConnectionActionConfiguration> StableDiffusion(Expression<Func<StableDiffusionBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StableDiffusionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/sd3";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<StableDiffusionResponse>(callPayload);
             });
         }
@@ -271,6 +266,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
 
     public class BodyInputTextPromptsTypeItem
     {
+        public BodyInputTextPromptsTypeItem(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
@@ -298,6 +298,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
 
     public class GenerationImageImageBodyInput
     {
+        public GenerationImageImageBodyInput(string initImage)
+        {
+            this.InitImage = initImage;
+        }
+
         [JsonProperty("text_prompts")]
         public BodyInputTextPromptsTypeItem[] TextPrompts { get; set; }
 
@@ -364,6 +369,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
 
     public class GenerationUpscaleBodyInput
     {
+        public GenerationUpscaleBodyInput(string image)
+        {
+            this.Image = image;
+        }
+
         [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Image { get; set; }
 
@@ -394,6 +404,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
 
     public class GenerationMaskBodyInput
     {
+        public GenerationMaskBodyInput(string initImage, string maskImage)
+        {
+            this.InitImage = initImage;
+            this.MaskImage = maskImage;
+        }
+
         [JsonProperty("text_prompts")]
         public BodyInputTextPromptsTypeItem[] TextPrompts { get; set; }
 
@@ -456,6 +472,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
 
     public class StableImageCoreBodyInput
     {
+        public StableImageCoreBodyInput(string prompt)
+        {
+            this.Prompt = prompt;
+        }
+
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
 
@@ -548,6 +569,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
 
     public class StableDiffusionBodyInput
     {
+        public StableDiffusionBodyInput(string prompt)
+        {
+            this.Prompt = prompt;
+        }
+
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
 

@@ -367,6 +367,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureopenai
 
     public class ChatCompletionsCreate2024Feb15PreviewRequestBodyInput
     {
+        public ChatCompletionsCreate2024Feb15PreviewRequestBodyInput(ChatCompletionRequestMessage2024Feb15Preview[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty("temperature", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Temperature { get; set; } = 1;
 
@@ -418,6 +423,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureopenai
 
     public class ChatCompletionRequestMessage2024Feb15Preview
     {
+        public ChatCompletionRequestMessage2024Feb15Preview(ChatCompletionRequestMessageRole2024Feb15Preview role, string content)
+        {
+            this.Role = role;
+            this.Content = content;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public ChatCompletionRequestMessageRole2024Feb15Preview Role { get; set; }
 
@@ -438,6 +449,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureopenai
 
     public class AzureSearchChatExtensionConfiguration2024Feb15Preview
     {
+        public AzureSearchChatExtensionConfiguration2024Feb15Preview(AzureChatExtensionType2024Feb15Preview type, AzureSearchChatExtensionParameters2024Feb15Preview parameters)
+        {
+            this.Type = type;
+            this.Parameters = parameters;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public AzureChatExtensionType2024Feb15Preview Type { get; set; }
 
@@ -454,6 +471,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureopenai
 
     public class AzureSearchChatExtensionParameters2024Feb15Preview
     {
+        public AzureSearchChatExtensionParameters2024Feb15Preview(string indexName)
+        {
+            this.IndexName = indexName;
+        }
+
         [JsonProperty("top_n_documents")]
         public int? TopNDocuments { get; set; }
 
@@ -523,6 +545,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureopenai
 
     public class OnYourDataDeploymentNameVectorizationSource2024Feb15Preview
     {
+        public OnYourDataDeploymentNameVectorizationSource2024Feb15Preview(string deploymentName)
+        {
+            this.DeploymentName = deploymentName;
+        }
+
         [JsonProperty("type")]
         public OnYourDataVectorizationSourceType2024Feb15Preview? Type { get; set; }
 
@@ -694,6 +721,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureopenai
 
     public class ExtensionsChatCompletionsCreateRequestBodyInput
     {
+        public ExtensionsChatCompletionsCreateRequestBodyInput(ExtensionsChatCompletionsCreateMessage[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
         public ExtensionsChatCompletionsCreateMessage[] Messages { get; set; }
 
@@ -730,6 +762,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureopenai
 
     public class ExtensionsChatCompletionsCreateMessage
     {
+        public ExtensionsChatCompletionsCreateMessage(ExtensionsChatCompletionsCreateMessageRoleType role, string content)
+        {
+            this.Role = role;
+            this.Content = content;
+        }
+
         [JsonProperty("index")]
         public int? Index { get; set; }
 
@@ -761,6 +799,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureopenai
 
     public class DataSource
     {
+        public DataSource(string type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 

@@ -341,6 +341,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
     public class CreateCustomOrPropertyLookupBodyInput
     {
+        public CreateCustomOrPropertyLookupBodyInput(string libraryId, string lookupFieldId, JToken aliasInfo)
+        {
+            this.LibraryId = libraryId;
+            this.LookupFieldId = lookupFieldId;
+            this.AliasInfo = aliasInfo;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -419,6 +426,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
     public class CreateUserBodyInput
     {
+        public CreateUserBodyInput(string fullName, string id, string email, string preferredLibrary, string role, JToken createPassword)
+        {
+            this.FullName = fullName;
+            this.Id = id;
+            this.Email = email;
+            this.PreferredLibrary = preferredLibrary;
+            this.Role = role;
+            this.CreatePassword = createPassword;
+        }
+
         [JsonProperty("full_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FullName { get; set; }
 
@@ -470,6 +487,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
     public class AssignUserToLibraryBodyInput
     {
+        public AssignUserToLibraryBodyInput(string libraryId, string userId, string role)
+        {
+            this.LibraryId = libraryId;
+            this.UserId = userId;
+            this.Role = role;
+        }
+
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
 
@@ -754,6 +778,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
     public class AddFolderBodyInput
     {
+        public AddFolderBodyInput(string name, string parentId, BodyInputParentTypeType parentType)
+        {
+            this.Name = name;
+            this.ParentId = parentId;
+            this.ParentType = parentType;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -873,6 +904,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
     public class AddTabBodyInput
     {
+        public AddTabBodyInput(string name, string parentId)
+        {
+            this.Name = name;
+            this.ParentId = parentId;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -980,6 +1017,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
     public class AddShortcutsToMyMattersAdminBodyInput
     {
+        public AddShortcutsToMyMattersAdminBodyInput(string userId, string workspaceId)
+        {
+            this.UserId = userId;
+            this.WorkspaceId = workspaceId;
+        }
+
         [JsonProperty("user_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
 
@@ -1007,6 +1050,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
     public class GetRowsFromCSVDocumentBodyInput
     {
+        public GetRowsFromCSVDocumentBodyInput(string documentId, string columnNames)
+        {
+            this.DocumentId = documentId;
+            this.ColumnNames = columnNames;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -1037,6 +1086,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
     public class MoveFolderBodyInput
     {
+        public MoveFolderBodyInput(string folderId, string destinationId)
+        {
+            this.FolderId = folderId;
+            this.DestinationId = destinationId;
+        }
+
         [JsonProperty("folder_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderId { get; set; }
 
@@ -1052,6 +1107,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
     public class UpdateFolderBodyInput
     {
+        public UpdateFolderBodyInput(string folderId)
+        {
+            this.FolderId = folderId;
+        }
+
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderId { get; set; }
 

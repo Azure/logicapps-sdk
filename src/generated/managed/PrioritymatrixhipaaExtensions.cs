@@ -49,16 +49,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrixhipaa")]
-        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/project/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateProjectResponse>(callPayload);
             });
         }
@@ -269,6 +268,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
 
     public class AddCommentToItemBodyInput
     {
+        public AddCommentToItemBodyInput(string item, string text)
+        {
+            this.Item = item;
+            this.Text = text;
+        }
+
         [JsonProperty("item", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Item { get; set; }
 
@@ -590,6 +595,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
 
     public class CreateProjectBodyInput
     {
+        public CreateProjectBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("endDate")]
         public string EndDate { get; set; }
 

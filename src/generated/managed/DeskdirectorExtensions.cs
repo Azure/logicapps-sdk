@@ -426,6 +426,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
 
     public class CreateChatWebhookReqInput
     {
+        public CreateChatWebhookReqInput(JToken parameters)
+        {
+            this.Parameters = parameters;
+        }
+
         [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Parameters { get; set; }
 
@@ -435,6 +440,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
 
     public class CreateTicketWorkflowReqInput
     {
+        public CreateTicketWorkflowReqInput(string description, JToken advancedFilters)
+        {
+            this.Description = description;
+            this.AdvancedFilters = advancedFilters;
+        }
+
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
 
@@ -453,6 +464,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
 
     public class AdvancedEventSubscribeReqInput
     {
+        public AdvancedEventSubscribeReqInput(JToken parameters)
+        {
+            this.Parameters = parameters;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 

@@ -13,17 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlogin
     public class ZenloginActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlogin")]
-        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> appId, Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> appId, Expression<Func<BodyInput>> body)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoginResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/applications/{0}/logins/checks", __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoginResponse>(callPayload);
             });
         }
@@ -62,6 +61,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlogin
 
     public class BodyInput
     {
+        public BodyInput(string identityKey, string identityEmailAddress, string userAgent, string ipAddress)
+        {
+            this.IdentityKey = identityKey;
+            this.IdentityEmailAddress = identityEmailAddress;
+            this.UserAgent = userAgent;
+            this.IpAddress = ipAddress;
+        }
+
         [JsonProperty("identity_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IdentityKey { get; set; }
 

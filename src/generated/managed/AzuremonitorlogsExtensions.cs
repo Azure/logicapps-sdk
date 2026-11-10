@@ -89,6 +89,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
 
     public class BodyInput
     {
+        public BodyInput(string query, string timeRangeType, JToken timerange)
+        {
+            this.Query = query;
+            this.TimeRangeType = timeRangeType;
+            this.Timerange = timerange;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 

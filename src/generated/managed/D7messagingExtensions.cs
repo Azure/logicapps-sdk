@@ -25,61 +25,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<NumberLookupResponse, ApiConnectionActionConfiguration> NumberLookup(Expression<Func<NumberLookupBodyInput>> body = null)
+        public IBodyWorkflowAction<NumberLookupResponse, ApiConnectionActionConfiguration> NumberLookup(Expression<Func<NumberLookupBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NumberLookupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hlr/v1/lookup";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NumberLookupResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPSendOTPResponse, ApiConnectionActionConfiguration> OTPSendOTP(Expression<Func<OTPSendOTPBodyInput>> body = null)
+        public IBodyWorkflowAction<OTPSendOTPResponse, ApiConnectionActionConfiguration> OTPSendOTP(Expression<Func<OTPSendOTPBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OTPSendOTPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/send-otp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OTPSendOTPResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPResendOTPResponse, ApiConnectionActionConfiguration> OTPResendOTP(Expression<Func<OTPResendOTPBodyInput>> body = null)
+        public IBodyWorkflowAction<OTPResendOTPResponse, ApiConnectionActionConfiguration> OTPResendOTP(Expression<Func<OTPResendOTPBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OTPResendOTPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/resend-otp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OTPResendOTPResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration> OTPVerifyOTP(Expression<Func<OTPVerifyOTPBodyInput>> body = null)
+        public IBodyWorkflowAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration> OTPVerifyOTP(Expression<Func<OTPVerifyOTPBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/verify-otp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OTPVerifyOTPResponse>(callPayload);
             });
         }
@@ -145,6 +141,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
 
     public class NumberLookupBodyInput
     {
+        public NumberLookupBodyInput(string recipient)
+        {
+            this.Recipient = recipient;
+        }
+
         [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Recipient { get; set; }
     }
@@ -163,6 +164,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
 
     public class OTPSendOTPBodyInput
     {
+        public OTPSendOTPBodyInput(string originator, string recipient)
+        {
+            this.Originator = originator;
+            this.Recipient = recipient;
+        }
+
         [JsonProperty("originator", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Originator { get; set; }
 
@@ -236,6 +243,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
 
     public class OTPResendOTPBodyInput
     {
+        public OTPResendOTPBodyInput(string otpId)
+        {
+            this.OtpId = otpId;
+        }
+
         [JsonProperty("otp_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OtpId { get; set; }
     }
@@ -248,6 +260,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
 
     public class OTPVerifyOTPBodyInput
     {
+        public OTPVerifyOTPBodyInput(string otpCode)
+        {
+            this.OtpCode = otpCode;
+        }
+
         [JsonProperty("otp_id")]
         public string OtpId { get; set; }
 

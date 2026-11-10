@@ -13,31 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
     public class InfobipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
-        public IBodyWorkflowAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration> SendInfobipSMS(Expression<Func<SendInfobipSMSRequestBodyInput>> requestBody = null)
+        public IBodyWorkflowAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration> SendInfobipSMS(Expression<Func<SendInfobipSMSRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms/1/text/single";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<SendSMSSuccessResponseBody>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
-        public IBodyWorkflowAction<VoiceCallSuccessResponseBody, ApiConnectionActionConfiguration> MakeInfobipVoiceCall(Expression<Func<MakeInfobipVoiceCallRequestBodyInput>> requestBody = null)
+        public IBodyWorkflowAction<VoiceCallSuccessResponseBody, ApiConnectionActionConfiguration> MakeInfobipVoiceCall(Expression<Func<MakeInfobipVoiceCallRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<VoiceCallSuccessResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tts/3/single";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<VoiceCallSuccessResponseBody>(callPayload);
             });
         }
@@ -103,6 +101,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 
     public class SendInfobipSMSRequestBodyInput
     {
+        public SendInfobipSMSRequestBodyInput(string recipientSPhoneNumber, string message)
+        {
+            this.RecipientSPhoneNumber = recipientSPhoneNumber;
+            this.Message = message;
+        }
+
         [JsonProperty("from")]
         public string SenderSPhoneNumber { get; set; }
 
@@ -145,6 +149,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 
     public class MakeInfobipVoiceCallRequestBodyInput
     {
+        public MakeInfobipVoiceCallRequestBodyInput(string recipientSPhoneNumber, string message)
+        {
+            this.RecipientSPhoneNumber = recipientSPhoneNumber;
+            this.Message = message;
+        }
+
         [JsonProperty("from")]
         public string CallerSPhoneNumber { get; set; }
 
@@ -274,6 +284,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 
     public class RequestBodyOfWebhookInput
     {
+        public RequestBodyOfWebhookInput(string phoneNumber, string keyword)
+        {
+            this.PhoneNumber = phoneNumber;
+            this.Keyword = keyword;
+        }
+
         [JsonProperty("phoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PhoneNumber { get; set; }
 

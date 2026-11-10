@@ -13,19 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoteaminbox
     public class ZohoteaminboxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoteaminbox")]
-        public IBodyWorkflowAction<SendMailResponse, ApiConnectionActionConfiguration> SendMail(Expression<Func<string>> workspaceId, Expression<Func<string>> teamId, Expression<Func<string>> teaminboxId, Expression<Func<SendMailBodyInput>> body = null)
+        public IBodyWorkflowAction<SendMailResponse, ApiConnectionActionConfiguration> SendMail(Expression<Func<string>> workspaceId, Expression<Func<string>> teamId, Expression<Func<string>> teaminboxId, Expression<Func<SendMailBodyInput>> body)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_teaminboxId = WorkflowExpression.Compile(teaminboxId, nameof(teaminboxId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/workspaces/{0}/teams/{1}/channels/{2}/compose/mail", __workflow_workspaceId.WithUrlEncoding(1), __workflow_teamId.WithUrlEncoding(1), __workflow_teaminboxId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendMailResponse>(callPayload);
             });
         }
@@ -42,23 +41,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoteaminbox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_query != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
+                else
+                    callPayload.Body = new QueryInput().ToJToken();
                 return new ApiConnectionAction<SearchMailResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoteaminbox")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> workspaceId, Expression<Func<string>> teamId, Expression<Func<CreateContactBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> workspaceId, Expression<Func<string>> teamId, Expression<Func<CreateContactBodyInput>> body)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/workspaces/{0}/teams/{1}/contacts", __workflow_workspaceId.WithUrlEncoding(1), __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
             });
         }
@@ -147,6 +147,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoteaminbox
 
     public class SendMailBodyInput
     {
+        public SendMailBodyInput(string from, string to, string emailSubject)
+        {
+            this.From = from;
+            this.To = to;
+            this.EmailSubject = emailSubject;
+        }
+
         [JsonProperty("fromAddress", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -267,6 +274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoteaminbox
 
     public class CreateContactBodyInput
     {
+        public CreateContactBodyInput(string contactName)
+        {
+            this.ContactName = contactName;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactName { get; set; }
 

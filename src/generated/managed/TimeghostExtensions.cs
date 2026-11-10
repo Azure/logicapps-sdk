@@ -1238,6 +1238,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddProjectBodyInput
     {
+        public AddProjectBodyInput(string name, AddProjectBodyInputClientType client)
+        {
+            this.Name = name;
+            this.Client = client;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1295,6 +1301,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddProjectBodyInputClientType
     {
+        public AddProjectBodyInputClientType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1313,6 +1324,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddProjectBodyInputUsersTypeItem
     {
+        public AddProjectBodyInputUsersTypeItem(string userId, AddProjectBodyInputUsersTypeItemRoleInProjectType roleInProject)
+        {
+            this.UserId = userId;
+            this.RoleInProject = roleInProject;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
 
@@ -1337,6 +1354,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateProjectBodyInput
     {
+        public UpdateProjectBodyInput(string name, AddProjectBodyInputClientType client, bool billable, bool taskBasedEstimation, bool @private)
+        {
+            this.Name = name;
+            this.Client = client;
+            this.Billable = billable;
+            this.TaskBasedEstimation = taskBasedEstimation;
+            this.Private = @private;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1403,6 +1429,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateProjectBodyInputUsersTypeItem
     {
+        public UpdateProjectBodyInputUsersTypeItem(string userId, AddProjectBodyInputUsersTypeItemRoleInProjectType roleInProject)
+        {
+            this.UserId = userId;
+            this.RoleInProject = roleInProject;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
 
@@ -1415,6 +1447,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateProjectBodyInputTagsTypeItem
     {
+        public UpdateProjectBodyInputTagsTypeItem(string tagId, string tagName)
+        {
+            this.TagId = tagId;
+            this.TagName = tagName;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TagId { get; set; }
 
@@ -1436,6 +1474,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateProjectTagsBodyInputTagsTypeItem
     {
+        public UpdateProjectTagsBodyInputTagsTypeItem(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -1448,6 +1491,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateProjectUsersBodyInputUsersTypeItem
     {
+        public UpdateProjectUsersBodyInputUsersTypeItem(string userId, UpdateProjectUsersBodyInputUsersTypeItemRoleInProjectType roleInProject)
+        {
+            this.UserId = userId;
+            this.RoleInProject = roleInProject;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
 
@@ -1475,6 +1524,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class BodyInputGroupsTypeItem
     {
+        public BodyInputGroupsTypeItem(string groupId, BodyInputGroupsTypeItemRoleInProjectType roleInProject)
+        {
+            this.GroupId = groupId;
+            this.RoleInProject = roleInProject;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupId { get; set; }
 
@@ -1666,6 +1721,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddTimeBodyInput
     {
+        public AddTimeBodyInput(AddTimeBodyInputClientType client, AddTimeBodyInputProjectType project, string name, string start)
+        {
+            this.Client = client;
+            this.Project = project;
+            this.Name = name;
+            this.Start = start;
+        }
+
         [JsonProperty("client", DefaultValueHandling = DefaultValueHandling.Include)]
         public AddTimeBodyInputClientType Client { get; set; }
 
@@ -1702,18 +1765,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddTimeBodyInputClientType
     {
+        public AddTimeBodyInputClientType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
     public class AddTimeBodyInputProjectType
     {
+        public AddTimeBodyInputProjectType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
     public class AddTimeBodyInputTaskObjectType
     {
+        public AddTimeBodyInputTaskObjectType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1798,6 +1876,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateTaskBodyInputProjectType
     {
+        public UpdateTaskBodyInputProjectType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1810,6 +1893,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateTimeBodyInputTaskObjectType
     {
+        public UpdateTimeBodyInputTaskObjectType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1822,6 +1910,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateTimeBodyInputTagsTypeItem
     {
+        public UpdateTimeBodyInputTagsTypeItem(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1831,6 +1924,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateTimeBodyInputUserType
     {
+        public UpdateTimeBodyInputUserType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1840,6 +1938,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddTaskBodyInput
     {
+        public AddTaskBodyInput(string name, AddTaskBodyInputProjectType project)
+        {
+            this.Name = name;
+            this.Project = project;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1861,6 +1965,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddTaskBodyInputProjectType
     {
+        public AddTaskBodyInputProjectType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1879,6 +1988,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddTaskBodyInputAssignedGroupsTypeItem
     {
+        public AddTaskBodyInputAssignedGroupsTypeItem(string id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1894,6 +2009,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateTaskBodyInput
     {
+        public UpdateTaskBodyInput(UpdateTaskBodyInputProjectType project)
+        {
+            this.Project = project;
+        }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -1951,6 +2071,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateTaskBodyInputAssignedGroupsTypeItem
     {
+        public UpdateTaskBodyInputAssignedGroupsTypeItem(string id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2047,6 +2173,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddClientBodyInput
     {
+        public AddClientBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2056,6 +2187,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateClientBodyInput
     {
+        public UpdateClientBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2179,6 +2315,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddGroupBodyInput
     {
+        public AddGroupBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2194,12 +2335,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddGroupBodyInputUsersTypeItem
     {
+        public AddGroupBodyInputUsersTypeItem(string userId)
+        {
+            this.UserId = userId;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
     }
 
     public class UpdateGroupBodyInput
     {
+        public UpdateGroupBodyInput(string id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2218,6 +2370,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateGroupBodyInputUsersTypeItem
     {
+        public UpdateGroupBodyInputUsersTypeItem(string userId, string email)
+        {
+            this.UserId = userId;
+            this.Email = email;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
 
@@ -2284,6 +2442,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddTagBodyInput
     {
+        public AddTagBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2299,6 +2462,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class UpdateTagBodyInput
     {
+        public UpdateTagBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2568,6 +2736,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddCustomFeedEventBodyInput
     {
+        public AddCustomFeedEventBodyInput(string name, AddCustomFeedEventBodyInputUserType user, string start, string end)
+        {
+            this.Name = name;
+            this.User = user;
+            this.Start = start;
+            this.End = end;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2598,6 +2774,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class AddCustomFeedEventBodyInputUserType
     {
+        public AddCustomFeedEventBodyInputUserType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -2653,6 +2834,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
 
     public class CreateExcelReportBodyInput
     {
+        public CreateExcelReportBodyInput(string startDate, string endDate, bool groupedByProject)
+        {
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.GroupedByProject = groupedByProject;
+        }
+
         [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
 

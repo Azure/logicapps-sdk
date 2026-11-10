@@ -72,16 +72,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VectorUpdate(Expression<Func<VectorUpdateBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VectorUpdate(Expression<Func<VectorUpdateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vectors/update";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -114,16 +113,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CollectionCreate(Expression<Func<CollectionCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CollectionCreate(Expression<Func<CollectionCreateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/collections";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -167,16 +165,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Index(Expression<Func<IndexBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Index(Expression<Func<IndexBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/databases";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -392,6 +389,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
 
     public class VectorUpdateBodyInput
     {
+        public VectorUpdateBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -452,6 +454,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
 
     public class CollectionCreateBodyInput
     {
+        public CollectionCreateBodyInput(string name, string source)
+        {
+            this.Name = name;
+            this.Source = source;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -473,6 +481,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
 
     public class IndexBodyInput
     {
+        public IndexBodyInput(string name, int dimension)
+        {
+            this.Name = name;
+            this.Dimension = dimension;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

@@ -603,6 +603,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstation
 
     public class BodyInput
     {
+        public BodyInput(string friendlyName, string @event)
+        {
+            this.FriendlyName = friendlyName;
+            this.Event = @event;
+        }
+
         [JsonProperty("friendly_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FriendlyName { get; set; }
 

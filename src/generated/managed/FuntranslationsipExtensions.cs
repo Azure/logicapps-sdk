@@ -13,17 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
     public class FuntranslationsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "funtranslationsip")]
-        public IBodyWorkflowAction<TranslateResponse, ApiConnectionActionConfiguration> Translate(Expression<Func<LanguageInput>> language, Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<TranslateResponse, ApiConnectionActionConfiguration> Translate(Expression<Func<LanguageInput>> language, Expression<Func<BodyInput>> body)
         {
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TranslateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}.json", __workflow_language.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TranslateResponse>(callPayload);
             });
         }
@@ -159,6 +158,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
 
     public class BodyInput
     {
+        public BodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }

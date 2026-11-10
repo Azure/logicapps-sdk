@@ -97,6 +97,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
 
     public class InputInput
     {
+        public InputInput(ExecuteStepVariable[] inputs)
+        {
+            this.Inputs = inputs;
+        }
+
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public ExecuteStepVariable[] Inputs { get; set; }
     }

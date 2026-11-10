@@ -560,6 +560,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 
     public class FormSubAddBodyInput
     {
+        public FormSubAddBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -830,12 +835,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 
     public class TagAddBodyInput
     {
+        public TagAddBodyInput(BodyInputTagType tag)
+        {
+            this.Tag = tag;
+        }
+
         [JsonProperty("tag", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputTagType Tag { get; set; }
     }
 
     public class BodyInputTagType
     {
+        public BodyInputTagType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -920,6 +935,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 
     public class SubscriberUnsubBodyInput
     {
+        public SubscriberUnsubBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
     }
@@ -1520,12 +1540,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 
     public class PurchaseAddBodyInput
     {
+        public PurchaseAddBodyInput(BodyInputPurchaseType purchase)
+        {
+            this.Purchase = purchase;
+        }
+
         [JsonProperty("purchase", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputPurchaseType Purchase { get; set; }
     }
 
     public class BodyInputPurchaseType
     {
+        public BodyInputPurchaseType(string transactionId, string emailAddress, string currency, BodyInputPurchaseTypeProductsTypeItem[] products)
+        {
+            this.TransactionId = transactionId;
+            this.EmailAddress = emailAddress;
+            this.Currency = currency;
+            this.Products = products;
+        }
+
         [JsonProperty("transaction_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TransactionId { get; set; }
 
@@ -1565,6 +1598,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 
     public class BodyInputPurchaseTypeProductsTypeItem
     {
+        public BodyInputPurchaseTypeProductsTypeItem(int pid, int lid, string name, int unitPrice, int quantity)
+        {
+            this.Pid = pid;
+            this.Lid = lid;
+            this.Name = name;
+            this.UnitPrice = unitPrice;
+            this.Quantity = quantity;
+        }
+
         [JsonProperty("pid", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Pid { get; set; }
 

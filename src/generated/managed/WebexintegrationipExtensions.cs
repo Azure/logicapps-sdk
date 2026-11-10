@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAInvitee(Expression<Func<string>> contentType = null, Expression<Func<CreateAInviteeBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAInvitee(Expression<Func<CreateAInviteeBodyInput>> body, Expression<Func<string>> contentType = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/meetingInvitees";
@@ -63,8 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -949,6 +948,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
 
     public class CreateAMeetingBodyInput
     {
+        public CreateAMeetingBodyInput(string title, string start, string end)
+        {
+            this.Title = title;
+            this.Start = start;
+            this.End = end;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -976,6 +982,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
 
     public class CreateAInviteeBodyInput
     {
+        public CreateAInviteeBodyInput(string meetingId, string email)
+        {
+            this.MeetingId = meetingId;
+            this.Email = email;
+        }
+
         [JsonProperty("meetingId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MeetingId { get; set; }
 

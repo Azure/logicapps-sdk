@@ -511,6 +511,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
 
     public class CreateTaskTaskInput
     {
+        public CreateTaskTaskInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -789,6 +794,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
 
     public class CommentInput
     {
+        public CommentInput(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
@@ -837,6 +847,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
 
     public class CreateSubtaskSubtaskInput
     {
+        public CreateSubtaskSubtaskInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

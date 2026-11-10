@@ -257,6 +257,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
 
     public class EncryptDataOperationInputInput
     {
+        public EncryptDataOperationInputInput(string rawData)
+        {
+            this.RawData = rawData;
+        }
+
         [JsonProperty("algorithm", DefaultValueHandling = DefaultValueHandling.Include)]
         public OperationInputInputAlgorithmType Algorithm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault.OperationInputInputAlgorithmType.RSAOAEP256;
 
@@ -283,6 +288,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
 
     public class DecryptDataOperationInputInput
     {
+        public DecryptDataOperationInputInput(string encryptedData)
+        {
+            this.EncryptedData = encryptedData;
+        }
+
         [JsonProperty("algorithm", DefaultValueHandling = DefaultValueHandling.Include)]
         public OperationInputInputAlgorithmType Algorithm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault.OperationInputInputAlgorithmType.RSAOAEP256;
 

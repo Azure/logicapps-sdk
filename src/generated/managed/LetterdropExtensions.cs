@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
     public class LetterdropActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<SubscriberResponse, ApiConnectionActionConfiguration> Subscriber(Expression<Func<SubscriberBodyInput>> body = null)
+        public IBodyWorkflowAction<SubscriberResponse, ApiConnectionActionConfiguration> Subscriber(Expression<Func<SubscriberBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscriberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscriber/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubscriberResponse>(callPayload);
             });
         }
@@ -42,16 +41,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<PostsGetResponse, ApiConnectionActionConfiguration> PostsGet(Expression<Func<PostsGetBodyInput>> body = null)
+        public IBodyWorkflowAction<PostsGetResponse, ApiConnectionActionConfiguration> PostsGet(Expression<Func<PostsGetBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/posts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostsGetResponse>(callPayload);
             });
         }
@@ -70,16 +68,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<PostDraftResponse, ApiConnectionActionConfiguration> PostDraft(Expression<Func<PostDraftBodyInput>> body = null)
+        public IBodyWorkflowAction<PostDraftResponse, ApiConnectionActionConfiguration> PostDraft(Expression<Func<PostDraftBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostDraftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/post/draft";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostDraftResponse>(callPayload);
             });
         }
@@ -98,31 +95,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<IdeaCreateResponse, ApiConnectionActionConfiguration> IdeaCreate(Expression<Func<IdeaCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<IdeaCreateResponse, ApiConnectionActionConfiguration> IdeaCreate(Expression<Func<IdeaCreateBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IdeaCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/idea/new";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IdeaCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<IdeaAssignResponse, ApiConnectionActionConfiguration> IdeaAssign(Expression<Func<IdeaAssignBodyInput>> body = null)
+        public IBodyWorkflowAction<IdeaAssignResponse, ApiConnectionActionConfiguration> IdeaAssign(Expression<Func<IdeaAssignBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IdeaAssignResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/idea/assign";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IdeaAssignResponse>(callPayload);
             });
         }
@@ -152,6 +147,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
 
     public class SubscriberBodyInput
     {
+        public SubscriberBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -305,6 +305,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
 
     public class PostsGetBodyInput
     {
+        public PostsGetBodyInput(string query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 
@@ -392,6 +397,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
 
     public class PostDraftBodyInput
     {
+        public PostDraftBodyInput(string title, string html)
+        {
+            this.Title = title;
+            this.Html = html;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -476,6 +487,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
 
     public class IdeaCreateBodyInput
     {
+        public IdeaCreateBodyInput(string title, string suggestedBy)
+        {
+            this.Title = title;
+            this.SuggestedBy = suggestedBy;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -503,6 +520,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
 
     public class IdeaAssignBodyInput
     {
+        public IdeaAssignBodyInput(string id, string assignTo, string publishOn)
+        {
+            this.Id = id;
+            this.AssignTo = assignTo;
+            this.PublishOn = publishOn;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 

@@ -406,6 +406,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class LogonBodyInput
     {
+        public LogonBodyInput(string archiveUrl, string username, string password)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.Username = username;
+            this.Password = password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -480,6 +487,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class CloseTaskAndAssignToUsersBodyInput
     {
+        public CloseTaskAndAssignToUsersBodyInput(string archiveUrl, string connectionId, string processId, string assignUserLoginNames)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.ProcessId = processId;
+            this.AssignUserLoginNames = assignUserLoginNames;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -502,6 +517,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class LogoffBodyInput
     {
+        public LogoffBodyInput(string archiveUrl, string connectionId)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -541,6 +562,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class GetDocumentPropertiesBodyInput
     {
+        public GetDocumentPropertiesBodyInput(string archiveUrl, string connectionId, string documentId)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -566,6 +594,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class GetProcessPropertiesBodyInput
     {
+        public GetProcessPropertiesBodyInput(string archiveUrl, string connectionId, string processId)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.ProcessId = processId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -579,6 +614,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class GetFileContentBodyInput
     {
+        public GetFileContentBodyInput(string archiveUrl, string connectionId, string documentId)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -726,6 +768,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class CloseProcessBodyInput
     {
+        public CloseProcessBodyInput(string connectionId, string processId)
+        {
+            this.ConnectionId = connectionId;
+            this.ProcessId = processId;
+        }
+
         [JsonProperty("connectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionId { get; set; }
 
@@ -756,6 +804,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class LogonWithHashedPasswordBodyInput
     {
+        public LogonWithHashedPasswordBodyInput(string userName, string passwordHashed)
+        {
+            this.UserName = userName;
+            this.PasswordHashed = passwordHashed;
+        }
+
         [JsonProperty("userName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
 
@@ -831,6 +885,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class CloseTaskBodyInput
     {
+        public CloseTaskBodyInput(string connectionId, string processId)
+        {
+            this.ConnectionId = connectionId;
+            this.ProcessId = processId;
+        }
+
         [JsonProperty("connectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionId { get; set; }
 
@@ -1058,6 +1118,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class GetDocumentBodyInput
     {
+        public GetDocumentBodyInput(string connectionId, string documentId)
+        {
+            this.ConnectionId = connectionId;
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("connectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionId { get; set; }
 
@@ -1187,6 +1253,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class GetProcessBodyInput
     {
+        public GetProcessBodyInput(string connectionId, string processId)
+        {
+            this.ConnectionId = connectionId;
+            this.ProcessId = processId;
+        }
+
         [JsonProperty("connectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionId { get; set; }
 
@@ -1196,6 +1268,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class GetFileContentConvertedBodyInput
     {
+        public GetFileContentConvertedBodyInput(string archiveUrl, string connectionId, string documentId, string targetFormat)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.DocumentId = documentId;
+            this.TargetFormat = targetFormat;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -1406,6 +1486,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class CreateProcessBodyInput
     {
+        public CreateProcessBodyInput(string archiveUrl, string connectionId, string processTemplateName)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.ProcessTemplateName = processTemplateName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -1438,6 +1525,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class UserTableGetRecordsBodyInput
     {
+        public UserTableGetRecordsBodyInput(string archiveUrl, string connectionId, string userTable)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.UserTable = userTable;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -1462,6 +1556,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class UserTableImportDataBodyInput
     {
+        public UserTableImportDataBodyInput(string archiveUrl, string connectionId, string userTable, string values)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.UserTable = userTable;
+            this.Values = values;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -1489,6 +1591,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class UserTableCreateTableBodyInput
     {
+        public UserTableCreateTableBodyInput(string archiveUrl, string connectionId, string userTable, string columnHeaders)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.UserTable = userTable;
+            this.ColumnHeaders = columnHeaders;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -1510,6 +1620,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class UserTableDeleteRecordsBodyInput
     {
+        public UserTableDeleteRecordsBodyInput(string archiveUrl, string connectionId, string userTable)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.UserTable = userTable;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -1778,6 +1895,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class MergePDFDocumentsToVersionBodyInput
     {
+        public MergePDFDocumentsToVersionBodyInput(string archiveUrl, string connectionId, string documentId, string documentIdToAppend)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.DocumentId = documentId;
+            this.DocumentIdToAppend = documentIdToAppend;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -1887,6 +2012,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class ProcessSearchBodyInput
     {
+        public ProcessSearchBodyInput(string archiveUrl, string connectionId)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -1908,6 +2039,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class UserTableUpdateRowBodyInput
     {
+        public UserTableUpdateRowBodyInput(string archiveUrl, string connectionId, string userTable, string rowData)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.UserTable = userTable;
+            this.RowData = rowData;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -1974,6 +2113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class GetSelectionBodyInput
     {
+        public GetSelectionBodyInput(string archiveUrl, string connectionId, string selectionId)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.SelectionId = selectionId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -2241,6 +2387,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class CreateDocumentBodyInput
     {
+        public CreateDocumentBodyInput(string archiveUrl, string connectionId, string documentTitle, string fileContent)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.DocumentTitle = documentTitle;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -2377,6 +2531,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class DocumentSearchBodyInput
     {
+        public DocumentSearchBodyInput(string archiveUrl, string connectionId)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -2808,6 +2968,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class UpdateDocumentBodyInput
     {
+        public UpdateDocumentBodyInput(string archiveUrl, string connectionId, string documentId)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
@@ -3184,6 +3351,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class UpdateProcessBodyInput
     {
+        public UpdateProcessBodyInput(string archiveUrl, string connectionId, string processId)
+        {
+            this.ArchiveUrl = archiveUrl;
+            this.ConnectionId = connectionId;
+            this.ProcessId = processId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 

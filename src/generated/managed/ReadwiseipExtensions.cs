@@ -428,12 +428,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
 
     public class HighlightSaveBodyInput
     {
+        public HighlightSaveBodyInput(BodyInputHighlightsTypeItem[] highlights)
+        {
+            this.Highlights = highlights;
+        }
+
         [JsonProperty("highlights", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputHighlightsTypeItem[] Highlights { get; set; }
     }
 
     public class BodyInputHighlightsTypeItem
     {
+        public BodyInputHighlightsTypeItem(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
@@ -779,6 +789,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
 
     public class BookTagsCreateBodyInput
     {
+        public BookTagsCreateBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }

@@ -810,8 +810,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
     public class CreateTimeOffRequestInput
     {
+        public CreateTimeOffRequestInput(CreateTimeOffRequestInputValueType value, string userId)
+        {
+            this.Value = value;
+            this.UserId = userId;
+        }
+
         [JsonProperty("sharedTimeOff", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTimeOffRequestInputValueType Value { get; set; } = new CreateTimeOffRequestInputValueType();
+        public CreateTimeOffRequestInputValueType Value { get; set; }
 
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
@@ -819,6 +825,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
     public class CreateTimeOffRequestInputValueType
     {
+        public CreateTimeOffRequestInputValueType(string timeOffReason, string startTime, string endTime)
+        {
+            this.TimeOffReason = timeOffReason;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("timeOffReasonId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TimeOffReason { get; set; }
 
@@ -977,11 +990,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
     public class CreateShiftRequestInput
     {
+        public CreateShiftRequestInput(CreateShiftRequestInputValueType value, string userId)
+        {
+            this.Value = value;
+            this.UserId = userId;
+        }
+
         [JsonProperty("schedulingGroupId")]
         public string SchedulingGroupId { get; set; }
 
         [JsonProperty("sharedShift", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateShiftRequestInputValueType Value { get; set; } = new CreateShiftRequestInputValueType();
+        public CreateShiftRequestInputValueType Value { get; set; }
 
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
@@ -989,6 +1008,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
     public class CreateShiftRequestInputValueType
     {
+        public CreateShiftRequestInputValueType(string startTime, string endTime)
+        {
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
 
@@ -1010,6 +1035,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
     public class CreateOpenShiftActivitiesItem
     {
+        public CreateOpenShiftActivitiesItem(string startTime, string endTime)
+        {
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("isPaid")]
         public bool? IsPaid { get; set; }
 
@@ -1115,12 +1146,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [JsonProperty("schedulingGroupId")]
         public string SchedulingGroupId { get; set; }
 
-        [JsonProperty("sharedOpenShift", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RequestInputSharedOpenShiftType SharedOpenShift { get; set; } = new RequestInputSharedOpenShiftType();
+        [JsonProperty("sharedOpenShift")]
+        public RequestInputSharedOpenShiftType SharedOpenShift { get; set; }
     }
 
     public class RequestInputSharedOpenShiftType
     {
+        public RequestInputSharedOpenShiftType(string startTime, string endTime, int openSlotCount)
+        {
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.OpenSlotCount = openSlotCount;
+        }
+
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
 

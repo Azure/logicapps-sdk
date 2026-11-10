@@ -186,6 +186,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class MobileB2BBodyInput
     {
+        public MobileB2BBodyInput(string username, string productName, BodyInputProviderType provider, BodyInputTransferTypeType transferType, MobileB2BBodyInputCurrencyCodeType currencyCode, double amount, string destinationChannel, string destinationAccount)
+        {
+            this.Username = username;
+            this.ProductName = productName;
+            this.Provider = provider;
+            this.TransferType = transferType;
+            this.CurrencyCode = currencyCode;
+            this.Amount = amount;
+            this.DestinationChannel = destinationChannel;
+            this.DestinationAccount = destinationAccount;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
@@ -264,6 +276,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class WalletTransferBodyInput
     {
+        public WalletTransferBodyInput(string username, string productName, int targetProductCode, MobileCheckoutBodyInputCurrencyCodeType currencyCode, double amount)
+        {
+            this.Username = username;
+            this.ProductName = productName;
+            this.TargetProductCode = targetProductCode;
+            this.CurrencyCode = currencyCode;
+            this.Amount = amount;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
@@ -411,6 +432,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class TopUpStashBodyInput
     {
+        public TopUpStashBodyInput(string username, string productName, MobileCheckoutBodyInputCurrencyCodeType currencyCode, double amount)
+        {
+            this.Username = username;
+            this.ProductName = productName;
+            this.CurrencyCode = currencyCode;
+            this.Amount = amount;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
@@ -579,6 +608,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class MobileCheckoutBodyInput
     {
+        public MobileCheckoutBodyInput(string username, string productName, string phoneNumber, MobileCheckoutBodyInputCurrencyCodeType currencyCode, double amount)
+        {
+            this.Username = username;
+            this.ProductName = productName;
+            this.PhoneNumber = phoneNumber;
+            this.CurrencyCode = currencyCode;
+            this.Amount = amount;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
@@ -642,6 +680,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class MobileB2CBodyInput
     {
+        public MobileB2CBodyInput(string username, string productName, BodyInputRecipientsTypeItem[] recipients)
+        {
+            this.Username = username;
+            this.ProductName = productName;
+            this.Recipients = recipients;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
@@ -654,6 +699,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class BodyInputRecipientsTypeItem
     {
+        public BodyInputRecipientsTypeItem(string phoneNumber, BodyInputRecipientsTypeItemCurrencyCodeType currencyCode, double amount)
+        {
+            this.PhoneNumber = phoneNumber;
+            this.CurrencyCode = currencyCode;
+            this.Amount = amount;
+        }
+
         [JsonProperty("phoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PhoneNumber { get; set; }
 

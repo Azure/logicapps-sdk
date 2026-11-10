@@ -13,151 +13,141 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     public class AquaforestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiRenameByBarcodePost200ApplicationJsonResponse, ApiConnectionActionConfiguration> GetBarcodeValue(Expression<Func<GetBarcodeInput>> getBarcode = null)
+        public IBodyWorkflowAction<ApiRenameByBarcodePost200ApplicationJsonResponse, ApiConnectionActionConfiguration> GetBarcodeValue(Expression<Func<GetBarcodeInput>> getBarcode)
         {
-            var __workflow_getBarcode = WorkflowExpression.Compile(getBarcode, nameof(getBarcode), required: false);
+            var __workflow_getBarcode = WorkflowExpression.Compile(getBarcode, nameof(getBarcode), required: true);
             return new DeferredBodyAction<ApiRenameByBarcodePost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetBarcodeValue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_getBarcode != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_getBarcode);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getBarcode);
                 return new ApiConnectionAction<ApiRenameByBarcodePost200ApplicationJsonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<GetPDFInfoResponse, ApiConnectionActionConfiguration> GetPdfInformation(Expression<Func<GetPDFInfoRequestInput>> getPDFInfoRequest = null)
+        public IBodyWorkflowAction<GetPDFInfoResponse, ApiConnectionActionConfiguration> GetPdfInformation(Expression<Func<GetPDFInfoRequestInput>> getPDFInfoRequest)
         {
-            var __workflow_getPDFInfoRequest = WorkflowExpression.Compile(getPDFInfoRequest, nameof(getPDFInfoRequest), required: false);
+            var __workflow_getPDFInfoRequest = WorkflowExpression.Compile(getPDFInfoRequest, nameof(getPDFInfoRequest), required: true);
             return new DeferredBodyAction<GetPDFInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetPDFInfo";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_getPDFInfoRequest != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_getPDFInfoRequest);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getPDFInfoRequest);
                 return new ApiConnectionAction<GetPDFInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetDataFromPdf(Expression<Func<GetDataFromPDFRequestInput>> getDataFromPDFRequest = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetDataFromPdf(Expression<Func<GetDataFromPDFRequestInput>> getDataFromPDFRequest)
         {
-            var __workflow_getDataFromPDFRequest = WorkflowExpression.Compile(getDataFromPDFRequest, nameof(getDataFromPDFRequest), required: false);
+            var __workflow_getDataFromPDFRequest = WorkflowExpression.Compile(getDataFromPDFRequest, nameof(getDataFromPDFRequest), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetPageData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_getDataFromPDFRequest != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_getDataFromPDFRequest);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getDataFromPDFRequest);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiGetTextValueJsonResponse, ApiConnectionActionConfiguration> GetTextValue(Expression<Func<GetTextInput>> getText = null)
+        public IBodyWorkflowAction<ApiGetTextValueJsonResponse, ApiConnectionActionConfiguration> GetTextValue(Expression<Func<GetTextInput>> getText)
         {
-            var __workflow_getText = WorkflowExpression.Compile(getText, nameof(getText), required: false);
+            var __workflow_getText = WorkflowExpression.Compile(getText, nameof(getText), required: true);
             return new DeferredBodyAction<ApiGetTextValueJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetTextValue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_getText != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_getText);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getText);
                 return new ApiConnectionAction<ApiGetTextValueJsonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<OcrResponse, ApiConnectionActionConfiguration> OcrFileToPdf(Expression<Func<OcrDataInput>> ocrData = null)
+        public IBodyWorkflowAction<OcrResponse, ApiConnectionActionConfiguration> OcrFileToPdf(Expression<Func<OcrDataInput>> ocrData)
         {
-            var __workflow_ocrData = WorkflowExpression.Compile(ocrData, nameof(ocrData), required: false);
+            var __workflow_ocrData = WorkflowExpression.Compile(ocrData, nameof(ocrData), required: true);
             return new DeferredBodyAction<OcrResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/OcrFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_ocrData != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_ocrData);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_ocrData);
                 return new ApiConnectionAction<OcrResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByBarcode(Expression<Func<SplitBarcodeInput>> splitBarcode = null)
+        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByBarcode(Expression<Func<SplitBarcodeInput>> splitBarcode)
         {
-            var __workflow_splitBarcode = WorkflowExpression.Compile(splitBarcode, nameof(splitBarcode), required: false);
+            var __workflow_splitBarcode = WorkflowExpression.Compile(splitBarcode, nameof(splitBarcode), required: true);
             return new DeferredBodyAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SplitByBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_splitBarcode != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_splitBarcode);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_splitBarcode);
                 return new ApiConnectionAction<ApiSplitPost200ApplicationJsonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByText(Expression<Func<SplitTextInput>> splitText = null)
+        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByText(Expression<Func<SplitTextInput>> splitText)
         {
-            var __workflow_splitText = WorkflowExpression.Compile(splitText, nameof(splitText), required: false);
+            var __workflow_splitText = WorkflowExpression.Compile(splitText, nameof(splitText), required: true);
             return new DeferredBodyAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SplitByText";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_splitText != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_splitText);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_splitText);
                 return new ApiConnectionAction<ApiSplitPost200ApplicationJsonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> ExtractByBarcode(Expression<Func<ExtractBarcodeInput>> extractBarcode = null)
+        public IBodyWorkflowAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> ExtractByBarcode(Expression<Func<ExtractBarcodeInput>> extractBarcode)
         {
-            var __workflow_extractBarcode = WorkflowExpression.Compile(extractBarcode, nameof(extractBarcode), required: false);
+            var __workflow_extractBarcode = WorkflowExpression.Compile(extractBarcode, nameof(extractBarcode), required: true);
             return new DeferredBodyAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ExtractPageByBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_extractBarcode != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_extractBarcode);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_extractBarcode);
                 return new ApiConnectionAction<ApiExtractPost200ApplicationJsonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> ExtractByText(Expression<Func<ExtractTextInput>> extractText = null)
+        public IBodyWorkflowAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> ExtractByText(Expression<Func<ExtractTextInput>> extractText)
         {
-            var __workflow_extractText = WorkflowExpression.Compile(extractText, nameof(extractText), required: false);
+            var __workflow_extractText = WorkflowExpression.Compile(extractText, nameof(extractText), required: true);
             return new DeferredBodyAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ExtractPageByText";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_extractText != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_extractText);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_extractText);
                 return new ApiConnectionAction<ApiExtractPost200ApplicationJsonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByPageRange(Expression<Func<SplitPdfByPageInput>> splitPdfByPage = null)
+        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByPageRange(Expression<Func<SplitPdfByPageInput>> splitPdfByPage)
         {
-            var __workflow_splitPdfByPage = WorkflowExpression.Compile(splitPdfByPage, nameof(splitPdfByPage), required: false);
+            var __workflow_splitPdfByPage = WorkflowExpression.Compile(splitPdfByPage, nameof(splitPdfByPage), required: true);
             return new DeferredBodyAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SplitPdfByPage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_splitPdfByPage != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_splitPdfByPage);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_splitPdfByPage);
                 return new ApiConnectionAction<ApiSplitPost200ApplicationJsonResponse>(callPayload);
             });
         }
@@ -195,6 +185,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class GetBarcodeInput
     {
+        public GetBarcodeInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string fileName)
+        {
+            this.FileContent = fileContent;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("barcodeResultTemplate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BarcodeResultTemplate { get; set; } = "%VALUE1%";
 
@@ -316,6 +312,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class GetPDFInfoRequestInput
     {
+        public GetPDFInfoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -325,6 +326,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class GetDataFromPDFRequestInput
     {
+        public GetDataFromPDFRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("advancedFlags")]
         public GetDataFromPDFRequestInputAdvancedSettingsTypeItem[] AdvancedSettings { get; set; }
 
@@ -361,6 +367,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class GetDataFromPDFRequestInputAdvancedSettingsTypeItem
     {
+        public GetDataFromPDFRequestInputAdvancedSettingsTypeItem(string name, string value)
+        {
+            this.Name = name;
+            this.Value = value;
+        }
+
         [JsonProperty("settingName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -406,6 +418,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class GetTextInput
     {
+        public GetTextInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string fileName)
+        {
+            this.FileContent = fileContent;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -482,6 +500,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class OcrDataInput
     {
+        public OcrDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, string sourceFileNameWithExtension)
+        {
+            this.SourceFileContent = sourceFileContent;
+            this.SourceFileNameWithExtension = sourceFileNameWithExtension;
+        }
+
         [JsonProperty("aquaforestImageTimeout", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? AquaforestImageTimeout { get; set; } = 120000;
 
@@ -794,6 +818,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class SplitBarcodeInput
     {
+        public SplitBarcodeInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string fileName)
+        {
+            this.FileContent = fileContent;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -891,6 +921,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class SplitTextInput
     {
+        public SplitTextInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string fileName)
+        {
+            this.FileContent = fileContent;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -996,6 +1032,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class ExtractBarcodeInput
     {
+        public ExtractBarcodeInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string fileName)
+        {
+            this.FileContent = fileContent;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -1065,6 +1107,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class ExtractTextInput
     {
+        public ExtractTextInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string fileName)
+        {
+            this.FileContent = fileContent;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -1117,6 +1165,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
 
     public class SplitPdfByPageInput
     {
+        public SplitPdfByPageInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string fileName)
+        {
+            this.FileContent = fileContent;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 

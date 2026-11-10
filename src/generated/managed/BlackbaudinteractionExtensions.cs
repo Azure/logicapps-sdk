@@ -305,6 +305,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
 
     public class CreateActionBodyInput
     {
+        public CreateActionBodyInput(string constituentId, string date, BodyInputCategoryType category)
+        {
+            this.ConstituentId = constituentId;
+            this.Date = date;
+            this.Category = category;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -599,6 +606,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
 
     public class CreateActionAttachmentBodyInput
     {
+        public CreateActionAttachmentBodyInput(string actionId, BodyInputTypeType type)
+        {
+            this.ActionId = actionId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActionId { get; set; }
 
@@ -657,6 +670,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
 
     public class CreateActionCustomFieldBodyInput
     {
+        public CreateActionCustomFieldBodyInput(string actionId, string category)
+        {
+            this.ActionId = actionId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActionId { get; set; }
 

@@ -284,6 +284,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
 
     public class FindExpertsBodyInput
     {
+        public FindExpertsBodyInput(string textQuery)
+        {
+            this.TextQuery = textQuery;
+        }
+
         [JsonProperty("language")]
         public FindExpertsLanguage? Language { get; set; }
 
@@ -509,6 +514,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
 
     public class PostQuestionDraftBodyInput
     {
+        public PostQuestionDraftBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("category")]
         public int? Category { get; set; }
 

@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
 
     public class ParametersInput
     {
+        public ParametersInput(string path)
+        {
+            this.Path = path;
+        }
+
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cmi.ParametersInputMethodType.GET;
 

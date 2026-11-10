@@ -47,6 +47,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
 
     public class SendNewsBodyInput
     {
+        public SendNewsBodyInput(string headline, string text)
+        {
+            this.Headline = headline;
+            this.Text = text;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Headline { get; set; }
 
@@ -61,6 +67,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
 
     public class SendNotificationBodyInput
     {
+        public SendNotificationBodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
         public string UserId { get; set; }

@@ -129,6 +129,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 
     public class GetAuthTokenBodyInput
     {
+        public GetAuthTokenBodyInput(string referenceKey, string emailAddress, string password)
+        {
+            this.ReferenceKey = referenceKey;
+            this.EmailAddress = emailAddress;
+            this.Password = password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReferenceKey { get; set; }
 
@@ -181,6 +188,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 
     public class SendEnvelopeFromTemplateBodyInput
     {
+        public SendEnvelopeFromTemplateBodyInput(string templateCode, BodyInputTemplateRoleRecipientMappingTypeItem[] templateRoleRecipientMapping)
+        {
+            this.TemplateCode = templateCode;
+            this.TemplateRoleRecipientMapping = templateRoleRecipientMapping;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateCode { get; set; }
         public string AppKey { get; set; }
@@ -191,6 +204,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 
     public class BodyInputTemplateRoleRecipientMappingTypeItem
     {
+        public BodyInputTemplateRoleRecipientMappingTypeItem(string roleId, string recipientEmail, string recipientName)
+        {
+            this.RoleId = roleId;
+            this.RecipientEmail = recipientEmail;
+            this.RecipientName = recipientName;
+        }
+
         [JsonProperty("RoleID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoleId { get; set; }
 
@@ -244,6 +264,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 
     public class SendEnvelopeFromRuleBodyInput
     {
+        public SendEnvelopeFromRuleBodyInput(string ruleCode, BodyInputDocumentsTypeItem[] documents, BodyInputTemplateRoleRecipientMappingTypeItem[] templateRoleRecipientMapping)
+        {
+            this.RuleCode = ruleCode;
+            this.Documents = documents;
+            this.TemplateRoleRecipientMapping = templateRoleRecipientMapping;
+        }
+
         [JsonProperty("TemplateCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RuleCode { get; set; }
 
@@ -256,6 +283,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 
     public class BodyInputDocumentsTypeItem
     {
+        public BodyInputDocumentsTypeItem(string documentName, string documentBase64String)
+        {
+            this.DocumentName = documentName;
+            this.DocumentBase64String = documentBase64String;
+        }
+
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentName { get; set; }
 
@@ -311,6 +344,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 
     public class GetEnvelopeStatusInfoBodyInput
     {
+        public GetEnvelopeStatusInfoBodyInput(string envelopeCode, BodyInputDetailOrSummaryType detailOrSummary)
+        {
+            this.EnvelopeCode = envelopeCode;
+            this.DetailOrSummary = detailOrSummary;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EnvelopeCode { get; set; }
 

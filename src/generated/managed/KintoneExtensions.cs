@@ -13,31 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
     public class KintoneActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddRecord(Expression<Func<AddRecordRequestBodyOfRecordInput>> requestBodyOfRecord = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddRecord(Expression<Func<AddRecordRequestBodyOfRecordInput>> requestBodyOfRecord)
         {
-            var __workflow_requestBodyOfRecord = WorkflowExpression.Compile(requestBodyOfRecord, nameof(requestBodyOfRecord), required: false);
+            var __workflow_requestBodyOfRecord = WorkflowExpression.Compile(requestBodyOfRecord, nameof(requestBodyOfRecord), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/k/v1/record.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBodyOfRecord != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecord);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecord);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<UpdateRecordRequestBodyOfRecordInput>> requestBodyOfRecord = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<UpdateRecordRequestBodyOfRecordInput>> requestBodyOfRecord)
         {
-            var __workflow_requestBodyOfRecord = WorkflowExpression.Compile(requestBodyOfRecord, nameof(requestBodyOfRecord), required: false);
+            var __workflow_requestBodyOfRecord = WorkflowExpression.Compile(requestBodyOfRecord, nameof(requestBodyOfRecord), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/k/v1/record.json";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBodyOfRecord != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecord);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecord);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -113,6 +111,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
     public class AddRecordRequestBodyOfRecordInput
     {
+        public AddRecordRequestBodyOfRecordInput(string appId)
+        {
+            this.AppId = appId;
+        }
+
         [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppId { get; set; }
 
@@ -125,6 +128,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
     public class UpdateRecordRequestBodyOfRecordInput
     {
+        public UpdateRecordRequestBodyOfRecordInput(string appId, string recordNumber)
+        {
+            this.AppId = appId;
+            this.RecordNumber = recordNumber;
+        }
+
         [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppId { get; set; }
 
@@ -140,6 +149,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
     public class WebhookTriggerRequestBodyOfWebhookInput
     {
+        public WebhookTriggerRequestBodyOfWebhookInput(string appId)
+        {
+            this.AppId = appId;
+        }
+
         [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppId { get; set; }
 
@@ -158,6 +172,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
     public class AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput
     {
+        public AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput(string appId)
+        {
+            this.AppId = appId;
+        }
+
         [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppId { get; set; }
 

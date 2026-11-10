@@ -96,6 +96,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
 
     public class CallbackBodyInput
     {
+        public CallbackBodyInput(BttnActionResult flowResult)
+        {
+            this.FlowResult = flowResult;
+        }
+
         [JsonProperty("result", DefaultValueHandling = DefaultValueHandling.Include)]
         public BttnActionResult FlowResult { get; set; }
     }

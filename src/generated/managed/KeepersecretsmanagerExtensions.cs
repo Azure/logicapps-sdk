@@ -115,6 +115,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
 
     public class CreateSecretBodyInput
     {
+        public CreateSecretBodyInput(string folderUId, string title)
+        {
+            this.FolderUId = folderUId;
+            this.Title = title;
+        }
+
         [JsonProperty("folder_uid", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderUId { get; set; }
 

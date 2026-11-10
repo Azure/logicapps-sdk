@@ -63,6 +63,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
 
     public class BodyInput
     {
+        public BodyInput(string code)
+        {
+            this.Code = code;
+        }
+
         [JsonProperty("commented", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Commented { get; set; } = true;
 

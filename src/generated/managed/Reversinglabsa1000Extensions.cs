@@ -465,6 +465,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
 
     public class RetrieveDetailedReportBodyInput
     {
+        public RetrieveDetailedReportBodyInput(string[] hashValues)
+        {
+            this.HashValues = hashValues;
+        }
+
         [JsonProperty("hash_values", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] HashValues { get; set; }
 
@@ -497,6 +502,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
 
     public class RetrieveSummaryReportBodyInput
     {
+        public RetrieveSummaryReportBodyInput(string[] hashValues)
+        {
+            this.HashValues = hashValues;
+        }
+
         [JsonProperty("hash_values", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] HashValues { get; set; }
 
@@ -512,6 +522,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
 
     public class RetrieveProcessingStatusFilesBodyInput
     {
+        public RetrieveProcessingStatusFilesBodyInput(string[] hashValues)
+        {
+            this.HashValues = hashValues;
+        }
+
         [JsonProperty("hash_values", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] HashValues { get; set; }
     }
@@ -545,6 +560,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
 
     public class CreateUserTagsForSampleBodyInput
     {
+        public CreateUserTagsForSampleBodyInput(string[] tags)
+        {
+            this.Tags = tags;
+        }
+
         [JsonProperty("tags", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Tags { get; set; }
     }

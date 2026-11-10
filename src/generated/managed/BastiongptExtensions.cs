@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bastiongpt
 
     public class AskQuestionBodyInput
     {
+        public AskQuestionBodyInput(string question)
+        {
+            this.Question = question;
+        }
+
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
 
@@ -142,6 +147,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bastiongpt
 
     public class ChatCompletionBodyInput
     {
+        public ChatCompletionBodyInput(Message[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
         public Message[] Messages { get; set; }
 
@@ -157,6 +167,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bastiongpt
 
     public class Message
     {
+        public Message(MessageRoleType role, string content)
+        {
+            this.Role = role;
+            this.Content = content;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public MessageRoleType Role { get; set; }
 

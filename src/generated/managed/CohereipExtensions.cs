@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new EmbedBodyInput().ToJToken();
                 return new ApiConnectionAction<EmbedResponse>(callPayload);
             });
         }
@@ -38,6 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ClassifyBodyInput().ToJToken();
                 return new ApiConnectionAction<ClassifyResponse>(callPayload);
             });
         }
@@ -88,16 +92,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<ChatResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<ChatBodyInput>> body = null)
+        public IBodyWorkflowAction<ChatResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<ChatBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/chat";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ChatResponse>(callPayload);
             });
         }
@@ -564,6 +567,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
 
     public class ChatBodyInput
     {
+        public ChatBodyInput(string message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
 

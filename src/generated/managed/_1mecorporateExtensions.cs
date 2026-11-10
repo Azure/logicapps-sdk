@@ -39,18 +39,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<DisassociateMemberBodyInput>> body = null)
+        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<DisassociateMemberBodyInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Invitation/Disassociate";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ApiResponse>(callPayload);
             });
         }
@@ -93,6 +92,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
 
     public class SendInvitationBodyInput
     {
+        public SendInvitationBodyInput(string cardTemplateId, string jobtitle, string workEmail)
+        {
+            this.CardTemplateId = cardTemplateId;
+            this.Jobtitle = jobtitle;
+            this.WorkEmail = workEmail;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CardTemplateId { get; set; }
         public string NameOnCard { get; set; }
@@ -107,6 +113,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
 
     public class DisassociateMemberBodyInput
     {
+        public DisassociateMemberBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
     }

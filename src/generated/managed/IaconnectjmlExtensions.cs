@@ -2069,6 +2069,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class OpenActiveDirectoryPowerShellRunspaceWithCredentialsInput
     {
+        public OpenActiveDirectoryPowerShellRunspaceWithCredentialsInput(string username, string password)
+        {
+            this.Username = username;
+            this.Password = password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
@@ -2134,6 +2140,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryAddADUserInput
     {
+        public ActiveDirectoryAddADUserInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string UserPrincipalName { get; set; }
@@ -2221,6 +2232,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryGetOUFromUserDNInput
     {
+        public ActiveDirectoryGetOUFromUserDNInput(string userDN)
+        {
+            this.UserDN = userDN;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserDN { get; set; }
 
@@ -2235,6 +2251,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryGetDomainFQDNFromDNInput
     {
+        public ActiveDirectoryGetDomainFQDNFromDNInput(string dN)
+        {
+            this.DN = dN;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DN { get; set; }
 
@@ -2298,6 +2319,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryAddADGroupMemberByIdentityInput
     {
+        public ActiveDirectoryAddADGroupMemberByIdentityInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         public string GroupIdentity { get; set; }
         public string GroupName { get; set; }
 
@@ -2344,6 +2370,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryAddADUserToMultipleADGroupsByNameInput
     {
+        public ActiveDirectoryAddADUserToMultipleADGroupsByNameInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
         public string GroupNamesJSON { get; set; }
@@ -2368,6 +2399,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryGetADUserGroupMembershipInput
     {
+        public ActiveDirectoryGetADUserGroupMembershipInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
         public string ADServer { get; set; }
@@ -2384,6 +2420,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryModifyADUserStringPropertyByIdentityInput
     {
+        public ActiveDirectoryModifyADUserStringPropertyByIdentityInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
         public ActiveDirectoryModifyADUserStringPropertyByIdentityInputPropertiesListTypeItem[] PropertiesList { get; set; }
@@ -2410,6 +2451,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryModifyADUserBooleanPropertyByIdentityInput
     {
+        public ActiveDirectoryModifyADUserBooleanPropertyByIdentityInput(string userIdentity, string propertyName)
+        {
+            this.UserIdentity = userIdentity;
+            this.PropertyName = propertyName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
 
@@ -2432,6 +2479,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryModifyADUserPropertiesInput
     {
+        public ActiveDirectoryModifyADUserPropertiesInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
         public string City { get; set; }
@@ -2473,6 +2525,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryMoveADUserToOUByIdentityInput
     {
+        public ActiveDirectoryMoveADUserToOUByIdentityInput(string userIdentity, string targetPath)
+        {
+            this.UserIdentity = userIdentity;
+            this.TargetPath = targetPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
 
@@ -2492,6 +2550,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryClearADUserAccountExpirationInput
     {
+        public ActiveDirectoryClearADUserAccountExpirationInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
         public string ADServer { get; set; }
@@ -2535,6 +2598,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryRemoveADUserByIdentityInput
     {
+        public ActiveDirectoryRemoveADUserByIdentityInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
 
@@ -2560,6 +2628,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryResetADUserPasswordByIdentityInput
     {
+        public ActiveDirectoryResetADUserPasswordByIdentityInput(string userIdentity, string newPassword)
+        {
+            this.UserIdentity = userIdentity;
+            this.NewPassword = newPassword;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
 
@@ -2597,6 +2671,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityInput
     {
+        public ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
 
@@ -2616,6 +2695,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryDisableADUserByIdentityInput
     {
+        public ActiveDirectoryDisableADUserByIdentityInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
         public string ADServer { get; set; }
@@ -2632,6 +2716,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryEnableADUserByIdentityInput
     {
+        public ActiveDirectoryEnableADUserByIdentityInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
         public string ADServer { get; set; }
@@ -2648,6 +2737,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectorySetADUserHomeFolderByIdentityInput
     {
+        public ActiveDirectorySetADUserHomeFolderByIdentityInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
         public string HomeDrive { get; set; }
@@ -2670,6 +2764,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryCloneADUserGroupsInput
     {
+        public ActiveDirectoryCloneADUserGroupsInput(string sourceUserIdentity, string destinationUserIdentity)
+        {
+            this.SourceUserIdentity = sourceUserIdentity;
+            this.DestinationUserIdentity = destinationUserIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceUserIdentity { get; set; }
 
@@ -2689,6 +2789,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryCloneADUserPropertiesInput
     {
+        public ActiveDirectoryCloneADUserPropertiesInput(string sourceUserIdentity, string destinationUserIdentity, string propertiesToClone)
+        {
+            this.SourceUserIdentity = sourceUserIdentity;
+            this.DestinationUserIdentity = destinationUserIdentity;
+            this.PropertiesToClone = propertiesToClone;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceUserIdentity { get; set; }
 
@@ -2712,6 +2819,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameInput
     {
+        public ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
         public string GroupNamesJSON { get; set; }
@@ -2765,6 +2877,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryCheckOUExistsInput
     {
+        public ActiveDirectoryCheckOUExistsInput(string oUIdentity)
+        {
+            this.OUIdentity = oUIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OUIdentity { get; set; }
         public string ADServer { get; set; }
@@ -2781,6 +2898,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryRemoveADGroupMemberByGroupIdentityInput
     {
+        public ActiveDirectoryRemoveADGroupMemberByGroupIdentityInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         public string GroupIdentity { get; set; }
         public string GroupName { get; set; }
 
@@ -2826,6 +2948,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryUnlockADAccountByIdentityInput
     {
+        public ActiveDirectoryUnlockADAccountByIdentityInput(string userIdentity)
+        {
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
         public string ADServer { get; set; }
@@ -2911,6 +3038,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryAddADGroupInput
     {
+        public ActiveDirectoryAddADGroupInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string SamAccountName { get; set; }
@@ -2960,6 +3092,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryDoesADGroupExistInput
     {
+        public ActiveDirectoryDoesADGroupExistInput(string groupIdentity)
+        {
+            this.GroupIdentity = groupIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupIdentity { get; set; }
         public string ADServer { get; set; }
@@ -2975,6 +3112,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryRemoveADGroupInput
     {
+        public ActiveDirectoryRemoveADGroupInput(string groupIdentity)
+        {
+            this.GroupIdentity = groupIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupIdentity { get; set; }
 
@@ -2997,6 +3139,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryAddOUInput
     {
+        public ActiveDirectoryAddOUInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string Path { get; set; }
@@ -3023,6 +3170,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryRemoveOUInput
     {
+        public ActiveDirectoryRemoveOUInput(string oUIdentity)
+        {
+            this.OUIdentity = oUIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OUIdentity { get; set; }
 
@@ -3045,6 +3197,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectorySetADUserAccountExpirationEndOfDateInput
     {
+        public ActiveDirectorySetADUserAccountExpirationEndOfDateInput(string userIdentity, int year, int month, int day)
+        {
+            this.UserIdentity = userIdentity;
+            this.Year = year;
+            this.Month = month;
+            this.Day = day;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
 
@@ -3070,6 +3230,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryGetADGroupMembersInput
     {
+        public ActiveDirectoryGetADGroupMembersInput(string groupIdentity)
+        {
+            this.GroupIdentity = groupIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupIdentity { get; set; }
 
@@ -3089,6 +3254,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class OpenExchangePowerShellRunspaceInput
     {
+        public OpenExchangePowerShellRunspaceInput(string exchangeServerFQDN)
+        {
+            this.ExchangeServerFQDN = exchangeServerFQDN;
+        }
+
         public string Username { get; set; }
         public string Password { get; set; }
 
@@ -3356,6 +3526,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeAddDistributionGroupMemberInput
     {
+        public ExchangeAddDistributionGroupMemberInput(string identity, string member)
+        {
+            this.Identity = identity;
+            this.Member = member;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3374,6 +3550,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeRemoveDistributionGroupMemberInput
     {
+        public ExchangeRemoveDistributionGroupMemberInput(string identity, string member)
+        {
+            this.Identity = identity;
+            this.Member = member;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3436,6 +3618,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeGetDistributionGroupMembersInput
     {
+        public ExchangeGetDistributionGroupMembersInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3451,6 +3638,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeGetMailboxDistributionGroupMembershipInput
     {
+        public ExchangeGetMailboxDistributionGroupMembershipInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3468,6 +3660,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeNewDistributionGroupInput
     {
+        public ExchangeNewDistributionGroupInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string Alias { get; set; }
@@ -3527,6 +3724,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeRemoveDistributionGroupInput
     {
+        public ExchangeRemoveDistributionGroupInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3548,6 +3750,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeAddMailboxPermissionInput
     {
+        public ExchangeAddMailboxPermissionInput(string identity, string user, string accessRights)
+        {
+            this.Identity = identity;
+            this.User = user;
+            this.AccessRights = accessRights;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3572,6 +3781,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeRemoveMailboxPermissionInput
     {
+        public ExchangeRemoveMailboxPermissionInput(string identity, string user, string accessRights)
+        {
+            this.Identity = identity;
+            this.User = user;
+            this.AccessRights = accessRights;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3592,6 +3808,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeDisableMailboxInput
     {
+        public ExchangeDisableMailboxInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3606,6 +3827,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeDisableRemoteMailboxInput
     {
+        public ExchangeDisableRemoteMailboxInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3622,6 +3848,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeEnableMailboxInput
     {
+        public ExchangeEnableMailboxInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
         public string Alias { get; set; }
@@ -3645,6 +3876,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeEnableRemoteMailboxInput
     {
+        public ExchangeEnableRemoteMailboxInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
         public string Alias { get; set; }
@@ -3747,6 +3983,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeNewMailboxInput
     {
+        public ExchangeNewMailboxInput(string name, string userPrincipalName)
+        {
+            this.Name = name;
+            this.UserPrincipalName = userPrincipalName;
+        }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string OrganizationalUnit { get; set; }
@@ -3789,6 +4031,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeNewRemoteMailboxInput
     {
+        public ExchangeNewRemoteMailboxInput(string name, string userPrincipalName)
+        {
+            this.Name = name;
+            this.UserPrincipalName = userPrincipalName;
+        }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string OnPremisesOrganizationalUnit { get; set; }
@@ -3845,6 +4093,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeSetMailboxInput
     {
+        public ExchangeSetMailboxInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
         public bool? AccountDisabled { get; set; }
@@ -3880,6 +4133,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeSetMailboxEmailAddressesInput
     {
+        public ExchangeSetMailboxEmailAddressesInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
         public string Alias { get; set; }
@@ -3902,6 +4160,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeGetMailboxEmailAddressesInput
     {
+        public ExchangeGetMailboxEmailAddressesInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3916,6 +4179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeSetRemoteMailboxEmailAddressesInput
     {
+        public ExchangeSetRemoteMailboxEmailAddressesInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
         public string Alias { get; set; }
@@ -3938,6 +4206,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeGetRemoteMailboxEmailAddressesInput
     {
+        public ExchangeGetRemoteMailboxEmailAddressesInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -3953,6 +4226,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeResetMailboxAttributesInput
     {
+        public ExchangeResetMailboxAttributesInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -4013,6 +4291,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeResetRemoteMailboxAttributesInput
     {
+        public ExchangeResetRemoteMailboxAttributesInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -4073,6 +4356,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeSetRemoteMailboxInput
     {
+        public ExchangeSetRemoteMailboxInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
         public string Alias { get; set; }
@@ -4118,6 +4406,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeSetMailboxSendOnBehalfOfPermissionInput
     {
+        public ExchangeSetMailboxSendOnBehalfOfPermissionInput(string identity, string grantSendOnBehalfTo)
+        {
+            this.Identity = identity;
+            this.GrantSendOnBehalfTo = grantSendOnBehalfTo;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -4136,6 +4430,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeAddADPermissionInput
     {
+        public ExchangeAddADPermissionInput(string identity, string user)
+        {
+            this.Identity = identity;
+            this.User = user;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -4156,6 +4456,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeSetMailboxAutoReplyConfigurationInput
     {
+        public ExchangeSetMailboxAutoReplyConfigurationInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -4211,6 +4516,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class OpenAzureADv2PowerShellRunspaceInput
     {
+        public OpenAzureADv2PowerShellRunspaceInput(string username, string password)
+        {
+            this.Username = username;
+            this.Password = password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
@@ -4247,6 +4558,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class OpenAzureADv2PowerShellRunspaceWithCertificateInput
     {
+        public OpenAzureADv2PowerShellRunspaceWithCertificateInput(string applicationId, string certificateThumbprint, string tenantId)
+        {
+            this.ApplicationId = applicationId;
+            this.CertificateThumbprint = certificateThumbprint;
+            this.TenantId = tenantId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApplicationId { get; set; }
 
@@ -4406,6 +4724,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2AddAzureADUserInput
     {
+        public AzureADv2AddAzureADUserInput(string userPrincipalName, string accountPassword, string displayName, string mailNickName)
+        {
+            this.UserPrincipalName = userPrincipalName;
+            this.AccountPassword = accountPassword;
+            this.DisplayName = displayName;
+            this.MailNickName = mailNickName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserPrincipalName { get; set; }
 
@@ -4481,6 +4807,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2RemoveAzureADUserInput
     {
+        public AzureADv2RemoveAzureADUserInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
@@ -4499,6 +4830,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2ResetAzureADUserPasswordInput
     {
+        public AzureADv2ResetAzureADUserPasswordInput(string userPrincipalName, string newPassword)
+        {
+            this.UserPrincipalName = userPrincipalName;
+            this.NewPassword = newPassword;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserPrincipalName { get; set; }
 
@@ -4526,6 +4863,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADUserGroupMembershipInput
     {
+        public AzureADv2GetAzureADUserGroupMembershipInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
         public string PropertiesToReturn { get; set; }
@@ -4541,6 +4883,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2IsUserInAzureADUserGroupInput
     {
+        public AzureADv2IsUserInAzureADUserGroupInput(string objectId, string groupObjectId)
+        {
+            this.ObjectId = objectId;
+            this.GroupObjectId = groupObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
@@ -4559,6 +4907,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2AddUserToGroupInput
     {
+        public AzureADv2AddUserToGroupInput(string userObjectId, string groupObjectId)
+        {
+            this.UserObjectId = userObjectId;
+            this.GroupObjectId = groupObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
 
@@ -4580,6 +4934,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2RemoveUserFromGroupInput
     {
+        public AzureADv2RemoveUserFromGroupInput(string userObjectId, string groupObjectId)
+        {
+            this.UserObjectId = userObjectId;
+            this.GroupObjectId = groupObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
 
@@ -4602,6 +4962,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2AddADUserToMultipleADGroupsInput
     {
+        public AzureADv2AddADUserToMultipleADGroupsInput(string userObjectId)
+        {
+            this.UserObjectId = userObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
         public string GroupNamesJSON { get; set; }
@@ -4629,6 +4994,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2RemoveADUserFromMultipleADGroupsInput
     {
+        public AzureADv2RemoveADUserFromMultipleADGroupsInput(string userObjectId)
+        {
+            this.UserObjectId = userObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
         public string GroupNamesJSON { get; set; }
@@ -4656,6 +5026,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2RemoveUserFromAllGroupsInput
     {
+        public AzureADv2RemoveUserFromAllGroupsInput(string userObjectId)
+        {
+            this.UserObjectId = userObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
 
@@ -4701,6 +5076,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2SetAzureADUserLicenseInput
     {
+        public AzureADv2SetAzureADUserLicenseInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
         public string LicenseToAdd { get; set; }
@@ -4735,6 +5115,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADUserLicensesInput
     {
+        public AzureADv2GetAzureADUserLicensesInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
@@ -4750,6 +5135,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADUserLicenseServicePlansInput
     {
+        public AzureADv2GetAzureADUserLicenseServicePlansInput(string objectId, string licenseSKUPartNumber)
+        {
+            this.ObjectId = objectId;
+            this.LicenseSKUPartNumber = licenseSKUPartNumber;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
@@ -4768,6 +5159,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2RemoveAllAzureADUserLicenseInput
     {
+        public AzureADv2RemoveAllAzureADUserLicenseInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
@@ -4783,6 +5179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2SetAzureADUserInput
     {
+        public AzureADv2SetAzureADUserInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
         public string FirstName { get; set; }
@@ -4837,6 +5238,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2ResetAzureADUserPropertiesInput
     {
+        public AzureADv2ResetAzureADUserPropertiesInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
@@ -4909,6 +5315,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2SetAzureADUserManagerInput
     {
+        public AzureADv2SetAzureADUserManagerInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
         public string Manager { get; set; }
@@ -4926,6 +5337,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2NewSecurityGroupInput
     {
+        public AzureADv2NewSecurityGroupInput(string displayName)
+        {
+            this.DisplayName = displayName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
         public string Description { get; set; }
@@ -4944,6 +5360,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2RemoveSecurityGroupInput
     {
+        public AzureADv2RemoveSecurityGroupInput(string groupObjectId)
+        {
+            this.GroupObjectId = groupObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupObjectId { get; set; }
 
@@ -4963,6 +5384,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2NewMicrosoft365GroupInput
     {
+        public AzureADv2NewMicrosoft365GroupInput(string displayName)
+        {
+            this.DisplayName = displayName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
         public string Description { get; set; }
@@ -5033,6 +5459,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2EnableUserInput
     {
+        public AzureADv2EnableUserInput(string userObjectId)
+        {
+            this.UserObjectId = userObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
 
@@ -5048,6 +5479,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2DisableUserInput
     {
+        public AzureADv2DisableUserInput(string userObjectId)
+        {
+            this.UserObjectId = userObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
 
@@ -5066,6 +5502,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2AssignUserToRoleInput
     {
+        public AzureADv2AssignUserToRoleInput(string userObjectId, string roleObjectId)
+        {
+            this.UserObjectId = userObjectId;
+            this.RoleObjectId = roleObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
 
@@ -5091,6 +5533,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2AssignUserToMultipleRolesInput
     {
+        public AzureADv2AssignUserToMultipleRolesInput(string userObjectId)
+        {
+            this.UserObjectId = userObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
         public string RolesJSON { get; set; }
@@ -5123,6 +5570,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2RemoveUserFromMultipleRolesInput
     {
+        public AzureADv2RemoveUserFromMultipleRolesInput(string userObjectId)
+        {
+            this.UserObjectId = userObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
         public string RolesJSON { get; set; }
@@ -5150,6 +5602,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2IsUserInRoleInput
     {
+        public AzureADv2IsUserInRoleInput(string userObjectId, string roleObjectId)
+        {
+            this.UserObjectId = userObjectId;
+            this.RoleObjectId = roleObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
 
@@ -5168,6 +5626,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADUserRoleAssignmentsInput
     {
+        public AzureADv2GetAzureADUserRoleAssignmentsInput(string objectId)
+        {
+            this.ObjectId = objectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
@@ -5188,6 +5651,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2RemoveUserFromRoleInput
     {
+        public AzureADv2RemoveUserFromRoleInput(string userObjectId, string roleObjectId)
+        {
+            this.UserObjectId = userObjectId;
+            this.RoleObjectId = roleObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
 
@@ -5210,6 +5679,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2RemoveUserFromAllRolesInput
     {
+        public AzureADv2RemoveUserFromAllRolesInput(string userObjectId)
+        {
+            this.UserObjectId = userObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
 
@@ -5231,6 +5705,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADGroupMembersInput
     {
+        public AzureADv2GetAzureADGroupMembersInput(string groupObjectId)
+        {
+            this.GroupObjectId = groupObjectId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupObjectId { get; set; }
         public string PropertiesToReturn { get; set; }
@@ -5248,6 +5727,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class OpenO365PowerShellRunspaceInput
     {
+        public OpenO365PowerShellRunspaceInput(string office365Username, string office365Password)
+        {
+            this.Office365Username = office365Username;
+            this.Office365Password = office365Password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Office365Username { get; set; }
 
@@ -5299,6 +5784,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class OpenO365PowerShellRunspaceWithCertificateInput
     {
+        public OpenO365PowerShellRunspaceWithCertificateInput(string applicationId, string certificateThumbprint, string organization)
+        {
+            this.ApplicationId = applicationId;
+            this.CertificateThumbprint = certificateThumbprint;
+            this.Organization = organization;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApplicationId { get; set; }
 
@@ -5498,6 +5990,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365AddMailboxPermissionInput
     {
+        public O365AddMailboxPermissionInput(string identity, string user, string accessRights)
+        {
+            this.Identity = identity;
+            this.User = user;
+            this.AccessRights = accessRights;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -5522,6 +6021,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365RemoveMailboxPermissionInput
     {
+        public O365RemoveMailboxPermissionInput(string identity, string user, string accessRights)
+        {
+            this.Identity = identity;
+            this.User = user;
+            this.AccessRights = accessRights;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -5543,6 +6049,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365AddDistributionGroupMemberInput
     {
+        public O365AddDistributionGroupMemberInput(string identity, string member)
+        {
+            this.Identity = identity;
+            this.Member = member;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -5608,6 +6120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365NewO365DistributionGroupInput
     {
+        public O365NewO365DistributionGroupInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string Alias { get; set; }
@@ -5662,6 +6179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365RemoveDistributionGroupInput
     {
+        public O365RemoveDistributionGroupInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -5683,6 +6205,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365SetO365MailboxInput
     {
+        public O365SetO365MailboxInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
         public bool? AccountDisabled { get; set; }
@@ -5717,6 +6244,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365WaitForO365MailboxInput
     {
+        public O365WaitForO365MailboxInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
         public O365WaitForO365MailboxInputRecipientTypeDetailsType? RecipientTypeDetails { get; set; }
@@ -5755,6 +6287,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365SetO365MailboxAutoReplyConfigurationInput
     {
+        public O365SetO365MailboxAutoReplyConfigurationInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -5798,6 +6335,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365RemoveDistributionGroupMemberInput
     {
+        public O365RemoveDistributionGroupMemberInput(string groupIdentity, string member)
+        {
+            this.GroupIdentity = groupIdentity;
+            this.Member = member;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupIdentity { get; set; }
 
@@ -5822,6 +6365,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365GetMailboxDistributionGroupMembershipInput
     {
+        public O365GetMailboxDistributionGroupMembershipInput(string mailboxIdentity)
+        {
+            this.MailboxIdentity = mailboxIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string MailboxIdentity { get; set; }
         public string PropertiesToRetrieveJSON { get; set; }
@@ -5838,6 +6386,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365GetDistributionGroupMembersInput
     {
+        public O365GetDistributionGroupMembersInput(string groupIdentity)
+        {
+            this.GroupIdentity = groupIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupIdentity { get; set; }
         public string PropertiesToRetrieveJSON { get; set; }
@@ -5892,6 +6445,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365NewMailboxInput
     {
+        public O365NewMailboxInput(string microsoftOnlineServicesId, string name)
+        {
+            this.MicrosoftOnlineServicesId = microsoftOnlineServicesId;
+            this.Name = name;
+        }
+
         [JsonProperty("MicrosoftOnlineServicesID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MicrosoftOnlineServicesId { get; set; }
 
@@ -5932,6 +6491,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365NewSharedMailboxInput
     {
+        public O365NewSharedMailboxInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string FirstName { get; set; }
@@ -5957,6 +6521,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365EnableArchiveMailboxInput
     {
+        public O365EnableArchiveMailboxInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 
@@ -5978,6 +6547,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365DoesMailboxHaveAnArchiveInput
     {
+        public O365DoesMailboxHaveAnArchiveInput(string identity)
+        {
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identity { get; set; }
 

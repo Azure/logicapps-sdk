@@ -1476,11 +1476,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class CreateTeamsMeetingItemInput
     {
+        public CreateTeamsMeetingItemInput(string subject, ItemInputBodyType body, string timeZone, ItemInputStartType start, ItemInputEndType end)
+        {
+            this.Subject = subject;
+            this.Body = body;
+            this.TimeZone = timeZone;
+            this.Start = start;
+            this.End = end;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ItemInputBodyType Body { get; set; } = new ItemInputBodyType();
+        public ItemInputBodyType Body { get; set; }
 
         [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TimeZone { get; set; }
@@ -1530,6 +1539,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class ItemInputBodyType
     {
+        public ItemInputBodyType(string eventMessageContent)
+        {
+            this.EventMessageContent = eventMessageContent;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventMessageContent { get; set; }
 
@@ -1539,12 +1553,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class ItemInputStartType
     {
+        public ItemInputStartType(string startTime)
+        {
+            this.StartTime = startTime;
+        }
+
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartTime { get; set; }
     }
 
     public class ItemInputEndType
     {
+        public ItemInputEndType(string endTime)
+        {
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndTime { get; set; }
     }
@@ -1759,6 +1783,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class CreateChannelBodyInput
     {
+        public CreateChannelBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -2272,6 +2301,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class CreateChatItemInput
     {
+        public CreateChatItemInput(string membersToAdd)
+        {
+            this.MembersToAdd = membersToAdd;
+        }
+
         [JsonProperty("topic")]
         public string Title { get; set; }
 
@@ -2281,12 +2315,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class PostMessageToSelfBodyInput
     {
+        public PostMessageToSelfBodyInput(PostMessageToSelfBodyInputBodyType body)
+        {
+            this.Body = body;
+        }
+
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostMessageToSelfBodyInputBodyType Body { get; set; } = new PostMessageToSelfBodyInputBodyType();
+        public PostMessageToSelfBodyInputBodyType Body { get; set; }
     }
 
     public class PostMessageToSelfBodyInputBodyType
     {
+        public PostMessageToSelfBodyInputBodyType(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputBodyTypeContentTypeType? ContentType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Teams.BodyInputBodyTypeContentTypeType.Text;
 
@@ -2311,6 +2355,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class CreateATeamBodyInput
     {
+        public CreateATeamBodyInput(string teamName, string description)
+        {
+            this.TeamName = teamName;
+            this.Description = description;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TeamName { get; set; }
 
@@ -2330,6 +2380,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class AddMemberToTeamBodyInput
     {
+        public AddMemberToTeamBodyInput(string user)
+        {
+            this.User = user;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; }
 
@@ -2339,6 +2394,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class AddMemberToChannelBodyInput
     {
+        public AddMemberToChannelBodyInput(string user)
+        {
+            this.User = user;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; }
 
@@ -2399,15 +2459,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class PostCardAndWaitForResponseBodyInput
     {
+        public PostCardAndWaitForResponseBodyInput(PostCardAndWaitForResponseBodyInputBodyType body)
+        {
+            this.Body = body;
+        }
+
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostCardAndWaitForResponseBodyInputBodyType Body { get; set; } = new PostCardAndWaitForResponseBodyInputBodyType();
+        public PostCardAndWaitForResponseBodyInputBodyType Body { get; set; }
     }
 
     public class PostCardAndWaitForResponseBodyInputBodyType
     {
+        public PostCardAndWaitForResponseBodyInputBodyType(JToken recipient, string message)
+        {
+            this.Recipient = recipient;
+            this.Message = message;
+        }
+
         [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Recipient { get; set; }
 
@@ -2430,6 +2501,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class AddMemberToChatBodyInput
     {
+        public AddMemberToChatBodyInput(string user)
+        {
+            this.User = user;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; }
 
@@ -2718,6 +2794,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class CreateSectionBodyInput
     {
+        public CreateSectionBodyInput(string displayName)
+        {
+            this.DisplayName = displayName;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -2807,6 +2888,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class MoveSectionItemBodyInput
     {
+        public MoveSectionItemBodyInput(string targetSectionId)
+        {
+            this.TargetSectionId = targetSectionId;
+        }
+
         [JsonProperty("targetSectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetSectionId { get; set; }
     }
@@ -2855,6 +2941,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class CreateTagBodyInput
     {
+        public CreateTagBodyInput(string displayName, string membersIDs)
+        {
+            this.DisplayName = displayName;
+            this.MembersIDs = membersIDs;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -2864,6 +2956,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class UpdateTagBodyInput
     {
+        public UpdateTagBodyInput(string displayName)
+        {
+            this.DisplayName = displayName;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
     }
@@ -2876,6 +2973,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class AddMemberToTagBodyInput
     {
+        public AddMemberToTagBodyInput(string userSId)
+        {
+            this.UserSId = userSId;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserSId { get; set; }
     }
@@ -3065,6 +3167,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class RecordingTriggerBodyInput
     {
+        public RecordingTriggerBodyInput(JToken scope)
+        {
+            this.Scope = scope;
+        }
+
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 

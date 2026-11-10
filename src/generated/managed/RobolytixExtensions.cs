@@ -46,6 +46,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
 
     public class BodyInput
     {
+        public BodyInput(string name, string processid, string type)
+        {
+            this.Name = name;
+            this.Processid = processid;
+            this.Type = type;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

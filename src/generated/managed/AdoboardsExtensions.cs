@@ -393,6 +393,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
 
     public class SubjectQueryDetailsInput
     {
+        public SubjectQueryDetailsInput(string searchTerm, string[] subjectKind)
+        {
+            this.SearchTerm = searchTerm;
+            this.SubjectKind = subjectKind;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchTerm { get; set; }
 

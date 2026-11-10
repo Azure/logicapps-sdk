@@ -1584,6 +1584,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
     public class PatchOperation
     {
+        public PatchOperation(PatchOperationOperationType operation, string path)
+        {
+            this.Operation = operation;
+            this.Path = path;
+        }
+
         [JsonProperty("op", DefaultValueHandling = DefaultValueHandling.Include)]
         public PatchOperationOperationType Operation { get; set; }
 

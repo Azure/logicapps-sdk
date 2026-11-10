@@ -2896,6 +2896,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class ExpandEnvironmentVariableInput
     {
+        public ExpandEnvironmentVariableInput(string inputString)
+        {
+            this.InputString = inputString;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputString { get; set; }
 
@@ -2910,6 +2915,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class KillProcessInput
     {
+        public KillProcessInput(string processName)
+        {
+            this.ProcessName = processName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProcessName { get; set; }
 
@@ -2924,6 +2934,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class KillProcessIdInput
     {
+        public KillProcessIdInput(int processId)
+        {
+            this.ProcessId = processId;
+        }
+
         [JsonProperty("ProcessID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ProcessId { get; set; }
 
@@ -2938,6 +2953,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetProcessCountByNameInput
     {
+        public GetProcessCountByNameInput(string processName)
+        {
+            this.ProcessName = processName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProcessName { get; set; }
 
@@ -2975,6 +2995,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetProcessByPIdInput
     {
+        public GetProcessByPIdInput(int processId)
+        {
+            this.ProcessId = processId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ProcessId { get; set; }
 
@@ -3011,6 +3036,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RunProcessInput
     {
+        public RunProcessInput(string processName)
+        {
+            this.ProcessName = processName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProcessName { get; set; }
         public string Arguments { get; set; }
@@ -3217,6 +3247,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SetDefaultPrinterInput
     {
+        public SetDefaultPrinterInput(string defaultPrinterName)
+        {
+            this.DefaultPrinterName = defaultPrinterName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DefaultPrinterName { get; set; }
 
@@ -3292,6 +3327,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class MoveMouseToCoordinateInput
     {
+        public MoveMouseToCoordinateInput(int xCoord, int yCoord)
+        {
+            this.XCoord = xCoord;
+            this.YCoord = yCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int XCoord { get; set; }
 
@@ -3304,6 +3345,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class MoveMouseRelativeInput
     {
+        public MoveMouseRelativeInput(int xCoord, int yCoord)
+        {
+            this.XCoord = xCoord;
+            this.YCoord = yCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int XCoord { get; set; }
 
@@ -3334,6 +3381,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class LeftClickMouseAtCoordinateInput
     {
+        public LeftClickMouseAtCoordinateInput(int xCoord, int yCoord)
+        {
+            this.XCoord = xCoord;
+            this.YCoord = yCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int XCoord { get; set; }
 
@@ -3355,6 +3408,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class LeftHoldMouseAtCoordinateInput
     {
+        public LeftHoldMouseAtCoordinateInput(int xCoord, int yCoord)
+        {
+            this.XCoord = xCoord;
+            this.YCoord = yCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int XCoord { get; set; }
 
@@ -3388,6 +3447,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RightClickMouseAtCoordinateInput
     {
+        public RightClickMouseAtCoordinateInput(int xCoord, int yCoord)
+        {
+            this.XCoord = xCoord;
+            this.YCoord = yCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int XCoord { get; set; }
 
@@ -3409,6 +3474,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RightHoldMouseAtCoordinateInput
     {
+        public RightHoldMouseAtCoordinateInput(int xCoord, int yCoord)
+        {
+            this.XCoord = xCoord;
+            this.YCoord = yCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int XCoord { get; set; }
 
@@ -3442,6 +3513,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class MiddleClickMouseAtCoordinateInput
     {
+        public MiddleClickMouseAtCoordinateInput(int xCoord, int yCoord)
+        {
+            this.XCoord = xCoord;
+            this.YCoord = yCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int XCoord { get; set; }
 
@@ -3463,6 +3540,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class MiddleHoldMouseAtCoordinateInput
     {
+        public MiddleHoldMouseAtCoordinateInput(int xCoord, int yCoord)
+        {
+            this.XCoord = xCoord;
+            this.YCoord = yCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int XCoord { get; set; }
 
@@ -3487,6 +3570,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DoubleLeftClickMouseAtCoordinateInput
     {
+        public DoubleLeftClickMouseAtCoordinateInput(int xCoord, int yCoord)
+        {
+            this.XCoord = xCoord;
+            this.YCoord = yCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int XCoord { get; set; }
 
@@ -3502,6 +3591,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class LeftMouseDragBetweenCoordinatesInput
     {
+        public LeftMouseDragBetweenCoordinatesInput(int startXCoord, int startYCoord, int endXCoord, int endYCoord)
+        {
+            this.StartXCoord = startXCoord;
+            this.StartYCoord = startYCoord;
+            this.EndXCoord = endXCoord;
+            this.EndYCoord = endYCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int StartXCoord { get; set; }
 
@@ -3531,6 +3628,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RightMouseDragBetweenCoordinatesInput
     {
+        public RightMouseDragBetweenCoordinatesInput(int startXCoord, int startYCoord, int endXCoord, int endYCoord)
+        {
+            this.StartXCoord = startXCoord;
+            this.StartYCoord = startYCoord;
+            this.EndXCoord = endXCoord;
+            this.EndYCoord = endYCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int StartXCoord { get; set; }
 
@@ -3560,6 +3665,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class MiddleMouseDragBetweenCoordinatesInput
     {
+        public MiddleMouseDragBetweenCoordinatesInput(int startXCoord, int startYCoord, int endXCoord, int endYCoord)
+        {
+            this.StartXCoord = startXCoord;
+            this.StartYCoord = startYCoord;
+            this.EndXCoord = endXCoord;
+            this.EndYCoord = endYCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int StartXCoord { get; set; }
 
@@ -3589,6 +3702,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class MoveMouseBetweenCoordinatesInput
     {
+        public MoveMouseBetweenCoordinatesInput(int startXCoord, int startYCoord, int endXCoord, int endYCoord)
+        {
+            this.StartXCoord = startXCoord;
+            this.StartYCoord = startYCoord;
+            this.EndXCoord = endXCoord;
+            this.EndYCoord = endYCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int StartXCoord { get; set; }
 
@@ -3618,6 +3739,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TurnMouseWheelInput
     {
+        public TurnMouseWheelInput(int wheelTurns)
+        {
+            this.WheelTurns = wheelTurns;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int WheelTurns { get; set; }
 
@@ -3627,6 +3753,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SetCursorPosInput
     {
+        public SetCursorPosInput(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int X { get; set; }
 
@@ -3677,6 +3809,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SetMouseMoveMethodInput
     {
+        public SetMouseMoveMethodInput(SetMouseMoveMethodInputMouseMoveMethodType mouseMoveMethod)
+        {
+            this.MouseMoveMethod = mouseMoveMethod;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public SetMouseMoveMethodInputMouseMoveMethodType MouseMoveMethod { get; set; }
 
@@ -3708,6 +3845,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SendKeyEventsInput
     {
+        public SendKeyEventsInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
@@ -3726,6 +3868,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SendPasswordKeyEventsInput
     {
+        public SendPasswordKeyEventsInput(string password)
+        {
+            this.Password = password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
 
@@ -3744,6 +3891,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SendKeysInput
     {
+        public SendKeysInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
@@ -3762,6 +3914,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SendPasswordKeysInput
     {
+        public SendPasswordKeysInput(string password)
+        {
+            this.Password = password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
 
@@ -3898,6 +4055,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetParentProcessIdInput
     {
+        public GetParentProcessIdInput(int processId)
+        {
+            this.ProcessId = processId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ProcessId { get; set; }
 
@@ -3915,6 +4077,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetProcessIdCommandLineInput
     {
+        public GetProcessIdCommandLineInput(int processId)
+        {
+            this.ProcessId = processId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ProcessId { get; set; }
 
@@ -3983,6 +4150,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class CopyFileToClipboardInput
     {
+        public CopyFileToClipboardInput(string filepath)
+        {
+            this.Filepath = filepath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filepath { get; set; }
 
@@ -4013,6 +4185,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GeneratePasswordInput
     {
+        public GeneratePasswordInput(string passwordFormat)
+        {
+            this.PasswordFormat = passwordFormat;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PasswordFormat { get; set; }
         public int? MinimumLength { get; set; }
@@ -4085,6 +4262,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class StorePasswordInAgentMemoryInput
     {
+        public StorePasswordInAgentMemoryInput(string identifier, string password)
+        {
+            this.Identifier = identifier;
+            this.Password = password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identifier { get; set; }
 
@@ -4119,6 +4302,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class CredentialWriteInput
     {
+        public CredentialWriteInput(string credentialAddress, string userName, string password, CredentialWriteInputCredentialTypeType credentialType)
+        {
+            this.CredentialAddress = credentialAddress;
+            this.UserName = userName;
+            this.Password = password;
+            this.CredentialType = credentialType;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CredentialAddress { get; set; }
 
@@ -4163,6 +4354,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class CredentialReadInput
     {
+        public CredentialReadInput(string credentialAddress, CredentialReadInputCredentialTypeType credentialType)
+        {
+            this.CredentialAddress = credentialAddress;
+            this.CredentialType = credentialType;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CredentialAddress { get; set; }
 
@@ -4193,6 +4390,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class CredentialDeleteInput
     {
+        public CredentialDeleteInput(string credentialAddress, CredentialDeleteInputCredentialTypeType credentialType)
+        {
+            this.CredentialAddress = credentialAddress;
+            this.CredentialType = credentialType;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CredentialAddress { get; set; }
 
@@ -4217,6 +4420,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GenerateRDPFileInput
     {
+        public GenerateRDPFileInput(string remoteAddress, string outputFolderPath, string rDPFileName)
+        {
+            this.RemoteAddress = remoteAddress;
+            this.OutputFolderPath = outputFolderPath;
+            this.RDPFileName = rDPFileName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RemoteAddress { get; set; }
 
@@ -4297,6 +4507,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class LaunchRemoteDesktopSessionInput
     {
+        public LaunchRemoteDesktopSessionInput(string rDPFilePath)
+        {
+            this.RDPFilePath = rDPFilePath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RDPFilePath { get; set; }
 
@@ -4315,6 +4530,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class IsTCPPortRespondingInput
     {
+        public IsTCPPortRespondingInput(string remoteHost, int tCPPort)
+        {
+            this.RemoteHost = remoteHost;
+            this.TCPPort = tCPPort;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RemoteHost { get; set; }
 
@@ -4335,6 +4556,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class UnlockSessionInput
     {
+        public UnlockSessionInput(string unlockPassword)
+        {
+            this.UnlockPassword = unlockPassword;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UnlockPassword { get; set; }
 
@@ -4410,6 +4636,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DrawRectangleOnScreenInput
     {
+        public DrawRectangleOnScreenInput(int rectangleLeftPixelXCoord, int rectangleRightPixelXCoord, int rectangleTopPixelYCoord, int rectangleBottomPixelYCoord)
+        {
+            this.RectangleLeftPixelXCoord = rectangleLeftPixelXCoord;
+            this.RectangleRightPixelXCoord = rectangleRightPixelXCoord;
+            this.RectangleTopPixelYCoord = rectangleTopPixelYCoord;
+            this.RectangleBottomPixelYCoord = rectangleBottomPixelYCoord;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RectangleLeftPixelXCoord { get; set; }
 
@@ -4447,6 +4681,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFailedActionErrorMessageFromPowerAutomateResultJSONInput
     {
+        public GetFailedActionErrorMessageFromPowerAutomateResultJSONInput(string[] powerAutomateResultJSON)
+        {
+            this.PowerAutomateResultJSON = powerAutomateResultJSON;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] PowerAutomateResultJSON { get; set; }
 
@@ -4466,6 +4705,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetPixelColourAtCoordinateInput
     {
+        public GetPixelColourAtCoordinateInput(int leftXPixels, int topYPixels)
+        {
+            this.LeftXPixels = leftXPixels;
+            this.TopYPixels = topYPixels;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int LeftXPixels { get; set; }
 
@@ -4494,6 +4739,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class ConvertRectangleCoordinatesInput
     {
+        public ConvertRectangleCoordinatesInput(int rectangleLeftPixelXCoord, int rectangleTopPixelYCoord, int rectangleRightPixelXCoord, int rectangleBottomPixelYCoord, ConvertRectangleCoordinatesInputConversionTypeType conversionType)
+        {
+            this.RectangleLeftPixelXCoord = rectangleLeftPixelXCoord;
+            this.RectangleTopPixelYCoord = rectangleTopPixelYCoord;
+            this.RectangleRightPixelXCoord = rectangleRightPixelXCoord;
+            this.RectangleBottomPixelYCoord = rectangleBottomPixelYCoord;
+            this.ConversionType = conversionType;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RectangleLeftPixelXCoord { get; set; }
 
@@ -4720,6 +4974,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TasksDeferExistingTaskInput
     {
+        public TasksDeferExistingTaskInput(int taskId)
+        {
+            this.TaskId = taskId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int TaskId { get; set; }
         public int? DeferralTimeInMinutes { get; set; }
@@ -4741,6 +5000,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TasksDeferExistingTaskOperationInput
     {
+        public TasksDeferExistingTaskOperationInput(string operationId)
+        {
+            this.OperationId = operationId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OperationId { get; set; }
         public int? DeferralTimeInMinutes { get; set; }
@@ -4759,6 +5023,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TasksDeleteTaskInput
     {
+        public TasksDeleteTaskInput(int taskId)
+        {
+            this.TaskId = taskId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int TaskId { get; set; }
 
@@ -4774,6 +5043,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TasksDeleteTaskOperationInput
     {
+        public TasksDeleteTaskOperationInput(string operationId)
+        {
+            this.OperationId = operationId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OperationId { get; set; }
 
@@ -4848,6 +5122,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TasksGetTaskInput
     {
+        public TasksGetTaskInput(int taskId)
+        {
+            this.TaskId = taskId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int TaskId { get; set; }
 
@@ -4922,6 +5201,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TasksChangeTaskStatusInput
     {
+        public TasksChangeTaskStatusInput(int taskId)
+        {
+            this.TaskId = taskId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int TaskId { get; set; }
         public TasksChangeTaskStatusInputAutomationTaskStatusType? AutomationTaskStatus { get; set; }
@@ -4957,6 +5241,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TasksAddNoteInput
     {
+        public TasksAddNoteInput(int taskId, string noteText)
+        {
+            this.TaskId = taskId;
+            this.NoteText = noteText;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int TaskId { get; set; }
 
@@ -4987,6 +5277,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TasksAssignTaskInput
     {
+        public TasksAssignTaskInput(int taskId)
+        {
+            this.TaskId = taskId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int TaskId { get; set; }
         public string AssignToUserId { get; set; }
@@ -5009,6 +5304,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TasksSetOutputDataInput
     {
+        public TasksSetOutputDataInput(int taskId)
+        {
+            this.TaskId = taskId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int TaskId { get; set; }
         public string TaskOutputData { get; set; }
@@ -5077,6 +5377,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class TasksGetTaskOperationInput
     {
+        public TasksGetTaskOperationInput(string operationId)
+        {
+            this.OperationId = operationId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OperationId { get; set; }
     }
@@ -5104,6 +5409,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SetLicenseCodeInput
     {
+        public SetLicenseCodeInput(string customerNETBIOSDomainName, string customerDisplayName, string vendorName, string licenseExpiryDate, string activationCode)
+        {
+            this.CustomerNETBIOSDomainName = customerNETBIOSDomainName;
+            this.CustomerDisplayName = customerDisplayName;
+            this.VendorName = vendorName;
+            this.LicenseExpiryDate = licenseExpiryDate;
+            this.ActivationCode = activationCode;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CustomerNETBIOSDomainName { get; set; }
 
@@ -5133,6 +5447,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SetLicenseStringInput
     {
+        public SetLicenseStringInput(string licenseString)
+        {
+            this.LicenseString = licenseString;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LicenseString { get; set; }
 
@@ -5183,6 +5502,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SetRSAGUIPositionInput
     {
+        public SetRSAGUIPositionInput(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int X { get; set; }
 
@@ -5249,6 +5574,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RunAlternativeIAConnectInput
     {
+        public RunAlternativeIAConnectInput(string filename)
+        {
+            this.Filename = filename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filename { get; set; }
         public string Arguments { get; set; }
@@ -5267,6 +5597,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RunAlternativeIAConnectSentFromDirectorInput
     {
+        public RunAlternativeIAConnectSentFromDirectorInput(string localFilename)
+        {
+            this.LocalFilename = localFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LocalFilename { get; set; }
         public string RemoteFilename { get; set; }
@@ -5606,6 +5941,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetOrchestratorWorkerFlowUsageHeatmapInput
     {
+        public GetOrchestratorWorkerFlowUsageHeatmapInput(string searchStartDateStartWindow, string searchStartDateEndWindow)
+        {
+            this.SearchStartDateStartWindow = searchStartDateStartWindow;
+            this.SearchStartDateEndWindow = searchStartDateEndWindow;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchStartDateStartWindow { get; set; }
 
@@ -5647,6 +5988,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RunCommandInput
     {
+        public RunCommandInput(string commandName)
+        {
+            this.CommandName = commandName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CommandName { get; set; }
         public string InputJSON { get; set; }
@@ -5725,6 +6071,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class AttachToIAConnectSessionByNameInput
     {
+        public AttachToIAConnectSessionByNameInput(string iAConnectSessionName)
+        {
+            this.IAConnectSessionName = iAConnectSessionName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string IAConnectSessionName { get; set; }
 
@@ -5840,6 +6191,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DoesIAConnectSessionExistByNameInput
     {
+        public DoesIAConnectSessionExistByNameInput(string iAConnectSessionName)
+        {
+            this.IAConnectSessionName = iAConnectSessionName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string IAConnectSessionName { get; set; }
 
@@ -5855,6 +6211,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class WaitForIAConnectSessionToCloseByNameInput
     {
+        public WaitForIAConnectSessionToCloseByNameInput(string iAConnectSessionName)
+        {
+            this.IAConnectSessionName = iAConnectSessionName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string IAConnectSessionName { get; set; }
         public int? TimeToWaitInSeconds { get; set; }
@@ -5877,6 +6238,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class KillIAConnectSessionByNameInput
     {
+        public KillIAConnectSessionByNameInput(string iAConnectSessionName)
+        {
+            this.IAConnectSessionName = iAConnectSessionName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string IAConnectSessionName { get; set; }
 
@@ -6014,6 +6380,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetAgentThreadStatusInput
     {
+        public GetAgentThreadStatusInput(int threadId)
+        {
+            this.ThreadId = threadId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ThreadId { get; set; }
 
@@ -6042,6 +6413,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class WaitForAgentThreadToCompleteSuccessfullyInput
     {
+        public WaitForAgentThreadToCompleteSuccessfullyInput(int threadId, int secondsToWaitForThread)
+        {
+            this.ThreadId = threadId;
+            this.SecondsToWaitForThread = secondsToWaitForThread;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ThreadId { get; set; }
 
@@ -6125,6 +6502,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class KillAgentThreadInput
     {
+        public KillAgentThreadInput(int threadId)
+        {
+            this.ThreadId = threadId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ThreadId { get; set; }
 
@@ -6192,6 +6574,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class CreateOrchestratorOneTimeSecretInput
     {
+        public CreateOrchestratorOneTimeSecretInput(string friendlyName)
+        {
+            this.FriendlyName = friendlyName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FriendlyName { get; set; }
         public string SecretValue { get; set; }
@@ -6306,6 +6693,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class FileExistsInput
     {
+        public FileExistsInput(string filename)
+        {
+            this.Filename = filename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filename { get; set; }
 
@@ -6320,6 +6712,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DirectoryExistsInput
     {
+        public DirectoryExistsInput(string directoryPath)
+        {
+            this.DirectoryPath = directoryPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
 
@@ -6329,6 +6726,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DeleteFileInput
     {
+        public DeleteFileInput(string filename)
+        {
+            this.Filename = filename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filename { get; set; }
 
@@ -6338,6 +6740,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DeleteDirectoryInput
     {
+        public DeleteDirectoryInput(string directoryPath)
+        {
+            this.DirectoryPath = directoryPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
 
@@ -6350,6 +6757,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class PurgeDirectoryInput
     {
+        public PurgeDirectoryInput(string directoryPath)
+        {
+            this.DirectoryPath = directoryPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
 
@@ -6365,6 +6777,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class CopyFileInput
     {
+        public CopyFileInput(string sourceFilePath, string destFilePath)
+        {
+            this.SourceFilePath = sourceFilePath;
+            this.DestFilePath = destFilePath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFilePath { get; set; }
 
@@ -6377,6 +6795,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class MoveFileInput
     {
+        public MoveFileInput(string sourceFilePath, string destFilePath)
+        {
+            this.SourceFilePath = sourceFilePath;
+            this.DestFilePath = destFilePath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFilePath { get; set; }
 
@@ -6389,6 +6813,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class CreateDirectoryInput
     {
+        public CreateDirectoryInput(string directoryPath)
+        {
+            this.DirectoryPath = directoryPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
 
@@ -6406,6 +6835,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFileSizeInput
     {
+        public GetFileSizeInput(string filename)
+        {
+            this.Filename = filename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filename { get; set; }
 
@@ -6415,6 +6849,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class WriteTextFileInput
     {
+        public WriteTextFileInput(string filename)
+        {
+            this.Filename = filename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filename { get; set; }
         public string TextToWrite { get; set; }
@@ -6446,6 +6885,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class ReadAllTextFromFileInput
     {
+        public ReadAllTextFromFileInput(string filename)
+        {
+            this.Filename = filename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filename { get; set; }
 
@@ -6462,6 +6906,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFilesInput
     {
+        public GetFilesInput(string directoryPath, string patternsCSV)
+        {
+            this.DirectoryPath = directoryPath;
+            this.PatternsCSV = patternsCSV;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
 
@@ -6481,6 +6931,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFoldersInput
     {
+        public GetFoldersInput(string directoryPath)
+        {
+            this.DirectoryPath = directoryPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
 
@@ -6496,6 +6951,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DeleteFilesInput
     {
+        public DeleteFilesInput(string directoryPath)
+        {
+            this.DirectoryPath = directoryPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
         public string Pattern { get; set; }
@@ -6514,6 +6974,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetDiskFreeSpaceInput
     {
+        public GetDiskFreeSpaceInput(string driveLetter)
+        {
+            this.DriveLetter = driveLetter;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DriveLetter { get; set; }
 
@@ -6540,6 +7005,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DirectoryIsAccessibleInput
     {
+        public DirectoryIsAccessibleInput(string directoryPath)
+        {
+            this.DirectoryPath = directoryPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
 
@@ -6554,6 +7024,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetCSVTextAsCollectionInput
     {
+        public GetCSVTextAsCollectionInput(string cSVFilePath)
+        {
+            this.CSVFilePath = cSVFilePath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSVFilePath { get; set; }
 
@@ -6581,6 +7056,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class WriteCollectionToCSVFileInput
     {
+        public WriteCollectionToCSVFileInput(string cSVFilePath)
+        {
+            this.CSVFilePath = cSVFilePath;
+        }
+
         public JToken[] InputTable { get; set; }
         public string InputTableJSON { get; set; }
 
@@ -6605,6 +7085,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SetOwnerOnFolderInput
     {
+        public SetOwnerOnFolderInput(string folderPath, string userIdentity)
+        {
+            this.FolderPath = folderPath;
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderPath { get; set; }
 
@@ -6617,6 +7103,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SetOwnerOnFileInput
     {
+        public SetOwnerOnFileInput(string filePath, string userIdentity)
+        {
+            this.FilePath = filePath;
+            this.UserIdentity = userIdentity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FilePath { get; set; }
 
@@ -6629,6 +7121,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class AddPermissionToFolderInput
     {
+        public AddPermissionToFolderInput(string folderPath, string identity)
+        {
+            this.FolderPath = folderPath;
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderPath { get; set; }
 
@@ -6665,6 +7163,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class AddPermissionToFileInput
     {
+        public AddPermissionToFileInput(string filePath, string identity)
+        {
+            this.FilePath = filePath;
+            this.Identity = identity;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FilePath { get; set; }
 
@@ -6692,6 +7196,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class BreakFolderSecurityInheritanceInput
     {
+        public BreakFolderSecurityInheritanceInput(string folderPath)
+        {
+            this.FolderPath = folderPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderPath { get; set; }
 
@@ -6704,6 +7213,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class EnableFolderSecurityInheritanceInput
     {
+        public EnableFolderSecurityInheritanceInput(string folderPath)
+        {
+            this.FolderPath = folderPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderPath { get; set; }
 
@@ -6718,6 +7232,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFolderSecurityPermissionsInput
     {
+        public GetFolderSecurityPermissionsInput(string folderPath)
+        {
+            this.FolderPath = folderPath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderPath { get; set; }
 
@@ -6732,6 +7251,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFileSecurityPermissionsInput
     {
+        public GetFileSecurityPermissionsInput(string filePath)
+        {
+            this.FilePath = filePath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FilePath { get; set; }
 
@@ -6746,6 +7270,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RemoveIdentityFromFolderSecurityInput
     {
+        public RemoveIdentityFromFolderSecurityInput(string folderPath, string identityToRemove)
+        {
+            this.FolderPath = folderPath;
+            this.IdentityToRemove = identityToRemove;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderPath { get; set; }
 
@@ -6763,6 +7293,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RemoveIdentityFromFileSecurityInput
     {
+        public RemoveIdentityFromFileSecurityInput(string filePath, string identityToRemove)
+        {
+            this.FilePath = filePath;
+            this.IdentityToRemove = identityToRemove;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FilePath { get; set; }
 
@@ -6775,6 +7311,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class CopyFileFromClientToServerInput
     {
+        public CopyFileFromClientToServerInput(string clientFilePath, string serverFilePath)
+        {
+            this.ClientFilePath = clientFilePath;
+            this.ServerFilePath = serverFilePath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ClientFilePath { get; set; }
 
@@ -6790,6 +7332,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class ReplaceVariableDataInINIFileInput
     {
+        public ReplaceVariableDataInINIFileInput(string inputFilename)
+        {
+            this.InputFilename = inputFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputFilename { get; set; }
         public string OutputFilename { get; set; }
@@ -6818,6 +7365,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DownloadHTTPFileInput
     {
+        public DownloadHTTPFileInput(string downloadURL)
+        {
+            this.DownloadURL = downloadURL;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DownloadURL { get; set; }
         public string SaveFilename { get; set; }
@@ -6878,6 +7430,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class UnZIPFileInput
     {
+        public UnZIPFileInput(string zIPFilename)
+        {
+            this.ZIPFilename = zIPFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ZIPFilename { get; set; }
         public string ExtractFolder { get; set; }
@@ -6893,6 +7450,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class AddFileToZIPInput
     {
+        public AddFileToZIPInput(string sourceFilenameToAddToZIP, string outputZIPFilename)
+        {
+            this.SourceFilenameToAddToZIP = sourceFilenameToAddToZIP;
+            this.OutputZIPFilename = outputZIPFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFilenameToAddToZIP { get; set; }
 
@@ -6919,6 +7482,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class AddFolderToZIPInput
     {
+        public AddFolderToZIPInput(string sourceFolderToAddToZIP, string outputZIPFilename)
+        {
+            this.SourceFolderToAddToZIP = sourceFolderToAddToZIP;
+            this.OutputZIPFilename = outputZIPFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFolderToAddToZIP { get; set; }
 
@@ -6948,6 +7517,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFileContentsAsBase64Input
     {
+        public GetFileContentsAsBase64Input(string filePath)
+        {
+            this.FilePath = filePath;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FilePath { get; set; }
 

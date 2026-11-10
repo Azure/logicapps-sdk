@@ -124,6 +124,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
 
     public class BodyInput
     {
+        public BodyInput(JToken messageBody, JToken messageHeader)
+        {
+            this.MessageBody = messageBody;
+            this.MessageHeader = messageHeader;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken MessageBody { get; set; }
 

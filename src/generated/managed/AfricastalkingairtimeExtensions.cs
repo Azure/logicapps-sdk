@@ -103,6 +103,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingairtime
 
     public class SendAirtimeBodyInput
     {
+        public SendAirtimeBodyInput(string username, BodyInputRecipientsTypeItem[] recipients)
+        {
+            this.Username = username;
+            this.Recipients = recipients;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
@@ -112,6 +118,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingairtime
 
     public class BodyInputRecipientsTypeItem
     {
+        public BodyInputRecipientsTypeItem(string phoneNumber, string amount)
+        {
+            this.PhoneNumber = phoneNumber;
+            this.Amount = amount;
+        }
+
         [JsonProperty("phoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PhoneNumber { get; set; }
 

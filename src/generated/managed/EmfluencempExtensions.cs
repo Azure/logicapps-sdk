@@ -57,6 +57,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ContactsSearchBodyInput().ToJToken();
                 return new ApiConnectionAction<ContactsSearchResponse>(callPayload);
             });
         }

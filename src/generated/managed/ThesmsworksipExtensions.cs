@@ -179,6 +179,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
 
     public class ScheduleMessageSmsMessageInput
     {
+        public ScheduleMessageSmsMessageInput(string sender, string destination, string content)
+        {
+            this.Sender = sender;
+            this.Destination = destination;
+            this.Content = content;
+        }
+
         [JsonProperty("sender", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sender { get; set; }
 
@@ -263,6 +270,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
 
     public class ScheduleBatchSmsMessageInput
     {
+        public ScheduleBatchSmsMessageInput(string sender, string[] destinations, string content)
+        {
+            this.Sender = sender;
+            this.Destinations = destinations;
+            this.Content = content;
+        }
+
         [JsonProperty("sender", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sender { get; set; }
 

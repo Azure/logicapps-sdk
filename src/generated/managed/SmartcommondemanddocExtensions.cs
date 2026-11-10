@@ -202,6 +202,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
 
     public class BodyInput
     {
+        public BodyInput(string transactionData, int batchConfigResId)
+        {
+            this.TransactionData = transactionData;
+            this.BatchConfigResId = batchConfigResId;
+        }
+
         [JsonProperty("projectId")]
         public int? ProjectId { get; set; }
 

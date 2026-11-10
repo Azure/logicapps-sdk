@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4Contacts(Expression<Func<ContactInput>> contact = null, Expression<Func<bool>> updateIfExists = null)
+        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4Contacts(Expression<Func<ContactInput>> contact, Expression<Func<bool>> updateIfExists = null)
         {
-            var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: false);
+            var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: true);
             var __workflow_updateIfExists = WorkflowExpression.Compile(updateIfExists, nameof(updateIfExists), required: false);
             return new DeferredBodyAction<ContactRead, ApiConnectionActionConfiguration>(() =>
             {
@@ -55,8 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
                 callPayload.Queries["updateIfExists"] = Convert.ToString(false);
                 if (__workflow_updateIfExists != null)
                     callPayload.Queries["updateIfExists"] = ExpressionConverter.Convert(__workflow_updateIfExists);
-                if (__workflow_contact != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_contact);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_contact);
                 return new ApiConnectionAction<ContactRead>(callPayload);
             });
         }
@@ -81,17 +80,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4ContactsByEmailByEmailPut(Expression<Func<string>> email, Expression<Func<ContactInput>> contact = null)
+        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4ContactsByEmailByEmailPut(Expression<Func<string>> email, Expression<Func<ContactInput>> contact)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
-            var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: false);
+            var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: true);
             return new DeferredBodyAction<ContactRead, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_flow/v4/Contacts/ByEmail/{0}", __workflow_email.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_contact != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_contact);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_contact);
                 return new ApiConnectionAction<ContactRead>(callPayload);
             });
         }
@@ -129,17 +127,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4ContactsByIdPut(Expression<Func<int>> id, Expression<Func<ContactInput>> contact = null)
+        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4ContactsByIdPut(Expression<Func<int>> id, Expression<Func<ContactInput>> contact)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: false);
+            var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: true);
             return new DeferredBodyAction<ContactRead, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_flow/v4/Contacts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_contact != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_contact);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_contact);
                 return new ApiConnectionAction<ContactRead>(callPayload);
             });
         }
@@ -175,16 +172,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4Organizations(Expression<Func<OrganizationInput>> organization = null)
+        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4Organizations(Expression<Func<OrganizationInput>> organization)
         {
-            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
             return new DeferredBodyAction<OrganizationRead, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_flow/v4/Organizations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_organization != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_organization);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_organization);
                 return new ApiConnectionAction<OrganizationRead>(callPayload);
             });
         }
@@ -222,17 +218,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4OrganizationsByTitleByTitlePut(Expression<Func<string>> title, Expression<Func<OrganizationInput>> organization = null)
+        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4OrganizationsByTitleByTitlePut(Expression<Func<string>> title, Expression<Func<OrganizationInput>> organization)
         {
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
-            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
             return new DeferredBodyAction<OrganizationRead, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_flow/v4/Organizations/ByTitle/{0}", __workflow_title.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_organization != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_organization);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_organization);
                 return new ApiConnectionAction<OrganizationRead>(callPayload);
             });
         }
@@ -270,17 +265,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4OrganizationsByIdPut(Expression<Func<int>> id, Expression<Func<OrganizationInput>> organization = null)
+        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4OrganizationsByIdPut(Expression<Func<int>> id, Expression<Func<OrganizationInput>> organization)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
             return new DeferredBodyAction<OrganizationRead, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_flow/v4/Organizations/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_organization != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_organization);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_organization);
                 return new ApiConnectionAction<OrganizationRead>(callPayload);
             });
         }
@@ -316,16 +310,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<TicketRead, ApiConnectionActionConfiguration> FlowV4Tickets(Expression<Func<TicketInput>> ticket = null)
+        public IBodyWorkflowAction<TicketRead, ApiConnectionActionConfiguration> FlowV4Tickets(Expression<Func<TicketInput>> ticket)
         {
-            var __workflow_ticket = WorkflowExpression.Compile(ticket, nameof(ticket), required: false);
+            var __workflow_ticket = WorkflowExpression.Compile(ticket, nameof(ticket), required: true);
             return new DeferredBodyAction<TicketRead, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_flow/v4/Tickets";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_ticket != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_ticket);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_ticket);
                 return new ApiConnectionAction<TicketRead>(callPayload);
             });
         }
@@ -363,17 +356,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<TicketRead, ApiConnectionActionConfiguration> FlowV4TicketsByIdPut(Expression<Func<int>> id, Expression<Func<TicketInput>> ticket = null)
+        public IBodyWorkflowAction<TicketRead, ApiConnectionActionConfiguration> FlowV4TicketsByIdPut(Expression<Func<int>> id, Expression<Func<TicketInput>> ticket)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_ticket = WorkflowExpression.Compile(ticket, nameof(ticket), required: false);
+            var __workflow_ticket = WorkflowExpression.Compile(ticket, nameof(ticket), required: true);
             return new DeferredBodyAction<TicketRead, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_flow/v4/Tickets/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_ticket != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_ticket);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_ticket);
                 return new ApiConnectionAction<TicketRead>(callPayload);
             });
         }
@@ -418,17 +410,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<CommentRead, ApiConnectionActionConfiguration> FlowV4TicketsByTicketIdComments(Expression<Func<int>> ticketId, Expression<Func<CommentInput>> comment = null)
+        public IBodyWorkflowAction<CommentRead, ApiConnectionActionConfiguration> FlowV4TicketsByTicketIdComments(Expression<Func<CommentInput>> comment, Expression<Func<int>> ticketId)
         {
+            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: true);
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
-            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
             return new DeferredBodyAction<CommentRead, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_flow/v4/Tickets/{0}/Comments", __workflow_ticketId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_comment != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_comment);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_comment);
                 return new ApiConnectionAction<CommentRead>(callPayload);
             });
         }
@@ -484,6 +475,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
 
     public class ContactInput
     {
+        public ContactInput(string contactEmail, string contactName)
+        {
+            this.ContactEmail = contactEmail;
+            this.ContactName = contactName;
+        }
+
         [JsonProperty("customFields")]
         public JToken ContactCustomFields { get; set; }
 
@@ -517,6 +514,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
 
     public class OrganizationInput
     {
+        public OrganizationInput(string organizationTitle)
+        {
+            this.OrganizationTitle = organizationTitle;
+        }
+
         [JsonProperty("customFields")]
         public JToken OrganizationCustomFields { get; set; }
 
@@ -658,6 +660,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
 
     public class TicketInput
     {
+        public TicketInput(string ticketBody, string ticketRequesterEmail, string ticketSubject)
+        {
+            this.TicketBody = ticketBody;
+            this.TicketRequesterEmail = ticketRequesterEmail;
+            this.TicketSubject = ticketSubject;
+        }
+
         [JsonProperty("assignedToEmail")]
         public string TicketAssigneeEmailOrSharePointGroupName { get; set; }
 
@@ -700,6 +709,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
 
     public class Attachment
     {
+        public Attachment(string attachmentContent, string attachmentFileName)
+        {
+            this.AttachmentContent = attachmentContent;
+            this.AttachmentFileName = attachmentFileName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string AttachmentContent { get; set; }
 
@@ -733,6 +748,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
 
     public class CommentInput
     {
+        public CommentInput(string commentBody, string commentAuthorEmail)
+        {
+            this.CommentBody = commentBody;
+            this.CommentAuthorEmail = commentAuthorEmail;
+        }
+
         [JsonProperty("attachments")]
         public Attachment[] Attachments { get; set; }
 

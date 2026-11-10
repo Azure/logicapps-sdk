@@ -146,6 +146,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
 
     public class RequestInput
     {
+        public RequestInput(string from, string to, string subject, string emailBody)
+        {
+            this.From = from;
+            this.To = to;
+            this.Subject = subject;
+            this.EmailBody = emailBody;
+        }
+
         [JsonProperty("attachments")]
         public EmailAttachment[] Attachment { get; set; }
 

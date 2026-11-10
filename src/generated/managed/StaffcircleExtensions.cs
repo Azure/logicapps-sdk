@@ -387,6 +387,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class CreatePersonBodyInput
     {
+        public CreatePersonBodyInput(string firstName, string secondName, string email, string mobile, string dateOfBirth, string startDate)
+        {
+            this.FirstName = firstName;
+            this.SecondName = secondName;
+            this.Email = email;
+            this.Mobile = mobile;
+            this.DateOfBirth = dateOfBirth;
+            this.StartDate = startDate;
+        }
+
         [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -1201,6 +1211,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class CreateObjectiveByTemplateBodyInput
     {
+        public CreateObjectiveByTemplateBodyInput(int objectiveTemplateId, string startDate, string endDate)
+        {
+            this.ObjectiveTemplateId = objectiveTemplateId;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
+
         [JsonProperty("objectiveTemplateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ObjectiveTemplateId { get; set; }
 
@@ -1249,6 +1266,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class CreateObjectiveBodyInput
     {
+        public CreateObjectiveBodyInput(int categoryId, string title, string description, string startDate, string endDate, BodyInputValueTypeType valueType)
+        {
+            this.CategoryId = categoryId;
+            this.Title = title;
+            this.Description = description;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.ValueType = valueType;
+        }
+
         [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CategoryId { get; set; }
 
@@ -1372,6 +1399,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class UpdateObjectiveScoreBodyInput
     {
+        public UpdateObjectiveScoreBodyInput(double value, string description)
+        {
+            this.Value = value;
+            this.Description = description;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 
@@ -1390,6 +1423,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class CreateArticleBodyInput
     {
+        public CreateArticleBodyInput(string title, string htmlContent, string tag)
+        {
+            this.Title = title;
+            this.HtmlContent = htmlContent;
+            this.Tag = tag;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -1490,6 +1530,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class CreateAlertBodyInput
     {
+        public CreateAlertBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -1550,6 +1595,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class CreateTaskBodyInput
     {
+        public CreateTaskBodyInput(string title, int formId, int taskGroupId)
+        {
+            this.Title = title;
+            this.FormId = formId;
+            this.TaskGroupId = taskGroupId;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -1619,6 +1671,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class NewPersonBodyInput
     {
+        public NewPersonBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
 
@@ -1649,6 +1706,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class NewObjectiveBodyInput
     {
+        public NewObjectiveBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
 
@@ -1679,6 +1741,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class UpdateObjectiveBodyInput
     {
+        public UpdateObjectiveBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
 
@@ -1742,6 +1809,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class NewTaskBodyInput
     {
+        public NewTaskBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
 
@@ -1772,6 +1844,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class NewReviewBodyInput
     {
+        public NewReviewBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
 
@@ -1802,6 +1879,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class NewAbsenceBodyInput
     {
+        public NewAbsenceBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
 

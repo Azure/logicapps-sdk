@@ -135,18 +135,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<PostUserLicenseResponse, ApiConnectionActionConfiguration> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PostUserLicenseBodyInput>> body = null)
+        public IBodyWorkflowAction<PostUserLicenseResponse, ApiConnectionActionConfiguration> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PostUserLicenseBodyInput>> body)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostUserLicenseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/assignlicense", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostUserLicenseResponse>(callPayload);
             });
         }
@@ -269,18 +268,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<AddGraphGroupMemberBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<AddGraphGroupMemberBodyInput>> body)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -764,6 +762,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
 
     public class PostUserLicenseBodyInput
     {
+        public PostUserLicenseBodyInput(BodyInputAddLicensesTypeItem[] addLicenses)
+        {
+            this.AddLicenses = addLicenses;
+        }
+
         [JsonProperty("addLicenses", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputAddLicensesTypeItem[] AddLicenses { get; set; }
 
@@ -773,6 +776,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
 
     public class BodyInputAddLicensesTypeItem
     {
+        public BodyInputAddLicensesTypeItem(string skuId)
+        {
+            this.SkuId = skuId;
+        }
+
         [JsonProperty("disabledPlans")]
         public string[] DisabledPlans { get; set; }
 
@@ -1004,6 +1012,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
 
     public class AddGraphGroupMemberBodyInput
     {
+        public AddGraphGroupMemberBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("@odata.id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }

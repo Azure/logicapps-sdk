@@ -129,12 +129,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
 
     public class BodyInput
     {
+        public BodyInput(BodyInputInputType input)
+        {
+            this.Input = input;
+        }
+
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputInputType Input { get; set; }
     }
 
     public class BodyInputInputType
     {
+        public BodyInputInputType(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }

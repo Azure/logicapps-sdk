@@ -208,20 +208,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
     public class AddOrUpdateAddressInformationForPersonEventRequestInput
     {
-        [JsonProperty("add_or_Update_Address_Information_for_Person_Event_Request", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestType AddOrUpdateAddressInformationForPersonEventRequest { get; set; } = new AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestType();
+        [JsonProperty("add_or_Update_Address_Information_for_Person_Event_Request")]
+        public AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestType AddOrUpdateAddressInformationForPersonEventRequest { get; set; }
     }
 
     public class AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestType
     {
-        [JsonProperty("add_or_Update_Address_Information_Data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestTypeAddOrUpdateAddressInformationDataType AddOrUpdateAddressInformationData { get; set; } = new AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestTypeAddOrUpdateAddressInformationDataType();
+        [JsonProperty("add_or_Update_Address_Information_Data")]
+        public AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestTypeAddOrUpdateAddressInformationDataType AddOrUpdateAddressInformationData { get; set; }
     }
 
     public class AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestTypeAddOrUpdateAddressInformationDataType
     {
-        [JsonProperty("worker_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WorkerReference WorkerReference { get; set; } = new WorkerReference();
+        public AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestTypeAddOrUpdateAddressInformationDataType(string effectiveDate)
+        {
+            this.EffectiveDate = effectiveDate;
+        }
+
+        [JsonProperty("worker_Reference")]
+        public WorkerReference WorkerReference { get; set; }
 
         [JsonProperty("effective_Date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EffectiveDate { get; set; }
@@ -232,6 +237,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
     public class WorkerReference
     {
+        public WorkerReference(string workerId)
+        {
+            this.WorkerId = workerId;
+        }
+
         [JsonProperty("WorkerIDType", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkerReferenceWorkerIdTypeType WorkerIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.WorkerReferenceWorkerIdTypeType.EmployeeId;
 
@@ -383,20 +393,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
     public class AddOrUpdatePhoneInformationForPersonEventRequestInput
     {
-        [JsonProperty("add_or_Update_Phone_Information_for_Person_Event_Request", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestType AddOrUpdatePhoneInformationForPersonEventRequest { get; set; } = new AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestType();
+        [JsonProperty("add_or_Update_Phone_Information_for_Person_Event_Request")]
+        public AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestType AddOrUpdatePhoneInformationForPersonEventRequest { get; set; }
     }
 
     public class AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestType
     {
-        [JsonProperty("add_or_Update_Phone_Information_Data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestTypeAddOrUpdatePhoneInformationDataType AddOrUpdatePhoneInformationData { get; set; } = new AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestTypeAddOrUpdatePhoneInformationDataType();
+        [JsonProperty("add_or_Update_Phone_Information_Data")]
+        public AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestTypeAddOrUpdatePhoneInformationDataType AddOrUpdatePhoneInformationData { get; set; }
     }
 
     public class AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestTypeAddOrUpdatePhoneInformationDataType
     {
-        [JsonProperty("worker_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WorkerReference WorkerReference { get; set; } = new WorkerReference();
+        public AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestTypeAddOrUpdatePhoneInformationDataType(string effectiveDate)
+        {
+            this.EffectiveDate = effectiveDate;
+        }
+
+        [JsonProperty("worker_Reference")]
+        public WorkerReference WorkerReference { get; set; }
 
         [JsonProperty("effective_Date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EffectiveDate { get; set; }
@@ -510,20 +525,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
     public class AddOrUpdateEmailAddressInformationForPersonEventRequestInput
     {
-        [JsonProperty("add_or_Update_Email_Address_Information_for_Person_Event_Request", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestType AddOrUpdateEmailAddressInformationForPersonEventRequest { get; set; } = new AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestType();
+        [JsonProperty("add_or_Update_Email_Address_Information_for_Person_Event_Request")]
+        public AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestType AddOrUpdateEmailAddressInformationForPersonEventRequest { get; set; }
     }
 
     public class AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestType
     {
-        [JsonProperty("add_or_Update_Email_Address_Information_Data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestTypeAddOrUpdateEmailAddressInformationDataType AddOrUpdateEmailAddressInformationData { get; set; } = new AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestTypeAddOrUpdateEmailAddressInformationDataType();
+        [JsonProperty("add_or_Update_Email_Address_Information_Data")]
+        public AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestTypeAddOrUpdateEmailAddressInformationDataType AddOrUpdateEmailAddressInformationData { get; set; }
     }
 
     public class AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestTypeAddOrUpdateEmailAddressInformationDataType
     {
-        [JsonProperty("worker_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WorkerReference WorkerReference { get; set; } = new WorkerReference();
+        public AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestTypeAddOrUpdateEmailAddressInformationDataType(string effectiveDate)
+        {
+            this.EffectiveDate = effectiveDate;
+        }
+
+        [JsonProperty("worker_Reference")]
+        public WorkerReference WorkerReference { get; set; }
 
         [JsonProperty("effective_Date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EffectiveDate { get; set; }
@@ -586,20 +606,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
     public class AddOrUpdateInstantMessengerInformationForPersonEventRequestInput
     {
-        [JsonProperty("add_or_Update_Instant_Messenger_Information_for_Person_Event_Request", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestType AddOrUpdateInstantMessengerInformationForPersonEventRequest { get; set; } = new AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestType();
+        [JsonProperty("add_or_Update_Instant_Messenger_Information_for_Person_Event_Request")]
+        public AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestType AddOrUpdateInstantMessengerInformationForPersonEventRequest { get; set; }
     }
 
     public class AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestType
     {
-        [JsonProperty("add_or_Update_Instant_Messenger_Information_Data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestTypeAddOrUpdateInstantMessengerInformationDataType AddOrUpdateInstantMessengerInformationData { get; set; } = new AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestTypeAddOrUpdateInstantMessengerInformationDataType();
+        [JsonProperty("add_or_Update_Instant_Messenger_Information_Data")]
+        public AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestTypeAddOrUpdateInstantMessengerInformationDataType AddOrUpdateInstantMessengerInformationData { get; set; }
     }
 
     public class AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestTypeAddOrUpdateInstantMessengerInformationDataType
     {
-        [JsonProperty("worker_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WorkerReference WorkerReference { get; set; } = new WorkerReference();
+        public AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestTypeAddOrUpdateInstantMessengerInformationDataType(string effectiveDate)
+        {
+            this.EffectiveDate = effectiveDate;
+        }
+
+        [JsonProperty("worker_Reference")]
+        public WorkerReference WorkerReference { get; set; }
 
         [JsonProperty("effective_Date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EffectiveDate { get; set; }
@@ -653,20 +678,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
     public class AddOrUpdateWebAddressInformationForPersonEventRequestInput
     {
-        [JsonProperty("add_or_Update_Web_Address_Information_for_Person_Event_Request", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestType AddOrUpdateWebAddressInformationForPersonEventRequest { get; set; } = new AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestType();
+        [JsonProperty("add_or_Update_Web_Address_Information_for_Person_Event_Request")]
+        public AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestType AddOrUpdateWebAddressInformationForPersonEventRequest { get; set; }
     }
 
     public class AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestType
     {
-        [JsonProperty("add_or_Update_Web_Address_Information_Data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestTypeAddOrUpdateWebAddressInformationDataType AddOrUpdateWebAddressInformationData { get; set; } = new AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestTypeAddOrUpdateWebAddressInformationDataType();
+        [JsonProperty("add_or_Update_Web_Address_Information_Data")]
+        public AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestTypeAddOrUpdateWebAddressInformationDataType AddOrUpdateWebAddressInformationData { get; set; }
     }
 
     public class AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestTypeAddOrUpdateWebAddressInformationDataType
     {
-        [JsonProperty("worker_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WorkerReference WorkerReference { get; set; } = new WorkerReference();
+        public AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestTypeAddOrUpdateWebAddressInformationDataType(string effectiveDate)
+        {
+            this.EffectiveDate = effectiveDate;
+        }
+
+        [JsonProperty("worker_Reference")]
+        public WorkerReference WorkerReference { get; set; }
 
         [JsonProperty("effective_Date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EffectiveDate { get; set; }

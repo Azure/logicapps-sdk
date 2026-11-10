@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
     public class TriggercmdActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "triggercmd")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RunCommand(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RunCommand(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/oauth/flow/trigger";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -34,6 +33,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
 
     public class BodyInput
     {
+        public BodyInput(string computer, string trigger)
+        {
+            this.Computer = computer;
+            this.Trigger = trigger;
+        }
+
         [JsonProperty("computer", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Computer { get; set; }
 

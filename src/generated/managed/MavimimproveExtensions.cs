@@ -28,19 +28,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> CreateTopicAfter(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<CreateChildTopicBodyInput>> body = null)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> CreateTopicAfter(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<CreateChildTopicBodyInput>> body)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ITopic, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ITopic>(callPayload);
             });
         }
@@ -94,19 +93,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> CreateChildTopic(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<CreateChildTopicBodyInput>> body = null)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> CreateChildTopic(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<CreateChildTopicBodyInput>> body)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ITopic, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/children", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ITopic>(callPayload);
             });
         }
@@ -813,6 +811,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
 
     public class CreateChildTopicBodyInput
     {
+        public CreateChildTopicBodyInput(string name, string type, string icon)
+        {
+            this.Name = name;
+            this.Type = type;
+            this.Icon = icon;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

@@ -68,6 +68,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
 
     public class ValidateUserIdentityTokenBodyInput
     {
+        public ValidateUserIdentityTokenBodyInput(string userIdentityToken, string applicationId)
+        {
+            this.UserIdentityToken = userIdentityToken;
+            this.ApplicationId = applicationId;
+        }
+
         [JsonProperty("uit", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentityToken { get; set; }
 
@@ -77,6 +83,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
 
     public class SendHttpRequestBodyInput
     {
+        public SendHttpRequestBodyInput(string relativePath)
+        {
+            this.RelativePath = relativePath;
+        }
+
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins.BodyInputMethodType.GET;
 

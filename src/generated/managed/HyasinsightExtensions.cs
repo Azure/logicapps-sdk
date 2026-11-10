@@ -927,12 +927,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 
     public class BodyInput
     {
+        public BodyInput(BodyInputAppliedFiltersType appliedFilters)
+        {
+            this.AppliedFilters = appliedFilters;
+        }
+
         [JsonProperty("applied_filters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputAppliedFiltersType AppliedFilters { get; set; } = new BodyInputAppliedFiltersType();
+        public BodyInputAppliedFiltersType AppliedFilters { get; set; }
     }
 
     public class BodyInputAppliedFiltersType
     {
+        public BodyInputAppliedFiltersType(string domain)
+        {
+            this.Domain = domain;
+        }
+
         [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Domain { get; set; }
 

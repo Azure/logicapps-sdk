@@ -3378,6 +3378,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _001addFixedSalaryDataBodyInput
     {
+        public _001addFixedSalaryDataBodyInput(string employeeId, string payrollItemId)
+        {
+            this.EmployeeId = employeeId;
+            this.PayrollItemId = payrollItemId;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -3603,6 +3609,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _003updateFixedSalaryDataByIdBodyInput
     {
+        public _003updateFixedSalaryDataByIdBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -3630,6 +3641,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _004addLocationInfoBodyInput
     {
+        public _004addLocationInfoBodyInput(string name, string address, double longitude, double latitude, string areaCode)
+        {
+            this.Name = name;
+            this.Address = address;
+            this.Longitude = longitude;
+            this.Latitude = latitude;
+            this.AreaCode = areaCode;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -3714,6 +3734,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _005addVariableSalaryDataBodyInput
     {
+        public _005addVariableSalaryDataBodyInput(string employeeId, string payrollItemId, double money, string payrollDate)
+        {
+            this.EmployeeId = employeeId;
+            this.PayrollItemId = payrollItemId;
+            this.Money = money;
+            this.PayrollDate = payrollDate;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -3735,6 +3763,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _006updateLocationByIdBodyInput
     {
+        public _006updateLocationByIdBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -3843,6 +3876,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateVarSalaryBodyInput
     {
+        public UpdateVarSalaryBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -3951,6 +3989,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _009addExternalSalaryDataBodyInput
     {
+        public _009addExternalSalaryDataBodyInput(string employeeId, string businessSalaryItemId, double money, string occurrenceDate)
+        {
+            this.EmployeeId = employeeId;
+            this.BusinessSalaryItemId = businessSalaryItemId;
+            this.Money = money;
+            this.OccurrenceDate = occurrenceDate;
+        }
+
         [JsonProperty("code")]
         public string Code { get; set; }
 
@@ -4029,6 +4075,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _010addDepartmentInfoBodyInput
     {
+        public _010addDepartmentInfoBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -4044,6 +4095,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _011updateExternalSalaryDataByIdBodyInput
     {
+        public _011updateExternalSalaryDataByIdBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -4134,6 +4190,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateDepartmentInfoBodyInput
     {
+        public UpdateDepartmentInfoBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -4329,6 +4390,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _014addPositionInfoBodyInput
     {
+        public _014addPositionInfoBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -4473,6 +4539,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdatePositionInfoBodyInput
     {
+        public UpdatePositionInfoBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -4545,6 +4616,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _018addCostCenterInfoBodyInput
     {
+        public _018addCostCenterInfoBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -4701,6 +4777,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _01addEmployeeInfoBodyInput
     {
+        public _01addEmployeeInfoBodyInput(string entryDate, string englishName, string email)
+        {
+            this.EntryDate = entryDate;
+            this.EnglishName = englishName;
+            this.Email = email;
+        }
+
         [JsonProperty("entryDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryDate { get; set; }
 
@@ -4845,6 +4928,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _01addLeaveBalanceAdjustInfoBodyInput
     {
+        public _01addLeaveBalanceAdjustInfoBodyInput(string employeeId, string holidayType, string occurrenceTime, string cause, string adjust)
+        {
+            this.EmployeeId = employeeId;
+            this.HolidayType = holidayType;
+            this.OccurrenceTime = occurrenceTime;
+            this.Cause = cause;
+            this.Adjust = adjust;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -4863,6 +4955,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _01addRosterInfoBodyInput
     {
+        public _01addRosterInfoBodyInput(string employeeId, string attendDay, string shiftIn, string shiftOff)
+        {
+            this.EmployeeId = employeeId;
+            this.AttendDay = attendDay;
+            this.ShiftIn = shiftIn;
+            this.ShiftOff = shiftOff;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -4929,6 +5029,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _01attendanceSummaryCalculateBodyInput
     {
+        public _01attendanceSummaryCalculateBodyInput(string startDate, string endDate)
+        {
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
+
         [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
 
@@ -5091,6 +5197,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateCostCenterInfoBodyInput
     {
+        public UpdateCostCenterInfoBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -5163,6 +5274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _022addTagInfoBodyInput
     {
+        public _022addTagInfoBodyInput(string labelName)
+        {
+            this.LabelName = labelName;
+        }
+
         [JsonProperty("labelCode")]
         public string LabelCode { get; set; }
 
@@ -5178,6 +5294,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _022addWorkPatternInfoBodyInput
     {
+        public _022addWorkPatternInfoBodyInput(string name, double workHoursForDay, double workHoursForWeek, double workHoursForYear, double totalHours, string cycleType)
+        {
+            this.Name = name;
+            this.WorkHoursForDay = workHoursForDay;
+            this.WorkHoursForWeek = workHoursForWeek;
+            this.WorkHoursForYear = workHoursForYear;
+            this.TotalHours = totalHours;
+            this.CycleType = cycleType;
+        }
+
         [JsonProperty("advancedSetting")]
         public string AdvancedSetting { get; set; }
 
@@ -5244,6 +5370,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _023updateWorkPatternByIdBodyInput
     {
+        public _023updateWorkPatternByIdBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -5301,6 +5432,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class V3TermsSettingUpdate
     {
+        public V3TermsSettingUpdate(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -5319,6 +5455,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _024updateTagByIdBodyInput
     {
+        public _024updateTagByIdBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -5673,6 +5814,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _02addExpenseApplicationInfoBodyInput
     {
+        public _02addExpenseApplicationInfoBodyInput(string employeeId, string reimbursementType, string reimbursementDate, string reimbursementName, double amount)
+        {
+            this.EmployeeId = employeeId;
+            this.ReimbursementType = reimbursementType;
+            this.ReimbursementDate = reimbursementDate;
+            this.ReimbursementName = reimbursementName;
+            this.Amount = amount;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -5694,6 +5844,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _02batchSaveRosterInfoBodyInput
     {
+        public _02batchSaveRosterInfoBodyInput(string[] employeeIds, string[] dates, string shiftIn, string shiftOff)
+        {
+            this.EmployeeIds = employeeIds;
+            this.Dates = dates;
+            this.ShiftIn = shiftIn;
+            this.ShiftOff = shiftOff;
+        }
+
         [JsonProperty("employeeIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] EmployeeIds { get; set; }
 
@@ -6063,6 +6221,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _04addAttendanceDataInfoBodyInput
     {
+        public _04addAttendanceDataInfoBodyInput(string employeeId, string date, string mode)
+        {
+            this.EmployeeId = employeeId;
+            this.Date = date;
+            this.Mode = mode;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -6306,6 +6471,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _04updateExpenseApplicationByIdBodyInput
     {
+        public _04updateExpenseApplicationByIdBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -6327,6 +6497,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _04updateRosterInfoByIdBodyInput
     {
+        public _04updateRosterInfoByIdBodyInput(string id, string shiftIn, string shiftOff)
+        {
+            this.Id = id;
+            this.ShiftIn = shiftIn;
+            this.ShiftOff = shiftOff;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -7326,6 +7503,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _06resignBodyInput
     {
+        public _06resignBodyInput(string id, string lastWorkingDate, string reasonsLeave)
+        {
+            this.Id = id;
+            this.LastWorkingDate = lastWorkingDate;
+            this.ReasonsLeave = reasonsLeave;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -7341,6 +7525,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _06updateAttendanceDataByIdBodyInput
     {
+        public _06updateAttendanceDataByIdBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -7395,6 +7584,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _07addEmployeeHistoryBodyInput
     {
+        public _07addEmployeeHistoryBodyInput(string employeeId, string entryDate, string takeEffectType, string takeEffectDate)
+        {
+            this.EmployeeId = employeeId;
+            this.EntryDate = entryDate;
+            this.TakeEffectType = takeEffectType;
+            this.TakeEffectDate = takeEffectDate;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -7509,6 +7706,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _07addLeaveApplicationInfoBodyInput
     {
+        public _07addLeaveApplicationInfoBodyInput(string employeeId, string holidayType)
+        {
+            this.EmployeeId = employeeId;
+            this.HolidayType = holidayType;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -7545,6 +7748,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _07addShitTemplateInfoBodyInput
     {
+        public _07addShitTemplateInfoBodyInput(string name, string shiftIn, string shiftOff)
+        {
+            this.Name = name;
+            this.ShiftIn = shiftIn;
+            this.ShiftOff = shiftOff;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -7779,6 +7989,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _09updateEmployeeHistoryByIdBodyInput
     {
+        public _09updateEmployeeHistoryByIdBodyInput(string id, string employeeId, string entryDate)
+        {
+            this.Id = id;
+            this.EmployeeId = employeeId;
+            this.EntryDate = entryDate;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -7830,6 +8047,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateLeaveApplicationBodyInput
     {
+        public UpdateLeaveApplicationBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -7866,6 +8088,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _09updateShiftTemplateByIdBodyInput
     {
+        public _09updateShiftTemplateByIdBodyInput(string id, string name, string shiftIn, string shiftOff)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.ShiftIn = shiftIn;
+            this.ShiftOff = shiftOff;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -7911,6 +8141,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _10addTimesheetInfoBodyInput
     {
+        public _10addTimesheetInfoBodyInput(string employeeId, string type, string date, string startTime, string endTime)
+        {
+            this.EmployeeId = employeeId;
+            this.Type = type;
+            this.Date = date;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -8229,6 +8468,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _11addOpenShiftInfoBodyInput
     {
+        public _11addOpenShiftInfoBodyInput(string projectId, string date, string startTime, string endTime, double hourlyRate, int empPlanNo)
+        {
+            this.ProjectId = projectId;
+            this.Date = date;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.HourlyRate = hourlyRate;
+            this.EmpPlanNo = empPlanNo;
+        }
+
         [JsonProperty("code")]
         public string Code { get; set; }
 
@@ -8388,6 +8637,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _12updateTimesheetByIdBodyInput
     {
+        public _12updateTimesheetByIdBodyInput(string id, string type, string date, string startTime, string endTime)
+        {
+            this.Id = id;
+            this.Type = type;
+            this.Date = date;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -8583,6 +8841,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _13updateOpenShiftByIdBodyInput
     {
+        public _13updateOpenShiftByIdBodyInput(string id, string projectId, string startTime, string endTime, double hourlyRate, int empPlanNo)
+        {
+            this.Id = id;
+            this.ProjectId = projectId;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.HourlyRate = hourlyRate;
+            this.EmpPlanNo = empPlanNo;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -8865,6 +9133,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _15addCalendarRemarkInfoBodyInput
     {
+        public _15addCalendarRemarkInfoBodyInput(string employeeId, string employeeStatus, string timeType, string expectWorkStartTime, string expectWorkEndTime)
+        {
+            this.EmployeeId = employeeId;
+            this.EmployeeStatus = employeeStatus;
+            this.TimeType = timeType;
+            this.ExpectWorkStartTime = expectWorkStartTime;
+            this.ExpectWorkEndTime = expectWorkEndTime;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -9030,6 +9307,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _16addProjectCategoryInfoBodyInput
     {
+        public _16addProjectCategoryInfoBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -9165,6 +9447,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _17updateCalendarRemarkByIdBodyInput
     {
+        public _17updateCalendarRemarkByIdBodyInput(string id, string employeeId, string employeeStatus, string timeType, string expectWorkStartTime, string expectWorkEndTime)
+        {
+            this.Id = id;
+            this.EmployeeId = employeeId;
+            this.EmployeeStatus = employeeStatus;
+            this.TimeType = timeType;
+            this.ExpectWorkStartTime = expectWorkStartTime;
+            this.ExpectWorkEndTime = expectWorkEndTime;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -9282,6 +9574,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _18updateProjectCategoryByIdBodyInput
     {
+        public _18updateProjectCategoryByIdBodyInput(string id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -9348,6 +9646,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _20addProjectInfoBodyInput
     {
+        public _20addProjectInfoBodyInput(string code, string name, double hourlyRate)
+        {
+            this.Code = code;
+            this.Name = name;
+            this.HourlyRate = hourlyRate;
+        }
+
         [JsonProperty("code", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
 
@@ -9369,6 +9674,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _22updateProjectByIdBodyInput
     {
+        public _22updateProjectByIdBodyInput(string id, string code, string name, double hourlyRate)
+        {
+            this.Id = id;
+            this.Code = code;
+            this.Name = name;
+            this.HourlyRate = hourlyRate;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -9495,6 +9808,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _25addProjectCertificateInfoBodyInput
     {
+        public _25addProjectCertificateInfoBodyInput(string employeeId, string projectId, double shiftHours, double workedHours)
+        {
+            this.EmployeeId = employeeId;
+            this.ProjectId = projectId;
+            this.ShiftHours = shiftHours;
+            this.WorkedHours = workedHours;
+        }
+
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
 
@@ -9519,6 +9840,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _26updateProjectCertificateByIdBodyInput
     {
+        public _26updateProjectCertificateByIdBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -9591,6 +9917,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class _28addProjectCertificateHoursBodyInput
     {
+        public _28addProjectCertificateHoursBodyInput(string projectCertificateId, string occurrenceTime, double balance, string reason)
+        {
+            this.ProjectCertificateId = projectCertificateId;
+            this.OccurrenceTime = occurrenceTime;
+            this.Balance = balance;
+            this.Reason = reason;
+        }
+
         [JsonProperty("projectCertificateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectCertificateId { get; set; }
 
@@ -11586,6 +11920,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateCardByIdBodyInput
     {
+        public UpdateCardByIdBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -11598,6 +11937,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateEmployeeInfoBodyInput
     {
+        public UpdateEmployeeInfoBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -11835,6 +12179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateFixedSalaryBodyInput
     {
+        public UpdateFixedSalaryBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -11853,6 +12202,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateLabelInfoBodyInput
     {
+        public UpdateLabelInfoBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -11868,6 +12222,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateRosterDataBodyInput
     {
+        public UpdateRosterDataBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -11898,6 +12257,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateRosterItemBodyInput
     {
+        public UpdateRosterItemBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -11910,6 +12274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateShiftTemplateBodyInput
     {
+        public UpdateShiftTemplateBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -11961,6 +12330,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateTimesheetBodyInput
     {
+        public UpdateTimesheetBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -11982,6 +12356,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
 
     public class UpdateWorkLocationBodyInput
     {
+        public UpdateWorkLocationBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 

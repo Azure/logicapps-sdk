@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
 
     public class BodyInput
     {
+        public BodyInput(string uRL)
+        {
+            this.URL = uRL;
+        }
+
         [JsonProperty("long_url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string URL { get; set; }
     }

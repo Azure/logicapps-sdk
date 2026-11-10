@@ -74,6 +74,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
 
     public class PostCompanyUpdateBodyInput
     {
+        public PostCompanyUpdateBodyInput(string company, string commentary, PostCompanyUpdateBodyInputVisibilityType visibility, BodyInputContentType content)
+        {
+            this.Company = company;
+            this.Commentary = commentary;
+            this.Visibility = visibility;
+            this.Content = content;
+        }
+
         [JsonProperty("author", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Company { get; set; }
 
@@ -93,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public BodyInputDistributionType Distribution { get; set; } = new BodyInputDistributionType();
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputContentType Content { get; set; } = new BodyInputContentType();
+        public BodyInputContentType Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -112,12 +120,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
 
     public class BodyInputContentType
     {
-        [JsonProperty("article", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputContentTypeArticleType Article { get; set; } = new BodyInputContentTypeArticleType();
+        [JsonProperty("article")]
+        public BodyInputContentTypeArticleType Article { get; set; }
     }
 
     public class BodyInputContentTypeArticleType
     {
+        public BodyInputContentTypeArticleType(string uRLOfTheArticle, string title)
+        {
+            this.URLOfTheArticle = uRLOfTheArticle;
+            this.Title = title;
+        }
+
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; } = "";
 
@@ -133,6 +147,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
 
     public class PostUpdateBodyInput
     {
+        public PostUpdateBodyInput(string commentary, PostUpdateBodyInputVisibilityType visibility, BodyInputContentType content)
+        {
+            this.Commentary = commentary;
+            this.Visibility = visibility;
+            this.Content = content;
+        }
+
         [JsonProperty("commentary", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Commentary { get; set; }
 
@@ -149,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public BodyInputDistributionType Distribution { get; set; } = new BodyInputDistributionType();
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputContentType Content { get; set; } = new BodyInputContentType();
+        public BodyInputContentType Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

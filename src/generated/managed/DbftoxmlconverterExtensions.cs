@@ -35,6 +35,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
 
     public class BodyInput
     {
+        public BodyInput(string contenType, BodyInputEncodingType encoding)
+        {
+            this.ContenType = contenType;
+            this.Encoding = encoding;
+        }
+
         [JsonProperty("conten_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContenType { get; set; }
 

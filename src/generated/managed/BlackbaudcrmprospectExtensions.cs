@@ -477,6 +477,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class CreateUnplannedContactReportBodyInput
     {
+        public CreateUnplannedContactReportBodyInput(string planId, string objective, string actualDate, string stage, string contactMethod, string comment)
+        {
+            this.PlanId = planId;
+            this.Objective = objective;
+            this.ActualDate = actualDate;
+            this.Stage = stage;
+            this.ContactMethod = contactMethod;
+            this.Comment = comment;
+        }
+
         [JsonProperty("prospect_plan_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
 
@@ -537,12 +547,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewUnplannedContactReportFundraiser
     {
+        public PrsmgNewUnplannedContactReportFundraiser(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("fundraiser_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
     public class PrsmgNewUnplannedContactReportParticipant
     {
+        public PrsmgNewUnplannedContactReportParticipant(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -588,6 +608,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class CreateProspectOpportunityBodyInput
     {
+        public CreateProspectOpportunityBodyInput(string planId, CreateProspectOpportunityBodyInputStatusType status)
+        {
+            this.PlanId = planId;
+            this.Status = status;
+        }
+
         [JsonProperty("prospect_plan_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
 
@@ -852,6 +878,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class CreateMajorGivingPlanBodyInput
     {
+        public CreateMajorGivingPlanBodyInput(string prospectId, string name, string type)
+        {
+            this.ProspectId = prospectId;
+            this.Name = name;
+            this.Type = type;
+        }
+
         [JsonProperty("prospect_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProspectId { get; set; }
 
@@ -888,6 +921,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewMajorGivingPlanParticipant
     {
+        public PrsmgNewMajorGivingPlanParticipant(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -897,6 +935,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewMajorGivingPlanSecondaryFundraiser
     {
+        public PrsmgNewMajorGivingPlanSecondaryFundraiser(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("fundraiser_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1176,6 +1219,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class CreateProspectConstituencyBodyInput
     {
+        public CreateProspectConstituencyBodyInput(string constituentId)
+        {
+            this.ConstituentId = constituentId;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -1194,6 +1242,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class CreateMajorGivingPlanStepBodyInput
     {
+        public CreateMajorGivingPlanStepBodyInput(string planId, string objective, string type, CreateMajorGivingPlanStepBodyInputStatusType status, string expectedDate)
+        {
+            this.PlanId = planId;
+            this.Objective = objective;
+            this.Type = type;
+            this.Status = status;
+            this.ExpectedDate = expectedDate;
+        }
+
         [JsonProperty("prospect_plan_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
 
@@ -1288,12 +1345,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewMajorGivingPlanStepFundraiser
     {
+        public PrsmgNewMajorGivingPlanStepFundraiser(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("fundraiser_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
     public class PrsmgNewMajorGivingPlanStepParticipant
     {
+        public PrsmgNewMajorGivingPlanStepParticipant(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -1360,6 +1427,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class CreateStewardshipPlanBodyInput
     {
+        public CreateStewardshipPlanBodyInput(string prospectId, string name)
+        {
+            this.ProspectId = prospectId;
+            this.Name = name;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProspectId { get; set; }
 
@@ -1387,6 +1460,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewStewardshipPlanSteward
     {
+        public PrsmgNewStewardshipPlanSteward(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -1405,6 +1483,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class CreateStewardshipPlanStepBodyInput
     {
+        public CreateStewardshipPlanStepBodyInput(string planId, string objective, string targetDate, BodyInputFrequencyType frequency)
+        {
+            this.PlanId = planId;
+            this.Objective = objective;
+            this.TargetDate = targetDate;
+            this.Frequency = frequency;
+        }
+
         [JsonProperty("stewardship_plan_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
 
@@ -1537,12 +1623,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewStewardshipPlanStepParticipant
     {
+        public PrsmgNewStewardshipPlanStepParticipant(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
     public class PrsmgNewStewardshipPlanStepAssociatedPlan
     {
+        public PrsmgNewStewardshipPlanStepAssociatedPlan(string planId)
+        {
+            this.PlanId = planId;
+        }
+
         [JsonProperty("prospect_plan_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
     }

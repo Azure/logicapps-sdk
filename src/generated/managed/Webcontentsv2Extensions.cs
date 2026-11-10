@@ -33,6 +33,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontentsv2
 
     public class RequestInput
     {
+        public RequestInput(RequestInputMethodType method, string urlOfTheRequest)
+        {
+            this.Method = method;
+            this.UrlOfTheRequest = urlOfTheRequest;
+        }
+
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputMethodType Method { get; set; }
 

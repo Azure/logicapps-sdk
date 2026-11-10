@@ -110,6 +110,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
 
     public class SendEmailInputAttachmentTypeItem
     {
+        public SendEmailInputAttachmentTypeItem(JToken fileName, string contentData)
+        {
+            this.FileName = fileName;
+            this.ContentData = contentData;
+        }
+
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken FileName { get; set; }
 

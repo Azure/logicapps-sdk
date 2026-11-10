@@ -1759,6 +1759,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
     public class AddMessageMessageRoInput
     {
+        public AddMessageMessageRoInput(string body, string creationDate, string errorMessage, double latitude, double longitude, string metadata, int number, MessageRoInputProcessedType processed, AddMessageThingTinyRo thing, string timestamp, string topic)
+        {
+            this.Body = body;
+            this.CreationDate = creationDate;
+            this.ErrorMessage = errorMessage;
+            this.Latitude = latitude;
+            this.Longitude = longitude;
+            this.Metadata = metadata;
+            this.Number = number;
+            this.Processed = processed;
+            this.Thing = thing;
+            this.Timestamp = timestamp;
+            this.Topic = topic;
+        }
+
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
 
@@ -1959,6 +1974,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
     public class AddMessageThingTinyRo
     {
+        public AddMessageThingTinyRo(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
 
@@ -2115,6 +2135,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
     public class SiteRoInput
     {
+        public SiteRoInput(string address, string city, string name, string postalCode)
+        {
+            this.Address = address;
+            this.City = city;
+            this.Name = name;
+            this.PostalCode = postalCode;
+        }
+
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
 
@@ -2641,6 +2669,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
     public class PutThingThingRoInput
     {
+        public PutThingThingRoInput(PutThingApplicationTinyRo application, PutThingConnectivityRo connectivity, PutThingDeviceRo device, string name)
+        {
+            this.Application = application;
+            this.Connectivity = connectivity;
+            this.Device = device;
+            this.Name = name;
+        }
+
         [JsonProperty("application", DefaultValueHandling = DefaultValueHandling.Include)]
         public PutThingApplicationTinyRo Application { get; set; }
 
@@ -2992,6 +3028,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
     public class PutThingSiteRo
     {
+        public PutThingSiteRo(string address, string city, string name, string postalCode)
+        {
+            this.Address = address;
+            this.City = city;
+            this.Name = name;
+            this.PostalCode = postalCode;
+        }
+
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
 
@@ -3321,6 +3365,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
     public class CreateThingMessagesMessageRoInput
     {
+        public CreateThingMessagesMessageRoInput(string body, string creationDate, string errorMessage, double latitude, double longitude, string metadata, int number, MessageRoInputProcessedType processed, AddMessageThingTinyRo thing, string timestamp, string topic)
+        {
+            this.Body = body;
+            this.CreationDate = creationDate;
+            this.ErrorMessage = errorMessage;
+            this.Latitude = latitude;
+            this.Longitude = longitude;
+            this.Metadata = metadata;
+            this.Number = number;
+            this.Processed = processed;
+            this.Thing = thing;
+            this.Timestamp = timestamp;
+            this.Topic = topic;
+        }
+
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
 
@@ -3471,6 +3530,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
     public class UpdateThingFixedPositionThingRoInput
     {
+        public UpdateThingFixedPositionThingRoInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("customFields")]
         public PutThingCustomFieldRo[] CustomFields { get; set; }
 

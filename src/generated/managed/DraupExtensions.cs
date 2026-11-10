@@ -631,6 +631,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
     public class GetRelevantWorkloadsBodyInput
     {
+        public GetRelevantWorkloadsBodyInput(string userDescription)
+        {
+            this.UserDescription = userDescription;
+        }
+
         [JsonProperty("user_description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserDescription { get; set; }
     }
@@ -661,6 +666,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
     public class GetAccountIdsBodyInput
     {
+        public GetAccountIdsBodyInput(string searchKey)
+        {
+            this.SearchKey = searchKey;
+        }
+
         [JsonProperty("search_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchKey { get; set; }
     }
@@ -1006,6 +1016,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
     public class GetKeyTrendsBodyInput
     {
+        public GetKeyTrendsBodyInput(string vertical)
+        {
+            this.Vertical = vertical;
+        }
+
         [JsonProperty("vertical", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Vertical { get; set; }
     }
@@ -1045,6 +1060,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
     public class GetEcosystemTechStackBodyInput
     {
+        public GetEcosystemTechStackBodyInput(string widget, string vertical)
+        {
+            this.Widget = widget;
+            this.Vertical = vertical;
+        }
+
         [JsonProperty("widget", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Widget { get; set; }
 
@@ -1150,6 +1171,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
     public class ExtractEntitiesBodyInput
     {
+        public ExtractEntitiesBodyInput(string userQuery)
+        {
+            this.UserQuery = userQuery;
+        }
+
         [JsonProperty("user_query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserQuery { get; set; }
     }

@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
     public class GithubutilsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdown(Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdown(Expression<Func<BodyInput>> body, Expression<Func<string>> xGitHubApiVersion = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/markdown";
@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 callPayload.Headers["X-GitHub-Api-Version"] = Convert.ToString("2022-11-28");
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -170,6 +169,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
 
     public class BodyInput
     {
+        public BodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 

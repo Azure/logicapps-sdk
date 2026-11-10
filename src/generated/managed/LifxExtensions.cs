@@ -177,6 +177,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
     public class PulseEffectBodyInput
     {
+        public PulseEffectBodyInput(BreatheEffectBodyInputColorType color)
+        {
+            this.Color = color;
+        }
+
         [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
         public BreatheEffectBodyInputColorType Color { get; set; }
 
@@ -486,6 +491,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
     public class SetStatesBodyInput
     {
+        public SetStatesBodyInput(BodyInputStatesTypeItem[] states)
+        {
+            this.States = states;
+        }
+
         [JsonProperty("states", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputStatesTypeItem[] States { get; set; }
 
@@ -495,6 +505,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
     public class BodyInputStatesTypeItem
     {
+        public BodyInputStatesTypeItem(string selector)
+        {
+            this.Selector = selector;
+        }
+
         [JsonProperty("selector", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Selector { get; set; }
 
@@ -712,6 +727,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
     public class BreatheEffectBodyInput
     {
+        public BreatheEffectBodyInput(BreatheEffectBodyInputColorType color)
+        {
+            this.Color = color;
+        }
+
         [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
         public BreatheEffectBodyInputColorType Color { get; set; }
 

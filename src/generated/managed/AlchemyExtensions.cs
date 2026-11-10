@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
 
     public class BodyInput
     {
+        public BodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }

@@ -50,6 +50,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ExecuteLightBodyInput().ToJToken();
                 return new ApiConnectionAction<ExecuteLightResponse>(callPayload);
             });
         }
@@ -92,6 +94,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ExecuteDeviceBodyInput().ToJToken();
                 return new ApiConnectionAction<ExecuteDeviceResponse>(callPayload);
             });
         }

@@ -96,6 +96,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
 
     public class BodyInput
     {
+        public BodyInput(string youTubeVideoId)
+        {
+            this.YouTubeVideoId = youTubeVideoId;
+        }
+
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestContext RequestContext { get; set; } = new RequestContext();
 

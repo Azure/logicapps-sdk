@@ -13,106 +13,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class SparsepowerboxtoolsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfStampImage, ApiConnectionActionConfiguration> PdfStampImage(Expression<Func<ReqPdfStampImageInput>> reqPdfStampImage = null)
+        public IBodyWorkflowAction<Resp200PdfStampImage, ApiConnectionActionConfiguration> PdfStampImage(Expression<Func<ReqPdfStampImageInput>> reqPdfStampImage)
         {
-            var __workflow_reqPdfStampImage = WorkflowExpression.Compile(reqPdfStampImage, nameof(reqPdfStampImage), required: false);
+            var __workflow_reqPdfStampImage = WorkflowExpression.Compile(reqPdfStampImage, nameof(reqPdfStampImage), required: true);
             return new DeferredBodyAction<Resp200PdfStampImage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/stamp/image";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_reqPdfStampImage != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfStampImage);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfStampImage);
                 return new ApiConnectionAction<Resp200PdfStampImage>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration> ExcelSheetAddRows(Expression<Func<ReqExcelSheetAddrowsInput>> reqExcelSheetAddrows = null)
+        public IBodyWorkflowAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration> ExcelSheetAddRows(Expression<Func<ReqExcelSheetAddrowsInput>> reqExcelSheetAddrows)
         {
-            var __workflow_reqExcelSheetAddrows = WorkflowExpression.Compile(reqExcelSheetAddrows, nameof(reqExcelSheetAddrows), required: false);
+            var __workflow_reqExcelSheetAddrows = WorkflowExpression.Compile(reqExcelSheetAddrows, nameof(reqExcelSheetAddrows), required: true);
             return new DeferredBodyAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/excel/sheet/add-rows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_reqExcelSheetAddrows != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqExcelSheetAddrows);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqExcelSheetAddrows);
                 return new ApiConnectionAction<Resp200ExcelSheetAddRows>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfCreateByHtml, ApiConnectionActionConfiguration> PdfCreateByHtml(Expression<Func<ReqPdfCreateByHtmlInput>> reqPdfCreateByHtml = null)
+        public IBodyWorkflowAction<Resp200PdfCreateByHtml, ApiConnectionActionConfiguration> PdfCreateByHtml(Expression<Func<ReqPdfCreateByHtmlInput>> reqPdfCreateByHtml)
         {
-            var __workflow_reqPdfCreateByHtml = WorkflowExpression.Compile(reqPdfCreateByHtml, nameof(reqPdfCreateByHtml), required: false);
+            var __workflow_reqPdfCreateByHtml = WorkflowExpression.Compile(reqPdfCreateByHtml, nameof(reqPdfCreateByHtml), required: true);
             return new DeferredBodyAction<Resp200PdfCreateByHtml, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/create/by-html";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_reqPdfCreateByHtml != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtml);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtml);
                 return new ApiConnectionAction<Resp200PdfCreateByHtml>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration> ImageMergeDrawing(Expression<Func<ReqImageMergeDrawingInput>> reqImageMergeDrawing = null)
+        public IBodyWorkflowAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration> ImageMergeDrawing(Expression<Func<ReqImageMergeDrawingInput>> reqImageMergeDrawing)
         {
-            var __workflow_reqImageMergeDrawing = WorkflowExpression.Compile(reqImageMergeDrawing, nameof(reqImageMergeDrawing), required: false);
+            var __workflow_reqImageMergeDrawing = WorkflowExpression.Compile(reqImageMergeDrawing, nameof(reqImageMergeDrawing), required: true);
             return new DeferredBodyAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/image/merge/drawing";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_reqImageMergeDrawing != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqImageMergeDrawing);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqImageMergeDrawing);
                 return new ApiConnectionAction<Resp200ImageMergeDrawing>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfStampText, ApiConnectionActionConfiguration> PdfStampText(Expression<Func<ReqPdfStampTextInput>> reqPdfStampText = null)
+        public IBodyWorkflowAction<Resp200PdfStampText, ApiConnectionActionConfiguration> PdfStampText(Expression<Func<ReqPdfStampTextInput>> reqPdfStampText)
         {
-            var __workflow_reqPdfStampText = WorkflowExpression.Compile(reqPdfStampText, nameof(reqPdfStampText), required: false);
+            var __workflow_reqPdfStampText = WorkflowExpression.Compile(reqPdfStampText, nameof(reqPdfStampText), required: true);
             return new DeferredBodyAction<Resp200PdfStampText, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/stamp/text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_reqPdfStampText != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfStampText);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfStampText);
                 return new ApiConnectionAction<Resp200PdfStampText>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200CsvToJson, ApiConnectionActionConfiguration> CsvToJson(Expression<Func<ReqCsvToJsonInput>> reqCsvToJson = null)
+        public IBodyWorkflowAction<Resp200CsvToJson, ApiConnectionActionConfiguration> CsvToJson(Expression<Func<ReqCsvToJsonInput>> reqCsvToJson)
         {
-            var __workflow_reqCsvToJson = WorkflowExpression.Compile(reqCsvToJson, nameof(reqCsvToJson), required: false);
+            var __workflow_reqCsvToJson = WorkflowExpression.Compile(reqCsvToJson, nameof(reqCsvToJson), required: true);
             return new DeferredBodyAction<Resp200CsvToJson, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/csv/to-json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_reqCsvToJson != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqCsvToJson);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqCsvToJson);
                 return new ApiConnectionAction<Resp200CsvToJson>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfCreateByUrl, ApiConnectionActionConfiguration> PdfCreateByUrl(Expression<Func<ReqPdfCreateByUrlInput>> reqPdfCreateByUrl = null)
+        public IBodyWorkflowAction<Resp200PdfCreateByUrl, ApiConnectionActionConfiguration> PdfCreateByUrl(Expression<Func<ReqPdfCreateByUrlInput>> reqPdfCreateByUrl)
         {
-            var __workflow_reqPdfCreateByUrl = WorkflowExpression.Compile(reqPdfCreateByUrl, nameof(reqPdfCreateByUrl), required: false);
+            var __workflow_reqPdfCreateByUrl = WorkflowExpression.Compile(reqPdfCreateByUrl, nameof(reqPdfCreateByUrl), required: true);
             return new DeferredBodyAction<Resp200PdfCreateByUrl, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/create/by-url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_reqPdfCreateByUrl != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrl);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrl);
                 return new ApiConnectionAction<Resp200PdfCreateByUrl>(callPayload);
             });
         }
@@ -128,6 +121,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_reqImageStampText != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqImageStampText);
+                else
+                    callPayload.Body = new ReqImageStampTextInput().ToJToken();
                 return new ApiConnectionAction<Resp200ImageStampText>(callPayload);
             });
         }
@@ -143,6 +138,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_reqImageResize != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqImageResize);
+                else
+                    callPayload.Body = new ReqImageResizeInput().ToJToken();
                 return new ApiConnectionAction<Resp200ImageResize>(callPayload);
             });
         }
@@ -158,6 +155,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_reqPdfSplitByPage != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfSplitByPage);
+                else
+                    callPayload.Body = new ReqPdfSplitByPageInput().ToJToken();
                 return new ApiConnectionAction<Resp200PdfSplitByPage>(callPayload);
             });
         }
@@ -173,6 +172,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_reqImageStampExif != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqImageStampExif);
+                else
+                    callPayload.Body = new ReqImageStampExifInput().ToJToken();
                 return new ApiConnectionAction<Resp200ImageStampExif>(callPayload);
             });
         }
@@ -235,6 +236,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
 
     public class ReqPdfStampImageInput
     {
+        public ReqPdfStampImageInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent image)
+        {
+            this.PDF = pDF;
+            this.Image = image;
+        }
+
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
@@ -280,6 +287,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
 
     public class ReqExcelSheetAddrowsInput
     {
+        public ReqExcelSheetAddrowsInput(string sheetname, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent excel)
+        {
+            this.Sheetname = sheetname;
+            this.Excel = excel;
+        }
+
         [JsonProperty("sheet", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sheetname { get; set; }
 
@@ -298,6 +311,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
 
     public class ReqPdfCreateByHtmlInput
     {
+        public ReqPdfCreateByHtmlInput(string hTML)
+        {
+            this.HTML = hTML;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTML { get; set; }
 
@@ -346,6 +364,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
 
     public class ReqImageMergeDrawingInput
     {
+        public ReqImageMergeDrawingInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent background, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent drawing)
+        {
+            this.Background = background;
+            this.Drawing = drawing;
+        }
+
         [JsonProperty("background", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Background { get; set; }
 
@@ -361,6 +385,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
 
     public class ReqPdfStampTextInput
     {
+        public ReqPdfStampTextInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF, string text)
+        {
+            this.PDF = pDF;
+            this.Text = text;
+        }
+
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
@@ -406,6 +436,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
 
     public class ReqCsvToJsonInput
     {
+        public ReqCsvToJsonInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent cSV)
+        {
+            this.CSV = cSV;
+        }
+
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent CSV { get; set; }
 
@@ -430,6 +465,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
 
     public class ReqPdfCreateByUrlInput
     {
+        public ReqPdfCreateByUrlInput(string hTML)
+        {
+            this.HTML = hTML;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTML { get; set; }
 

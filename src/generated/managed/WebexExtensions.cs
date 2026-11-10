@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
     public class WebexActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration> CreateSpaceMember(Expression<Func<CreateSpaceMemberBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration> CreateSpaceMember(Expression<Func<CreateSpaceMemberBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/memberships";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSpaceMemberResponse>(callPayload);
             });
         }
@@ -160,16 +159,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration> CreateTeamMember(Expression<Func<CreateTeamMemberBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration> CreateTeamMember(Expression<Func<CreateTeamMemberBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/team/memberships";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTeamMemberResponse>(callPayload);
             });
         }
@@ -294,6 +292,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
     public class CreateSpaceMemberBodyInput
     {
+        public CreateSpaceMemberBodyInput(string roomId)
+        {
+            this.RoomId = roomId;
+        }
+
         [JsonProperty("isModerator", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsModerator { get; set; } = false;
 
@@ -612,6 +615,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
     public class CreateSpaceBodyInput
     {
+        public CreateSpaceBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("teamId")]
         public string TeamId { get; set; }
 
@@ -672,6 +680,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
     public class CreateTeamMemberBodyInput
     {
+        public CreateTeamMemberBodyInput(string teamId)
+        {
+            this.TeamId = teamId;
+        }
+
         [JsonProperty("isModerator", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsModerator { get; set; } = false;
 

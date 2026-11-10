@@ -1418,6 +1418,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
 
     public class BodyInputDocumentTemplatesTypeItem
     {
+        public BodyInputDocumentTemplatesTypeItem(string documentId, string documentStartPage, string documentEndPage)
+        {
+            this.DocumentId = documentId;
+            this.DocumentStartPage = documentStartPage;
+            this.DocumentEndPage = documentEndPage;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
@@ -1521,6 +1528,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
 
     public class BodyInputUnnamedTypeItem
     {
+        public BodyInputUnnamedTypeItem(string documentBase64, string documentType, string documentName)
+        {
+            this.DocumentBase64 = documentBase64;
+            this.DocumentType = documentType;
+            this.DocumentName = documentName;
+        }
+
         [JsonProperty("documentBase64", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentBase64 { get; set; }
 
@@ -1695,6 +1709,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
 
     public class CreateHookEnvelopeBodyInput
     {
+        public CreateHookEnvelopeBodyInput(string connectConfigurationName, BodyInputTriggerEventsTypeItem[] triggerEvents)
+        {
+            this.ConnectConfigurationName = connectConfigurationName;
+            this.TriggerEvents = triggerEvents;
+        }
+
         [JsonProperty("allUsers", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AllUsers { get; set; } = "true";
 

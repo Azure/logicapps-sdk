@@ -33,6 +33,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgridpublish
 
     public class BodyInputItem
     {
+        public BodyInputItem(string id, string subject, string eventType, JToken data)
+        {
+            this.Id = id;
+            this.Subject = subject;
+            this.EventType = eventType;
+            this.Data = data;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 

@@ -120,6 +120,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
     public class ContextsDispatchActionCommandInput
     {
+        public ContextsDispatchActionCommandInput(string contextTypeName, string reference, string action)
+        {
+            this.ContextTypeName = contextTypeName;
+            this.Reference = reference;
+            this.Action = action;
+        }
+
         [JsonProperty("contextTypeName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextTypeName { get; set; }
 
@@ -144,6 +151,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
     public class TasksAddResponseCommandInput
     {
+        public TasksAddResponseCommandInput(string contextReference, string contextTypeName, string taskTypeName, string responseTypeName)
+        {
+            this.ContextReference = contextReference;
+            this.ContextTypeName = contextTypeName;
+            this.TaskTypeName = taskTypeName;
+            this.ResponseTypeName = responseTypeName;
+        }
+
         [JsonProperty("contextReference", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextReference { get; set; }
 

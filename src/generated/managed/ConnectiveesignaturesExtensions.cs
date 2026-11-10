@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CreateInstantPackageBodyInput().ToJToken();
                 return new ApiConnectionAction<CreateInstantPackageResponse>(callPayload);
             });
         }

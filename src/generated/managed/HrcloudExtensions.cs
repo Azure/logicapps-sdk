@@ -29,31 +29,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddEmployee(Expression<Func<AddEmployeeBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddEmployee(Expression<Func<AddEmployeeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEmployee(Expression<Func<UpdateEmployeeBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEmployee(Expression<Func<UpdateEmployeeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -416,6 +414,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
 
     public class AddEmployeeBodyInput
     {
+        public AddEmployeeBodyInput(string xEmail, string xFirstName, string xLastName)
+        {
+            this.XEmail = xEmail;
+            this.XFirstName = xFirstName;
+            this.XLastName = xLastName;
+        }
+
         [JsonProperty("xAddress1")]
         public string XAddress1 { get; set; }
 
@@ -467,6 +472,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
 
     public class UpdateEmployeeBodyInput
     {
+        public UpdateEmployeeBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 

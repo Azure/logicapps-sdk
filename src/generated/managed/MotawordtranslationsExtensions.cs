@@ -183,6 +183,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motawordtranslations
 
     public class InitializeTranslationProjectBodyInput
     {
+        public InitializeTranslationProjectBodyInput(string sourceLanguage, string[] targetLanguages)
+        {
+            this.SourceLanguage = sourceLanguage;
+            this.TargetLanguages = targetLanguages;
+        }
+
         [JsonProperty("documents")]
         public InitializeTranslationProjectBodyInputDocumentsTypeItem[] Documents { get; set; }
 
@@ -198,6 +204,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motawordtranslations
 
     public class InitializeTranslationProjectBodyInputDocumentsTypeItem
     {
+        public InitializeTranslationProjectBodyInputDocumentsTypeItem(string name, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent data)
+        {
+            this.Name = name;
+            this.Data = data;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -337,6 +349,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motawordtranslations
 
     public class AddDocumentsForTranslationBodyInputDocumentsTypeItem
     {
+        public AddDocumentsForTranslationBodyInputDocumentsTypeItem(string whatDoYouWantToNameThisFileOnMotaWordSide, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent base64EncodedContentOfTheFileYouWantTranslated)
+        {
+            this.WhatDoYouWantToNameThisFileOnMotaWordSide = whatDoYouWantToNameThisFileOnMotaWordSide;
+            this.Base64EncodedContentOfTheFileYouWantTranslated = base64EncodedContentOfTheFileYouWantTranslated;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WhatDoYouWantToNameThisFileOnMotaWordSide { get; set; }
 

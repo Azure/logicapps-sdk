@@ -322,6 +322,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
 
     public class SendMessageInput
     {
+        public SendMessageInput(int idOperationalUnit, string message)
+        {
+            this.IdOperationalUnit = idOperationalUnit;
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int IdOperationalUnit { get; set; }
 

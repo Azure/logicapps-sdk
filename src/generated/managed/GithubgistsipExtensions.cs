@@ -829,6 +829,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
 
     public class GistsCreateBodyInput
     {
+        public GistsCreateBodyInput(JToken files)
+        {
+            this.Files = files;
+        }
+
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -841,6 +846,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
 
     public class GistsUpdateBodyInput
     {
+        public GistsUpdateBodyInput(string description)
+        {
+            this.Description = description;
+        }
+
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
 
@@ -889,6 +899,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
 
     public class GistsCreateCommentBodyInput
     {
+        public GistsCreateCommentBodyInput(string body)
+        {
+            this.Body = body;
+        }
+
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
     }

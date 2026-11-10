@@ -133,6 +133,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
 
     public class CreateChatCompletionBodyInput
     {
+        public CreateChatCompletionBodyInput(string model, BodyInputMessagesTypeItem[] messages)
+        {
+            this.Model = model;
+            this.Messages = messages;
+        }
+
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; }
 

@@ -51,6 +51,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipwarekpis
 
     public class SaveKpiActualsBodyInputItem
     {
+        public SaveKpiActualsBodyInputItem(string kpiCode, string valueDate)
+        {
+            this.KpiCode = kpiCode;
+            this.ValueDate = valueDate;
+        }
+
         [JsonProperty("kpiCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string KpiCode { get; set; }
 
@@ -66,6 +72,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipwarekpis
 
     public class SaveKpiTargetsBodyInputItem
     {
+        public SaveKpiTargetsBodyInputItem(string kpiCode, string targetDate)
+        {
+            this.KpiCode = kpiCode;
+            this.TargetDate = targetDate;
+        }
+
         [JsonProperty("kpiCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string KpiCode { get; set; }
 

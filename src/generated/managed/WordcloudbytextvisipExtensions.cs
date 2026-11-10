@@ -39,6 +39,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
 
     public class BodyInput
     {
+        public BodyInput(string text, double scale, int width, int height)
+        {
+            this.Text = text;
+            this.Scale = scale;
+            this.Width = width;
+            this.Height = height;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 

@@ -63,16 +63,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
 
     public class GoformzTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FormCompleted(Expression<Func<FormCompletedBodyInput>> body = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FormCompleted(Expression<Func<FormCompletedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -185,6 +184,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
 
     public class FormCompletedBodyInput
     {
+        public FormCompletedBodyInput(string entityId)
+        {
+            this.EntityId = entityId;
+        }
+
         [JsonProperty("eventType")]
         public string EventType { get; set; }
 

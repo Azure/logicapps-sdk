@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
     public class MobaroActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreatedResult, ApiConnectionActionConfiguration> CreateAsset(Expression<Func<CreateAssetBodyInput>> body = null)
+        public IBodyWorkflowAction<CreatedResult, ApiConnectionActionConfiguration> CreateAsset(Expression<Func<CreateAssetBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatedResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/assets";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatedResult>(callPayload);
             });
         }
@@ -123,16 +122,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateAssignment(Expression<Func<CreateAssignmentBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateAssignment(Expression<Func<CreateAssignmentBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/assignments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateResult>(callPayload);
             });
         }
@@ -296,16 +294,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreatedResult, ApiConnectionActionConfiguration> CreateCertification(Expression<Func<CreateCertificationBodyInput>> body = null)
+        public IBodyWorkflowAction<CreatedResult, ApiConnectionActionConfiguration> CreateCertification(Expression<Func<CreateCertificationBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatedResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/certifications";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatedResult>(callPayload);
             });
         }
@@ -463,16 +460,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreatedResult, ApiConnectionActionConfiguration> CreateCompetency(Expression<Func<CreateCompetencyBodyInput>> body = null)
+        public IBodyWorkflowAction<CreatedResult, ApiConnectionActionConfiguration> CreateCompetency(Expression<Func<CreateCompetencyBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatedResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/competencies";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatedResult>(callPayload);
             });
         }
@@ -541,16 +537,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateDowntime(Expression<Func<CreateDowntimeBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateDowntime(Expression<Func<CreateDowntimeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/downtime";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateResult>(callPayload);
             });
         }
@@ -674,31 +669,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddCommentToFile(Expression<Func<AddCommentToFileBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddCommentToFile(Expression<Func<AddCommentToFileBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/files/comment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreatedResult, ApiConnectionActionConfiguration> CreateFileCategory(Expression<Func<CreateFileCategoryBodyInput>> body = null)
+        public IBodyWorkflowAction<CreatedResult, ApiConnectionActionConfiguration> CreateFileCategory(Expression<Func<CreateFileCategoryBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatedResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/filecategories";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatedResult>(callPayload);
             });
         }
@@ -758,16 +751,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateLocation(Expression<Func<CreateLocationBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateLocation(Expression<Func<CreateLocationBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/locations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateResult>(callPayload);
             });
         }
@@ -881,16 +873,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateLocationGroup(Expression<Func<CreateLocationGroupBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateLocationGroup(Expression<Func<CreateLocationGroupBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/locationgroups";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateResult>(callPayload);
             });
         }
@@ -959,16 +950,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateLocationProperty(Expression<Func<CreateLocationPropertyBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateLocationProperty(Expression<Func<CreateLocationPropertyBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/locationproperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateResult>(callPayload);
             });
         }
@@ -1181,17 +1171,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeTargetOfResult(Expression<Func<string>> id, Expression<Func<ChangeTargetOfResultBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeTargetOfResult(Expression<Func<string>> id, Expression<Func<ChangeTargetOfResultBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/customers/results/{0}/change-target", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1370,16 +1359,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateScheduleSlot(Expression<Func<CreateScheduleSlotBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateScheduleSlot(Expression<Func<CreateScheduleSlotBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/slots";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateResult>(callPayload);
             });
         }
@@ -1461,16 +1449,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateTimesheet(Expression<Func<CreateTimesheetBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateTimesheet(Expression<Func<CreateTimesheetBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/timesheets";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateResult>(callPayload);
             });
         }
@@ -1585,16 +1572,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateUptimePeriod(Expression<Func<CreateUptimePeriodBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateUptimePeriod(Expression<Func<CreateUptimePeriodBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/uptimeperiods";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateResult>(callPayload);
             });
         }
@@ -1663,31 +1649,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUptimePeriod(Expression<Func<UpdateUptimePeriodBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUptimePeriod(Expression<Func<UpdateUptimePeriodBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/uptimeperiods";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateResult>(callPayload);
             });
         }
@@ -1768,16 +1752,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobaro")]
-        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateUserGroup(Expression<Func<CreateUserGroupBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateResult, ApiConnectionActionConfiguration> CreateUserGroup(Expression<Func<CreateUserGroupBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customers/usergroups";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateResult>(callPayload);
             });
         }
@@ -1873,6 +1856,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateAssetBodyInput
     {
+        public CreateAssetBodyInput(string name, string location)
+        {
+            this.Name = name;
+            this.Location = location;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2017,6 +2006,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateAssignmentBodyInput
     {
+        public CreateAssignmentBodyInput(string name, string target)
+        {
+            this.Name = name;
+            this.Target = target;
+        }
+
         [JsonProperty("externalId")]
         public string ExternalId { get; set; }
 
@@ -2395,6 +2390,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateCertificationBodyInput
     {
+        public CreateCertificationBodyInput(string user, string competency)
+        {
+            this.User = user;
+            this.Competency = competency;
+        }
+
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; }
 
@@ -2546,6 +2547,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateCompetencyBodyInput
     {
+        public CreateCompetencyBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2591,6 +2597,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateDowntimeBodyInput
     {
+        public CreateDowntimeBodyInput(string location)
+        {
+            this.Location = location;
+        }
+
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Location { get; set; }
 
@@ -2732,6 +2743,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class AddCommentToFileBodyInput
     {
+        public AddCommentToFileBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2741,6 +2757,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateFileCategoryBodyInput
     {
+        public CreateFileCategoryBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2795,6 +2816,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateLocationBodyInput
     {
+        public CreateLocationBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -3441,6 +3467,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateLocationGroupBodyInput
     {
+        public CreateLocationGroupBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -3519,6 +3550,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateLocationPropertyBodyInput
     {
+        public CreateLocationPropertyBodyInput(string name, string category)
+        {
+            this.Name = name;
+            this.Category = category;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -4011,6 +4048,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class ChangeTargetOfResultBodyInput
     {
+        public ChangeTargetOfResultBodyInput(string location)
+        {
+            this.Location = location;
+        }
+
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Location { get; set; }
 
@@ -4282,6 +4324,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateScheduleSlotBodyInput
     {
+        public CreateScheduleSlotBodyInput(string start, string end, string[] assignees, string[] checklists, string[] targets)
+        {
+            this.Start = start;
+            this.End = end;
+            this.Assignees = assignees;
+            this.Checklists = checklists;
+            this.Targets = targets;
+        }
+
         [JsonProperty("externalId")]
         public string ExternalId { get; set; }
 
@@ -4624,6 +4675,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateTimesheetBodyInput
     {
+        public CreateTimesheetBodyInput(string user, string started)
+        {
+            this.User = user;
+            this.Started = started;
+        }
+
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -4751,6 +4808,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateUptimePeriodBodyInput
     {
+        public CreateUptimePeriodBodyInput(string location, string opened, string closed)
+        {
+            this.Location = location;
+            this.Opened = opened;
+            this.Closed = closed;
+        }
+
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Location { get; set; }
 
@@ -4838,6 +4902,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class UpdateUptimePeriodBodyInput
     {
+        public UpdateUptimePeriodBodyInput(string period, string location, string opened, string closed)
+        {
+            this.Period = period;
+            this.Location = location;
+            this.Opened = opened;
+            this.Closed = closed;
+        }
+
         [JsonProperty("period", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Period { get; set; }
 
@@ -4853,6 +4925,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateUserBodyInput
     {
+        public CreateUserBodyInput(string name, string email, string password)
+        {
+            this.Name = name;
+            this.Email = email;
+            this.Password = password;
+        }
+
         [JsonProperty("externalId")]
         public string ExternalId { get; set; }
 
@@ -5027,6 +5106,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobaro
 
     public class CreateUserGroupBodyInput
     {
+        public CreateUserGroupBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

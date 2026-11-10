@@ -992,6 +992,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
 
     public class BodyInput
     {
+        public BodyInput(string title, string startDate, string endDate, BodyInputTimeZoneType timeZone)
+        {
+            this.Title = title;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.TimeZone = timeZone;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -1801,6 +1809,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
 
     public class CreateNewEventAddress
     {
+        public CreateNewEventAddress(string fullAddress, double lat, double lng)
+        {
+            this.FullAddress = fullAddress;
+            this.Lat = lat;
+            this.Lng = lng;
+        }
+
         [JsonProperty("fullAddress", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FullAddress { get; set; }
 

@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneflow
 
     public class BodyInput
     {
+        public BodyInput(BodyInputUpdateTypeTypeItem[] updateType)
+        {
+            this.UpdateType = updateType;
+        }
+
         [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 

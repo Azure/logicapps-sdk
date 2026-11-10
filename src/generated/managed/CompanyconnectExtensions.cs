@@ -41,17 +41,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProactiveDialogStart(Expression<Func<string>> id, Expression<Func<ProactiveDialogStartBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProactiveDialogStart(Expression<Func<string>> id, Expression<Func<ProactiveDialogStartBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/proactiveDialogs/{0}/start", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -129,6 +128,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class ChoicePromptRequestInput
     {
+        public ChoicePromptRequestInput(string prompt, string conversationReference)
+        {
+            this.Prompt = prompt;
+            this.ConversationReference = conversationReference;
+        }
+
         [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -144,6 +149,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class ConfirmPromptRequestInput
     {
+        public ConfirmPromptRequestInput(string prompt, string conversationReference)
+        {
+            this.Prompt = prompt;
+            this.ConversationReference = conversationReference;
+        }
+
         [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -162,12 +173,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class ProactiveDialogStartBodyInput
     {
+        public ProactiveDialogStartBodyInput(string upn)
+        {
+            this.Upn = upn;
+        }
+
         [JsonProperty("upn", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Upn { get; set; }
     }
 
     public class MessageActivityInput
     {
+        public MessageActivityInput(string text, string conversationReference)
+        {
+            this.Text = text;
+            this.ConversationReference = conversationReference;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
@@ -177,6 +199,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class TextPromptRequestInput
     {
+        public TextPromptRequestInput(string prompt, string conversationReference)
+        {
+            this.Prompt = prompt;
+            this.ConversationReference = conversationReference;
+        }
+
         [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
 
@@ -189,6 +217,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class ProactiveDialogSubscribeBodyInput
     {
+        public ProactiveDialogSubscribeBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
@@ -198,6 +231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class SmartDialogSubscribeBodyInput
     {
+        public SmartDialogSubscribeBodyInput(string appId, string intent, string description)
+        {
+            this.AppId = appId;
+            this.Intent = intent;
+            this.Description = description;
+        }
+
         [JsonProperty("appId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppId { get; set; }
 
@@ -213,6 +253,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class SmartSourceSubscribeBodyInput
     {
+        public SmartSourceSubscribeBodyInput(string title, string category)
+        {
+            this.Title = title;
+            this.Category = category;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 

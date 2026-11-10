@@ -81,6 +81,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
     public class OcrPdfInputDataInput
     {
+        public OcrPdfInputDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -190,6 +196,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
     public class OcrTextInputDataInput
     {
+        public OcrTextInputDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 

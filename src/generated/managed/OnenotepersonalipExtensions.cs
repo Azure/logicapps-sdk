@@ -323,6 +323,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
 
     public class BodyInput
     {
+        public BodyInput(string displayName)
+        {
+            this.DisplayName = displayName;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
     }

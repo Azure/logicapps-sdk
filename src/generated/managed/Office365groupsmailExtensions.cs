@@ -310,17 +310,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class CreateConversationBodyInput
     {
+        public CreateConversationBodyInput(string newTopic)
+        {
+            this.NewTopic = newTopic;
+        }
+
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NewTopic { get; set; }
 
-        [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewPostBody Post { get; set; } = new NewPostBody();
+        [JsonProperty("post")]
+        public NewPostBody Post { get; set; }
     }
 
     public class NewPostBody
     {
-        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewPostBodyBodyType Body { get; set; } = new NewPostBodyBodyType();
+        [JsonProperty("body")]
+        public NewPostBodyBodyType Body { get; set; }
 
         [JsonProperty("categories")]
         public string[] PostCategories { get; set; }
@@ -334,6 +339,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class NewPostBodyBodyType
     {
+        public NewPostBodyBodyType(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
 
@@ -353,6 +363,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class ClientSendAttachment
     {
+        public ClientSendAttachment(string attachmentName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent attachmentContent)
+        {
+            this.AttachmentName = attachmentName;
+            this.AttachmentContent = attachmentContent;
+        }
+
         [JsonProperty("@odata.type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string FileAttachmentOdataType { get; set; } = "#microsoft.graph.fileAttachment";
 
@@ -563,8 +579,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class ReplyBodyInput
     {
-        [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewPostBody Post { get; set; } = new NewPostBody();
+        [JsonProperty("post")]
+        public NewPostBody Post { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -579,6 +595,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class ForwardBodyInput
     {
+        public ForwardBodyInput(GetUsersGraphAction[] recipients)
+        {
+            this.Recipients = recipients;
+        }
+
         public string Comment { get; set; }
 
         [JsonProperty("ToRecipients", DefaultValueHandling = DefaultValueHandling.Include)]

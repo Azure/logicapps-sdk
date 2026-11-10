@@ -273,6 +273,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
 
     public class BodyInput
     {
+        public BodyInput(string llmName, string llmId, string[] datasetNames, string queryString)
+        {
+            this.LlmName = llmName;
+            this.LlmId = llmId;
+            this.DatasetNames = datasetNames;
+            this.QueryString = queryString;
+        }
+
         [JsonProperty("llmName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LlmName { get; set; }
 

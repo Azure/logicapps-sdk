@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
     public class PureleadsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> NewLeadSubmission(Expression<Func<BodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NewLeadSubmission(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -44,6 +43,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 
     public class BodyInput
     {
+        public BodyInput(string email, string name)
+        {
+            this.Email = email;
+            this.Name = name;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 

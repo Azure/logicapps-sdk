@@ -824,6 +824,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABIsJavaWindowInput
     {
+        public JABIsJavaWindowInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -856,6 +861,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetWindowsAccessBridgeInfoInput
     {
+        public JABGetWindowsAccessBridgeInfoInput(int vMId)
+        {
+            this.VMId = vMId;
+        }
+
         [JsonProperty("VMID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int VMId { get; set; }
 
@@ -914,6 +924,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetUIAElementPropertiesInput
     {
+        public JABGetUIAElementPropertiesInput(int parentWindowHandle)
+        {
+            this.ParentWindowHandle = parentWindowHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -990,6 +1005,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetJABElementPropertiesInput
     {
+        public JABGetJABElementPropertiesInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1035,6 +1055,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABDrawRectangleAroundJABElementInput
     {
+        public JABDrawRectangleAroundJABElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1092,6 +1117,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABDoesElementExistInput
     {
+        public JABDoesElementExistInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1143,6 +1173,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABWaitForElementInput
     {
+        public JABWaitForElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1197,6 +1232,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABWaitForElementToNotExistInput
     {
+        public JABWaitForElementToNotExistInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1450,6 +1490,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetChildJABElementPropertiesInput
     {
+        public JABGetChildJABElementPropertiesInput(int searchElementJABHandle)
+        {
+            this.SearchElementJABHandle = searchElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchElementJABHandle { get; set; }
 
@@ -1474,6 +1519,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetAllChildJABElementPropertiesInput
     {
+        public JABGetAllChildJABElementPropertiesInput(int searchElementJABHandle)
+        {
+            this.SearchElementJABHandle = searchElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchElementJABHandle { get; set; }
 
@@ -1548,6 +1598,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetParentJABElementPropertiesInput
     {
+        public JABGetParentJABElementPropertiesInput(int searchElementJABHandle)
+        {
+            this.SearchElementJABHandle = searchElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchElementJABHandle { get; set; }
 
@@ -1560,6 +1615,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABPressElementInput
     {
+        public JABPressElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1612,6 +1672,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABPerformActionOnElementInput
     {
+        public JABPerformActionOnElementInput(int searchParentElementJABHandle, string action)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.Action = action;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1657,6 +1723,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGlobalLeftMouseClickOnElementInput
     {
+        public JABGlobalLeftMouseClickOnElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1730,6 +1801,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGlobalRightMouseClickOnElementInput
     {
+        public JABGlobalRightMouseClickOnElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1797,6 +1873,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGlobalMiddleMouseClickOnElementInput
     {
+        public JABGlobalMiddleMouseClickOnElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1864,6 +1945,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGlobalDoubleLeftMouseClickOnElementInput
     {
+        public JABGlobalDoubleLeftMouseClickOnElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1939,6 +2025,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetActionsForElementInput
     {
+        public JABGetActionsForElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -1981,6 +2072,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABFocusElementInput
     {
+        public JABFocusElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2023,6 +2119,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABInputPasswordIntoElementInput
     {
+        public JABInputPasswordIntoElementInput(int searchParentElementJABHandle, string passwordToInput)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.PasswordToInput = passwordToInput;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2068,6 +2170,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABInputTextIntoElementInput
     {
+        public JABInputTextIntoElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2122,6 +2229,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetElementTextValueInput
     {
+        public JABGetElementTextValueInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2171,6 +2283,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetElementValueInput
     {
+        public JABGetElementValueInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2213,6 +2330,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABCheckElementInput
     {
+        public JABCheckElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2269,6 +2391,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetElementPropertiesAsListInput
     {
+        public JABGetElementPropertiesAsListInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2314,6 +2441,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGlobalInputPasswordIntoElementInput
     {
+        public JABGlobalInputPasswordIntoElementInput(int searchParentElementJABHandle, string passwordToInput)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.PasswordToInput = passwordToInput;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2383,6 +2516,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGlobalInputTextIntoElementInput
     {
+        public JABGlobalInputTextIntoElementInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2459,6 +2597,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetSelectionElementItemsInput
     {
+        public JABGetSelectionElementItemsInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2519,6 +2662,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABSetSelectionByIndexInput
     {
+        public JABSetSelectionByIndexInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2573,6 +2721,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABSetSelectionByNameInput
     {
+        public JABSetSelectionByNameInput(int searchParentElementJABHandle, string itemName)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.ItemName = itemName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2648,6 +2802,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABExpandSelectionInput
     {
+        public JABExpandSelectionInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2704,6 +2863,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetSelectionStateByIndexInput
     {
+        public JABGetSelectionStateByIndexInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2754,6 +2918,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetSelectionStateByNameInput
     {
+        public JABGetSelectionStateByNameInput(int searchParentElementJABHandle, string itemName)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.ItemName = itemName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2835,6 +3005,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetTablePropertiesInput
     {
+        public JABGetTablePropertiesInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -2919,6 +3094,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetTableCellPropertiesInput
     {
+        public JABGetTableCellPropertiesInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -3005,6 +3185,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetTableContentsInput
     {
+        public JABGetTableContentsInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -3073,6 +3258,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABIsTableCellVisibleOnscreenInput
     {
+        public JABIsTableCellVisibleOnscreenInput(int searchParentElementJABHandle, int cellRowIndex, int cellColumnIndex)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.CellRowIndex = cellRowIndex;
+            this.CellColumnIndex = cellColumnIndex;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -3147,6 +3339,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABIsJABHandleSameObjectInput
     {
+        public JABIsJABHandleSameObjectInput(int element1JABHandle, int element2JABHandle)
+        {
+            this.Element1JABHandle = element1JABHandle;
+            this.Element2JABHandle = element2JABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int Element1JABHandle { get; set; }
 
@@ -3169,6 +3367,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetVisibleBoundingRectangleOfElementOnscreenInput
     {
+        public JABGetVisibleBoundingRectangleOfElementOnscreenInput(int elementJABHandle)
+        {
+            this.ElementJABHandle = elementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ElementJABHandle { get; set; }
 
@@ -3192,6 +3395,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABCreateHandleForJABElementAtScreenCoordinateInput
     {
+        public JABCreateHandleForJABElementAtScreenCoordinateInput(int parentElementJABHandle, int screenX, int screenY)
+        {
+            this.ParentElementJABHandle = parentElementJABHandle;
+            this.ScreenX = screenX;
+            this.ScreenY = screenY;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ParentElementJABHandle { get; set; }
 
@@ -3215,6 +3425,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetTableCellAtScreenCoordinateInput
     {
+        public JABGetTableCellAtScreenCoordinateInput(int tableElementJABHandle, int screenX, int screenY)
+        {
+            this.TableElementJABHandle = tableElementJABHandle;
+            this.ScreenX = screenX;
+            this.ScreenY = screenY;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int TableElementJABHandle { get; set; }
 
@@ -3239,6 +3456,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetMultipleParentJABElementPropertiesInput
     {
+        public JABGetMultipleParentJABElementPropertiesInput(int searchElementJABHandle)
+        {
+            this.SearchElementJABHandle = searchElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchElementJABHandle { get; set; }
 
@@ -3254,6 +3476,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGlobalMouseClickOnTableCellInput
     {
+        public JABGlobalMouseClickOnTableCellInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -3364,6 +3591,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetRoleCSVFromElementSearchInput
     {
+        public JABGetRoleCSVFromElementSearchInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
         public string SearchElementJABName { get; set; }
@@ -3422,6 +3654,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
     public class JABGetRoleCSVFromElementHandleInput
     {
+        public JABGetRoleCSVFromElementHandleInput(int searchParentElementJABHandle)
+        {
+            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchParentElementJABHandle { get; set; }
 

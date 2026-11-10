@@ -185,6 +185,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
 
     public class MeetingInput
     {
+        public MeetingInput(string subject, string startTime, string endTime, bool requiresPassword, MeetingInputConferenceCallInfoType conferenceCallInfo)
+        {
+            this.Subject = subject;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.RequiresPassword = requiresPassword;
+            this.ConferenceCallInfo = conferenceCallInfo;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
@@ -260,6 +269,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
 
     public class NewMeetingInput
     {
+        public NewMeetingInput(string subject, string startTime, string endTime, bool requiresPassword, NewMeetingInputConferenceCallInfoType conferenceCallInfo, NewMeetingInputMeetingTypeType meetingType)
+        {
+            this.Subject = subject;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.RequiresPassword = requiresPassword;
+            this.ConferenceCallInfo = conferenceCallInfo;
+            this.MeetingType = meetingType;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 

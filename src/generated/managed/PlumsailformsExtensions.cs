@@ -73,6 +73,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
 
     public class SubscriberInput
     {
+        public SubscriberInput(string form)
+        {
+            this.Form = form;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 

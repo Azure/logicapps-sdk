@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
 
     public class BodyInput
     {
+        public BodyInput(int groupId)
+        {
+            this.GroupId = groupId;
+        }
+
         [JsonProperty("group_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int GroupId { get; set; }
 

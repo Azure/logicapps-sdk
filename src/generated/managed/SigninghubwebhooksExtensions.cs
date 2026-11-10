@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
 
     public class BodyInput
     {
+        public BodyInput(BodyInputEventTypeType eventType)
+        {
+            this.EventType = eventType;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 

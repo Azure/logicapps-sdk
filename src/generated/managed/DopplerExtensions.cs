@@ -407,6 +407,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
 
     public class DopplerSecretsUpdateSecretBodyInput
     {
+        public DopplerSecretsUpdateSecretBodyInput(string project, string config)
+        {
+            this.Project = project;
+            this.Config = config;
+        }
+
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
 
@@ -440,6 +446,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
 
     public class DopplerSecretsUpdateSecretNoteBodyInput
     {
+        public DopplerSecretsUpdateSecretNoteBodyInput(string project, string config, string secret, string note)
+        {
+            this.Project = project;
+            this.Config = config;
+            this.Secret = secret;
+            this.Note = note;
+        }
+
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
 
@@ -530,6 +544,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
 
     public class DopplerConfigCreateConfigBodyInput
     {
+        public DopplerConfigCreateConfigBodyInput(string project, string name)
+        {
+            this.Project = project;
+            this.Name = name;
+        }
+
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
 
@@ -614,6 +634,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
 
     public class DopplerConfigCloneConfigBodyInput
     {
+        public DopplerConfigCloneConfigBodyInput(string project, string config, string name)
+        {
+            this.Project = project;
+            this.Config = config;
+            this.Name = name;
+        }
+
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
 
@@ -692,6 +719,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
 
     public class DopplerConfigLockConfigBodyInput
     {
+        public DopplerConfigLockConfigBodyInput(string project, string config)
+        {
+            this.Project = project;
+            this.Config = config;
+        }
+
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
 
@@ -782,6 +815,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
 
     public class DopplerProjectsCreateBodyInput
     {
+        public DopplerProjectsCreateBodyInput(string description)
+        {
+            this.Description = description;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; } = "My_awesome_project";
 
@@ -833,6 +871,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
 
     public class DopplerProjectsUpdateBodyInput
     {
+        public DopplerProjectsUpdateBodyInput(string project, string name, string description)
+        {
+            this.Project = project;
+            this.Name = name;
+            this.Description = description;
+        }
+
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
 
@@ -953,6 +998,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
 
     public class DopplerProjectMembersAddBodyInput
     {
+        public DopplerProjectMembersAddBodyInput(BodyInputTypeType type, string slug)
+        {
+            this.Type = type;
+            this.Slug = slug;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputTypeType Type { get; set; }
 

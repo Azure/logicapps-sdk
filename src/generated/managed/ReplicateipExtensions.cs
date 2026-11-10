@@ -218,6 +218,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
 
     public class BodyInput
     {
+        public BodyInput(string version)
+        {
+            this.Version = version;
+        }
+
         [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Version { get; set; }
 

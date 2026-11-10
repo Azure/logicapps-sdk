@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
     public class MuralActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
-        public IBodyWorkflowAction<CreateNewMuralResponse, ApiConnectionActionConfiguration> CreateNewMural(Expression<Func<CreateNewMuralBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateNewMuralResponse, ApiConnectionActionConfiguration> CreateNewMural(Expression<Func<CreateNewMuralBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateNewMuralResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/public/v1/murals";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateNewMuralResponse>(callPayload);
             });
         }
@@ -43,6 +42,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
                 callPayload.Queries["roomId"] = ExpressionConverter.Convert(__workflow_roomId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CreateNewStickyNoteBodyInput().ToJToken();
                 return new ApiConnectionAction<CreateNewStickyNoteResponse>(callPayload);
             });
         }
@@ -174,6 +175,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
 
     public class CreateNewMuralBodyInput
     {
+        public CreateNewMuralBodyInput(string workspaceId, int roomId)
+        {
+            this.WorkspaceId = workspaceId;
+            this.RoomId = roomId;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
 

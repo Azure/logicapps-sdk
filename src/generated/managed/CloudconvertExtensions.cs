@@ -79,17 +79,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class ConvertFileBodyInput
     {
+        public ConvertFileBodyInput(ConvertFileBodyInputTasksType tasks)
+        {
+            this.Tasks = tasks;
+        }
+
         [JsonProperty("tasks", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertFileBodyInputTasksType Tasks { get; set; } = new ConvertFileBodyInputTasksType();
+        public ConvertFileBodyInputTasksType Tasks { get; set; }
     }
 
     public class ConvertFileBodyInputTasksType
     {
+        public ConvertFileBodyInputTasksType(BodyInputTasksTypeImportType import, ConvertFileBodyInputTasksTypeConvertType convert)
+        {
+            this.Import = import;
+            this.Convert = convert;
+        }
+
         [JsonProperty("import", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputTasksTypeImportType Import { get; set; } = new BodyInputTasksTypeImportType();
+        public BodyInputTasksTypeImportType Import { get; set; }
 
         [JsonProperty("convert", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertFileBodyInputTasksTypeConvertType Convert { get; set; } = new ConvertFileBodyInputTasksTypeConvertType();
+        public ConvertFileBodyInputTasksTypeConvertType Convert { get; set; }
 
         [JsonProperty("export", DefaultValueHandling = DefaultValueHandling.Include)]
         public CaptureWebsiteBodyInputTasksTypeExportType Export { get; set; } = new CaptureWebsiteBodyInputTasksTypeExportType();
@@ -97,6 +108,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class BodyInputTasksTypeImportType
     {
+        public BodyInputTasksTypeImportType(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string filename)
+        {
+            this.File = @file;
+            this.Filename = filename;
+        }
+
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "import/base64";
 
@@ -109,6 +126,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class ConvertFileBodyInputTasksTypeConvertType
     {
+        public ConvertFileBodyInputTasksTypeConvertType(string outputFormat)
+        {
+            this.OutputFormat = outputFormat;
+        }
+
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "convert";
 
@@ -145,14 +167,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class OptimizeFileBodyInput
     {
+        public OptimizeFileBodyInput(OptimizeFileBodyInputTasksType tasks)
+        {
+            this.Tasks = tasks;
+        }
+
         [JsonProperty("tasks", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OptimizeFileBodyInputTasksType Tasks { get; set; } = new OptimizeFileBodyInputTasksType();
+        public OptimizeFileBodyInputTasksType Tasks { get; set; }
     }
 
     public class OptimizeFileBodyInputTasksType
     {
+        public OptimizeFileBodyInputTasksType(BodyInputTasksTypeImportType import)
+        {
+            this.Import = import;
+        }
+
         [JsonProperty("import", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputTasksTypeImportType Import { get; set; } = new BodyInputTasksTypeImportType();
+        public BodyInputTasksTypeImportType Import { get; set; }
 
         [JsonProperty("convert", DefaultValueHandling = DefaultValueHandling.Include)]
         public OptimizeFileBodyInputTasksTypeConvertType Convert { get; set; } = new OptimizeFileBodyInputTasksTypeConvertType();
@@ -181,14 +213,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class CaptureWebsiteBodyInput
     {
+        public CaptureWebsiteBodyInput(CaptureWebsiteBodyInputTasksType tasks)
+        {
+            this.Tasks = tasks;
+        }
+
         [JsonProperty("tasks", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CaptureWebsiteBodyInputTasksType Tasks { get; set; } = new CaptureWebsiteBodyInputTasksType();
+        public CaptureWebsiteBodyInputTasksType Tasks { get; set; }
     }
 
     public class CaptureWebsiteBodyInputTasksType
     {
+        public CaptureWebsiteBodyInputTasksType(CaptureWebsiteBodyInputTasksTypeConvertType convert)
+        {
+            this.Convert = convert;
+        }
+
         [JsonProperty("convert", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CaptureWebsiteBodyInputTasksTypeConvertType Convert { get; set; } = new CaptureWebsiteBodyInputTasksTypeConvertType();
+        public CaptureWebsiteBodyInputTasksTypeConvertType Convert { get; set; }
 
         [JsonProperty("export", DefaultValueHandling = DefaultValueHandling.Include)]
         public CaptureWebsiteBodyInputTasksTypeExportType Export { get; set; } = new CaptureWebsiteBodyInputTasksTypeExportType();
@@ -196,6 +238,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class CaptureWebsiteBodyInputTasksTypeConvertType
     {
+        public CaptureWebsiteBodyInputTasksTypeConvertType(string url, string outputFormat)
+        {
+            this.Url = url;
+            this.OutputFormat = outputFormat;
+        }
+
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "capture-website";
 
@@ -214,6 +262,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class MergeFilesBodyInput
     {
+        public MergeFilesBodyInput(MergeFilesBodyInputTasksType tasks)
+        {
+            this.Tasks = tasks;
+        }
+
         [JsonProperty("number_of_inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public int NumberOfInputs { get; set; } = 2;
 
@@ -221,16 +274,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
         public JToken AdditionalInputs { get; set; }
 
         [JsonProperty("tasks", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MergeFilesBodyInputTasksType Tasks { get; set; } = new MergeFilesBodyInputTasksType();
+        public MergeFilesBodyInputTasksType Tasks { get; set; }
     }
 
     public class MergeFilesBodyInputTasksType
     {
+        public MergeFilesBodyInputTasksType(BodyInputTasksTypeImport1Type import1, BodyInputTasksTypeImport2Type import2)
+        {
+            this.Import1 = import1;
+            this.Import2 = import2;
+        }
+
         [JsonProperty("import-1", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputTasksTypeImport1Type Import1 { get; set; } = new BodyInputTasksTypeImport1Type();
+        public BodyInputTasksTypeImport1Type Import1 { get; set; }
 
         [JsonProperty("import-2", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputTasksTypeImport2Type Import2 { get; set; } = new BodyInputTasksTypeImport2Type();
+        public BodyInputTasksTypeImport2Type Import2 { get; set; }
 
         [JsonProperty("merge", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputTasksTypeMergeType Merge { get; set; } = new BodyInputTasksTypeMergeType();
@@ -241,6 +300,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class BodyInputTasksTypeImport1Type
     {
+        public BodyInputTasksTypeImport1Type(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string filename)
+        {
+            this.File = @file;
+            this.Filename = filename;
+        }
+
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "import/base64";
 
@@ -253,6 +318,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class BodyInputTasksTypeImport2Type
     {
+        public BodyInputTasksTypeImport2Type(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string filename)
+        {
+            this.File = @file;
+            this.Filename = filename;
+        }
+
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "import/base64";
 

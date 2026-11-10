@@ -538,6 +538,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
 
     public class TransferInfoInput
     {
+        public TransferInfoInput(string sourceFileCabinetDocumentTray)
+        {
+            this.SourceFileCabinetDocumentTray = sourceFileCabinetDocumentTray;
+        }
+
         [JsonProperty("SourceFileCabinetId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileCabinetDocumentTray { get; set; }
 
@@ -583,6 +588,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
 
     public class StampDataInput
     {
+        public StampDataInput(int fileNumber, int pageNumber, string stamp)
+        {
+            this.FileNumber = fileNumber;
+            this.PageNumber = pageNumber;
+            this.Stamp = stamp;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int FileNumber { get; set; }
 

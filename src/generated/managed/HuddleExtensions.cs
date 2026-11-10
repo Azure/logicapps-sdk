@@ -57,17 +57,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<Folder, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> folderId, Expression<Func<CreateFolderRequestBodyInput>> requestBody = null)
+        public IBodyWorkflowAction<Folder, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> folderId, Expression<Func<CreateFolderRequestBodyInput>> requestBody)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<Folder, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/folder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<Folder>(callPayload);
             });
         }
@@ -104,17 +103,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<CreateWorkspaceTaskRequestBodyInput>> requestBody = null)
+        public IBodyWorkflowAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<CreateWorkspaceTaskRequestBodyInput>> requestBody)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workspace/{0}/task", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<CreateWorkspaceTaskResponse>(callPayload);
             });
         }
@@ -223,6 +221,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
 
     public class CreateFolderRequestBodyInput
     {
+        public CreateFolderRequestBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -286,6 +289,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
 
     public class CreateWorkspaceTaskRequestBodyInput
     {
+        public CreateWorkspaceTaskRequestBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("assignee")]
         public string Assignee { get; set; }
 

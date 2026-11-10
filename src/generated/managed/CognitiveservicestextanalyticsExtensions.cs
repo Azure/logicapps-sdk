@@ -237,12 +237,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
 
     public class EntitiesLinkingInputInput
     {
+        public EntitiesLinkingInputInput(MultiLanguageInputV3[] documents)
+        {
+            this.Documents = documents;
+        }
+
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
         public MultiLanguageInputV3[] Documents { get; set; }
     }
 
     public class MultiLanguageInputV3
     {
+        public MultiLanguageInputV3(string id, string text)
+        {
+            this.Id = id;
+            this.Text = text;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -378,12 +389,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
 
     public class LanguagesInputInput
     {
+        public LanguagesInputInput(LanguageInputV3[] documents)
+        {
+            this.Documents = documents;
+        }
+
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
         public LanguageInputV3[] Documents { get; set; }
     }
 
     public class LanguageInputV3
     {
+        public LanguageInputV3(string id, string text)
+        {
+            this.Id = id;
+            this.Text = text;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 

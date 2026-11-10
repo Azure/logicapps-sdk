@@ -44,6 +44,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
 
     public class PublishEventsInputEventsTypeItem
     {
+        public PublishEventsInputEventsTypeItem(string id, string subject, string eventType, JToken data)
+        {
+            this.Id = id;
+            this.Subject = subject;
+            this.EventType = eventType;
+            this.Data = data;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 

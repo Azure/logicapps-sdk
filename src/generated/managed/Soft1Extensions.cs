@@ -133,17 +133,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetExpensesDocResponse, ApiConnectionActionConfiguration> GetExpensesDoc(Expression<Func<GetExpensesDocBodyInput>> body = null)
+        public IBodyWorkflowAction<GetExpensesDocResponse, ApiConnectionActionConfiguration> GetExpensesDoc(Expression<Func<GetExpensesDocBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetExpensesDocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getExpensesDoc";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["op"] = Convert.ToString("s1service");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetExpensesDocResponse>(callPayload);
             });
         }
@@ -644,6 +643,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class MicroserviceBodyInput
     {
+        public MicroserviceBodyInput(string body, string endpoint)
+        {
+            this.Body = body;
+            this.Endpoint = endpoint;
+        }
+
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
 
@@ -738,6 +743,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetCFNCUSDOCBodyInput
     {
+        public GetCFNCUSDOCBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -848,6 +858,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetCfnsupdocBodyInput
     {
+        public GetCfnsupdocBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -965,6 +980,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetChequeBodyInput
     {
+        public GetChequeBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1107,6 +1127,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetContactBodyInput
     {
+        public GetContactBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
         public string FORM { get; set; }
@@ -1210,6 +1235,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetCustomerBodyInput
     {
+        public GetCustomerBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1353,6 +1383,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetDraftEntryBodyInput
     {
+        public GetDraftEntryBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
         public string FORM { get; set; }
@@ -1432,6 +1467,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetExpenseBodyInput
     {
+        public GetExpenseBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1540,6 +1580,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetExpensesDocBodyInput
     {
+        public GetExpensesDocBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string APPId { get; set; } = "702";
         public string FORM { get; set; }
@@ -1646,6 +1691,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetItedocBodyInput
     {
+        public GetItedocBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1730,6 +1780,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetItemBodyInput
     {
+        public GetItemBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1805,6 +1860,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetProjectBodyInput
     {
+        public GetProjectBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
         public string FORM { get; set; }
@@ -1982,6 +2042,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetPurdocBodyInput
     {
+        public GetPurdocBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
         public string FORM { get; set; }
@@ -2172,6 +2237,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetSaldocBodyInput
     {
+        public GetSaldocBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2256,6 +2326,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetServiceBodyInput
     {
+        public GetServiceBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2356,6 +2431,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetSOEMAILBodyInput
     {
+        public GetSOEMAILBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2436,6 +2516,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetMeetingBodyInput
     {
+        public GetMeetingBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2516,6 +2601,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetSOTASKBodyInput
     {
+        public GetSOTASKBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         public string FORM { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2598,6 +2688,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetSupplierBodyInput
     {
+        public GetSupplierBodyInput(string kEY)
+        {
+            this.KEY = kEY;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
         public string FORM { get; set; }
@@ -2710,6 +2805,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetCFNCUSDOCBodyInput
     {
+        public SetCFNCUSDOCBodyInput(SetCFNCUSDOCBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
 
@@ -2730,6 +2830,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetCFNCUSDOCBodyInputValueType
     {
+        public SetCFNCUSDOCBodyInputValueType(BodyInputValueTypeCFNCUSDOCType cFNCUSDOC)
+        {
+            this.CFNCUSDOC = cFNCUSDOC;
+        }
+
         public BodyInputValueTypeCARDLINESTypeItem[] CARDLINES { get; set; }
         public SetCFNCUSDOCBodyInputValueTypeCASHLINESTypeItem[] CASHLINES { get; set; }
 
@@ -2754,6 +2859,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypeCFNCUSDOCType
     {
+        public BodyInputValueTypeCFNCUSDOCType(string sERIES, string tRDR)
+        {
+            this.SERIES = sERIES;
+            this.TRDR = tRDR;
+        }
+
         public string COLLECTOR { get; set; }
         public string COMMENTS { get; set; }
 
@@ -2786,6 +2897,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetCfnsupdocBodyInput
     {
+        public SetCfnsupdocBodyInput(SetCfnsupdocBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
 
@@ -2806,6 +2922,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetCfnsupdocBodyInputValueType
     {
+        public SetCfnsupdocBodyInputValueType(BodyInputValueTypeCFNSUPDOCType cFNSUPDOC)
+        {
+            this.CFNSUPDOC = cFNSUPDOC;
+        }
+
         public BodyInputValueTypeCARDLINESTypeItem[] CARDLINES { get; set; }
         public SetCfnsupdocBodyInputValueTypeCASHLINESTypeItem[] CASHLINES { get; set; }
 
@@ -2825,6 +2946,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypeCFNSUPDOCType
     {
+        public BodyInputValueTypeCFNSUPDOCType(string sERIES, string tRDR)
+        {
+            this.SERIES = sERIES;
+            this.TRDR = tRDR;
+        }
+
         public string PRJC { get; set; }
         public string REMARKS { get; set; }
 
@@ -2838,6 +2965,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetChequeBodyInput
     {
+        public SetChequeBodyInput(SetChequeBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         public string FORM { get; set; }
         public string KEY { get; set; }
 
@@ -2859,12 +2991,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetChequeBodyInputValueType
     {
+        public SetChequeBodyInputValueType(BodyInputValueTypeCHEQUEType cHEQUE)
+        {
+            this.CHEQUE = cHEQUE;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputValueTypeCHEQUEType CHEQUE { get; set; }
     }
 
     public class BodyInputValueTypeCHEQUEType
     {
+        public BodyInputValueTypeCHEQUEType(string balance, string chequeNumber, string status, string value, string issueDate, string dueDate, string series)
+        {
+            this.Balance = balance;
+            this.ChequeNumber = chequeNumber;
+            this.Status = status;
+            this.Value = value;
+            this.IssueDate = issueDate;
+            this.DueDate = dueDate;
+            this.Series = series;
+        }
+
         [JsonProperty("BANK")]
         public string Bank { get; set; }
 
@@ -2916,6 +3064,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetContactBodyInput
     {
+        public SetContactBodyInput(SetContactBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         public string FORM { get; set; }
         public string KEY { get; set; }
 
@@ -2937,6 +3090,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetContactBodyInputValueType
     {
+        public SetContactBodyInputValueType(BodyInputValueTypePRSNOUTType pRSNOUT)
+        {
+            this.PRSNOUT = pRSNOUT;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputValueTypePRSNOUTType PRSNOUT { get; set; }
         public BodyInputValueTypeXTRDOCDATATypeItem[] XTRDOCDATA { get; set; }
@@ -2944,6 +3102,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypePRSNOUTType
     {
+        public BodyInputValueTypePRSNOUTType(string code, string name)
+        {
+            this.Code = code;
+            this.Name = name;
+        }
+
         [JsonProperty("ADDRESS")]
         public string Address { get; set; }
 
@@ -3056,6 +3220,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetCustomerBodyInput
     {
+        public SetCustomerBodyInput(SetCustomerBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         public string FORM { get; set; }
         public string KEY { get; set; }
 
@@ -3077,12 +3246,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetCustomerBodyInputValueType
     {
+        public SetCustomerBodyInputValueType(BodyInputValueTypeCUSTOMERType cUSTOMER)
+        {
+            this.CUSTOMER = cUSTOMER;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputValueTypeCUSTOMERType CUSTOMER { get; set; }
     }
 
     public class BodyInputValueTypeCUSTOMERType
     {
+        public BodyInputValueTypeCUSTOMERType(string code, string name)
+        {
+            this.Code = code;
+            this.Name = name;
+        }
+
         [JsonProperty("ADDRESS")]
         public string PrimaryAddress { get; set; }
 
@@ -3145,6 +3325,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetDraftEntryBodyInput
     {
+        public SetDraftEntryBodyInput(SetDraftEntryBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         public string FORM { get; set; }
         public string KEY { get; set; }
 
@@ -3166,6 +3351,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetDraftEntryBodyInputValueType
     {
+        public SetDraftEntryBodyInputValueType(BodyInputValueTypeSODRAFTType sODRAFT)
+        {
+            this.SODRAFT = sODRAFT;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputValueTypeSODRAFTType SODRAFT { get; set; }
         public BodyInputValueTypeSODRAFTLNKType SODRAFTLNK { get; set; }
@@ -3173,6 +3363,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypeSODRAFTType
     {
+        public BodyInputValueTypeSODRAFTType(string code)
+        {
+            this.Code = code;
+        }
+
         [JsonProperty("ADDRESS")]
         public string Address { get; set; }
 
@@ -3269,6 +3464,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetExpenseBodyInput
     {
+        public SetExpenseBodyInput(SetExpenseBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         public string FORM { get; set; }
         public string KEY { get; set; }
 
@@ -3290,12 +3490,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetExpenseBodyInputValueType
     {
+        public SetExpenseBodyInputValueType(BodyInputValueTypeLINEITEMType lINEITEM)
+        {
+            this.LINEITEM = lINEITEM;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputValueTypeLINEITEMType LINEITEM { get; set; }
     }
 
     public class BodyInputValueTypeLINEITEMType
     {
+        public BodyInputValueTypeLINEITEMType(string code, BodyInputValueTypeLINEITEMTypeInvoicingCategoryType invoicingCategory, string name, string vatGroup)
+        {
+            this.Code = code;
+            this.InvoicingCategory = invoicingCategory;
+            this.Name = name;
+            this.VatGroup = vatGroup;
+        }
+
         [JsonProperty("CODE", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
 
@@ -3364,6 +3577,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetExpensesDocBodyInput
     {
+        public SetExpensesDocBodyInput(SetExpensesDocBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AppId { get; set; } = "702";
 
@@ -3384,6 +3602,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetExpensesDocBodyInputValueType
     {
+        public SetExpensesDocBodyInputValueType(BodyInputValueTypeLINSUPDOCType lINSUPDOC)
+        {
+            this.LINSUPDOC = lINSUPDOC;
+        }
+
         [JsonProperty("LINLINES")]
         public BodyInputValueTypeUnnamedTypeItem[] Unnamed { get; set; }
 
@@ -3408,6 +3631,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypeLINSUPDOCType
     {
+        public BodyInputValueTypeLINSUPDOCType(string series, string supplier)
+        {
+            this.Series = series;
+            this.Supplier = supplier;
+        }
+
         [JsonProperty("PRJC")]
         public string Project { get; set; }
 
@@ -3424,6 +3653,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetItedocBodyInput
     {
+        public SetItedocBodyInput(SetItedocBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         public string FORM { get; set; }
         public string KEY { get; set; }
 
@@ -3445,6 +3679,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetItedocBodyInputValueType
     {
+        public SetItedocBodyInputValueType(BodyInputValueTypeITEDOCType iTEDOC, BodyInputValueTypeMTRDOCType mTRDOC)
+        {
+            this.ITEDOC = iTEDOC;
+            this.MTRDOC = mTRDOC;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputValueTypeITEDOCType ITEDOC { get; set; }
         public SetItedocBodyInputValueTypeITELINESTypeItem[] ITELINES { get; set; }
@@ -3455,6 +3695,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypeITEDOCType
     {
+        public BodyInputValueTypeITEDOCType(string series)
+        {
+            this.Series = series;
+        }
+
         [JsonProperty("COMMENTS")]
         public string Reason { get; set; }
         public string REMARKS { get; set; }
@@ -3485,12 +3730,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypeMTRDOCType
     {
+        public BodyInputValueTypeMTRDOCType(string warehouse)
+        {
+            this.Warehouse = warehouse;
+        }
+
         [JsonProperty("WHOUSE", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Warehouse { get; set; }
     }
 
     public class SetItemBodyInput
     {
+        public SetItemBodyInput(SetItemBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         public string FORM { get; set; }
         public string KEY { get; set; }
 
@@ -3512,12 +3767,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetItemBodyInputValueType
     {
+        public SetItemBodyInputValueType(BodyInputValueTypeITEMType iTEM)
+        {
+            this.ITEM = iTEM;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputValueTypeITEMType ITEM { get; set; }
     }
 
     public class BodyInputValueTypeITEMType
     {
+        public BodyInputValueTypeITEMType(string code, string baseUnitOfMeasure, string name, string vatGroup)
+        {
+            this.Code = code;
+            this.BaseUnitOfMeasure = baseUnitOfMeasure;
+            this.Name = name;
+            this.VatGroup = vatGroup;
+        }
+
         [JsonProperty("CODE", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
 
@@ -3551,6 +3819,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetProjectBodyInput
     {
+        public SetProjectBodyInput(SetProjectBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         public string FORM { get; set; }
         public string KEY { get; set; }
 
@@ -3572,6 +3845,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetProjectBodyInputValueType
     {
+        public SetProjectBodyInputValueType(BodyInputValueTypePRJCType pRJC)
+        {
+            this.PRJC = pRJC;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputValueTypePRJCType PRJC { get; set; }
         public BodyInputValueTypeXTRDOCDATATypeItem[] XTRDOCDATA { get; set; }
@@ -3579,6 +3857,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypePRJCType
     {
+        public BodyInputValueTypePRJCType(string code, string name)
+        {
+            this.Code = code;
+            this.Name = name;
+        }
+
         public BodyInputValueTypePRJCTypeACTSTATUSType? ACTSTATUS { get; set; }
 
         [JsonProperty("CODE", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3626,6 +3910,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetPurdocBodyInput
     {
+        public SetPurdocBodyInput(SetPurdocBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
 
@@ -3646,6 +3935,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetPurdocBodyInputValueType
     {
+        public SetPurdocBodyInputValueType(BodyInputValueTypeMTRDOCType mTRDOC, BodyInputValueTypePURDOCType pURDOC)
+        {
+            this.MTRDOC = mTRDOC;
+            this.PURDOC = pURDOC;
+        }
+
         public SetPurdocBodyInputValueTypeITELINESTypeItem[] ITELINES { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3672,6 +3967,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypePURDOCType
     {
+        public BodyInputValueTypePURDOCType(string sERIES, string sOCURRENCY, string tRDR)
+        {
+            this.SERIES = sERIES;
+            this.SOCURRENCY = sOCURRENCY;
+            this.TRDR = tRDR;
+        }
+
         public string DISC1PRC { get; set; }
         public string PAYMENT { get; set; }
         public string PRJC { get; set; }
@@ -3705,6 +4007,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetSaldocBodyInput
     {
+        public SetSaldocBodyInput(SetSaldocBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         public string FORM { get; set; }
         public string KEY { get; set; }
 
@@ -3726,6 +4033,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetSaldocBodyInputValueType
     {
+        public SetSaldocBodyInputValueType(BodyInputValueTypeMTRDOCType mTRDOC, BodyInputValueTypeSALDOCType sALDOC)
+        {
+            this.MTRDOC = mTRDOC;
+            this.SALDOC = sALDOC;
+        }
+
         public SetSaldocBodyInputValueTypeITELINESTypeItem[] ITELINES { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3759,6 +4072,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypeSALDOCType
     {
+        public BodyInputValueTypeSALDOCType(string payment, string series, string currency, string customer)
+        {
+            this.Payment = payment;
+            this.Series = series;
+            this.Currency = currency;
+            this.Customer = customer;
+        }
+
         [JsonProperty("DISC1PRC")]
         public string Discount { get; set; }
 
@@ -3812,6 +4133,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetServiceBodyInput
     {
+        public SetServiceBodyInput(SetServiceBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         public string FORM { get; set; }
         public string KEY { get; set; }
 
@@ -3833,12 +4159,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetServiceBodyInputValueType
     {
+        public SetServiceBodyInputValueType(BodyInputValueTypeSERVICEType sERVICE)
+        {
+            this.SERVICE = sERVICE;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputValueTypeSERVICEType SERVICE { get; set; }
     }
 
     public class BodyInputValueTypeSERVICEType
     {
+        public BodyInputValueTypeSERVICEType(string code, string baseUnitOfMeasure, string name, string vatGroup)
+        {
+            this.Code = code;
+            this.BaseUnitOfMeasure = baseUnitOfMeasure;
+            this.Name = name;
+            this.VatGroup = vatGroup;
+        }
+
         [JsonProperty("CODE", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
 
@@ -3872,6 +4211,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetSOEMAILBodyInput
     {
+        public SetSOEMAILBodyInput(SetSOEMAILBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
 
@@ -3892,6 +4236,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetSOEMAILBodyInputValueType
     {
+        public SetSOEMAILBodyInputValueType(BodyInputValueTypeSOACTIONType sOACTION)
+        {
+            this.SOACTION = sOACTION;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputValueTypeSOACTIONType SOACTION { get; set; }
         public BodyInputValueTypeSOMAILType SOMAIL { get; set; }
@@ -3900,6 +4249,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypeSOACTIONType
     {
+        public BodyInputValueTypeSOACTIONType(string sERIES)
+        {
+            this.SERIES = sERIES;
+        }
+
         public BodyInputValueTypeSOACTIONTypeACTSTATUSType? ACTSTATUS { get; set; }
         public string COMMENTS { get; set; }
 
@@ -3939,6 +4293,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetMeetingBodyInput
     {
+        public SetMeetingBodyInput(BodyInputDATAType dATA)
+        {
+            this.DATA = dATA;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
 
@@ -3959,6 +4318,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputDATAType
     {
+        public BodyInputDATAType(BodyInputDATATypeSOACTIONType sOACTION)
+        {
+            this.SOACTION = sOACTION;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputDATATypeSOACTIONType SOACTION { get; set; }
         public BodyInputDATATypeXTRDOCDATATypeItem[] XTRDOCDATA { get; set; }
@@ -3966,6 +4330,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputDATATypeSOACTIONType
     {
+        public BodyInputDATATypeSOACTIONType(string sERIES)
+        {
+            this.SERIES = sERIES;
+        }
+
         [JsonProperty("ACTOR")]
         public string Operator { get; set; }
 
@@ -4028,6 +4397,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetSOTASKBodyInput
     {
+        public SetSOTASKBodyInput(BodyInputDATAType dATA)
+        {
+            this.DATA = dATA;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
 
@@ -4048,6 +4422,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetSupplierBodyInput
     {
+        public SetSupplierBodyInput(SetSupplierBodyInputValueType value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int APPId { get; set; } = 702;
 
@@ -4068,6 +4447,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetSupplierBodyInputValueType
     {
+        public SetSupplierBodyInputValueType(BodyInputValueTypeSUPPLIERType sUPPLIER)
+        {
+            this.SUPPLIER = sUPPLIER;
+        }
+
         public BodyInputValueTypeSUPBANKACCTypeItem[] SUPBANKACC { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4083,6 +4467,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class BodyInputValueTypeSUPPLIERType
     {
+        public BodyInputValueTypeSUPPLIERType(string cODE, string nAME)
+        {
+            this.CODE = cODE;
+            this.NAME = nAME;
+        }
+
         public string ADDRESS { get; set; }
         public string AFM { get; set; }
         public string CITY { get; set; }
@@ -4104,6 +4494,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class WebhookBodyInput
     {
+        public WebhookBodyInput(BodyInputObjectEntityType objectEntity)
+        {
+            this.ObjectEntity = objectEntity;
+        }
+
         [JsonProperty("condition")]
         public string Condition { get; set; }
 
@@ -4156,6 +4551,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class WebhookOnDeleteBodyInput
     {
+        public WebhookOnDeleteBodyInput(BodyInputObjectEntityType objectEntity)
+        {
+            this.ObjectEntity = objectEntity;
+        }
+
         [JsonProperty("condition")]
         public string Condition { get; set; }
 
@@ -4171,6 +4571,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class WebhookOnInsertBodyInput
     {
+        public WebhookOnInsertBodyInput(BodyInputObjectEntityType objectEntity)
+        {
+            this.ObjectEntity = objectEntity;
+        }
+
         [JsonProperty("condition")]
         public string Condition { get; set; }
 
@@ -4186,6 +4591,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class WebhookOnUpdateBodyInput
     {
+        public WebhookOnUpdateBodyInput(BodyInputObjectEntityType objectEntity)
+        {
+            this.ObjectEntity = objectEntity;
+        }
+
         [JsonProperty("condition")]
         public string Condition { get; set; }
 

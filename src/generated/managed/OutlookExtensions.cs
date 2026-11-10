@@ -263,6 +263,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new RespondToEventBodyInput().ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -887,15 +889,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
     public class OptionsEmailSubscriptionInput
     {
+        public OptionsEmailSubscriptionInput(MessageWithOptions message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessageWithOptions Message { get; set; } = new MessageWithOptions();
+        public MessageWithOptions Message { get; set; }
     }
 
     public class MessageWithOptions
     {
+        public MessageWithOptions(string to)
+        {
+            this.To = to;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -930,6 +942,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
     public class ClientSendAttachment
     {
+        public ClientSendAttachment(string name, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent content)
+        {
+            this.Name = name;
+            this.Content = content;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -939,15 +957,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
     public class ApprovalEmailSubscriptionInput
     {
+        public ApprovalEmailSubscriptionInput(ApprovalMessage message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ApprovalMessage Message { get; set; } = new ApprovalMessage();
+        public ApprovalMessage Message { get; set; }
     }
 
     public class ApprovalMessage
     {
+        public ApprovalMessage(string to)
+        {
+            this.To = to;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
@@ -1065,6 +1093,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
     public class ContactPatchItemItemInput
     {
+        public ContactPatchItemItemInput(string givenName, string[] homePhones)
+        {
+            this.GivenName = givenName;
+            this.HomePhones = homePhones;
+        }
+
         public string Id { get; set; }
         public string ParentFolderId { get; set; }
         public string Birthday { get; set; }
@@ -1150,6 +1184,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
     public class ForwardEmailBodyInput
     {
+        public ForwardEmailBodyInput(string to)
+        {
+            this.To = to;
+        }
+
         public string Comment { get; set; }
 
         [JsonProperty("ToRecipients", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1300,6 +1339,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
     public class CalendarPatchItemItemInput
     {
+        public CalendarPatchItemItemInput(string subject, string startTime, string endTime)
+        {
+            this.Subject = subject;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
@@ -1683,6 +1729,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
     public class EmailMessageInput
     {
+        public EmailMessageInput(string to, string subject, string body)
+        {
+            this.To = to;
+            this.Subject = subject;
+            this.Body = body;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 

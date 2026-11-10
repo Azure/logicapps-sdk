@@ -442,6 +442,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class SiteManagementRegisterSiteCollectionParameterInput
     {
+        public SiteManagementRegisterSiteCollectionParameterInput(string siteCollectionServerRelativeUrl, string bussinessModuleId, ParameterInputSiteCollectionTypeType siteCollectionType)
+        {
+            this.SiteCollectionServerRelativeUrl = siteCollectionServerRelativeUrl;
+            this.BussinessModuleId = bussinessModuleId;
+            this.SiteCollectionType = siteCollectionType;
+        }
+
         [JsonProperty("ServerRelativeUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SiteCollectionServerRelativeUrl { get; set; }
 
@@ -493,6 +500,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class DocumentConvertToPdfAndSaveOutputParameterInput
     {
+        public DocumentConvertToPdfAndSaveOutputParameterInput(string absoluteDocumentSiteURL, string absoluteDocumentURL, string absoluteOutputSiteURL, string absoluteOutputURL, ParameterInputOverrideBehaviourType overrideBehaviour)
+        {
+            this.AbsoluteDocumentSiteURL = absoluteDocumentSiteURL;
+            this.AbsoluteDocumentURL = absoluteDocumentURL;
+            this.AbsoluteOutputSiteURL = absoluteOutputSiteURL;
+            this.AbsoluteOutputURL = absoluteOutputURL;
+            this.OverrideBehaviour = overrideBehaviour;
+        }
+
         [JsonProperty("DocumentSiteUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AbsoluteDocumentSiteURL { get; set; }
 
@@ -557,6 +573,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class DocumentDigitalSignatureCreateLogEntryForTransactionParameterInput
     {
+        public DocumentDigitalSignatureCreateLogEntryForTransactionParameterInput(string transactionId, ParameterInputSigningProviderType signingProvider, string businessModuleId, int entityId, int totalSigningCount, int totalAppendixCount)
+        {
+            this.TransactionId = transactionId;
+            this.SigningProvider = signingProvider;
+            this.BusinessModuleId = businessModuleId;
+            this.EntityId = entityId;
+            this.TotalSigningCount = totalSigningCount;
+            this.TotalAppendixCount = totalAppendixCount;
+        }
+
         [JsonProperty("TransactionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TransactionId { get; set; }
 
@@ -626,6 +652,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class DocumentDigitalSignatureAddDocumentToTransactionParameterInput
     {
+        public DocumentDigitalSignatureAddDocumentToTransactionParameterInput(string transactionId, string absoluteDocumentSiteUrl, string absoluteDocumentUrl, ParameterInputSigningPropertiesBehaviourType signingPropertiesBehaviour, ParameterInputRecordDeclarationSettingType recordDeclarationSetting, ParameterInputSigningTypeType signingType)
+        {
+            this.TransactionId = transactionId;
+            this.AbsoluteDocumentSiteUrl = absoluteDocumentSiteUrl;
+            this.AbsoluteDocumentUrl = absoluteDocumentUrl;
+            this.SigningPropertiesBehaviour = signingPropertiesBehaviour;
+            this.RecordDeclarationSetting = recordDeclarationSetting;
+            this.SigningType = signingType;
+        }
+
         [JsonProperty("TransactionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TransactionId { get; set; }
 
@@ -671,6 +707,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class DocumentDigitalSignatureCompleteDocumentInTransactionParameterInput
     {
+        public DocumentDigitalSignatureCompleteDocumentInTransactionParameterInput(string transactionId, string fileName, string signedPDFBytes, ParameterInputSigningStatusType signingStatus, bool documentUndeclarationBehaviour)
+        {
+            this.TransactionId = transactionId;
+            this.FileName = fileName;
+            this.SignedPDFBytes = signedPDFBytes;
+            this.SigningStatus = signingStatus;
+            this.DocumentUndeclarationBehaviour = documentUndeclarationBehaviour;
+        }
+
         [JsonProperty("TransactionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TransactionId { get; set; }
 
@@ -701,6 +746,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class DocumentDigitalSignatureBase64CompleteDocumentInTransactionParameterInput
     {
+        public DocumentDigitalSignatureBase64CompleteDocumentInTransactionParameterInput(string transactionId, string fileName, string base64PDFDocument, ParameterInputSigningStatusType signingStatus, bool documentUndeclarationBehaviour)
+        {
+            this.TransactionId = transactionId;
+            this.FileName = fileName;
+            this.Base64PDFDocument = base64PDFDocument;
+            this.SigningStatus = signingStatus;
+            this.DocumentUndeclarationBehaviour = documentUndeclarationBehaviour;
+        }
+
         [JsonProperty("TransactionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TransactionId { get; set; }
 
@@ -720,6 +774,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class DocumentDigitalSignatureGenerateXwsseHeaderParameterInput
     {
+        public DocumentDigitalSignatureGenerateXwsseHeaderParameterInput(string userName, string password)
+        {
+            this.UserName = userName;
+            this.Password = password;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
 
@@ -833,6 +893,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class EntityMoveParameterInput
     {
+        public EntityMoveParameterInput(string theSourceEntityListId, int theSourceEntityId, string targetEntityListId, string targetEntityContentTypeId, bool validateOnly, bool includeProgressLog, bool runAsJob)
+        {
+            this.TheSourceEntityListId = theSourceEntityListId;
+            this.TheSourceEntityId = theSourceEntityId;
+            this.TargetEntityListId = targetEntityListId;
+            this.TargetEntityContentTypeId = targetEntityContentTypeId;
+            this.ValidateOnly = validateOnly;
+            this.IncludeProgressLog = includeProgressLog;
+            this.RunAsJob = runAsJob;
+        }
+
         [JsonProperty("SourceEntityListID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TheSourceEntityListId { get; set; }
 
@@ -857,6 +928,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class ListItemChangeStageParameterInput
     {
+        public ListItemChangeStageParameterInput(string entityListId, int entityItemId, string stageId, ParameterInputStageContraintsBehaviourType stageContraintsBehaviour, bool overrideRequiredFields)
+        {
+            this.EntityListId = entityListId;
+            this.EntityItemId = entityItemId;
+            this.StageId = stageId;
+            this.StageContraintsBehaviour = stageContraintsBehaviour;
+            this.OverrideRequiredFields = overrideRequiredFields;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntityListId { get; set; }
 
@@ -987,6 +1067,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class WebHookInput
     {
+        public WebHookInput(WebHookInputPropertiesType properties)
+        {
+            this.Properties = properties;
+        }
+
         [JsonProperty("WebHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURI { get; set; } = "#{listCallbackUrl()}";
         public string Description { get; set; }
@@ -997,6 +1082,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class WebHookInputPropertiesType
     {
+        public WebHookInputPropertiesType(string workPoint365URL, string businessModuleId, string triggerId)
+        {
+            this.WorkPoint365URL = workPoint365URL;
+            this.BusinessModuleId = businessModuleId;
+            this.TriggerId = triggerId;
+        }
+
         [JsonProperty("WorkPointUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkPoint365URL { get; set; }
 

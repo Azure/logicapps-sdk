@@ -115,6 +115,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
 
     public class CPCreateExecutionActionReqInput
     {
+        public CPCreateExecutionActionReqInput(string selectAction, JToken parameters)
+        {
+            this.SelectAction = selectAction;
+            this.Parameters = parameters;
+        }
+
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SelectAction { get; set; }
 
@@ -124,6 +130,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
 
     public class CPCreateWebhookExecutionActionReqInput
     {
+        public CPCreateWebhookExecutionActionReqInput(string selectAction, JToken parameters)
+        {
+            this.SelectAction = selectAction;
+            this.Parameters = parameters;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
@@ -136,6 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
 
     public class CPGetAlertCustomFieldActionCustomReqInput
     {
+        public CPGetAlertCustomFieldActionCustomReqInput(string alertId, string selectClassification, JToken selectField)
+        {
+            this.AlertId = alertId;
+            this.SelectClassification = selectClassification;
+            this.SelectField = selectField;
+        }
+
         [JsonProperty("alert_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AlertId { get; set; }
 
@@ -148,6 +167,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
 
     public class CPGetIncidentSummaryActionCustomReqInput
     {
+        public CPGetIncidentSummaryActionCustomReqInput(string incidentId, JToken selectIncidentSummary)
+        {
+            this.IncidentId = incidentId;
+            this.SelectIncidentSummary = selectIncidentSummary;
+        }
+
         [JsonProperty("incident_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IncidentId { get; set; }
 
@@ -157,6 +182,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
 
     public class CPSetIncidentSummaryActionCustomReqInput
     {
+        public CPSetIncidentSummaryActionCustomReqInput(string incidentId, JToken selectValue)
+        {
+            this.IncidentId = incidentId;
+            this.SelectValue = selectValue;
+        }
+
         [JsonProperty("incident_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IncidentId { get; set; }
 
@@ -166,6 +197,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
 
     public class CPTriggerActionReqInput
     {
+        public CPTriggerActionReqInput(string selectTrigger, JToken parameters)
+        {
+            this.SelectTrigger = selectTrigger;
+            this.Parameters = parameters;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 

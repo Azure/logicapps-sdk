@@ -328,6 +328,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsprofessi
 
     public class BodyInput
     {
+        public BodyInput(string formId)
+        {
+            this.FormId = formId;
+        }
+
         [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FormId { get; set; }
 

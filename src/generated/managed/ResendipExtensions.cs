@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
     public class ResendipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<EmailResponse, ApiConnectionActionConfiguration> Email(Expression<Func<EmailBodyInput>> body = null)
+        public IBodyWorkflowAction<EmailResponse, ApiConnectionActionConfiguration> Email(Expression<Func<EmailBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emails";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EmailResponse>(callPayload);
             });
         }
@@ -53,16 +52,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<DomainResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<DomainBodyInput>> body = null)
+        public IBodyWorkflowAction<DomainResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<DomainBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DomainResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/domains";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DomainResponse>(callPayload);
             });
         }
@@ -115,6 +113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
 
     public class EmailBodyInput
     {
+        public EmailBodyInput(string from, string to, string subject)
+        {
+            this.From = from;
+            this.To = to;
+            this.Subject = subject;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -265,6 +270,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
 
     public class DomainBodyInput
     {
+        public DomainBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

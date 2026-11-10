@@ -1320,6 +1320,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
 
     public class ActionAddCardBodyInput
     {
+        public ActionAddCardBodyInput(string name, string listuuid)
+        {
+            this.Name = name;
+            this.Listuuid = listuuid;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1353,6 +1359,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
 
     public class ActionDeleteCardBodyInput
     {
+        public ActionDeleteCardBodyInput(int confirmed)
+        {
+            this.Confirmed = confirmed;
+        }
+
         [JsonProperty("confirmed", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Confirmed { get; set; }
     }
@@ -1368,6 +1379,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
 
     public class ActionAddMessageToBoardBodyInput
     {
+        public ActionAddMessageToBoardBodyInput(string message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
     }
@@ -1395,6 +1411,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
 
     public class ActionAddChecklistToCardBodyInput
     {
+        public ActionAddChecklistToCardBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -1488,6 +1509,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
 
     public class ActionAssignToBoardBodyInput
     {
+        public ActionAssignToBoardBodyInput(string email, string role)
+        {
+            this.Email = email;
+            this.Role = role;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -1593,6 +1620,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
 
     public class ActionDeleteListBodyInput
     {
+        public ActionDeleteListBodyInput(int confirm)
+        {
+            this.Confirm = confirm;
+        }
+
         [JsonProperty("confirm", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Confirm { get; set; }
     }

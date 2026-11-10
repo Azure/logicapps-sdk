@@ -27,18 +27,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> SubmitLiveDocGeneration(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> SubmitLiveDocGeneration(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<BodyInput>> body)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentVersionId = WorkflowExpression.Compile(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SeismicLiveDocsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/livedocVersions/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentVersionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SeismicLiveDocsLiveDocGenSuccinctResultResp>(callPayload);
             });
         }
@@ -150,6 +149,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
 
     public class BodyInput
     {
+        public BodyInput(BodyInputOutputsTypeItem[] outputs)
+        {
+            this.Outputs = outputs;
+        }
+
         [JsonProperty("adHocInputs")]
         public JToken[] AdHocInputs { get; set; }
 
@@ -159,6 +163,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
 
     public class BodyInputOutputsTypeItem
     {
+        public BodyInputOutputsTypeItem(BodyInputOutputsTypeItemFormatType format)
+        {
+            this.Format = format;
+        }
+
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputOutputsTypeItemFormatType Format { get; set; }
 
@@ -269,6 +278,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
 
     public class BodyInputOutputsTypeItemXlsxOptionsType
     {
+        public BodyInputOutputsTypeItemXlsxOptionsType(string datasource)
+        {
+            this.Datasource = datasource;
+        }
+
         [JsonProperty("datasource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Datasource { get; set; }
     }

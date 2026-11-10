@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 
     public class BodyInput
     {
+        public BodyInput(string selectALanguage)
+        {
+            this.SelectALanguage = selectALanguage;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 

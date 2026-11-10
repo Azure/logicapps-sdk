@@ -162,6 +162,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new QueryItemsBodyInput().ToJToken();
                 return new ApiConnectionAction<QueryItemsResponse>(callPayload);
             });
         }

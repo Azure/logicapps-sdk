@@ -228,6 +228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
     public class JobApproveRequestInput
     {
+        public JobApproveRequestInput(string secret)
+        {
+            this.Secret = secret;
+        }
+
         [JsonProperty("comments")]
         public string Comments { get; set; }
 
@@ -249,6 +254,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
     public class JobCreateRequestInput
     {
+        public JobCreateRequestInput(string sendingAccount, string newsletterTitle)
+        {
+            this.SendingAccount = sendingAccount;
+            this.NewsletterTitle = newsletterTitle;
+        }
+
         [JsonProperty("adGroups")]
         public string Office365Groups { get; set; }
 
@@ -659,6 +670,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
     public class WebhookJobCompletedRequestInput
     {
+        public WebhookJobCompletedRequestInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

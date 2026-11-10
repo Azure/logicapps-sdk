@@ -139,6 +139,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
 
     public class LockPdfInputInput
     {
+        public LockPdfInputInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string permissionsPassword)
+        {
+            this.FileContent = fileContent;
+            this.PermissionsPassword = permissionsPassword;
+        }
+
         [JsonProperty("allowAccessibility")]
         public bool? AllowAccessibility { get; set; }
 
@@ -172,6 +178,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
 
     public class MergePdfInputInput
     {
+        public MergePdfInputInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent _1stFileContent, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent _2ndFileContent)
+        {
+            this._1stFileContent = _1stFileContent;
+            this._2ndFileContent = _2ndFileContent;
+        }
+
         [JsonProperty("fileContent1", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent _1stFileContent { get; set; }
 
@@ -187,6 +199,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
 
     public class PasswordProtectPdfInputInput
     {
+        public PasswordProtectPdfInputInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string password)
+        {
+            this.FileContent = fileContent;
+            this.Password = password;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -196,6 +214,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
 
     public class SplitPdfInputInput
     {
+        public SplitPdfInputInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -208,6 +231,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
 
     public class UnlockPdfInputInput
     {
+        public UnlockPdfInputInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string password)
+        {
+            this.FileContent = fileContent;
+            this.Password = password;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -217,6 +246,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
 
     public class WatermarkPdfBackgroundInputInput
     {
+        public WatermarkPdfBackgroundInputInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string _1stLine)
+        {
+            this.FileContent = fileContent;
+            this._1stLine = _1stLine;
+        }
+
         [JsonProperty("color")]
         public WatermarkPdfBackgroundInputInputColorType? Color { get; set; }
 
@@ -269,6 +304,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
 
     public class WatermarkPdfCustomInputInput
     {
+        public WatermarkPdfCustomInputInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string templateId)
+        {
+            this.FileContent = fileContent;
+            this.TemplateId = templateId;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -293,6 +334,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
 
     public class WatermarkPdfOverlayInputInput
     {
+        public WatermarkPdfOverlayInputInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent, string _1stLine)
+        {
+            this.FileContent = fileContent;
+            this._1stLine = _1stLine;
+        }
+
         [JsonProperty("color")]
         public WatermarkPdfOverlayInputInputColorType? Color { get; set; }
 

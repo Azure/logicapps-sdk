@@ -219,17 +219,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<FunnelSubscribeResponse, ApiConnectionActionConfiguration> FunnelSubscribe(Expression<Func<string>> funnelId, Expression<Func<FunnelSubscribeBodyInput>> body = null)
+        public IBodyWorkflowAction<FunnelSubscribeResponse, ApiConnectionActionConfiguration> FunnelSubscribe(Expression<Func<string>> funnelId, Expression<Func<FunnelSubscribeBodyInput>> body)
         {
             var __workflow_funnelId = WorkflowExpression.Compile(funnelId, nameof(funnelId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FunnelSubscribeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/funnels/{0}/subscribe", __workflow_funnelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FunnelSubscribeResponse>(callPayload);
             });
         }
@@ -338,17 +337,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<WebinarRegisterResponse, ApiConnectionActionConfiguration> WebinarRegister(Expression<Func<string>> webinarId, Expression<Func<WebinarRegisterBodyInput>> body = null)
+        public IBodyWorkflowAction<WebinarRegisterResponse, ApiConnectionActionConfiguration> WebinarRegister(Expression<Func<string>> webinarId, Expression<Func<WebinarRegisterBodyInput>> body)
         {
             var __workflow_webinarId = WorkflowExpression.Compile(webinarId, nameof(webinarId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WebinarRegisterResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/live-webinar/{0}/register", __workflow_webinarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<WebinarRegisterResponse>(callPayload);
             });
         }
@@ -735,6 +733,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
 
     public class UserBodyInput
     {
+        public UserBodyInput(string firstName, string lastName, string email, string password, int commission, string roles)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
+            this.Password = password;
+            this.Commission = commission;
+            this.Roles = roles;
+        }
+
         [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -867,6 +875,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
 
     public class UserEnrollBodyInput
     {
+        public UserEnrollBodyInput(string courseId)
+        {
+            this.CourseId = courseId;
+        }
+
         [JsonProperty("course_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CourseId { get; set; }
 
@@ -894,6 +907,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
 
     public class UserUnenrollBodyInput
     {
+        public UserUnenrollBodyInput(string courseId)
+        {
+            this.CourseId = courseId;
+        }
+
         [JsonProperty("course_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CourseId { get; set; }
     }
@@ -1125,6 +1143,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
 
     public class FunnelSubscribeBodyInput
     {
+        public FunnelSubscribeBodyInput(string name, string email)
+        {
+            this.Name = name;
+            this.Email = email;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1266,6 +1290,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
 
     public class ClassRegisterBodyInput
     {
+        public ClassRegisterBodyInput(string name, string email)
+        {
+            this.Name = name;
+            this.Email = email;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1380,6 +1410,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
 
     public class WebinarRegisterBodyInput
     {
+        public WebinarRegisterBodyInput(string name, string email)
+        {
+            this.Name = name;
+            this.Email = email;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1419,6 +1455,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
 
     public class WebinarUnregisterBodyInput
     {
+        public WebinarUnregisterBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
     }

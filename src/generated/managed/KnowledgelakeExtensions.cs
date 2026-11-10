@@ -50,6 +50,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
 
     public class BatchInput
     {
+        public BatchInput(string importData, string nameForImport, string securityToken, BatchInputRPAEnvironmentType rPAEnvironment)
+        {
+            this.ImportData = importData;
+            this.NameForImport = nameForImport;
+            this.SecurityToken = securityToken;
+            this.RPAEnvironment = rPAEnvironment;
+        }
+
         [JsonProperty("Data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ImportData { get; set; }
 

@@ -99,6 +99,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
 
     public class BodyInput
     {
+        public BodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

@@ -13,67 +13,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
     public class ServicedeskpluscloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<CreateRequestResponse, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<CreateRequestBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateRequestResponse, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<CreateRequestBodyInput>> body)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/requests", __workflow_serviceDeskInstance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<UpdateRequestBodyInput>> body = null)
+        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<UpdateRequestBodyInput>> body)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/requests/{1}", __workflow_serviceDeskInstance.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<CreateChangeResponse, ApiConnectionActionConfiguration> CreateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<CreateChangeBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateChangeResponse, ApiConnectionActionConfiguration> CreateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<CreateChangeBodyInput>> body)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateChangeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/changes", __workflow_serviceDeskInstance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateChangeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<UpdateChangeResponse, ApiConnectionActionConfiguration> UpdateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<UpdateChangeBodyInput>> body = null)
+        public IBodyWorkflowAction<UpdateChangeResponse, ApiConnectionActionConfiguration> UpdateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<UpdateChangeBodyInput>> body)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateChangeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/changes/{1}", __workflow_serviceDeskInstance.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateChangeResponse>(callPayload);
             });
         }
@@ -766,18 +762,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
     public class CreateRequestBodyInput
     {
+        public CreateRequestBodyInput(CreateRequestBodyInputInputDataType inputData)
+        {
+            this.InputData = inputData;
+        }
+
         [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateRequestBodyInputInputDataType InputData { get; set; }
     }
 
     public class CreateRequestBodyInputInputDataType
     {
+        public CreateRequestBodyInputInputDataType(CreateRequestBodyInputInputDataTypeRequestType request)
+        {
+            this.Request = request;
+        }
+
         [JsonProperty("request", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateRequestBodyInputInputDataTypeRequestType Request { get; set; }
     }
 
     public class CreateRequestBodyInputInputDataTypeRequestType
     {
+        public CreateRequestBodyInputInputDataTypeRequestType(string subject)
+        {
+            this.Subject = subject;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
@@ -1606,12 +1617,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
     public class UpdateRequestBodyInput
     {
+        public UpdateRequestBodyInput(UpdateRequestBodyInputInputDataType inputData)
+        {
+            this.InputData = inputData;
+        }
+
         [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateRequestBodyInputInputDataType InputData { get; set; }
     }
 
     public class UpdateRequestBodyInputInputDataType
     {
+        public UpdateRequestBodyInputInputDataType(UpdateRequestBodyInputInputDataTypeRequestType request)
+        {
+            this.Request = request;
+        }
+
         [JsonProperty("request", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateRequestBodyInputInputDataTypeRequestType Request { get; set; }
     }
@@ -2872,18 +2893,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
     public class CreateChangeBodyInput
     {
+        public CreateChangeBodyInput(CreateChangeBodyInputInputDataType inputData)
+        {
+            this.InputData = inputData;
+        }
+
         [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateChangeBodyInputInputDataType InputData { get; set; }
     }
 
     public class CreateChangeBodyInputInputDataType
     {
+        public CreateChangeBodyInputInputDataType(CreateChangeBodyInputInputDataTypeChangeType change)
+        {
+            this.Change = change;
+        }
+
         [JsonProperty("change", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateChangeBodyInputInputDataTypeChangeType Change { get; set; }
     }
 
     public class CreateChangeBodyInputInputDataTypeChangeType
     {
+        public CreateChangeBodyInputInputDataTypeChangeType(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -4231,12 +4267,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
     public class UpdateChangeBodyInput
     {
+        public UpdateChangeBodyInput(UpdateChangeBodyInputInputDataType inputData)
+        {
+            this.InputData = inputData;
+        }
+
         [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateChangeBodyInputInputDataType InputData { get; set; }
     }
 
     public class UpdateChangeBodyInputInputDataType
     {
+        public UpdateChangeBodyInputInputDataType(UpdateChangeBodyInputInputDataTypeChangeType change)
+        {
+            this.Change = change;
+        }
+
         [JsonProperty("change", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateChangeBodyInputInputDataTypeChangeType Change { get; set; }
     }

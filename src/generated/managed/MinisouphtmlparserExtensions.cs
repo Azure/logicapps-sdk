@@ -98,6 +98,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
 
     public class FetchHTMLBodyInput
     {
+        public FetchHTMLBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "fetch_html";
 
@@ -140,6 +145,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
 
     public class SelectElementsBodyInput
     {
+        public SelectElementsBodyInput(string html, string selector)
+        {
+            this.Html = html;
+            this.Selector = selector;
+        }
+
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "select";
 
@@ -176,6 +187,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
 
     public class ExtractValuesBodyInput
     {
+        public ExtractValuesBodyInput(string html, string selector, string attribute)
+        {
+            this.Html = html;
+            this.Selector = selector;
+            this.Attribute = attribute;
+        }
+
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "extract";
 
@@ -206,6 +224,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
 
     public class FindAllElementsBodyInput
     {
+        public FindAllElementsBodyInput(string html, string tagName)
+        {
+            this.Html = html;
+            this.TagName = tagName;
+        }
+
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "find_all";
 
@@ -245,6 +269,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
 
     public class ParseTableBodyInput
     {
+        public ParseTableBodyInput(string html)
+        {
+            this.Html = html;
+        }
+
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "parse_table";
 

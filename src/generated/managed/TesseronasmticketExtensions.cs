@@ -177,6 +177,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public class CreateTicketBodyInput
     {
+        public CreateTicketBodyInput(string ticketHeader, string ticketText, int enterpriseId, int entranceType, int areaId)
+        {
+            this.TicketHeader = ticketHeader;
+            this.TicketText = ticketText;
+            this.EnterpriseId = enterpriseId;
+            this.EntranceType = entranceType;
+            this.AreaId = areaId;
+        }
+
         [JsonProperty("ticketType", DefaultValueHandling = DefaultValueHandling.Include)]
         public int TicketType { get; set; } = 1;
 
@@ -282,6 +291,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public class CreateTicketPositionBodyInput
     {
+        public CreateTicketPositionBodyInput(string referenceNumber, string ticketPositionText)
+        {
+            this.ReferenceNumber = referenceNumber;
+            this.TicketPositionText = ticketPositionText;
+        }
+
         [JsonProperty("referenceNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReferenceNumber { get; set; }
 
@@ -362,6 +377,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public class AddAssetRelationBodyInput
     {
+        public AddAssetRelationBodyInput(string referenceNumber, int[] relatedAssetIds)
+        {
+            this.ReferenceNumber = referenceNumber;
+            this.RelatedAssetIds = relatedAssetIds;
+        }
+
         [JsonProperty("referenceNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReferenceNumber { get; set; }
 
@@ -421,6 +442,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public class GetTicketBodyInput
     {
+        public GetTicketBodyInput(string referenceNumber)
+        {
+            this.ReferenceNumber = referenceNumber;
+        }
+
         [JsonProperty("referenceNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReferenceNumber { get; set; }
     }
@@ -445,6 +471,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public class SearchTicketBodyInput
     {
+        public SearchTicketBodyInput(string referencenumber)
+        {
+            this.Referencenumber = referencenumber;
+        }
+
         [JsonProperty("referencenumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Referencenumber { get; set; }
     }
@@ -466,6 +497,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public class SearchTicketbyParameterBodyInput
     {
+        public SearchTicketbyParameterBodyInput(string searchParam, int take, int skip)
+        {
+            this.SearchParam = searchParam;
+            this.Take = take;
+            this.Skip = skip;
+        }
+
         [JsonProperty("searchParam", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchParam { get; set; }
 
@@ -505,6 +543,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public class GetTicketFieldGroupConfigBodyInput
     {
+        public GetTicketFieldGroupConfigBodyInput(int ticketTypeId)
+        {
+            this.TicketTypeId = ticketTypeId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int TicketTypeId { get; set; }
         public string TicketId { get; set; }
@@ -537,6 +580,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public class GetAllAreasBodyInput
     {
+        public GetAllAreasBodyInput(int responseType, int pageSize, int skip)
+        {
+            this.ResponseType = responseType;
+            this.PageSize = pageSize;
+            this.Skip = skip;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ResponseType { get; set; }
         public string Search { get; set; }

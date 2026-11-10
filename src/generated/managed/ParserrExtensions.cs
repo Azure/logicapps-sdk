@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
 
     public class BodyInput
     {
+        public BodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("TriggerUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 

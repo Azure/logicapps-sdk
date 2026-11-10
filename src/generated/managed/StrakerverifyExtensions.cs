@@ -162,6 +162,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
 
     public class BodyInput
     {
+        public BodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; } = "";
 

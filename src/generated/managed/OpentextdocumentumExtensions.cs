@@ -177,6 +177,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
 
     public class FileDtoInput
     {
+        public FileDtoInput(string fileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -186,6 +192,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
 
     public class CreateDocumentDocumentDtoInput
     {
+        public CreateDocumentDocumentDtoInput(string parentId, CreateDocumentFile @file, DocumentMetadataWriteV2 metadata)
+        {
+            this.ParentId = parentId;
+            this.File = @file;
+            this.Metadata = metadata;
+        }
+
         [JsonProperty("parentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentId { get; set; }
 
@@ -198,6 +211,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
 
     public class CreateDocumentFile
     {
+        public CreateDocumentFile(string fileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -207,6 +226,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
 
     public class DocumentMetadataWriteV2
     {
+        public DocumentMetadataWriteV2(string displayName, JToken fields)
+        {
+            this.DisplayName = displayName;
+            this.Fields = fields;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
@@ -219,6 +244,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
 
     public class UpdateDocumentDocumentDtoInput
     {
+        public UpdateDocumentDocumentDtoInput(CreateDocumentFile @file, DocumentMetadataWriteV2 metadata)
+        {
+            this.File = @file;
+            this.Metadata = metadata;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateDocumentFile File { get; set; }
 
@@ -228,6 +259,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
 
     public class MetadataDtoInput
     {
+        public MetadataDtoInput(string displayName, JToken fields)
+        {
+            this.DisplayName = displayName;
+            this.Fields = fields;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 

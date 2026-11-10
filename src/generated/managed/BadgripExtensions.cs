@@ -4094,6 +4094,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
 
     public class TokenRetrieveBodyInput
     {
+        public TokenRetrieveBodyInput(string token, string issuer, string expires)
+        {
+            this.Token = token;
+            this.Issuer = issuer;
+            this.Expires = expires;
+        }
+
         [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Token { get; set; }
 

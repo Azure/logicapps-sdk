@@ -109,6 +109,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
 
     public class AddNoteBodyInput
     {
+        public AddNoteBodyInput(string note)
+        {
+            this.Note = note;
+        }
+
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Note { get; set; }
 
@@ -181,6 +186,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
 
     public class CreateTicketBodyInput
     {
+        public CreateTicketBodyInput(string subject, BodyInputStatusType status, BodyInputPriorityType priority, string description)
+        {
+            this.Subject = subject;
+            this.Status = status;
+            this.Priority = priority;
+            this.Description = description;
+        }
+
         [JsonProperty("requester_id")]
         public int? RequesterId { get; set; }
 

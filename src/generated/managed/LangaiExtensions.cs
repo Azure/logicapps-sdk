@@ -13,33 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
     public class LangaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
-        public IBodyWorkflowAction<AnalyzeResponse, ApiConnectionActionConfiguration> Analyze(Expression<Func<AnalyzeBodyInput>> body = null)
+        public IBodyWorkflowAction<AnalyzeResponse, ApiConnectionActionConfiguration> Analyze(Expression<Func<AnalyzeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AnalyzeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/analyze";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AnalyzeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
-        public IBodyWorkflowAction<DocumentsResponse, ApiConnectionActionConfiguration> Documents(Expression<Func<DocumentsBodyInput>> body = null)
+        public IBodyWorkflowAction<DocumentsResponse, ApiConnectionActionConfiguration> Documents(Expression<Func<DocumentsBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/documents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DocumentsResponse>(callPayload);
             });
         }
@@ -105,6 +103,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
 
     public class AnalyzeBodyInput
     {
+        public AnalyzeBodyInput(string text, string projectId)
+        {
+            this.Text = text;
+            this.ProjectId = projectId;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
@@ -141,6 +145,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
 
     public class DocumentsBodyInput
     {
+        public DocumentsBodyInput(string text, string projectId)
+        {
+            this.Text = text;
+            this.ProjectId = projectId;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 

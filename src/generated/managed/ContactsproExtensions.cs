@@ -172,6 +172,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
 
     public class BodyInput
     {
+        public BodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

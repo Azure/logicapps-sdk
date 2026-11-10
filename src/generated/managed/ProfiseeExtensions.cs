@@ -190,6 +190,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
 
     public class CreateRecordsByEntityNameBodyInputItem
     {
+        public CreateRecordsByEntityNameBodyInputItem(string code)
+        {
+            this.Code = code;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
         public string Name { get; set; }
@@ -207,6 +212,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
 
     public class CreateEntityBodyInputItem
     {
+        public CreateEntityBodyInputItem(CreateEntityBodyInputItemIdentifierType identifier)
+        {
+            this.Identifier = identifier;
+        }
+
         [JsonProperty("identifier", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateEntityBodyInputItemIdentifierType Identifier { get; set; }
 
@@ -228,6 +238,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
 
     public class CreateEntityBodyInputItemIdentifierType
     {
+        public CreateEntityBodyInputItemIdentifierType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -246,6 +261,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
 
     public class BodyInputItemFileCategoriesTypeItemIdentifierType
     {
+        public BodyInputItemFileCategoriesTypeItemIdentifierType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -255,6 +275,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
 
     public class CreateAttributeBodyInputItem
     {
+        public CreateAttributeBodyInputItem(CreateAttributeBodyInputItemIdentifierType identifier)
+        {
+            this.Identifier = identifier;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateAttributeBodyInputItemIdentifierType Identifier { get; set; }
 
@@ -279,6 +304,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
 
     public class CreateAttributeBodyInputItemIdentifierType
     {
+        public CreateAttributeBodyInputItemIdentifierType(string name, BodyInputItemIdentifierTypeEntityIdType entityId)
+        {
+            this.Name = name;
+            this.EntityId = entityId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -288,6 +319,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
 
     public class BodyInputItemIdentifierTypeEntityIdType
     {
+        public BodyInputItemIdentifierTypeEntityIdType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }

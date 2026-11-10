@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new FeedbackBodyInput().ToJToken();
                 return new ApiConnectionAction<FeedbackResponse>(callPayload);
             });
         }

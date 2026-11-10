@@ -418,6 +418,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
 
     public class ActorModelInput
     {
+        public ActorModelInput(ActorModelInputActionType action, string firstname, string lastname, string email, string mobile)
+        {
+            this.Action = action;
+            this.Firstname = firstname;
+            this.Lastname = lastname;
+            this.Email = email;
+            this.Mobile = mobile;
+        }
+
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public ActorModelInputActionType Action { get; set; }
 
@@ -487,6 +496,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
 
     public class ActorModelModelInput
     {
+        public ActorModelModelInput(ActorModelModelInputActionType action, string firstname, string lastname, string email, string mobile)
+        {
+            this.Action = action;
+            this.Firstname = firstname;
+            this.Lastname = lastname;
+            this.Email = email;
+            this.Mobile = mobile;
+        }
+
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public ActorModelModelInputActionType Action { get; set; }
 
@@ -721,6 +739,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
 
     public class MetadataInput
     {
+        public MetadataInput(MetadataInputDocumentTypeType documentType)
+        {
+            this.DocumentType = documentType;
+        }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -774,6 +797,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
 
     public class OrganisationsGetWorkgroupsByUserModelInput
     {
+        public OrganisationsGetWorkgroupsByUserModelInput(string username)
+        {
+            this.Username = username;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
     }
@@ -1018,6 +1046,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
 
     public class RequestsCreateModelInput
     {
+        public RequestsCreateModelInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

@@ -251,6 +251,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
 
     public class CreateDocumentBodyInput
     {
+        public CreateDocumentBodyInput(string parentId, File @file)
+        {
+            this.ParentId = parentId;
+            this.File = @file;
+        }
+
         [JsonProperty("parentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentId { get; set; }
 
@@ -260,6 +266,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
 
     public class File
     {
+        public File(string fileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
@@ -269,6 +281,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
 
     public class UpdateDocumentBodyInput
     {
+        public UpdateDocumentBodyInput(File @file)
+        {
+            this.File = @file;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public File File { get; set; }
     }
@@ -338,6 +355,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
 
     public class CreateFolderBodyInput
     {
+        public CreateFolderBodyInput(string name, string parentId)
+        {
+            this.Name = name;
+            this.ParentId = parentId;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -347,6 +370,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
 
     public class SimpleSearchBodyInput
     {
+        public SimpleSearchBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -383,6 +411,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
 
     public class AdvancedSearchBodyInput
     {
+        public AdvancedSearchBodyInput(string query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 

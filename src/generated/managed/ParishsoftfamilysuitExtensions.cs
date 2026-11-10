@@ -1004,6 +1004,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
 
     public class FamilyUpdateAutoFillBodyInput
     {
+        public FamilyUpdateAutoFillBodyInput(int organizationId)
+        {
+            this.OrganizationId = organizationId;
+        }
+
         [JsonProperty("organizationID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int OrganizationId { get; set; }
     }

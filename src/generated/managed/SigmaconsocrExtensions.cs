@@ -88,6 +88,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
 
     public class ProcessjobBodyInput
     {
+        public ProcessjobBodyInput(string process, string action, string customerCode)
+        {
+            this.Process = process;
+            this.Action = action;
+            this.CustomerCode = customerCode;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Process { get; set; }
 
@@ -106,6 +113,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
 
     public class ConsolidationjobBodyInput
     {
+        public ConsolidationjobBodyInput(string consoCode, string customerCode)
+        {
+            this.ConsoCode = consoCode;
+            this.CustomerCode = customerCode;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConsoCode { get; set; }
 
@@ -121,6 +134,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
 
     public class ScheduledjobBodyInput
     {
+        public ScheduledjobBodyInput(string jobScheduleName, string customerCode)
+        {
+            this.JobScheduleName = jobScheduleName;
+            this.CustomerCode = customerCode;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JobScheduleName { get; set; }
 
@@ -136,6 +155,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
 
     public class ImportFileBodyInput
     {
+        public ImportFileBodyInput(string importStructureCode, string customerCode, string base64File)
+        {
+            this.ImportStructureCode = importStructureCode;
+            this.CustomerCode = customerCode;
+            this.Base64File = base64File;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ImportStructureCode { get; set; }
 

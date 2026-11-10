@@ -40,16 +40,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        public IBodyWorkflowAction<AcronymResponse, ApiConnectionActionConfiguration> Acronym(Expression<Func<AcronymBodyInput>> body = null)
+        public IBodyWorkflowAction<AcronymResponse, ApiConnectionActionConfiguration> Acronym(Expression<Func<AcronymBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AcronymResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/acronyms";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AcronymResponse>(callPayload);
             });
         }
@@ -92,6 +91,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new AcronymPatchBodyInput().ToJToken();
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -256,6 +257,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
 
     public class AcronymBodyInput
     {
+        public AcronymBodyInput(string displayName, string standsFor)
+        {
+            this.DisplayName = displayName;
+            this.StandsFor = standsFor;
+        }
+
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 

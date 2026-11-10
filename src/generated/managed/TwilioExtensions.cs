@@ -135,6 +135,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
 
     public class SendMessageRequestInput
     {
+        public SendMessageRequestInput(string from, string to, string body)
+        {
+            this.From = from;
+            this.To = to;
+            this.Body = body;
+        }
+
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 

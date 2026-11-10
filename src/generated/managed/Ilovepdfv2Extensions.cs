@@ -271,6 +271,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class CompressBodyInput
     {
+        public CompressBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -309,6 +315,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class SplitBodyInput
     {
+        public SplitBodyInput(BodyInputFileSourceType fileSource, string fileName, BodyInputSplitModeType splitMode)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+            this.SplitMode = splitMode;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -363,6 +376,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class ProtectBodyInput
     {
+        public ProtectBodyInput(BodyInputFileSourceType fileSource, string fileName, string password)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+            this.Password = password;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -381,6 +401,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class PDFtoJPGBodyInput
     {
+        public PDFtoJPGBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -408,6 +434,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class ImageToPDFBodyInput
     {
+        public ImageToPDFBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -442,6 +474,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class PDFtoPDFABodyInput
     {
+        public PDFtoPDFABodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -493,6 +531,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class UnlockBodyInput
     {
+        public UnlockBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -511,6 +555,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class AddPageNumberBodyInput
     {
+        public AddPageNumberBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -618,6 +668,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class MergeBodyInput
     {
+        public MergeBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -654,6 +710,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class WatermarkBodyInput
     {
+        public WatermarkBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -771,6 +833,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class RotateBodyInput
     {
+        public RotateBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -802,6 +870,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class PDFOCRBodyInput
     {
+        public PDFOCRBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -820,6 +894,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class DetectFormsBodyInput
     {
+        public DetectFormsBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -835,6 +915,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class SummarizeBodyInput
     {
+        public SummarizeBodyInput(BodyInputFileSourceType fileSource, string fileName, string language)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+            this.Language = language;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -856,6 +943,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class TranslateBodyInput
     {
+        public TranslateBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 
@@ -877,6 +970,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
     public class SplitSmartBodyInput
     {
+        public SplitSmartBodyInput(BodyInputFileSourceType fileSource, string fileName, string prompt)
+        {
+            this.FileSource = fileSource;
+            this.FileName = fileName;
+            this.Prompt = prompt;
+        }
+
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputFileSourceType FileSource { get; set; }
 

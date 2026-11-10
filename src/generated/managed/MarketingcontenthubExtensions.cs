@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
     public class MarketingcontenthubActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "marketingcontenthub")]
-        public IBodyWorkflowAction<AddFetchJobResponse, ApiConnectionActionConfiguration> AddFetchJob(Expression<Func<ItemsInput>> items = null)
+        public IBodyWorkflowAction<AddFetchJobResponse, ApiConnectionActionConfiguration> AddFetchJob(Expression<Func<ItemsInput>> items)
         {
-            var __workflow_items = WorkflowExpression.Compile(items, nameof(items), required: false);
+            var __workflow_items = WorkflowExpression.Compile(items, nameof(items), required: true);
             return new DeferredBodyAction<AddFetchJobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/fetchjobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_items != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_items);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_items);
                 return new ApiConnectionAction<AddFetchJobResponse>(callPayload);
             });
         }
@@ -246,6 +245,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
 
     public class ItemsInput
     {
+        public ItemsInput(int assetId, string uri)
+        {
+            this.AssetId = assetId;
+            this.Uri = uri;
+        }
+
         [JsonProperty("assetId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int AssetId { get; set; }
 

@@ -492,6 +492,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
     public class UploadFileBodyInput
     {
+        public UploadFileBodyInput(string base64, string title)
+        {
+            this.Base64 = base64;
+            this.Title = title;
+        }
+
         [JsonProperty("base64", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Base64 { get; set; }
 
@@ -930,6 +936,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
     public class CreateEnvelopeBodyInput
     {
+        public CreateEnvelopeBodyInput(string title, BodyInputDocumentsTypeItem[] documents, CreateEnvelopeBodyInputSignersTypeItem[] signers)
+        {
+            this.Title = title;
+            this.Documents = documents;
+            this.Signers = signers;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -954,6 +967,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
     public class BodyInputDocumentsTypeItem
     {
+        public BodyInputDocumentsTypeItem(string title, BodyInputDocumentsTypeItemUploadFileType uploadFile)
+        {
+            this.Title = title;
+            this.UploadFile = uploadFile;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -969,6 +988,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
     public class BodyInputDocumentsTypeItemUploadFileType
     {
+        public BodyInputDocumentsTypeItemUploadFileType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
@@ -1037,6 +1061,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
     public class CreateEnvelopeBodyInputSignersTypeItem
     {
+        public CreateEnvelopeBodyInputSignersTypeItem(string name, string email)
+        {
+            this.Name = name;
+            this.Email = email;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

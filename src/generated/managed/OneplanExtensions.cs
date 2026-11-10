@@ -415,12 +415,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
 
     public class CreatePlanIntegrationPostInput
     {
+        public CreatePlanIntegrationPostInput(IntegrationPostInputWorkPlanType workPlan)
+        {
+            this.WorkPlan = workPlan;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public IntegrationPostInputWorkPlanType WorkPlan { get; set; }
     }
 
     public class IntegrationPostInputWorkPlanType
     {
+        public IntegrationPostInputWorkPlanType(string planName, string planOwner, string planTypeId, JToken fields)
+        {
+            this.PlanName = planName;
+            this.PlanOwner = planOwner;
+            this.PlanTypeId = planTypeId;
+            this.Fields = fields;
+        }
+
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanName { get; set; }
 
@@ -436,6 +449,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
 
     public class StampMappingIntegrationPostInput
     {
+        public StampMappingIntegrationPostInput(string planId, string flowId, string externalSystemId, string externalSystemURL)
+        {
+            this.PlanId = planId;
+            this.FlowId = flowId;
+            this.ExternalSystemId = externalSystemId;
+            this.ExternalSystemURL = externalSystemURL;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
 
@@ -454,6 +475,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
 
     public class RespondToOnePlanBodyInput
     {
+        public RespondToOnePlanBodyInput(string automationProcessId, string actionId, string configurationId, BodyInputStatusType status)
+        {
+            this.AutomationProcessId = automationProcessId;
+            this.ActionId = actionId;
+            this.ConfigurationId = configurationId;
+            this.Status = status;
+        }
+
         [JsonProperty("automationProcessId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AutomationProcessId { get; set; }
 
@@ -479,6 +508,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
 
     public class CreateTaskIntegrationPostInput
     {
+        public CreateTaskIntegrationPostInput(string taskName, JToken fields)
+        {
+            this.TaskName = taskName;
+            this.Fields = fields;
+        }
+
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskName { get; set; }
 
@@ -488,6 +523,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
 
     public class UpdateTaskIntegrationPostInput
     {
+        public UpdateTaskIntegrationPostInput(JToken fields)
+        {
+            this.Fields = fields;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Fields { get; set; }
     }

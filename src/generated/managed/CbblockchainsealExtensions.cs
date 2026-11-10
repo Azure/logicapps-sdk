@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
     public class CbblockchainsealActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<CreateSealResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<CreateSealBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateSealResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<CreateSealBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSealResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/CreateSeal";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSealResponse>(callPayload);
             });
         }
@@ -43,16 +42,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> VerifySeal(Expression<Func<VerifySealBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> VerifySeal(Expression<Func<VerifySealBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/VerfiySeal";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -76,6 +74,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
 
     public class CreateSealBodyInput
     {
+        public CreateSealBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file)
+        {
+            this.File = @file;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
     }
@@ -121,6 +124,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
 
     public class VerifySealBodyInput
     {
+        public VerifySealBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string sealId)
+        {
+            this.File = @file;
+            this.SealId = sealId;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 

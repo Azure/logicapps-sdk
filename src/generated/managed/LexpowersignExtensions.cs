@@ -879,6 +879,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexpowersign
 
     public class CreateContactBodyInput
     {
+        public CreateContactBodyInput(string contactEmail, string contactFirstName, string contactLastName)
+        {
+            this.ContactEmail = contactEmail;
+            this.ContactFirstName = contactFirstName;
+            this.ContactLastName = contactLastName;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactEmail { get; set; }
 
@@ -1194,6 +1201,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexpowersign
 
     public class CreateSignatureProfileBodyInput
     {
+        public CreateSignatureProfileBodyInput(string isDefault, string name, string documentType, string signatureType, bool forceToScrollToTheBottomOfTheDocument)
+        {
+            this.IsDefault = isDefault;
+            this.Name = name;
+            this.DocumentType = documentType;
+            this.SignatureType = signatureType;
+            this.ForceToScrollToTheBottomOfTheDocument = forceToScrollToTheBottomOfTheDocument;
+        }
+
         [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IsDefault { get; set; }
 
@@ -1503,6 +1519,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexpowersign
 
     public class CreateWorkflowBodyInput
     {
+        public CreateWorkflowBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1587,6 +1608,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexpowersign
 
     public class Recipient
     {
+        public Recipient(string consentPageId, string email)
+        {
+            this.ConsentPageId = consentPageId;
+            this.Email = email;
+        }
+
         [JsonProperty("consentPageId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConsentPageId { get; set; }
 
@@ -1905,6 +1932,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexpowersign
 
     public class CreateLayoutBodyInput
     {
+        public CreateLayoutBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

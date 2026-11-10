@@ -61,16 +61,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration> AddContentProperty(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration> AddContentProperty(Expression<Func<BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/v2/contentProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SeismicContentManagerAddContentPropertyResponse>(callPayload);
             });
         }
@@ -216,6 +215,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
 
     public class BodyInput
     {
+        public BodyInput(string name, BodyInputTypeType type, string[] contentPropertyValues, SeismicContentManagerContentPropertyTeamSiteInfo[] teamsiteIds)
+        {
+            this.Name = name;
+            this.Type = type;
+            this.ContentPropertyValues = contentPropertyValues;
+            this.TeamsiteIds = teamsiteIds;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -250,6 +257,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
 
     public class SeismicContentManagerContentPropertyTeamSiteInfo
     {
+        public SeismicContentManagerContentPropertyTeamSiteInfo(string teamsiteId)
+        {
+            this.TeamsiteId = teamsiteId;
+        }
+
         [JsonProperty("teamSiteId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TeamsiteId { get; set; }
 

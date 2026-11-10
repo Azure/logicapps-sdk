@@ -114,6 +114,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
 
     public class CertifyFileBodyInput
     {
+        public CertifyFileBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("file_base_64", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
@@ -149,6 +154,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
 
     public class CertifyHashBodyInput
     {
+        public CertifyHashBodyInput(string hash)
+        {
+            this.Hash = hash;
+        }
+
         [JsonProperty("hash", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Hash { get; set; }
 

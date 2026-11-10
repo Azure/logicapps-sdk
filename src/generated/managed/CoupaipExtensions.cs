@@ -686,11 +686,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvAbandonInvoices(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvAbandonInvoices(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -703,18 +703,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesAddApprover(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesAddApprover(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -727,18 +726,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvBypassApprovalsInvoices(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvBypassApprovalsInvoices(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -751,18 +749,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesBypassCurrentApproval(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesBypassCurrentApproval(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -775,18 +772,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvDisputeInvoices(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvDisputeInvoices(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -799,8 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
@@ -839,11 +834,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesFlipToAdvanceShipNotice(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesFlipToAdvanceShipNotice(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -856,8 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
@@ -979,11 +973,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvPatchInvoice(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvPatchInvoice(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -996,18 +990,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvPutInvoice(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvPutInvoice(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -1020,8 +1013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
@@ -1086,11 +1078,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesRemoveApproval(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesRemoveApproval(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -1103,18 +1095,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvRestartApprovalsInvoices(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvRestartApprovalsInvoices(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -1127,18 +1118,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvRevalidateTolerancesInvoices(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvRevalidateTolerancesInvoices(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -1151,18 +1141,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvSubmitInvoices(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvSubmitInvoices(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -1175,18 +1164,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesUpdateLineAccounts(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesUpdateLineAccounts(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -1199,18 +1187,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvVoidInvoices(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvVoidInvoices(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -1223,18 +1210,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesWithdrawDispute(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<InvoiceHeaderInput>> invoiceHeader = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> InvUpdateInvoicesWithdrawDispute(Expression<Func<string>> accessToken, Expression<Func<InvoiceHeaderInput>> invoiceHeader, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invoiceHeader = WorkflowExpression.Compile(invoiceHeader, nameof(invoiceHeader), required: false);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -1247,8 +1233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                if (__workflow_invoiceHeader != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invoiceHeader);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
@@ -2116,6 +2101,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new POCommentsPOCreateBodyInput().ToJToken();
                 return new ApiConnectionAction<Comment>(callPayload);
             });
         }
@@ -2638,6 +2625,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ReqAddToCartFreeTextBodyInput().ToJToken();
                 return new ApiConnectionAction<Requisition>(callPayload);
             });
         }
@@ -4480,6 +4469,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
 
     public class InvoiceHeaderInput
     {
+        public InvoiceHeaderInput(InvAbandonInvoicesAccountTypeSimple accountType, AddressSimple billToAddress, TaxRegistrationSimple2 buyerTaxRegistration, JToken invoiceDate, AddressSimple invoiceFromAddress, JToken invoiceNumber, JToken lineLevelTaxation, JToken originCurrencyGross, JToken originCurrencyNet, JToken originalInvoiceDate, JToken originalInvoiceNumber, AddressSimple remitToAddress, AddressSimple shipFromAddress, SupplierSiteSimple supplierRemitTo, TaxRegistrationSimple2 supplierTaxRegistration, JToken taxesInOriginCountryCurrency)
+        {
+            this.AccountType = accountType;
+            this.BillToAddress = billToAddress;
+            this.BuyerTaxRegistration = buyerTaxRegistration;
+            this.InvoiceDate = invoiceDate;
+            this.InvoiceFromAddress = invoiceFromAddress;
+            this.InvoiceNumber = invoiceNumber;
+            this.LineLevelTaxation = lineLevelTaxation;
+            this.OriginCurrencyGross = originCurrencyGross;
+            this.OriginCurrencyNet = originCurrencyNet;
+            this.OriginalInvoiceDate = originalInvoiceDate;
+            this.OriginalInvoiceNumber = originalInvoiceNumber;
+            this.RemitToAddress = remitToAddress;
+            this.ShipFromAddress = shipFromAddress;
+            this.SupplierRemitTo = supplierRemitTo;
+            this.SupplierTaxRegistration = supplierTaxRegistration;
+            this.TaxesInOriginCountryCurrency = taxesInOriginCountryCurrency;
+        }
+
         [JsonProperty("abandon-reason")]
         public AbandonReasonSimple AbandonReason { get; set; }
 
@@ -5164,6 +5173,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
 
     public class InvAbandonInvoicesUserSimple
     {
+        public InvAbandonInvoicesUserSimple(JToken login, JToken email)
+        {
+            this.Login = login;
+            this.Email = email;
+        }
+
         [JsonProperty("id")]
         public JToken Id { get; set; }
 
@@ -5573,6 +5588,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
 
     public class InvPostCommentBodyInput
     {
+        public InvPostCommentBodyInput(string comment)
+        {
+            this.Comment = comment;
+        }
+
         [JsonProperty("comments", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
 
@@ -5678,6 +5698,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
 
     public class LkpValCreateLookupValueBodyInput
     {
+        public LkpValCreateLookupValueBodyInput(JToken name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Name { get; set; }
 
@@ -5846,6 +5871,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
 
     public class OrdListCreateOrderPadBodyInput
     {
+        public OrdListCreateOrderPadBodyInput(JToken name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("id")]
         public JToken Id { get; set; }
 
@@ -5897,6 +5927,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
 
     public class OrdListCreateOrderPadOrderPadLine
     {
+        public OrdListCreateOrderPadOrderPadLine(OrdListCreateOrderPadItem item, JToken orderAmountMethod, JToken supplierId)
+        {
+            this.Item = item;
+            this.OrderAmountMethod = orderAmountMethod;
+            this.SupplierId = supplierId;
+        }
+
         [JsonProperty("id")]
         public JToken Id { get; set; }
 
@@ -6218,6 +6255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
 
     public class OrdListLineCreateOrderPadLineBodyInput
     {
+        public OrdListLineCreateOrderPadLineBodyInput(OrdListCreateOrderPadItem item, JToken orderAmountMethod, JToken supplierId)
+        {
+            this.Item = item;
+            this.OrderAmountMethod = orderAmountMethod;
+            this.SupplierId = supplierId;
+        }
+
         [JsonProperty("id")]
         public JToken Id { get; set; }
 

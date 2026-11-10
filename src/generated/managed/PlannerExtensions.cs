@@ -415,12 +415,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
     public class UnassignUsersBodyInput
     {
+        public UnassignUsersBodyInput(string removeAssignedUsers)
+        {
+            this.RemoveAssignedUsers = removeAssignedUsers;
+        }
+
         [JsonProperty("assignments", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RemoveAssignedUsers { get; set; }
     }
 
     public class AssignUsersBodyInput
     {
+        public AssignUsersBodyInput(string assignedUserIds)
+        {
+            this.AssignedUserIds = assignedUserIds;
+        }
+
         [JsonProperty("assignments", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AssignedUserIds { get; set; }
     }
@@ -457,6 +467,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
     public class CreateBucketBodyInput
     {
+        public CreateBucketBodyInput(string name, string groupId, string planId)
+        {
+            this.Name = name;
+            this.GroupId = groupId;
+            this.PlanId = planId;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -565,6 +582,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
     public class CreateTaskBodyInput
     {
+        public CreateTaskBodyInput(string groupId, string planId, string title)
+        {
+            this.GroupId = groupId;
+            this.PlanId = planId;
+            this.Title = title;
+        }
+
         [JsonProperty("groupId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupId { get; set; }
 
@@ -784,6 +808,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
     public class BodyInputReferencesTypeItem
     {
+        public BodyInputReferencesTypeItem(string resourceLink)
+        {
+            this.ResourceLink = resourceLink;
+        }
+
         [JsonProperty("alias")]
         public string Alias { get; set; }
 
@@ -796,6 +825,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
     public class BodyInputChecklistTypeItem
     {
+        public BodyInputChecklistTypeItem(string id, string title, bool isChecked)
+        {
+            this.Id = id;
+            this.Title = title;
+            this.IsChecked = isChecked;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 

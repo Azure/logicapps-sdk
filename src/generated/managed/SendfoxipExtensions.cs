@@ -37,16 +37,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ListResponse, ApiConnectionActionConfiguration> List(Expression<Func<ListBodyInput>> body = null)
+        public IBodyWorkflowAction<ListResponse, ApiConnectionActionConfiguration> List(Expression<Func<ListBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ListResponse>(callPayload);
             });
         }
@@ -263,6 +262,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
 
     public class ListBodyInput
     {
+        public ListBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -701,6 +705,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
 
     public class UnsubscribePatchBodyInput
     {
+        public UnsubscribePatchBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
     }

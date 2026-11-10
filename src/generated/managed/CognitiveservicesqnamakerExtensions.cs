@@ -73,6 +73,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
 
     public class BodyInput
     {
+        public BodyInput(string question)
+        {
+            this.Question = question;
+        }
+
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
 

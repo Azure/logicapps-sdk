@@ -195,6 +195,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ExtendExpirationDateBodyInput().ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -216,16 +218,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
 
     public class TeamsspiritTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ActionTriggerResponse, ApiConnectionPollingTriggerConfiguration> ActionTrigger(Expression<Func<ActionTriggerBodyInput>> body = null)
+        public IBodyWorkflowTrigger<ActionTriggerResponse, ApiConnectionPollingTriggerConfiguration> ActionTrigger(Expression<Func<ActionTriggerBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ActionTriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger<ActionTriggerResponse>(callPayload);
             });
         }
@@ -308,6 +309,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
 
     public class ArchiveTeamBodyInput
     {
+        public ArchiveTeamBodyInput(bool sharePointReadOnly)
+        {
+            this.SharePointReadOnly = sharePointReadOnly;
+        }
+
         [JsonProperty("sharePointReadOnly", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool SharePointReadOnly { get; set; }
     }
@@ -347,6 +353,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
 
     public class ActionTriggerBodyInput
     {
+        public ActionTriggerBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 

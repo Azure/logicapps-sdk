@@ -168,6 +168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
 
     public class UpdateProductBodyInput
     {
+        public UpdateProductBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -192,6 +197,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
 
     public class CreateProductBodyInput
     {
+        public CreateProductBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

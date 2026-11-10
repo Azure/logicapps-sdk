@@ -599,6 +599,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CheckInFileBodyInput().ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -808,6 +810,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
 
     public class CreatePermissionBodyInput
     {
+        public CreatePermissionBodyInput(CreatePermissionFileStorageContainerPermissionRolesItem[] roles, BodyInputGrantedToV2Type grantedToV2)
+        {
+            this.Roles = roles;
+            this.GrantedToV2 = grantedToV2;
+        }
+
         [JsonProperty("roles", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreatePermissionFileStorageContainerPermissionRolesItem[] Roles { get; set; }
 
@@ -830,18 +838,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
 
     public class BodyInputGrantedToV2Type
     {
+        public BodyInputGrantedToV2Type(BodyInputGrantedToV2TypeUserType user)
+        {
+            this.User = user;
+        }
+
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputGrantedToV2TypeUserType User { get; set; }
     }
 
     public class BodyInputGrantedToV2TypeUserType
     {
+        public BodyInputGrantedToV2TypeUserType(string userPrincipalName)
+        {
+            this.UserPrincipalName = userPrincipalName;
+        }
+
         [JsonProperty("userPrincipalName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserPrincipalName { get; set; }
     }
 
     public class UpdatePermissionBodyInput
     {
+        public UpdatePermissionBodyInput(CreatePermissionFileStorageContainerPermissionRolesItem[] permissionRoles)
+        {
+            this.PermissionRoles = permissionRoles;
+        }
+
         [JsonProperty("roles", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreatePermissionFileStorageContainerPermissionRolesItem[] PermissionRoles { get; set; }
     }
@@ -1537,6 +1560,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
 
     public class SendSharingInvitationBodyInput
     {
+        public SendSharingInvitationBodyInput(bool requireSignIn, BodyInputRolesTypeItem[] roles, BodyInputRecipientsTypeItem[] recipients, string message, bool sendInvitation)
+        {
+            this.RequireSignIn = requireSignIn;
+            this.Roles = roles;
+            this.Recipients = recipients;
+            this.Message = message;
+            this.SendInvitation = sendInvitation;
+        }
+
         [JsonProperty("requireSignIn", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool RequireSignIn { get; set; }
 
@@ -1782,6 +1814,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
 
     public class PermanentDeleteRecycledFilesBodyInput
     {
+        public PermanentDeleteRecycledFilesBodyInput(string[] itemIDs)
+        {
+            this.ItemIDs = itemIDs;
+        }
+
         [JsonProperty("ids", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ItemIDs { get; set; }
     }

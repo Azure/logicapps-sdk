@@ -100,6 +100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
 
     public class AddFormBodyInput
     {
+        public AddFormBodyInput(string formName)
+        {
+            this.FormName = formName;
+        }
+
         [JsonProperty("formTitle", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FormName { get; set; }
 
@@ -112,6 +117,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
 
     public class AddFormFieldBodyInput
     {
+        public AddFormFieldBodyInput(string formId, string formName, string fieldName, string fieldType)
+        {
+            this.FormId = formId;
+            this.FormName = formName;
+            this.FieldName = fieldName;
+            this.FieldType = fieldType;
+        }
+
         [JsonProperty("instanceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FormId { get; set; }
 
@@ -130,6 +143,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
 
     public class AddAdaptiveCardBodyInput
     {
+        public AddAdaptiveCardBodyInput(string name, string card)
+        {
+            this.Name = name;
+            this.Card = card;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

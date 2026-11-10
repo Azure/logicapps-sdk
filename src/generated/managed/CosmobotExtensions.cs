@@ -25,46 +25,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IBodyWorkflowAction<AskQuestionResponse, ApiConnectionActionConfiguration> AskQuestion(Expression<Func<AskQuestionRequestBodyInput>> requestBody = null)
+        public IBodyWorkflowAction<AskQuestionResponse, ApiConnectionActionConfiguration> AskQuestion(Expression<Func<AskQuestionRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<AskQuestionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<AskQuestionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IBodyWorkflowAction<ParseTextResponse, ApiConnectionActionConfiguration> ParseText(Expression<Func<ParseTextRequestBodyInput>> requestBody = null)
+        public IBodyWorkflowAction<ParseTextResponse, ApiConnectionActionConfiguration> ParseText(Expression<Func<ParseTextRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<ParseTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/parse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<ParseTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IBodyWorkflowAction<TranslateResponse, ApiConnectionActionConfiguration> Translate(Expression<Func<TranslateRequestBodyInput>> requestBody = null)
+        public IBodyWorkflowAction<TranslateResponse, ApiConnectionActionConfiguration> Translate(Expression<Func<TranslateRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<TranslateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/translate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<TranslateResponse>(callPayload);
             });
         }
@@ -137,121 +134,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddExpert(Expression<Func<AddExpertRequestBodyInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddExpert(Expression<Func<AddExpertRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add-expert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveExpert(Expression<Func<RemoveExpertRequestBodyInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveExpert(Expression<Func<RemoveExpertRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/remove-expert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddTopic(Expression<Func<AddTopicRequestBodyInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddTopic(Expression<Func<AddTopicRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add-topic";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RenameTopic(Expression<Func<RenameTopicRequestBodyInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RenameTopic(Expression<Func<RenameTopicRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/rename-topic";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddAnswer(Expression<Func<AddAnswerRequestBodyInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddAnswer(Expression<Func<AddAnswerRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add-answer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditAnswer(Expression<Func<EditAnswerRequestBodyInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditAnswer(Expression<Func<EditAnswerRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/edit-answer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAnswer(Expression<Func<DeleteAnswerRequestBodyInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAnswer(Expression<Func<DeleteAnswerRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/delete-answer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddSubAnswer(Expression<Func<AddSubAnswerRequestBodyInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddSubAnswer(Expression<Func<AddSubAnswerRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add-subanswer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -281,46 +270,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IBodyWorkflowAction<OpenTicketQuestionResponse, ApiConnectionActionConfiguration> OpenTicketQuestion(Expression<Func<OpenTicketQuestionRequestBodyInput>> requestBody = null)
+        public IBodyWorkflowAction<OpenTicketQuestionResponse, ApiConnectionActionConfiguration> OpenTicketQuestion(Expression<Func<OpenTicketQuestionRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<OpenTicketQuestionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/open-ticket-question";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<OpenTicketQuestionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IBodyWorkflowAction<OpenTicketFeedbackResponse, ApiConnectionActionConfiguration> OpenTicketFeedback(Expression<Func<OpenTicketFeedbackRequestBodyInput>> requestBody = null)
+        public IBodyWorkflowAction<OpenTicketFeedbackResponse, ApiConnectionActionConfiguration> OpenTicketFeedback(Expression<Func<OpenTicketFeedbackRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<OpenTicketFeedbackResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/open-ticket-feedback";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<OpenTicketFeedbackResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CloseTicket(Expression<Func<CloseTicketRequestBodyInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CloseTicket(Expression<Func<CloseTicketRequestBodyInput>> requestBody)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/close-ticket";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBody != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -442,6 +428,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class AskQuestionRequestBodyInput
     {
+        public AskQuestionRequestBodyInput(string question)
+        {
+            this.Question = question;
+        }
+
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
 
@@ -460,6 +451,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class ParseTextRequestBodyInput
     {
+        public ParseTextRequestBodyInput(string inputText)
+        {
+            this.InputText = inputText;
+        }
+
         [JsonProperty("inputText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputText { get; set; }
 
@@ -486,6 +482,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class TranslateRequestBodyInput
     {
+        public TranslateRequestBodyInput(string targetLanguageCode, string inputText)
+        {
+            this.TargetLanguageCode = targetLanguageCode;
+            this.InputText = inputText;
+        }
+
         [JsonProperty("targetLanguageCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetLanguageCode { get; set; }
 
@@ -528,6 +530,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class AddExpertRequestBodyInput
     {
+        public AddExpertRequestBodyInput(string topic, string expertEmail)
+        {
+            this.Topic = topic;
+            this.ExpertEmail = expertEmail;
+        }
+
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Topic { get; set; }
 
@@ -537,6 +545,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class RemoveExpertRequestBodyInput
     {
+        public RemoveExpertRequestBodyInput(string expertEmail)
+        {
+            this.ExpertEmail = expertEmail;
+        }
+
         [JsonProperty("expertEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ExpertEmail { get; set; }
 
@@ -546,6 +559,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class AddTopicRequestBodyInput
     {
+        public AddTopicRequestBodyInput(string name, string description, string[] expertEmails)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.ExpertEmails = expertEmails;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -558,6 +578,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class RenameTopicRequestBodyInput
     {
+        public RenameTopicRequestBodyInput(string name, string newName)
+        {
+            this.Name = name;
+            this.NewName = newName;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -567,6 +593,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class AddAnswerRequestBodyInput
     {
+        public AddAnswerRequestBodyInput(string topic, string shortDescription, string[] questions, string answerText)
+        {
+            this.Topic = topic;
+            this.ShortDescription = shortDescription;
+            this.Questions = questions;
+            this.AnswerText = answerText;
+        }
+
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Topic { get; set; }
 
@@ -585,6 +619,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class EditAnswerRequestBodyInput
     {
+        public EditAnswerRequestBodyInput(string shortDescription)
+        {
+            this.ShortDescription = shortDescription;
+        }
+
         [JsonProperty("shortDescription", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ShortDescription { get; set; }
 
@@ -606,12 +645,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class DeleteAnswerRequestBodyInput
     {
+        public DeleteAnswerRequestBodyInput(string shortDescription)
+        {
+            this.ShortDescription = shortDescription;
+        }
+
         [JsonProperty("shortDescription", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ShortDescription { get; set; }
     }
 
     public class AddSubAnswerRequestBodyInput
     {
+        public AddSubAnswerRequestBodyInput(string shortDescription, string subShortDescription, string[] subQuestions, string subAnswerText)
+        {
+            this.ShortDescription = shortDescription;
+            this.SubShortDescription = subShortDescription;
+            this.SubQuestions = subQuestions;
+            this.SubAnswerText = subAnswerText;
+        }
+
         [JsonProperty("shortDescription", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ShortDescription { get; set; }
 
@@ -672,6 +724,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class OpenTicketQuestionRequestBodyInput
     {
+        public OpenTicketQuestionRequestBodyInput(string userEmail, string queryText)
+        {
+            this.UserEmail = userEmail;
+            this.QueryText = queryText;
+        }
+
         [JsonProperty("userEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserEmail { get; set; }
 
@@ -690,6 +748,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class OpenTicketFeedbackRequestBodyInput
     {
+        public OpenTicketFeedbackRequestBodyInput(string userEmail, string queryText, string answerShortDescription, string feedbackText)
+        {
+            this.UserEmail = userEmail;
+            this.QueryText = queryText;
+            this.AnswerShortDescription = answerShortDescription;
+            this.FeedbackText = feedbackText;
+        }
+
         [JsonProperty("userEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserEmail { get; set; }
 
@@ -705,6 +771,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class CloseTicketRequestBodyInput
     {
+        public CloseTicketRequestBodyInput(string ticketId, string editorEmail, string editorComment)
+        {
+            this.TicketId = ticketId;
+            this.EditorEmail = editorEmail;
+            this.EditorComment = editorComment;
+        }
+
         [JsonProperty("ticketId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TicketId { get; set; }
 

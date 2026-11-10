@@ -60,6 +60,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
 
     public class BodyInput
     {
+        public BodyInput(string rating, string title, string reviewText, string productName)
+        {
+            this.Rating = rating;
+            this.Title = title;
+            this.ReviewText = reviewText;
+            this.ProductName = productName;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Rating { get; set; }
 

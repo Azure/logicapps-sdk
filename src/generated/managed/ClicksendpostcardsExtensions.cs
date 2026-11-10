@@ -84,6 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
 
     public class UploadMediaBodyInput
     {
+        public UploadMediaBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
@@ -225,6 +230,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
 
     public class SendPostcardBodyInput
     {
+        public SendPostcardBodyInput(BodyInputRecipientsTypeItem[] recipients, string[] fileUrls)
+        {
+            this.Recipients = recipients;
+            this.FileUrls = fileUrls;
+        }
+
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputRecipientsTypeItem[] Recipients { get; set; }
 
@@ -237,6 +248,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
 
     public class BodyInputRecipientsTypeItem
     {
+        public BodyInputRecipientsTypeItem(string addressName, string addressCity, string addressState, string addressPostalCode, string addressCountry, int returnAddressId, string addressLine1)
+        {
+            this.AddressName = addressName;
+            this.AddressCity = addressCity;
+            this.AddressState = addressState;
+            this.AddressPostalCode = addressPostalCode;
+            this.AddressCountry = addressCountry;
+            this.ReturnAddressId = returnAddressId;
+            this.AddressLine1 = addressLine1;
+        }
+
         [JsonProperty("address_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressName { get; set; }
 

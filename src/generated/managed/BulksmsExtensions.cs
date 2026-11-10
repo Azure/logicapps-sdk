@@ -35,6 +35,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
 
     public class BodyInput
     {
+        public BodyInput(string to, string body)
+        {
+            this.To = to;
+            this.Body = body;
+        }
+
         [JsonProperty("from")]
         public string From { get; set; }
 

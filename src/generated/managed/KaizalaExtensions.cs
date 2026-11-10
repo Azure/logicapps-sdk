@@ -97,17 +97,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddGroupToGroup(Expression<Func<string>> groupId, Expression<Func<AddGroupToGroupRequestInput>> request = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddGroupToGroup(Expression<Func<string>> groupId, Expression<Func<AddGroupToGroupRequestInput>> request)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/subgroups", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_request != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -437,6 +436,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
     public class SendMessageRequestInput
     {
+        public SendMessageRequestInput(string message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
 
@@ -514,6 +518,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
     public class SendReplyRequestInput
     {
+        public SendReplyRequestInput(string messageId, string message)
+        {
+            this.MessageId = messageId;
+            this.Message = message;
+        }
+
         [JsonProperty("replyToReferenceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MessageId { get; set; }
 
@@ -529,6 +539,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
     public class CreateGroupRequestInput
     {
+        public CreateGroupRequestInput(string groupName, string welcomeMessage)
+        {
+            this.GroupName = groupName;
+            this.WelcomeMessage = welcomeMessage;
+        }
+
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
 
@@ -555,18 +571,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
     public class AddGroupToGroupRequestInput
     {
+        public AddGroupToGroupRequestInput(string[] subGroups)
+        {
+            this.SubGroups = subGroups;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] SubGroups { get; set; }
     }
 
     public class AddUserToGroupRequestInput
     {
+        public AddUserToGroupRequestInput(string members)
+        {
+            this.Members = members;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Members { get; set; }
     }
 
     public class AddSubscriberToGroupRequestInput
     {
+        public AddSubscriberToGroupRequestInput(string subscribers)
+        {
+            this.Subscribers = subscribers;
+        }
+
         [JsonProperty("subscribers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subscribers { get; set; }
     }
@@ -579,12 +610,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
     public class MediaUrlInput
     {
+        public MediaUrlInput(string mediaUrl)
+        {
+            this.MediaUrl = mediaUrl;
+        }
+
         [JsonProperty("mediaUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MediaUrl { get; set; }
     }
 
     public class UploadMediaFromAttachmentRequestInput
     {
+        public UploadMediaFromAttachmentRequestInput(JToken mediaFile)
+        {
+            this.MediaFile = mediaFile;
+        }
+
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken MediaFile { get; set; }
     }

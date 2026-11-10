@@ -13,31 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
     public class AdpemployeeselfserviActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/create-emergency-contact";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<DeleteContactsResponse, ApiConnectionActionConfiguration> DeleteContacts(Expression<Func<DeleteContactsBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteContactsResponse, ApiConnectionActionConfiguration> DeleteContacts(Expression<Func<DeleteContactsBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/delete-emergency-contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteContactsResponse>(callPayload);
             });
         }
@@ -91,16 +89,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<UpdateContactBodyInput>> body = null)
+        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<UpdateContactBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/update-emergency-contact";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateContactResponse>(callPayload);
             });
         }
@@ -139,6 +136,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
 
     public class CreateContactBodyInput
     {
+        public CreateContactBodyInput(string contactName, BodyInputRelationType relation, bool isPrimary)
+        {
+            this.ContactName = contactName;
+            this.Relation = relation;
+            this.IsPrimary = isPrimary;
+        }
+
         [JsonProperty("contactName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactName { get; set; }
 
@@ -250,6 +254,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
 
     public class DeleteContactsBodyInput
     {
+        public DeleteContactsBodyInput(string[] itemIds)
+        {
+            this.ItemIds = itemIds;
+        }
+
         [JsonProperty("itemIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ItemIds { get; set; }
     }
@@ -418,6 +427,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
 
     public class UpdateContactBodyInput
     {
+        public UpdateContactBodyInput(string itemId, string contactName, BodyInputRelationType relation, bool isPrimary)
+        {
+            this.ItemId = itemId;
+            this.ContactName = contactName;
+            this.Relation = relation;
+            this.IsPrimary = isPrimary;
+        }
+
         [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ItemId { get; set; }
 

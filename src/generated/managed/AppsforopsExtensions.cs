@@ -68,6 +68,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
 
     public class ApiExtNPSModelInput
     {
+        public ApiExtNPSModelInput(string email, int score, string ratingDate)
+        {
+            this.Email = email;
+            this.Score = score;
+            this.RatingDate = ratingDate;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -125,6 +132,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
 
     public class ApiExtTimelineModelInput
     {
+        public ApiExtTimelineModelInput(string source, string title, string description, string toDisplayName, string toEmail, string fromDisplayName, string fromEmail, string createdByDateTime)
+        {
+            this.Source = source;
+            this.Title = title;
+            this.Description = description;
+            this.ToDisplayName = toDisplayName;
+            this.ToEmail = toEmail;
+            this.FromDisplayName = fromDisplayName;
+            this.FromEmail = fromEmail;
+            this.CreatedByDateTime = createdByDateTime;
+        }
+
         [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Source { get; set; }
 

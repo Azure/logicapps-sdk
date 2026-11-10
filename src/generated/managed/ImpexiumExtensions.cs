@@ -963,37 +963,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IBodyWorkflowAction<PhoneDataSet, ApiConnectionActionConfiguration> UpdatePhoneForAnIndividual(Expression<Func<string>> idOrRecordNumber, Expression<Func<string>> id, Expression<Func<AddPhoneToIndividualBodyInput>> body = null)
+        public IBodyWorkflowAction<PhoneDataSet, ApiConnectionActionConfiguration> UpdatePhoneForAnIndividual(Expression<Func<string>> idOrRecordNumber, Expression<Func<string>> id, Expression<Func<AddPhoneToIndividualBodyInput>> body)
         {
             var __workflow_idOrRecordNumber = WorkflowExpression.Compile(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PhoneDataSet, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/Individuals/{0}/Phones/{1}", __workflow_idOrRecordNumber.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PhoneDataSet>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IBodyWorkflowAction<PhoneDataSet, ApiConnectionActionConfiguration> UpdatePhoneForAnOrganization(Expression<Func<string>> idOrRecordNumber, Expression<Func<string>> id, Expression<Func<AddPhoneToIndividualBodyInput>> body = null)
+        public IBodyWorkflowAction<PhoneDataSet, ApiConnectionActionConfiguration> UpdatePhoneForAnOrganization(Expression<Func<string>> idOrRecordNumber, Expression<Func<string>> id, Expression<Func<AddPhoneToIndividualBodyInput>> body)
         {
             var __workflow_idOrRecordNumber = WorkflowExpression.Compile(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PhoneDataSet, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/Organizations/{0}/Phones/{1}", __workflow_idOrRecordNumber.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PhoneDataSet>(callPayload);
             });
         }
@@ -1033,18 +1031,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IBodyWorkflowAction<PhoneDataSet, ApiConnectionActionConfiguration> AddPhoneToOrganization(Expression<Func<string>> idOrRecordNumber, Expression<Func<AddPhoneToIndividualBodyInput>> body = null)
+        public IBodyWorkflowAction<PhoneDataSet, ApiConnectionActionConfiguration> AddPhoneToOrganization(Expression<Func<string>> idOrRecordNumber, Expression<Func<AddPhoneToIndividualBodyInput>> body)
         {
             var __workflow_idOrRecordNumber = WorkflowExpression.Compile(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PhoneDataSet, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/Organizations/{0}/Phones", __workflow_idOrRecordNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PhoneDataSet>(callPayload);
             });
         }
@@ -1083,35 +1080,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAnOrganizationWebLink(Expression<Func<string>> idOrRecordNumber, Expression<Func<AddWebLinkForOrganizationBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAnOrganizationWebLink(Expression<Func<string>> idOrRecordNumber, Expression<Func<AddWebLinkForOrganizationBodyInput>> body)
         {
             var __workflow_idOrRecordNumber = WorkflowExpression.Compile(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/Organizations/{0}/Links", __workflow_idOrRecordNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddWebLinkForOrganization(Expression<Func<string>> idOrRecordNumber, Expression<Func<AddWebLinkForOrganizationBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddWebLinkForOrganization(Expression<Func<string>> idOrRecordNumber, Expression<Func<AddWebLinkForOrganizationBodyInput>> body)
         {
             var __workflow_idOrRecordNumber = WorkflowExpression.Compile(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/Organizations/{0}/Links", __workflow_idOrRecordNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1203,18 +1198,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IBodyWorkflowAction<PhoneDataSet, ApiConnectionActionConfiguration> AddPhoneToIndividual(Expression<Func<string>> idOrRecordNumber, Expression<Func<AddPhoneToIndividualBodyInput>> body = null)
+        public IBodyWorkflowAction<PhoneDataSet, ApiConnectionActionConfiguration> AddPhoneToIndividual(Expression<Func<string>> idOrRecordNumber, Expression<Func<AddPhoneToIndividualBodyInput>> body)
         {
             var __workflow_idOrRecordNumber = WorkflowExpression.Compile(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PhoneDataSet, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/Individuals/{0}/Phones", __workflow_idOrRecordNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PhoneDataSet>(callPayload);
             });
         }
@@ -1360,27 +1354,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SaveRelationshipForOrganization(Expression<Func<string>> id, Expression<Func<SaveRelationshipForOrganizationBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SaveRelationshipForOrganization(Expression<Func<string>> id, Expression<Func<SaveRelationshipForOrganizationBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/Organizations/{0}/Relationships", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IBodyWorkflowAction<IndividualData, ApiConnectionActionConfiguration> AddIndividual(Expression<Func<bool>> createUser = null, Expression<Func<AddIndividualBodyInput>> body = null)
+        public IBodyWorkflowAction<IndividualData, ApiConnectionActionConfiguration> AddIndividual(Expression<Func<AddIndividualBodyInput>> body, Expression<Func<bool>> createUser = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<IndividualData, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/Individuals";
@@ -1389,8 +1382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
                 if (__workflow_createUser != null)
                     callPayload.Queries["createUser"] = ExpressionConverter.Convert(__workflow_createUser);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IndividualData>(callPayload);
             });
         }
@@ -1469,18 +1461,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddActivity(Expression<Func<string>> id, Expression<Func<AddActivityBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddActivity(Expression<Func<string>> id, Expression<Func<AddActivityBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/Individuals/{0}/Activities", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1501,18 +1492,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddRelationshipToIndividual(Expression<Func<string>> id, Expression<Func<AddRelationshipToIndividualBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddRelationshipToIndividual(Expression<Func<string>> id, Expression<Func<AddRelationshipToIndividualBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/Individuals/{0}/Relationships", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("Application/Json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1600,17 +1590,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IBodyWorkflowAction<OrganizationData, ApiConnectionActionConfiguration> AddOrganization(Expression<Func<AddOrganizationBodyInput>> body = null)
+        public IBodyWorkflowAction<OrganizationData, ApiConnectionActionConfiguration> AddOrganization(Expression<Func<AddOrganizationBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrganizationData, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/Organizations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OrganizationData>(callPayload);
             });
         }
@@ -7021,6 +7010,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class AddPhoneToIndividualBodyInput
     {
+        public AddPhoneToIndividualBodyInput(string countryName, string number, BodyInputTypeNameType typeName)
+        {
+            this.CountryName = countryName;
+            this.Number = number;
+            this.TypeName = typeName;
+        }
+
         [JsonProperty("countryName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CountryName { get; set; }
 
@@ -8142,6 +8138,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class AddWebLinkForOrganizationBodyInput
     {
+        public AddWebLinkForOrganizationBodyInput(AddWebLinkForIndividualBodyInputTypeType type, string url)
+        {
+            this.Type = type;
+            this.Url = url;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public AddWebLinkForIndividualBodyInputTypeType Type { get; set; }
 
@@ -9287,6 +9289,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class SaveRelationshipForOrganizationBodyInput
     {
+        public SaveRelationshipForOrganizationBodyInput(string relationshipName, string relatedToCustomerRecordNumber, string reciprocalRelationshipName)
+        {
+            this.RelationshipName = relationshipName;
+            this.RelatedToCustomerRecordNumber = relatedToCustomerRecordNumber;
+            this.ReciprocalRelationshipName = reciprocalRelationshipName;
+        }
+
         [JsonProperty("relationshipName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RelationshipName { get; set; }
 
@@ -9314,6 +9323,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class AddIndividualBodyInput
     {
+        public AddIndividualBodyInput(string firstName, string lastName)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
@@ -9353,6 +9368,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class AddActivityBodyInput
     {
+        public AddActivityBodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Category { get; set; } = "Impexium";
 
@@ -9377,6 +9397,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class AddRelationshipToIndividualBodyInput
     {
+        public AddRelationshipToIndividualBodyInput(string relatedToCustomerRecordNumber)
+        {
+            this.RelatedToCustomerRecordNumber = relatedToCustomerRecordNumber;
+        }
+
         [JsonProperty("relationshipName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RelationshipName { get; set; } = "Employee";
 
@@ -9401,6 +9426,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class IndividualAddEducationCreditBodyInput
     {
+        public IndividualAddEducationCreditBodyInput(string type, string description, double numberOfCredits, string dateEarned)
+        {
+            this.Type = type;
+            this.Description = description;
+            this.NumberOfCredits = numberOfCredits;
+            this.DateEarned = dateEarned;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
@@ -9428,6 +9461,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class NoteInput
     {
+        public NoteInput(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("isAlert")]
         public bool? IsAlert { get; set; }
 
@@ -10631,6 +10669,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class AddToCommitteeBodyInput
     {
+        public AddToCommitteeBodyInput(string recordNumber, string positionCode, string startDate)
+        {
+            this.RecordNumber = recordNumber;
+            this.PositionCode = positionCode;
+            this.StartDate = startDate;
+        }
+
         [JsonProperty("recordNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecordNumber { get; set; }
 
@@ -10694,6 +10739,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class AddOrganizationBodyInput
     {
+        public AddOrganizationBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -11126,12 +11176,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class MarkRegistrantAttendedBodyInputItem
     {
+        public MarkRegistrantAttendedBodyInputItem(string eventOrSessionCode)
+        {
+            this.EventOrSessionCode = eventOrSessionCode;
+        }
+
         [JsonProperty("eventOrSessionCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventOrSessionCode { get; set; }
     }
 
     public class AwardsAddAwardNominationAwardNominationDataInput
     {
+        public AwardsAddAwardNominationAwardNominationDataInput(string nomineeRecordNumber, string nominatedByCustomerRecordNumber, string nominationDate)
+        {
+            this.NomineeRecordNumber = nomineeRecordNumber;
+            this.NominatedByCustomerRecordNumber = nominatedByCustomerRecordNumber;
+            this.NominationDate = nominationDate;
+        }
+
         [JsonProperty("nomineeRecordNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NomineeRecordNumber { get; set; }
 
@@ -11163,6 +11225,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class AwardsUpdateAwardNominationAwardNominationDataInput
     {
+        public AwardsUpdateAwardNominationAwardNominationDataInput(string nominatedByCustomerRecordNumber, string nominationDate)
+        {
+            this.NominatedByCustomerRecordNumber = nominatedByCustomerRecordNumber;
+            this.NominationDate = nominationDate;
+        }
+
         [JsonProperty("nominatedByCustomerRecordNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NominatedByCustomerRecordNumber { get; set; }
 
@@ -11901,6 +11969,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class WhenProductPurchasedBodyInput
     {
+        public WhenProductPurchasedBodyInput(string[] filters)
+        {
+            this.Filters = filters;
+        }
+
         [JsonProperty("typeName", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TypeName { get; set; } = "Product.Purchased";
 
@@ -11934,6 +12007,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class WhenPurchaseCancelledBodyInput
     {
+        public WhenPurchaseCancelledBodyInput(string[] filters)
+        {
+            this.Filters = filters;
+        }
+
         [JsonProperty("typeName", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TypeName { get; set; } = "Purchase.Cancelled";
 
@@ -11982,6 +12060,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class WhenCustomerCustomFieldValueUpdatedBodyInput
     {
+        public WhenCustomerCustomFieldValueUpdatedBodyInput(string[] filters)
+        {
+            this.Filters = filters;
+        }
+
         [JsonProperty("typeName", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TypeName { get; set; } = "Customer.CustomFieldValueUpdated";
 
@@ -12060,6 +12143,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class WhenEventRegistrationSubstitutedBodyInput
     {
+        public WhenEventRegistrationSubstitutedBodyInput(string[] filters)
+        {
+            this.Filters = filters;
+        }
+
         [JsonProperty("typeName", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TypeName { get; set; } = "Event.Registration.Substituted";
 
@@ -12078,6 +12166,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
     public class WhenPurchasePaidBodyInput
     {
+        public WhenPurchasePaidBodyInput(string[] filters)
+        {
+            this.Filters = filters;
+        }
+
         [JsonProperty("typeName", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TypeName { get; set; } = "Purchase.Paid";
 

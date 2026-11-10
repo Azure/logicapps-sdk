@@ -584,6 +584,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class ArrayReverseBodyInput
     {
+        public ArrayReverseBodyInput(JToken[] array)
+        {
+            this.Array = array;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Array { get; set; }
     }
@@ -600,6 +605,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class ArraySortByPropertyBodyInput
     {
+        public ArraySortByPropertyBodyInput(JToken[] array, string propertyName, bool descending)
+        {
+            this.Array = array;
+            this.PropertyName = propertyName;
+            this.Descending = descending;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Array { get; set; }
 
@@ -617,6 +629,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class ArrayAnyBodyInput
     {
+        public ArrayAnyBodyInput(JToken[] array, string propertyName)
+        {
+            this.Array = array;
+            this.PropertyName = propertyName;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Array { get; set; }
 
@@ -670,6 +688,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class ArrayPrependBodyInput
     {
+        public ArrayPrependBodyInput(JToken[] array, JToken value)
+        {
+            this.Array = array;
+            this.Value = value;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Array { get; set; }
 
@@ -714,6 +738,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class ArrayGroupByBodyInput
     {
+        public ArrayGroupByBodyInput(JToken[] array)
+        {
+            this.Array = array;
+        }
+
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Array { get; set; }
 
@@ -733,6 +762,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class MathCeilBodyInput
     {
+        public MathCeilBodyInput(double number)
+        {
+            this.Number = number;
+        }
+
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Number { get; set; }
     }
@@ -754,6 +788,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class MathAverageBodyInput
     {
+        public MathAverageBodyInput(double[] numbers)
+        {
+            this.Numbers = numbers;
+        }
+
         [JsonProperty("numbers", DefaultValueHandling = DefaultValueHandling.Include)]
         public double[] Numbers { get; set; }
     }
@@ -765,6 +804,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class MathMedianBodyInput
     {
+        public MathMedianBodyInput(JToken[] numbers)
+        {
+            this.Numbers = numbers;
+        }
+
         [JsonProperty("numbers", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Numbers { get; set; }
     }
@@ -781,6 +825,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class MathRandomBodyInput
     {
+        public MathRandomBodyInput(int maximum)
+        {
+            this.Maximum = maximum;
+        }
+
         [JsonProperty("maximum", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Maximum { get; set; }
     }
@@ -792,6 +841,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class StringReplaceAllBodyInput
     {
+        public StringReplaceAllBodyInput(string sourceString, string searchValue, string replaceValue)
+        {
+            this.SourceString = sourceString;
+            this.SearchValue = searchValue;
+            this.ReplaceValue = replaceValue;
+        }
+
         [JsonProperty("sourceString", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceString { get; set; }
 
@@ -809,6 +865,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class StringRegexReplaceBodyInput
     {
+        public StringRegexReplaceBodyInput(string sourceString, string pattern, string replaceValue)
+        {
+            this.SourceString = sourceString;
+            this.Pattern = pattern;
+            this.ReplaceValue = replaceValue;
+        }
+
         [JsonProperty("sourceString", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceString { get; set; }
 
@@ -826,6 +889,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class StringCapitalizeBodyInput
     {
+        public StringCapitalizeBodyInput(string @string)
+        {
+            this.String = @string;
+        }
+
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
     }
@@ -837,6 +905,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class StringTrimBodyInput
     {
+        public StringTrimBodyInput(string @string)
+        {
+            this.String = @string;
+        }
+
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
 
@@ -866,6 +939,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class StringWordCountBodyInput
     {
+        public StringWordCountBodyInput(string @string)
+        {
+            this.String = @string;
+        }
+
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
 
@@ -910,6 +988,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class StringCountInstancesBodyInput
     {
+        public StringCountInstancesBodyInput(string @string, string substring)
+        {
+            this.String = @string;
+            this.Substring = substring;
+        }
+
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
 
@@ -927,6 +1011,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class StringChopBodyInput
     {
+        public StringChopBodyInput(string @string, int interval)
+        {
+            this.String = @string;
+            this.Interval = interval;
+        }
+
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
 
@@ -941,6 +1031,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class TypesIsArrayBodyInput
     {
+        public TypesIsArrayBodyInput(JToken value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Value { get; set; }
     }
@@ -952,6 +1047,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class TypesIsNumberBodyInput
     {
+        public TypesIsNumberBodyInput(JToken value, bool includeNumbersInStrings)
+        {
+            this.Value = value;
+            this.IncludeNumbersInStrings = includeNumbersInStrings;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Value { get; set; }
 
@@ -981,6 +1082,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class ValidateEmailBodyInput
     {
+        public ValidateEmailBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
     }
@@ -992,6 +1098,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
     public class ValidateRegexBodyInput
     {
+        public ValidateRegexBodyInput(string @string, string pattern)
+        {
+            this.String = @string;
+            this.Pattern = pattern;
+        }
+
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
 

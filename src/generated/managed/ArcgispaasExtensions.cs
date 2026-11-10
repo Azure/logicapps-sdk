@@ -252,6 +252,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
 
     public class TimeConversionHelperDataInput
     {
+        public TimeConversionHelperDataInput(string dateTime)
+        {
+            this.DateTime = dateTime;
+        }
+
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }
     }
@@ -264,6 +269,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
 
     public class GeocodeAddressesDataInput
     {
+        public GeocodeAddressesDataInput(string addresses)
+        {
+            this.Addresses = addresses;
+        }
+
         [JsonProperty("addresses", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Addresses { get; set; }
     }
@@ -315,6 +325,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
 
     public class RoutingInput
     {
+        public RoutingInput(string routingStops)
+        {
+            this.RoutingStops = routingStops;
+        }
+
         [JsonProperty("stops", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoutingStops { get; set; }
     }

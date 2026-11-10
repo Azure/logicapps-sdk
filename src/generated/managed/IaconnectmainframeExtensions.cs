@@ -341,6 +341,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPISetHLLAPIdLLInput
     {
+        public HLLAPISetHLLAPIdLLInput(string dLLFilename)
+        {
+            this.DLLFilename = dLLFilename;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DLLFilename { get; set; }
         public string IAHLLAPIPath { get; set; }
@@ -367,6 +372,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPIConnectInput
     {
+        public HLLAPIConnectInput(string sessionId)
+        {
+            this.SessionId = sessionId;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -391,6 +401,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPIGetConnectStatusInput
     {
+        public HLLAPIGetConnectStatusInput(string sessionId)
+        {
+            this.SessionId = sessionId;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -400,6 +415,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPIDisconnectInput
     {
+        public HLLAPIDisconnectInput(string sessionId)
+        {
+            this.SessionId = sessionId;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -409,6 +429,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPISetCursorPosInput
     {
+        public HLLAPISetCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex)
+        {
+            this.SessionId = sessionId;
+            this.CursorRowIndex = cursorRowIndex;
+            this.CursorColIndex = cursorColIndex;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -431,6 +458,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPIGetCursorPosInput
     {
+        public HLLAPIGetCursorPosInput(string sessionId)
+        {
+            this.SessionId = sessionId;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -440,6 +472,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPISendStringInput
     {
+        public HLLAPISendStringInput(string inputString)
+        {
+            this.InputString = inputString;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputString { get; set; }
 
@@ -449,6 +486,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPISendPasswordInput
     {
+        public HLLAPISendPasswordInput(string inputPassword)
+        {
+            this.InputPassword = inputPassword;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputPassword { get; set; }
 
@@ -458,6 +500,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPISendStringAtCursorPosInput
     {
+        public HLLAPISendStringAtCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex, string inputString)
+        {
+            this.SessionId = sessionId;
+            this.CursorRowIndex = cursorRowIndex;
+            this.CursorColIndex = cursorColIndex;
+            this.InputString = inputString;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -476,6 +526,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPISendPasswordAtCursorPosInput
     {
+        public HLLAPISendPasswordAtCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex, string inputPassword)
+        {
+            this.SessionId = sessionId;
+            this.CursorRowIndex = cursorRowIndex;
+            this.CursorColIndex = cursorColIndex;
+            this.InputPassword = inputPassword;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -499,6 +557,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPIReadScreenAtCursorPosInput
     {
+        public HLLAPIReadScreenAtCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex, int readScreenLength)
+        {
+            this.SessionId = sessionId;
+            this.CursorRowIndex = cursorRowIndex;
+            this.CursorColIndex = cursorColIndex;
+            this.ReadScreenLength = readScreenLength;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -537,6 +603,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPIReadScreenRowsInput
     {
+        public HLLAPIReadScreenRowsInput(string sessionId, int startRowIndex, int endRowIndex)
+        {
+            this.SessionId = sessionId;
+            this.StartRowIndex = startRowIndex;
+            this.EndRowIndex = endRowIndex;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -613,6 +686,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPISearchForStringInput
     {
+        public HLLAPISearchForStringInput(string sessionId, string searchString)
+        {
+            this.SessionId = sessionId;
+            this.SearchString = searchString;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -638,6 +717,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPIWaitForStringInput
     {
+        public HLLAPIWaitForStringInput(string sessionId, string searchString)
+        {
+            this.SessionId = sessionId;
+            this.SearchString = searchString;
+        }
+
         [JsonProperty("SessionID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
 
@@ -661,6 +746,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
     public class HLLAPISetSessionParameterInput
     {
+        public HLLAPISetSessionParameterInput(string parameter)
+        {
+            this.Parameter = parameter;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Parameter { get; set; }
 

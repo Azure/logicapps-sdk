@@ -113,10 +113,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<PostContactsResponse, ApiConnectionActionConfiguration> PostContacts(Expression<Func<string>> xeroTenantId, Expression<Func<PostContactsBodyInput>> body = null)
+        public IBodyWorkflowAction<PostContactsResponse, ApiConnectionActionConfiguration> PostContacts(Expression<Func<string>> xeroTenantId, Expression<Func<PostContactsBodyInput>> body)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.xro/2.0/Contacts";
@@ -124,8 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(__workflow_xeroTenantId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostContactsResponse>(callPayload);
             });
         }
@@ -277,6 +276,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
 
     public class PostInvoiceBodyInput
     {
+        public PostInvoiceBodyInput(BodyInputContactType contact, BodyInputLineItemsTypeItem[] lineItems)
+        {
+            this.Contact = contact;
+            this.LineItems = lineItems;
+        }
+
         public string Date { get; set; }
         public string DueDate { get; set; }
 
@@ -299,12 +304,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
 
     public class BodyInputContactType
     {
+        public BodyInputContactType(string contactId)
+        {
+            this.ContactId = contactId;
+        }
+
         [JsonProperty("ContactID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactId { get; set; }
     }
 
     public class BodyInputLineItemsTypeItem
     {
+        public BodyInputLineItemsTypeItem(string description, double quantity, double unitAmount)
+        {
+            this.Description = description;
+            this.Quantity = quantity;
+            this.UnitAmount = unitAmount;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
 
@@ -412,12 +429,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
 
     public class PostContactsBodyInput
     {
+        public PostContactsBodyInput(BodyInputContactsTypeItem[] contacts)
+        {
+            this.Contacts = contacts;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputContactsTypeItem[] Contacts { get; set; }
     }
 
     public class BodyInputContactsTypeItem
     {
+        public BodyInputContactsTypeItem(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string FirstName { get; set; }

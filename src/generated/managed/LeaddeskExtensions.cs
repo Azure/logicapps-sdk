@@ -510,8 +510,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
     public class CreateAgentBodyInput
     {
+        public CreateAgentBodyInput(CreateAgentBodyInputAccountType account, CreateAgentBodyInputContactInformationType contactInformation)
+        {
+            this.Account = account;
+            this.ContactInformation = contactInformation;
+        }
+
         [JsonProperty("account", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgentBodyInputAccountType Account { get; set; } = new CreateAgentBodyInputAccountType();
+        public CreateAgentBodyInputAccountType Account { get; set; }
 
         [JsonProperty("contact_information", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateAgentBodyInputContactInformationType ContactInformation { get; set; }
@@ -522,6 +528,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
     public class CreateAgentBodyInputAccountType
     {
+        public CreateAgentBodyInputAccountType(string password, string username)
+        {
+            this.Password = password;
+            this.Username = username;
+        }
+
         [JsonProperty("external_id")]
         public string ExternalId { get; set; }
 
@@ -549,6 +561,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
     public class CreateAgentBodyInputContactInformationType
     {
+        public CreateAgentBodyInputContactInformationType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("address")]
         public string Address { get; set; }
 
@@ -624,11 +641,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
     public class CreateCallbackBodyInput
     {
+        public CreateCallbackBodyInput(BodyInputPropertiesType properties)
+        {
+            this.Properties = properties;
+        }
+
         [JsonProperty("contact")]
         public BodyInputContactType Contact { get; set; }
 
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputPropertiesType Properties { get; set; } = new BodyInputPropertiesType();
+        public BodyInputPropertiesType Properties { get; set; }
 
         [JsonProperty("return_callback_id", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool ReturnCallbackId { get; set; } = true;
@@ -771,6 +793,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
     public class BodyInputPropertiesType
     {
+        public BodyInputPropertiesType(string agent, string campaign, string phone, string timestamp)
+        {
+            this.Agent = agent;
+            this.Campaign = campaign;
+            this.Phone = phone;
+            this.Timestamp = timestamp;
+        }
+
         [JsonProperty("agent", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Agent { get; set; }
 
@@ -840,6 +870,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
     public class ModifyAgentBodyInput
     {
+        public ModifyAgentBodyInput(int id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("account")]
         public ModifyAgentBodyInputAccountType Account { get; set; }
 

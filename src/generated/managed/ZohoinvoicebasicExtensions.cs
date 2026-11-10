@@ -67,16 +67,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
-        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<ContactBodyInput>> body = null)
+        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<ContactBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoice/v3/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ContactResponse>(callPayload);
             });
         }
@@ -108,17 +107,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
-        public IBodyWorkflowAction<ContactPutResponse, ApiConnectionActionConfiguration> ContactPut(Expression<Func<string>> contactId, Expression<Func<ContactPutBodyInput>> body = null)
+        public IBodyWorkflowAction<ContactPutResponse, ApiConnectionActionConfiguration> ContactPut(Expression<Func<string>> contactId, Expression<Func<ContactPutBodyInput>> body)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ContactPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoice/v3/contacts/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ContactPutResponse>(callPayload);
             });
         }
@@ -653,6 +651,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
 
     public class ContactBodyInput
     {
+        public ContactBodyInput(string contactName)
+        {
+            this.ContactName = contactName;
+        }
+
         [JsonProperty("contact_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactName { get; set; }
 
@@ -1562,6 +1565,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
 
     public class ContactPutBodyInput
     {
+        public ContactPutBodyInput(string contactName)
+        {
+            this.ContactName = contactName;
+        }
+
         [JsonProperty("contact_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactName { get; set; }
 

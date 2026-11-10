@@ -25,16 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
-        public IBodyWorkflowAction<RedirectResponse, ApiConnectionActionConfiguration> Redirect(Expression<Func<RedirectBodyInput>> body = null)
+        public IBodyWorkflowAction<RedirectResponse, ApiConnectionActionConfiguration> Redirect(Expression<Func<RedirectBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RedirectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/redirects";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RedirectResponse>(callPayload);
             });
         }
@@ -52,17 +51,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
-        public IBodyWorkflowAction<RedirectPatchResponse, ApiConnectionActionConfiguration> RedirectPatch(Expression<Func<string>> id, Expression<Func<RedirectPatchBodyInput>> body = null)
+        public IBodyWorkflowAction<RedirectPatchResponse, ApiConnectionActionConfiguration> RedirectPatch(Expression<Func<string>> id, Expression<Func<RedirectPatchBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RedirectPatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/redirects/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RedirectPatchResponse>(callPayload);
             });
         }
@@ -204,6 +202,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
 
     public class RedirectBodyInput
     {
+        public RedirectBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -330,6 +333,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
 
     public class RedirectPatchBodyInput
     {
+        public RedirectPatchBodyInput(string key)
+        {
+            this.Key = key;
+        }
+
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
 

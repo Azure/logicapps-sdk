@@ -49,6 +49,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
 
     public class PostLearningBodyInput
     {
+        public PostLearningBodyInput(string dateTime, string userId, string courseName, double score)
+        {
+            this.DateTime = dateTime;
+            this.UserId = userId;
+            this.CourseName = courseName;
+            this.Score = score;
+        }
+
         [JsonProperty("event_time", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }
 
@@ -67,6 +75,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
 
     public class PostPerformanceBodyInput
     {
+        public PostPerformanceBodyInput(string dateTime, string userId, string kpiName, double kpiValue)
+        {
+            this.DateTime = dateTime;
+            this.UserId = userId;
+            this.KpiName = kpiName;
+            this.KpiValue = kpiValue;
+        }
+
         [JsonProperty("event_time", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }
 

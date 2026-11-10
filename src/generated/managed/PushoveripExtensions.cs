@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
     public class PushoveripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageBodyInput>> body = null)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1/messages.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
             });
         }
@@ -50,6 +49,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ValidateKeyBodyInput().ToJToken();
                 return new ApiConnectionAction<ValidateKeyResponse>(callPayload);
             });
         }
@@ -82,6 +83,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
 
     public class SendMessageBodyInput
     {
+        public SendMessageBodyInput(string message)
+        {
+            this.Message = message;
+        }
+
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; } = "";
 

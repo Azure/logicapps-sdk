@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionAction<ErrorModel>(callPayload);
             });
         }
@@ -353,6 +355,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
     public class TransactionInputSignersTypeItem
     {
+        public TransactionInputSignersTypeItem(string email)
+        {
+            this.Email = email;
+        }
+
         public string Id { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -386,6 +393,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
     public class CreateAuthentication
     {
+        public CreateAuthentication(CreateAuthenticationTypeType type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateAuthenticationTypeType Type { get; set; }
         public string Number { get; set; }
@@ -401,6 +413,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
     public class CreateVerification
     {
+        public CreateVerification(CreateVerificationTypeType type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateVerificationTypeType Type { get; set; }
     }
@@ -477,6 +494,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
     public class TransactionInputReceiversTypeItem
     {
+        public TransactionInputReceiversTypeItem(string name, string email, string message)
+        {
+            this.Name = name;
+            this.Email = email;
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

@@ -560,6 +560,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
     public class AddNoteToIncidentRequestInput
     {
+        public AddNoteToIncidentRequestInput(string addedBy, string note)
+        {
+            this.AddedBy = addedBy;
+            this.Note = note;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddedBy { get; set; }
 
@@ -575,18 +581,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
     public class AcknowledgeIncidentRequestInput
     {
+        public AcknowledgeIncidentRequestInput(string acknowledgedBy)
+        {
+            this.AcknowledgedBy = acknowledgedBy;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AcknowledgedBy { get; set; }
     }
 
     public class ResolveIncidentRequestInput
     {
+        public ResolveIncidentRequestInput(string resolvedBy)
+        {
+            this.ResolvedBy = resolvedBy;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResolvedBy { get; set; }
     }
 
     public class ReassignIncidentRequestInput
     {
+        public ReassignIncidentRequestInput(string fromUser, string toUser)
+        {
+            this.FromUser = fromUser;
+            this.ToUser = toUser;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromUser { get; set; }
 
@@ -596,6 +618,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
     public class SnoozeIncidentRequestInput
     {
+        public SnoozeIncidentRequestInput(string snoozedBy, int snooze)
+        {
+            this.SnoozedBy = snoozedBy;
+            this.Snooze = snooze;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SnoozedBy { get; set; }
 
@@ -605,6 +633,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
     public class EscalateIncidentRequestInput
     {
+        public EscalateIncidentRequestInput(string escalatedBy, string escalationPolicy)
+        {
+            this.EscalatedBy = escalatedBy;
+            this.EscalationPolicy = escalationPolicy;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EscalatedBy { get; set; }
 
@@ -620,6 +654,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
     public class CreateIncidentRequestInput
     {
+        public CreateIncidentRequestInput(string serviceKey, string description)
+        {
+            this.ServiceKey = serviceKey;
+            this.Description = description;
+        }
+
         [JsonProperty("service_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ServiceKey { get; set; }
 

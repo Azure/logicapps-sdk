@@ -1210,6 +1210,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
 
     public class DocumentUpdateDto
     {
+        public DocumentUpdateDto(int theUniqueIdentifierOfTheDocumentToBeUpdated)
+        {
+            this.TheUniqueIdentifierOfTheDocumentToBeUpdated = theUniqueIdentifierOfTheDocumentToBeUpdated;
+        }
+
         [JsonProperty("amount")]
         public double? NewValueTheDocumentAmountToBeUpdatedTo { get; set; }
 

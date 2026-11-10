@@ -227,6 +227,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 
     public class ParseDocumentDeprecatedRequestInput
     {
+        public ParseDocumentDeprecatedRequestInput(string model, string documentId)
+        {
+            this.Model = model;
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("modelId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; }
 
@@ -290,12 +296,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 
     public class CreateExecutionDeprecatedRequestInput
     {
+        public CreateExecutionDeprecatedRequestInput(WorkflowInput input)
+        {
+            this.Input = input;
+        }
+
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkflowInput Input { get; set; }
     }
 
     public class WorkflowInput
     {
+        public WorkflowInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 

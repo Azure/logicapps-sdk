@@ -246,6 +246,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
 
     public class StartAdHocQueryExecutionJobBodyInput
     {
+        public StartAdHocQueryExecutionJobBodyInput(JToken queryDefinition)
+        {
+            this.QueryDefinition = queryDefinition;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken QueryDefinition { get; set; }
 
@@ -294,6 +299,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
 
     public class StartQueryExecutionJobBodyInput
     {
+        public StartQueryExecutionJobBodyInput(int type, int query)
+        {
+            this.Type = type;
+            this.Query = query;
+        }
+
         [JsonProperty("v_query_type_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Type { get; set; }
 
@@ -338,6 +349,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
 
     public class QueryApiAskFieldInformation
     {
+        public QueryApiAskFieldInformation(QueryApiAskFieldInformationOperatorType @operator)
+        {
+            this.Operator = @operator;
+        }
+
         [JsonProperty("operator", DefaultValueHandling = DefaultValueHandling.Include)]
         public QueryApiAskFieldInformationOperatorType Operator { get; set; }
 
@@ -374,6 +390,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
 
     public class StartRefreshStaticQueryExecutionJobBodyInput
     {
+        public StartRefreshStaticQueryExecutionJobBodyInput(int type, int query)
+        {
+            this.Type = type;
+            this.Query = query;
+        }
+
         [JsonProperty("v_query_type_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Type { get; set; }
 

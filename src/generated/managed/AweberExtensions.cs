@@ -62,6 +62,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aweber
 
     public class CreateSubscriberBodyInput
     {
+        public CreateSubscriberBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 

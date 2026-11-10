@@ -13,17 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
     public class OpenqrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FolderUpdateResponse, ApiConnectionActionConfiguration> FolderUpdate(Expression<Func<string>> folderId, Expression<Func<FolderBodyInput>> body = null)
+        public IBodyWorkflowAction<FolderUpdateResponse, ApiConnectionActionConfiguration> FolderUpdate(Expression<Func<string>> folderId, Expression<Func<FolderBodyInput>> body)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FolderUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/folders/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FolderUpdateResponse>(callPayload);
             });
         }
@@ -41,16 +40,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FolderResponse, ApiConnectionActionConfiguration> Folder(Expression<Func<FolderBodyInput>> body = null)
+        public IBodyWorkflowAction<FolderResponse, ApiConnectionActionConfiguration> Folder(Expression<Func<FolderBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FolderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/folders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FolderResponse>(callPayload);
             });
         }
@@ -68,16 +66,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<QRResponse, ApiConnectionActionConfiguration> QR(Expression<Func<QRBodyInput>> body = null)
+        public IBodyWorkflowAction<QRResponse, ApiConnectionActionConfiguration> QR(Expression<Func<QRBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QRResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/qr-codes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QRResponse>(callPayload);
             });
         }
@@ -107,6 +104,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new QRUpdateBodyInput().ToJToken();
                 return new ApiConnectionAction<QRUpdateResponse>(callPayload);
             });
         }
@@ -148,6 +147,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 
     public class FolderBodyInput
     {
+        public FolderBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -334,6 +338,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 
     public class QRBodyInput
     {
+        public QRBodyInput(string name, QRBodyInputDataType data)
+        {
+            this.Name = name;
+            this.Data = data;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -387,6 +397,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 
     public class QRBodyInputDataType
     {
+        public QRBodyInputDataType(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
     }

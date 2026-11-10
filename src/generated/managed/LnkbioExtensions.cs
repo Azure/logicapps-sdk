@@ -54,6 +54,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
 
     public class BodyInput
     {
+        public BodyInput(string title, string link)
+        {
+            this.Title = title;
+            this.Link = link;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

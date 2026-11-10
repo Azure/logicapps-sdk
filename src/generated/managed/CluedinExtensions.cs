@@ -140,6 +140,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
 
     public class ApprovalResponseBodyInput
     {
+        public ApprovalResponseBodyInput(BodyInputResultType result)
+        {
+            this.Result = result;
+        }
+
         [JsonProperty("data")]
         public JToken Data { get; set; }
 
@@ -152,6 +157,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
 
     public class BodyInputResultType
     {
+        public BodyInputResultType(string approval, string reason, string reviewedBy)
+        {
+            this.Approval = approval;
+            this.Reason = reason;
+            this.ReviewedBy = reviewedBy;
+        }
+
         [JsonProperty("approval", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Approval { get; set; }
 

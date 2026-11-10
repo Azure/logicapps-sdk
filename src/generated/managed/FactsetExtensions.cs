@@ -202,16 +202,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<NEREntitiesResponse, ApiConnectionActionConfiguration> NEREntities(Expression<Func<NEREntitiesBodyInput>> body = null)
+        public IBodyWorkflowAction<NEREntitiesResponse, ApiConnectionActionConfiguration> NEREntities(Expression<Func<NEREntitiesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NEREntitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cognitive/ner/v2/entities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NEREntitiesResponse>(callPayload);
             });
         }
@@ -767,6 +766,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
 
     public class NEREntitiesBodyInput
     {
+        public NEREntitiesBodyInput(string text)
+        {
+            this.Text = text;
+        }
+
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 

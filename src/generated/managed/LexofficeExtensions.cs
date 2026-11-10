@@ -88,10 +88,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesIdGet, ApiConnectionActionConfiguration> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<UpdateAnArticleBodyInput>> body = null)
+        public IBodyWorkflowAction<ResponseArticlesIdGet, ApiConnectionActionConfiguration> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<UpdateAnArticleBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseArticlesIdGet, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/articles/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -99,8 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseArticlesIdGet>(callPayload);
             });
         }
@@ -1022,6 +1021,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
     public class UpdateAnArticleBodyInput
     {
+        public UpdateAnArticleBodyInput(UpdateAnArticleBodyInputPriceType price, CreateArticleBodyInputTypeType type, string unitName, int version)
+        {
+            this.Price = price;
+            this.Type = type;
+            this.UnitName = unitName;
+            this.Version = version;
+        }
+
         [JsonProperty("articleNumber")]
         public string ArticleNumber { get; set; }
 
@@ -1032,7 +1039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public string Note { get; set; }
 
         [JsonProperty("price", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateAnArticleBodyInputPriceType Price { get; set; } = new UpdateAnArticleBodyInputPriceType();
+        public UpdateAnArticleBodyInputPriceType Price { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1049,6 +1056,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
     public class UpdateAnArticleBodyInputPriceType
     {
+        public UpdateAnArticleBodyInputPriceType(double grossPrice, double netPrice)
+        {
+            this.GrossPrice = grossPrice;
+            this.NetPrice = netPrice;
+        }
+
         [JsonProperty("grossPrice", DefaultValueHandling = DefaultValueHandling.Include)]
         public double GrossPrice { get; set; }
 
@@ -3596,6 +3609,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
     public class CreateVoucherBodyInput
     {
+        public CreateVoucherBodyInput(BodyInputTaxTypeType taxType, CreateVoucherBodyInputTypeType type, BodyInputVoucherItemsTypeItem[] voucherItems)
+        {
+            this.TaxType = taxType;
+            this.Type = type;
+            this.VoucherItems = voucherItems;
+        }
+
         [JsonProperty("contactId")]
         public string ContactId { get; set; }
 
@@ -3840,6 +3860,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
     public class UpdateVoucherBodyInput
     {
+        public UpdateVoucherBodyInput(BodyInputTaxTypeType taxType, CreateVoucherBodyInputTypeType type, BodyInputVoucherItemsTypeItem[] voucherItems)
+        {
+            this.TaxType = taxType;
+            this.Type = type;
+            this.VoucherItems = voucherItems;
+        }
+
         [JsonProperty("contactId")]
         public string ContactId { get; set; }
 
@@ -3906,6 +3933,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
     public class EventSubscriptionLexofficeBodyInput
     {
+        public EventSubscriptionLexofficeBodyInput(BodyInputEventTypeType eventType)
+        {
+            this.EventType = eventType;
+        }
+
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 

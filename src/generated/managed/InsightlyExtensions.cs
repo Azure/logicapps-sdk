@@ -512,6 +512,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
 
     public class UpdatedTaskInput
     {
+        public UpdatedTaskInput(string taskTitle, bool isCompleted, UpdatedTaskInputTaskStatusType taskStatus, bool isTaskVisible)
+        {
+            this.TaskTitle = taskTitle;
+            this.IsCompleted = isCompleted;
+            this.TaskStatus = taskStatus;
+            this.IsTaskVisible = isTaskVisible;
+        }
+
         [JsonProperty("TITLE", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskTitle { get; set; }
 
@@ -548,6 +556,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
 
     public class NewTaskInput
     {
+        public NewTaskInput(string taskTitle, bool isCompleted, NewTaskInputTaskStatusType taskStatus, bool isTaskVisible)
+        {
+            this.TaskTitle = taskTitle;
+            this.IsCompleted = isCompleted;
+            this.TaskStatus = taskStatus;
+            this.IsTaskVisible = isTaskVisible;
+        }
+
         [JsonProperty("TITLE", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskTitle { get; set; }
 
@@ -653,6 +669,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
 
     public class UpdatedProjectInput
     {
+        public UpdatedProjectInput(string projectName, UpdatedProjectInputProjectStatusType projectStatus)
+        {
+            this.ProjectName = projectName;
+            this.ProjectStatus = projectStatus;
+        }
+
         [JsonProperty("PROJECT_NAME", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
 
@@ -717,6 +739,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
 
     public class NewProjectInput
     {
+        public NewProjectInput(string projectName, NewProjectInputProjectStatusType projectStatus)
+        {
+            this.ProjectName = projectName;
+            this.ProjectStatus = projectStatus;
+        }
+
         [JsonProperty("PROJECT_NAME", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
 
@@ -895,6 +923,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
 
     public class UpdatedLeadInput
     {
+        public UpdatedLeadInput(string lastName)
+        {
+            this.LastName = lastName;
+        }
+
         [JsonProperty("TITLE")]
         public string Title { get; set; }
 
@@ -967,6 +1000,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
 
     public class NewLeadInput
     {
+        public NewLeadInput(string lastName)
+        {
+            this.LastName = lastName;
+        }
+
         [JsonProperty("TITLE")]
         public string Title { get; set; }
 
@@ -1231,6 +1269,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
 
     public class UpdatedContactInput
     {
+        public UpdatedContactInput(string firstName, string lastName)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [JsonProperty("SALUTATION")]
         public string Salutation { get; set; }
 
@@ -1297,6 +1341,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
 
     public class NewContactInput
     {
+        public NewContactInput(string firstName, string lastName)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [JsonProperty("SALUTATION")]
         public string Salutation { get; set; }
 
@@ -1492,6 +1542,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
 
     public class NewOrganizationInput
     {
+        public NewOrganizationInput(string organizationName)
+        {
+            this.OrganizationName = organizationName;
+        }
+
         [JsonProperty("ORGANISATION_NAME", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OrganizationName { get; set; }
 

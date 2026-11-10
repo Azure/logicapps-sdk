@@ -1099,6 +1099,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class DeviceGroupsSetBodyInput
     {
+        public DeviceGroupsSetBodyInput(string displayName, string filter)
+        {
+            this.DisplayName = displayName;
+            this.Filter = filter;
+        }
+
         [JsonProperty("id")]
         public string DeviceGroupId { get; set; }
 
@@ -1216,6 +1222,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class DeviceRelationshipsSetBodyInput
     {
+        public DeviceRelationshipsSetBodyInput(string deviceRelationshipTargetId)
+        {
+            this.DeviceRelationshipTargetId = deviceRelationshipTargetId;
+        }
+
         [JsonProperty("id")]
         public string DeviceRelationshipId { get; set; }
 
@@ -1330,6 +1341,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class JobsSetBodyInput
     {
+        public JobsSetBodyInput(string displayName, string deviceGroup)
+        {
+            this.DisplayName = displayName;
+            this.DeviceGroup = deviceGroup;
+        }
+
         [JsonProperty("id")]
         public string JobId { get; set; }
 
@@ -1357,6 +1374,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class JobsSetJobBatch
     {
+        public JobsSetJobBatch(JobsSetJobBatchBatchTypeType batchType, double batchValue)
+        {
+            this.BatchType = batchType;
+            this.BatchValue = batchValue;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public JobsSetJobBatchBatchTypeType BatchType { get; set; }
 
@@ -1375,6 +1398,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class JobsSetJobCancellationThreshold
     {
+        public JobsSetJobCancellationThreshold(JobsSetJobCancellationThresholdCancellationThresholdTypeType cancellationThresholdType, double cancellationThresholdValue)
+        {
+            this.CancellationThresholdType = cancellationThresholdType;
+            this.CancellationThresholdValue = cancellationThresholdValue;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public JobsSetJobCancellationThresholdCancellationThresholdTypeType CancellationThresholdType { get; set; }
 
@@ -1505,6 +1534,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class ScheduledJobsSetBodyInput
     {
+        public ScheduledJobsSetBodyInput(string displayName, string deviceGroup, JToken schedule)
+        {
+            this.DisplayName = displayName;
+            this.DeviceGroup = deviceGroup;
+            this.Schedule = schedule;
+        }
+
         [JsonProperty("etag")]
         public string ETag { get; set; }
 
@@ -1589,6 +1625,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class ScheduledJobsUpdateBodyInput
     {
+        public ScheduledJobsUpdateBodyInput(JToken schedule)
+        {
+            this.Schedule = schedule;
+        }
+
         [JsonProperty("etag")]
         public string ETag { get; set; }
 
@@ -1886,6 +1927,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class WorkflowCreateTriggerBodyInput
     {
+        public WorkflowCreateTriggerBodyInput(string rule)
+        {
+            this.Rule = rule;
+        }
+
         [JsonProperty("id")]
         public string WorkflowTriggerId { get; set; }
 

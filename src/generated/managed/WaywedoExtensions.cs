@@ -97,18 +97,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChecklistStepsComplete(Expression<Func<string>> instanceId, Expression<Func<string>> stepId, Expression<Func<CompleteStepCommandInput>> completeStepCommand = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChecklistStepsComplete(Expression<Func<string>> instanceId, Expression<Func<string>> stepId, Expression<Func<CompleteStepCommandInput>> completeStepCommand)
         {
             var __workflow_instanceId = WorkflowExpression.Compile(instanceId, nameof(instanceId), required: true);
             var __workflow_stepId = WorkflowExpression.Compile(stepId, nameof(stepId), required: true);
-            var __workflow_completeStepCommand = WorkflowExpression.Compile(completeStepCommand, nameof(completeStepCommand), required: false);
+            var __workflow_completeStepCommand = WorkflowExpression.Compile(completeStepCommand, nameof(completeStepCommand), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/ChecklistInstances/{0}/Steps/{1}/Complete", __workflow_instanceId.WithUrlEncoding(1), __workflow_stepId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_completeStepCommand != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_completeStepCommand);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_completeStepCommand);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -321,6 +320,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
     public class CreateCommentCommandInput
     {
+        public CreateCommentCommandInput(string checklistInstanceId, string stepId, string commentText)
+        {
+            this.ChecklistInstanceId = checklistInstanceId;
+            this.StepId = stepId;
+            this.CommentText = commentText;
+        }
+
         [JsonProperty("instanceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChecklistInstanceId { get; set; }
 
@@ -369,6 +375,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
     public class CreateInstanceCommandInput
     {
+        public CreateInstanceCommandInput(int procedureId, string title)
+        {
+            this.ProcedureId = procedureId;
+            this.Title = title;
+        }
+
         [JsonProperty("procedureId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ProcedureId { get; set; }
 
@@ -408,6 +420,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
     public class CompleteStepCommandInput
     {
+        public CompleteStepCommandInput(int userId)
+        {
+            this.UserId = userId;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UserId { get; set; }
 
@@ -417,6 +434,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
     public class AddCollaboratorsRequestInput
     {
+        public AddCollaboratorsRequestInput(string checklistInstanceId)
+        {
+            this.ChecklistInstanceId = checklistInstanceId;
+        }
+
         [JsonProperty("checklistInstanceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChecklistInstanceId { get; set; }
 
@@ -477,6 +499,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
     public class CreateUserCommandInput
     {
+        public CreateUserCommandInput(string firstName, string lastName, string email, int securityRole, string timeZone)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
+            this.SecurityRole = securityRole;
+            this.TimeZone = timeZone;
+        }
+
         [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 

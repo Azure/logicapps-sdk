@@ -58,16 +58,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<TranscriptionResponse, ApiConnectionActionConfiguration> Transcription(Expression<Func<TranscriptionBodyInput>> body = null)
+        public IBodyWorkflowAction<TranscriptionResponse, ApiConnectionActionConfiguration> Transcription(Expression<Func<TranscriptionBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TranscriptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/speechtotext/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TranscriptionResponse>(callPayload);
             });
         }
@@ -426,6 +425,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new AlignmentBodyInput().ToJToken();
                 return new ApiConnectionAction<AlignmentResponse>(callPayload);
             });
         }
@@ -533,6 +534,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
 
     public class TranscriptionBodyInput
     {
+        public TranscriptionBodyInput(TranscriptionBodyInputNotificationConfigType notificationConfig)
+        {
+            this.NotificationConfig = notificationConfig;
+        }
+
         [JsonProperty("source_config")]
         public TranscriptionBodyInputSourceConfigType SourceConfig { get; set; }
 
@@ -599,6 +605,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
 
     public class TranscriptionBodyInputSourceConfigType
     {
+        public TranscriptionBodyInputSourceConfigType(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -613,6 +624,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
 
     public class TranscriptionBodyInputNotificationConfigType
     {
+        public TranscriptionBodyInputNotificationConfigType(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 

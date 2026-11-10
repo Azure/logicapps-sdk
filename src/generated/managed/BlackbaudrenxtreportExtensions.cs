@@ -128,15 +128,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
 
     public class BodyInput
     {
+        public BodyInput(int reportType, BodyInputExecutionParametersType executionParameters)
+        {
+            this.ReportType = reportType;
+            this.ExecutionParameters = executionParameters;
+        }
+
         [JsonProperty("report_type_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ReportType { get; set; }
 
         [JsonProperty("execution_parameters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputExecutionParametersType ExecutionParameters { get; set; } = new BodyInputExecutionParametersType();
+        public BodyInputExecutionParametersType ExecutionParameters { get; set; }
     }
 
     public class BodyInputExecutionParametersType
     {
+        public BodyInputExecutionParametersType(int reportInstance)
+        {
+            this.ReportInstance = reportInstance;
+        }
+
         [JsonProperty("report_instance_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ReportInstance { get; set; }
 

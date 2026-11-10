@@ -280,6 +280,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
     public class NewItemInput
     {
+        public NewItemInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -322,6 +327,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
     public class NewLabelInput
     {
+        public NewLabelInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -376,6 +386,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
     public class NewProjectInput
     {
+        public NewProjectInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -391,12 +406,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
     public class ShareProjectInput
     {
+        public ShareProjectInput(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
     }
 
     public class ChangeItemInput
     {
+        public ChangeItemInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -418,6 +443,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
     public class ChangeProjectInput
     {
+        public ChangeProjectInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

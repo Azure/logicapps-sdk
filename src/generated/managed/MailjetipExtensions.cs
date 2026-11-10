@@ -467,6 +467,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
     public class SendEmailv31BodyInput
     {
+        public SendEmailv31BodyInput(SendEmailv31BodyInputMessagesTypeItem[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public SendEmailv31BodyInputMessagesTypeItem[] Messages { get; set; }
         public bool? SandboxMode { get; set; }
@@ -475,6 +480,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
     public class SendEmailv31BodyInputMessagesTypeItem
     {
+        public SendEmailv31BodyInputMessagesTypeItem(BodyInputMessagesTypeItemFromType from, BodyInputMessagesTypeItemToTypeItem[] to)
+        {
+            this.From = from;
+            this.To = to;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputMessagesTypeItemFromType From { get; set; }
 
@@ -495,6 +506,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
     public class BodyInputMessagesTypeItemFromType
     {
+        public BodyInputMessagesTypeItemFromType(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
         public string Name { get; set; }
@@ -557,12 +573,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
     public class SendEmailv3BodyInput
     {
+        public SendEmailv3BodyInput(SendEmailv3BodyInputMessagesTypeItem[] messages)
+        {
+            this.Messages = messages;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public SendEmailv3BodyInputMessagesTypeItem[] Messages { get; set; }
     }
 
     public class SendEmailv3BodyInputMessagesTypeItem
     {
+        public SendEmailv3BodyInputMessagesTypeItem(string fromEmail, string to)
+        {
+            this.FromEmail = fromEmail;
+            this.To = to;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromEmail { get; set; }
         public string FromName { get; set; }
@@ -725,6 +752,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
     public class CreateContactBodyInput
     {
+        public CreateContactBodyInput(string email)
+        {
+            this.Email = email;
+        }
+
         public string IsExcludedFromCampaigns { get; set; }
         public string Name { get; set; }
 
@@ -779,6 +811,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
     public class CreateContactListBodyInput
     {
+        public CreateContactListBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public bool? IsDeleted { get; set; }
@@ -854,6 +891,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
     public class CreateCampaignDraftBodyInput
     {
+        public CreateCampaignDraftBodyInput(string locale, string subject)
+        {
+            this.Locale = locale;
+            this.Subject = subject;
+        }
+
         public int? Current { get; set; }
         public BodyInputEditModeType? EditMode { get; set; }
         public bool? IsStarred { get; set; }

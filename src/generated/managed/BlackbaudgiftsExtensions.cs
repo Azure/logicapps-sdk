@@ -1083,6 +1083,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class CreateGiftBodyInput
     {
+        public CreateGiftBodyInput(string constituentId, CreateGiftBodyInputAmountType amount, string date, CreateGiftBodyInputTypeType type, GiftApiGiftSplitAdd[] splits)
+        {
+            this.ConstituentId = constituentId;
+            this.Amount = amount;
+            this.Date = date;
+            this.Type = type;
+            this.Splits = splits;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -1143,6 +1152,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class CreateGiftBodyInputAmountType
     {
+        public CreateGiftBodyInputAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -1157,6 +1171,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class GiftApiGiftSplitAdd
     {
+        public GiftApiGiftSplitAdd(string fundId, GiftApiGiftSplitAddAmountType amount)
+        {
+            this.FundId = fundId;
+            this.Amount = amount;
+        }
+
         [JsonProperty("campaign_id")]
         public string CampaignId { get; set; }
 
@@ -1175,6 +1195,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class GiftApiGiftSplitAddAmountType
     {
+        public GiftApiGiftSplitAddAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -1263,6 +1288,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class BodyInputReceiptsTypeAmountType
     {
+        public BodyInputReceiptsTypeAmountType(double receiptAmount)
+        {
+            this.ReceiptAmount = receiptAmount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double ReceiptAmount { get; set; }
     }
@@ -1421,6 +1451,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class CreateGiftAttachmentBodyInput
     {
+        public CreateGiftAttachmentBodyInput(string giftId, CreateGiftAttachmentBodyInputTypeType type)
+        {
+            this.GiftId = giftId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftId { get; set; }
 
@@ -1479,6 +1515,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class CreateGiftCustomFieldBodyInput
     {
+        public CreateGiftCustomFieldBodyInput(string giftId, string category)
+        {
+            this.GiftId = giftId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftId { get; set; }
 
@@ -1686,12 +1728,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class AddGiftToBatchBodyInput
     {
+        public AddGiftToBatchBodyInput(BodyInputGiftsType gifts)
+        {
+            this.Gifts = gifts;
+        }
+
         [JsonProperty("gifts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputGiftsType Gifts { get; set; } = new BodyInputGiftsType();
+        public BodyInputGiftsType Gifts { get; set; }
     }
 
     public class BodyInputGiftsType
     {
+        public BodyInputGiftsType(string constituentId, BodyInputGiftsTypeAmountType amount, string date, BodyInputGiftsTypeTypeType type, GiftApiVirtualBatchGiftSplitAdd[] splits)
+        {
+            this.ConstituentId = constituentId;
+            this.Amount = amount;
+            this.Date = date;
+            this.Type = type;
+            this.Splits = splits;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -1746,6 +1802,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class BodyInputGiftsTypeAmountType
     {
+        public BodyInputGiftsTypeAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -1760,6 +1821,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class GiftApiVirtualBatchGiftSplitAdd
     {
+        public GiftApiVirtualBatchGiftSplitAdd(string fundId, GiftApiVirtualBatchGiftSplitAddAmountType amount)
+        {
+            this.FundId = fundId;
+            this.Amount = amount;
+        }
+
         [JsonProperty("campaign_id")]
         public string CampaignId { get; set; }
 
@@ -1778,6 +1845,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class GiftApiVirtualBatchGiftSplitAddAmountType
     {
+        public GiftApiVirtualBatchGiftSplitAddAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -1866,6 +1938,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class BodyInputGiftsTypeReceiptsTypeAmountType
     {
+        public BodyInputGiftsTypeReceiptsTypeAmountType(double receiptAmount)
+        {
+            this.ReceiptAmount = receiptAmount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double ReceiptAmount { get; set; }
     }
@@ -2024,6 +2101,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class SellStockGiftBodyInput
     {
+        public SellStockGiftBodyInput(string saleDate, double saleValue)
+        {
+            this.SaleDate = saleDate;
+            this.SaleValue = saleValue;
+        }
+
         [JsonProperty("stock_sale_date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SaleDate { get; set; }
 
@@ -2063,6 +2146,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class CreatePledgeBodyInput
     {
+        public CreatePledgeBodyInput(BodyInputConstituentType constituent, CreateGiftBodyInputAmountType amount, string date, BodyInputScheduleType schedule, Gift2ApiNewGiftSplit[] splits)
+        {
+            this.Constituent = constituent;
+            this.Amount = amount;
+            this.Date = date;
+            this.Schedule = schedule;
+            this.Splits = splits;
+        }
+
         [JsonProperty("constituent", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputConstituentType Constituent { get; set; }
 
@@ -2135,12 +2227,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class BodyInputConstituentType
     {
+        public BodyInputConstituentType(string constituentId)
+        {
+            this.ConstituentId = constituentId;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
     }
 
     public class BodyInputScheduleType
     {
+        public BodyInputScheduleType(BodyInputScheduleTypeFrequencyType frequency, int ofInstallments, string startDate)
+        {
+            this.Frequency = frequency;
+            this.OfInstallments = ofInstallments;
+            this.StartDate = startDate;
+        }
+
         [JsonProperty("frequency", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputScheduleTypeFrequencyType Frequency { get; set; }
 
@@ -2165,6 +2269,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class Gift2ApiNewGiftSplit
     {
+        public Gift2ApiNewGiftSplit(Gift2ApiNewGiftSplitAmountType amount, string fundId)
+        {
+            this.Amount = amount;
+            this.FundId = fundId;
+        }
+
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public Gift2ApiNewGiftSplitAmountType Amount { get; set; }
 
@@ -2183,6 +2293,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class Gift2ApiNewGiftSplitAmountType
     {
+        public Gift2ApiNewGiftSplitAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -2291,6 +2406,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class BodyInputReceiptsTypeReceiptAmountType
     {
+        public BodyInputReceiptsTypeReceiptAmountType(double receiptAmount)
+        {
+            this.ReceiptAmount = receiptAmount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double ReceiptAmount { get; set; }
     }
@@ -2330,6 +2450,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class Gift2ApiNewRecognitionCredit
     {
+        public Gift2ApiNewRecognitionCredit(Gift2ApiNewRecognitionCreditTypeType type, string recipientId, Gift2ApiNewRecognitionCreditAmountType amount)
+        {
+            this.Type = type;
+            this.RecipientId = recipientId;
+            this.Amount = amount;
+        }
+
         [JsonProperty("credit_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public Gift2ApiNewRecognitionCreditTypeType Type { get; set; }
 
@@ -2349,6 +2476,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class Gift2ApiNewRecognitionCreditAmountType
     {
+        public Gift2ApiNewRecognitionCreditAmountType(double amount)
+        {
+            this.Amount = amount;
+        }
+
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
@@ -2364,6 +2496,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class CreatePledgePaymentBodyInput
     {
+        public CreatePledgePaymentBodyInput(BodyInputConstituentType constituent, CreateGiftBodyInputAmountType amount, string date, Gift2ApiNewGiftSplit[] splits, Gift2ApiNewInstallmentPayment[] applyTo)
+        {
+            this.Constituent = constituent;
+            this.Amount = amount;
+            this.Date = date;
+            this.Splits = splits;
+            this.ApplyTo = applyTo;
+        }
+
         [JsonProperty("constituent", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputConstituentType Constituent { get; set; }
 
@@ -2436,6 +2577,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class CreateStockBodyInput
     {
+        public CreateStockBodyInput(BodyInputConstituentType constituent, CreateGiftBodyInputAmountType amount, string date, Gift2ApiNewGiftSplit[] splits)
+        {
+            this.Constituent = constituent;
+            this.Amount = amount;
+            this.Date = date;
+            this.Splits = splits;
+        }
+
         [JsonProperty("constituent", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputConstituentType Constituent { get; set; }
 
@@ -2582,6 +2731,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class CreateTaxDeclarationBodyInput
     {
+        public CreateTaxDeclarationBodyInput(int constituentId, string declarationStarts)
+        {
+            this.ConstituentId = constituentId;
+            this.DeclarationStarts = declarationStarts;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ConstituentId { get; set; }
 
@@ -2677,6 +2832,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class CreateGiftNoteBodyInput
     {
+        public CreateGiftNoteBodyInput(int giftId, int type, BodyInputDateType date)
+        {
+            this.GiftId = giftId;
+            this.Type = type;
+            this.Date = date;
+        }
+
         [JsonProperty("gift_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int GiftId { get; set; }
 
@@ -2776,6 +2938,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class CreateGiftTributeBodyInput
     {
+        public CreateGiftTributeBodyInput(int giftId, int tributeId)
+        {
+            this.GiftId = giftId;
+            this.TributeId = tributeId;
+        }
+
         [JsonProperty("gift_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int GiftId { get; set; }
 

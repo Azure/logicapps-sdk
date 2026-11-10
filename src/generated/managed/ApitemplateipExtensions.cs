@@ -297,6 +297,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
 
     public class TemplateUpdateBodyInput
     {
+        public TemplateUpdateBodyInput(string templateId)
+        {
+            this.TemplateId = templateId;
+        }
+
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
 
@@ -321,6 +326,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
 
     public class PDFMergeBodyInput
     {
+        public PDFMergeBodyInput(string[] urls)
+        {
+            this.Urls = urls;
+        }
+
         [JsonProperty("urls", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Urls { get; set; }
 

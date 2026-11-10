@@ -13,781 +13,729 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     public class PdfcoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<HtmlToPdfResponse, ApiConnectionActionConfiguration> HtmlToPdf(Expression<Func<HtmlToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<HtmlToPdfResponse, ApiConnectionActionConfiguration> HtmlToPdf(Expression<Func<HtmlToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<HtmlToPdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/from/html";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<HtmlToPdfResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<UrlToPdfResponse, ApiConnectionActionConfiguration> UrlToPdf(Expression<Func<UrlToPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<UrlToPdfResponse, ApiConnectionActionConfiguration> UrlToPdf(Expression<Func<UrlToPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UrlToPdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/from/url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UrlToPdfResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PdfFillerResponse, ApiConnectionActionConfiguration> PdfFiller(Expression<Func<PdfFillerBodyInput>> body = null)
+        public IBodyWorkflowAction<PdfFillerResponse, ApiConnectionActionConfiguration> PdfFiller(Expression<Func<PdfFillerBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PdfFillerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/edit/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PdfFillerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<MergePdfSimplifiedResponse, ApiConnectionActionConfiguration> MergePdfSimplified(Expression<Func<MergePdfBodyInput>> body = null)
+        public IBodyWorkflowAction<MergePdfSimplifiedResponse, ApiConnectionActionConfiguration> MergePdfSimplified(Expression<Func<MergePdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergePdfSimplifiedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/merge";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MergePdfSimplifiedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<MergePdfResponse, ApiConnectionActionConfiguration> MergePdf(Expression<Func<MergePdfBodyInput>> body = null)
+        public IBodyWorkflowAction<MergePdfResponse, ApiConnectionActionConfiguration> MergePdf(Expression<Func<MergePdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergePdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/merge2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MergePdfResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<SplitPdfResponse, ApiConnectionActionConfiguration> SplitPdf(Expression<Func<SplitPdfBodyInput>> body = null)
+        public IBodyWorkflowAction<SplitPdfResponse, ApiConnectionActionConfiguration> SplitPdf(Expression<Func<SplitPdfBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SplitPdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/split";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SplitPdfResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<SplitPdf2Response, ApiConnectionActionConfiguration> SplitPdf2(Expression<Func<SplitPdf2BodyInput>> body = null)
+        public IBodyWorkflowAction<SplitPdf2Response, ApiConnectionActionConfiguration> SplitPdf2(Expression<Func<SplitPdf2BodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SplitPdf2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/split2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SplitPdf2Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFSerarchTextResponse, ApiConnectionActionConfiguration> PDFSerarchText(Expression<Func<PDFSerarchTextBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFSerarchTextResponse, ApiConnectionActionConfiguration> PDFSerarchText(Expression<Func<PDFSerarchTextBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFSerarchTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/find";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFSerarchTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<DocumentParserResponse, ApiConnectionActionConfiguration> DocumentParser(Expression<Func<DocumentParserBodyInput>> body = null)
+        public IBodyWorkflowAction<DocumentParserResponse, ApiConnectionActionConfiguration> DocumentParser(Expression<Func<DocumentParserBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DocumentParserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/documentparser";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DocumentParserResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<JobCheckResponse, ApiConnectionActionConfiguration> JobCheck(Expression<Func<JobCheckBodyInput>> body = null)
+        public IBodyWorkflowAction<JobCheckResponse, ApiConnectionActionConfiguration> JobCheck(Expression<Func<JobCheckBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JobCheckResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/job/check";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JobCheckResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<BarcodeGeneratorResponse, ApiConnectionActionConfiguration> BarcodeGenerator(Expression<Func<BarcodeGeneratorBodyInput>> body = null)
+        public IBodyWorkflowAction<BarcodeGeneratorResponse, ApiConnectionActionConfiguration> BarcodeGenerator(Expression<Func<BarcodeGeneratorBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BarcodeGeneratorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/barcode/generate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BarcodeGeneratorResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<BarcodeReaderResponse, ApiConnectionActionConfiguration> BarcodeReader(Expression<Func<BarcodeReaderBodyInput>> body = null)
+        public IBodyWorkflowAction<BarcodeReaderResponse, ApiConnectionActionConfiguration> BarcodeReader(Expression<Func<BarcodeReaderBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BarcodeReaderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/barcode/read/from/url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BarcodeReaderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFInfoReaderResponse, ApiConnectionActionConfiguration> PDFInfoReader(Expression<Func<PDFInfoReaderBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFInfoReaderResponse, ApiConnectionActionConfiguration> PDFInfoReader(Expression<Func<PDFInfoReaderBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFInfoReaderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/info";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFInfoReaderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFormsInfoReaderResponse, ApiConnectionActionConfiguration> PDFFormsInfoReader(Expression<Func<PDFFormsInfoReaderBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFFormsInfoReaderResponse, ApiConnectionActionConfiguration> PDFFormsInfoReader(Expression<Func<PDFFormsInfoReaderBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFFormsInfoReaderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/info/fields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFFormsInfoReaderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFindTableResponse, ApiConnectionActionConfiguration> PDFFindTable(Expression<Func<PDFFindTableBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFFindTableResponse, ApiConnectionActionConfiguration> PDFFindTable(Expression<Func<PDFFindTableBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFFindTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/find/table";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFFindTableResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<SearchAndReplaceResponse, ApiConnectionActionConfiguration> SearchAndReplace(Expression<Func<SearchAndReplaceBodyInput>> body = null)
+        public IBodyWorkflowAction<SearchAndReplaceResponse, ApiConnectionActionConfiguration> SearchAndReplace(Expression<Func<SearchAndReplaceBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchAndReplaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/edit/replace-text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SearchAndReplaceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<SearchAndReplaceWithImageResponse, ApiConnectionActionConfiguration> SearchAndReplaceWithImage(Expression<Func<SearchAndReplaceWithImageBodyInput>> body = null)
+        public IBodyWorkflowAction<SearchAndReplaceWithImageResponse, ApiConnectionActionConfiguration> SearchAndReplaceWithImage(Expression<Func<SearchAndReplaceWithImageBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchAndReplaceWithImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/edit/replace-text-with-image";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SearchAndReplaceWithImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<SearchAndDeleteTextResponse, ApiConnectionActionConfiguration> SearchAndDeleteText(Expression<Func<SearchAndDeleteTextBodyInput>> body = null)
+        public IBodyWorkflowAction<SearchAndDeleteTextResponse, ApiConnectionActionConfiguration> SearchAndDeleteText(Expression<Func<SearchAndDeleteTextBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchAndDeleteTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/edit/delete-text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SearchAndDeleteTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFSearchableResponse, ApiConnectionActionConfiguration> PDFSearchable(Expression<Func<PDFSearchableBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFSearchableResponse, ApiConnectionActionConfiguration> PDFSearchable(Expression<Func<PDFSearchableBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFSearchableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/makesearchable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFSearchableResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFUnSearchableResponse, ApiConnectionActionConfiguration> PDFUnSearchable(Expression<Func<PDFUnSearchableBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFUnSearchableResponse, ApiConnectionActionConfiguration> PDFUnSearchable(Expression<Func<PDFUnSearchableBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFUnSearchableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/makeunsearchable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFUnSearchableResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToCSVResponse, ApiConnectionActionConfiguration> PDFToCSV(Expression<Func<PDFToCSVBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToCSVResponse, ApiConnectionActionConfiguration> PDFToCSV(Expression<Func<PDFToCSVBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToCSVResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/csv";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToCSVResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToJSONResponse, ApiConnectionActionConfiguration> PDFToJSON(Expression<Func<PDFToCSVBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToJSONResponse, ApiConnectionActionConfiguration> PDFToJSON(Expression<Func<PDFToCSVBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToJSONResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/json2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToJSONResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToJSONMetaResponse, ApiConnectionActionConfiguration> PDFToJSONMeta(Expression<Func<PDFToCSVBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToJSONMetaResponse, ApiConnectionActionConfiguration> PDFToJSONMeta(Expression<Func<PDFToCSVBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToJSONMetaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/json-meta";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToJSONMetaResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToTextResponse, ApiConnectionActionConfiguration> PDFToText(Expression<Func<PDFToCSVBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToTextResponse, ApiConnectionActionConfiguration> PDFToText(Expression<Func<PDFToCSVBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToTextSimpleResponse, ApiConnectionActionConfiguration> PDFToTextSimple(Expression<Func<PDFToTextSimpleBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToTextSimpleResponse, ApiConnectionActionConfiguration> PDFToTextSimple(Expression<Func<PDFToTextSimpleBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToTextSimpleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/text-simple";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToTextSimpleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToXLSResponse, ApiConnectionActionConfiguration> PDFToXLS(Expression<Func<PDFToXLSBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToXLSResponse, ApiConnectionActionConfiguration> PDFToXLS(Expression<Func<PDFToXLSBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToXLSResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/xls";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToXLSResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToXLSXResponse, ApiConnectionActionConfiguration> PDFToXLSX(Expression<Func<PDFToXLSBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToXLSXResponse, ApiConnectionActionConfiguration> PDFToXLSX(Expression<Func<PDFToXLSBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToXLSXResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/xlsx";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToXLSXResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToXMLResponse, ApiConnectionActionConfiguration> PDFToXML(Expression<Func<PDFToCSVBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToXMLResponse, ApiConnectionActionConfiguration> PDFToXML(Expression<Func<PDFToCSVBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToXMLResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/xml";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToXMLResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToJPGResponse, ApiConnectionActionConfiguration> PDFToJPG(Expression<Func<PDFToJPGBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToJPGResponse, ApiConnectionActionConfiguration> PDFToJPG(Expression<Func<PDFToJPGBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToJPGResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/jpg";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToJPGResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToPNGResponse, ApiConnectionActionConfiguration> PDFToPNG(Expression<Func<PDFToJPGBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToPNGResponse, ApiConnectionActionConfiguration> PDFToPNG(Expression<Func<PDFToJPGBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToPNGResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/png";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToPNGResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToWEBPResponse, ApiConnectionActionConfiguration> PDFToWEBP(Expression<Func<PDFToJPGBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToWEBPResponse, ApiConnectionActionConfiguration> PDFToWEBP(Expression<Func<PDFToJPGBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToWEBPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/webp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToWEBPResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToTIFFResponse, ApiConnectionActionConfiguration> PDFToTIFF(Expression<Func<PDFToJPGBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFToTIFFResponse, ApiConnectionActionConfiguration> PDFToTIFF(Expression<Func<PDFToJPGBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFToTIFFResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/to/tiff";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFToTIFFResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromCSVResponse, ApiConnectionActionConfiguration> PDFFromCSV(Expression<Func<PDFFromCSVBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFFromCSVResponse, ApiConnectionActionConfiguration> PDFFromCSV(Expression<Func<PDFFromCSVBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFFromCSVResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/from/csv";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFFromCSVResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromDocResponse, ApiConnectionActionConfiguration> PDFFromDoc(Expression<Func<PDFFromCSVBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFFromDocResponse, ApiConnectionActionConfiguration> PDFFromDoc(Expression<Func<PDFFromCSVBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFFromDocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/from/doc";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFFromDocResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromImagesResponse, ApiConnectionActionConfiguration> PDFFromImages(Expression<Func<PDFFromImagesBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFFromImagesResponse, ApiConnectionActionConfiguration> PDFFromImages(Expression<Func<PDFFromImagesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFFromImagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/from/image";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFFromImagesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromEmailResponse, ApiConnectionActionConfiguration> PDFFromEmail(Expression<Func<PDFFromEmailBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFFromEmailResponse, ApiConnectionActionConfiguration> PDFFromEmail(Expression<Func<PDFFromEmailBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFFromEmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/convert/from/email";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFFromEmailResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFAddSecurityResponse, ApiConnectionActionConfiguration> PDFAddSecurity(Expression<Func<PDFAddSecurityBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFAddSecurityResponse, ApiConnectionActionConfiguration> PDFAddSecurity(Expression<Func<PDFAddSecurityBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFAddSecurityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/security/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFAddSecurityResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFSecurityRemoveResponse, ApiConnectionActionConfiguration> PDFSecurityRemove(Expression<Func<PDFSecurityRemoveBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFSecurityRemoveResponse, ApiConnectionActionConfiguration> PDFSecurityRemove(Expression<Func<PDFSecurityRemoveBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFSecurityRemoveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/security/remove";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFSecurityRemoveResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromXLSXLSXResponse, ApiConnectionActionConfiguration> PDFFromXLSXLSX(Expression<Func<PDFFromXLSXLSXBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFFromXLSXLSXResponse, ApiConnectionActionConfiguration> PDFFromXLSXLSX(Expression<Func<PDFFromXLSXLSXBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFFromXLSXLSXResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/xls/convert/to/pdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFFromXLSXLSXResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<XLStoCSVResponse, ApiConnectionActionConfiguration> XLStoCSV(Expression<Func<XLStoCSVBodyInput>> body = null)
+        public IBodyWorkflowAction<XLStoCSVResponse, ApiConnectionActionConfiguration> XLStoCSV(Expression<Func<XLStoCSVBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<XLStoCSVResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/xls/convert/to/csv";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<XLStoCSVResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<XLStoJSONResponse, ApiConnectionActionConfiguration> XLStoJSON(Expression<Func<PDFFromXLSXLSXBodyInput>> body = null)
+        public IBodyWorkflowAction<XLStoJSONResponse, ApiConnectionActionConfiguration> XLStoJSON(Expression<Func<PDFFromXLSXLSXBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<XLStoJSONResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/xls/convert/to/json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<XLStoJSONResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<XLStoHTMLResponse, ApiConnectionActionConfiguration> XLStoHTML(Expression<Func<PDFFromXLSXLSXBodyInput>> body = null)
+        public IBodyWorkflowAction<XLStoHTMLResponse, ApiConnectionActionConfiguration> XLStoHTML(Expression<Func<PDFFromXLSXLSXBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<XLStoHTMLResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/xls/convert/to/html";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<XLStoHTMLResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<XLStoTXTResponse, ApiConnectionActionConfiguration> XLStoTXT(Expression<Func<PDFFromXLSXLSXBodyInput>> body = null)
+        public IBodyWorkflowAction<XLStoTXTResponse, ApiConnectionActionConfiguration> XLStoTXT(Expression<Func<PDFFromXLSXLSXBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<XLStoTXTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/xls/convert/to/txt";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<XLStoTXTResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<XLStoXMLResponse, ApiConnectionActionConfiguration> XLStoXML(Expression<Func<PDFFromXLSXLSXBodyInput>> body = null)
+        public IBodyWorkflowAction<XLStoXMLResponse, ApiConnectionActionConfiguration> XLStoXML(Expression<Func<PDFFromXLSXLSXBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<XLStoXMLResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/xls/convert/to/xml";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<XLStoXMLResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFRotatePagesResponse, ApiConnectionActionConfiguration> PDFRotatePages(Expression<Func<PDFRotatePagesBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFRotatePagesResponse, ApiConnectionActionConfiguration> PDFRotatePages(Expression<Func<PDFRotatePagesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFRotatePagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/edit/rotate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFRotatePagesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFAutoRotatePagesResponse, ApiConnectionActionConfiguration> PDFAutoRotatePages(Expression<Func<PDFAutoRotatePagesBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFAutoRotatePagesResponse, ApiConnectionActionConfiguration> PDFAutoRotatePages(Expression<Func<PDFAutoRotatePagesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFAutoRotatePagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/edit/rotate/auto";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFAutoRotatePagesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFDeletePagesResponse, ApiConnectionActionConfiguration> PDFDeletePages(Expression<Func<PDFDeletePagesBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFDeletePagesResponse, ApiConnectionActionConfiguration> PDFDeletePages(Expression<Func<PDFDeletePagesBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFDeletePagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/edit/delete-pages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFDeletePagesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFCompressResponse, ApiConnectionActionConfiguration> PDFCompress(Expression<Func<PDFCompressBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFCompressResponse, ApiConnectionActionConfiguration> PDFCompress(Expression<Func<PDFCompressBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFCompressResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/optimize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFCompressResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFClassifierResponse, ApiConnectionActionConfiguration> PDFClassifier(Expression<Func<PDFClassifierBodyInput>> body = null)
+        public IBodyWorkflowAction<PDFClassifierResponse, ApiConnectionActionConfiguration> PDFClassifier(Expression<Func<PDFClassifierBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PDFClassifierResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pdf/classifier";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PDFClassifierResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<EmailSendResponse, ApiConnectionActionConfiguration> EmailSend(Expression<Func<EmailSendBodyInput>> body = null)
+        public IBodyWorkflowAction<EmailSendResponse, ApiConnectionActionConfiguration> EmailSend(Expression<Func<EmailSendBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmailSendResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/email/send";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EmailSendResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<EmailDecodeResponse, ApiConnectionActionConfiguration> EmailDecode(Expression<Func<EmailAttachmentExtractionBodyInput>> body = null)
+        public IBodyWorkflowAction<EmailDecodeResponse, ApiConnectionActionConfiguration> EmailDecode(Expression<Func<EmailAttachmentExtractionBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmailDecodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/email/decode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EmailDecodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<EmailAttachmentExtractionResponse, ApiConnectionActionConfiguration> EmailAttachmentExtraction(Expression<Func<EmailAttachmentExtractionBodyInput>> body = null)
+        public IBodyWorkflowAction<EmailAttachmentExtractionResponse, ApiConnectionActionConfiguration> EmailAttachmentExtraction(Expression<Func<EmailAttachmentExtractionBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmailAttachmentExtractionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/email/extract-attachments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EmailAttachmentExtractionResponse>(callPayload);
             });
         }
@@ -803,6 +751,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new PDFAttachmentExtractionBodyInput().ToJToken();
                 return new ApiConnectionAction<PDFAttachmentExtractionResponse>(callPayload);
             });
         }
@@ -844,6 +794,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class HtmlToPdfBodyInput
     {
+        public HtmlToPdfBodyInput(string html)
+        {
+            this.Html = html;
+        }
+
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Html { get; set; }
 
@@ -935,6 +890,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class UrlToPdfBodyInput
     {
+        public UrlToPdfBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1005,6 +965,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PdfFillerBodyInput
     {
+        public PdfFillerBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1065,6 +1030,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class MergePdfBodyInput
     {
+        public MergePdfBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1143,6 +1113,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class SplitPdfBodyInput
     {
+        public SplitPdfBodyInput(string url, string pages)
+        {
+            this.Url = url;
+            this.Pages = pages;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1200,6 +1176,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class SplitPdf2BodyInput
     {
+        public SplitPdf2BodyInput(string url, string searchString)
+        {
+            this.Url = url;
+            this.SearchString = searchString;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1290,6 +1272,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFSerarchTextBodyInput
     {
+        public PDFSerarchTextBodyInput(string url, string searchString)
+        {
+            this.Url = url;
+            this.SearchString = searchString;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1394,6 +1382,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class DocumentParserBodyInput
     {
+        public DocumentParserBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1465,6 +1458,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class JobCheckBodyInput
     {
+        public JobCheckBodyInput(string jobid)
+        {
+            this.Jobid = jobid;
+        }
+
         [JsonProperty("jobid", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Jobid { get; set; }
     }
@@ -1498,6 +1496,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class BarcodeGeneratorBodyInput
     {
+        public BarcodeGeneratorBodyInput(string value)
+        {
+            this.Value = value;
+        }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -1636,6 +1639,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class BarcodeReaderBodyInput
     {
+        public BarcodeReaderBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1730,6 +1738,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFInfoReaderBodyInput
     {
+        public PDFInfoReaderBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1847,6 +1860,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFFormsInfoReaderBodyInput
     {
+        public PDFFormsInfoReaderBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1914,6 +1932,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFFindTableBodyInput
     {
+        public PDFFindTableBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -1968,6 +1991,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class SearchAndReplaceBodyInput
     {
+        public SearchAndReplaceBodyInput(string url, string[] searchStrings)
+        {
+            this.Url = url;
+            this.SearchStrings = searchStrings;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2034,6 +2063,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class SearchAndReplaceWithImageBodyInput
     {
+        public SearchAndReplaceWithImageBodyInput(string url, string searchString, string replaceImage)
+        {
+            this.Url = url;
+            this.SearchString = searchString;
+            this.ReplaceImage = replaceImage;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2097,6 +2133,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class SearchAndDeleteTextBodyInput
     {
+        public SearchAndDeleteTextBodyInput(string url, string[] searchStrings)
+        {
+            this.Url = url;
+            this.SearchStrings = searchStrings;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2163,6 +2205,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFSearchableBodyInput
     {
+        public PDFSearchableBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2214,6 +2261,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFUnSearchableBodyInput
     {
+        public PDFUnSearchableBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2262,6 +2314,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFToCSVBodyInput
     {
+        public PDFToCSVBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2441,6 +2498,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFToTextSimpleBodyInput
     {
+        public PDFToTextSimpleBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2492,6 +2554,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFToXLSBodyInput
     {
+        public PDFToXLSBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2618,6 +2685,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFToJPGBodyInput
     {
+        public PDFToJPGBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2762,6 +2834,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFFromCSVBodyInput
     {
+        public PDFFromCSVBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2843,6 +2920,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFFromImagesBodyInput
     {
+        public PDFFromImagesBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2891,6 +2973,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFFromEmailBodyInput
     {
+        public PDFFromEmailBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -2963,6 +3050,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFAddSecurityBodyInput
     {
+        public PDFAddSecurityBodyInput(string url, string ownerPassword)
+        {
+            this.Url = url;
+            this.OwnerPassword = ownerPassword;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -3068,6 +3161,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFSecurityRemoveBodyInput
     {
+        public PDFSecurityRemoveBodyInput(string url, string password)
+        {
+            this.Url = url;
+            this.Password = password;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -3119,6 +3218,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFFromXLSXLSXBodyInput
     {
+        public PDFFromXLSXLSXBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -3167,6 +3271,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class XLStoCSVBodyInput
     {
+        public XLStoCSVBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -3332,6 +3441,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFRotatePagesBodyInput
     {
+        public PDFRotatePagesBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -3393,6 +3507,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFAutoRotatePagesBodyInput
     {
+        public PDFAutoRotatePagesBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -3444,6 +3563,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFDeletePagesBodyInput
     {
+        public PDFDeletePagesBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -3495,6 +3619,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFCompressBodyInput
     {
+        public PDFCompressBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -3561,6 +3690,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class PDFClassifierBodyInput
     {
+        public PDFClassifierBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -3612,6 +3746,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class EmailSendBodyInput
     {
+        public EmailSendBodyInput(string url, string from, string to, string subject, string smtpserver, string smtpport, string smtpusername, string smtppassword)
+        {
+            this.Url = url;
+            this.From = from;
+            this.To = to;
+            this.Subject = subject;
+            this.Smtpserver = smtpserver;
+            this.Smtpport = smtpport;
+            this.Smtpusername = smtpusername;
+            this.Smtppassword = smtppassword;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -3738,6 +3884,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
     public class EmailAttachmentExtractionBodyInput
     {
+        public EmailAttachmentExtractionBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 

@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_options != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_options);
+                else
+                    callPayload.Body = new DeleteOptionsInput().ToJToken();
                 return new ApiConnectionAction<Item>(callPayload);
             });
         }
@@ -38,6 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_options != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_options);
+                else
+                    callPayload.Body = new DeleteAllOptionsInput().ToJToken();
                 return new ApiConnectionAction<ItemsList>(callPayload);
             });
         }
@@ -53,6 +57,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_options != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_options);
+                else
+                    callPayload.Body = new DeleteOptionsInput().ToJToken();
                 return new ApiConnectionAction<Item>(callPayload);
             });
         }
@@ -68,6 +74,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_options != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_options);
+                else
+                    callPayload.Body = new DeleteAllOptionsInput().ToJToken();
                 return new ApiConnectionAction<ItemsList>(callPayload);
             });
         }
@@ -83,6 +91,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_options != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_options);
+                else
+                    callPayload.Body = new DeleteOptionsInput().ToJToken();
                 return new ApiConnectionAction<Item>(callPayload);
             });
         }
@@ -98,6 +108,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_options != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_options);
+                else
+                    callPayload.Body = new DeleteAllOptionsInput().ToJToken();
                 return new ApiConnectionAction<ItemsList>(callPayload);
             });
         }
@@ -201,6 +213,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
 
     public class MessageInput
     {
+        public MessageInput(string message)
+        {
+            this.Message = message;
+        }
+
         public string Queue { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]

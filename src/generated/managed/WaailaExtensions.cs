@@ -265,6 +265,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
 
     public class BodyInput
     {
+        public BodyInput(string code, string email)
+        {
+            this.Code = code;
+            this.Email = email;
+        }
+
         [JsonProperty("code", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
 

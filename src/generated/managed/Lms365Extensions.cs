@@ -484,6 +484,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
     public class EnrollUserToCourseBodyInput
     {
+        public EnrollUserToCourseBodyInput(string userLoginName)
+        {
+            this.UserLoginName = userLoginName;
+        }
+
         [JsonProperty("userLoginName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserLoginName { get; set; }
 
@@ -530,6 +535,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
     public class CreateCourseCategoryBodyInput
     {
+        public CreateCourseCategoryBodyInput(string categoryName, string courseCatalogId)
+        {
+            this.CategoryName = categoryName;
+            this.CourseCatalogId = courseCatalogId;
+        }
+
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CategoryName { get; set; }
 
@@ -576,6 +587,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
     public class CreateCourseBodyInput
     {
+        public CreateCourseBodyInput(string courseCatalogId, BodyInputCoursetypeType coursetype, string trainingTitle, string description, string culture, string uICulture, string url)
+        {
+            this.CourseCatalogId = courseCatalogId;
+            this.Coursetype = coursetype;
+            this.TrainingTitle = trainingTitle;
+            this.Description = description;
+            this.Culture = culture;
+            this.UICulture = uICulture;
+            this.Url = url;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CourseCatalogId { get; set; }
 
@@ -908,6 +930,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
     public class CreateCourseTagBodyInput
     {
+        public CreateCourseTagBodyInput(string name, string courseCatalogId)
+        {
+            this.Name = name;
+            this.CourseCatalogId = courseCatalogId;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1051,6 +1079,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
     public class CreateCourseSessionBodyInput
     {
+        public CreateCourseSessionBodyInput(string title, string startDate, string endDate, BodyInputTimeZoneType timeZone)
+        {
+            this.Title = title;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.TimeZone = timeZone;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
@@ -1367,6 +1403,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
     public class ParametersInput
     {
+        public ParametersInput(string uri)
+        {
+            this.Uri = uri;
+        }
+
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lms365.ParametersInputMethodType.GET;
 

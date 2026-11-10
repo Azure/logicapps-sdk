@@ -146,31 +146,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<RecognitionResponse[], ApiConnectionActionConfiguration> GetRecognitions(Expression<Func<GetRecognitionsBodyInput>> body = null)
+        public IBodyWorkflowAction<RecognitionResponse[], ApiConnectionActionConfiguration> GetRecognitions(Expression<Func<GetRecognitionsBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RecognitionResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/recognition";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RecognitionResponse[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<RecognitionCreateResponse, ApiConnectionActionConfiguration> CreateRecognition(Expression<Func<CreateRecognitionBodyInput>> body = null)
+        public IBodyWorkflowAction<RecognitionCreateResponse, ApiConnectionActionConfiguration> CreateRecognition(Expression<Func<CreateRecognitionBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RecognitionCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/recognition/createNewRecognitions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RecognitionCreateResponse>(callPayload);
             });
         }
@@ -317,6 +315,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
 
     public class SendFeedbackRequestBodyInput
     {
+        public SendFeedbackRequestBodyInput(string feedbackSubject, string feedbackProvider, string requestNote, string templateTitle, double dueDays, bool isPrivate)
+        {
+            this.FeedbackSubject = feedbackSubject;
+            this.FeedbackProvider = feedbackProvider;
+            this.RequestNote = requestNote;
+            this.TemplateTitle = templateTitle;
+            this.DueDays = dueDays;
+            this.IsPrivate = isPrivate;
+        }
+
         [JsonProperty("feedbackAboutUPNorId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FeedbackSubject { get; set; }
 
@@ -338,6 +346,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
 
     public class SendExternalFeedbackRequestBodyInput
     {
+        public SendExternalFeedbackRequestBodyInput(string feedbackSubject, string externalEmail, string providerName, string requestNote, string templateTitle, double dueDays, bool isPrivate, bool isAnonymous)
+        {
+            this.FeedbackSubject = feedbackSubject;
+            this.ExternalEmail = externalEmail;
+            this.ProviderName = providerName;
+            this.RequestNote = requestNote;
+            this.TemplateTitle = templateTitle;
+            this.DueDays = dueDays;
+            this.IsPrivate = isPrivate;
+            this.IsAnonymous = isAnonymous;
+        }
+
         [JsonProperty("feedbackAboutUPNorId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FeedbackSubject { get; set; }
 
@@ -482,6 +502,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
 
     public class UpdateGoalBodyInput
     {
+        public UpdateGoalBodyInput(string goalId, string newProgressValue, BodyInputUpdaterTypeType updaterType, string systemName)
+        {
+            this.GoalId = goalId;
+            this.NewProgressValue = newProgressValue;
+            this.UpdaterType = updaterType;
+            this.SystemName = systemName;
+        }
+
         [JsonProperty("goalId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GoalId { get; set; }
 
@@ -510,6 +538,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
 
     public class CreateGoalBodyInput
     {
+        public CreateGoalBodyInput(string goalTitle, string description, string startDate, string dueDate, string goalType, JToken goalOwner, string goalCreator, bool isPrivate, string progressFormat, string currencyCode, double initialValue, double targetValue, string parentGoalId, bool notifyOwner)
+        {
+            this.GoalTitle = goalTitle;
+            this.Description = description;
+            this.StartDate = startDate;
+            this.DueDate = dueDate;
+            this.GoalType = goalType;
+            this.GoalOwner = goalOwner;
+            this.GoalCreator = goalCreator;
+            this.IsPrivate = isPrivate;
+            this.ProgressFormat = progressFormat;
+            this.CurrencyCode = currencyCode;
+            this.InitialValue = initialValue;
+            this.TargetValue = targetValue;
+            this.ParentGoalId = parentGoalId;
+            this.NotifyOwner = notifyOwner;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GoalTitle { get; set; }
 
@@ -555,6 +601,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
 
     public class CommentInput
     {
+        public CommentInput(string idOfTheGoal, string objectIdOrUserPrincipalNameOfTheCommenter, string commentItself)
+        {
+            this.IdOfTheGoal = idOfTheGoal;
+            this.ObjectIdOrUserPrincipalNameOfTheCommenter = objectIdOrUserPrincipalNameOfTheCommenter;
+            this.CommentItself = commentItself;
+        }
+
         [JsonProperty("goalId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IdOfTheGoal { get; set; }
 
@@ -672,6 +725,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
 
     public class GetRecognitionsBodyInput
     {
+        public GetRecognitionsBodyInput(string[] recipientsToSearch, string recognitionTitle, string updateDate, string creationDate)
+        {
+            this.RecipientsToSearch = recipientsToSearch;
+            this.RecognitionTitle = recognitionTitle;
+            this.UpdateDate = updateDate;
+            this.CreationDate = creationDate;
+        }
+
         [JsonProperty("recipientsIdsOrUPNS", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] RecipientsToSearch { get; set; }
 
@@ -750,6 +811,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
 
     public class CreateRecognitionBodyInput
     {
+        public CreateRecognitionBodyInput(string recognitionSender, string[] recognitionRecipients, string badgeTitle, bool isPrivate, string recognitionMessage)
+        {
+            this.RecognitionSender = recognitionSender;
+            this.RecognitionRecipients = recognitionRecipients;
+            this.BadgeTitle = badgeTitle;
+            this.IsPrivate = isPrivate;
+            this.RecognitionMessage = recognitionMessage;
+        }
+
         [JsonProperty("senderIdOrUPN", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecognitionSender { get; set; }
 

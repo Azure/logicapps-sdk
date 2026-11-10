@@ -235,6 +235,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
 
     public class CreatePostInGroupBodyInput
     {
+        public CreatePostInGroupBodyInput(string groupId)
+        {
+            this.GroupId = groupId;
+        }
+
         [JsonProperty("subjectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupId { get; set; }
     }
@@ -298,6 +303,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
 
     public class AddUserToGroupBodyInput
     {
+        public AddUserToGroupBodyInput(string salesforceUserId)
+        {
+            this.SalesforceUserId = salesforceUserId;
+        }
+
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SalesforceUserId { get; set; }
     }

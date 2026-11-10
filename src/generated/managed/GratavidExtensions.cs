@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
     public class GratavidActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/integrationsEndpoint";
@@ -23,16 +23,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
                 callPayload.Queries["event"] = Convert.ToString("createTask");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<SendNoteResponse, ApiConnectionActionConfiguration> SendNote(Expression<Func<SendNoteBodyInput>> body = null)
+        public IBodyWorkflowAction<SendNoteResponse, ApiConnectionActionConfiguration> SendNote(Expression<Func<SendNoteBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/integrationsEndpoint";
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
                 callPayload.Queries["event"] = Convert.ToString("sendNote");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendNoteResponse>(callPayload);
             });
         }
@@ -80,6 +78,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
 
     public class CreateTaskBodyInput
     {
+        public CreateTaskBodyInput(string email, string comments)
+        {
+            this.Email = email;
+            this.Comments = comments;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -125,6 +129,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
 
     public class SendNoteBodyInput
     {
+        public SendNoteBodyInput(string noteId, string email)
+        {
+            this.NoteId = noteId;
+            this.Email = email;
+        }
+
         [JsonProperty("noteId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NoteId { get; set; }
 

@@ -296,6 +296,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
 
     public class CreateConstituentRatingBodyInput
     {
+        public CreateConstituentRatingBodyInput(string constituentId, string source, string category, string date)
+        {
+            this.ConstituentId = constituentId;
+            this.Source = source;
+            this.Category = category;
+            this.Date = date;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -425,6 +433,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
 
     public class CreateOpportunityBodyInput
     {
+        public CreateOpportunityBodyInput(string constituentId, string purpose, string name)
+        {
+            this.ConstituentId = constituentId;
+            this.Purpose = purpose;
+            this.Name = name;
+        }
+
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
@@ -703,6 +718,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
 
     public class CreateOpportunityAttachmentBodyInput
     {
+        public CreateOpportunityAttachmentBodyInput(string opportunityId, BodyInputTypeType type)
+        {
+            this.OpportunityId = opportunityId;
+            this.Type = type;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OpportunityId { get; set; }
 
@@ -761,6 +782,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
 
     public class CreateOpportunityCustomFieldBodyInput
     {
+        public CreateOpportunityCustomFieldBodyInput(string opportunityId, string category)
+        {
+            this.OpportunityId = opportunityId;
+            this.Category = category;
+        }
+
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OpportunityId { get; set; }
 

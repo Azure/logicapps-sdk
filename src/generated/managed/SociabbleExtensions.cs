@@ -224,6 +224,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class SendAlertRequestBodyInput
     {
+        public SendAlertRequestBodyInput(string alertText, string alertTitle)
+        {
+            this.AlertText = alertText;
+            this.AlertTitle = alertTitle;
+        }
+
         [JsonProperty("alertText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AlertText { get; set; }
 
@@ -419,6 +425,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class CreateInternalNewsBodyInput
     {
+        public CreateInternalNewsBodyInput(string[] channelIds, LocalizedInternalContentCreation[] contents)
+        {
+            this.ChannelIds = channelIds;
+            this.Contents = contents;
+        }
+
         [JsonProperty("channelIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ChannelIds { get; set; }
 
@@ -481,6 +493,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class LocalizedInternalContentCreation
     {
+        public LocalizedInternalContentCreation(AssignCustomActionToUserLanguageBehavior language, bool isDefault, string title, string summary, string description)
+        {
+            this.Language = language;
+            this.IsDefault = isDefault;
+            this.Title = title;
+            this.Summary = summary;
+            this.Description = description;
+        }
+
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public AssignCustomActionToUserLanguageBehavior Language { get; set; }
 
@@ -794,6 +815,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class CreateExternalContentBodyInput
     {
+        public CreateExternalContentBodyInput(string[] channelIds, LocalizedExternalContentCreation[] contents, string contentUrl)
+        {
+            this.ChannelIds = channelIds;
+            this.Contents = contents;
+            this.ContentUrl = contentUrl;
+        }
+
         [JsonProperty("channelIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ChannelIds { get; set; }
 
@@ -854,6 +882,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class LocalizedExternalContentCreation
     {
+        public LocalizedExternalContentCreation(AssignCustomActionToUserLanguageBehavior language, bool isDefault, string title, string description)
+        {
+            this.Language = language;
+            this.IsDefault = isDefault;
+            this.Title = title;
+            this.Description = description;
+        }
+
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public AssignCustomActionToUserLanguageBehavior Language { get; set; }
 
@@ -954,6 +990,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class CtaSuggestContentCreationBodyInput
     {
+        public CtaSuggestContentCreationBodyInput(string[] channelIds, LocalizedBaseCtaContentCreation[] contents)
+        {
+            this.ChannelIds = channelIds;
+            this.Contents = contents;
+        }
+
         [JsonProperty("discriminator", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Discriminator { get; set; } = "Cta";
 
@@ -1002,6 +1044,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class LocalizedBaseCtaContentCreation
     {
+        public LocalizedBaseCtaContentCreation(AssignCustomActionToUserLanguageBehavior language, bool isDefault, string title)
+        {
+            this.Language = language;
+            this.IsDefault = isDefault;
+            this.Title = title;
+        }
+
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public AssignCustomActionToUserLanguageBehavior Language { get; set; }
 
@@ -1071,6 +1120,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class CtaInvitationContentCreationBodyInput
     {
+        public CtaInvitationContentCreationBodyInput(string[] channelIds, LocalizedBaseCtaContentCreation[] contents)
+        {
+            this.ChannelIds = channelIds;
+            this.Contents = contents;
+        }
+
         [JsonProperty("discriminator", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Discriminator { get; set; } = "Cta";
 
@@ -1164,6 +1219,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class CtaMobileContentCreationBodyInput
     {
+        public CtaMobileContentCreationBodyInput(string[] channelIds, LocalizedBaseCtaContentCreation[] contents)
+        {
+            this.ChannelIds = channelIds;
+            this.Contents = contents;
+        }
+
         [JsonProperty("discriminator", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Discriminator { get; set; } = "Cta";
 
@@ -1314,6 +1375,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class CtaEventCreationBodyInput
     {
+        public CtaEventCreationBodyInput(string[] channelIds, LocalizedCtaEventContentCreation[] contents)
+        {
+            this.ChannelIds = channelIds;
+            this.Contents = contents;
+        }
+
         [JsonProperty("discriminator", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Discriminator { get; set; } = "Cta";
 
@@ -1374,6 +1441,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class LocalizedCtaEventContentCreation
     {
+        public LocalizedCtaEventContentCreation(AssignCustomActionToUserLanguageBehavior language, bool isDefault, string title, string buttonText)
+        {
+            this.Language = language;
+            this.IsDefault = isDefault;
+            this.Title = title;
+            this.ButtonText = buttonText;
+        }
+
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public AssignCustomActionToUserLanguageBehavior Language { get; set; }
 
@@ -1419,6 +1494,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class AssignBadgeToUserBodyInput
     {
+        public AssignBadgeToUserBodyInput(string badgeId, int level)
+        {
+            this.BadgeId = badgeId;
+            this.Level = level;
+        }
+
         [JsonProperty("badgeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BadgeId { get; set; }
 
@@ -1428,6 +1509,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class AssignCustomActionToUserBodyInput
     {
+        public AssignCustomActionToUserBodyInput(BodyInputContentsTypeItem[] contents)
+        {
+            this.Contents = contents;
+        }
+
         [JsonProperty("isEngaging")]
         public bool? IsEngaging { get; set; }
 
@@ -1443,6 +1529,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class BodyInputContentsTypeItem
     {
+        public BodyInputContentsTypeItem(AssignCustomActionToUserLanguageBehavior language, bool isDefault, string title, string notificationText)
+        {
+            this.Language = language;
+            this.IsDefault = isDefault;
+            this.Title = title;
+            this.NotificationText = notificationText;
+        }
+
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public AssignCustomActionToUserLanguageBehavior Language { get; set; }
 

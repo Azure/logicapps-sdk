@@ -105,6 +105,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
 
     public class HASHHMACBodyInput
     {
+        public HASHHMACBodyInput(string content, string key)
+        {
+            this.Content = content;
+            this.Key = key;
+        }
+
         [JsonProperty("algo", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputAlgoType Algo { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations.BodyInputAlgoType.Sha256;
 
@@ -174,6 +180,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
 
     public class PREGREPLACEBodyInput
     {
+        public PREGREPLACEBodyInput(string pattern, string subject)
+        {
+            this.Pattern = pattern;
+            this.Subject = subject;
+        }
+
         [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pattern { get; set; }
 
@@ -192,6 +204,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
 
     public class MANUALBodyInput
     {
+        public MANUALBodyInput(string function, string data)
+        {
+            this.Function = function;
+            this.Data = data;
+        }
+
         [JsonProperty("function", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Function { get; set; }
 
@@ -201,6 +219,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
 
     public class HTMLTOPDFBodyInput
     {
+        public HTMLTOPDFBodyInput(string html, string name)
+        {
+            this.Html = html;
+            this.Name = name;
+        }
+
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Html { get; set; }
 
@@ -343,6 +367,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
 
     public class FILESTRINGBodyInput
     {
+        public FILESTRINGBodyInput(string subject)
+        {
+            this.Subject = subject;
+        }
+
         [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Pattern { get; set; } = "/[^a-zA-Z0-9 \\-\\(\\)\\_]+/";
 

@@ -2062,6 +2062,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class RFARequestInput
     {
+        public RFARequestInput(string id, string code, string requestedBy)
+        {
+            this.Id = id;
+            this.Code = code;
+            this.RequestedBy = requestedBy;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -2101,6 +2108,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class RFAResponseInput
     {
+        public RFAResponseInput(string id, string code, string responseBy, string responseOrigin, string responseOnUTC)
+        {
+            this.Id = id;
+            this.Code = code;
+            this.ResponseBy = responseBy;
+            this.ResponseOrigin = responseOrigin;
+            this.ResponseOnUTC = responseOnUTC;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
@@ -12932,6 +12948,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class ESScrollerCommandInput
     {
+        public ESScrollerCommandInput(string scrollerId, string commandId)
+        {
+            this.ScrollerId = scrollerId;
+            this.CommandId = commandId;
+        }
+
         public JToken ScrollerParams { get; set; }
         public JToken ScrollerDataset { get; set; }
         public string ScrollerDatasetJson { get; set; }
@@ -12952,6 +12974,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class ESCommandInInput
     {
+        public ESCommandInInput(string scrollerId, string commandId)
+        {
+            this.ScrollerId = scrollerId;
+            this.CommandId = commandId;
+        }
+
         [JsonProperty("ScrollerID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScrollerId { get; set; }
 
@@ -15606,6 +15634,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class ESHookPostRegistrationInput
     {
+        public ESHookPostRegistrationInput(RegistrationInputEntityTypeType entityType, RegistrationInputEventTypeType eventType)
+        {
+            this.EntityType = entityType;
+            this.EventType = eventType;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public RegistrationInputEntityTypeType EntityType { get; set; }
 
@@ -15881,6 +15915,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class ESSystemHookPostRegistrationInput
     {
+        public ESSystemHookPostRegistrationInput(RegistrationInputSystemEventTypeTypeItem[] systemEventType)
+        {
+            this.SystemEventType = systemEventType;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public RegistrationInputSystemEventTypeTypeItem[] SystemEventType { get; set; }
         public string OtherEvent { get; set; }

@@ -150,6 +150,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class AiCompareRequestInput
     {
+        public AiCompareRequestInput(RequestInputSourceDocumentType sourceDocument, RequestInputComparisonDocumentType comparisonDocument, AiCompareRequestInputConfigurationType configuration)
+        {
+            this.SourceDocument = sourceDocument;
+            this.ComparisonDocument = comparisonDocument;
+            this.Configuration = configuration;
+        }
+
         [JsonProperty("sourceDocument", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputSourceDocumentType SourceDocument { get; set; }
 
@@ -162,18 +169,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class RequestInputSourceDocumentType
     {
+        public RequestInputSourceDocumentType(string firstFile)
+        {
+            this.FirstFile = firstFile;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstFile { get; set; }
     }
 
     public class RequestInputComparisonDocumentType
     {
+        public RequestInputComparisonDocumentType(string secondFile)
+        {
+            this.SecondFile = secondFile;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SecondFile { get; set; }
     }
 
     public class AiCompareRequestInputConfigurationType
     {
+        public AiCompareRequestInputConfigurationType(RequestInputConfigurationTypeProfessionType profession)
+        {
+            this.Profession = profession;
+        }
+
         [JsonProperty("profession", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputConfigurationTypeProfessionType Profession { get; set; }
 
@@ -207,6 +229,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class AiSummaryRequestInput
     {
+        public AiSummaryRequestInput(AiSummaryRequestInputDocumentType document, AiSummaryRequestInputConfigurationType configuration)
+        {
+            this.Document = document;
+            this.Configuration = configuration;
+        }
+
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public AiSummaryRequestInputDocumentType Document { get; set; }
 
@@ -216,12 +244,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class AiSummaryRequestInputDocumentType
     {
+        public AiSummaryRequestInputDocumentType(string @file)
+        {
+            this.File = @file;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string File { get; set; }
     }
 
     public class AiSummaryRequestInputConfigurationType
     {
+        public AiSummaryRequestInputConfigurationType(int targetWordCount)
+        {
+            this.TargetWordCount = targetWordCount;
+        }
+
         [JsonProperty("targetWords", DefaultValueHandling = DefaultValueHandling.Include)]
         public int TargetWordCount { get; set; }
 
@@ -273,6 +311,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class AiTemplateBuilderRequestInput
     {
+        public AiTemplateBuilderRequestInput(string describeTheDocument1000Chars)
+        {
+            this.DescribeTheDocument1000Chars = describeTheDocument1000Chars;
+        }
+
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DescribeTheDocument1000Chars { get; set; }
 
@@ -288,6 +331,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class ConversionConvertRequestInput
     {
+        public ConversionConvertRequestInput(AiSummaryRequestInputDocumentType document, ConversionConvertRequestInputConfigurationType configuration)
+        {
+            this.Document = document;
+            this.Configuration = configuration;
+        }
+
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public AiSummaryRequestInputDocumentType Document { get; set; }
 
@@ -297,6 +346,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class ConversionConvertRequestInputConfigurationType
     {
+        public ConversionConvertRequestInputConfigurationType(ConversionConvertRequestInputConfigurationTypeDocumentFormatType documentFormat)
+        {
+            this.DocumentFormat = documentFormat;
+        }
+
         [JsonProperty("documentResponseFormat", DefaultValueHandling = DefaultValueHandling.Include)]
         public ConversionConvertRequestInputConfigurationTypeDocumentFormatType DocumentFormat { get; set; }
 
@@ -313,6 +367,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class DocumentJsonTemplateRequestInput
     {
+        public DocumentJsonTemplateRequestInput(RequestInputTemplateType template, JToken jSONObject)
+        {
+            this.Template = template;
+            this.JSONObject = jSONObject;
+        }
+
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputTemplateType Template { get; set; }
 
@@ -325,6 +385,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class RequestInputTemplateType
     {
+        public RequestInputTemplateType(string templateFile)
+        {
+            this.TemplateFile = templateFile;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateFile { get; set; }
     }
@@ -348,6 +413,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class DocumentTemplateRequestInput
     {
+        public DocumentTemplateRequestInput(RequestInputTemplateType template)
+        {
+            this.Template = template;
+        }
+
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputTemplateType Template { get; set; }
 
@@ -369,6 +439,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class RequestInputImageTypeItem
     {
+        public RequestInputImageTypeItem(string token, string fileContent)
+        {
+            this.Token = token;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Token { get; set; }
 
@@ -378,6 +454,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class RequestInputDocumentTypeItem
     {
+        public RequestInputDocumentTypeItem(string token, string fileContent)
+        {
+            this.Token = token;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Token { get; set; }
 
@@ -387,6 +469,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class RequestInputTableTypeItem
     {
+        public RequestInputTableTypeItem(string token, JToken rows)
+        {
+            this.Token = token;
+            this.Rows = rows;
+        }
+
         [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Token { get; set; }
 
@@ -411,6 +499,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class EnvelopesInstancesRequestInput
     {
+        public EnvelopesInstancesRequestInput(EnvelopesInstancesRequestInputDocumentType document, string documentTitle, string documentIntroduction, string recipientEmail, string recipientFirstName, string recipientLastName, string expiryDate, bool signatureRequired, string organsiationTitle, string organisationEmail, string organisationOwner)
+        {
+            this.Document = document;
+            this.DocumentTitle = documentTitle;
+            this.DocumentIntroduction = documentIntroduction;
+            this.RecipientEmail = recipientEmail;
+            this.RecipientFirstName = recipientFirstName;
+            this.RecipientLastName = recipientLastName;
+            this.ExpiryDate = expiryDate;
+            this.SignatureRequired = signatureRequired;
+            this.OrgansiationTitle = organsiationTitle;
+            this.OrganisationEmail = organisationEmail;
+            this.OrganisationOwner = organisationOwner;
+        }
+
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public EnvelopesInstancesRequestInputDocumentType Document { get; set; }
 
@@ -480,6 +583,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class EnvelopesInstancesRequestInputDocumentType
     {
+        public EnvelopesInstancesRequestInputDocumentType(string pDFDocument)
+        {
+            this.PDFDocument = pDFDocument;
+        }
+
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PDFDocument { get; set; }
     }

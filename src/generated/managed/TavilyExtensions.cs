@@ -13,61 +13,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
     public class TavilyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<SearchBodyInput>> body = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<SearchBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<ExtractResponse, ApiConnectionActionConfiguration> Extract(Expression<Func<ExtractBodyInput>> body = null)
+        public IBodyWorkflowAction<ExtractResponse, ApiConnectionActionConfiguration> Extract(Expression<Func<ExtractBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExtractResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/extract";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<CrawlResponse, ApiConnectionActionConfiguration> Crawl(Expression<Func<CrawlBodyInput>> body = null)
+        public IBodyWorkflowAction<CrawlResponse, ApiConnectionActionConfiguration> Crawl(Expression<Func<CrawlBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CrawlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/crawl";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CrawlResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<MapResponse, ApiConnectionActionConfiguration> Map(Expression<Func<MapBodyInput>> body = null)
+        public IBodyWorkflowAction<MapResponse, ApiConnectionActionConfiguration> Map(Expression<Func<MapBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MapResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/map";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MapResponse>(callPayload);
             });
         }
@@ -124,6 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
     public class SearchBodyInput
     {
+        public SearchBodyInput(string query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 
@@ -238,6 +239,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
     public class ExtractBodyInput
     {
+        public ExtractBodyInput(string urls)
+        {
+            this.Urls = urls;
+        }
+
         [JsonProperty("urls", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Urls { get; set; }
 
@@ -280,6 +286,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
     public class CrawlBodyInput
     {
+        public CrawlBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
@@ -334,6 +345,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
     public class MapBodyInput
     {
+        public MapBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 

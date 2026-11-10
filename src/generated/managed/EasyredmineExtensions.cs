@@ -239,12 +239,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
 
     public class CreateIssueIssueInput
     {
+        public CreateIssueIssueInput(CreateIssueIssueInputIssueType issue)
+        {
+            this.Issue = issue;
+        }
+
         [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateIssueIssueInputIssueType Issue { get; set; }
     }
 
     public class CreateIssueIssueInputIssueType
     {
+        public CreateIssueIssueInputIssueType(string projectId, string priorityId, string subject)
+        {
+            this.ProjectId = projectId;
+            this.PriorityId = priorityId;
+            this.Subject = subject;
+        }
+
         [JsonProperty("project_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
 
@@ -361,12 +373,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
 
     public class ProjectInput
     {
+        public ProjectInput(ProjectInputProjectType project)
+        {
+            this.Project = project;
+        }
+
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ProjectInputProjectType Project { get; set; } = new ProjectInputProjectType();
+        public ProjectInputProjectType Project { get; set; }
     }
 
     public class ProjectInputProjectType
     {
+        public ProjectInputProjectType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

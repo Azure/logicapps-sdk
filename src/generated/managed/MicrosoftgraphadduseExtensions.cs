@@ -43,17 +43,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MembersPatch(Expression<Func<string>> groupId, Expression<Func<MembersPatchBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MembersPatch(Expression<Func<string>> groupId, Expression<Func<MembersPatchBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -248,6 +247,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
 
     public class MembersPatchBodyInput
     {
+        public MembersPatchBodyInput(string[] membersOdataBind)
+        {
+            this.MembersOdataBind = membersOdataBind;
+        }
+
         [JsonProperty("members@odata.bind", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] MembersOdataBind { get; set; }
     }

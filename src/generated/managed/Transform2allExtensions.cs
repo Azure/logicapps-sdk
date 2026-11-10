@@ -33,6 +33,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
 
     public class BodyInput
     {
+        public BodyInput(string configId, string base64Content)
+        {
+            this.ConfigId = configId;
+            this.Base64Content = base64Content;
+        }
+
         [JsonProperty("configId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConfigId { get; set; }
 

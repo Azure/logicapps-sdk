@@ -13,31 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
     public class OpenaiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
-        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> ChatCompletion(Expression<Func<ChatCompletionBodyInput>> body = null)
+        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> ChatCompletion(Expression<Func<ChatCompletionBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChatCompletionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/chat/completions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
-        public IBodyWorkflowAction<EmbeddingsResponse, ApiConnectionActionConfiguration> Embeddings(Expression<Func<EmbeddingsBodyInput>> body = null)
+        public IBodyWorkflowAction<EmbeddingsResponse, ApiConnectionActionConfiguration> Embeddings(Expression<Func<EmbeddingsBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmbeddingsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/embeddings";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EmbeddingsResponse>(callPayload);
             });
         }
@@ -53,6 +51,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new CreateImageBodyInput().ToJToken();
                 return new ApiConnectionAction<CreateImageResponse>(callPayload);
             });
         }
@@ -129,6 +129,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
 
     public class ChatCompletionBodyInput
     {
+        public ChatCompletionBodyInput(string model, BodyInputMessagesTypeItem[] messages)
+        {
+            this.Model = model;
+            this.Messages = messages;
+        }
+
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; }
 
@@ -159,6 +165,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
 
     public class BodyInputMessagesTypeItem
     {
+        public BodyInputMessagesTypeItem(string role, string content)
+        {
+            this.Role = role;
+            this.Content = content;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
@@ -204,6 +216,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
 
     public class EmbeddingsBodyInput
     {
+        public EmbeddingsBodyInput(string input)
+        {
+            this.Input = input;
+        }
+
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; } = "text-embedding-ada-002";
 

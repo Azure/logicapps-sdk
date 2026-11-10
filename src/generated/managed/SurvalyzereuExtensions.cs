@@ -13,16 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
     public class SurvalyzereuActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<CreateAndInviteMembersResponse, ApiConnectionActionConfiguration> CreateAndInviteMembers(Expression<Func<CreateAndInviteMembersBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateAndInviteMembersResponse, ApiConnectionActionConfiguration> CreateAndInviteMembers(Expression<Func<CreateAndInviteMembersBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateAndInviteMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/CreateAndInviteMembers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateAndInviteMembersResponse>(callPayload);
             });
         }
@@ -43,46 +42,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<CreateMembersResponse, ApiConnectionActionConfiguration> CreateMembers(Expression<Func<CreateMembersBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateMembersResponse, ApiConnectionActionConfiguration> CreateMembers(Expression<Func<CreateMembersBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/CreateMembers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateMembersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<CreatePanelResponse, ApiConnectionActionConfiguration> CreatePanel(Expression<Func<CreatePanelBodyInput>> body = null)
+        public IBodyWorkflowAction<CreatePanelResponse, ApiConnectionActionConfiguration> CreatePanel(Expression<Func<CreatePanelBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatePanelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/CreatePanel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatePanelResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<CreateSurveyResponse, ApiConnectionActionConfiguration> CreateSurvey(Expression<Func<CreateSurveyBodyInput>> body = null)
+        public IBodyWorkflowAction<CreateSurveyResponse, ApiConnectionActionConfiguration> CreateSurvey(Expression<Func<CreateSurveyBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSurveyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/CreateSurvey";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSurveyResponse>(callPayload);
             });
         }
@@ -118,16 +114,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeleteDistributorResponse, ApiConnectionActionConfiguration> DeleteDistributor(Expression<Func<DeleteDistributorBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteDistributorResponse, ApiConnectionActionConfiguration> DeleteDistributor(Expression<Func<DeleteDistributorBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteDistributorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/DeleteDistributor";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteDistributorResponse>(callPayload);
             });
         }
@@ -148,31 +143,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeleteMembersResponse, ApiConnectionActionConfiguration> DeleteMembers(Expression<Func<DeleteMembersBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteMembersResponse, ApiConnectionActionConfiguration> DeleteMembers(Expression<Func<DeleteMembersBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/DeleteMembers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteMembersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeletePanelResponse, ApiConnectionActionConfiguration> DeletePanel(Expression<Func<DeletePanelBodyInput>> body = null)
+        public IBodyWorkflowAction<DeletePanelResponse, ApiConnectionActionConfiguration> DeletePanel(Expression<Func<DeletePanelBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeletePanelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/DeletePanel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeletePanelResponse>(callPayload);
             });
         }
@@ -193,16 +186,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeleteSurveyResponse, ApiConnectionActionConfiguration> DeleteSurvey(Expression<Func<DeleteSurveyBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteSurveyResponse, ApiConnectionActionConfiguration> DeleteSurvey(Expression<Func<DeleteSurveyBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteSurveyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/DeleteSurvey";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteSurveyResponse>(callPayload);
             });
         }
@@ -253,46 +245,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ExecuteSendMailResponse, ApiConnectionActionConfiguration> ExecuteSendMail(Expression<Func<ExecuteSendMailBodyInput>> body = null)
+        public IBodyWorkflowAction<ExecuteSendMailResponse, ApiConnectionActionConfiguration> ExecuteSendMail(Expression<Func<ExecuteSendMailBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExecuteSendMailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ExecuteSendMail";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExecuteSendMailResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse, ApiConnectionActionConfiguration> ExecuteWorkflowTransition(Expression<Func<ExecuteWorkflowTransitionBodyInput>> body = null)
+        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse, ApiConnectionActionConfiguration> ExecuteWorkflowTransition(Expression<Func<ExecuteWorkflowTransitionBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExecuteWorkflowTransitionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ExecuteWorkflowTransition";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExecuteWorkflowTransitionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<InviteMembersResponse, ApiConnectionActionConfiguration> InviteMembers(Expression<Func<InviteMembersBodyInput>> body = null)
+        public IBodyWorkflowAction<InviteMembersResponse, ApiConnectionActionConfiguration> InviteMembers(Expression<Func<InviteMembersBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InviteMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/InviteMembers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InviteMembersResponse>(callPayload);
             });
         }
@@ -313,16 +302,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadBounceListResponseV3, ApiConnectionActionConfiguration> ReadBounceList(Expression<Func<ReadBounceListBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadBounceListResponseV3, ApiConnectionActionConfiguration> ReadBounceList(Expression<Func<ReadBounceListBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadBounceListResponseV3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadBounceList";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadBounceListResponseV3>(callPayload);
             });
         }
@@ -388,16 +376,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadInterviewDataResponse, ApiConnectionActionConfiguration> ReadInterview(Expression<Func<ReadInterviewBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadInterviewDataResponse, ApiConnectionActionConfiguration> ReadInterview(Expression<Func<ReadInterviewBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadInterviewDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/ReadInterview";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadInterviewDataResponse>(callPayload);
             });
         }
@@ -433,31 +420,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadMemberListResponse, ApiConnectionActionConfiguration> ReadMemberList(Expression<Func<ReadMemberListBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadMemberListResponse, ApiConnectionActionConfiguration> ReadMemberList(Expression<Func<ReadMemberListBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadMemberListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/ReadMemberList";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadMemberListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadMessageTemplateListResponse, ApiConnectionActionConfiguration> ReadMessageTemplateList(Expression<Func<ReadMessageTemplateListBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadMessageTemplateListResponse, ApiConnectionActionConfiguration> ReadMessageTemplateList(Expression<Func<ReadMessageTemplateListBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadMessageTemplateListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadMessageTemplateList";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadMessageTemplateListResponse>(callPayload);
             });
         }
@@ -478,16 +463,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadPanelDefinitionResponse, ApiConnectionActionConfiguration> ReadPanel(Expression<Func<ReadPanelBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadPanelDefinitionResponse, ApiConnectionActionConfiguration> ReadPanel(Expression<Func<ReadPanelBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadPanelDefinitionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/ReadPanel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadPanelDefinitionResponse>(callPayload);
             });
         }
@@ -523,31 +507,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadSurveyListResponse, ApiConnectionActionConfiguration> ReadSurveyList(Expression<Func<ReadSurveyListBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadSurveyListResponse, ApiConnectionActionConfiguration> ReadSurveyList(Expression<Func<ReadSurveyListBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadSurveyListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/ReadSurveyList";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadSurveyListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadSurveyResponse, ApiConnectionActionConfiguration> ReadSurvey(Expression<Func<ReadSurveyBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadSurveyResponse, ApiConnectionActionConfiguration> ReadSurvey(Expression<Func<ReadSurveyBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadSurveyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/ReadSurvey";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadSurveyResponse>(callPayload);
             });
         }
@@ -568,16 +550,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse, ApiConnectionActionConfiguration> ReadWorkflowTransitions(Expression<Func<ReadWorkflowTransitionsBodyInput>> body = null)
+        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse, ApiConnectionActionConfiguration> ReadWorkflowTransitions(Expression<Func<ReadWorkflowTransitionsBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadWorkflowTransitionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ReadWorkflowTransitions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadWorkflowTransitionsResponse>(callPayload);
             });
         }
@@ -598,31 +579,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<RedeemIncentiveCodeResponse, ApiConnectionActionConfiguration> RedeemIncentiveCode(Expression<Func<RedeemIncentiveCodeBodyInput>> body = null)
+        public IBodyWorkflowAction<RedeemIncentiveCodeResponse, ApiConnectionActionConfiguration> RedeemIncentiveCode(Expression<Func<RedeemIncentiveCodeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RedeemIncentiveCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Incentive/v3/RedeemIncentiveCode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RedeemIncentiveCodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<RemindMembersResponse, ApiConnectionActionConfiguration> RemindMembers(Expression<Func<RemindMembersBodyInput>> body = null)
+        public IBodyWorkflowAction<RemindMembersResponse, ApiConnectionActionConfiguration> RemindMembers(Expression<Func<RemindMembersBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RemindMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/RemindMembers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RemindMembersResponse>(callPayload);
             });
         }
@@ -643,46 +622,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<UpdateMembersResponse, ApiConnectionActionConfiguration> UpdateMembers(Expression<Func<CreateMembersBodyInput>> body = null)
+        public IBodyWorkflowAction<UpdateMembersResponse, ApiConnectionActionConfiguration> UpdateMembers(Expression<Func<CreateMembersBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/UpdateMembers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateMembersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<WritePanelResponse, ApiConnectionActionConfiguration> UpdatePanel(Expression<Func<UpdatePanelBodyInput>> body = null)
+        public IBodyWorkflowAction<WritePanelResponse, ApiConnectionActionConfiguration> UpdatePanel(Expression<Func<UpdatePanelBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WritePanelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/UpdatePanel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<WritePanelResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<UpdateSurveyResponse, ApiConnectionActionConfiguration> UpdateSurvey(Expression<Func<UpdateSurveyBodyInput>> body = null)
+        public IBodyWorkflowAction<UpdateSurveyResponse, ApiConnectionActionConfiguration> UpdateSurvey(Expression<Func<UpdateSurveyBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateSurveyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/UpdateSurvey";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateSurveyResponse>(callPayload);
             });
         }
@@ -754,6 +730,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateAndInviteMembersBodyInput
     {
+        public CreateAndInviteMembersBodyInput(int surveyId, int panelId, CreateAndInviteMembersDistributionChannel channel, int messageTemplateId, CreateAndInviteMembersMember[] members)
+        {
+            this.SurveyId = surveyId;
+            this.PanelId = panelId;
+            this.Channel = channel;
+            this.MessageTemplateId = messageTemplateId;
+            this.Members = members;
+        }
+
         [JsonProperty("samplingProjectId")]
         public int? SamplingProjectId { get; set; }
 
@@ -822,6 +807,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateAndInviteMembersTranslationElement
     {
+        public CreateAndInviteMembersTranslationElement(string languageCode)
+        {
+            this.LanguageCode = languageCode;
+        }
+
         [JsonProperty("languageCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LanguageCode { get; set; }
 
@@ -831,6 +821,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateAndInviteMembersMember
     {
+        public CreateAndInviteMembersMember(JToken fields)
+        {
+            this.Fields = fields;
+        }
+
         [JsonProperty("id")]
         public int? Id { get; set; }
 
@@ -933,6 +928,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateMembersBodyInput
     {
+        public CreateMembersBodyInput(int panelId, CreateAndInviteMembersMember[] members)
+        {
+            this.PanelId = panelId;
+            this.Members = members;
+        }
+
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
 
@@ -972,6 +973,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreatePanelBodyInput
     {
+        public CreatePanelBodyInput(int workspaceId, string name, PanelModelType panelType)
+        {
+            this.WorkspaceId = workspaceId;
+            this.Name = name;
+            this.PanelType = panelType;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int WorkspaceId { get; set; }
 
@@ -1007,6 +1015,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveyBodyInput
     {
+        public CreateSurveyBodyInput(int workspaceId, string name, CreateSurveySurveyDefinition surveyDefinition)
+        {
+            this.WorkspaceId = workspaceId;
+            this.Name = name;
+            this.SurveyDefinition = surveyDefinition;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int WorkspaceId { get; set; }
 
@@ -1022,6 +1037,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveySurveyDefinition
     {
+        public CreateSurveySurveyDefinition(bool allowMultipleParticipation, bool allowNavigateBack, bool randomizeSections, CreateSurveyCodeAccessMode codeAccessMode, string defaultLanguage, string[] languages, CreateSurveySection[] sections, CreateSurveyCustomVariable[] customVariables, CreateAndInviteMembersTranslationElement[] surveyEndText)
+        {
+            this.AllowMultipleParticipation = allowMultipleParticipation;
+            this.AllowNavigateBack = allowNavigateBack;
+            this.RandomizeSections = randomizeSections;
+            this.CodeAccessMode = codeAccessMode;
+            this.DefaultLanguage = defaultLanguage;
+            this.Languages = languages;
+            this.Sections = sections;
+            this.CustomVariables = customVariables;
+            this.SurveyEndText = surveyEndText;
+        }
+
         [JsonProperty("allowMultipleParticipation", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AllowMultipleParticipation { get; set; }
 
@@ -1099,6 +1127,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveyCondition
     {
+        public CreateSurveyCondition(CreateSurveyConjunction conjunction, CreateSurveyConditionType conditionType, string identifier, CreateSurveyConditionOperator conditionOperator, string value)
+        {
+            this.Conjunction = conjunction;
+            this.ConditionType = conditionType;
+            this.Identifier = identifier;
+            this.ConditionOperator = conditionOperator;
+            this.Value = value;
+        }
+
         [JsonProperty("conjunction", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateSurveyConjunction Conjunction { get; set; }
 
@@ -1218,6 +1255,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveySection
     {
+        public CreateSurveySection(int id, string name, bool randomizePages, bool excludeFromRandomization, CreateSurveySurveyElement[] elements)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.RandomizePages = randomizePages;
+            this.ExcludeFromRandomization = excludeFromRandomization;
+            this.Elements = elements;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
@@ -1239,6 +1285,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveySurveyElement
     {
+        public CreateSurveySurveyElement(int id, CreateSurveyElementType elementType)
+        {
+            this.Id = id;
+            this.ElementType = elementType;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
@@ -1483,6 +1535,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveyChoice
     {
+        public CreateSurveyChoice(int id, string code, CreateAndInviteMembersTranslationElement[] text, bool allowTextEntry, bool forceInput, bool autocomplete, bool exclusive)
+        {
+            this.Id = id;
+            this.Code = code;
+            this.Text = text;
+            this.AllowTextEntry = allowTextEntry;
+            this.ForceInput = forceInput;
+            this.Autocomplete = autocomplete;
+            this.Exclusive = exclusive;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
@@ -1525,6 +1588,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveyContentValidation
     {
+        public CreateSurveyContentValidation(CreateSurveyContentValidationType validationType)
+        {
+            this.ValidationType = validationType;
+        }
+
         [JsonProperty("validationType", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateSurveyContentValidationType ValidationType { get; set; }
 
@@ -1561,6 +1629,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveyConditionDefinition
     {
+        public CreateSurveyConditionDefinition(CreateSurveyConditionAction conditionAction, CreateSurveyCondition[] elements)
+        {
+            this.ConditionAction = conditionAction;
+            this.Elements = elements;
+        }
+
         [JsonProperty("conditionAction", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateSurveyConditionAction ConditionAction { get; set; }
 
@@ -1595,6 +1669,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveyColumnGroup
     {
+        public CreateSurveyColumnGroup(int id, CreateAndInviteMembersTranslationElement[] text, bool hasNotAvailableChoice, bool randomizeColumns, CreateSurveyChoiceType choiceType, CreateSurveyChoice[] choices)
+        {
+            this.Id = id;
+            this.Text = text;
+            this.HasNotAvailableChoice = hasNotAvailableChoice;
+            this.RandomizeColumns = randomizeColumns;
+            this.ChoiceType = choiceType;
+            this.Choices = choices;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
@@ -1636,6 +1720,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveyMinMaxChoice
     {
+        public CreateSurveyMinMaxChoice(int id, string code, CreateAndInviteMembersTranslationElement[] leftText, CreateAndInviteMembersTranslationElement[] rightText, bool excludeFromRandomization)
+        {
+            this.Id = id;
+            this.Code = code;
+            this.LeftText = leftText;
+            this.RightText = rightText;
+            this.ExcludeFromRandomization = excludeFromRandomization;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
@@ -1660,6 +1753,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveyActionElement
     {
+        public CreateSurveyActionElement(CreateSurveyActionType actionType)
+        {
+            this.ActionType = actionType;
+        }
+
         [JsonProperty("actionType", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateSurveyActionType ActionType { get; set; }
 
@@ -1724,6 +1822,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveyCustomVariable
     {
+        public CreateSurveyCustomVariable(int id, string variableName, CreateSurveyVariableType variableType)
+        {
+            this.Id = id;
+            this.VariableName = variableName;
+            this.VariableType = variableType;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
@@ -1766,6 +1871,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CreateSurveyAnonymizingConfiguration
     {
+        public CreateSurveyAnonymizingConfiguration(CreateSurveyAnonymizingMode anonymizingMode, bool logIp, bool logUserAgent, bool logReferer)
+        {
+            this.AnonymizingMode = anonymizingMode;
+            this.LogIp = logIp;
+            this.LogUserAgent = logUserAgent;
+            this.LogReferer = logReferer;
+        }
+
         [JsonProperty("anonymizingMode", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateSurveyAnonymizingMode AnonymizingMode { get; set; }
 
@@ -1863,6 +1976,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class DeleteDistributorBodyInput
     {
+        public DeleteDistributorBodyInput(int distributorId)
+        {
+            this.DistributorId = distributorId;
+        }
+
         [JsonProperty("distributorId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int DistributorId { get; set; }
 
@@ -1905,6 +2023,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class DeleteMembersBodyInput
     {
+        public DeleteMembersBodyInput(int panelId, int[] panelMembersIds)
+        {
+            this.PanelId = panelId;
+            this.PanelMembersIds = panelMembersIds;
+        }
+
         [JsonProperty("panelId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PanelId { get; set; }
 
@@ -1929,6 +2053,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class DeletePanelBodyInput
     {
+        public DeletePanelBodyInput(int panelId)
+        {
+            this.PanelId = panelId;
+        }
+
         [JsonProperty("panelId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PanelId { get; set; }
 
@@ -1971,6 +2100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class DeleteSurveyBodyInput
     {
+        public DeleteSurveyBodyInput(int surveyId)
+        {
+            this.SurveyId = surveyId;
+        }
+
         [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SurveyId { get; set; }
     }
@@ -2049,6 +2183,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class ExecuteSendMailBodyInput
     {
+        public ExecuteSendMailBodyInput(string language, string from, string to)
+        {
+            this.Language = language;
+            this.From = from;
+            this.To = to;
+        }
+
         [JsonProperty("messageTemplateId")]
         public int? MessageTemplateId { get; set; }
 
@@ -2097,6 +2238,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class ExecuteWorkflowTransitionBodyInput
     {
+        public ExecuteWorkflowTransitionBodyInput(WorkflowType workflow, string targetState)
+        {
+            this.Workflow = workflow;
+            this.TargetState = targetState;
+        }
+
         [JsonProperty("workflow", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkflowType Workflow { get; set; }
 
@@ -2153,6 +2300,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class InviteMembersBodyInput
     {
+        public InviteMembersBodyInput(int surveyId, int panelId, int messageTemplateId)
+        {
+            this.SurveyId = surveyId;
+            this.PanelId = panelId;
+            this.MessageTemplateId = messageTemplateId;
+        }
+
         [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SurveyId { get; set; }
 
@@ -2281,6 +2435,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class ReadBounceListBodyInput
     {
+        public ReadBounceListBodyInput(int surveyId)
+        {
+            this.SurveyId = surveyId;
+        }
+
         [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SurveyId { get; set; }
 
@@ -2310,6 +2469,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class Paging
     {
+        public Paging(int pageSize, int page)
+        {
+            this.PageSize = pageSize;
+            this.Page = page;
+        }
+
         [JsonProperty("pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageSize { get; set; }
 
@@ -3256,6 +3421,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class ReadInterviewBodyInput
     {
+        public ReadInterviewBodyInput(string tenant, string interviewId, int surveyId)
+        {
+            this.Tenant = tenant;
+            this.InterviewId = interviewId;
+            this.SurveyId = surveyId;
+        }
+
         [JsonProperty("tenant", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Tenant { get; set; }
 
@@ -3487,6 +3659,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class ReadMemberListBodyInput
     {
+        public ReadMemberListBodyInput(int panelId, bool interviewsRequired)
+        {
+            this.PanelId = panelId;
+            this.InterviewsRequired = interviewsRequired;
+        }
+
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
 
@@ -3547,6 +3725,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class ReadMessageTemplateListBodyInput
     {
+        public ReadMessageTemplateListBodyInput(string language)
+        {
+            this.Language = language;
+        }
+
         [JsonProperty("workspaceId")]
         public int? WorkspaceId { get; set; }
 
@@ -3682,6 +3865,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class ReadPanelBodyInput
     {
+        public ReadPanelBodyInput(int panelId)
+        {
+            this.PanelId = panelId;
+        }
+
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
 
@@ -3839,6 +4027,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class ReadSurveyListBodyInput
     {
+        public ReadSurveyListBodyInput(int workspaceId)
+        {
+            this.WorkspaceId = workspaceId;
+        }
+
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int WorkspaceId { get; set; }
 
@@ -3949,6 +4142,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class ReadSurveyBodyInput
     {
+        public ReadSurveyBodyInput(int surveyId)
+        {
+            this.SurveyId = surveyId;
+        }
+
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
 
@@ -4044,6 +4242,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class ReadWorkflowTransitionsBodyInput
     {
+        public ReadWorkflowTransitionsBodyInput(WorkflowType workflow, string currentState)
+        {
+            this.Workflow = workflow;
+            this.CurrentState = currentState;
+        }
+
         [JsonProperty("workflow", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkflowType Workflow { get; set; }
 
@@ -4098,6 +4302,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class RedeemIncentiveCodeBodyInput
     {
+        public RedeemIncentiveCodeBodyInput(int incentiveId)
+        {
+            this.IncentiveId = incentiveId;
+        }
+
         [JsonProperty("incentiveId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int IncentiveId { get; set; }
     }
@@ -4119,6 +4328,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class RemindMembersBodyInput
     {
+        public RemindMembersBodyInput(int distributorId, int messageTemplateId)
+        {
+            this.DistributorId = distributorId;
+            this.MessageTemplateId = messageTemplateId;
+        }
+
         [JsonProperty("distributorId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int DistributorId { get; set; }
 
@@ -4191,6 +4406,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class UpdatePanelBodyInput
     {
+        public UpdatePanelBodyInput(int panelId)
+        {
+            this.PanelId = panelId;
+        }
+
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
 
@@ -4252,6 +4472,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class UpdateSurveyBodyInput
     {
+        public UpdateSurveyBodyInput(int surveyId, CreateSurveySurveyDefinition surveyDefinition)
+        {
+            this.SurveyId = surveyId;
+            this.SurveyDefinition = surveyDefinition;
+        }
+
         [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SurveyId { get; set; }
 
@@ -4327,6 +4553,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class EmailItem
     {
+        public EmailItem(string email, OptOutOperation optOutOperation)
+        {
+            this.Email = email;
+            this.OptOutOperation = optOutOperation;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -4343,6 +4575,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
 
     public class CellPhoneItem
     {
+        public CellPhoneItem(int cellPhone, OptOutOperation optOutOperation)
+        {
+            this.CellPhone = cellPhone;
+            this.OptOutOperation = optOutOperation;
+        }
+
         [JsonProperty("cellPhone", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CellPhone { get; set; }
 

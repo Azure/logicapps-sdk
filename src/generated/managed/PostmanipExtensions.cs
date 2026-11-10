@@ -208,6 +208,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
 
     public class BodyInputWorkspaceType
     {
+        public BodyInputWorkspaceType(string name, BodyInputWorkspaceTypeTypeType type)
+        {
+            this.Name = name;
+            this.Type = type;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -520,6 +526,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
 
     public class ImportOpenApiBodyInput
     {
+        public ImportOpenApiBodyInput(JToken input)
+        {
+            this.Input = input;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "json";
 

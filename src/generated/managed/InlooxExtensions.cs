@@ -262,6 +262,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
 
     public class AddProjectMemberBodyInput
     {
+        public AddProjectMemberBodyInput(string contactId, int role)
+        {
+            this.ContactId = contactId;
+            this.Role = role;
+        }
+
         [JsonProperty("contactId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactId { get; set; }
 

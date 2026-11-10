@@ -262,6 +262,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
 
     public class CreateEnvelopeBodyInput
     {
+        public CreateEnvelopeBodyInput(string subject, CreateEnvelopeRecipient[] recipients)
+        {
+            this.Subject = subject;
+            this.Recipients = recipients;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
@@ -289,6 +295,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
 
     public class EnvelopeField
     {
+        public EnvelopeField(string signerEmail)
+        {
+            this.SignerEmail = signerEmail;
+        }
+
         [JsonProperty("recipientEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SignerEmail { get; set; }
 
@@ -355,6 +366,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
 
     public class CreateEnvelopeRecipient
     {
+        public CreateEnvelopeRecipient(string recipientEmail)
+        {
+            this.RecipientEmail = recipientEmail;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecipientEmail { get; set; }
 
@@ -409,6 +425,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
 
     public class SubscribeEnvelopeEventsBodyInput
     {
+        public SubscribeEnvelopeEventsBodyInput(BodyInputEventsTypeItem[] events)
+        {
+            this.Events = events;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 

@@ -13,46 +13,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     public class Pdf4meswissqrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSwissQrBill(Expression<Func<CreateSwissQrBillBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSwissQrBill(Expression<Func<CreateSwissQrBillBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CreateSwissQrBill";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReadSwissQrBill(Expression<Func<ReadSwissQrBillBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReadSwissQrBill(Expression<Func<ReadSwissQrBillBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadSwissQrBill";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<SplitDocBySwissQrCodeResponse, ApiConnectionActionConfiguration> SplitDocBySwissQrCode(Expression<Func<SplitDocBySwissQrCodeBodyInput>> body = null)
+        public IBodyWorkflowAction<SplitDocBySwissQrCodeResponse, ApiConnectionActionConfiguration> SplitDocBySwissQrCode(Expression<Func<SplitDocBySwissQrCodeBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SplitDocBySwissQrCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SplitDocBySwissQrCodeResponse>(callPayload);
             });
         }
@@ -64,6 +61,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
 
     public class CreateSwissQrBillBodyInput
     {
+        public CreateSwissQrBillBodyInput(string crName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document, string iban)
+        {
+            this.CrName = crName;
+            this.DocContent = docContent;
+            this.Document = document;
+            this.Iban = iban;
+        }
+
         [JsonProperty("amount")]
         public string Amount { get; set; }
 
@@ -156,6 +161,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
 
     public class BodyInputDocumentType
     {
+        public BodyInputDocumentType(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
@@ -194,6 +204,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
 
     public class ReadSwissQrBillBodyInput
     {
+        public ReadSwissQrBillBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
@@ -218,6 +234,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
 
     public class SplitDocBySwissQrCodeBodyInput
     {
+        public SplitDocBySwissQrCodeBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, BodyInputDocumentType document)
+        {
+            this.DocContent = docContent;
+            this.Document = document;
+        }
+
         [JsonProperty("barcodeFilter", DefaultValueHandling = DefaultValueHandling.Include)]
         internal BodyInputBarcodeFilterType BarcodeFilter { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputBarcodeFilterType.StartsWith;
 

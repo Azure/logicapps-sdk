@@ -97,6 +97,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
 
     public class EmailMessageInput
     {
+        public EmailMessageInput(string senderAddress, EmailMessageInputRecipientsType recipients, ContentDetails content)
+        {
+            this.SenderAddress = senderAddress;
+            this.Recipients = recipients;
+            this.Content = content;
+        }
+
         [JsonProperty("senderAddress", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SenderAddress { get; set; }
 
@@ -132,6 +139,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
 
     public class EmailMessageInputRecipientsType
     {
+        public EmailMessageInputRecipientsType(EmailMessageInputRecipientsTypeToTypeItem[] to)
+        {
+            this.To = to;
+        }
+
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public EmailMessageInputRecipientsTypeToTypeItem[] To { get; set; }
         public EmailMessageInputRecipientsTypeCCTypeItem[] CC { get; set; }
@@ -142,24 +154,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
 
     public class EmailMessageInputRecipientsTypeToTypeItem
     {
+        public EmailMessageInputRecipientsTypeToTypeItem(string address)
+        {
+            this.Address = address;
+        }
+
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
     }
 
     public class EmailMessageInputRecipientsTypeCCTypeItem
     {
+        public EmailMessageInputRecipientsTypeCCTypeItem(string address)
+        {
+            this.Address = address;
+        }
+
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
     }
 
     public class EmailMessageInputRecipientsTypeBCCTypeItem
     {
+        public EmailMessageInputRecipientsTypeBCCTypeItem(string address)
+        {
+            this.Address = address;
+        }
+
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
     }
 
     public class ContentDetails
     {
+        public ContentDetails(string subject)
+        {
+            this.Subject = subject;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
@@ -169,12 +201,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
 
     public class EmailMessageInputReplyToTypeItem
     {
+        public EmailMessageInputReplyToTypeItem(string address)
+        {
+            this.Address = address;
+        }
+
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
     }
 
     public class EmailMessageInputAttachmentsTypeItem
     {
+        public EmailMessageInputAttachmentsTypeItem(string name, string contentType, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent contentInBase64)
+        {
+            this.Name = name;
+            this.ContentType = contentType;
+            this.ContentInBase64 = contentInBase64;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -187,6 +231,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
 
     public class EmailCustomHeader
     {
+        public EmailCustomHeader(string name, string value)
+        {
+            this.Name = name;
+            this.Value = value;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

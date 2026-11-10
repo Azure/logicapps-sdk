@@ -577,6 +577,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class AdvancedHuntingBodyInput
     {
+        public AdvancedHuntingBodyInput(string query)
+        {
+            this.Query = query;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
     }
@@ -679,6 +684,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class CreateAlertByReferenceBodyInput
     {
+        public CreateAlertByReferenceBodyInput(string machineId, string reportId, string eventTime, BodyInputSeverityType severity, BodyInputCategoryType category, string title, string description, string recommendedAction)
+        {
+            this.MachineId = machineId;
+            this.ReportId = reportId;
+            this.EventTime = eventTime;
+            this.Severity = severity;
+            this.Category = category;
+            this.Title = title;
+            this.Description = description;
+            this.RecommendedAction = recommendedAction;
+        }
+
         [JsonProperty("machineId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MachineId { get; set; }
 
@@ -796,6 +813,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class CancelSingleMachineActionBodyInput
     {
+        public CancelSingleMachineActionBodyInput(string comment)
+        {
+            this.Comment = comment;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
     }
@@ -1052,6 +1074,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class IsolateMachineBodyInput
     {
+        public IsolateMachineBodyInput(string comment)
+        {
+            this.Comment = comment;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
 
@@ -1068,6 +1095,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class RunAntivirusScanBodyInput
     {
+        public RunAntivirusScanBodyInput(string comment, BodyInputScanTypeType scanType)
+        {
+            this.Comment = comment;
+            this.ScanType = scanType;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
 
@@ -1084,6 +1117,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class RunLiveResponseBodyInput
     {
+        public RunLiveResponseBodyInput(string comment, LiveResponseCommand[] commands)
+        {
+            this.Comment = comment;
+            this.Commands = commands;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
 
@@ -1093,6 +1132,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class LiveResponseCommand
     {
+        public LiveResponseCommand(LiveResponseCommandTypeType type)
+        {
+            this.Type = type;
+        }
+
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public LiveResponseCommandTypeType Type { get; set; }
 
@@ -1375,6 +1419,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class MachineTagBodyInput
     {
+        public MachineTagBodyInput(string value, BodyInputActionType action)
+        {
+            this.Value = value;
+            this.Action = action;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
 

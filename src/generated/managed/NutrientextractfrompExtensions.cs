@@ -95,6 +95,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
     public class ExtractTextInputPdfDataInput
     {
+        public ExtractTextInputPdfDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -113,6 +119,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
     public class ExtractKeyValuePairsInputPdfDataInput
     {
+        public ExtractKeyValuePairsInputPdfDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
@@ -283,6 +295,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
     public class InputDataInput
     {
+        public InputDataInput(string sourceFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent)
+        {
+            this.SourceFileName = sourceFileName;
+            this.SourceFileContent = sourceFileContent;
+        }
+
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 

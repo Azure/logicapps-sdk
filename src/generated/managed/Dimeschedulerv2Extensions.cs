@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
 
     public class CreateAppointmentBodyInput
     {
+        public CreateAppointmentBodyInput(string sourceApp)
+        {
+            this.SourceApp = sourceApp;
+        }
+
         [JsonProperty("sourceApp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceApp { get; set; }
 
@@ -79,6 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
 
     public class UpdateAppointmentBodyInput
     {
+        public UpdateAppointmentBodyInput(string sourceApp)
+        {
+            this.SourceApp = sourceApp;
+        }
+
         [JsonProperty("sourceApp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceApp { get; set; }
 
@@ -97,6 +107,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
 
     public class DeleteAppointmentBodyInput
     {
+        public DeleteAppointmentBodyInput(string sourceApp)
+        {
+            this.SourceApp = sourceApp;
+        }
+
         [JsonProperty("sourceApp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceApp { get; set; }
 

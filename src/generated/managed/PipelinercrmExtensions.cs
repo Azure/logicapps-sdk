@@ -948,6 +948,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public class AccountsCreateBodyInput
     {
+        public AccountsCreateBodyInput(string name, string ownerId)
+        {
+            this.Name = name;
+            this.OwnerId = ownerId;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1164,6 +1170,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public class ContactsCreateBodyInput
     {
+        public ContactsCreateBodyInput(string lastName, string ownerId)
+        {
+            this.LastName = lastName;
+            this.OwnerId = ownerId;
+        }
+
         [JsonProperty("title")]
         public string Title { get; set; }
 
@@ -1787,6 +1799,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public class LeadsCreateBodyInput
     {
+        public LeadsCreateBodyInput(string name, string ownerId, string unitId)
+        {
+            this.Name = name;
+            this.OwnerId = ownerId;
+            this.UnitId = unitId;
+        }
+
         [JsonProperty("created")]
         public string Created { get; set; }
 
@@ -2294,6 +2313,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public class TasksCreateBodyInput
     {
+        public TasksCreateBodyInput(string subject, string unitId, string ownerId)
+        {
+            this.Subject = subject;
+            this.UnitId = unitId;
+            this.OwnerId = ownerId;
+        }
+
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
@@ -2874,6 +2900,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public class OpportunitiesCreateBodyInput
     {
+        public OpportunitiesCreateBodyInput(string name, OpportunitiesCreateBodyInputValueType value, string closingDate, string opptyTypeId, string stepId, string ownerId, OpportunitiesCreateBodyInputAccountRelationsTypeItem[] accountRelations)
+        {
+            this.Name = name;
+            this.Value = value;
+            this.ClosingDate = closingDate;
+            this.OpptyTypeId = opptyTypeId;
+            this.StepId = stepId;
+            this.OwnerId = ownerId;
+            this.AccountRelations = accountRelations;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -2913,6 +2950,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public class OpportunitiesCreateBodyInputValueType
     {
+        public OpportunitiesCreateBodyInputValueType(double baseValue, string currencyId)
+        {
+            this.BaseValue = baseValue;
+            this.CurrencyId = currencyId;
+        }
+
         [JsonProperty("base_value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double BaseValue { get; set; }
 
@@ -2925,6 +2968,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public class OpportunitiesCreateBodyInputAccountRelationsTypeItem
     {
+        public OpportunitiesCreateBodyInputAccountRelationsTypeItem(bool isPrimary, string accountId)
+        {
+            this.IsPrimary = isPrimary;
+            this.AccountId = accountId;
+        }
+
         [JsonProperty("is_primary", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsPrimary { get; set; }
 

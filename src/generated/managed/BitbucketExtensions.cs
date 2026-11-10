@@ -331,6 +331,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
     public class CreateIssueBodyInput
     {
+        public CreateIssueBodyInput(string issueTitle, BodyInputIssueTypeType issueType, BodyInputPriorityType priority)
+        {
+            this.IssueTitle = issueTitle;
+            this.IssueType = issueType;
+            this.Priority = priority;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IssueTitle { get; set; }
 

@@ -311,13 +311,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<File, ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdDocumentsDocumentIdFiles(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null, Expression<Func<PostEnvelopesEnvelopeIdDocumentsDocumentIdFilesBodyInput>> body = null)
+        public IBodyWorkflowAction<File, ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdDocumentsDocumentIdFiles(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<PostEnvelopesEnvelopeIdDocumentsDocumentIdFilesBodyInput>> body, Expression<Func<string>> xNamespace = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<File, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents/{1}/files", __workflow_envelopeId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
@@ -327,8 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<File>(callPayload);
             });
         }
@@ -573,12 +572,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdDocuments(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<PostEnvelopesEnvelopeIdDocumentsBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdDocuments(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<PostEnvelopesEnvelopeIdDocumentsBodyInput>> body, Expression<Func<string>> xNamespace = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents", __workflow_envelopeId.WithUrlEncoding(1)));
@@ -588,8 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -659,12 +657,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopIdJobsSendNotification(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<PostEnvelopesEnvelopIdJobsSendNotificationBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopIdJobsSendNotification(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<PostEnvelopesEnvelopIdJobsSendNotificationBodyInput>> body, Expression<Func<string>> xNamespace = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/jobs/send.notification", __workflow_envelopeId.WithUrlEncoding(1)));
@@ -674,8 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -843,6 +840,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
     public class PostEnvelopesEnvelopeIdRecipientsBodyInput
     {
+        public PostEnvelopesEnvelopeIdRecipientsBodyInput(string givenName, string familyName, BodyInputLanguageType language, BodyInputSigningMethodType signingMethod, string email, RoleInput role)
+        {
+            this.GivenName = givenName;
+            this.FamilyName = familyName;
+            this.Language = language;
+            this.SigningMethod = signingMethod;
+            this.Email = email;
+            this.Role = role;
+        }
+
         [JsonProperty("givenName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GivenName { get; set; }
 
@@ -946,6 +953,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
     public class RoleInput
     {
+        public RoleInput(string action, string label, string name)
+        {
+            this.Action = action;
+            this.Label = label;
+            this.Name = name;
+        }
+
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Action { get; set; }
 
@@ -1336,6 +1350,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
     public class PutEnvelopesEnvelopeIdPublishStatusBodyInput
     {
+        public PutEnvelopesEnvelopeIdPublishStatusBodyInput(bool published)
+        {
+            this.Published = published;
+        }
+
         [JsonProperty("published", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Published { get; set; }
     }
@@ -1393,6 +1412,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
     public class PostEnvelopesEnvelopeIdDocumentsDocumentIdFilesBodyInput
     {
+        public PostEnvelopesEnvelopeIdDocumentsDocumentIdFilesBodyInput(string name, string fileType)
+        {
+            this.Name = name;
+            this.FileType = fileType;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -1558,6 +1583,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
     public class PostEnvelopesEnvelopeIdDocumentsBodyInput
     {
+        public PostEnvelopesEnvelopeIdDocumentsBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("descriptor")]
         public BodyInputDescriptorType Descriptor { get; set; }
 
@@ -1621,6 +1651,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
     public class PostEnvelopesEnvelopIdJobsSendNotificationBodyInput
     {
+        public PostEnvelopesEnvelopIdJobsSendNotificationBodyInput(PostEnvelopesEnvelopIdJobsSendNotificationBodyInputRecipientType recipient)
+        {
+            this.Recipient = recipient;
+        }
+
         [JsonProperty("envelope")]
         public BodyInputEnvelopeType Envelope { get; set; }
 
@@ -1636,6 +1671,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
     public class PostEnvelopesEnvelopIdJobsSendNotificationBodyInputRecipientType
     {
+        public PostEnvelopesEnvelopIdJobsSendNotificationBodyInputRecipientType(string id)
+        {
+            this.Id = id;
+        }
+
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }

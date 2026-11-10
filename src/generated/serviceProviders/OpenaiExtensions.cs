@@ -470,6 +470,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
 
     public class GetMultipleChatCompletionsInputMessagesTypeItem
     {
+        public GetMultipleChatCompletionsInputMessagesTypeItem(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         [System.ComponentModel.DefaultValue(GetMultipleChatCompletionsInputMessagesTypeItemRoleType.User)]
         public GetMultipleChatCompletionsInputMessagesTypeItemRoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai.GetMultipleChatCompletionsInputMessagesTypeItemRoleType.User;

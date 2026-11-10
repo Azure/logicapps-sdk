@@ -421,6 +421,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
 
     public class TransferEmployeeBodyInput
     {
+        public TransferEmployeeBodyInput(RequestFeedbackWorkdayObjectReference supervisoryOrganization, RequestFeedbackWorkdayObjectReference jobChangeReason, string effectiveDate)
+        {
+            this.SupervisoryOrganization = supervisoryOrganization;
+            this.JobChangeReason = jobChangeReason;
+            this.EffectiveDate = effectiveDate;
+        }
+
         [JsonProperty("supervisoryOrganization", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestFeedbackWorkdayObjectReference SupervisoryOrganization { get; set; }
 
@@ -460,6 +467,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
 
     public class RequestFeedbackBodyInput
     {
+        public RequestFeedbackBodyInput(RequestFeedbackWorkdayObjectReference[] feedbackResponders)
+        {
+            this.FeedbackResponders = feedbackResponders;
+        }
+
         [JsonProperty("feedbackResponders", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestFeedbackWorkdayObjectReference[] FeedbackResponders { get; set; }
 

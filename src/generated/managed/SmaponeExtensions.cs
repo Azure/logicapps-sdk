@@ -862,6 +862,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
 
     public class TaskInput
     {
+        public TaskInput(string title, JToken data)
+        {
+            this.Title = title;
+            this.Data = data;
+        }
+
         [JsonProperty("userEmail")]
         public string UserEmail { get; set; }
 

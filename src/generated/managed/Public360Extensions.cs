@@ -75,12 +75,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
 
     public class CreateFileBodyInput
     {
+        public CreateFileBodyInput(CreateFileBodyInputParameterType parameter)
+        {
+            this.Parameter = parameter;
+        }
+
         [JsonProperty("parameter", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateFileBodyInputParameterType Parameter { get; set; }
     }
 
     public class CreateFileBodyInputParameterType
     {
+        public CreateFileBodyInputParameterType(string title, string format, string base64Data)
+        {
+            this.Title = title;
+            this.Format = format;
+            this.Base64Data = base64Data;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
         public string DocumentNumber { get; set; }
@@ -111,12 +123,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
 
     public class CreateDocumentBodyInput
     {
+        public CreateDocumentBodyInput(CreateDocumentBodyInputParameterType parameter)
+        {
+            this.Parameter = parameter;
+        }
+
         [JsonProperty("parameter", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateDocumentBodyInputParameterType Parameter { get; set; }
     }
 
     public class CreateDocumentBodyInputParameterType
     {
+        public CreateDocumentBodyInputParameterType(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
         public string CaseNumber { get; set; }
@@ -148,12 +170,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
 
     public class CreateCaseBodyInput
     {
+        public CreateCaseBodyInput(CreateCaseBodyInputParameterType parameter)
+        {
+            this.Parameter = parameter;
+        }
+
         [JsonProperty("parameter", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateCaseBodyInputParameterType Parameter { get; set; }
     }
 
     public class CreateCaseBodyInputParameterType
     {
+        public CreateCaseBodyInputParameterType(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
         public string DefaultValueSet { get; set; }

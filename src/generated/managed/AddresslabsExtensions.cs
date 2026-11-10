@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
 
     public class BodyInput
     {
+        public BodyInput(string address)
+        {
+            this.Address = address;
+        }
+
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
     }

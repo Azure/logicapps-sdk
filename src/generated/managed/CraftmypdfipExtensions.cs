@@ -191,6 +191,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 
     public class CreateBodyInput
     {
+        public CreateBodyInput(string data, string templateId)
+        {
+            this.Data = data;
+            this.TemplateId = templateId;
+        }
+
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Data { get; set; }
 
@@ -212,6 +218,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 
     public class CreateMergeBodyInput
     {
+        public CreateMergeBodyInput(JToken[] templates)
+        {
+            this.Templates = templates;
+        }
+
         [JsonProperty("templates", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Templates { get; set; }
 
@@ -248,6 +259,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 
     public class NewTemplateFromBodyInput
     {
+        public NewTemplateFromBodyInput(string templateId)
+        {
+            this.TemplateId = templateId;
+        }
+
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
 
@@ -263,6 +279,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 
     public class UpdateTemplateBodyInput
     {
+        public UpdateTemplateBodyInput(string templateId)
+        {
+            this.TemplateId = templateId;
+        }
+
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
 
@@ -290,6 +311,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 
     public class CreateEditorSessionBodyInput
     {
+        public CreateEditorSessionBodyInput(string templateId)
+        {
+            this.TemplateId = templateId;
+        }
+
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
 
@@ -341,6 +367,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 
     public class MergePdfsBodyInput
     {
+        public MergePdfsBodyInput(JToken[] urls)
+        {
+            this.Urls = urls;
+        }
+
         [JsonProperty("urls", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Urls { get; set; }
 
@@ -353,6 +384,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 
     public class AddWatermarkBodyInput
     {
+        public AddWatermarkBodyInput(string url, string text)
+        {
+            this.Url = url;
+            this.Text = text;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 

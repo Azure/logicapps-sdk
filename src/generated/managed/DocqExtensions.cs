@@ -24,22 +24,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new ExtractInformationBodyInput().ToJToken();
                 return new ApiConnectionAction<ExtractInformationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<GenerateDocumentBodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<GenerateDocumentBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Flow/GenerateDocument";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -70,6 +71,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
 
     public class GenerateDocumentBodyInput
     {
+        public GenerateDocumentBodyInput(string documentInformation, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent documentTemplateContent)
+        {
+            this.DocumentInformation = documentInformation;
+            this.DocumentTemplateContent = documentTemplateContent;
+        }
+
         [JsonProperty("documentInformation", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentInformation { get; set; }
 

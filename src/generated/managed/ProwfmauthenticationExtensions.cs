@@ -56,6 +56,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
 
     public class BodyInput
     {
+        public BodyInput(string username, string password, string clientId, string clientSecret)
+        {
+            this.Username = username;
+            this.Password = password;
+            this.ClientId = clientId;
+            this.ClientSecret = clientSecret;
+        }
+
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 

@@ -145,6 +145,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 
     public class GetServiceAssignmentsDispatcherBodyInput
     {
+        public GetServiceAssignmentsDispatcherBodyInput(BodyInputAdditionalSearchDataType additionalSearchData)
+        {
+            this.AdditionalSearchData = additionalSearchData;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int Skip { get; set; } = 0;
 
@@ -165,6 +170,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 
     public class BodyInputAdditionalSearchDataType
     {
+        public BodyInputAdditionalSearchDataType(string dateTimeFrom, string dateTimeTo)
+        {
+            this.DateTimeFrom = dateTimeFrom;
+            this.DateTimeTo = dateTimeTo;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTimeFrom { get; set; }
 
@@ -187,6 +198,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 
     public class CreateActivityRecordingBodyInput
     {
+        public CreateActivityRecordingBodyInput(string dateFrom)
+        {
+            this.DateFrom = dateFrom;
+        }
+
         [JsonProperty("dateFrom", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateFrom { get; set; }
 
@@ -226,6 +242,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 
     public class CreateInvoicePositionNoteBodyInput
     {
+        public CreateInvoicePositionNoteBodyInput(string dateFrom, string dateTo)
+        {
+            this.DateFrom = dateFrom;
+            this.DateTo = dateTo;
+        }
+
         [JsonProperty("dateFrom", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateFrom { get; set; }
 

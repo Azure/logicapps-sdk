@@ -230,6 +230,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 
     public class SendSMSBodyInput
     {
+        public SendSMSBodyInput(string from, string message, string to)
+        {
+            this.From = from;
+            this.Message = message;
+            this.To = to;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
@@ -242,6 +249,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 
     public class SendBulkSMSBodyInput
     {
+        public SendBulkSMSBodyInput(string from, string message)
+        {
+            this.From = from;
+            this.Message = message;
+        }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
         public string[] To { get; set; }
@@ -297,6 +310,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 
     public class AddContactBodyInput
     {
+        public AddContactBodyInput(string mobileNumber)
+        {
+            this.MobileNumber = mobileNumber;
+        }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
 

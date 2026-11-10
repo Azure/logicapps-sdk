@@ -423,6 +423,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new RecipientTriggerBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -589,6 +591,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public class PostAttachmentBodyInput
     {
+        public PostAttachmentBodyInput(string group, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdfFile, string filename)
+        {
+            this.Group = group;
+            this.PdfFile = pdfFile;
+            this.Filename = filename;
+        }
+
         [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Group { get; set; }
 
@@ -969,6 +978,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public class PostDocumentBodyInput
     {
+        public PostDocumentBodyInput(string group, string name, string templatepdf, DocumentSignerPost[] signers)
+        {
+            this.Group = group;
+            this.Name = name;
+            this.Templatepdf = templatepdf;
+            this.Signers = signers;
+        }
+
         [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Group { get; set; }
 
@@ -1041,6 +1058,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public class DocumentSignerPost
     {
+        public DocumentSignerPost(string email, string firstname, string lastname)
+        {
+            this.Email = email;
+            this.Firstname = firstname;
+            this.Lastname = lastname;
+        }
+
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
@@ -1077,6 +1101,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public class ReviewersPost
     {
+        public ReviewersPost(string email)
+        {
+            this.Email = email;
+        }
+
         [JsonProperty("firstname")]
         public string Firstname { get; set; }
 
@@ -1143,6 +1172,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public class PostPdfTemplateBodyInput
     {
+        public PostPdfTemplateBodyInput(string group, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdfFile)
+        {
+            this.Group = group;
+            this.PdfFile = pdfFile;
+        }
+
         [JsonProperty("archive_upon_send", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ArchiveUponSend { get; set; } = false;
 

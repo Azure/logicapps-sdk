@@ -216,12 +216,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
 
     public class AddPersonFaceBodyInput
     {
+        public AddPersonFaceBodyInput(string imageUrl)
+        {
+            this.ImageUrl = imageUrl;
+        }
+
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ImageUrl { get; set; }
     }
 
     public class CreateFaceListBodyInput
     {
+        public CreateFaceListBodyInput(string faceListName)
+        {
+            this.FaceListName = faceListName;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FaceListName { get; set; }
 
@@ -237,6 +247,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
 
     public class CreatePersonBodyInput
     {
+        public CreatePersonBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
@@ -699,6 +714,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
 
     public class VerifyBodyInput
     {
+        public VerifyBodyInput(string faceId, string personGroupId, string personId)
+        {
+            this.FaceId = faceId;
+            this.PersonGroupId = personGroupId;
+            this.PersonId = personId;
+        }
+
         [JsonProperty("faceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FaceId { get; set; }
 

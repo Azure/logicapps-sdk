@@ -239,6 +239,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
 
     public class AddSystemAdvancedBodyInput
     {
+        public AddSystemAdvancedBodyInput(string title)
+        {
+            this.Title = title;
+        }
+
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 

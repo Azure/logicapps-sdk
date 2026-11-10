@@ -66,6 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Httpv2
 
     public class InvokeHttpRequestKeyValue
     {
+        public InvokeHttpRequestKeyValue(string name)
+        {
+            this.Name = name;
+        }
+
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 

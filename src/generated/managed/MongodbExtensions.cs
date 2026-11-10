@@ -172,6 +172,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 
     public class InsertDocumentBodyInput
     {
+        public InsertDocumentBodyInput(string dataSource, string database, string collection, JToken document)
+        {
+            this.DataSource = dataSource;
+            this.Database = database;
+            this.Collection = collection;
+            this.Document = document;
+        }
+
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
 
@@ -193,6 +201,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 
     public class FindDocumentBodyInput
     {
+        public FindDocumentBodyInput(string dataSource, string database, string collection)
+        {
+            this.DataSource = dataSource;
+            this.Database = database;
+            this.Collection = collection;
+        }
+
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
 
@@ -220,6 +235,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 
     public class UpdateDocumentBodyInput
     {
+        public UpdateDocumentBodyInput(string dataSource, string database, string collection, JToken filter, JToken update)
+        {
+            this.DataSource = dataSource;
+            this.Database = database;
+            this.Collection = collection;
+            this.Filter = filter;
+            this.Update = update;
+        }
+
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
 
@@ -247,6 +271,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 
     public class DeleteDocumentBodyInput
     {
+        public DeleteDocumentBodyInput(string dataSource, string database, string collection, JToken filter)
+        {
+            this.DataSource = dataSource;
+            this.Database = database;
+            this.Collection = collection;
+            this.Filter = filter;
+        }
+
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
 
@@ -268,6 +300,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 
     public class InsertMultipleDocumentsBodyInput
     {
+        public InsertMultipleDocumentsBodyInput(string dataSource, string database, string collection, JToken[] documents)
+        {
+            this.DataSource = dataSource;
+            this.Database = database;
+            this.Collection = collection;
+            this.Documents = documents;
+        }
+
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
 
@@ -289,6 +329,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 
     public class FindMultipleDocumentsBodyInput
     {
+        public FindMultipleDocumentsBodyInput(string dataSource, string database, string collection)
+        {
+            this.DataSource = dataSource;
+            this.Database = database;
+            this.Collection = collection;
+        }
+
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
 
@@ -337,6 +384,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 
     public class RunAggregationPipelineBodyInput
     {
+        public RunAggregationPipelineBodyInput(string dataSource, string database, string collection, JToken[] pipeline)
+        {
+            this.DataSource = dataSource;
+            this.Database = database;
+            this.Collection = collection;
+            this.Pipeline = pipeline;
+        }
+
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
 
