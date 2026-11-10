@@ -1,9 +1,3 @@
-parameters:
-- name: sign
-  displayName: Sign Files (release/* always signed)
-  type: boolean
-  default: true
-
 trigger:
   batch: true
   branches:
@@ -26,42 +20,93 @@ pr: none
 
 resources:
   repositories:
-  - repository: 1es
+  - repository: templates
     type: git
-    name: 1ESPipelineTemplates/1ESPipelineTemplates
-    ref: refs/tags/release
-  - repository: eng
-    type: git
-    name: engineering
-    ref: refs/tags/release
+    name: OneBranch.Pipelines/GovernedTemplates
+    ref: refs/heads/main
 
 variables:
 - template: /eng/ci/templates/variables/build.yml@self
-- template: /ci/variables/cfs.yml@eng
-- name: sign
-  readonly: true
-  ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/release/') }}:
-    value: true
-  ${{ else }}:
-    value: ${{ parameters.sign }}
+- name: WindowsContainerImage
+  value: onebranch.azurecr.io/windows/ltsc2025/vse2026:latest
+- name: pack_dir
+  value: $(Build.SourcesDirectory)\out\official-packages
+- name: pack_projects
+  value: |
+    src\Microsoft.Azure.Workflows.Sdk.csproj
 
 extends:
-  template: v1/1ES.Official.PipelineTemplate.yml@1es
+  template: v2/OneBranch.Official.CrossPlat.yml@templates
   parameters:
     featureFlags:
-      disableNetworkIsolation: true
-
-    pool:
-      name: 1es-pool-azfunc
-      image: 1es-windows-2022
-      os: windows
-      ${{ if eq( variables['Build.Reason'], 'Schedule' ) }}:
-        demands:
-        - Priority -equals Low
+      WindowsHostVersion:
+        Version: 2025
+      EnableCDPxPAT: false
 
     stages:
     - stage: Build
       jobs:
-      - template: /eng/ci/templates/jobs/build.yml@self
-        parameters:
-          official: ${{ variables.sign }}
+      - job: Build
+        displayName: Build
+        pool:
+          type: windows
+
+        variables:
+          ob_outputDirectory: $(pack_dir)
+          ob_artifactBaseName: drop_packages
+
+        steps:
+        - template: /eng/ci/templates/steps/install-dotnet.yml@self
+
+        - task: DotNetCoreCLI@2
+          displayName: Restore $(project)
+          inputs:
+            command: custom
+            custom: restore
+            projects: $(project)
+            arguments: -v m --source https://packagefeedproxy.microsoft.io/nuget/v3/index.json
+
+        - task: DotNetCoreCLI@2
+          displayName: Build $(project)
+          inputs:
+            command: build
+            projects: $(project)
+            arguments: -c $(configuration) -v m --no-restore
+
+        - task: DotNetCoreCLI@2
+          displayName: Test Microsoft.Azure.Workflows.Sdk.Tests
+          inputs:
+            command: test
+            projects: tests/Microsoft.Azure.Workflows.Sdk.Tests/Microsoft.Azure.Workflows.Sdk.Tests.csproj
+            arguments: -c $(configuration) -v m --no-build --no-restore
+
+        - task: onebranch.pipeline.signing@1
+          displayName: Sign assemblies
+          inputs:
+            command: sign
+            signing_profile: external_distribution
+            search_root: $(Build.SourcesDirectory)\out\bin\src
+            files_to_sign: '**/Microsoft.Azure.Workflows.Sdk*.dll'
+
+        - task: DotNetCoreCLI@2
+          displayName: Pack
+          inputs:
+            command: custom
+            custom: pack
+            arguments: -c $(configuration) -v m -o $(pack_dir) --no-build
+            projects: $(pack_projects)
+
+        - task: onebranch.pipeline.signing@1
+          displayName: Sign NuGet packages
+          inputs:
+            command: sign
+            signing_profile: external_distribution
+            search_root: $(pack_dir)
+            files_to_sign: Microsoft.Azure.Workflows.Sdk*.nupkg
+
+        - task: PowerShell@2
+          displayName: Validate package-only C# workflow consumer
+          inputs:
+            targetType: filePath
+            filePath: eng/Test-PackageConsumer.ps1
+            arguments: '-PackageDirectory "$(pack_dir)"'
