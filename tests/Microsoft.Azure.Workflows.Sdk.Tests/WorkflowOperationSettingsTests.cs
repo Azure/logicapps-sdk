@@ -399,6 +399,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 () => WorkflowFactory.CreateStatefulWorkflow("InvalidRecurrence", trigger));
         }
 
+        [Theory]
+        [InlineData(FlowRecurrenceFrequency.Second, 43_200_000)]
+        [InlineData(FlowRecurrenceFrequency.Minute, 720_000)]
+        [InlineData(FlowRecurrenceFrequency.Hour, 12_000)]
+        [InlineData(FlowRecurrenceFrequency.Day, 500)]
+        [InlineData(FlowRecurrenceFrequency.Week, 71)]
+        [InlineData(FlowRecurrenceFrequency.Month, 16)]
+        [InlineData(FlowRecurrenceFrequency.Year, 1)]
+        public void RecurrenceValidationAcceptsRuntimeMaximum(
+            FlowRecurrenceFrequency frequency,
+            int interval)
+        {
+            var trigger = WorkflowTriggers.Managed.Office365("office")
+                .OnCalendarNewItems(table: () => "calendar")
+                .WithRecurrence(new FlowRecurrence
+                {
+                    Frequency = frequency,
+                    Interval = interval,
+                });
+
+            var definition =
+                trigger.GetTriggerDefinition(FlowKind.Stateful);
+
+            Assert.Equal(frequency, definition.Recurrence.Frequency);
+            Assert.Equal(interval, definition.Recurrence.Interval);
+        }
+
+        [Theory]
+        [InlineData(FlowRecurrenceFrequency.Second, 43_200_001)]
+        [InlineData(FlowRecurrenceFrequency.Minute, 720_001)]
+        [InlineData(FlowRecurrenceFrequency.Hour, 12_001)]
+        [InlineData(FlowRecurrenceFrequency.Day, 501)]
+        [InlineData(FlowRecurrenceFrequency.Week, 72)]
+        [InlineData(FlowRecurrenceFrequency.Month, 17)]
+        [InlineData(FlowRecurrenceFrequency.Year, 2)]
+        public void RecurrenceValidationRejectsIntervalsBeyondRuntimeMaximum(
+            FlowRecurrenceFrequency frequency,
+            int interval)
+        {
+            var trigger = WorkflowTriggers.Managed.Office365("office")
+                .OnCalendarNewItems(table: () => "calendar")
+                .WithRecurrence(new FlowRecurrence
+                {
+                    Frequency = frequency,
+                    Interval = interval,
+                });
+
+            Assert.Throws<InvalidOperationException>(
+                () => trigger.GetTriggerDefinition(FlowKind.Stateful));
+        }
+
+        [Fact]
+        public void RecurrenceValidationRejectsStartTimeOverflow()
+        {
+            var trigger = WorkflowTriggers.Managed.Office365("office")
+                .OnCalendarNewItems(table: () => "calendar")
+                .WithRecurrence(new FlowRecurrence
+                {
+                    Frequency = FlowRecurrenceFrequency.Day,
+                    Interval = 1,
+                    StartTime = DateTime.MaxValue,
+                });
+
+            Assert.Throws<InvalidOperationException>(
+                () => trigger.GetTriggerDefinition(FlowKind.Stateful));
+        }
+
         [Fact]
         public void SettingsPreserveSpecializedOperationShapes()
         {

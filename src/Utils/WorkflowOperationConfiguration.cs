@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         private const int MaximumTriggerConcurrentRuns = 100;
         private const int MinimumTriggerWaitingRuns = 10;
         private const int MaximumTriggerWaitingRuns = 100;
+        private static readonly TimeSpan MaximumRecurrenceInterval =
+            TimeSpan.FromDays(500);
 
         internal static void ApplyActionConfiguration(
             IWorkflowOperationConfiguration configuration,
@@ -307,6 +309,43 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (recurrence.Interval < 1)
             {
                 throw new InvalidOperationException("The recurrence interval must be greater than zero.");
+            }
+
+            var startTime = recurrence.StartTime ?? DateTime.MinValue;
+            DateTime nextOccurrence;
+            try
+            {
+                nextOccurrence = recurrence.Frequency switch
+                {
+                    FlowRecurrenceFrequency.Second =>
+                        startTime.AddSeconds(recurrence.Interval),
+                    FlowRecurrenceFrequency.Minute =>
+                        startTime.AddMinutes(recurrence.Interval),
+                    FlowRecurrenceFrequency.Hour =>
+                        startTime.AddHours(recurrence.Interval),
+                    FlowRecurrenceFrequency.Day =>
+                        startTime.AddDays(recurrence.Interval),
+                    FlowRecurrenceFrequency.Week =>
+                        startTime.AddDays((double)recurrence.Interval * 7),
+                    FlowRecurrenceFrequency.Month =>
+                        startTime.AddMonths(recurrence.Interval),
+                    FlowRecurrenceFrequency.Year =>
+                        startTime.AddYears(recurrence.Interval),
+                    _ => throw new InvalidOperationException(
+                        $"Recurrence frequency '{recurrence.Frequency}' is not supported."),
+                };
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                throw new InvalidOperationException(
+                    $"Recurrence interval '{recurrence.Interval}' with frequency '{recurrence.Frequency}' cannot be evaluated from start time '{startTime:o}'.",
+                    ex);
+            }
+
+            if (nextOccurrence - startTime > MaximumRecurrenceInterval)
+            {
+                throw new InvalidOperationException(
+                    $"Recurrence interval '{recurrence.Interval}' with frequency '{recurrence.Frequency}' cannot exceed {MaximumRecurrenceInterval.TotalDays} days.");
             }
         }
 
