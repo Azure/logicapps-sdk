@@ -41,8 +41,6 @@ extends:
     globalSdl:
       tsa:
         enabled: false
-      codeql:
-        cadence: 0
 
     featureFlags:
       WindowsHostVersion:
