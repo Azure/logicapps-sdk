@@ -32,7 +32,15 @@ jobs:
         command: custom
         custom: restore
         projects: $(project)
-        arguments: -v m --source https://packagefeedproxy.microsoft.io/nuget/v3/index.json
+        arguments: -v m --configfile $(Build.SourcesDirectory)\NuGet.Config
+
+    - task: DotNetCoreCLI@2
+      displayName: Restore Functions worker
+      inputs:
+        command: custom
+        custom: restore
+        projects: tests/Microsoft.Azure.Workflows.Sdk.Tests.Worker/Microsoft.Azure.Workflows.Sdk.Tests.Worker.csproj
+        arguments: -v m --configfile $(Build.SourcesDirectory)\NuGet.Config
 
     - task: DotNetCoreCLI@2
       displayName: Build $(project)
