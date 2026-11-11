@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     using Microsoft.CodeAnalysis.CSharp;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Office365;
+    using Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq;
     using Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus;
     using Newtonsoft.Json.Linq;
     using Xunit;
@@ -409,6 +410,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Contains("\"recipient@example.com\"", body);
             Assert.Contains("\"subject\"", body);
             Assert.Contains("\"body\"", body);
+        }
+
+        [Fact]
+        public void OptionalServiceProviderAggregateMaterializesNestedDefaults()
+        {
+            var action = WorkflowActions.ServiceProviders
+                .Mq("connection")
+                .MoveMessageToDeadLetterQueue(
+                    message: () => "message",
+                    reasonCode: () => 1);
+
+            var definition =
+                action.GetActionDefinition("flow", FlowKind.Stateful);
+            var inputs = Assert.IsType<JObject>(definition.Inputs);
+
+            Assert.Equal(
+                "NoContext",
+                inputs["parameters"]?["sendMessageOptions"]?[
+                    "putApplicationType"]?.Value<string>());
         }
 
         [Fact]

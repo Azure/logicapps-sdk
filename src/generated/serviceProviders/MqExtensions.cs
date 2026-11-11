@@ -232,6 +232,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                 {
                     serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(__workflow_sendMessageOptions);
                 }
+                else
+                {
+                    serviceProviderParameters["sendMessageOptions"] = new MoveMessageToDeadLetterQueueInputSendMessageOptionsType().ToJToken();
+                }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
