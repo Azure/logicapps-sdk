@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acssmsevents
 
     public class AcssmseventsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateSMSReceivedEventSubscription(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> resourceName, Expression<Func<BodyInput>> body)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateSmsReceivedEventSubscription(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> resourceName, Expression<Func<BodyInput>> body)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);

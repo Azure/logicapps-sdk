@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
     public class SendmodeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
-        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<SendSMSMessageInput>> message, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SendSmsMessageInput>> message, Expression<Func<string>> contentType = null)
         {
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredBodyAction<SendSMSResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/send";
                 var apiCallHttpMethod = "post";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_message);
-                return new ApiConnectionAction<SendSMSResponse>(callPayload);
+                return new ApiConnectionAction<SendSmsResponse>(callPayload);
             });
         }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
     {
     }
 
-    public class SendSMSResponse
+    public class SendSmsResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -97,10 +97,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         public string AcceptedDateTime { get; set; }
 
         [JsonProperty("message")]
-        public SendSMSResponseMessageType Message { get; set; }
+        public SendSmsResponseMessageType Message { get; set; }
     }
 
-    public class SendSMSResponseMessageType
+    public class SendSmsResponseMessageType
     {
         [JsonProperty("senderid")]
         public string Senderid { get; set; }
@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         public string[] Recipients { get; set; }
     }
 
-    public class SendSMSMessageInput
+    public class SendSmsMessageInput
     {
-        public SendSMSMessageInput(string messagetext, string[] recipients)
+        public SendSmsMessageInput(string messagetext, string[] recipients)
         {
             this.Messagetext = messagetext;
             this.Recipients = recipients;

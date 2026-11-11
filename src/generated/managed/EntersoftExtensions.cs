@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> ESCollaborationSendSMS(Expression<Func<ESCollaborationSendSMSMsgInput>> msg)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> ESCollaborationSendSms(Expression<Func<ESCollaborationSendSmsMsgInput>> msg)
         {
             var __workflow_msg = WorkflowExpression.Compile(msg, nameof(msg), required: true);
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
@@ -2023,7 +2023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Body { get; set; }
     }
 
-    public class ESCollaborationSendSMSMsgInput
+    public class ESCollaborationSendSmsMsgInput
     {
         public string Body { get; set; }
         public string[] Recipients { get; set; }

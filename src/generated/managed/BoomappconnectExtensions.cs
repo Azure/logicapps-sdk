@@ -13,47 +13,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
     public class BoomappconnectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<SMS1Response, ApiConnectionActionConfiguration> SMS1(Expression<Func<SMS1BodyInput>> body = null)
+        public IBodyWorkflowAction<Sms1Response, ApiConnectionActionConfiguration> Sms1(Expression<Func<Sms1BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SMS1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sms1Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms1";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SMS1Response>(callPayload);
+                return new ApiConnectionAction<Sms1Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<SMS2Response, ApiConnectionActionConfiguration> SMS2(Expression<Func<SMS2BodyInput>> body = null)
+        public IBodyWorkflowAction<Sms2Response, ApiConnectionActionConfiguration> Sms2(Expression<Func<Sms2BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SMS2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sms2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SMS2Response>(callPayload);
+                return new ApiConnectionAction<Sms2Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<SMS3Response, ApiConnectionActionConfiguration> SMS3(Expression<Func<SMS1BodyInput>> body = null)
+        public IBodyWorkflowAction<Sms3Response, ApiConnectionActionConfiguration> Sms3(Expression<Func<Sms1BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SMS3Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sms3Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms3";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SMS3Response>(callPayload);
+                return new ApiConnectionAction<Sms3Response>(callPayload);
             });
         }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         }
     }
 
-    public class SMS1Response
+    public class Sms1Response
     {
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -126,10 +126,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string Message { get; set; }
 
         [JsonProperty("transactions")]
-        public SMS1ResponseTransactionsTypeItem[] Transactions { get; set; }
+        public Sms1ResponseTransactionsTypeItem[] Transactions { get; set; }
     }
 
-    public class SMS1ResponseTransactionsTypeItem
+    public class Sms1ResponseTransactionsTypeItem
     {
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; }
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string TelephoneNumber { get; set; }
     }
 
-    public class SMS1BodyInput
+    public class Sms1BodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string Number { get; set; }
     }
 
-    public class SMS2Response
+    public class Sms2Response
     {
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -180,10 +180,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string Message { get; set; }
 
         [JsonProperty("transactions")]
-        public SMS2ResponseTransactionsTypeItem[] Transactions { get; set; }
+        public Sms2ResponseTransactionsTypeItem[] Transactions { get; set; }
     }
 
-    public class SMS2ResponseTransactionsTypeItem
+    public class Sms2ResponseTransactionsTypeItem
     {
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; }
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string TelephoneNumber { get; set; }
     }
 
-    public class SMS2BodyInput
+    public class Sms2BodyInput
     {
         [JsonProperty("conversation_id")]
         public string ConversationId { get; set; }
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string CustomParameter { get; set; }
     }
 
-    public class SMS3Response
+    public class Sms3Response
     {
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -240,10 +240,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string Message { get; set; }
 
         [JsonProperty("transactions")]
-        public SMS3ResponseTransactionsTypeItem[] Transactions { get; set; }
+        public Sms3ResponseTransactionsTypeItem[] Transactions { get; set; }
     }
 
-    public class SMS3ResponseTransactionsTypeItem
+    public class Sms3ResponseTransactionsTypeItem
     {
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; }

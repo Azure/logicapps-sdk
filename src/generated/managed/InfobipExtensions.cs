@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
     public class InfobipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
-        public IBodyWorkflowAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration> SendInfobipSMS(Expression<Func<SendInfobipSMSRequestBodyInput>> requestBody)
+        public IBodyWorkflowAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration> SendInfobipSms(Expression<Func<SendInfobipSmsRequestBodyInput>> requestBody)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 
     public class InfobipTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> CreateInfobipSMSWebhook(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> CreateInfobipSmsWebhook(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         public string DescriptionOfMessageSendingStatus { get; set; }
     }
 
-    public class SendInfobipSMSRequestBodyInput
+    public class SendInfobipSmsRequestBodyInput
     {
-        public SendInfobipSMSRequestBodyInput(string recipientSPhoneNumber, string message)
+        public SendInfobipSmsRequestBodyInput(string recipientSPhoneNumber, string message)
         {
             this.RecipientSPhoneNumber = recipientSPhoneNumber;
             this.Message = message;

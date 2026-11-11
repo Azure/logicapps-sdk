@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
     public class ServiceNowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetAttachmentMetdata(Expression<Func<string>> sysparmLimit = null, Expression<Func<string>> sysparmOffset = null, Expression<Func<string>> sysparmQuery = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetAttachmentMetdata(Expression<Func<string>> sysparmLimit = null, Expression<Func<string>> sysparmOffset = null, Expression<Func<string>> sysparmQuery = null)
         {
             var __workflow_sysparmLimit = WorkflowExpression.Compile(sysparmLimit, nameof(sysparmLimit), required: false);
             var __workflow_sysparmOffset = WorkflowExpression.Compile(sysparmOffset, nameof(sysparmOffset), required: false);
             var __workflow_sysparmQuery = WorkflowExpression.Compile(sysparmQuery, nameof(sysparmQuery), required: false);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/now/v1/attachment";
                 var apiCallHttpMethod = "get";
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
                     callPayload.Queries["sysparm_offset"] = ExpressionConverter.Convert(__workflow_sysparmOffset);
                 if (__workflow_sysparmQuery != null)
                     callPayload.Queries["sysparm_query"] = ExpressionConverter.Convert(__workflow_sysparmQuery);
-                return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
@@ -56,15 +56,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveAttachmentMetadata(Expression<Func<string>> sysId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> RetrieveAttachmentMetadata(Expression<Func<string>> sysId)
         {
             var __workflow_sysId = WorkflowExpression.Compile(sysId, nameof(sysId), required: true);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/now/v1/attachment/{0}", __workflow_sysId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
@@ -82,15 +82,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveAttachmentContent(Expression<Func<string>> sysId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RetrieveAttachmentContent(Expression<Func<string>> sysId)
         {
             var __workflow_sysId = WorkflowExpression.Compile(sysId, nameof(sysId), required: true);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/now/v1/attachment/{0}/file", __workflow_sysId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
             });
         }
 

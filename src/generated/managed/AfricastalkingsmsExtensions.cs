@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingsms
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new BulkSMSOptOutNotificationBodyInput().ToJToken();
+                callPayload.Body = new BulkSmsOptOutNotificationBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -71,12 +71,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingsms
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new BulkSMSOptOutNotificationBodyInput().ToJToken();
+                callPayload.Body = new BulkSmsOptOutNotificationBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> BulkSMSOptOutNotification(Expression<Func<string>> username)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> BulkSmsOptOutNotification(Expression<Func<string>> username)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingsms
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new BulkSMSOptOutNotificationBodyInput().ToJToken();
+                callPayload.Body = new BulkSmsOptOutNotificationBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingsms
         public JToken[] Messages { get; set; }
     }
 
-    public class BulkSMSOptOutNotificationBodyInput
+    public class BulkSmsOptOutNotificationBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

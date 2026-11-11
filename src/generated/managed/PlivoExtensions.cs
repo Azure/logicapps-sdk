@@ -39,16 +39,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plivo")]
-        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<SMSRequestBodyInput>> sMSRequestBody)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SMSRequestBodyInput>> sMSRequestBody)
         {
             var __workflow_sMSRequestBody = WorkflowExpression.Compile(sMSRequestBody, nameof(sMSRequestBody), required: true);
-            return new DeferredBodyAction<SendSMSResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Account/{0}/Message/", WorkflowExpression.Literal("auth_id_value").WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_sMSRequestBody);
-                return new ApiConnectionAction<SendSMSResponse>(callPayload);
+                return new ApiConnectionAction<SendSmsResponse>(callPayload);
             });
         }
 
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         public int Units { get; set; }
     }
 
-    public class SendSMSResponse
+    public class SendSmsResponse
     {
         [JsonProperty("api_id")]
         public string APIId { get; set; }

@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
     public class SmswirelessserviceipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smswirelessserviceip")]
-        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<BodyInput>> body)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SendSMSResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/message.php";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SendSMSResponse>(callPayload);
+                return new ApiConnectionAction<SendSmsResponse>(callPayload);
             });
         }
     }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
     {
     }
 
-    public class SendSMSResponse
+    public class SendSmsResponse
     {
         [JsonProperty("response")]
         public string Response { get; set; }

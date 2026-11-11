@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
     public class DataflowssmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        public IBodyWorkflowAction<SMSResponse, ApiConnectionActionConfiguration> SendSMSGet(Expression<Func<string>> recipient, Expression<Func<string>> senderId, Expression<Func<string>> message, Expression<Func<string>> type = null)
+        public IBodyWorkflowAction<SMSResponse, ApiConnectionActionConfiguration> SendSmsGet(Expression<Func<string>> recipient, Expression<Func<string>> senderId, Expression<Func<string>> message, Expression<Func<string>> type = null)
         {
             var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: true);
             var __workflow_senderId = WorkflowExpression.Compile(senderId, nameof(senderId), required: true);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        public IBodyWorkflowAction<SMSList, ApiConnectionActionConfiguration> ListSMS(Expression<Func<int>> page = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<SMSList, ApiConnectionActionConfiguration> ListSms(Expression<Func<int>> page = null, Expression<Func<int>> limit = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);

@@ -13,16 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
     public class TelesignsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telesignsms")]
-        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<BodyInput>> body)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SendSMSResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/SMS";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SendSMSResponse>(callPayload);
+                return new ApiConnectionAction<SendSmsResponse>(callPayload);
             });
         }
     }
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
     {
     }
 
-    public class SendSMSResponse
+    public class SendSmsResponse
     {
         public string ReferenceId { get; set; }
         public string Status { get; set; }

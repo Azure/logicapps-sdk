@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
     public class AspsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]
-        public IBodyWorkflowAction<SendSimpleSMSResponse, ApiConnectionActionConfiguration> SendSimpleSMS(Expression<Func<string>> mSISDN, Expression<Func<string>> messageData, Expression<Func<string>> originator = null, Expression<Func<int>> lifeTime = null, Expression<Func<string>> deferredDeliveryTime = null, Expression<Func<string>> transactionReferenceNumber = null)
+        public IBodyWorkflowAction<SendSimpleSmsResponse, ApiConnectionActionConfiguration> SendSimpleSms(Expression<Func<string>> mSISDN, Expression<Func<string>> messageData, Expression<Func<string>> originator = null, Expression<Func<int>> lifeTime = null, Expression<Func<string>> deferredDeliveryTime = null, Expression<Func<string>> transactionReferenceNumber = null)
         {
             var __workflow_mSISDN = WorkflowExpression.Compile(mSISDN, nameof(mSISDN), required: true);
             var __workflow_messageData = WorkflowExpression.Compile(messageData, nameof(messageData), required: true);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
             var __workflow_lifeTime = WorkflowExpression.Compile(lifeTime, nameof(lifeTime), required: false);
             var __workflow_deferredDeliveryTime = WorkflowExpression.Compile(deferredDeliveryTime, nameof(deferredDeliveryTime), required: false);
             var __workflow_transactionReferenceNumber = WorkflowExpression.Compile(transactionReferenceNumber, nameof(transactionReferenceNumber), required: false);
-            return new DeferredBodyAction<SendSimpleSMSResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendSimpleSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SendSimpleSMS";
                 var apiCallHttpMethod = "get";
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
                     callPayload.Queries["DeferredDeliveryTime"] = ExpressionConverter.Convert(__workflow_deferredDeliveryTime);
                 if (__workflow_transactionReferenceNumber != null)
                     callPayload.Queries["TransactionReferenceNumber"] = ExpressionConverter.Convert(__workflow_transactionReferenceNumber);
-                return new ApiConnectionAction<SendSimpleSMSResponse>(callPayload);
+                return new ApiConnectionAction<SendSimpleSmsResponse>(callPayload);
             });
         }
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
     {
     }
 
-    public class SendSimpleSMSResponse
+    public class SendSimpleSmsResponse
     {
         public int ErrorCode { get; set; }
         public string ErrorDescription { get; set; }

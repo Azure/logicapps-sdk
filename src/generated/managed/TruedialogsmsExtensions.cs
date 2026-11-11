@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
     public class TruedialogsmsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration> IncomingSMSReceived(Expression<Func<string>> accountId)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration> IncomingSmsReceived(Expression<Func<string>> accountId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Body = new IncomingSMSReceivedBodyInput().ToJToken();
+                callPayload.Body = new IncomingSmsReceivedBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger<CallbackCreatedResponse>(callPayload);
             });
         }
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         public int Id { get; set; }
     }
 
-    public class IncomingSMSReceivedBodyInput
+    public class IncomingSmsReceivedBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 11;

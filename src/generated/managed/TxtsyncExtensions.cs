@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
     public class TxtsyncActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
-        public IBodyWorkflowAction<SMS[], ApiConnectionActionConfiguration> SendSMS(Expression<Func<SendSMSBodyInput>> body)
+        public IBodyWorkflowAction<SMS[], ApiConnectionActionConfiguration> SendSms(Expression<Func<SendSmsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SMS[], ApiConnectionActionConfiguration>(() =>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
-        public IBodyWorkflowAction<SMS, ApiConnectionActionConfiguration> SendBulkSMS(Expression<Func<SendBulkSMSBodyInput>> body)
+        public IBodyWorkflowAction<SMS, ApiConnectionActionConfiguration> SendBulkSms(Expression<Func<SendBulkSmsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SMS, ApiConnectionActionConfiguration>(() =>
@@ -160,31 +160,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 
     public class TxtsyncTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<InboundSMSResponse, ApiConnectionPollingTriggerConfiguration> InboundSMS()
+        public IBodyWorkflowTrigger<InboundSmsResponse, ApiConnectionPollingTriggerConfiguration> InboundSms()
         {
-            return new DeferredBodyTrigger<InboundSMSResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<InboundSmsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/system/applications/webhooks/type/0";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
-                callPayload.Body = new InboundSMSBodyInput().ToJToken();
-                return new ApiConnectionPollingTrigger<InboundSMSResponse>(callPayload);
+                callPayload.Body = new InboundSmsBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<InboundSmsResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<OutboundSMSResponse, ApiConnectionPollingTriggerConfiguration> OutboundSMS()
+        public IBodyWorkflowTrigger<OutboundSmsResponse, ApiConnectionPollingTriggerConfiguration> OutboundSms()
         {
-            return new DeferredBodyTrigger<OutboundSMSResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OutboundSmsResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/system/applications/webhooks/type/5";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
-                callPayload.Body = new InboundSMSBodyInput().ToJToken();
-                return new ApiConnectionPollingTrigger<OutboundSMSResponse>(callPayload);
+                callPayload.Body = new InboundSmsBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<OutboundSmsResponse>(callPayload);
             });
         }
     }
@@ -228,9 +228,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public double Status { get; set; }
     }
 
-    public class SendSMSBodyInput
+    public class SendSmsBodyInput
     {
-        public SendSMSBodyInput(string from, string message, string to)
+        public SendSmsBodyInput(string from, string message, string to)
         {
             this.From = from;
             this.Message = message;
@@ -247,9 +247,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public string To { get; set; }
     }
 
-    public class SendBulkSMSBodyInput
+    public class SendBulkSmsBodyInput
     {
-        public SendBulkSMSBodyInput(string from, string message)
+        public SendBulkSmsBodyInput(string from, string message)
         {
             this.From = from;
             this.Message = message;
@@ -404,23 +404,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public bool AllowSMS { get; set; }
     }
 
-    public class InboundSMSResponse
+    public class InboundSmsResponse
     {
-        public InboundSMSResponseContentType Content { get; set; }
+        public InboundSmsResponseContentType Content { get; set; }
     }
 
-    public class InboundSMSResponseContentType
+    public class InboundSmsResponseContentType
     {
-        public InboundSMSResponseContentTypeContactType Contact { get; set; }
-        public InboundSMSResponseContentTypeSMSType SMS { get; set; }
+        public InboundSmsResponseContentTypeContactType Contact { get; set; }
+        public InboundSmsResponseContentTypeSMSType SMS { get; set; }
     }
 
-    public class InboundSMSResponseContentTypeContactType
+    public class InboundSmsResponseContentTypeContactType
     {
         public string ExternalReference { get; set; }
     }
 
-    public class InboundSMSResponseContentTypeSMSType
+    public class InboundSmsResponseContentTypeSMSType
     {
         [JsonProperty("ContactID")]
         public int ContactId { get; set; }
@@ -434,29 +434,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public string ToNumber { get; set; }
     }
 
-    public class InboundSMSBodyInput
+    public class InboundSmsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string URL { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class OutboundSMSResponse
+    public class OutboundSmsResponse
     {
-        public OutboundSMSResponseContentType Content { get; set; }
+        public OutboundSmsResponseContentType Content { get; set; }
     }
 
-    public class OutboundSMSResponseContentType
+    public class OutboundSmsResponseContentType
     {
-        public OutboundSMSResponseContentTypeContactType Contact { get; set; }
-        public OutboundSMSResponseContentTypeSMSType SMS { get; set; }
+        public OutboundSmsResponseContentTypeContactType Contact { get; set; }
+        public OutboundSmsResponseContentTypeSMSType SMS { get; set; }
     }
 
-    public class OutboundSMSResponseContentTypeContactType
+    public class OutboundSmsResponseContentTypeContactType
     {
         public string ExternalReference { get; set; }
     }
 
-    public class OutboundSMSResponseContentTypeSMSType
+    public class OutboundSmsResponseContentTypeSMSType
     {
         [JsonProperty("ContactID")]
         public int ContactId { get; set; }

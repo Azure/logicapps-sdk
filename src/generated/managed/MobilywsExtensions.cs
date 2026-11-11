@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilyws
     public class MobilywsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobilyws")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SendSMS(Expression<Func<string>> apiKey, Expression<Func<string>> numbers, Expression<Func<string>> sender, Expression<Func<string>> msg, Expression<Func<string>> applicationType, Expression<Func<string>> lang, Expression<Func<string>> contentType)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> apiKey, Expression<Func<string>> numbers, Expression<Func<string>> sender, Expression<Func<string>> msg, Expression<Func<string>> applicationType, Expression<Func<string>> lang, Expression<Func<string>> contentType)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_numbers = WorkflowExpression.Compile(numbers, nameof(numbers), required: true);

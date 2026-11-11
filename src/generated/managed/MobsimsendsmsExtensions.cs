@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
     public class MobsimsendsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobsimsendsms")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SMS(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Sms(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>

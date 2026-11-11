@@ -25,17 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7sms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7sms")]
-        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SendSMSResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/send";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SendSMSResponse>(callPayload);
+                return new ApiConnectionAction<SendSmsResponse>(callPayload);
             });
         }
     }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7sms
         public string SmsCount { get; set; }
     }
 
-    public class SendSMSResponse
+    public class SendSmsResponse
     {
         [JsonProperty("data")]
         public string Data { get; set; }
