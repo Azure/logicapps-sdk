@@ -1,17 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Azure.Functions.Sdk/1.0.0">
   <PropertyGroup>
-    <TargetFramework>net8</TargetFramework>
-    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
-    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <WorkflowRepositoryConsumer>true</WorkflowRepositoryConsumer>
     <LogicAppFolderToPublish>$(MSBuildProjectDirectory)\lib\codeful</LogicAppFolderToPublish>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.21.0" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.17.1" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker.Core" Version="1.19.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="2.52.0" />
     <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
   </ItemGroup>
   <ItemGroup>

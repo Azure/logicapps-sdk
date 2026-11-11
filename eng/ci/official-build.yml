@@ -73,6 +73,14 @@ extends:
             arguments: -v m --configfile $(Build.SourcesDirectory)\NuGet.Config
 
         - task: DotNetCoreCLI@2
+          displayName: Restore Functions worker
+          inputs:
+            command: custom
+            custom: restore
+            projects: tests/Microsoft.Azure.Workflows.Sdk.Tests.Worker/Microsoft.Azure.Workflows.Sdk.Tests.Worker.csproj
+            arguments: -v m --configfile $(Build.SourcesDirectory)\NuGet.Config
+
+        - task: DotNetCoreCLI@2
           displayName: Build $(project)
           inputs:
             command: build
