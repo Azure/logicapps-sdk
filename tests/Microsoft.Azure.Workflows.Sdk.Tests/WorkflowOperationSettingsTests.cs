@@ -359,6 +359,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void NotificationTriggersBindNamedPathTemplateParameters()
+        {
+            var trigger = WorkflowTriggers.Managed
+                .Office365("connection")
+                .OnCalendarChangedItems(table: () => "calendar-id");
+
+            var definition =
+                trigger.GetTriggerDefinition(FlowKind.Stateful);
+            var inputs =
+                Assert.IsType<ApiConnectionNotificationActionInput>(
+                    definition.Inputs);
+
+            foreach (var pathTemplate in new[]
+            {
+                inputs.Fetch.PathTemplate,
+                inputs.Subscribe.PathTemplate,
+            })
+            {
+                Assert.Contains("{table}", pathTemplate.Template);
+                var parameter = Assert.Single(pathTemplate.Parameters);
+                Assert.Equal("table", parameter.Key);
+                Assert.Contains("calendar-id", parameter.Value);
+                Assert.Contains("encodeURIComponent", parameter.Value);
+            }
+        }
+
+        [Fact]
         public void GeneratedInputConstructorsPreserveWorkflowExpressions()
         {
             var action = WorkflowActions.Managed

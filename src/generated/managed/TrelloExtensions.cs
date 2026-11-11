@@ -707,20 +707,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/v3/trigger/boards/{0}/actions"
+                        Template = "/v3/trigger/boards/{board_id}/actions",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "get",
                 };
+                input.Fetch.PathTemplate.Parameters["board_id"] = ExpressionConverter.Convert(__workflow_boardId.WithUrlEncoding(1));
                 input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
                 {
                     Queries = new Dictionary<string, string>(),
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/OnBoardChangesSubscription/{0}"
+                        Template = "/OnBoardChangesSubscription/{board_id}",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "post",
                 };
+                input.Subscribe.PathTemplate.Parameters["board_id"] = ExpressionConverter.Convert(__workflow_boardId.WithUrlEncoding(1));
                 input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<CardInAction[]>(input);
             });
@@ -739,10 +743,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/v3/trigger/lists/{0}/actions"
+                        Template = "/v3/trigger/lists/{list_id}/actions",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "get",
                 };
+                input.Fetch.PathTemplate.Parameters["list_id"] = ExpressionConverter.Convert(__workflow_listId.WithUrlEncoding(1));
                 input.Fetch.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
                 input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
                 {
@@ -750,10 +756,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/OnListChangesSubscription/{0}"
+                        Template = "/OnListChangesSubscription/{list_id}",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "post",
                 };
+                input.Subscribe.PathTemplate.Parameters["list_id"] = ExpressionConverter.Convert(__workflow_listId.WithUrlEncoding(1));
                 input.Subscribe.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
                 input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<CardInAction[]>(input);

@@ -488,10 +488,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/datasets/calendars/v2/tables/{0}/onchangeditems"
+                        Template = "/datasets/calendars/v2/tables/{table}/onchangeditems",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "get",
                 };
+                input.Fetch.PathTemplate.Parameters["table"] = ExpressionConverter.Convert(__workflow_table.WithUrlEncoding(2));
                 input.Fetch.Queries["incomingDays"] = Convert.ToString(300);
                 if (__workflow_incomingDays != null)
                     input.Fetch.Queries["incomingDays"] = ExpressionConverter.Convert(__workflow_incomingDays);
@@ -504,10 +506,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/{0}/EventSubscriptionPoke/$subscriptions"
+                        Template = "/{table}/EventSubscriptionPoke/$subscriptions",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "post",
                 };
+                input.Subscribe.PathTemplate.Parameters["table"] = ExpressionConverter.Convert(__workflow_table.WithUrlEncoding(2));
                 input.Subscribe.Queries["incomingDays"] = Convert.ToString(300);
                 if (__workflow_incomingDays != null)
                     input.Subscribe.Queries["incomingDays"] = ExpressionConverter.Convert(__workflow_incomingDays);
@@ -581,7 +585,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/v2/Mail/OnFlaggedEmail"
+                        Template = "/v2/Mail/OnFlaggedEmail",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "get",
                 };
@@ -613,7 +618,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/FlaggedMailSubscriptionPoke/$subscriptions"
+                        Template = "/FlaggedMailSubscriptionPoke/$subscriptions",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "post",
                 };
@@ -651,7 +657,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/v2/Mail/OnNewEmail"
+                        Template = "/v2/Mail/OnNewEmail",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "get",
                 };
@@ -683,7 +690,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/MailSubscriptionPoke/$subscriptions"
+                        Template = "/MailSubscriptionPoke/$subscriptions",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "post",
                 };
@@ -721,7 +729,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/v2/Mail/OnNewMentionMeEmail"
+                        Template = "/v2/Mail/OnNewMentionMeEmail",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "get",
                 };
@@ -752,7 +761,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                     Headers = new Dictionary<string, string>(),
                     PathTemplate = new PathTemplate
                     {
-                        Template = "/MentionMeMailSubscriptionPoke/$subscriptions"
+                        Template = "/MentionMeMailSubscriptionPoke/$subscriptions",
+                        Parameters = new Dictionary<string, string>()
                     },
                     Method = "post",
                 };
