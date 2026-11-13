@@ -326,7 +326,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureopenai
 
     public class ContentFilterDetectedWithCitationResult2024Feb15PreviewCitationType
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
 
         [JsonProperty("license")]
         public string License { get; set; }

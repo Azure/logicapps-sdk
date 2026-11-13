@@ -860,7 +860,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class FinishActionResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class FinishActionBodyInput
@@ -877,7 +878,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class ViewAssetsListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -892,123 +894,139 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewAssetsListResponseRecordsTypeItem
     {
         [JsonProperty("ASSET_ID")]
-        public string ASSETId { get; set; }
+        public string AssetId { get; set; }
 
         [JsonProperty("ASSET_LABEL")]
-        public string ASSETLABEL { get; set; }
+        public string AssetLabel { get; set; }
 
         [JsonProperty("ASSET_TAG")]
-        public string ASSETTAG { get; set; }
+        public string AssetTag { get; set; }
 
         [JsonProperty("CATALOG_ASSET")]
-        public ViewAssetsListResponseRecordsTypeItemCATALOGASSETType CATALOGASSET { get; set; }
-        public ViewAssetsListResponseRecordsTypeItemDEPARTMENTType DEPARTMENT { get; set; }
-        public ViewAssetsListResponseRecordsTypeItemEMPLOYEEType EMPLOYEE { get; set; }
+        public ViewAssetsListResponseRecordsTypeItemCatalogAssetType CatalogAsset { get; set; }
+
+        [JsonProperty("DEPARTMENT")]
+        public ViewAssetsListResponseRecordsTypeItemDepartmentType Department { get; set; }
+
+        [JsonProperty("EMPLOYEE")]
+        public ViewAssetsListResponseRecordsTypeItemEmployeeType Employee { get; set; }
 
         [JsonProperty("END_OF_WARANTY")]
-        public string ENDOFWARANTY { get; set; }
+        public string EndOfWaranty { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
-        public string HREF { get; set; }
+        public string EntryDate { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("INSTALLATION_DATE")]
-        public string INSTALLATIONDATE { get; set; }
-        public ViewAssetsListResponseRecordsTypeItemLOCATIONType LOCATION { get; set; }
+        public string InstallationDate { get; set; }
+
+        [JsonProperty("LOCATION")]
+        public ViewAssetsListResponseRecordsTypeItemLocationType Location { get; set; }
 
         [JsonProperty("PURCHASE_DATE")]
-        public string PURCHASEDATE { get; set; }
+        public string PurchaseDate { get; set; }
 
         [JsonProperty("SERIAL_NUMBER")]
-        public string SERIALNUMBER { get; set; }
+        public string SerialNumber { get; set; }
     }
 
-    public class ViewAssetsListResponseRecordsTypeItemCATALOGASSETType
+    public class ViewAssetsListResponseRecordsTypeItemCatalogAssetType
     {
         [JsonProperty("ARTICLE_MODEL")]
-        public string ARTICLEMODEL { get; set; }
+        public string ArticleModel { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGId { get; set; }
-        public string HREF { get; set; }
+        public string CatalogId { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("NET_PRICE")]
-        public string NETPRICE { get; set; }
+        public string NetPrice { get; set; }
 
         [JsonProperty("SMBIOS_NAME")]
-        public string SMBIOSNAME { get; set; }
+        public string SmbiosName { get; set; }
 
         [JsonProperty("TITLE_FR")]
-        public string TITLEFR { get; set; }
+        public string TitleFr { get; set; }
     }
 
-    public class ViewAssetsListResponseRecordsTypeItemDEPARTMENTType
+    public class ViewAssetsListResponseRecordsTypeItemDepartmentType
     {
         [JsonProperty("DEPARTMENT_CODE")]
-        public string DEPARTMENTCODE { get; set; }
+        public string DepartmentCode { get; set; }
 
         [JsonProperty("DEPARTMENT_FR")]
-        public string DEPARTMENTFR { get; set; }
+        public string DepartmentFr { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
-        public string DEPARTMENTLABEL { get; set; }
+        public string DepartmentLabel { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
     }
 
-    public class ViewAssetsListResponseRecordsTypeItemEMPLOYEEType
+    public class ViewAssetsListResponseRecordsTypeItemEmployeeType
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
-        public string HREF { get; set; }
+        public string EMail { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
-    public class ViewAssetsListResponseRecordsTypeItemLOCATIONType
+    public class ViewAssetsListResponseRecordsTypeItemLocationType
     {
-        public string CITY { get; set; }
-        public string HREF { get; set; }
+        [JsonProperty("CITY")]
+        public string City { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LOCATION_CODE")]
-        public string LOCATIONCODE { get; set; }
+        public string LocationCode { get; set; }
 
         [JsonProperty("LOCATION_FR")]
-        public string LOCATIONFR { get; set; }
+        public string LocationFr { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
     }
 
     public class CreateAssetResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class CreateAssetBodyInput
@@ -1074,735 +1092,766 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewAssetResponse
     {
         [JsonProperty("ACQUISITION_TYPE_ID")]
-        public string ACQUISITIONTYPEId { get; set; }
+        public string AcquisitionTypeId { get; set; }
 
         [JsonProperty("ASSET_GUID")]
-        public string ASSETGUID { get; set; }
+        public string AssetGuid { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETId { get; set; }
+        public string AssetId { get; set; }
 
         [JsonProperty("ASSET_LABEL")]
-        public string ASSETLABEL { get; set; }
+        public string AssetLabel { get; set; }
 
         [JsonProperty("ASSET_TAG")]
-        public string ASSETTAG { get; set; }
+        public string AssetTag { get; set; }
 
         [JsonProperty("AUTOMATIC_RENEWAL")]
-        public string AUTOMATICRENEWAL { get; set; }
+        public string AutomaticRenewal { get; set; }
 
         [JsonProperty("AVAILABILITY_SLA_ID")]
-        public string AVAILABILITYSLAId { get; set; }
+        public string AvailabilitySlaId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
-        public string AVAILABLEFIELD1 { get; set; }
+        public string AvailableField1 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_2")]
-        public string AVAILABLEFIELD2 { get; set; }
+        public string AvailableField2 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_3")]
-        public string AVAILABLEFIELD3 { get; set; }
+        public string AvailableField3 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_4")]
-        public string AVAILABLEFIELD4 { get; set; }
+        public string AvailableField4 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_5")]
-        public string AVAILABLEFIELD5 { get; set; }
+        public string AvailableField5 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_6")]
-        public string AVAILABLEFIELD6 { get; set; }
+        public string AvailableField6 { get; set; }
 
         [JsonProperty("BEFORE_LOAN_DEPARTMENT_ID")]
-        public string BEFORELOANDEPARTMENTId { get; set; }
+        public string BeforeLoanDepartmentId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_DEPARTMENT_PATH")]
-        public string BEFORELOANDEPARTMENTPATH { get; set; }
+        public string BeforeLoanDepartmentPath { get; set; }
 
         [JsonProperty("BEFORE_LOAN_EMPLOYEE_ID")]
-        public string BEFORELOANEMPLOYEEId { get; set; }
+        public string BeforeLoanEmployeeId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_LOCATION_ID")]
-        public string BEFORELOANLOCATIONId { get; set; }
+        public string BeforeLoanLocationId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_LOCATION_PATH")]
-        public string BEFORELOANLOCATIONPATH { get; set; }
+        public string BeforeLoanLocationPath { get; set; }
 
         [JsonProperty("BILLING_PERIODICITY_IN_MONTH")]
-        public string BILLINGPERIODICITYINMONTH { get; set; }
+        public string BillingPeriodicityInMonth { get; set; }
 
         [JsonProperty("BUDGET_ID")]
-        public string BUDGETId { get; set; }
+        public string BudgetId { get; set; }
 
         [JsonProperty("BUY_BACK_VALUE")]
-        public string BUYBACKVALUE { get; set; }
+        public string BuyBackValue { get; set; }
 
         [JsonProperty("BUY_BACK_VALUE_CUR_ID")]
-        public string BUYBACKVALUECURId { get; set; }
+        public string BuyBackValueCurId { get; set; }
 
         [JsonProperty("CATALOG_ASSET")]
-        public ViewAssetResponseCATALOGASSETType CATALOGASSET { get; set; }
+        public ViewAssetResponseCatalogAssetType CatalogAsset { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGId { get; set; }
+        public string CatalogId { get; set; }
 
         [JsonProperty("CHARGE_BACK")]
-        public string CHARGEBACK { get; set; }
+        public string ChargeBack { get; set; }
 
         [JsonProperty("CHARGE_BACK_CUR_ID")]
-        public string CHARGEBACKCURId { get; set; }
+        public string ChargeBackCurId { get; set; }
 
         [JsonProperty("CI_BACKUP_BY_DEFAULT")]
-        public string CIBACKUPBYDEFAULT { get; set; }
+        public string CiBackupByDefault { get; set; }
 
         [JsonProperty("CI_STATUS_ID")]
-        public string CISTATUSId { get; set; }
+        public string CiStatusId { get; set; }
 
         [JsonProperty("CI_VERSION")]
-        public string CIVERSION { get; set; }
+        public string CiVersion { get; set; }
 
         [JsonProperty("CM_DEFAULT_CHANGE_ID")]
-        public string CMDEFAULTCHANGEId { get; set; }
+        public string CmDefaultChangeId { get; set; }
 
         [JsonProperty("CM_DEFAULT_CHANGE_PATH")]
-        public string CMDEFAULTCHANGEPATH { get; set; }
+        public string CmDefaultChangePath { get; set; }
 
         [JsonProperty("COMMENT_ASSET")]
-        public ViewAssetResponseCOMMENTASSETType COMMENTASSET { get; set; }
+        public ViewAssetResponseCommentAssetType CommentAsset { get; set; }
 
         [JsonProperty("CONFIGURATION_ID")]
-        public string CONFIGURATIONId { get; set; }
+        public string ConfigurationId { get; set; }
 
         [JsonProperty("CONTRACT_TYPE_ID")]
-        public string CONTRACTTYPEId { get; set; }
+        public string ContractTypeId { get; set; }
 
         [JsonProperty("CRITICAL_LEVEL_ID")]
-        public string CRITICALLEVELId { get; set; }
+        public string CriticalLevelId { get; set; }
 
         [JsonProperty("DELIVERY_DATE")]
-        public string DELIVERYDATE { get; set; }
+        public string DeliveryDate { get; set; }
 
         [JsonProperty("DELIVERY_NUMBER")]
-        public string DELIVERYNUMBER { get; set; }
-        public ViewAssetResponseDEPARTMENTType DEPARTMENT { get; set; }
+        public string DeliveryNumber { get; set; }
+
+        [JsonProperty("DEPARTMENT")]
+        public ViewAssetResponseDepartmentType Department { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("DEPRECIATION_RULE_ID")]
-        public string DEPRECIATIONRULEId { get; set; }
+        public string DepreciationRuleId { get; set; }
 
         [JsonProperty("D_HARDWARE_GUID")]
-        public string DHARDWAREGUID { get; set; }
-        public ViewAssetResponseEMPLOYEEType EMPLOYEE { get; set; }
+        public string DHardwareGuid { get; set; }
+
+        [JsonProperty("EMPLOYEE")]
+        public ViewAssetResponseEmployeeType Employee { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("END_OF_WARANTY")]
-        public string ENDOFWARANTY { get; set; }
+        public string EndOfWaranty { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("ESTIMATED_PERCENTAGE_USE")]
-        public string ESTIMATEDPERCENTAGEUSE { get; set; }
+        public string EstimatedPercentageUse { get; set; }
 
         [JsonProperty("EXPECTED_END_LEND_DATE")]
-        public string EXPECTEDENDLENDDATE { get; set; }
+        public string ExpectedEndLendDate { get; set; }
 
         [JsonProperty("EXPECTED_RETURN_DATE")]
-        public string EXPECTEDRETURNDATE { get; set; }
+        public string ExpectedReturnDate { get; set; }
 
         [JsonProperty("FALLEN_TERM")]
-        public string FALLENTERM { get; set; }
+        public string FallenTerm { get; set; }
 
         [JsonProperty("FIXED_ASSET_NUMBER")]
-        public string FIXEDASSETNUMBER { get; set; }
-        public string HREF { get; set; }
+        public string FixedAssetNumber { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("INITIAL_START")]
-        public string INITIALSTART { get; set; }
+        public string InitialStart { get; set; }
 
         [JsonProperty("INSTALLATION_DATE")]
-        public string INSTALLATIONDATE { get; set; }
+        public string InstallationDate { get; set; }
 
         [JsonProperty("INTERNAL_DELIVERY_DATE")]
-        public string INTERNALDELIVERYDATE { get; set; }
+        public string InternalDeliveryDate { get; set; }
 
         [JsonProperty("INTERNAL_DISPO")]
-        public string INTERNALDISPO { get; set; }
+        public string InternalDispo { get; set; }
 
         [JsonProperty("INVENTORY_ID")]
-        public string INVENTORYId { get; set; }
+        public string InventoryId { get; set; }
 
         [JsonProperty("INVOICE_NUMBER")]
-        public string INVOICENUMBER { get; set; }
+        public string InvoiceNumber { get; set; }
 
         [JsonProperty("IS_CI")]
-        public string ISCI { get; set; }
+        public string IsCi { get; set; }
 
         [JsonProperty("IS_DML")]
-        public string ISDML { get; set; }
+        public string IsDml { get; set; }
 
         [JsonProperty("IS_LOCKED")]
-        public string ISLOCKED { get; set; }
+        public string IsLocked { get; set; }
 
         [JsonProperty("IS_SERVICE")]
-        public string ISSERVICE { get; set; }
+        public string IsService { get; set; }
 
         [JsonProperty("LAST_AUTOMATIC_DISCOVERY")]
-        public string LASTAUTOMATICDISCOVERY { get; set; }
+        public string LastAutomaticDiscovery { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
-        public string LASTINTEGRATION { get; set; }
+        public string LastIntegration { get; set; }
 
         [JsonProperty("LAST_PAYMENT")]
-        public string LASTPAYMENT { get; set; }
+        public string LastPayment { get; set; }
 
         [JsonProperty("LAST_PAYMENT_CUR_ID")]
-        public string LASTPAYMENTCURId { get; set; }
+        public string LastPaymentCurId { get; set; }
 
         [JsonProperty("LAST_PHYSICAL_INVENTORY")]
-        public string LASTPHYSICALINVENTORY { get; set; }
+        public string LastPhysicalInventory { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
+        public string LastUpdate { get; set; }
 
         [JsonProperty("LICENSE_VERSION")]
-        public string LICENSEVERSION { get; set; }
-        public ViewAssetResponseLOCATIONType LOCATION { get; set; }
+        public string LicenseVersion { get; set; }
+
+        [JsonProperty("LOCATION")]
+        public ViewAssetResponseLocationType Location { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("LOCATION_TO_CHECK_REQUEST_ID")]
-        public string LOCATIONTOCHECKREQUESTId { get; set; }
+        public string LocationToCheckRequestId { get; set; }
 
         [JsonProperty("MAINTENANCE_COST")]
-        public string MAINTENANCECOST { get; set; }
+        public string MaintenanceCost { get; set; }
 
         [JsonProperty("MAINTENANCE_COST_CUR_ID")]
-        public string MAINTENANCECOSTCURId { get; set; }
+        public string MaintenanceCostCurId { get; set; }
 
         [JsonProperty("MAIN_USAGE_ID")]
-        public string MAINUSAGEId { get; set; }
+        public string MainUsageId { get; set; }
 
         [JsonProperty("MAX_INSTALLS")]
-        public string MAXINSTALLS { get; set; }
+        public string MaxInstalls { get; set; }
 
         [JsonProperty("MONTHLY_FIXED_COST")]
-        public string MONTHLYFIXEDCOST { get; set; }
+        public string MonthlyFixedCost { get; set; }
 
         [JsonProperty("MONTHLY_FIXED_COST_CUR_ID")]
-        public string MONTHLYFIXEDCOSTCURId { get; set; }
+        public string MonthlyFixedCostCurId { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL")]
-        public string MONTHLYNETRENTAL { get; set; }
+        public string MonthlyNetRental { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL_CUR_ID")]
-        public string MONTHLYNETRENTALCURId { get; set; }
+        public string MonthlyNetRentalCurId { get; set; }
 
         [JsonProperty("MONTH_DURATION")]
-        public string MONTHDURATION { get; set; }
+        public string MonthDuration { get; set; }
 
         [JsonProperty("NETWORK_IDENTIFIER")]
-        public string NETWORKIdENTIFIER { get; set; }
+        public string NetworkIdentifier { get; set; }
 
         [JsonProperty("NEXT_CI_VERSION")]
-        public string NEXTCIVERSION { get; set; }
+        public string NextCiVersion { get; set; }
 
         [JsonProperty("NEXT_DEPARTMENT_ID")]
-        public string NEXTDEPARTMENTId { get; set; }
+        public string NextDepartmentId { get; set; }
 
         [JsonProperty("NEXT_DEPARTMENT_PATH")]
-        public string NEXTDEPARTMENTPATH { get; set; }
+        public string NextDepartmentPath { get; set; }
 
         [JsonProperty("NEXT_MAINTENANCE_DATE")]
-        public string NEXTMAINTENANCEDATE { get; set; }
+        public string NextMaintenanceDate { get; set; }
 
         [JsonProperty("NEXT_STATUS_ID")]
-        public string NEXTSTATUSId { get; set; }
+        public string NextStatusId { get; set; }
 
         [JsonProperty("NEXT_USER_APPLICATION_DATE")]
-        public string NEXTUSERAPPLICATIONDATE { get; set; }
+        public string NextUserApplicationDate { get; set; }
 
         [JsonProperty("NEXT_USER_ID")]
-        public string NEXTUSERId { get; set; }
-        public string NOTICE { get; set; }
+        public string NextUserId { get; set; }
+
+        [JsonProperty("NOTICE")]
+        public string Notice { get; set; }
 
         [JsonProperty("ORDER_DETAILS_ID")]
-        public string ORDERDETAILSId { get; set; }
+        public string OrderDetailsId { get; set; }
 
         [JsonProperty("ORDER_NUMBER")]
-        public string ORDERNUMBER { get; set; }
+        public string OrderNumber { get; set; }
 
         [JsonProperty("OWNERSHIP_TO_CHECK_REQUEST_ID")]
-        public string OWNERSHIPTOCHECKREQUESTId { get; set; }
+        public string OwnershipToCheckRequestId { get; set; }
 
         [JsonProperty("PACKAGE_PATH")]
-        public string PACKAGEPATH { get; set; }
+        public string PackagePath { get; set; }
 
         [JsonProperty("PIPELINE_STATUS_ID")]
-        public string PIPELINESTATUSId { get; set; }
+        public string PipelineStatusId { get; set; }
 
         [JsonProperty("POWER_CONSUMPTION_WH")]
-        public string POWERCONSUMPTIONWH { get; set; }
+        public string PowerConsumptionWh { get; set; }
 
         [JsonProperty("PROCESSOR_COUNT")]
-        public string PROCESSORCOUNT { get; set; }
+        public string ProcessorCount { get; set; }
 
         [JsonProperty("PROCESSOR_SOCKET_COUNT")]
-        public string PROCESSORSOCKETCOUNT { get; set; }
+        public string ProcessorSocketCount { get; set; }
 
         [JsonProperty("PROJECT_ID")]
-        public string PROJECTId { get; set; }
+        public string ProjectId { get; set; }
 
         [JsonProperty("PROVIDER_ID")]
-        public string PROVIdERId { get; set; }
+        public string ProviderId { get; set; }
 
         [JsonProperty("PROVIDER_PATH")]
-        public string PROVIdERPATH { get; set; }
+        public string ProviderPath { get; set; }
 
         [JsonProperty("PURCHASE_DATE")]
-        public string PURCHASEDATE { get; set; }
+        public string PurchaseDate { get; set; }
 
         [JsonProperty("PURCHASE_PRICE")]
-        public string PURCHASEPRICE { get; set; }
+        public string PurchasePrice { get; set; }
 
         [JsonProperty("PURCHASE_PRICE_CUR_ID")]
-        public string PURCHASEPRICECURId { get; set; }
+        public string PurchasePriceCurId { get; set; }
 
         [JsonProperty("PURCHASE_RATE_ID")]
-        public string PURCHASERATEId { get; set; }
+        public string PurchaseRateId { get; set; }
 
         [JsonProperty("RECYCLED_DATE")]
-        public string RECYCLEDDATE { get; set; }
+        public string RecycledDate { get; set; }
 
         [JsonProperty("RECYCLING_PROVIDER_ID")]
-        public string RECYCLINGPROVIdERId { get; set; }
+        public string RecyclingProviderId { get; set; }
 
         [JsonProperty("RECYCLING_PROVIDER_PATH")]
-        public string RECYCLINGPROVIdERPATH { get; set; }
+        public string RecyclingProviderPath { get; set; }
 
         [JsonProperty("REFORM_NUMBER")]
-        public string REFORMNUMBER { get; set; }
+        public string ReformNumber { get; set; }
 
         [JsonProperty("REMOVED_DATE")]
-        public string REMOVEDDATE { get; set; }
+        public string RemovedDate { get; set; }
 
         [JsonProperty("RENEWAL_DECISION_ID")]
-        public string RENEWALDECISIONId { get; set; }
+        public string RenewalDecisionId { get; set; }
 
         [JsonProperty("RENEWAL_VALUE")]
-        public string RENEWALVALUE { get; set; }
+        public string RenewalValue { get; set; }
 
         [JsonProperty("RENEWAL_VALUE_CUR_ID")]
-        public string RENEWALVALUECURId { get; set; }
+        public string RenewalValueCurId { get; set; }
 
         [JsonProperty("REPAIRED_BY_ID")]
-        public string REPAIREDBYId { get; set; }
+        public string RepairedById { get; set; }
 
         [JsonProperty("REPAIRED_BY_PATH")]
-        public string REPAIREDBYPATH { get; set; }
+        public string RepairedByPath { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTId { get; set; }
+        public string RequestId { get; set; }
 
         [JsonProperty("RESALES_VALUE")]
-        public string RESALESVALUE { get; set; }
+        public string ResalesValue { get; set; }
 
         [JsonProperty("SCHEDULED_END")]
-        public string SCHEDULEDEND { get; set; }
+        public string ScheduledEnd { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
+        public string SdCatalogId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
-        public string SDCATALOGPATH { get; set; }
+        public string SdCatalogPath { get; set; }
 
         [JsonProperty("SD_DEFAULT_INCIDENT_ID")]
-        public string SDDEFAULTINCIdENTId { get; set; }
+        public string SdDefaultIncidentId { get; set; }
 
         [JsonProperty("SD_DEFAULT_INCIDENT_PATH")]
-        public string SDDEFAULTINCIdENTPATH { get; set; }
+        public string SdDefaultIncidentPath { get; set; }
 
         [JsonProperty("SD_DEFAULT_REQUEST_ID")]
-        public string SDDEFAULTREQUESTId { get; set; }
+        public string SdDefaultRequestId { get; set; }
 
         [JsonProperty("SD_DEFAULT_REQUEST_PATH")]
-        public string SDDEFAULTREQUESTPATH { get; set; }
+        public string SdDefaultRequestPath { get; set; }
 
         [JsonProperty("SERIAL_NUMBER")]
-        public string SERIALNUMBER { get; set; }
+        public string SerialNumber { get; set; }
 
         [JsonProperty("SERVER_TYPE_ID")]
-        public string SERVERTYPEId { get; set; }
+        public string ServerTypeId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSId { get; set; }
+        public string StatusId { get; set; }
 
         [JsonProperty("SUPPLIER_ID")]
-        public string SUPPLIERId { get; set; }
+        public string SupplierId { get; set; }
 
         [JsonProperty("SUPPLIER_PATH")]
-        public string SUPPLIERPATH { get; set; }
-        public string TERM { get; set; }
+        public string SupplierPath { get; set; }
+
+        [JsonProperty("TERM")]
+        public string Term { get; set; }
 
         [JsonProperty("UPDATED_BY_DISCOVERY")]
-        public string UPDATEDBYDISCOVERY { get; set; }
+        public string UpdatedByDiscovery { get; set; }
 
         [JsonProperty("UPDATE_COVERAGE_TERM")]
-        public string UPDATECOVERAGETERM { get; set; }
+        public string UpdateCoverageTerm { get; set; }
 
         [JsonProperty("WARANTY_TYPE_ID")]
-        public string WARANTYTYPEId { get; set; }
-        public string XPOS { get; set; }
-        public string YPOS { get; set; }
-        public string ZPOS { get; set; }
+        public string WarantyTypeId { get; set; }
+
+        [JsonProperty("XPOS")]
+        public string Xpos { get; set; }
+
+        [JsonProperty("YPOS")]
+        public string Ypos { get; set; }
+
+        [JsonProperty("ZPOS")]
+        public string Zpos { get; set; }
     }
 
-    public class ViewAssetResponseCATALOGASSETType
+    public class ViewAssetResponseCatalogAssetType
     {
         [JsonProperty("ARTICLE_MODEL")]
-        public string ARTICLEMODEL { get; set; }
+        public string ArticleModel { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGId { get; set; }
-        public string HREF { get; set; }
+        public string CatalogId { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("NET_PRICE")]
-        public string NETPRICE { get; set; }
+        public string NetPrice { get; set; }
 
         [JsonProperty("SMBIOS_NAME")]
-        public string SMBIOSNAME { get; set; }
+        public string SmbiosName { get; set; }
 
         [JsonProperty("TITLE_FR")]
-        public string TITLEFR { get; set; }
+        public string TitleFr { get; set; }
     }
 
-    public class ViewAssetResponseCOMMENTASSETType
+    public class ViewAssetResponseCommentAssetType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewAssetResponseDEPARTMENTType
+    public class ViewAssetResponseDepartmentType
     {
         [JsonProperty("DEPARTMENT_CODE")]
-        public string DEPARTMENTCODE { get; set; }
+        public string DepartmentCode { get; set; }
 
         [JsonProperty("DEPARTMENT_FR")]
-        public string DEPARTMENTFR { get; set; }
+        public string DepartmentFr { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
-        public string DEPARTMENTLABEL { get; set; }
+        public string DepartmentLabel { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
     }
 
-    public class ViewAssetResponseEMPLOYEEType
+    public class ViewAssetResponseEmployeeType
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
-        public string HREF { get; set; }
+        public string EMail { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
-    public class ViewAssetResponseLOCATIONType
+    public class ViewAssetResponseLocationType
     {
-        public string CITY { get; set; }
-        public string HREF { get; set; }
+        [JsonProperty("CITY")]
+        public string City { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LOCATION_CODE")]
-        public string LOCATIONCODE { get; set; }
+        public string LocationCode { get; set; }
 
         [JsonProperty("LOCATION_FR")]
-        public string LOCATIONFR { get; set; }
+        public string LocationFr { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
     }
 
     public class UpdateAssetResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class UpdateAssetBodyInput
     {
         [JsonProperty("BEFORE_LOAN_DEPARTMENT_ID")]
-        public string BEFORELOANDEPARTMENTId { get; set; }
+        public string BeforeLoanDepartmentId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_EMPLOYEE_ID")]
-        public string BEFORELOANEMPLOYEEId { get; set; }
+        public string BeforeLoanEmployeeId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_LOCATION_ID")]
-        public string BEFORELOANLOCATIONId { get; set; }
+        public string BeforeLoanLocationId { get; set; }
 
         [JsonProperty("BILLING_PERIODICITY_IN_MONTH")]
-        public string BILLINGPERIODICITYINMONTH { get; set; }
+        public string BillingPeriodicityInMonth { get; set; }
 
         [JsonProperty("BUY_BACK_VALUE")]
-        public string BUYBACKVALUE { get; set; }
+        public string BuyBackValue { get; set; }
 
         [JsonProperty("BUY_BACK_VALUE_CUR_ID")]
-        public string BUYBACKVALUECURId { get; set; }
+        public string BuyBackValueCurId { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGId { get; set; }
+        public string CatalogId { get; set; }
 
         [JsonProperty("CHARGE_BACK")]
-        public string CHARGEBACK { get; set; }
+        public string ChargeBack { get; set; }
 
         [JsonProperty("CHARGE_BACK_CUR_ID")]
-        public string CHARGEBACKCURId { get; set; }
+        public string ChargeBackCurId { get; set; }
 
         [JsonProperty("CI_STATUS_ID")]
-        public string CISTATUSId { get; set; }
+        public string CiStatusId { get; set; }
 
         [JsonProperty("CI_VERSION")]
-        public string CIVERSION { get; set; }
+        public string CiVersion { get; set; }
 
         [JsonProperty("CM_DEFAULT_CHANGE_ID")]
-        public string CMDEFAULTCHANGEId { get; set; }
+        public string CmDefaultChangeId { get; set; }
 
         [JsonProperty("CONFIGURATION_ID")]
-        public string CONFIGURATIONId { get; set; }
+        public string ConfigurationId { get; set; }
 
         [JsonProperty("CRITICAL_LEVEL_ID")]
-        public string CRITICALLEVELId { get; set; }
+        public string CriticalLevelId { get; set; }
 
         [JsonProperty("DELIVERY_DATE")]
-        public string DELIVERYDATE { get; set; }
+        public string DeliveryDate { get; set; }
 
         [JsonProperty("DELIVERY_NUMBER")]
-        public string DELIVERYNUMBER { get; set; }
+        public string DeliveryNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPRECIATION_RULE_ID")]
-        public string DEPRECIATIONRULEId { get; set; }
+        public string DepreciationRuleId { get; set; }
 
         [JsonProperty("D_HARDWARE_GUID")]
-        public string DHARDWAREGUID { get; set; }
+        public string DHardwareGuid { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("END_OF_WARANTY")]
-        public string ENDOFWARANTY { get; set; }
+        public string EndOfWaranty { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("ESTIMATED_PERCENTAGE_USE")]
-        public string ESTIMATEDPERCENTAGEUSE { get; set; }
+        public string EstimatedPercentageUse { get; set; }
 
         [JsonProperty("EXPECTED_END_LEND_DATE")]
-        public string EXPECTEDENDLENDDATE { get; set; }
+        public string ExpectedEndLendDate { get; set; }
 
         [JsonProperty("EXPECTED_RETURN_DATE")]
-        public string EXPECTEDRETURNDATE { get; set; }
+        public string ExpectedReturnDate { get; set; }
 
         [JsonProperty("FALLEN_TERM")]
-        public string FALLENTERM { get; set; }
+        public string FallenTerm { get; set; }
 
         [JsonProperty("FIXED_ASSET_NUMBER")]
-        public string FIXEDASSETNUMBER { get; set; }
+        public string FixedAssetNumber { get; set; }
 
         [JsonProperty("INITIAL_START")]
-        public string INITIALSTART { get; set; }
+        public string InitialStart { get; set; }
 
         [JsonProperty("INSTALLATION_DATE")]
-        public string INSTALLATIONDATE { get; set; }
+        public string InstallationDate { get; set; }
 
         [JsonProperty("INTERNAL_DELIVERY_DATE")]
-        public string INTERNALDELIVERYDATE { get; set; }
+        public string InternalDeliveryDate { get; set; }
 
         [JsonProperty("INVOICE_NUMBER")]
-        public string INVOICENUMBER { get; set; }
+        public string InvoiceNumber { get; set; }
 
         [JsonProperty("IS_DML")]
-        public string ISDML { get; set; }
+        public string IsDml { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
-        public string LASTINTEGRATION { get; set; }
+        public string LastIntegration { get; set; }
 
         [JsonProperty("LAST_PHYSICAL_INVENTORY")]
-        public string LASTPHYSICALINVENTORY { get; set; }
+        public string LastPhysicalInventory { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
+        public string LastUpdate { get; set; }
 
         [JsonProperty("LICENSE_VERSION")]
-        public string LICENSEVERSION { get; set; }
+        public string LicenseVersion { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("MAINTENANCE_COST")]
-        public string MAINTENANCECOST { get; set; }
+        public string MaintenanceCost { get; set; }
 
         [JsonProperty("MAINTENANCE_COST_CUR_ID")]
-        public string MAINTENANCECOSTCURId { get; set; }
+        public string MaintenanceCostCurId { get; set; }
 
         [JsonProperty("MAIN_USAGE_ID")]
-        public string MAINUSAGEId { get; set; }
+        public string MainUsageId { get; set; }
 
         [JsonProperty("MAX_INSTALLS")]
-        public string MAXINSTALLS { get; set; }
+        public string MaxInstalls { get; set; }
 
         [JsonProperty("MONTHLY_FIXED_COST")]
-        public string MONTHLYFIXEDCOST { get; set; }
+        public string MonthlyFixedCost { get; set; }
 
         [JsonProperty("MONTHLY_FIXED_COST_CUR_ID")]
-        public string MONTHLYFIXEDCOSTCURId { get; set; }
+        public string MonthlyFixedCostCurId { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL")]
-        public string MONTHLYNETRENTAL { get; set; }
+        public string MonthlyNetRental { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL_CUR_ID")]
-        public string MONTHLYNETRENTALCURId { get; set; }
+        public string MonthlyNetRentalCurId { get; set; }
 
         [JsonProperty("MONTH_DURATION")]
-        public string MONTHDURATION { get; set; }
+        public string MonthDuration { get; set; }
 
         [JsonProperty("NETWORK_IDENTIFIER")]
-        public string NETWORKIdENTIFIER { get; set; }
+        public string NetworkIdentifier { get; set; }
 
         [JsonProperty("NEXT_DEPARTMENT_ID")]
-        public string NEXTDEPARTMENTId { get; set; }
+        public string NextDepartmentId { get; set; }
 
         [JsonProperty("NEXT_MAINTENANCE_DATE")]
-        public string NEXTMAINTENANCEDATE { get; set; }
+        public string NextMaintenanceDate { get; set; }
 
         [JsonProperty("NEXT_STATUS_ID")]
-        public string NEXTSTATUSId { get; set; }
+        public string NextStatusId { get; set; }
 
         [JsonProperty("NEXT_USER_APPLICATION_DATE")]
-        public string NEXTUSERAPPLICATIONDATE { get; set; }
+        public string NextUserApplicationDate { get; set; }
 
         [JsonProperty("NEXT_USER_ID")]
-        public string NEXTUSERId { get; set; }
-        public string NOTICE { get; set; }
+        public string NextUserId { get; set; }
+
+        [JsonProperty("NOTICE")]
+        public string Notice { get; set; }
 
         [JsonProperty("ORDER_DETAILS_ID")]
-        public string ORDERDETAILSId { get; set; }
+        public string OrderDetailsId { get; set; }
 
         [JsonProperty("ORDER_NUMBER")]
-        public string ORDERNUMBER { get; set; }
+        public string OrderNumber { get; set; }
 
         [JsonProperty("PIPELINE_STATUS_ID")]
-        public string PIPELINESTATUSId { get; set; }
+        public string PipelineStatusId { get; set; }
 
         [JsonProperty("POWER_CONSUMPTION_WH")]
-        public string POWERCONSUMPTIONWH { get; set; }
+        public string PowerConsumptionWh { get; set; }
 
         [JsonProperty("PROCESSOR_COUNT")]
-        public string PROCESSORCOUNT { get; set; }
+        public string ProcessorCount { get; set; }
 
         [JsonProperty("PROCESSOR_SOCKET_COUNT")]
-        public string PROCESSORSOCKETCOUNT { get; set; }
+        public string ProcessorSocketCount { get; set; }
 
         [JsonProperty("PURCHASE_DATE")]
-        public string PURCHASEDATE { get; set; }
+        public string PurchaseDate { get; set; }
 
         [JsonProperty("PURCHASE_PRICE")]
-        public string PURCHASEPRICE { get; set; }
+        public string PurchasePrice { get; set; }
 
         [JsonProperty("PURCHASE_PRICE_CUR_ID")]
-        public string PURCHASEPRICECURId { get; set; }
+        public string PurchasePriceCurId { get; set; }
 
         [JsonProperty("PURCHASE_RATE_ID")]
-        public string PURCHASERATEId { get; set; }
+        public string PurchaseRateId { get; set; }
 
         [JsonProperty("RECYCLED_DATE")]
-        public string RECYCLEDDATE { get; set; }
+        public string RecycledDate { get; set; }
 
         [JsonProperty("RECYCLING_PROVIDER_ID")]
-        public string RECYCLINGPROVIdERId { get; set; }
+        public string RecyclingProviderId { get; set; }
 
         [JsonProperty("REFORM_NUMBER")]
-        public string REFORMNUMBER { get; set; }
+        public string ReformNumber { get; set; }
 
         [JsonProperty("REMOVED_DATE")]
-        public string REMOVEDDATE { get; set; }
+        public string RemovedDate { get; set; }
 
         [JsonProperty("RENEWAL_DECISION_ID")]
-        public string RENEWALDECISIONId { get; set; }
+        public string RenewalDecisionId { get; set; }
 
         [JsonProperty("RENEWAL_VALUE")]
-        public string RENEWALVALUE { get; set; }
+        public string RenewalValue { get; set; }
 
         [JsonProperty("RENEWAL_VALUE_CUR_ID")]
-        public string RENEWALVALUECURId { get; set; }
+        public string RenewalValueCurId { get; set; }
 
         [JsonProperty("REPAIRED_BY_ID")]
-        public string REPAIREDBYId { get; set; }
+        public string RepairedById { get; set; }
 
         [JsonProperty("RESALES_VALUE")]
-        public string RESALESVALUE { get; set; }
+        public string ResalesValue { get; set; }
 
         [JsonProperty("SCHEDULED_END")]
-        public string SCHEDULEDEND { get; set; }
+        public string ScheduledEnd { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
+        public string SdCatalogId { get; set; }
 
         [JsonProperty("SERIAL_NUMBER")]
-        public string SERIALNUMBER { get; set; }
+        public string SerialNumber { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSId { get; set; }
+        public string StatusId { get; set; }
 
         [JsonProperty("SUPPLIER_ID")]
-        public string SUPPLIERId { get; set; }
-        public string TERM { get; set; }
+        public string SupplierId { get; set; }
+
+        [JsonProperty("TERM")]
+        public string Term { get; set; }
 
         [JsonProperty("UPDATE_COVERAGE_TERM")]
-        public string UPDATECOVERAGETERM { get; set; }
+        public string UpdateCoverageTerm { get; set; }
 
         [JsonProperty("WARANTY_TYPE_ID")]
-        public string WARANTYTYPEId { get; set; }
+        public string WarantyTypeId { get; set; }
 
         [JsonProperty("asset_label")]
         public string AssetLabel { get; set; }
@@ -1840,7 +1889,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class ViewAssetLinksResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -1855,25 +1905,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewAssetLinksResponseRecordsTypeItem
     {
         [JsonProperty("ASSET_ID")]
-        public string ASSETId { get; set; }
+        public string AssetId { get; set; }
 
         [JsonProperty("CONTRACT_ROW")]
-        public string CONTRACTROW { get; set; }
-        public string HREF { get; set; }
+        public string ContractRow { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("MONTHLY_PAYMENT")]
-        public string MONTHLYPAYMENT { get; set; }
+        public string MonthlyPayment { get; set; }
 
         [JsonProperty("PARENT_ASSET_ID")]
-        public string PARENTASSETId { get; set; }
+        public string ParentAssetId { get; set; }
 
         [JsonProperty("PARENT_HREF")]
-        public string PARENTHREF { get; set; }
+        public string ParentHref { get; set; }
     }
 
     public class CreateAssetLinkResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class CreateAssetLinkBodyInput
@@ -1887,31 +1940,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class UpdateAssetLinkResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class ViewAssetLinkResponse
     {
         [JsonProperty("ASSET_ID")]
-        public string ASSETId { get; set; }
+        public string AssetId { get; set; }
 
         [JsonProperty("CONTRACT_ROW")]
-        public string CONTRACTROW { get; set; }
-        public string HREF { get; set; }
+        public string ContractRow { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("MONTHLY_PAYMENT")]
-        public string MONTHLYPAYMENT { get; set; }
+        public string MonthlyPayment { get; set; }
 
         [JsonProperty("PARENT_ASSET_ID")]
-        public string PARENTASSETId { get; set; }
+        public string ParentAssetId { get; set; }
 
         [JsonProperty("PARENT_HREF")]
-        public string PARENTHREF { get; set; }
+        public string ParentHref { get; set; }
     }
 
     public class ViewCatalogAssetsListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -1926,347 +1983,376 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewCatalogAssetsListResponseRecordsTypeItem
     {
         [JsonProperty("ARTICLE_MODEL")]
-        public string ARTICLEMODEL { get; set; }
+        public string ArticleModel { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGId { get; set; }
-        public string HREF { get; set; }
-        public ViewCatalogAssetsListResponseRecordsTypeItemMANUFACTURERType MANUFACTURER { get; set; }
+        public string CatalogId { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
+
+        [JsonProperty("MANUFACTURER")]
+        public ViewCatalogAssetsListResponseRecordsTypeItemManufacturerType Manufacturer { get; set; }
 
         [JsonProperty("NET_PRICE")]
-        public string NETPRICE { get; set; }
+        public string NetPrice { get; set; }
 
         [JsonProperty("SMBIOS_NAME")]
-        public string SMBIOSNAME { get; set; }
+        public string SmbiosName { get; set; }
 
         [JsonProperty("TITLE_FR")]
-        public string TITLEFR { get; set; }
+        public string TitleFr { get; set; }
     }
 
-    public class ViewCatalogAssetsListResponseRecordsTypeItemMANUFACTURERType
+    public class ViewCatalogAssetsListResponseRecordsTypeItemManufacturerType
     {
         [JsonProperty("DISCOVERY_NAME")]
-        public string DISCOVERYNAME { get; set; }
-        public string HREF { get; set; }
-        public string MANUFACTURER { get; set; }
+        public string DiscoveryName { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
+
+        [JsonProperty("MANUFACTURER")]
+        public string Manufacturer { get; set; }
 
         [JsonProperty("MANUFACTURER_ID")]
-        public string MANUFACTURERId { get; set; }
+        public string ManufacturerId { get; set; }
     }
 
     public class ViewCatalogAssetResponse
     {
         [JsonProperty("ARTICLE_MODEL")]
-        public string ARTICLEMODEL { get; set; }
+        public string ArticleModel { get; set; }
 
         [JsonProperty("ARTICLE_MODEL_URL")]
-        public string ARTICLEMODELURL { get; set; }
+        public string ArticleModelUrl { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
-        public string AVAILABLEFIELD1 { get; set; }
+        public string AvailableField1 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_2")]
-        public string AVAILABLEFIELD2 { get; set; }
+        public string AvailableField2 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_3")]
-        public string AVAILABLEFIELD3 { get; set; }
+        public string AvailableField3 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_4")]
-        public string AVAILABLEFIELD4 { get; set; }
+        public string AvailableField4 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_5")]
-        public string AVAILABLEFIELD5 { get; set; }
+        public string AvailableField5 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_6")]
-        public string AVAILABLEFIELD6 { get; set; }
+        public string AvailableField6 { get; set; }
 
         [JsonProperty("CAN_BE_PURCHASED")]
-        public string CANBEPURCHASED { get; set; }
+        public string CanBePurchased { get; set; }
 
         [JsonProperty("CATALOG_GUID")]
-        public string CATALOGGUID { get; set; }
+        public string CatalogGuid { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGId { get; set; }
+        public string CatalogId { get; set; }
 
         [JsonProperty("CURRENT_LICENSE_VERSION")]
-        public string CURRENTLICENSEVERSION { get; set; }
+        public string CurrentLicenseVersion { get; set; }
 
         [JsonProperty("DEFAULT_BUY_BACK_VALUE")]
-        public string DEFAULTBUYBACKVALUE { get; set; }
+        public string DefaultBuyBackValue { get; set; }
 
         [JsonProperty("DEFAULT_BUY_BACK_VALUE_CUR_ID")]
-        public string DEFAULTBUYBACKVALUECURId { get; set; }
+        public string DefaultBuyBackValueCurId { get; set; }
 
         [JsonProperty("DEFAULT_CHARGE_BACK")]
-        public string DEFAULTCHARGEBACK { get; set; }
+        public string DefaultChargeBack { get; set; }
 
         [JsonProperty("DEFAULT_CHARGE_BACK_CUR_ID")]
-        public string DEFAULTCHARGEBACKCURId { get; set; }
+        public string DefaultChargeBackCurId { get; set; }
 
         [JsonProperty("DEFAULT_DISPOSAL_VALUE")]
-        public string DEFAULTDISPOSALVALUE { get; set; }
+        public string DefaultDisposalValue { get; set; }
 
         [JsonProperty("DEFAULT_DISPOSAL_VALUE_CUR_ID")]
-        public string DEFAULTDISPOSALVALUECURId { get; set; }
+        public string DefaultDisposalValueCurId { get; set; }
 
         [JsonProperty("DEFAULT_RENEWAL_VALUE")]
-        public string DEFAULTRENEWALVALUE { get; set; }
+        public string DefaultRenewalValue { get; set; }
 
         [JsonProperty("DEFAULT_RENEWAL_VALUE_CUR_ID")]
-        public string DEFAULTRENEWALVALUECURId { get; set; }
+        public string DefaultRenewalValueCurId { get; set; }
 
         [JsonProperty("DESCRIPTION_EN")]
-        public ViewCatalogAssetResponseDESCRIPTIONENType DESCRIPTIONEN { get; set; }
+        public ViewCatalogAssetResponseDescriptionEnType DescriptionEn { get; set; }
 
         [JsonProperty("DESCRIPTION_FR")]
-        public ViewCatalogAssetResponseDESCRIPTIONFRType DESCRIPTIONFR { get; set; }
+        public ViewCatalogAssetResponseDescriptionFrType DescriptionFr { get; set; }
 
         [JsonProperty("DESCRIPTION_GE")]
-        public ViewCatalogAssetResponseDESCRIPTIONGEType DESCRIPTIONGE { get; set; }
+        public ViewCatalogAssetResponseDescriptionGeType DescriptionGe { get; set; }
 
         [JsonProperty("DESCRIPTION_IT")]
-        public ViewCatalogAssetResponseDESCRIPTIONITType DESCRIPTIONIT { get; set; }
+        public ViewCatalogAssetResponseDescriptionItType DescriptionIt { get; set; }
 
         [JsonProperty("DESCRIPTION_L1")]
-        public ViewCatalogAssetResponseDESCRIPTIONL1Type DESCRIPTIONL1 { get; set; }
+        public ViewCatalogAssetResponseDescriptionL1Type DescriptionL1 { get; set; }
 
         [JsonProperty("DESCRIPTION_L2")]
-        public ViewCatalogAssetResponseDESCRIPTIONL2Type DESCRIPTIONL2 { get; set; }
+        public ViewCatalogAssetResponseDescriptionL2Type DescriptionL2 { get; set; }
 
         [JsonProperty("DESCRIPTION_L3")]
-        public ViewCatalogAssetResponseDESCRIPTIONL3Type DESCRIPTIONL3 { get; set; }
+        public ViewCatalogAssetResponseDescriptionL3Type DescriptionL3 { get; set; }
 
         [JsonProperty("DESCRIPTION_L4")]
-        public ViewCatalogAssetResponseDESCRIPTIONL4Type DESCRIPTIONL4 { get; set; }
+        public ViewCatalogAssetResponseDescriptionL4Type DescriptionL4 { get; set; }
 
         [JsonProperty("DESCRIPTION_L5")]
-        public ViewCatalogAssetResponseDESCRIPTIONL5Type DESCRIPTIONL5 { get; set; }
+        public ViewCatalogAssetResponseDescriptionL5Type DescriptionL5 { get; set; }
 
         [JsonProperty("DESCRIPTION_L6")]
-        public ViewCatalogAssetResponseDESCRIPTIONL6Type DESCRIPTIONL6 { get; set; }
+        public ViewCatalogAssetResponseDescriptionL6Type DescriptionL6 { get; set; }
 
         [JsonProperty("DESCRIPTION_PO")]
-        public ViewCatalogAssetResponseDESCRIPTIONPOType DESCRIPTIONPO { get; set; }
+        public ViewCatalogAssetResponseDescriptionPoType DescriptionPo { get; set; }
 
         [JsonProperty("DESCRIPTION_SP")]
-        public ViewCatalogAssetResponseDESCRIPTIONSPType DESCRIPTIONSP { get; set; }
+        public ViewCatalogAssetResponseDescriptionSpType DescriptionSp { get; set; }
 
         [JsonProperty("END_DATE")]
-        public string ENDDATE { get; set; }
+        public string EndDate { get; set; }
 
         [JsonProperty("END_OF_NEWS")]
-        public string ENDOFNEWS { get; set; }
+        public string EndOfNews { get; set; }
 
         [JsonProperty("ESTIMATED_PERCENTAGE_USE")]
-        public string ESTIMATEDPERCENTAGEUSE { get; set; }
+        public string EstimatedPercentageUse { get; set; }
 
         [JsonProperty("ESTIMATED_POWER_CONSUMPTION_WH")]
-        public string ESTIMATEDPOWERCONSUMPTIONWH { get; set; }
-        public string HREF { get; set; }
+        public string EstimatedPowerConsumptionWh { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("IMPACT_ID")]
-        public string IMPACTId { get; set; }
+        public string ImpactId { get; set; }
 
         [JsonProperty("INITIAL_STOCK")]
-        public string INITIALSTOCK { get; set; }
+        public string InitialStock { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
-        public string LASTINTEGRATION { get; set; }
+        public string LastIntegration { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
+        public string LastUpdate { get; set; }
 
         [JsonProperty("LEVEL_VERSION")]
-        public string LEVELVERSION { get; set; }
+        public string LevelVersion { get; set; }
 
         [JsonProperty("LICENSE_PRICE_PER_SEAT")]
-        public string LICENSEPRICEPERSEAT { get; set; }
+        public string LicensePricePerSeat { get; set; }
 
         [JsonProperty("LICENSE_PRICE_PER_SEAT_CUR_ID")]
-        public string LICENSEPRICEPERSEATCURId { get; set; }
+        public string LicensePricePerSeatCurId { get; set; }
 
         [JsonProperty("LICENSE_PROGRAM")]
-        public string LICENSEPROGRAM { get; set; }
+        public string LicenseProgram { get; set; }
 
         [JsonProperty("MAINTENANCE_DURATION")]
-        public string MAINTENANCEDURATION { get; set; }
+        public string MaintenanceDuration { get; set; }
 
         [JsonProperty("MANAGED_LICENSE")]
-        public string MANAGEDLICENSE { get; set; }
+        public string ManagedLicense { get; set; }
 
         [JsonProperty("MANAGER_ID")]
-        public string MANAGERId { get; set; }
-        public ViewCatalogAssetResponseMANUFACTURERType MANUFACTURER { get; set; }
+        public string ManagerId { get; set; }
+
+        [JsonProperty("MANUFACTURER")]
+        public ViewCatalogAssetResponseManufacturerType Manufacturer { get; set; }
 
         [JsonProperty("MANUFACTURER_ID")]
-        public string MANUFACTURERId { get; set; }
+        public string ManufacturerId { get; set; }
 
         [JsonProperty("MANUFACTURER_REF")]
-        public string MANUFACTURERREF { get; set; }
+        public string ManufacturerRef { get; set; }
 
         [JsonProperty("MANUFACTURER_WARRANTY_DURATION")]
-        public string MANUFACTURERWARRANTYDURATION { get; set; }
+        public string ManufacturerWarrantyDuration { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL")]
-        public string MONTHLYNETRENTAL { get; set; }
+        public string MonthlyNetRental { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL_CUR_ID")]
-        public string MONTHLYNETRENTALCURId { get; set; }
+        public string MonthlyNetRentalCurId { get; set; }
 
         [JsonProperty("NB_INSTALLS")]
-        public string NBINSTALLS { get; set; }
+        public string NbInstalls { get; set; }
 
         [JsonProperty("NET_PRICE")]
-        public string NETPRICE { get; set; }
+        public string NetPrice { get; set; }
 
         [JsonProperty("NET_PRICE_CUR_ID")]
-        public string NETPRICECURId { get; set; }
+        public string NetPriceCurId { get; set; }
 
         [JsonProperty("PERCENT_MAINTENANCE_COST")]
-        public string PERCENTMAINTENANCECOST { get; set; }
+        public string PercentMaintenanceCost { get; set; }
 
         [JsonProperty("QTY_PACKAGED")]
-        public string QTYPACKAGED { get; set; }
+        public string QtyPackaged { get; set; }
 
         [JsonProperty("REF_GLPI")]
-        public string REFGLPI { get; set; }
+        public string RefGlpi { get; set; }
 
         [JsonProperty("REF_LANDESK")]
-        public string REFLANDESK { get; set; }
+        public string RefLandesk { get; set; }
 
         [JsonProperty("REF_SCCM")]
-        public string REFSCCM { get; set; }
+        public string RefSccm { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
 
         [JsonProperty("SMBIOS_NAME")]
-        public string SMBIOSNAME { get; set; }
+        public string SmbiosName { get; set; }
 
         [JsonProperty("START_DATE")]
-        public string STARTDATE { get; set; }
+        public string StartDate { get; set; }
 
         [JsonProperty("TAX_ID")]
-        public string TAXId { get; set; }
+        public string TaxId { get; set; }
 
         [JsonProperty("TECHNICAL_VALIDATION_REQUIRED")]
-        public string TECHNICALVALIdATIONREQUIRED { get; set; }
+        public string TechnicalValidationRequired { get; set; }
 
         [JsonProperty("TITLE_EN")]
-        public string TITLEEN { get; set; }
+        public string TitleEn { get; set; }
 
         [JsonProperty("TITLE_FR")]
-        public string TITLEFR { get; set; }
+        public string TitleFr { get; set; }
 
         [JsonProperty("TITLE_GE")]
-        public string TITLEGE { get; set; }
+        public string TitleGe { get; set; }
 
         [JsonProperty("TITLE_IT")]
-        public string TITLEIT { get; set; }
+        public string TitleIt { get; set; }
 
         [JsonProperty("TITLE_L1")]
-        public string TITLEL1 { get; set; }
+        public string TitleL1 { get; set; }
 
         [JsonProperty("TITLE_L2")]
-        public string TITLEL2 { get; set; }
+        public string TitleL2 { get; set; }
 
         [JsonProperty("TITLE_L3")]
-        public string TITLEL3 { get; set; }
+        public string TitleL3 { get; set; }
 
         [JsonProperty("TITLE_L4")]
-        public string TITLEL4 { get; set; }
+        public string TitleL4 { get; set; }
 
         [JsonProperty("TITLE_L5")]
-        public string TITLEL5 { get; set; }
+        public string TitleL5 { get; set; }
 
         [JsonProperty("TITLE_L6")]
-        public string TITLEL6 { get; set; }
+        public string TitleL6 { get; set; }
 
         [JsonProperty("TITLE_PO")]
-        public string TITLEPO { get; set; }
+        public string TitlePo { get; set; }
 
         [JsonProperty("TITLE_SP")]
-        public string TITLESP { get; set; }
+        public string TitleSp { get; set; }
 
         [JsonProperty("YEARS_EXPECTED_USAGE")]
-        public string YEARSEXPECTEDUSAGE { get; set; }
+        public string YearsExpectedUsage { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONENType
+    public class ViewCatalogAssetResponseDescriptionEnType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONFRType
+    public class ViewCatalogAssetResponseDescriptionFrType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONGEType
+    public class ViewCatalogAssetResponseDescriptionGeType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONITType
+    public class ViewCatalogAssetResponseDescriptionItType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONL1Type
+    public class ViewCatalogAssetResponseDescriptionL1Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONL2Type
+    public class ViewCatalogAssetResponseDescriptionL2Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONL3Type
+    public class ViewCatalogAssetResponseDescriptionL3Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONL4Type
+    public class ViewCatalogAssetResponseDescriptionL4Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONL5Type
+    public class ViewCatalogAssetResponseDescriptionL5Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONL6Type
+    public class ViewCatalogAssetResponseDescriptionL6Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONPOType
+    public class ViewCatalogAssetResponseDescriptionPoType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseDESCRIPTIONSPType
+    public class ViewCatalogAssetResponseDescriptionSpType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogAssetResponseMANUFACTURERType
+    public class ViewCatalogAssetResponseManufacturerType
     {
         [JsonProperty("DISCOVERY_NAME")]
-        public string DISCOVERYNAME { get; set; }
-        public string HREF { get; set; }
-        public string MANUFACTURER { get; set; }
+        public string DiscoveryName { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
+
+        [JsonProperty("MANUFACTURER")]
+        public string Manufacturer { get; set; }
 
         [JsonProperty("MANUFACTURER_ID")]
-        public string MANUFACTURERId { get; set; }
+        public string ManufacturerId { get; set; }
     }
 
     public class ViewCatalogRequestsListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -2281,74 +2367,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewCatalogRequestsListResponseRecordsTypeItem
     {
         [JsonProperty("CATALOG_REQUESTS_PATH")]
-        public ViewCatalogRequestsListResponseRecordsTypeItemCATALOGREQUESTSPATHType CATALOGREQUESTSPATH { get; set; }
+        public ViewCatalogRequestsListResponseRecordsTypeItemCatalogRequestsPathType CatalogRequestsPath { get; set; }
 
         [JsonProperty("CATALOG_REQUEST_PATH")]
-        public string CATALOGREQUESTPATH { get; set; }
-        public string CODE { get; set; }
-        public string HREF { get; set; }
-        public ViewCatalogRequestsListResponseRecordsTypeItemMANAGERType MANAGER { get; set; }
+        public string CatalogRequestPath { get; set; }
+
+        [JsonProperty("CODE")]
+        public string Code { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
+
+        [JsonProperty("MANAGER")]
+        public ViewCatalogRequestsListResponseRecordsTypeItemManagerType Manager { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
-        public ViewCatalogRequestsListResponseRecordsTypeItemSLAType SLA { get; set; }
+        public string SdCatalogId { get; set; }
+
+        [JsonProperty("SLA")]
+        public ViewCatalogRequestsListResponseRecordsTypeItemSlaType Sla { get; set; }
 
         [JsonProperty("TITLE_FR")]
-        public string TITLEFR { get; set; }
+        public string TitleFr { get; set; }
     }
 
-    public class ViewCatalogRequestsListResponseRecordsTypeItemCATALOGREQUESTSPATHType
+    public class ViewCatalogRequestsListResponseRecordsTypeItemCatalogRequestsPathType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
+        public string SdCatalogId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_FR")]
-        public string SDCATALOGPATHFR { get; set; }
+        public string SdCatalogPathFr { get; set; }
     }
 
-    public class ViewCatalogRequestsListResponseRecordsTypeItemMANAGERType
+    public class ViewCatalogRequestsListResponseRecordsTypeItemManagerType
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
+        public string EMail { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
-    public class ViewCatalogRequestsListResponseRecordsTypeItemSLAType
+    public class ViewCatalogRequestsListResponseRecordsTypeItemSlaType
     {
-        public string DELAY { get; set; }
+        [JsonProperty("DELAY")]
+        public string Delay { get; set; }
 
         [JsonProperty("NAME_FR")]
-        public string NAMEFR { get; set; }
+        public string NameFr { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
     }
 
     public class ViewCatalogRequestsPathListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -2362,360 +2459,386 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class ViewCatalogRequestsPathListResponseRecordsTypeItem
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
+        public string SdCatalogId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_FR")]
-        public string SDCATALOGPATHFR { get; set; }
+        public string SdCatalogPathFr { get; set; }
     }
 
     public class ViewCatalogRequestPathResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
+        public string SdCatalogId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_EN")]
-        public string SDCATALOGPATHEN { get; set; }
+        public string SdCatalogPathEn { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_FR")]
-        public string SDCATALOGPATHFR { get; set; }
+        public string SdCatalogPathFr { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_GE")]
-        public string SDCATALOGPATHGE { get; set; }
+        public string SdCatalogPathGe { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_IT")]
-        public string SDCATALOGPATHIT { get; set; }
+        public string SdCatalogPathIt { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_L1")]
-        public string SDCATALOGPATHL1 { get; set; }
+        public string SdCatalogPathL1 { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_L2")]
-        public string SDCATALOGPATHL2 { get; set; }
+        public string SdCatalogPathL2 { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_L3")]
-        public string SDCATALOGPATHL3 { get; set; }
+        public string SdCatalogPathL3 { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_L4")]
-        public string SDCATALOGPATHL4 { get; set; }
+        public string SdCatalogPathL4 { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_L5")]
-        public string SDCATALOGPATHL5 { get; set; }
+        public string SdCatalogPathL5 { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_L6")]
-        public string SDCATALOGPATHL6 { get; set; }
+        public string SdCatalogPathL6 { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_PO")]
-        public string SDCATALOGPATHPO { get; set; }
+        public string SdCatalogPathPo { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_SP")]
-        public string SDCATALOGPATHSP { get; set; }
+        public string SdCatalogPathSp { get; set; }
     }
 
     public class ViewCatalogRequestResponse
     {
         [JsonProperty("ALLOW_GROUP_CHANGE")]
-        public string ALLOWGROUPCHANGE { get; set; }
+        public string AllowGroupChange { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
-        public string AVAILABLEFIELD1 { get; set; }
+        public string AvailableField1 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_2")]
-        public string AVAILABLEFIELD2 { get; set; }
+        public string AvailableField2 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_3")]
-        public string AVAILABLEFIELD3 { get; set; }
+        public string AvailableField3 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_4")]
-        public string AVAILABLEFIELD4 { get; set; }
+        public string AvailableField4 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_5")]
-        public string AVAILABLEFIELD5 { get; set; }
+        public string AvailableField5 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_6")]
-        public string AVAILABLEFIELD6 { get; set; }
+        public string AvailableField6 { get; set; }
 
         [JsonProperty("CANNOT_BE_ORDERED")]
-        public string CANNOTBEORDERED { get; set; }
+        public string CannotBeOrdered { get; set; }
 
         [JsonProperty("CAN_BE_PURCHASED")]
-        public string CANBEPURCHASED { get; set; }
+        public string CanBePurchased { get; set; }
 
         [JsonProperty("CATALOG_GUID")]
-        public string CATALOGGUID { get; set; }
+        public string CatalogGuid { get; set; }
 
         [JsonProperty("CATALOG_REQUESTS_PATH")]
-        public ViewCatalogRequestResponseCATALOGREQUESTSPATHType CATALOGREQUESTSPATH { get; set; }
+        public ViewCatalogRequestResponseCatalogRequestsPathType CatalogRequestsPath { get; set; }
 
         [JsonProperty("CATALOG_REQUEST_PATH")]
-        public string CATALOGREQUESTPATH { get; set; }
+        public string CatalogRequestPath { get; set; }
 
         [JsonProperty("CI_MANDATORY")]
-        public string CIMANDATORY { get; set; }
-        public string CODE { get; set; }
+        public string CiMandatory { get; set; }
+
+        [JsonProperty("CODE")]
+        public string Code { get; set; }
 
         [JsonProperty("COMMENT_CATALOG")]
-        public ViewCatalogRequestResponseCOMMENTCATALOGType COMMENTCATALOG { get; set; }
+        public ViewCatalogRequestResponseCommentCatalogType CommentCatalog { get; set; }
 
         [JsonProperty("DEFAULT_REQUEST_BO")]
-        public string DEFAULTREQUESTBO { get; set; }
+        public string DefaultRequestBo { get; set; }
 
         [JsonProperty("DEFAULT_REQUEST_FO")]
-        public string DEFAULTREQUESTFO { get; set; }
+        public string DefaultRequestFo { get; set; }
 
         [JsonProperty("DEFAULT_REQUEST_TA")]
-        public string DEFAULTREQUESTTA { get; set; }
+        public string DefaultRequestTa { get; set; }
 
         [JsonProperty("DEFAULT_URGENCY_ID")]
-        public string DEFAULTURGENCYId { get; set; }
+        public string DefaultUrgencyId { get; set; }
 
         [JsonProperty("DESCRIPTION_EN")]
-        public ViewCatalogRequestResponseDESCRIPTIONENType DESCRIPTIONEN { get; set; }
+        public ViewCatalogRequestResponseDescriptionEnType DescriptionEn { get; set; }
 
         [JsonProperty("DESCRIPTION_FR")]
-        public ViewCatalogRequestResponseDESCRIPTIONFRType DESCRIPTIONFR { get; set; }
+        public ViewCatalogRequestResponseDescriptionFrType DescriptionFr { get; set; }
 
         [JsonProperty("DESCRIPTION_GE")]
-        public ViewCatalogRequestResponseDESCRIPTIONGEType DESCRIPTIONGE { get; set; }
+        public ViewCatalogRequestResponseDescriptionGeType DescriptionGe { get; set; }
 
         [JsonProperty("DESCRIPTION_IT")]
-        public ViewCatalogRequestResponseDESCRIPTIONITType DESCRIPTIONIT { get; set; }
+        public ViewCatalogRequestResponseDescriptionItType DescriptionIt { get; set; }
 
         [JsonProperty("DESCRIPTION_L1")]
-        public ViewCatalogRequestResponseDESCRIPTIONL1Type DESCRIPTIONL1 { get; set; }
+        public ViewCatalogRequestResponseDescriptionL1Type DescriptionL1 { get; set; }
 
         [JsonProperty("DESCRIPTION_L2")]
-        public ViewCatalogRequestResponseDESCRIPTIONL2Type DESCRIPTIONL2 { get; set; }
+        public ViewCatalogRequestResponseDescriptionL2Type DescriptionL2 { get; set; }
 
         [JsonProperty("DESCRIPTION_L3")]
-        public ViewCatalogRequestResponseDESCRIPTIONL3Type DESCRIPTIONL3 { get; set; }
+        public ViewCatalogRequestResponseDescriptionL3Type DescriptionL3 { get; set; }
 
         [JsonProperty("DESCRIPTION_L4")]
-        public ViewCatalogRequestResponseDESCRIPTIONL4Type DESCRIPTIONL4 { get; set; }
+        public ViewCatalogRequestResponseDescriptionL4Type DescriptionL4 { get; set; }
 
         [JsonProperty("DESCRIPTION_L5")]
-        public ViewCatalogRequestResponseDESCRIPTIONL5Type DESCRIPTIONL5 { get; set; }
+        public ViewCatalogRequestResponseDescriptionL5Type DescriptionL5 { get; set; }
 
         [JsonProperty("DESCRIPTION_L6")]
-        public ViewCatalogRequestResponseDESCRIPTIONL6Type DESCRIPTIONL6 { get; set; }
+        public ViewCatalogRequestResponseDescriptionL6Type DescriptionL6 { get; set; }
 
         [JsonProperty("DESCRIPTION_PO")]
-        public ViewCatalogRequestResponseDESCRIPTIONPOType DESCRIPTIONPO { get; set; }
+        public ViewCatalogRequestResponseDescriptionPoType DescriptionPo { get; set; }
 
         [JsonProperty("DESCRIPTION_SP")]
-        public ViewCatalogRequestResponseDESCRIPTIONSPType DESCRIPTIONSP { get; set; }
+        public ViewCatalogRequestResponseDescriptionSpType DescriptionSp { get; set; }
 
         [JsonProperty("END_DATE")]
-        public string ENDDATE { get; set; }
+        public string EndDate { get; set; }
 
         [JsonProperty("END_OF_NEWS")]
-        public string ENDOFNEWS { get; set; }
+        public string EndOfNews { get; set; }
 
         [JsonProperty("GROUP_ID")]
-        public string GROUPId { get; set; }
-        public string HREF { get; set; }
+        public string GroupId { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("IMPACT_ID")]
-        public string IMPACTId { get; set; }
+        public string ImpactId { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
-        public string LASTINTEGRATION { get; set; }
+        public string LastIntegration { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
-        public ViewCatalogRequestResponseMANAGERType MANAGER { get; set; }
+        public string LastUpdate { get; set; }
+
+        [JsonProperty("MANAGER")]
+        public ViewCatalogRequestResponseManagerType Manager { get; set; }
 
         [JsonProperty("MAX_CALLS")]
-        public string MAXCALLS { get; set; }
+        public string MaxCalls { get; set; }
 
         [JsonProperty("MAX_QTY")]
-        public string MAXQTY { get; set; }
+        public string MaxQty { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL")]
-        public string MONTHLYNETRENTAL { get; set; }
+        public string MonthlyNetRental { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL_CUR_ID")]
-        public string MONTHLYNETRENTALCURId { get; set; }
+        public string MonthlyNetRentalCurId { get; set; }
 
         [JsonProperty("NET_PRICE")]
-        public string NETPRICE { get; set; }
+        public string NetPrice { get; set; }
 
         [JsonProperty("NET_PRICE_CUR_ID")]
-        public string NETPRICECURId { get; set; }
+        public string NetPriceCurId { get; set; }
 
         [JsonProperty("PACKAGE_NAME")]
-        public string PACKAGENAME { get; set; }
+        public string PackageName { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
-        public ViewCatalogRequestResponseSLAType SLA { get; set; }
+        public string SdCatalogId { get; set; }
+
+        [JsonProperty("SLA")]
+        public ViewCatalogRequestResponseSlaType Sla { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
 
         [JsonProperty("START_DATE")]
-        public string STARTDATE { get; set; }
+        public string StartDate { get; set; }
 
         [JsonProperty("TITLE_EN")]
-        public string TITLEEN { get; set; }
+        public string TitleEn { get; set; }
 
         [JsonProperty("TITLE_FR")]
-        public string TITLEFR { get; set; }
+        public string TitleFr { get; set; }
 
         [JsonProperty("TITLE_GE")]
-        public string TITLEGE { get; set; }
+        public string TitleGe { get; set; }
 
         [JsonProperty("TITLE_IT")]
-        public string TITLEIT { get; set; }
+        public string TitleIt { get; set; }
 
         [JsonProperty("TITLE_L1")]
-        public string TITLEL1 { get; set; }
+        public string TitleL1 { get; set; }
 
         [JsonProperty("TITLE_L2")]
-        public string TITLEL2 { get; set; }
+        public string TitleL2 { get; set; }
 
         [JsonProperty("TITLE_L3")]
-        public string TITLEL3 { get; set; }
+        public string TitleL3 { get; set; }
 
         [JsonProperty("TITLE_L4")]
-        public string TITLEL4 { get; set; }
+        public string TitleL4 { get; set; }
 
         [JsonProperty("TITLE_L5")]
-        public string TITLEL5 { get; set; }
+        public string TitleL5 { get; set; }
 
         [JsonProperty("TITLE_L6")]
-        public string TITLEL6 { get; set; }
+        public string TitleL6 { get; set; }
 
         [JsonProperty("TITLE_PO")]
-        public string TITLEPO { get; set; }
+        public string TitlePo { get; set; }
 
         [JsonProperty("TITLE_SP")]
-        public string TITLESP { get; set; }
+        public string TitleSp { get; set; }
 
         [JsonProperty("TITLE_URL")]
-        public string TITLEURL { get; set; }
+        public string TitleUrl { get; set; }
     }
 
-    public class ViewCatalogRequestResponseCATALOGREQUESTSPATHType
+    public class ViewCatalogRequestResponseCatalogRequestsPathType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
+        public string SdCatalogId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_FR")]
-        public string SDCATALOGPATHFR { get; set; }
+        public string SdCatalogPathFr { get; set; }
     }
 
-    public class ViewCatalogRequestResponseCOMMENTCATALOGType
+    public class ViewCatalogRequestResponseCommentCatalogType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONENType
+    public class ViewCatalogRequestResponseDescriptionEnType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONFRType
+    public class ViewCatalogRequestResponseDescriptionFrType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONGEType
+    public class ViewCatalogRequestResponseDescriptionGeType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONITType
+    public class ViewCatalogRequestResponseDescriptionItType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONL1Type
+    public class ViewCatalogRequestResponseDescriptionL1Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONL2Type
+    public class ViewCatalogRequestResponseDescriptionL2Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONL3Type
+    public class ViewCatalogRequestResponseDescriptionL3Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONL4Type
+    public class ViewCatalogRequestResponseDescriptionL4Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONL5Type
+    public class ViewCatalogRequestResponseDescriptionL5Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONL6Type
+    public class ViewCatalogRequestResponseDescriptionL6Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONPOType
+    public class ViewCatalogRequestResponseDescriptionPoType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseDESCRIPTIONSPType
+    public class ViewCatalogRequestResponseDescriptionSpType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewCatalogRequestResponseMANAGERType
+    public class ViewCatalogRequestResponseManagerType
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
+        public string EMail { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
-    public class ViewCatalogRequestResponseSLAType
+    public class ViewCatalogRequestResponseSlaType
     {
-        public string DELAY { get; set; }
+        [JsonProperty("DELAY")]
+        public string Delay { get; set; }
 
         [JsonProperty("NAME_FR")]
-        public string NAMEFR { get; set; }
+        public string NameFr { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
     }
 
     public class ViewConfigurationItemsListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -2730,423 +2853,439 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewConfigurationItemsListResponseRecordsTypeItem
     {
         [JsonProperty("ASSET_ID")]
-        public string ASSETId { get; set; }
+        public string AssetId { get; set; }
 
         [JsonProperty("ASSET_TAG")]
-        public string ASSETTAG { get; set; }
+        public string AssetTag { get; set; }
 
         [JsonProperty("CI_STATUS_ID")]
-        public string CISTATUSId { get; set; }
+        public string CiStatusId { get; set; }
 
         [JsonProperty("CI_VERSION")]
-        public string CIVERSION { get; set; }
-        public string HREF { get; set; }
+        public string CiVersion { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("NETWORK_IDENTIFIER")]
-        public string NETWORKIdENTIFIER { get; set; }
+        public string NetworkIdentifier { get; set; }
     }
 
     public class ViewConfigurationItemResponse
     {
         [JsonProperty("ACQUISITION_TYPE_ID")]
-        public string ACQUISITIONTYPEId { get; set; }
+        public string AcquisitionTypeId { get; set; }
 
         [JsonProperty("ASSET_GUID")]
-        public string ASSETGUID { get; set; }
+        public string AssetGuid { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETId { get; set; }
+        public string AssetId { get; set; }
 
         [JsonProperty("ASSET_LABEL")]
-        public string ASSETLABEL { get; set; }
+        public string AssetLabel { get; set; }
 
         [JsonProperty("ASSET_TAG")]
-        public string ASSETTAG { get; set; }
+        public string AssetTag { get; set; }
 
         [JsonProperty("AUTOMATIC_RENEWAL")]
-        public string AUTOMATICRENEWAL { get; set; }
+        public string AutomaticRenewal { get; set; }
 
         [JsonProperty("AVAILABILITY_SLA_ID")]
-        public string AVAILABILITYSLAId { get; set; }
+        public string AvailabilitySlaId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
-        public string AVAILABLEFIELD1 { get; set; }
+        public string AvailableField1 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_2")]
-        public string AVAILABLEFIELD2 { get; set; }
+        public string AvailableField2 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_3")]
-        public string AVAILABLEFIELD3 { get; set; }
+        public string AvailableField3 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_4")]
-        public string AVAILABLEFIELD4 { get; set; }
+        public string AvailableField4 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_5")]
-        public string AVAILABLEFIELD5 { get; set; }
+        public string AvailableField5 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_6")]
-        public string AVAILABLEFIELD6 { get; set; }
+        public string AvailableField6 { get; set; }
 
         [JsonProperty("BEFORE_LOAN_DEPARTMENT_ID")]
-        public string BEFORELOANDEPARTMENTId { get; set; }
+        public string BeforeLoanDepartmentId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_DEPARTMENT_PATH")]
-        public string BEFORELOANDEPARTMENTPATH { get; set; }
+        public string BeforeLoanDepartmentPath { get; set; }
 
         [JsonProperty("BEFORE_LOAN_EMPLOYEE_ID")]
-        public string BEFORELOANEMPLOYEEId { get; set; }
+        public string BeforeLoanEmployeeId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_LOCATION_ID")]
-        public string BEFORELOANLOCATIONId { get; set; }
+        public string BeforeLoanLocationId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_LOCATION_PATH")]
-        public string BEFORELOANLOCATIONPATH { get; set; }
+        public string BeforeLoanLocationPath { get; set; }
 
         [JsonProperty("BILLING_PERIODICITY_IN_MONTH")]
-        public string BILLINGPERIODICITYINMONTH { get; set; }
+        public string BillingPeriodicityInMonth { get; set; }
 
         [JsonProperty("BUDGET_ID")]
-        public string BUDGETId { get; set; }
+        public string BudgetId { get; set; }
 
         [JsonProperty("BUY_BACK_VALUE")]
-        public string BUYBACKVALUE { get; set; }
+        public string BuyBackValue { get; set; }
 
         [JsonProperty("BUY_BACK_VALUE_CUR_ID")]
-        public string BUYBACKVALUECURId { get; set; }
+        public string BuyBackValueCurId { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGId { get; set; }
+        public string CatalogId { get; set; }
 
         [JsonProperty("CHARGE_BACK")]
-        public string CHARGEBACK { get; set; }
+        public string ChargeBack { get; set; }
 
         [JsonProperty("CHARGE_BACK_CUR_ID")]
-        public string CHARGEBACKCURId { get; set; }
+        public string ChargeBackCurId { get; set; }
 
         [JsonProperty("CI_BACKUP_BY_DEFAULT")]
-        public string CIBACKUPBYDEFAULT { get; set; }
+        public string CiBackupByDefault { get; set; }
 
         [JsonProperty("CI_STATUS_ID")]
-        public string CISTATUSId { get; set; }
+        public string CiStatusId { get; set; }
 
         [JsonProperty("CI_VERSION")]
-        public string CIVERSION { get; set; }
+        public string CiVersion { get; set; }
 
         [JsonProperty("CM_DEFAULT_CHANGE_ID")]
-        public string CMDEFAULTCHANGEId { get; set; }
+        public string CmDefaultChangeId { get; set; }
 
         [JsonProperty("CM_DEFAULT_CHANGE_PATH")]
-        public string CMDEFAULTCHANGEPATH { get; set; }
+        public string CmDefaultChangePath { get; set; }
 
         [JsonProperty("COMMENT_ASSET")]
-        public ViewConfigurationItemResponseCOMMENTASSETType COMMENTASSET { get; set; }
+        public ViewConfigurationItemResponseCommentAssetType CommentAsset { get; set; }
 
         [JsonProperty("CONFIGURATION_ID")]
-        public string CONFIGURATIONId { get; set; }
+        public string ConfigurationId { get; set; }
 
         [JsonProperty("CONTRACT_TYPE_ID")]
-        public string CONTRACTTYPEId { get; set; }
+        public string ContractTypeId { get; set; }
 
         [JsonProperty("CRITICAL_LEVEL_ID")]
-        public string CRITICALLEVELId { get; set; }
+        public string CriticalLevelId { get; set; }
 
         [JsonProperty("DELIVERY_DATE")]
-        public string DELIVERYDATE { get; set; }
+        public string DeliveryDate { get; set; }
 
         [JsonProperty("DELIVERY_NUMBER")]
-        public string DELIVERYNUMBER { get; set; }
+        public string DeliveryNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("DEPRECIATION_RULE_ID")]
-        public string DEPRECIATIONRULEId { get; set; }
+        public string DepreciationRuleId { get; set; }
 
         [JsonProperty("D_HARDWARE_GUID")]
-        public string DHARDWAREGUID { get; set; }
+        public string DHardwareGuid { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("END_OF_WARANTY")]
-        public string ENDOFWARANTY { get; set; }
+        public string EndOfWaranty { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("ESTIMATED_PERCENTAGE_USE")]
-        public string ESTIMATEDPERCENTAGEUSE { get; set; }
+        public string EstimatedPercentageUse { get; set; }
 
         [JsonProperty("EXPECTED_END_LEND_DATE")]
-        public string EXPECTEDENDLENDDATE { get; set; }
+        public string ExpectedEndLendDate { get; set; }
 
         [JsonProperty("EXPECTED_RETURN_DATE")]
-        public string EXPECTEDRETURNDATE { get; set; }
+        public string ExpectedReturnDate { get; set; }
 
         [JsonProperty("FALLEN_TERM")]
-        public string FALLENTERM { get; set; }
+        public string FallenTerm { get; set; }
 
         [JsonProperty("FIXED_ASSET_NUMBER")]
-        public string FIXEDASSETNUMBER { get; set; }
-        public string HREF { get; set; }
+        public string FixedAssetNumber { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("INITIAL_START")]
-        public string INITIALSTART { get; set; }
+        public string InitialStart { get; set; }
 
         [JsonProperty("INSTALLATION_DATE")]
-        public string INSTALLATIONDATE { get; set; }
+        public string InstallationDate { get; set; }
 
         [JsonProperty("INTERNAL_DELIVERY_DATE")]
-        public string INTERNALDELIVERYDATE { get; set; }
+        public string InternalDeliveryDate { get; set; }
 
         [JsonProperty("INTERNAL_DISPO")]
-        public string INTERNALDISPO { get; set; }
+        public string InternalDispo { get; set; }
 
         [JsonProperty("INVENTORY_ID")]
-        public string INVENTORYId { get; set; }
+        public string InventoryId { get; set; }
 
         [JsonProperty("INVOICE_NUMBER")]
-        public string INVOICENUMBER { get; set; }
+        public string InvoiceNumber { get; set; }
 
         [JsonProperty("IS_CI")]
-        public string ISCI { get; set; }
+        public string IsCi { get; set; }
 
         [JsonProperty("IS_DML")]
-        public string ISDML { get; set; }
+        public string IsDml { get; set; }
 
         [JsonProperty("IS_LOCKED")]
-        public string ISLOCKED { get; set; }
+        public string IsLocked { get; set; }
 
         [JsonProperty("IS_SERVICE")]
-        public string ISSERVICE { get; set; }
+        public string IsService { get; set; }
 
         [JsonProperty("LAST_AUTOMATIC_DISCOVERY")]
-        public string LASTAUTOMATICDISCOVERY { get; set; }
+        public string LastAutomaticDiscovery { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
-        public string LASTINTEGRATION { get; set; }
+        public string LastIntegration { get; set; }
 
         [JsonProperty("LAST_PAYMENT")]
-        public string LASTPAYMENT { get; set; }
+        public string LastPayment { get; set; }
 
         [JsonProperty("LAST_PAYMENT_CUR_ID")]
-        public string LASTPAYMENTCURId { get; set; }
+        public string LastPaymentCurId { get; set; }
 
         [JsonProperty("LAST_PHYSICAL_INVENTORY")]
-        public string LASTPHYSICALINVENTORY { get; set; }
+        public string LastPhysicalInventory { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
+        public string LastUpdate { get; set; }
 
         [JsonProperty("LICENSE_VERSION")]
-        public string LICENSEVERSION { get; set; }
+        public string LicenseVersion { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("LOCATION_TO_CHECK_REQUEST_ID")]
-        public string LOCATIONTOCHECKREQUESTId { get; set; }
+        public string LocationToCheckRequestId { get; set; }
 
         [JsonProperty("MAINTENANCE_COST")]
-        public string MAINTENANCECOST { get; set; }
+        public string MaintenanceCost { get; set; }
 
         [JsonProperty("MAINTENANCE_COST_CUR_ID")]
-        public string MAINTENANCECOSTCURId { get; set; }
+        public string MaintenanceCostCurId { get; set; }
 
         [JsonProperty("MAIN_USAGE_ID")]
-        public string MAINUSAGEId { get; set; }
+        public string MainUsageId { get; set; }
 
         [JsonProperty("MAX_INSTALLS")]
-        public string MAXINSTALLS { get; set; }
+        public string MaxInstalls { get; set; }
 
         [JsonProperty("MONTHLY_FIXED_COST")]
-        public string MONTHLYFIXEDCOST { get; set; }
+        public string MonthlyFixedCost { get; set; }
 
         [JsonProperty("MONTHLY_FIXED_COST_CUR_ID")]
-        public string MONTHLYFIXEDCOSTCURId { get; set; }
+        public string MonthlyFixedCostCurId { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL")]
-        public string MONTHLYNETRENTAL { get; set; }
+        public string MonthlyNetRental { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL_CUR_ID")]
-        public string MONTHLYNETRENTALCURId { get; set; }
+        public string MonthlyNetRentalCurId { get; set; }
 
         [JsonProperty("MONTH_DURATION")]
-        public string MONTHDURATION { get; set; }
+        public string MonthDuration { get; set; }
 
         [JsonProperty("NETWORK_IDENTIFIER")]
-        public string NETWORKIdENTIFIER { get; set; }
+        public string NetworkIdentifier { get; set; }
 
         [JsonProperty("NEXT_CI_VERSION")]
-        public string NEXTCIVERSION { get; set; }
+        public string NextCiVersion { get; set; }
 
         [JsonProperty("NEXT_DEPARTMENT_ID")]
-        public string NEXTDEPARTMENTId { get; set; }
+        public string NextDepartmentId { get; set; }
 
         [JsonProperty("NEXT_DEPARTMENT_PATH")]
-        public string NEXTDEPARTMENTPATH { get; set; }
+        public string NextDepartmentPath { get; set; }
 
         [JsonProperty("NEXT_MAINTENANCE_DATE")]
-        public string NEXTMAINTENANCEDATE { get; set; }
+        public string NextMaintenanceDate { get; set; }
 
         [JsonProperty("NEXT_STATUS_ID")]
-        public string NEXTSTATUSId { get; set; }
+        public string NextStatusId { get; set; }
 
         [JsonProperty("NEXT_USER_APPLICATION_DATE")]
-        public string NEXTUSERAPPLICATIONDATE { get; set; }
+        public string NextUserApplicationDate { get; set; }
 
         [JsonProperty("NEXT_USER_ID")]
-        public string NEXTUSERId { get; set; }
-        public string NOTICE { get; set; }
+        public string NextUserId { get; set; }
+
+        [JsonProperty("NOTICE")]
+        public string Notice { get; set; }
 
         [JsonProperty("ORDER_DETAILS_ID")]
-        public string ORDERDETAILSId { get; set; }
+        public string OrderDetailsId { get; set; }
 
         [JsonProperty("ORDER_NUMBER")]
-        public string ORDERNUMBER { get; set; }
+        public string OrderNumber { get; set; }
 
         [JsonProperty("OWNERSHIP_TO_CHECK_REQUEST_ID")]
-        public string OWNERSHIPTOCHECKREQUESTId { get; set; }
+        public string OwnershipToCheckRequestId { get; set; }
 
         [JsonProperty("PACKAGE_PATH")]
-        public string PACKAGEPATH { get; set; }
+        public string PackagePath { get; set; }
 
         [JsonProperty("PIPELINE_STATUS_ID")]
-        public string PIPELINESTATUSId { get; set; }
+        public string PipelineStatusId { get; set; }
 
         [JsonProperty("POWER_CONSUMPTION_WH")]
-        public string POWERCONSUMPTIONWH { get; set; }
+        public string PowerConsumptionWh { get; set; }
 
         [JsonProperty("PROCESSOR_COUNT")]
-        public string PROCESSORCOUNT { get; set; }
+        public string ProcessorCount { get; set; }
 
         [JsonProperty("PROCESSOR_SOCKET_COUNT")]
-        public string PROCESSORSOCKETCOUNT { get; set; }
+        public string ProcessorSocketCount { get; set; }
 
         [JsonProperty("PROJECT_ID")]
-        public string PROJECTId { get; set; }
+        public string ProjectId { get; set; }
 
         [JsonProperty("PROVIDER_ID")]
-        public string PROVIdERId { get; set; }
+        public string ProviderId { get; set; }
 
         [JsonProperty("PROVIDER_PATH")]
-        public string PROVIdERPATH { get; set; }
+        public string ProviderPath { get; set; }
 
         [JsonProperty("PURCHASE_DATE")]
-        public string PURCHASEDATE { get; set; }
+        public string PurchaseDate { get; set; }
 
         [JsonProperty("PURCHASE_PRICE")]
-        public string PURCHASEPRICE { get; set; }
+        public string PurchasePrice { get; set; }
 
         [JsonProperty("PURCHASE_PRICE_CUR_ID")]
-        public string PURCHASEPRICECURId { get; set; }
+        public string PurchasePriceCurId { get; set; }
 
         [JsonProperty("PURCHASE_RATE_ID")]
-        public string PURCHASERATEId { get; set; }
+        public string PurchaseRateId { get; set; }
 
         [JsonProperty("RECYCLED_DATE")]
-        public string RECYCLEDDATE { get; set; }
+        public string RecycledDate { get; set; }
 
         [JsonProperty("RECYCLING_PROVIDER_ID")]
-        public string RECYCLINGPROVIdERId { get; set; }
+        public string RecyclingProviderId { get; set; }
 
         [JsonProperty("RECYCLING_PROVIDER_PATH")]
-        public string RECYCLINGPROVIdERPATH { get; set; }
+        public string RecyclingProviderPath { get; set; }
 
         [JsonProperty("REFORM_NUMBER")]
-        public string REFORMNUMBER { get; set; }
+        public string ReformNumber { get; set; }
 
         [JsonProperty("REMOVED_DATE")]
-        public string REMOVEDDATE { get; set; }
+        public string RemovedDate { get; set; }
 
         [JsonProperty("RENEWAL_DECISION_ID")]
-        public string RENEWALDECISIONId { get; set; }
+        public string RenewalDecisionId { get; set; }
 
         [JsonProperty("RENEWAL_VALUE")]
-        public string RENEWALVALUE { get; set; }
+        public string RenewalValue { get; set; }
 
         [JsonProperty("RENEWAL_VALUE_CUR_ID")]
-        public string RENEWALVALUECURId { get; set; }
+        public string RenewalValueCurId { get; set; }
 
         [JsonProperty("REPAIRED_BY_ID")]
-        public string REPAIREDBYId { get; set; }
+        public string RepairedById { get; set; }
 
         [JsonProperty("REPAIRED_BY_PATH")]
-        public string REPAIREDBYPATH { get; set; }
+        public string RepairedByPath { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTId { get; set; }
+        public string RequestId { get; set; }
 
         [JsonProperty("RESALES_VALUE")]
-        public string RESALESVALUE { get; set; }
+        public string ResalesValue { get; set; }
 
         [JsonProperty("SCHEDULED_END")]
-        public string SCHEDULEDEND { get; set; }
+        public string ScheduledEnd { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
+        public string SdCatalogId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
-        public string SDCATALOGPATH { get; set; }
+        public string SdCatalogPath { get; set; }
 
         [JsonProperty("SD_DEFAULT_INCIDENT_ID")]
-        public string SDDEFAULTINCIdENTId { get; set; }
+        public string SdDefaultIncidentId { get; set; }
 
         [JsonProperty("SD_DEFAULT_INCIDENT_PATH")]
-        public string SDDEFAULTINCIdENTPATH { get; set; }
+        public string SdDefaultIncidentPath { get; set; }
 
         [JsonProperty("SD_DEFAULT_REQUEST_ID")]
-        public string SDDEFAULTREQUESTId { get; set; }
+        public string SdDefaultRequestId { get; set; }
 
         [JsonProperty("SD_DEFAULT_REQUEST_PATH")]
-        public string SDDEFAULTREQUESTPATH { get; set; }
+        public string SdDefaultRequestPath { get; set; }
 
         [JsonProperty("SERIAL_NUMBER")]
-        public string SERIALNUMBER { get; set; }
+        public string SerialNumber { get; set; }
 
         [JsonProperty("SERVER_TYPE_ID")]
-        public string SERVERTYPEId { get; set; }
+        public string ServerTypeId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSId { get; set; }
+        public string StatusId { get; set; }
 
         [JsonProperty("SUPPLIER_ID")]
-        public string SUPPLIERId { get; set; }
+        public string SupplierId { get; set; }
 
         [JsonProperty("SUPPLIER_PATH")]
-        public string SUPPLIERPATH { get; set; }
-        public string TERM { get; set; }
+        public string SupplierPath { get; set; }
+
+        [JsonProperty("TERM")]
+        public string Term { get; set; }
 
         [JsonProperty("UPDATED_BY_DISCOVERY")]
-        public string UPDATEDBYDISCOVERY { get; set; }
+        public string UpdatedByDiscovery { get; set; }
 
         [JsonProperty("UPDATE_COVERAGE_TERM")]
-        public string UPDATECOVERAGETERM { get; set; }
+        public string UpdateCoverageTerm { get; set; }
 
         [JsonProperty("WARANTY_TYPE_ID")]
-        public string WARANTYTYPEId { get; set; }
-        public string XPOS { get; set; }
-        public string YPOS { get; set; }
-        public string ZPOS { get; set; }
+        public string WarantyTypeId { get; set; }
+
+        [JsonProperty("XPOS")]
+        public string Xpos { get; set; }
+
+        [JsonProperty("YPOS")]
+        public string Ypos { get; set; }
+
+        [JsonProperty("ZPOS")]
+        public string Zpos { get; set; }
     }
 
-    public class ViewConfigurationItemResponseCOMMENTASSETType
+    public class ViewConfigurationItemResponseCommentAssetType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class ViewConfigurationItemLinksResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -3160,67 +3299,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class ViewConfigurationItemLinksResponseRecordsTypeItem
     {
-        public string BLOCKING { get; set; }
+        [JsonProperty("BLOCKING")]
+        public string Blocking { get; set; }
 
         [JsonProperty("CHILD_CI_ID")]
-        public string CHILDCIId { get; set; }
-        public string HREF { get; set; }
+        public string ChildCiId { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("PARENT_CI_ID")]
-        public string PARENTCIId { get; set; }
+        public string ParentCiId { get; set; }
 
         [JsonProperty("PARENT_HREF")]
-        public string PARENTHREF { get; set; }
+        public string ParentHref { get; set; }
 
         [JsonProperty("RELATION_TYPE")]
-        public ViewConfigurationItemLinksResponseRecordsTypeItemRELATIONTYPEType RELATIONTYPE { get; set; }
+        public ViewConfigurationItemLinksResponseRecordsTypeItemRelationTypeType RelationType { get; set; }
 
         [JsonProperty("RELATION_TYPE_ID")]
-        public string RELATIONTYPEId { get; set; }
+        public string RelationTypeId { get; set; }
     }
 
-    public class ViewConfigurationItemLinksResponseRecordsTypeItemRELATIONTYPEType
+    public class ViewConfigurationItemLinksResponseRecordsTypeItemRelationTypeType
     {
         [JsonProperty("REFERENCE_FR")]
-        public string REFERENCEFR { get; set; }
+        public string ReferenceFr { get; set; }
 
         [JsonProperty("REFERENCE_ID")]
-        public string REFERENCEId { get; set; }
+        public string ReferenceId { get; set; }
     }
 
     public class ViewConfigurationItemLinkResponse
     {
-        public string BLOCKING { get; set; }
+        [JsonProperty("BLOCKING")]
+        public string Blocking { get; set; }
 
         [JsonProperty("CHILD_CI_ID")]
-        public string CHILDCIId { get; set; }
-        public string HREF { get; set; }
+        public string ChildCiId { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("PARENT_CI_ID")]
-        public string PARENTCIId { get; set; }
+        public string ParentCiId { get; set; }
 
         [JsonProperty("PARENT_HREF")]
-        public string PARENTHREF { get; set; }
+        public string ParentHref { get; set; }
 
         [JsonProperty("RELATION_TYPE")]
-        public ViewConfigurationItemLinkResponseRELATIONTYPEType RELATIONTYPE { get; set; }
+        public ViewConfigurationItemLinkResponseRelationTypeType RelationType { get; set; }
 
         [JsonProperty("RELATION_TYPE_ID")]
-        public string RELATIONTYPEId { get; set; }
+        public string RelationTypeId { get; set; }
     }
 
-    public class ViewConfigurationItemLinkResponseRELATIONTYPEType
+    public class ViewConfigurationItemLinkResponseRelationTypeType
     {
         [JsonProperty("REFERENCE_FR")]
-        public string REFERENCEFR { get; set; }
+        public string ReferenceFr { get; set; }
 
         [JsonProperty("REFERENCE_ID")]
-        public string REFERENCEId { get; set; }
+        public string ReferenceId { get; set; }
     }
 
     public class CreateConfigurationItemLinkResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class CreateConfigurationItemLinkBodyInput
@@ -3238,7 +3384,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class UpdateConfigurationItemLinkResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class UpdateConfigurationItemLinkBodyInput
@@ -3251,7 +3398,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class ViewEntitiesListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -3266,137 +3414,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewEntitiesListResponseRecordsTypeItem
     {
         [JsonProperty("DEPARTMENT_CODE")]
-        public string DEPARTMENTCODE { get; set; }
+        public string DepartmentCode { get; set; }
 
         [JsonProperty("DEPARTMENT_FR")]
-        public string DEPARTMENTFR { get; set; }
+        public string DepartmentFr { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
-        public string DEPARTMENTLABEL { get; set; }
+        public string DepartmentLabel { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
-        public string HREF { get; set; }
+        public string DepartmentPath { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class ViewEntityResponse
     {
         [JsonProperty("AVAILABLE_FIELD_1")]
-        public string AVAILABLEFIELD1 { get; set; }
+        public string AvailableField1 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_2")]
-        public string AVAILABLEFIELD2 { get; set; }
+        public string AvailableField2 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_3")]
-        public string AVAILABLEFIELD3 { get; set; }
+        public string AvailableField3 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_4")]
-        public string AVAILABLEFIELD4 { get; set; }
+        public string AvailableField4 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_5")]
-        public string AVAILABLEFIELD5 { get; set; }
+        public string AvailableField5 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_6")]
-        public string AVAILABLEFIELD6 { get; set; }
+        public string AvailableField6 { get; set; }
 
         [JsonProperty("COMMENT_DEPARTMENT")]
-        public ViewEntityResponseCOMMENTDEPARTMENTType COMMENTDEPARTMENT { get; set; }
+        public ViewEntityResponseCommentDepartmentType CommentDepartment { get; set; }
 
         [JsonProperty("CURRENCY_ID")]
-        public string CURRENCYId { get; set; }
+        public string CurrencyId { get; set; }
 
         [JsonProperty("DEFAULT_COST_CENTER_ID")]
-        public string DEFAULTCOSTCENTERId { get; set; }
+        public string DefaultCostCenterId { get; set; }
 
         [JsonProperty("DEPARTMENT_CODE")]
-        public string DEPARTMENTCODE { get; set; }
+        public string DepartmentCode { get; set; }
 
         [JsonProperty("DEPARTMENT_EN")]
-        public string DEPARTMENTEN { get; set; }
+        public string DepartmentEn { get; set; }
 
         [JsonProperty("DEPARTMENT_FR")]
-        public string DEPARTMENTFR { get; set; }
+        public string DepartmentFr { get; set; }
 
         [JsonProperty("DEPARTMENT_GE")]
-        public string DEPARTMENTGE { get; set; }
+        public string DepartmentGe { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_IT")]
-        public string DEPARTMENTIT { get; set; }
+        public string DepartmentIt { get; set; }
 
         [JsonProperty("DEPARTMENT_L1")]
-        public string DEPARTMENTL1 { get; set; }
+        public string DepartmentL1 { get; set; }
 
         [JsonProperty("DEPARTMENT_L2")]
-        public string DEPARTMENTL2 { get; set; }
+        public string DepartmentL2 { get; set; }
 
         [JsonProperty("DEPARTMENT_L3")]
-        public string DEPARTMENTL3 { get; set; }
+        public string DepartmentL3 { get; set; }
 
         [JsonProperty("DEPARTMENT_L4")]
-        public string DEPARTMENTL4 { get; set; }
+        public string DepartmentL4 { get; set; }
 
         [JsonProperty("DEPARTMENT_L5")]
-        public string DEPARTMENTL5 { get; set; }
+        public string DepartmentL5 { get; set; }
 
         [JsonProperty("DEPARTMENT_L6")]
-        public string DEPARTMENTL6 { get; set; }
+        public string DepartmentL6 { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
-        public string DEPARTMENTLABEL { get; set; }
+        public string DepartmentLabel { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("DEPARTMENT_PO")]
-        public string DEPARTMENTPO { get; set; }
+        public string DepartmentPo { get; set; }
 
         [JsonProperty("DEPARTMENT_SP")]
-        public string DEPARTMENTSP { get; set; }
+        public string DepartmentSp { get; set; }
 
         [JsonProperty("END_DATE")]
-        public string ENDDATE { get; set; }
-        public string HREF { get; set; }
+        public string EndDate { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
-        public string LASTINTEGRATION { get; set; }
+        public string LastIntegration { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
-        public string LEVEL { get; set; }
+        public string LastUpdate { get; set; }
+
+        [JsonProperty("LEVEL")]
+        public string Level { get; set; }
 
         [JsonProperty("MANAGER_ID")]
-        public string MANAGERId { get; set; }
+        public string ManagerId { get; set; }
 
         [JsonProperty("PARENT_DEPARTMENT_ID")]
-        public string PARENTDEPARTMENTId { get; set; }
+        public string ParentDepartmentId { get; set; }
 
         [JsonProperty("PARENT_DEPARTMENT_PATH")]
-        public string PARENTDEPARTMENTPATH { get; set; }
+        public string ParentDepartmentPath { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
 
         [JsonProperty("START_DATE")]
-        public string STARTDATE { get; set; }
+        public string StartDate { get; set; }
 
         [JsonProperty("URL_MAP")]
-        public string URLMAP { get; set; }
+        public string UrlMap { get; set; }
     }
 
-    public class ViewEntityResponseCOMMENTDEPARTMENTType
+    public class ViewEntityResponseCommentDepartmentType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class ViewEmployeesListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -3411,108 +3567,124 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewEmployeesListResponseRecordsTypeItem
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
-        public ViewEmployeesListResponseRecordsTypeItemDEPARTMENTType DEPARTMENT { get; set; }
+        public string CellularNumber { get; set; }
+
+        [JsonProperty("DEPARTMENT")]
+        public ViewEmployeesListResponseRecordsTypeItemDepartmentType Department { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
-        public string HREF { get; set; }
+        public string EMail { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
-        public ViewEmployeesListResponseRecordsTypeItemLOCATIONType LOCATION { get; set; }
+        public string LastName { get; set; }
+
+        [JsonProperty("LOCATION")]
+        public ViewEmployeesListResponseRecordsTypeItemLocationType Location { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
-        public ViewEmployeesListResponseRecordsTypeItemMANAGERType MANAGER { get; set; }
+        public string LocationPath { get; set; }
+
+        [JsonProperty("MANAGER")]
+        public ViewEmployeesListResponseRecordsTypeItemManagerType Manager { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
-    public class ViewEmployeesListResponseRecordsTypeItemDEPARTMENTType
+    public class ViewEmployeesListResponseRecordsTypeItemDepartmentType
     {
         [JsonProperty("DEPARTMENT_CODE")]
-        public string DEPARTMENTCODE { get; set; }
+        public string DepartmentCode { get; set; }
 
         [JsonProperty("DEPARTMENT_FR")]
-        public string DEPARTMENTFR { get; set; }
+        public string DepartmentFr { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
-        public string DEPARTMENTLABEL { get; set; }
+        public string DepartmentLabel { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
-        public string HREF { get; set; }
+        public string DepartmentPath { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewEmployeesListResponseRecordsTypeItemLOCATIONType
+    public class ViewEmployeesListResponseRecordsTypeItemLocationType
     {
-        public string CITY { get; set; }
-        public string HREF { get; set; }
+        [JsonProperty("CITY")]
+        public string City { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LOCATION_CODE")]
-        public string LOCATIONCODE { get; set; }
+        public string LocationCode { get; set; }
 
         [JsonProperty("LOCATION_FR")]
-        public string LOCATIONFR { get; set; }
+        public string LocationFr { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
     }
 
-    public class ViewEmployeesListResponseRecordsTypeItemMANAGERType
+    public class ViewEmployeesListResponseRecordsTypeItemManagerType
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
-        public string HREF { get; set; }
+        public string EMail { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
     public class CreateEmployeeResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class CreateEmployeeBodyInput
@@ -3543,397 +3715,421 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewEmployeeResponse
     {
         [JsonProperty("APPROVED_TO_VALIDATE")]
-        public string APPROVEDTOVALIdATE { get; set; }
+        public string ApprovedToValidate { get; set; }
 
         [JsonProperty("AVAILABILITY_STATUS_ID")]
-        public string AVAILABILITYSTATUSId { get; set; }
+        public string AvailabilityStatusId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
-        public string AVAILABLEFIELD1 { get; set; }
+        public string AvailableField1 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_2")]
-        public string AVAILABLEFIELD2 { get; set; }
+        public string AvailableField2 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_3")]
-        public string AVAILABLEFIELD3 { get; set; }
+        public string AvailableField3 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_4")]
-        public string AVAILABLEFIELD4 { get; set; }
+        public string AvailableField4 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_5")]
-        public string AVAILABLEFIELD5 { get; set; }
+        public string AvailableField5 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_6")]
-        public string AVAILABLEFIELD6 { get; set; }
+        public string AvailableField6 { get; set; }
 
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("CHAT_LOGIN")]
-        public string CHATLOGIN { get; set; }
+        public string ChatLogin { get; set; }
 
         [JsonProperty("CIVIL_STATUS_ID")]
-        public string CIVILSTATUSId { get; set; }
+        public string CivilStatusId { get; set; }
 
         [JsonProperty("COMMENT_EMPLOYEE")]
-        public ViewEmployeeResponseCOMMENTEMPLOYEEType COMMENTEMPLOYEE { get; set; }
+        public ViewEmployeeResponseCommentEmployeeType CommentEmployee { get; set; }
 
         [JsonProperty("COST_PER_HOUR")]
-        public string COSTPERHOUR { get; set; }
+        public string CostPerHour { get; set; }
 
         [JsonProperty("COST_PER_HOUR_CUR_ID")]
-        public string COSTPERHOURCURId { get; set; }
+        public string CostPerHourCurId { get; set; }
 
         [JsonProperty("DEFAULT_COST_CENTER_ID")]
-        public string DEFAULTCOSTCENTERId { get; set; }
+        public string DefaultCostCenterId { get; set; }
 
         [JsonProperty("DELEGATION_FROM")]
-        public string DELEGATIONFROM { get; set; }
+        public string DelegationFrom { get; set; }
 
         [JsonProperty("DELEGATION_ID")]
-        public string DELEGATIONId { get; set; }
+        public string DelegationId { get; set; }
 
         [JsonProperty("DELEGATION_TO")]
-        public string DELEGATIONTO { get; set; }
-        public ViewEmployeeResponseDEPARTMENTType DEPARTMENT { get; set; }
+        public string DelegationTo { get; set; }
+
+        [JsonProperty("DEPARTMENT")]
+        public ViewEmployeeResponseDepartmentType Department { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("END_OF_CONTRACT")]
-        public string ENDOFCONTRACT { get; set; }
+        public string EndOfContract { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
+        public string EMail { get; set; }
 
         [JsonProperty("E_PTO")]
-        public string EPTO { get; set; }
+        public string EPto { get; set; }
 
         [JsonProperty("E_SANDBOX_USER")]
-        public string ESANDBOXUSER { get; set; }
+        public string ESandboxUser { get; set; }
 
         [JsonProperty("FAX_NUMBER")]
-        public string FAXNUMBER { get; set; }
+        public string FaxNumber { get; set; }
 
         [JsonProperty("FUNCTION_ID")]
-        public string FUNCTIONId { get; set; }
-        public string HREF { get; set; }
+        public string FunctionId { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("ICQ_NUMBER")]
-        public string ICQNUMBER { get; set; }
+        public string IcqNumber { get; set; }
 
         [JsonProperty("IDENTIFICATION")]
-        public string IdENTIFICATION { get; set; }
-        public string IMPACT { get; set; }
+        public string Identification { get; set; }
+
+        [JsonProperty("IMPACT")]
+        public string Impact { get; set; }
 
         [JsonProperty("IS_AUTOMATIC_STATUS")]
-        public string ISAUTOMATICSTATUS { get; set; }
+        public string IsAutomaticStatus { get; set; }
 
         [JsonProperty("IS_SYSTEM")]
-        public string ISSYSTEM { get; set; }
+        public string IsSystem { get; set; }
 
         [JsonProperty("IT_CORRESPONDENT")]
-        public string ITCORRESPONDENT { get; set; }
+        public string ItCorrespondent { get; set; }
 
         [JsonProperty("LANGUAGE_ID")]
-        public string LANGUAGEId { get; set; }
+        public string LanguageId { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
-        public string LASTINTEGRATION { get; set; }
+        public string LastIntegration { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
-        public ViewEmployeeResponseLOCATIONType LOCATION { get; set; }
+        public string LastUpdate { get; set; }
+
+        [JsonProperty("LOCATION")]
+        public ViewEmployeeResponseLocationType Location { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("LOCATION_TO_CHECK_REQUEST_ID")]
-        public string LOCATIONTOCHECKREQUESTId { get; set; }
-        public string LOGIN { get; set; }
+        public string LocationToCheckRequestId { get; set; }
+
+        [JsonProperty("LOGIN")]
+        public string Login { get; set; }
 
         [JsonProperty("MAIL_ALERT")]
-        public string MAILALERT { get; set; }
-        public ViewEmployeeResponseMANAGERType MANAGER { get; set; }
+        public string MailAlert { get; set; }
+
+        [JsonProperty("MANAGER")]
+        public ViewEmployeeResponseManagerType Manager { get; set; }
 
         [JsonProperty("MANAGER_ID")]
-        public string MANAGERId { get; set; }
+        public string ManagerId { get; set; }
 
         [JsonProperty("MESSENGER_SIGN_NAME")]
-        public string MESSENGERSIGNNAME { get; set; }
+        public string MessengerSignName { get; set; }
 
         [JsonProperty("NOTIFICATION_TYPE_ID")]
-        public string NOTIFICATIONTYPEId { get; set; }
+        public string NotificationTypeId { get; set; }
 
         [JsonProperty("PASSWD_LAST_UPDATE_UT")]
-        public string PASSWDLASTUPDATEUT { get; set; }
+        public string PasswdLastUpdateUt { get; set; }
 
         [JsonProperty("PERSON_IN_CHARGE")]
-        public string PERSONINCHARGE { get; set; }
+        public string PersonInCharge { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
 
         [JsonProperty("PICTURE_PATH")]
-        public string PICTUREPATH { get; set; }
+        public string PicturePath { get; set; }
 
         [JsonProperty("PLANNING_ID")]
-        public string PLANNINGId { get; set; }
+        public string PlanningId { get; set; }
 
         [JsonProperty("STYLE_ID")]
-        public string STYLEId { get; set; }
+        public string StyleId { get; set; }
 
         [JsonProperty("SUPPLIER_ID")]
-        public string SUPPLIERId { get; set; }
+        public string SupplierId { get; set; }
 
         [JsonProperty("SUPPLIER_PATH")]
-        public string SUPPLIERPATH { get; set; }
+        public string SupplierPath { get; set; }
 
         [JsonProperty("TITLE_ID")]
-        public string TITLEId { get; set; }
+        public string TitleId { get; set; }
 
         [JsonProperty("TRIAL_END")]
-        public string TRIALEND { get; set; }
+        public string TrialEnd { get; set; }
 
         [JsonProperty("VALIDATION_LEVEL")]
-        public string VALIdATIONLEVEL { get; set; }
+        public string ValidationLevel { get; set; }
 
         [JsonProperty("VALIDATOR_ID")]
-        public string VALIdATORId { get; set; }
-        public string VIP { get; set; }
+        public string ValidatorId { get; set; }
+
+        [JsonProperty("VIP")]
+        public string Vip { get; set; }
 
         [JsonProperty("VIP_LEVEL_ID")]
-        public string VIPLEVELId { get; set; }
+        public string VipLevelId { get; set; }
 
         [JsonProperty("WAVE_ADDRESS")]
-        public string WAVEADDRESS { get; set; }
+        public string WaveAddress { get; set; }
     }
 
-    public class ViewEmployeeResponseCOMMENTEMPLOYEEType
+    public class ViewEmployeeResponseCommentEmployeeType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewEmployeeResponseDEPARTMENTType
+    public class ViewEmployeeResponseDepartmentType
     {
         [JsonProperty("DEPARTMENT_CODE")]
-        public string DEPARTMENTCODE { get; set; }
+        public string DepartmentCode { get; set; }
 
         [JsonProperty("DEPARTMENT_FR")]
-        public string DEPARTMENTFR { get; set; }
+        public string DepartmentFr { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
-        public string DEPARTMENTLABEL { get; set; }
+        public string DepartmentLabel { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
-        public string HREF { get; set; }
+        public string DepartmentPath { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewEmployeeResponseLOCATIONType
+    public class ViewEmployeeResponseLocationType
     {
-        public string CITY { get; set; }
-        public string HREF { get; set; }
+        [JsonProperty("CITY")]
+        public string City { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LOCATION_CODE")]
-        public string LOCATIONCODE { get; set; }
+        public string LocationCode { get; set; }
 
         [JsonProperty("LOCATION_FR")]
-        public string LOCATIONFR { get; set; }
+        public string LocationFr { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
     }
 
-    public class ViewEmployeeResponseMANAGERType
+    public class ViewEmployeeResponseManagerType
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
+        public string EMail { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
     public class UpdateEmployeeResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class UpdateEmployeeBodyInput
     {
         [JsonProperty("APPROVED_TO_VALIDATE")]
-        public string APPROVEDTOVALIdATE { get; set; }
+        public string ApprovedToValidate { get; set; }
 
         [JsonProperty("AVAILABILITY_STATUS_ID")]
-        public string AVAILABILITYSTATUSId { get; set; }
+        public string AvailabilityStatusId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
-        public string AVAILABLEFIELD1 { get; set; }
+        public string AvailableField1 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_2")]
-        public string AVAILABLEFIELD2 { get; set; }
+        public string AvailableField2 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_3")]
-        public string AVAILABLEFIELD3 { get; set; }
+        public string AvailableField3 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_4")]
-        public string AVAILABLEFIELD4 { get; set; }
+        public string AvailableField4 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_5")]
-        public string AVAILABLEFIELD5 { get; set; }
+        public string AvailableField5 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_6")]
-        public string AVAILABLEFIELD6 { get; set; }
+        public string AvailableField6 { get; set; }
 
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("CHAT_LOGIN")]
-        public string CHATLOGIN { get; set; }
+        public string ChatLogin { get; set; }
 
         [JsonProperty("CIVIL_STATUS_ID")]
-        public string CIVILSTATUSId { get; set; }
+        public string CivilStatusId { get; set; }
 
         [JsonProperty("COMMENT_EMPLOYEE")]
-        public string COMMENTEMPLOYEE { get; set; }
+        public string CommentEmployee { get; set; }
 
         [JsonProperty("COST_PER_HOUR")]
-        public string COSTPERHOUR { get; set; }
+        public string CostPerHour { get; set; }
 
         [JsonProperty("COST_PER_HOUR_CUR_ID")]
-        public string COSTPERHOURCURId { get; set; }
+        public string CostPerHourCurId { get; set; }
 
         [JsonProperty("DEFAULT_COST_CENTER_ID")]
-        public string DEFAULTCOSTCENTERId { get; set; }
+        public string DefaultCostCenterId { get; set; }
 
         [JsonProperty("DELEGATION_FROM")]
-        public string DELEGATIONFROM { get; set; }
+        public string DelegationFrom { get; set; }
 
         [JsonProperty("DELEGATION_ID")]
-        public string DELEGATIONId { get; set; }
+        public string DelegationId { get; set; }
 
         [JsonProperty("DELEGATION_TO")]
-        public string DELEGATIONTO { get; set; }
+        public string DelegationTo { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("END_OF_CONTRACT")]
-        public string ENDOFCONTRACT { get; set; }
+        public string EndOfContract { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
+        public string EMail { get; set; }
 
         [JsonProperty("FAX_NUMBER")]
-        public string FAXNUMBER { get; set; }
+        public string FaxNumber { get; set; }
 
         [JsonProperty("FUNCTION_ID")]
-        public string FUNCTIONId { get; set; }
+        public string FunctionId { get; set; }
 
         [JsonProperty("ICQ_NUMBER")]
-        public string ICQNUMBER { get; set; }
+        public string IcqNumber { get; set; }
 
         [JsonProperty("IDENTIFICATION")]
-        public string IdENTIFICATION { get; set; }
+        public string Identification { get; set; }
 
         [JsonProperty("IS_AUTOMATIC_STATUS")]
-        public string ISAUTOMATICSTATUS { get; set; }
+        public string IsAutomaticStatus { get; set; }
 
         [JsonProperty("IT_CORRESPONDENT")]
-        public string ITCORRESPONDENT { get; set; }
+        public string ItCorrespondent { get; set; }
 
         [JsonProperty("LANGUAGE_ID")]
-        public string LANGUAGEId { get; set; }
+        public string LanguageId { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
-        public string LASTINTEGRATION { get; set; }
+        public string LastIntegration { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
+        public string LastUpdate { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
-        public string LOGIN { get; set; }
+        public string LocationId { get; set; }
+
+        [JsonProperty("LOGIN")]
+        public string Login { get; set; }
 
         [JsonProperty("MANAGER_ID")]
-        public string MANAGERId { get; set; }
+        public string ManagerId { get; set; }
 
         [JsonProperty("MESSENGER_SIGN_NAME")]
-        public string MESSENGERSIGNNAME { get; set; }
+        public string MessengerSignName { get; set; }
 
         [JsonProperty("NOTIFICATION_TYPE_ID")]
-        public string NOTIFICATIONTYPEId { get; set; }
+        public string NotificationTypeId { get; set; }
 
         [JsonProperty("PASSWD_LAST_UPDATE_UT")]
-        public string PASSWDLASTUPDATEUT { get; set; }
+        public string PasswdLastUpdateUt { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
 
         [JsonProperty("PICTURE_PATH")]
-        public string PICTUREPATH { get; set; }
+        public string PicturePath { get; set; }
 
         [JsonProperty("SUPPLIER_ID")]
-        public string SUPPLIERId { get; set; }
+        public string SupplierId { get; set; }
 
         [JsonProperty("VALIDATOR_ID")]
-        public string VALIdATORId { get; set; }
+        public string ValidatorId { get; set; }
 
         [JsonProperty("VIP_LEVEL_ID")]
-        public string VIPLEVELId { get; set; }
+        public string VipLevelId { get; set; }
 
         [JsonProperty("WAVE_ADDRESS")]
-        public string WAVEADDRESS { get; set; }
+        public string WaveAddress { get; set; }
     }
 
     public class ViewKnownErrorsListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -3947,220 +4143,239 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class ViewKnownErrorsListResponseRecordsTypeItem
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSId { get; set; }
+        public string KnownProblemsId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM_PATH")]
-        public string KNOWNPROBLEMPATH { get; set; }
+        public string KnownProblemPath { get; set; }
 
         [JsonProperty("KP_NUMBER")]
-        public string KPNUMBER { get; set; }
+        public string KpNumber { get; set; }
 
         [JsonProperty("QUESTION_FR")]
-        public string QUESTIONFR { get; set; }
+        public string QuestionFr { get; set; }
     }
 
     public class ViewKnownErrorsResponse
     {
         [JsonProperty("ANSWER_EN")]
-        public ViewKnownErrorsResponseANSWERENType ANSWEREN { get; set; }
+        public ViewKnownErrorsResponseAnswerEnType AnswerEn { get; set; }
 
         [JsonProperty("ANSWER_FR")]
-        public ViewKnownErrorsResponseANSWERFRType ANSWERFR { get; set; }
+        public ViewKnownErrorsResponseAnswerFrType AnswerFr { get; set; }
 
         [JsonProperty("ANSWER_GE")]
-        public ViewKnownErrorsResponseANSWERGEType ANSWERGE { get; set; }
+        public ViewKnownErrorsResponseAnswerGeType AnswerGe { get; set; }
 
         [JsonProperty("ANSWER_IT")]
-        public ViewKnownErrorsResponseANSWERITType ANSWERIT { get; set; }
+        public ViewKnownErrorsResponseAnswerItType AnswerIt { get; set; }
 
         [JsonProperty("ANSWER_L1")]
-        public ViewKnownErrorsResponseANSWERL1Type ANSWERL1 { get; set; }
+        public ViewKnownErrorsResponseAnswerL1Type AnswerL1 { get; set; }
 
         [JsonProperty("ANSWER_L2")]
-        public ViewKnownErrorsResponseANSWERL2Type ANSWERL2 { get; set; }
+        public ViewKnownErrorsResponseAnswerL2Type AnswerL2 { get; set; }
 
         [JsonProperty("ANSWER_L3")]
-        public ViewKnownErrorsResponseANSWERL3Type ANSWERL3 { get; set; }
+        public ViewKnownErrorsResponseAnswerL3Type AnswerL3 { get; set; }
 
         [JsonProperty("ANSWER_L4")]
-        public ViewKnownErrorsResponseANSWERL4Type ANSWERL4 { get; set; }
+        public ViewKnownErrorsResponseAnswerL4Type AnswerL4 { get; set; }
 
         [JsonProperty("ANSWER_L5")]
-        public ViewKnownErrorsResponseANSWERL5Type ANSWERL5 { get; set; }
+        public ViewKnownErrorsResponseAnswerL5Type AnswerL5 { get; set; }
 
         [JsonProperty("ANSWER_L6")]
-        public ViewKnownErrorsResponseANSWERL6Type ANSWERL6 { get; set; }
+        public ViewKnownErrorsResponseAnswerL6Type AnswerL6 { get; set; }
 
         [JsonProperty("ANSWER_PO")]
-        public ViewKnownErrorsResponseANSWERPOType ANSWERPO { get; set; }
+        public ViewKnownErrorsResponseAnswerPoType AnswerPo { get; set; }
 
         [JsonProperty("ANSWER_SP")]
-        public ViewKnownErrorsResponseANSWERSPType ANSWERSP { get; set; }
+        public ViewKnownErrorsResponseAnswerSpType AnswerSp { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
-        public string AVAILABLEFIELD1 { get; set; }
+        public string AvailableField1 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_2")]
-        public string AVAILABLEFIELD2 { get; set; }
+        public string AvailableField2 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_3")]
-        public string AVAILABLEFIELD3 { get; set; }
+        public string AvailableField3 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_4")]
-        public string AVAILABLEFIELD4 { get; set; }
+        public string AvailableField4 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_5")]
-        public string AVAILABLEFIELD5 { get; set; }
+        public string AvailableField5 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_6")]
-        public string AVAILABLEFIELD6 { get; set; }
+        public string AvailableField6 { get; set; }
 
         [JsonProperty("CREATION_DATE")]
-        public string CREATIONDATE { get; set; }
+        public string CreationDate { get; set; }
 
         [JsonProperty("END_DATE")]
-        public string ENDDATE { get; set; }
+        public string EndDate { get; set; }
 
         [JsonProperty("EXPECTED_RESOLUTION_DATE")]
-        public string EXPECTEDRESOLUTIONDATE { get; set; }
+        public string ExpectedResolutionDate { get; set; }
 
         [JsonProperty("E_URL")]
-        public ViewKnownErrorsResponseEURLType EURL { get; set; }
-        public string HREF { get; set; }
+        public ViewKnownErrorsResponseEUrlType EUrl { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("IMPLEMENTATION_TIME")]
-        public string IMPLEMENTATIONTIME { get; set; }
+        public string ImplementationTime { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSId { get; set; }
+        public string KnownProblemsId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM_PATH")]
-        public string KNOWNPROBLEMPATH { get; set; }
+        public string KnownProblemPath { get; set; }
 
         [JsonProperty("KP_NUMBER")]
-        public string KPNUMBER { get; set; }
+        public string KpNumber { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
+        public string LastUpdate { get; set; }
 
         [JsonProperty("LAST_UPDATE_UT")]
-        public string LASTUPDATEUT { get; set; }
+        public string LastUpdateUt { get; set; }
 
         [JsonProperty("QUESTION_EN")]
-        public string QUESTIONEN { get; set; }
+        public string QuestionEn { get; set; }
 
         [JsonProperty("QUESTION_FR")]
-        public string QUESTIONFR { get; set; }
+        public string QuestionFr { get; set; }
 
         [JsonProperty("QUESTION_GE")]
-        public string QUESTIONGE { get; set; }
+        public string QuestionGe { get; set; }
 
         [JsonProperty("QUESTION_IT")]
-        public string QUESTIONIT { get; set; }
+        public string QuestionIt { get; set; }
 
         [JsonProperty("QUESTION_L1")]
-        public string QUESTIONL1 { get; set; }
+        public string QuestionL1 { get; set; }
 
         [JsonProperty("QUESTION_L2")]
-        public string QUESTIONL2 { get; set; }
+        public string QuestionL2 { get; set; }
 
         [JsonProperty("QUESTION_L3")]
-        public string QUESTIONL3 { get; set; }
+        public string QuestionL3 { get; set; }
 
         [JsonProperty("QUESTION_L4")]
-        public string QUESTIONL4 { get; set; }
+        public string QuestionL4 { get; set; }
 
         [JsonProperty("QUESTION_L5")]
-        public string QUESTIONL5 { get; set; }
+        public string QuestionL5 { get; set; }
 
         [JsonProperty("QUESTION_L6")]
-        public string QUESTIONL6 { get; set; }
+        public string QuestionL6 { get; set; }
 
         [JsonProperty("QUESTION_PO")]
-        public string QUESTIONPO { get; set; }
+        public string QuestionPo { get; set; }
 
         [JsonProperty("QUESTION_SP")]
-        public string QUESTIONSP { get; set; }
+        public string QuestionSp { get; set; }
 
         [JsonProperty("REVISION_DATE")]
-        public string REVISIONDATE { get; set; }
+        public string RevisionDate { get; set; }
 
         [JsonProperty("REVISION_DATE_UT")]
-        public string REVISIONDATEUT { get; set; }
-        public string VERSION { get; set; }
+        public string RevisionDateUt { get; set; }
+
+        [JsonProperty("VERSION")]
+        public string Version { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERENType
+    public class ViewKnownErrorsResponseAnswerEnType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERFRType
+    public class ViewKnownErrorsResponseAnswerFrType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERGEType
+    public class ViewKnownErrorsResponseAnswerGeType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERITType
+    public class ViewKnownErrorsResponseAnswerItType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERL1Type
+    public class ViewKnownErrorsResponseAnswerL1Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERL2Type
+    public class ViewKnownErrorsResponseAnswerL2Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERL3Type
+    public class ViewKnownErrorsResponseAnswerL3Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERL4Type
+    public class ViewKnownErrorsResponseAnswerL4Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERL5Type
+    public class ViewKnownErrorsResponseAnswerL5Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERL6Type
+    public class ViewKnownErrorsResponseAnswerL6Type
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERPOType
+    public class ViewKnownErrorsResponseAnswerPoType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseANSWERSPType
+    public class ViewKnownErrorsResponseAnswerSpType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewKnownErrorsResponseEURLType
+    public class ViewKnownErrorsResponseEUrlType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class ViewLocationsListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -4174,176 +4389,191 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class ViewLocationsListResponseRecordsTypeItem
     {
-        public string CITY { get; set; }
-        public string HREF { get; set; }
+        [JsonProperty("CITY")]
+        public string City { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LOCATION_CODE")]
-        public string LOCATIONCODE { get; set; }
+        public string LocationCode { get; set; }
 
         [JsonProperty("LOCATION_FR")]
-        public string LOCATIONFR { get; set; }
+        public string LocationFr { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
     }
 
     public class ViewLocationResponse
     {
         [JsonProperty("AVAILABLE_FIELD_1")]
-        public string AVAILABLEFIELD1 { get; set; }
+        public string AvailableField1 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_2")]
-        public string AVAILABLEFIELD2 { get; set; }
+        public string AvailableField2 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_3")]
-        public string AVAILABLEFIELD3 { get; set; }
+        public string AvailableField3 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_4")]
-        public string AVAILABLEFIELD4 { get; set; }
+        public string AvailableField4 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_5")]
-        public string AVAILABLEFIELD5 { get; set; }
+        public string AvailableField5 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_6")]
-        public string AVAILABLEFIELD6 { get; set; }
-        public string CITY { get; set; }
+        public string AvailableField6 { get; set; }
+
+        [JsonProperty("CITY")]
+        public string City { get; set; }
 
         [JsonProperty("COMMENT_LOCATION")]
-        public ViewLocationResponseCOMMENTLOCATIONType COMMENTLOCATION { get; set; }
+        public ViewLocationResponseCommentLocationType CommentLocation { get; set; }
 
         [JsonProperty("COUNTRY_ID")]
-        public string COUNTRYId { get; set; }
+        public string CountryId { get; set; }
 
         [JsonProperty("DISCOVERY_NAME")]
-        public string DISCOVERYNAME { get; set; }
+        public string DiscoveryName { get; set; }
 
         [JsonProperty("END_DATE")]
-        public string ENDDATE { get; set; }
+        public string EndDate { get; set; }
 
         [JsonProperty("E_CAPACITY")]
-        public string ECAPACITY { get; set; }
+        public string ECapacity { get; set; }
 
         [JsonProperty("E_IS_MEETING_ROOM")]
-        public string EISMEETINGROOM { get; set; }
+        public string EIsMeetingRoom { get; set; }
 
         [JsonProperty("E_WIFI_LOGIN")]
-        public string EWIFILOGIN { get; set; }
-        public string FAX { get; set; }
+        public string EWifiLogin { get; set; }
+
+        [JsonProperty("FAX")]
+        public string Fax { get; set; }
 
         [JsonProperty("G_MAP_LAT")]
-        public string GMAPLAT { get; set; }
+        public string GMapLat { get; set; }
 
         [JsonProperty("G_MAP_LNG")]
-        public string GMAPLNG { get; set; }
-        public string HREF { get; set; }
+        public string GMapLng { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("IS_DELIVERY_ADDRESS")]
-        public string ISDELIVERYADDRESS { get; set; }
+        public string IsDeliveryAddress { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
-        public string LASTINTEGRATION { get; set; }
+        public string LastIntegration { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
-        public string LEVEL { get; set; }
+        public string LastUpdate { get; set; }
+
+        [JsonProperty("LEVEL")]
+        public string Level { get; set; }
 
         [JsonProperty("LOCATION_CODE")]
-        public string LOCATIONCODE { get; set; }
+        public string LocationCode { get; set; }
 
         [JsonProperty("LOCATION_EN")]
-        public string LOCATIONEN { get; set; }
+        public string LocationEn { get; set; }
 
         [JsonProperty("LOCATION_FR")]
-        public string LOCATIONFR { get; set; }
+        public string LocationFr { get; set; }
 
         [JsonProperty("LOCATION_GE")]
-        public string LOCATIONGE { get; set; }
+        public string LocationGe { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_IT")]
-        public string LOCATIONIT { get; set; }
+        public string LocationIt { get; set; }
 
         [JsonProperty("LOCATION_L1")]
-        public string LOCATIONL1 { get; set; }
+        public string LocationL1 { get; set; }
 
         [JsonProperty("LOCATION_L2")]
-        public string LOCATIONL2 { get; set; }
+        public string LocationL2 { get; set; }
 
         [JsonProperty("LOCATION_L3")]
-        public string LOCATIONL3 { get; set; }
+        public string LocationL3 { get; set; }
 
         [JsonProperty("LOCATION_L4")]
-        public string LOCATIONL4 { get; set; }
+        public string LocationL4 { get; set; }
 
         [JsonProperty("LOCATION_L5")]
-        public string LOCATIONL5 { get; set; }
+        public string LocationL5 { get; set; }
 
         [JsonProperty("LOCATION_L6")]
-        public string LOCATIONL6 { get; set; }
+        public string LocationL6 { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("LOCATION_PO")]
-        public string LOCATIONPO { get; set; }
+        public string LocationPo { get; set; }
 
         [JsonProperty("LOCATION_SP")]
-        public string LOCATIONSP { get; set; }
+        public string LocationSp { get; set; }
 
         [JsonProperty("MANAGER_ID")]
-        public string MANAGERId { get; set; }
+        public string ManagerId { get; set; }
 
         [JsonProperty("PARENT_LOCATION_ID")]
-        public string PARENTLOCATIONId { get; set; }
+        public string ParentLocationId { get; set; }
 
         [JsonProperty("PARENT_LOCATION_PATH")]
-        public string PARENTLOCATIONPATH { get; set; }
-        public string PHONE { get; set; }
+        public string ParentLocationPath { get; set; }
+
+        [JsonProperty("PHONE")]
+        public string Phone { get; set; }
 
         [JsonProperty("REGION_ZONE_ID")]
-        public string REGIONZONEId { get; set; }
+        public string RegionZoneId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
 
         [JsonProperty("START_DATE")]
-        public string STARTDATE { get; set; }
+        public string StartDate { get; set; }
 
         [JsonProperty("STATE_ID")]
-        public string STATEId { get; set; }
+        public string StateId { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSId { get; set; }
+        public string StatusId { get; set; }
 
         [JsonProperty("STREET_ADDRESS_1")]
-        public string STREETADDRESS1 { get; set; }
+        public string StreetAddress1 { get; set; }
 
         [JsonProperty("STREET_ADDRESS_2")]
-        public string STREETADDRESS2 { get; set; }
+        public string StreetAddress2 { get; set; }
 
         [JsonProperty("TIME_ZONE_ID")]
-        public string TIMEZONEId { get; set; }
+        public string TimeZoneId { get; set; }
 
         [JsonProperty("URL_MAP")]
-        public string URLMAP { get; set; }
+        public string UrlMap { get; set; }
 
         [JsonProperty("ZIP_CODE")]
-        public string ZIPCODE { get; set; }
+        public string ZipCode { get; set; }
     }
 
-    public class ViewLocationResponseCOMMENTLOCATIONType
+    public class ViewLocationResponseCommentLocationType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class ViewManufacturerListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -4358,37 +4588,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewManufacturerListResponseRecordsTypeItem
     {
         [JsonProperty("DISCOVERY_NAME")]
-        public string DISCOVERYNAME { get; set; }
-        public string HREF { get; set; }
-        public string MANUFACTURER { get; set; }
+        public string DiscoveryName { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
+
+        [JsonProperty("MANUFACTURER")]
+        public string Manufacturer { get; set; }
 
         [JsonProperty("MANUFACTURER_ID")]
-        public string MANUFACTURERId { get; set; }
+        public string ManufacturerId { get; set; }
     }
 
     public class ViewManufacturerResponse
     {
         [JsonProperty("DISCOVERY_NAME")]
-        public string DISCOVERYNAME { get; set; }
-        public string HREF { get; set; }
+        public string DiscoveryName { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("IS_MANUFACTURER")]
-        public string ISMANUFACTURER { get; set; }
+        public string IsManufacturer { get; set; }
 
         [JsonProperty("IS_PUBLISHER")]
-        public string ISPUBLISHER { get; set; }
-        public string MANUFACTURER { get; set; }
+        public string IsPublisher { get; set; }
+
+        [JsonProperty("MANUFACTURER")]
+        public string Manufacturer { get; set; }
 
         [JsonProperty("MANUFACTURER_ID")]
-        public string MANUFACTURERId { get; set; }
+        public string ManufacturerId { get; set; }
 
         [JsonProperty("WEB_SITE")]
-        public string WEBSITE { get; set; }
+        public string WebSite { get; set; }
     }
 
     public class ViewRequestsIncidentsListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -4403,174 +4642,205 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewRequestsIncidentsListResponseRecordsTypeItem
     {
         [JsonProperty("CATALOG_REQUEST")]
-        public ViewRequestsIncidentsListResponseRecordsTypeItemCATALOGREQUESTType CATALOGREQUEST { get; set; }
-        public ViewRequestsIncidentsListResponseRecordsTypeItemCOMMENTType COMMENT { get; set; }
-        public ViewRequestsIncidentsListResponseRecordsTypeItemDEPARTMENTType DEPARTMENT { get; set; }
-        public string HREF { get; set; }
+        public ViewRequestsIncidentsListResponseRecordsTypeItemCatalogRequestType CatalogRequest { get; set; }
+
+        [JsonProperty("COMMENT")]
+        public ViewRequestsIncidentsListResponseRecordsTypeItemCommentType Comment { get; set; }
+
+        [JsonProperty("DEPARTMENT")]
+        public ViewRequestsIncidentsListResponseRecordsTypeItemDepartmentType Department { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM")]
-        public ViewRequestsIncidentsListResponseRecordsTypeItemKNOWNPROBLEMType KNOWNPROBLEM { get; set; }
-        public ViewRequestsIncidentsListResponseRecordsTypeItemLOCATIONType LOCATION { get; set; }
+        public ViewRequestsIncidentsListResponseRecordsTypeItemKnownProblemType KnownProblem { get; set; }
+
+        [JsonProperty("LOCATION")]
+        public ViewRequestsIncidentsListResponseRecordsTypeItemLocationType Location { get; set; }
 
         [JsonProperty("MAX_RESOLUTION_DATE_UT")]
-        public string MAXRESOLUTIONDATEUT { get; set; }
-        public ViewRequestsIncidentsListResponseRecordsTypeItemRECIPIENTType RECIPIENT { get; set; }
-        public ViewRequestsIncidentsListResponseRecordsTypeItemREQUESTORType REQUESTOR { get; set; }
+        public string MaxResolutionDateUt { get; set; }
+
+        [JsonProperty("RECIPIENT")]
+        public ViewRequestsIncidentsListResponseRecordsTypeItemRecipientType Recipient { get; set; }
+
+        [JsonProperty("REQUESTOR")]
+        public ViewRequestsIncidentsListResponseRecordsTypeItemRequestorType Requestor { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
-        public string RFCNUMBER { get; set; }
-        public ViewRequestsIncidentsListResponseRecordsTypeItemSTATUSType STATUS { get; set; }
+        public string RfcNumber { get; set; }
+
+        [JsonProperty("STATUS")]
+        public ViewRequestsIncidentsListResponseRecordsTypeItemStatusType Status { get; set; }
 
         [JsonProperty("SUBMIT_DATE_UT")]
-        public string SUBMITDATEUT { get; set; }
+        public string SubmitDateUt { get; set; }
     }
 
-    public class ViewRequestsIncidentsListResponseRecordsTypeItemCATALOGREQUESTType
+    public class ViewRequestsIncidentsListResponseRecordsTypeItemCatalogRequestType
     {
         [JsonProperty("CATALOG_REQUEST_PATH")]
-        public string CATALOGREQUESTPATH { get; set; }
-        public string CODE { get; set; }
-        public string HREF { get; set; }
+        public string CatalogRequestPath { get; set; }
+
+        [JsonProperty("CODE")]
+        public string Code { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
+        public string SdCatalogId { get; set; }
 
         [JsonProperty("TITLE_FR")]
-        public string TITLEFR { get; set; }
+        public string TitleFr { get; set; }
     }
 
-    public class ViewRequestsIncidentsListResponseRecordsTypeItemCOMMENTType
+    public class ViewRequestsIncidentsListResponseRecordsTypeItemCommentType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewRequestsIncidentsListResponseRecordsTypeItemDEPARTMENTType
+    public class ViewRequestsIncidentsListResponseRecordsTypeItemDepartmentType
     {
         [JsonProperty("DEPARTMENT_CODE")]
-        public string DEPARTMENTCODE { get; set; }
+        public string DepartmentCode { get; set; }
 
         [JsonProperty("DEPARTMENT_FR")]
-        public string DEPARTMENTFR { get; set; }
+        public string DepartmentFr { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
-        public string DEPARTMENTLABEL { get; set; }
+        public string DepartmentLabel { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
-        public string HREF { get; set; }
+        public string DepartmentPath { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewRequestsIncidentsListResponseRecordsTypeItemKNOWNPROBLEMType
+    public class ViewRequestsIncidentsListResponseRecordsTypeItemKnownProblemType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSId { get; set; }
+        public string KnownProblemsId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM_PATH")]
-        public string KNOWNPROBLEMPATH { get; set; }
+        public string KnownProblemPath { get; set; }
 
         [JsonProperty("KP_NUMBER")]
-        public string KPNUMBER { get; set; }
+        public string KpNumber { get; set; }
 
         [JsonProperty("QUESTION_FR")]
-        public string QUESTIONFR { get; set; }
+        public string QuestionFr { get; set; }
     }
 
-    public class ViewRequestsIncidentsListResponseRecordsTypeItemLOCATIONType
+    public class ViewRequestsIncidentsListResponseRecordsTypeItemLocationType
     {
-        public string CITY { get; set; }
-        public string HREF { get; set; }
+        [JsonProperty("CITY")]
+        public string City { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LOCATION_CODE")]
-        public string LOCATIONCODE { get; set; }
+        public string LocationCode { get; set; }
 
         [JsonProperty("LOCATION_FR")]
-        public string LOCATIONFR { get; set; }
+        public string LocationFr { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
     }
 
-    public class ViewRequestsIncidentsListResponseRecordsTypeItemRECIPIENTType
+    public class ViewRequestsIncidentsListResponseRecordsTypeItemRecipientType
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
-        public string HREF { get; set; }
+        public string EMail { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
-    public class ViewRequestsIncidentsListResponseRecordsTypeItemREQUESTORType
+    public class ViewRequestsIncidentsListResponseRecordsTypeItemRequestorType
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
-        public string HREF { get; set; }
+        public string EMail { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
-    public class ViewRequestsIncidentsListResponseRecordsTypeItemSTATUSType
+    public class ViewRequestsIncidentsListResponseRecordsTypeItemStatusType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("STATUS_FR")]
-        public string STATUSFR { get; set; }
+        public string StatusFr { get; set; }
 
         [JsonProperty("STATUS_GUID")]
-        public string STATUSGUID { get; set; }
+        public string StatusGuid { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSId { get; set; }
+        public string StatusId { get; set; }
     }
 
     public class CreateRequestIncidentResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class CreateRequestIncidentBodyInput
@@ -4594,7 +4864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string CIAssetTag { get; set; }
 
         [JsonProperty("CI_ID")]
-        public string CIId { get; set; }
+        public string CiId { get; set; }
 
         [JsonProperty("CI_Name")]
         public string CIName { get; set; }
@@ -4652,486 +4922,526 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class ViewRequestIncidentResponse
     {
         [JsonProperty("ANALYTICAL_CHARGE_ID")]
-        public string ANALYTICALCHARGEId { get; set; }
+        public string AnalyticalChargeId { get; set; }
 
         [JsonProperty("ANALYTICAL_CHARGE_PATH")]
-        public string ANALYTICALCHARGEPATH { get; set; }
+        public string AnalyticalChargePath { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETId { get; set; }
+        public string AssetId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
-        public string AVAILABLEFIELD1 { get; set; }
+        public string AvailableField1 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_2")]
-        public string AVAILABLEFIELD2 { get; set; }
+        public string AvailableField2 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_3")]
-        public string AVAILABLEFIELD3 { get; set; }
+        public string AvailableField3 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_4")]
-        public string AVAILABLEFIELD4 { get; set; }
+        public string AvailableField4 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_5")]
-        public string AVAILABLEFIELD5 { get; set; }
+        public string AvailableField5 { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_6")]
-        public string AVAILABLEFIELD6 { get; set; }
+        public string AvailableField6 { get; set; }
 
         [JsonProperty("BUDGET_EFFECTIVE")]
-        public string BUDGETEFFECTIVE { get; set; }
+        public string BudgetEffective { get; set; }
 
         [JsonProperty("BUDGET_ID")]
-        public string BUDGETId { get; set; }
+        public string BudgetId { get; set; }
 
         [JsonProperty("BUDGET_PLANNED")]
-        public string BUDGETPLANNED { get; set; }
+        public string BudgetPlanned { get; set; }
 
         [JsonProperty("CAN_BE_DUPLICATED")]
-        public string CANBEDUPLICATED { get; set; }
+        public string CanBeDuplicated { get; set; }
 
         [JsonProperty("CATALOG_REQUEST")]
-        public ViewRequestIncidentResponseCATALOGREQUESTType CATALOGREQUEST { get; set; }
+        public ViewRequestIncidentResponseCatalogRequestType CatalogRequest { get; set; }
 
         [JsonProperty("CI_ID")]
-        public string CIId { get; set; }
+        public string CiId { get; set; }
 
         [JsonProperty("CLICK_2_GET_INSTALL_RESULT")]
-        public string CLICK2GETINSTALLRESULT { get; set; }
-        public ViewRequestIncidentResponseCOMMENTType COMMENT { get; set; }
+        public string Click2GetInstallResult { get; set; }
+
+        [JsonProperty("COMMENT")]
+        public ViewRequestIncidentResponseCommentType Comment { get; set; }
 
         [JsonProperty("CONTINUITY_PLAN_ID")]
-        public string CONTINUITYPLANId { get; set; }
+        public string ContinuityPlanId { get; set; }
 
         [JsonProperty("COST_CENTER_ID")]
-        public string COSTCENTERId { get; set; }
+        public string CostCenterId { get; set; }
 
         [JsonProperty("CREATION_DATE_UT")]
-        public string CREATIONDATEUT { get; set; }
-        public string DELAY { get; set; }
-        public ViewRequestIncidentResponseDEPARTMENTType DEPARTMENT { get; set; }
+        public string CreationDateUt { get; set; }
+
+        [JsonProperty("DELAY")]
+        public string Delay { get; set; }
+
+        [JsonProperty("DEPARTMENT")]
+        public ViewRequestIncidentResponseDepartmentType Department { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
-        public ViewRequestIncidentResponseDESCRIPTIONType DESCRIPTION { get; set; }
+        public string DepartmentPath { get; set; }
+
+        [JsonProperty("DESCRIPTION")]
+        public ViewRequestIncidentResponseDescriptionType Description { get; set; }
 
         [JsonProperty("DYNAMIC_DETAILS")]
-        public ViewRequestIncidentResponseDYNAMICDETAILSType DYNAMICDETAILS { get; set; }
+        public ViewRequestIncidentResponseDynamicDetailsType DynamicDetails { get; set; }
 
         [JsonProperty("EFFECTIVE_CHANGE_DATE_END")]
-        public string EFFECTIVECHANGEDATEEND { get; set; }
+        public string EffectiveChangeDateEnd { get; set; }
 
         [JsonProperty("EFFECTIVE_CHANGE_DATE_START")]
-        public string EFFECTIVECHANGEDATESTART { get; set; }
+        public string EffectiveChangeDateStart { get; set; }
 
         [JsonProperty("END_DATE_UT")]
-        public string ENDDATEUT { get; set; }
+        public string EndDateUt { get; set; }
 
         [JsonProperty("ESTIMATED_NET_PRICE")]
-        public string ESTIMATEDNETPRICE { get; set; }
+        public string EstimatedNetPrice { get; set; }
 
         [JsonProperty("ESTIMATED_PERCENT_COMPLETE")]
-        public string ESTIMATEDPERCENTCOMPLETE { get; set; }
+        public string EstimatedPercentComplete { get; set; }
 
         [JsonProperty("EXPECTED_DATE_UT")]
-        public string EXPECTEDDATEUT { get; set; }
+        public string ExpectedDateUt { get; set; }
 
         [JsonProperty("EXPECTED_DURATION")]
-        public string EXPECTEDDURATION { get; set; }
+        public string ExpectedDuration { get; set; }
 
         [JsonProperty("EXPECTED_END_DATE_UT")]
-        public string EXPECTEDENDDATEUT { get; set; }
+        public string ExpectedEndDateUt { get; set; }
 
         [JsonProperty("EXPECTED_START_DATE_UT")]
-        public string EXPECTEDSTARTDATEUT { get; set; }
+        public string ExpectedStartDateUt { get; set; }
 
         [JsonProperty("EXTERNAL_REFERENCE")]
-        public string EXTERNALREFERENCE { get; set; }
+        public string ExternalReference { get; set; }
 
         [JsonProperty("FIRST_CALL_RESOLUTION")]
-        public string FIRSTCALLRESOLUTION { get; set; }
+        public string FirstCallResolution { get; set; }
 
         [JsonProperty("HOUR_PER_DAY")]
-        public string HOURPERDAY { get; set; }
-        public string HREF { get; set; }
+        public string HourPerDay { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("IMPACT_ID")]
-        public string IMPACTId { get; set; }
+        public string ImpactId { get; set; }
 
         [JsonProperty("IMPUTATION_DATE")]
-        public string IMPUTATIONDATE { get; set; }
+        public string ImputationDate { get; set; }
 
         [JsonProperty("INITIAL_SD_CATALOG_ID")]
-        public string INITIALSDCATALOGId { get; set; }
+        public string InitialSdCatalogId { get; set; }
 
         [JsonProperty("INITIAL_SD_CATALOG_PATH")]
-        public string INITIALSDCATALOGPATH { get; set; }
+        public string InitialSdCatalogPath { get; set; }
 
         [JsonProperty("IS_FINANCIAL_COMPTED")]
-        public string ISFINANCIALCOMPTED { get; set; }
+        public string IsFinancialCompted { get; set; }
 
         [JsonProperty("IS_MAJOR_INCIDENT")]
-        public string ISMAJORINCIdENT { get; set; }
+        public string IsMajorIncident { get; set; }
 
         [JsonProperty("IS_TEMPLATE")]
-        public string ISTEMPLATE { get; set; }
+        public string IsTemplate { get; set; }
 
         [JsonProperty("KBASE_ID")]
-        public string KBASEId { get; set; }
+        public string KbaseId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM")]
-        public ViewRequestIncidentResponseKNOWNPROBLEMType KNOWNPROBLEM { get; set; }
+        public ViewRequestIncidentResponseKnownProblemType KnownProblem { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSId { get; set; }
+        public string KnownProblemsId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_PATH")]
-        public string KNOWNPROBLEMSPATH { get; set; }
+        public string KnownProblemsPath { get; set; }
 
         [JsonProperty("LAST_DONE_BY_ID")]
-        public string LASTDONEBYId { get; set; }
+        public string LastDoneById { get; set; }
 
         [JsonProperty("LAST_GROUP_ID")]
-        public string LASTGROUPId { get; set; }
+        public string LastGroupId { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
-        public string LASTUPDATE { get; set; }
-        public ViewRequestIncidentResponseLOCATIONType LOCATION { get; set; }
+        public string LastUpdate { get; set; }
+
+        [JsonProperty("LOCATION")]
+        public ViewRequestIncidentResponseLocationType Location { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("MARK_1")]
-        public string MARK1 { get; set; }
+        public string Mark1 { get; set; }
 
         [JsonProperty("MARK_2")]
-        public string MARK2 { get; set; }
+        public string Mark2 { get; set; }
 
         [JsonProperty("MAX_RESOLUTION_DATE_UT")]
-        public string MAXRESOLUTIONDATEUT { get; set; }
+        public string MaxResolutionDateUt { get; set; }
 
         [JsonProperty("MS_PROJECT_IMPORT_VALIDATION_WAITING")]
-        public string MSPROJECTIMPORTVALIdATIONWAITING { get; set; }
+        public string MSProjectImportValidationWaiting { get; set; }
 
         [JsonProperty("NET_PRICE")]
-        public string NETPRICE { get; set; }
+        public string NetPrice { get; set; }
 
         [JsonProperty("NET_PRICE_CUR_ID")]
-        public string NETPRICECURId { get; set; }
+        public string NetPriceCurId { get; set; }
 
         [JsonProperty("NEWS_ID")]
-        public string NEWSId { get; set; }
+        public string NewsId { get; set; }
 
         [JsonProperty("NOT_DEDUCED_CALL")]
-        public string NOTDEDUCEDCALL { get; set; }
+        public string NotDeducedCall { get; set; }
 
         [JsonProperty("ORDER_ID")]
-        public string ORDERId { get; set; }
+        public string OrderId { get; set; }
 
         [JsonProperty("ORDER_NET_PRICE")]
-        public string ORDERNETPRICE { get; set; }
+        public string OrderNetPrice { get; set; }
 
         [JsonProperty("ORIGIN_TOOL_ID")]
-        public string ORIGINTOOLId { get; set; }
+        public string OriginToolId { get; set; }
 
         [JsonProperty("OWNER_ID")]
-        public string OWNERId { get; set; }
+        public string OwnerId { get; set; }
 
         [JsonProperty("OWNING_GROUP_ID")]
-        public string OWNINGGROUPId { get; set; }
+        public string OwningGroupId { get; set; }
 
         [JsonProperty("PARENT_REQUEST_ID")]
-        public string PARENTREQUESTId { get; set; }
+        public string ParentRequestId { get; set; }
 
         [JsonProperty("PLANNED_CHANGE_DATE_END")]
-        public string PLANNEDCHANGEDATEEND { get; set; }
+        public string PlannedChangeDateEnd { get; set; }
 
         [JsonProperty("PLANNED_CHANGE_DATE_START")]
-        public string PLANNEDCHANGEDATESTART { get; set; }
+        public string PlannedChangeDateStart { get; set; }
 
         [JsonProperty("PM_STATUS_ID")]
-        public string PMSTATUSId { get; set; }
+        public string PmStatusId { get; set; }
 
         [JsonProperty("PROJECT_ID")]
-        public string PROJECTId { get; set; }
+        public string ProjectId { get; set; }
 
         [JsonProperty("PROJECT_NAME")]
-        public string PROJECTNAME { get; set; }
+        public string ProjectName { get; set; }
 
         [JsonProperty("PROJECT_START_DATE_UT")]
-        public string PROJECTSTARTDATEUT { get; set; }
-        public string QTY { get; set; }
-        public ViewRequestIncidentResponseRECIPIENTType RECIPIENT { get; set; }
+        public string ProjectStartDateUt { get; set; }
+
+        [JsonProperty("QTY")]
+        public string Qty { get; set; }
+
+        [JsonProperty("RECIPIENT")]
+        public ViewRequestIncidentResponseRecipientType Recipient { get; set; }
 
         [JsonProperty("RECIPIENT_ID")]
-        public string RECIPIENTId { get; set; }
+        public string RecipientId { get; set; }
 
         [JsonProperty("RELEASE_ID")]
-        public string RELEASEId { get; set; }
+        public string ReleaseId { get; set; }
 
         [JsonProperty("RENTAL_NET_PRICE")]
-        public string RENTALNETPRICE { get; set; }
+        public string RentalNetPrice { get; set; }
 
         [JsonProperty("RENTAL_NET_PRICE_CUR_ID")]
-        public string RENTALNETPRICECURId { get; set; }
+        public string RentalNetPriceCurId { get; set; }
 
         [JsonProperty("REQUALIFICATION_PROCESSING")]
-        public string REQUALIFICATIONPROCESSING { get; set; }
+        public string RequalificationProcessing { get; set; }
 
         [JsonProperty("REQUESTED_CHANGE_DATE_END")]
-        public string REQUESTEDCHANGEDATEEND { get; set; }
+        public string RequestedChangeDateEnd { get; set; }
 
         [JsonProperty("REQUESTED_CHANGE_DATE_START")]
-        public string REQUESTEDCHANGEDATESTART { get; set; }
-        public ViewRequestIncidentResponseREQUESTORType REQUESTOR { get; set; }
+        public string RequestedChangeDateStart { get; set; }
+
+        [JsonProperty("REQUESTOR")]
+        public ViewRequestIncidentResponseRequestorType Requestor { get; set; }
 
         [JsonProperty("REQUESTOR_FEEDBACK")]
-        public string REQUESTORFEEDBACK { get; set; }
+        public string RequestorFeedback { get; set; }
 
         [JsonProperty("REQUESTOR_ID")]
-        public string REQUESTORId { get; set; }
+        public string RequestorId { get; set; }
 
         [JsonProperty("REQUESTOR_IP_ADDRESS")]
-        public string REQUESTORIPADDRESS { get; set; }
+        public string RequestorIPAddress { get; set; }
 
         [JsonProperty("REQUESTOR_PHONE")]
-        public string REQUESTORPHONE { get; set; }
+        public string RequestorPhone { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTId { get; set; }
+        public string RequestId { get; set; }
 
         [JsonProperty("REQUEST_ORIGIN_ID")]
-        public string REQUESTORIGINId { get; set; }
+        public string RequestOriginId { get; set; }
 
         [JsonProperty("REQUEST_PROJECT_ID")]
-        public string REQUESTPROJECTId { get; set; }
+        public string RequestProjectId { get; set; }
 
         [JsonProperty("REQUIRED_DOWNTIME")]
-        public string REQUIREDDOWNTIME { get; set; }
+        public string RequiredDowntime { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
-        public string RFCNUMBER { get; set; }
+        public string RfcNumber { get; set; }
 
         [JsonProperty("RISK_AMOUNT")]
-        public string RISKAMOUNT { get; set; }
+        public string RiskAmount { get; set; }
 
         [JsonProperty("RISK_DESCRIPTION")]
-        public ViewRequestIncidentResponseRISKDESCRIPTIONType RISKDESCRIPTION { get; set; }
+        public ViewRequestIncidentResponseRiskDescriptionType RiskDescription { get; set; }
 
         [JsonProperty("RISK_LEVEL_ID")]
-        public string RISKLEVELId { get; set; }
+        public string RiskLevelId { get; set; }
 
         [JsonProperty("ROOT_CAUSE_ID")]
-        public string ROOTCAUSEId { get; set; }
+        public string RootCauseId { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
+        public string SdCatalogId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
-        public string SDCATALOGPATH { get; set; }
+        public string SdCatalogPath { get; set; }
 
         [JsonProperty("SEVERITY_ID")]
-        public string SEVERITYId { get; set; }
+        public string SeverityId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
-        public ViewRequestIncidentResponseSTATUSType STATUS { get; set; }
+        public string SlaId { get; set; }
+
+        [JsonProperty("STATUS")]
+        public ViewRequestIncidentResponseStatusType Status { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSId { get; set; }
+        public string StatusId { get; set; }
 
         [JsonProperty("SUBMITTED_BY")]
-        public string SUBMITTEDBY { get; set; }
+        public string SubmittedBy { get; set; }
 
         [JsonProperty("SUBMIT_DATE_UT")]
-        public string SUBMITDATEUT { get; set; }
+        public string SubmitDateUt { get; set; }
 
         [JsonProperty("SYSTEM_ID")]
-        public string SYSTEMId { get; set; }
+        public string SystemId { get; set; }
 
         [JsonProperty("TIME_USED_TO_DELIVER_FEEDBACK")]
-        public string TIMEUSEDTODELIVERFEEDBACK { get; set; }
+        public string TimeUsedToDeliverFeedback { get; set; }
 
         [JsonProperty("TIME_USED_TO_SOLVE_REQUEST")]
-        public string TIMEUSEDTOSOLVEREQUEST { get; set; }
+        public string TimeUsedToSolveRequest { get; set; }
 
         [JsonProperty("URGENCY_ID")]
-        public string URGENCYId { get; set; }
+        public string UrgencyId { get; set; }
 
         [JsonProperty("VALIDATION_LEVEL_REQUIRED")]
-        public string VALIdATIONLEVELREQUIRED { get; set; }
+        public string ValidationLevelRequired { get; set; }
 
         [JsonProperty("WAVE_ID_TARGET")]
-        public string WAVEIdTARGET { get; set; }
+        public string WaveIdTarget { get; set; }
     }
 
-    public class ViewRequestIncidentResponseCATALOGREQUESTType
+    public class ViewRequestIncidentResponseCatalogRequestType
     {
         [JsonProperty("CATALOG_REQUEST_PATH")]
-        public string CATALOGREQUESTPATH { get; set; }
-        public string CODE { get; set; }
-        public string HREF { get; set; }
+        public string CatalogRequestPath { get; set; }
+
+        [JsonProperty("CODE")]
+        public string Code { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGId { get; set; }
+        public string SdCatalogId { get; set; }
 
         [JsonProperty("TITLE_FR")]
-        public string TITLEFR { get; set; }
+        public string TitleFr { get; set; }
     }
 
-    public class ViewRequestIncidentResponseCOMMENTType
+    public class ViewRequestIncidentResponseCommentType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewRequestIncidentResponseDEPARTMENTType
+    public class ViewRequestIncidentResponseDepartmentType
     {
         [JsonProperty("DEPARTMENT_CODE")]
-        public string DEPARTMENTCODE { get; set; }
+        public string DepartmentCode { get; set; }
 
         [JsonProperty("DEPARTMENT_FR")]
-        public string DEPARTMENTFR { get; set; }
+        public string DepartmentFr { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTId { get; set; }
+        public string DepartmentId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
-        public string DEPARTMENTLABEL { get; set; }
+        public string DepartmentLabel { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
-        public string HREF { get; set; }
+        public string DepartmentPath { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewRequestIncidentResponseDESCRIPTIONType
+    public class ViewRequestIncidentResponseDescriptionType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewRequestIncidentResponseDYNAMICDETAILSType
+    public class ViewRequestIncidentResponseDynamicDetailsType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewRequestIncidentResponseKNOWNPROBLEMType
+    public class ViewRequestIncidentResponseKnownProblemType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSId { get; set; }
+        public string KnownProblemsId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM_PATH")]
-        public string KNOWNPROBLEMPATH { get; set; }
+        public string KnownProblemPath { get; set; }
 
         [JsonProperty("KP_NUMBER")]
-        public string KPNUMBER { get; set; }
+        public string KpNumber { get; set; }
 
         [JsonProperty("QUESTION_FR")]
-        public string QUESTIONFR { get; set; }
+        public string QuestionFr { get; set; }
     }
 
-    public class ViewRequestIncidentResponseLOCATIONType
+    public class ViewRequestIncidentResponseLocationType
     {
-        public string CITY { get; set; }
-        public string HREF { get; set; }
+        [JsonProperty("CITY")]
+        public string City { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LOCATION_CODE")]
-        public string LOCATIONCODE { get; set; }
+        public string LocationCode { get; set; }
 
         [JsonProperty("LOCATION_FR")]
-        public string LOCATIONFR { get; set; }
+        public string LocationFr { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONId { get; set; }
+        public string LocationId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
     }
 
-    public class ViewRequestIncidentResponseRECIPIENTType
+    public class ViewRequestIncidentResponseRecipientType
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
-        public string HREF { get; set; }
+        public string EMail { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
-    public class ViewRequestIncidentResponseREQUESTORType
+    public class ViewRequestIncidentResponseRequestorType
     {
         [JsonProperty("BEGIN_OF_CONTRACT")]
-        public string BEGINOFCONTRACT { get; set; }
+        public string BeginOfContract { get; set; }
 
         [JsonProperty("CELLULAR_NUMBER")]
-        public string CELLULARNUMBER { get; set; }
+        public string CellularNumber { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
-        public string DEPARTMENTPATH { get; set; }
+        public string DepartmentPath { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEId { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
-        public string HREF { get; set; }
+        public string EMail { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("LAST_NAME")]
-        public string LASTNAME { get; set; }
+        public string LastName { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
-        public string LOCATIONPATH { get; set; }
+        public string LocationPath { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
-    public class ViewRequestIncidentResponseRISKDESCRIPTIONType
+    public class ViewRequestIncidentResponseRiskDescriptionType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
-    public class ViewRequestIncidentResponseSTATUSType
+    public class ViewRequestIncidentResponseStatusType
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("STATUS_FR")]
-        public string STATUSFR { get; set; }
+        public string StatusFr { get; set; }
 
         [JsonProperty("STATUS_GUID")]
-        public string STATUSGUID { get; set; }
+        public string StatusGuid { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSId { get; set; }
+        public string StatusId { get; set; }
     }
 
     public class CloseRequestIncidentResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class CloseRequestIncidentBodyInput
@@ -5143,7 +5453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class BodyInputClosedTypeItem
     {
         [JsonProperty("catalog_GUID")]
-        public string CatalogGUID { get; set; }
+        public string CatalogGuid { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -5155,12 +5465,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string EndDate { get; set; }
 
         [JsonProperty("status_GUID")]
-        public string StatusGUID { get; set; }
+        public string StatusGuid { get; set; }
     }
 
     public class UpdateRequestIncidentResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class UpdateRequestIncidentBodyInput
@@ -5356,25 +5667,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class ViewRequestIncidentCommentResponse
     {
-        public string COMMENT { get; set; }
-        public string HREF { get; set; }
+        [JsonProperty("COMMENT")]
+        public string Comment { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("PARENT_HREF")]
-        public string PARENTHREF { get; set; }
+        public string ParentHref { get; set; }
     }
 
     public class GetRequestIncidentDocumentListResponse
     {
         public JToken[] Documents { get; set; }
-        public string HREF { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("PARENT_HREF")]
-        public string PARENTHREF { get; set; }
+        public string ParentHref { get; set; }
     }
 
     public class UploadAndAttachADocumentToARequestIncidentResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class UploadAndAttachADocumentToARequestIncidentBodyInput
@@ -5390,22 +5707,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class BodyInputDocumentsTypeItem
     {
-        public BodyInputDocumentsTypeItem(string filedata, string filename)
+        public BodyInputDocumentsTypeItem(string filedata, string fileName)
         {
             this.Filedata = filedata;
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
         [JsonProperty("filedata", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filedata { get; set; }
 
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
     }
 
     public class RestartRequestIncidentResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class RestartRequestIncidentBodyInput
@@ -5418,7 +5736,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class SuspendRequestIncidentResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
     }
 
     public class SuspendRequestIncidentBodyInput
@@ -5487,7 +5806,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class ViewSlasListResponse
     {
-        public string HREF { get; set; }
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("record_count")]
         public string RecordCount { get; set; }
@@ -5501,77 +5821,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
 
     public class ViewSlasListResponseRecordsTypeItem
     {
-        public string DELAY { get; set; }
-        public string HREF { get; set; }
+        [JsonProperty("DELAY")]
+        public string Delay { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("NAME_FR")]
-        public string NAMEFR { get; set; }
+        public string NameFr { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
     }
 
     public class ViewSlaResponse
     {
-        public string DELAY { get; set; }
+        [JsonProperty("DELAY")]
+        public string Delay { get; set; }
 
         [JsonProperty("HOLIDAY_LIST_ID")]
-        public string HOLIdAYLISTId { get; set; }
-        public string HREF { get; set; }
+        public string HolidayListId { get; set; }
+
+        [JsonProperty("HREF")]
+        public string Href { get; set; }
 
         [JsonProperty("NAME_EN")]
-        public string NAMEEN { get; set; }
+        public string NameEn { get; set; }
 
         [JsonProperty("NAME_FR")]
-        public string NAMEFR { get; set; }
+        public string NameFr { get; set; }
 
         [JsonProperty("NAME_GE")]
-        public string NAMEGE { get; set; }
+        public string NameGe { get; set; }
 
         [JsonProperty("NAME_IT")]
-        public string NAMEIT { get; set; }
+        public string NameIt { get; set; }
 
         [JsonProperty("NAME_L1")]
-        public string NAMEL1 { get; set; }
+        public string NameL1 { get; set; }
 
         [JsonProperty("NAME_L2")]
-        public string NAMEL2 { get; set; }
+        public string NameL2 { get; set; }
 
         [JsonProperty("NAME_L3")]
-        public string NAMEL3 { get; set; }
+        public string NameL3 { get; set; }
 
         [JsonProperty("NAME_L4")]
-        public string NAMEL4 { get; set; }
+        public string NameL4 { get; set; }
 
         [JsonProperty("NAME_L5")]
-        public string NAMEL5 { get; set; }
+        public string NameL5 { get; set; }
 
         [JsonProperty("NAME_L6")]
-        public string NAMEL6 { get; set; }
+        public string NameL6 { get; set; }
 
         [JsonProperty("NAME_PO")]
-        public string NAMEPO { get; set; }
+        public string NamePo { get; set; }
 
         [JsonProperty("NAME_SP")]
-        public string NAMESP { get; set; }
+        public string NameSp { get; set; }
 
         [JsonProperty("NEXT_BUSINESS_DAY")]
-        public string NEXTBUSINESSDAY { get; set; }
+        public string NextBusinessDay { get; set; }
 
         [JsonProperty("SLA_GUID")]
-        public string SLAGUID { get; set; }
+        public string SlaGuid { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAId { get; set; }
+        public string SlaId { get; set; }
 
         [JsonProperty("TIME_LIMIT")]
-        public string TIMELIMIT { get; set; }
+        public string TimeLimit { get; set; }
 
         [JsonProperty("TIME_TARGET")]
-        public string TIMETARGET { get; set; }
+        public string TimeTarget { get; set; }
 
         [JsonProperty("WORKING_HOURS_ID")]
-        public string WORKINGHOURSId { get; set; }
+        public string WorkingHoursId { get; set; }
     }
 }
 

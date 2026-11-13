@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     public class BlackbaudlistsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<AppendIDsToListBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIdsToList(Expression<Func<AppendIdsToListBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIDs(Expression<Func<CreateListFromIDsBodyInput>> body)
+        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIds(Expression<Func<CreateListFromIdsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListApiCreatedList, ApiConnectionActionConfiguration>(() =>
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     {
     }
 
-    public class AppendIDsToListBodyInput
+    public class AppendIdsToListBodyInput
     {
-        public AppendIDsToListBodyInput(BodyInputListTypeType listType, string list, string[] idS)
+        public AppendIdsToListBodyInput(BodyInputListTypeType listType, string list, string[] idS)
         {
             this.ListType = listType;
             this.List = list;
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         public string Id { get; set; }
     }
 
-    public class CreateListFromIDsBodyInput
+    public class CreateListFromIdsBodyInput
     {
-        public CreateListFromIDsBodyInput(string name, string description, BodyInputListTypeType listType, BodyInputPermissionsType permissions, string[] idS)
+        public CreateListFromIdsBodyInput(string name, string description, BodyInputListTypeType listType, BodyInputPermissionsType permissions, string[] idS)
         {
             this.Name = name;
             this.Description = description;

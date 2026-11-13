@@ -250,6 +250,7 @@ The authoring contract is the C# expression-tree subset, including expression-bo
   - `Services/` – Workflow initialization and supporting services.
   - `Triggers/` – Typed definitions for Logic Apps triggers.
   - `Utils/` – Shared utilities such as connector types, converters, and workflow functions.
+- **docs/** – Migration notes, including [generated connector naming](docs/naming-migration.md).
 - **tests/** – Unit and worker test projects for the SDK.
 - **eng/** – Shared MSBuild engineering, versioning, and release infrastructure.
 - **.github/** – Repository automation and policies.

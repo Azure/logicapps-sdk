@@ -41,12 +41,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetImpactResponse, ApiConnectionActionConfiguration> GetImpact(Expression<Func<string>> username)
+        public IBodyWorkflowAction<GetImpactResponse, ApiConnectionActionConfiguration> GetImpact(Expression<Func<string>> userName)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             return new DeferredBodyAction<GetImpactResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/impact", __workflow_username.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/impact", __workflow_userName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetImpactResponse>(callPayload);
@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetTreesResponse, ApiConnectionActionConfiguration> GetTrees(Expression<Func<string>> username)
+        public IBodyWorkflowAction<GetTreesResponse, ApiConnectionActionConfiguration> GetTrees(Expression<Func<string>> userName)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             return new DeferredBodyAction<GetTreesResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/trees", __workflow_username.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/trees", __workflow_userName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTreesResponse>(callPayload);
@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetOffsetResponse, ApiConnectionActionConfiguration> GetOffset(Expression<Func<string>> username)
+        public IBodyWorkflowAction<GetOffsetResponse, ApiConnectionActionConfiguration> GetOffset(Expression<Func<string>> userName)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             return new DeferredBodyAction<GetOffsetResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/carbon-offset", __workflow_username.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/carbon-offset", __workflow_userName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetOffsetResponse>(callPayload);

@@ -179,10 +179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<GetFileFromUrlResponse, ApiConnectionActionConfiguration> GetFileFromUrl(Expression<Func<string>> url, Expression<Func<string>> filename = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<GetFileFromUrlResponse, ApiConnectionActionConfiguration> GetFileFromUrl(Expression<Func<string>> url, Expression<Func<string>> fileName = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<GetFileFromUrlResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -191,8 +191,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
-                if (__workflow_filename != null)
-                    callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 if (__workflow_contentType != null)
                     callPayload.Queries["contentType"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction<GetFileFromUrlResponse>(callPayload);
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public int AutoClassificationConfidenceLevel { get; set; }
 
         [JsonProperty("RecordAutoRenderToPDFOnSave")]
-        public bool AutoRenderToPDFOnSave { get; set; }
+        public bool AutoRenderToPdfOnSave { get; set; }
 
         [JsonProperty("RecordBlueprintTitle")]
         public string BluePrintTitle { get; set; }
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string GeneratedTitle { get; set; }
 
         [JsonProperty("RecordGpsLocation")]
-        public string GPSLocation { get; set; }
+        public string GpsLocation { get; set; }
 
         [JsonProperty("RecordHomeLocation")]
         public int HomeLocation { get; set; }
@@ -983,8 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         CheckinPlace,
         CheckinStyle,
         ClassificationOnlyRecordType,
-        [EnumMember(Value = "ClassificationSapBusinessObject")]
-        ClassificationSAPBusinessObject,
+        ClassificationSapBusinessObject,
         Communication,
         CommunicationDetail,
         Consignment,
@@ -1032,8 +1031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         RecordRelationship,
         RecordRendition,
         RecordRevision,
-        [EnumMember(Value = "RecordSapComponent")]
-        RecordSAPComponent,
+        RecordSapComponent,
         RecordType,
         RecordTypeAutoSubFolder,
         Report,

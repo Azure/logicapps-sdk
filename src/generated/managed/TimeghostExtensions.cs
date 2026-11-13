@@ -2938,8 +2938,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeghost
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputTimeZoneType
     {
-        KEEP,
-        ADJUST
+        [EnumMember(Value = "KEEP")]
+        Keep,
+        [EnumMember(Value = "ADJUST")]
+        Adjust
     }
 
     public class ClientChangesBodyInput

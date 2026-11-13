@@ -182,7 +182,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
 
     public class SendFileResponse
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
 
         [JsonProperty("result")]
         public string Result { get; set; }
@@ -194,7 +195,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         public string FileName { get; set; }
         public string Title { get; set; }
         public string CreatedDate { get; set; }
-        public string EDOCType { get; set; }
+
+        [JsonProperty("EDOCType")]
+        public string EdocType { get; set; }
         public BodyInputExtraFieldsTypeItem[] ExtraFields { get; set; }
     }
 

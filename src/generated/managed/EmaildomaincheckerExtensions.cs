@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EndpointInput
     {
-        RapidAPI,
+        [EnumMember(Value = "RapidAPI")]
+        RapidApi,
         Blobr
     }
 }

@@ -13,14 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
     public class ForemipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
-        public IBodyWorkflowAction<Articles200Item[], ApiConnectionActionConfiguration> GetArticles(Expression<Func<int>> page, Expression<Func<int>> perPage, Expression<Func<string>> tag, Expression<Func<string>> tags = null, Expression<Func<string>> tagsExclude = null, Expression<Func<string>> username = null, Expression<Func<string>> state = null, Expression<Func<string>> top = null, Expression<Func<string>> collectionId = null)
+        public IBodyWorkflowAction<Articles200Item[], ApiConnectionActionConfiguration> GetArticles(Expression<Func<int>> page, Expression<Func<int>> perPage, Expression<Func<string>> tag, Expression<Func<string>> tags = null, Expression<Func<string>> tagsExclude = null, Expression<Func<string>> userName = null, Expression<Func<string>> state = null, Expression<Func<string>> top = null, Expression<Func<string>> collectionId = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: true);
             var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: true);
             var __workflow_tags = WorkflowExpression.Compile(tags, nameof(tags), required: false);
             var __workflow_tagsExclude = WorkflowExpression.Compile(tagsExclude, nameof(tagsExclude), required: false);
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: false);
@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
                     callPayload.Queries["tags"] = ExpressionConverter.Convert(__workflow_tags);
                 if (__workflow_tagsExclude != null)
                     callPayload.Queries["tags_exclude"] = ExpressionConverter.Convert(__workflow_tagsExclude);
-                if (__workflow_username != null)
-                    callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                if (__workflow_userName != null)
+                    callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Queries["state"] = Convert.ToString("fresh");
                 if (__workflow_state != null)
                     callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
@@ -92,13 +92,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
         public string ArticlePublishedAt { get; set; }
 
         [JsonProperty("slug")]
-        public string ArticleSLUG { get; set; }
+        public string ArticleSlug { get; set; }
 
         [JsonProperty("path")]
         public string ArticlePath { get; set; }
 
         [JsonProperty("url")]
-        public string ArticleURL { get; set; }
+        public string ArticleUrl { get; set; }
 
         [JsonProperty("comments_count")]
         public int ArticleCommentsCount { get; set; }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
         public string[] ArticleTagList { get; set; }
 
         [JsonProperty("canonical_url")]
-        public string ArticleCanonicalURL { get; set; }
+        public string ArticleCanonicalUrl { get; set; }
 
         [JsonProperty("reading_time_minutes")]
         public int ArticleReadingTimeInMinutes { get; set; }
@@ -142,20 +142,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
         [JsonProperty("name")]
         public string UserName { get; set; }
 
-        [JsonProperty("user_id")]
+        [JsonProperty("id")]
         public int UserId { get; set; }
 
         [JsonProperty("username")]
-        public string UserUsername { get; set; }
+        public string UserUserName { get; set; }
+
+        [JsonProperty("user_id")]
+        public int UserId2 { get; set; }
 
         [JsonProperty("twitter_username")]
-        public string UserTwitterUsername { get; set; }
+        public string UserTwitterUserName { get; set; }
 
         [JsonProperty("github_username")]
-        public string UserGitHubUsername { get; set; }
+        public string UserGitHubUserName { get; set; }
 
         [JsonProperty("website_url")]
-        public string WebsiteURL { get; set; }
+        public string WebsiteUrl { get; set; }
 
         [JsonProperty("profile_image")]
         public string OrganizationProfileImage { get; set; }
@@ -170,10 +173,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
         public string OrganizationName { get; set; }
 
         [JsonProperty("username")]
-        public string OrganizationUsername { get; set; }
+        public string OrganizationUserName { get; set; }
 
         [JsonProperty("slug")]
-        public string OrganizationSLUG { get; set; }
+        public string OrganizationSlug { get; set; }
 
         [JsonProperty("profile_image")]
         public string OrganizationProfileImage { get; set; }

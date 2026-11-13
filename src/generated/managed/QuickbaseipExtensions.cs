@@ -456,18 +456,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<GetTempTokenDBIdResponse, ApiConnectionActionConfiguration> GetTempTokenDBId(Expression<Func<string>> dbid, Expression<Func<string>> qBAppToken = null)
+        public IBodyWorkflowAction<GetTempTokenDbidResponse, ApiConnectionActionConfiguration> GetTempTokenDbid(Expression<Func<string>> dbid, Expression<Func<string>> qbAppToken = null)
         {
             var __workflow_dbid = WorkflowExpression.Compile(dbid, nameof(dbid), required: true);
-            var __workflow_qBAppToken = WorkflowExpression.Compile(qBAppToken, nameof(qBAppToken), required: false);
-            return new DeferredBodyAction<GetTempTokenDBIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_qbAppToken = WorkflowExpression.Compile(qbAppToken, nameof(qbAppToken), required: false);
+            return new DeferredBodyAction<GetTempTokenDbidResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/auth/temporary/{0}", __workflow_dbid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_qBAppToken != null)
-                    callPayload.Headers["QB-App-Token"] = ExpressionConverter.Convert(__workflow_qBAppToken);
-                return new ApiConnectionAction<GetTempTokenDBIdResponse>(callPayload);
+                if (__workflow_qbAppToken != null)
+                    callPayload.Headers["QB-App-Token"] = ExpressionConverter.Convert(__workflow_qbAppToken);
+                return new ApiConnectionAction<GetTempTokenDbidResponse>(callPayload);
             });
         }
 
@@ -928,8 +928,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DefaultSortOrder
     {
-        ASC,
-        DESC
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc
     }
 
     public class CreateTableGeneratedInput
@@ -1223,17 +1225,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AccumulationType
     {
-        AVG,
-        SUM,
-        MAX,
-        MIN,
+        [EnumMember(Value = "AVG")]
+        Avg,
+        [EnumMember(Value = "SUM")]
+        Sum,
+        [EnumMember(Value = "MAX")]
+        Max,
+        [EnumMember(Value = "MIN")]
+        Min,
         [EnumMember(Value = "STD-DEV")]
-        STDDEV,
-        COUNT,
+        StdDev,
+        [EnumMember(Value = "COUNT")]
+        Count,
         [EnumMember(Value = "COMBINED-TEXT")]
-        COMBINEDTEXT,
+        CombinedText,
         [EnumMember(Value = "DISTINCT-COUNT")]
-        DISTINCTCOUNT
+        DistinctCount
     }
 
     public class ForeignKeyField1
@@ -1519,7 +1526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public bool AppendOnly { get; set; }
 
         [JsonProperty("allowHTML")]
-        public bool AllowHTML { get; set; }
+        public bool AllowHtml { get; set; }
 
         [JsonProperty("sortAsGiven")]
         public bool SortAsGiven { get; set; }
@@ -1836,7 +1843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public bool DisplayAsLink { get; set; }
 
         [JsonProperty("allowHTML")]
-        public bool AllowHTML { get; set; }
+        public bool AllowHtml { get; set; }
 
         [JsonProperty("lookupReferenceFieldId")]
         public int LookupReferenceFieldId { get; set; }
@@ -1845,17 +1852,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SummaryFunction
     {
-        AVG,
-        SUM,
-        MAX,
-        MIN,
+        [EnumMember(Value = "AVG")]
+        Avg,
+        [EnumMember(Value = "SUM")]
+        Sum,
+        [EnumMember(Value = "MAX")]
+        Max,
+        [EnumMember(Value = "MIN")]
+        Min,
         [EnumMember(Value = "STD-DEV")]
-        STDDEV,
-        COUNT,
+        StdDev,
+        [EnumMember(Value = "COUNT")]
+        Count,
         [EnumMember(Value = "COMBINED-TEXT")]
-        COMBINEDTEXT,
+        CombinedText,
         [EnumMember(Value = "DISTINCT-COUNT")]
-        DISTINCTCOUNT
+        DistinctCount
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2502,17 +2514,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SummaryFunction3
     {
-        AVG,
-        SUM,
-        MAX,
-        MIN,
+        [EnumMember(Value = "AVG")]
+        Avg,
+        [EnumMember(Value = "SUM")]
+        Sum,
+        [EnumMember(Value = "MAX")]
+        Max,
+        [EnumMember(Value = "MIN")]
+        Min,
         [EnumMember(Value = "STD-DEV")]
-        STDDEV,
-        COUNT,
+        StdDev,
+        [EnumMember(Value = "COUNT")]
+        Count,
         [EnumMember(Value = "COMBINED-TEXT")]
-        COMBINEDTEXT,
+        CombinedText,
         [EnumMember(Value = "DISTINCT-COUNT")]
-        DISTINCTCOUNT
+        DistinctCount
     }
 
     public class GetFieldsUsageResponseItem
@@ -2916,13 +2933,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Grouping
     {
-        ASC,
-        DESC,
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc,
         [EnumMember(Value = "equal-values")]
         EqualValues
     }
 
-    public class GetTempTokenDBIdResponse
+    public class GetTempTokenDbidResponse
     {
         [JsonProperty("temporaryAuthorization")]
         public string TemporaryAuthorization { get; set; }

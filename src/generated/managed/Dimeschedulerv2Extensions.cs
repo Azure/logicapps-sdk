@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
         public string Name { get; set; }
 
         [JsonProperty("notificationURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Resource { get; set; } = "Appointments";
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
         public string SourceApp { get; set; }
 
         [JsonProperty("notificationURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Resource { get; set; } = "Appointments";
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
         public string SourceApp { get; set; }
 
         [JsonProperty("notificationURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Resource { get; set; } = "Appointments";

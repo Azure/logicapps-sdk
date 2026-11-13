@@ -39,15 +39,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plivo")]
-        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SMSRequestBodyInput>> sMSRequestBody)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SmsRequestBodyInput>> smsRequestBody)
         {
-            var __workflow_sMSRequestBody = WorkflowExpression.Compile(sMSRequestBody, nameof(sMSRequestBody), required: true);
+            var __workflow_smsRequestBody = WorkflowExpression.Compile(smsRequestBody, nameof(smsRequestBody), required: true);
             return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Account/{0}/Message/", WorkflowExpression.Literal("auth_id_value").WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sMSRequestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_smsRequestBody);
                 return new ApiConnectionAction<SendSmsResponse>(callPayload);
             });
         }
@@ -73,22 +73,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
     public class MakeCallResponse
     {
         [JsonProperty("api_id")]
-        public string APIId { get; set; }
+        public string ApiId { get; set; }
 
         [JsonProperty("message")]
         public string Response { get; set; }
 
         [JsonProperty("request_uuid")]
-        public string CallUUID { get; set; }
+        public string CallUuid { get; set; }
     }
 
     public class CallRequestBodyInput
     {
-        public CallRequestBodyInput(string from, string to, string answerURL)
+        public CallRequestBodyInput(string from, string to, string answerUrl)
         {
             this.From = from;
             this.To = to;
-            this.AnswerURL = answerURL;
+            this.AnswerUrl = answerUrl;
         }
 
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         public string To { get; set; }
 
         [JsonProperty("answer_url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AnswerURL { get; set; }
+        public string AnswerUrl { get; set; }
 
         [JsonProperty("answer_method")]
         public string AnswerMethod { get; set; }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
     public class ListMessagesResponse
     {
         [JsonProperty("api_id")]
-        public string APIId { get; set; }
+        public string ApiId { get; set; }
 
         [JsonProperty("meta")]
         public ListMessagesResponseMetaInformationType MetaInformation { get; set; }
@@ -155,10 +155,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         public string MessageType { get; set; }
 
         [JsonProperty("message_uuid")]
-        public string MessageUUID { get; set; }
+        public string MessageUuid { get; set; }
 
         [JsonProperty("resource_uri")]
-        public string MessageURI { get; set; }
+        public string MessageUri { get; set; }
 
         [JsonProperty("to_number")]
         public string To { get; set; }
@@ -176,18 +176,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
     public class SendSmsResponse
     {
         [JsonProperty("api_id")]
-        public string APIId { get; set; }
+        public string ApiId { get; set; }
 
         [JsonProperty("message")]
         public string Response { get; set; }
 
         [JsonProperty("message_uuid")]
-        public string[] MessageUUID { get; set; }
+        public string[] MessageUuid { get; set; }
     }
 
-    public class SMSRequestBodyInput
+    public class SmsRequestBodyInput
     {
-        public SMSRequestBodyInput(string from, string to, string message)
+        public SmsRequestBodyInput(string from, string to, string message)
         {
             this.From = from;
             this.To = to;
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
     public class GetMessageResponse
     {
         [JsonProperty("api_id")]
-        public string APIId { get; set; }
+        public string ApiId { get; set; }
 
         [JsonProperty("error_code")]
         public string ErrorCode { get; set; }
@@ -228,10 +228,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         public string MessageType { get; set; }
 
         [JsonProperty("message_uuid")]
-        public string MessageUUID { get; set; }
+        public string MessageUuid { get; set; }
 
         [JsonProperty("resource_uri")]
-        public string MessageURI { get; set; }
+        public string MessageUri { get; set; }
 
         [JsonProperty("to_number")]
         public string To { get; set; }

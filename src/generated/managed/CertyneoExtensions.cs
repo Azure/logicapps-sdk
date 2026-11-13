@@ -188,27 +188,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EnvelopeStatusType
     {
-        DRAFT,
-        SCHEDULED,
-        SENT,
-        DELIVERED,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
+        [EnumMember(Value = "SCHEDULED")]
+        Scheduled,
+        [EnumMember(Value = "SENT")]
+        Sent,
+        [EnumMember(Value = "DELIVERED")]
+        Delivered,
         [EnumMember(Value = "PARTIALLY_SIGNED")]
-        PARTIALLYSIGNED,
-        COMPLETED,
-        DECLINED,
+        PartiallySigned,
+        [EnumMember(Value = "COMPLETED")]
+        Completed,
+        [EnumMember(Value = "DECLINED")]
+        Declined,
         [EnumMember(Value = "VOIDED")]
-        VOIdED,
-        EXPIRED,
+        Voided,
+        [EnumMember(Value = "EXPIRED")]
+        Expired,
         [EnumMember(Value = "RETURNED_TO_SENDER")]
-        RETURNEDTOSENDER
+        ReturnedToSender
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EnvelopeSignatureLevelType
     {
-        SIMPLE,
-        ADVANCED,
-        QUALIFIED
+        [EnumMember(Value = "SIMPLE")]
+        Simple,
+        [EnumMember(Value = "ADVANCED")]
+        Advanced,
+        [EnumMember(Value = "QUALIFIED")]
+        Qualified
     }
 
     public class CreateEnvelopeRecipientResponse
@@ -235,29 +245,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateEnvelopeRecipientRoleTypeResponse
     {
-        SIGNER,
-        VIEWER,
+        [EnumMember(Value = "SIGNER")]
+        Signer,
+        [EnumMember(Value = "VIEWER")]
+        Viewer,
         [EnumMember(Value = "CARBON_COPY")]
-        CARBONCOPY,
-        APPROVER
+        CarbonCopy,
+        [EnumMember(Value = "APPROVER")]
+        Approver
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum StatusInput
     {
-        DRAFT,
-        SCHEDULED,
-        SENT,
-        DELIVERED,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
+        [EnumMember(Value = "SCHEDULED")]
+        Scheduled,
+        [EnumMember(Value = "SENT")]
+        Sent,
+        [EnumMember(Value = "DELIVERED")]
+        Delivered,
         [EnumMember(Value = "PARTIALLY_SIGNED")]
-        PARTIALLYSIGNED,
-        COMPLETED,
-        DECLINED,
+        PartiallySigned,
+        [EnumMember(Value = "COMPLETED")]
+        Completed,
+        [EnumMember(Value = "DECLINED")]
+        Declined,
         [EnumMember(Value = "VOIDED")]
-        VOIdED,
-        EXPIRED,
+        Voided,
+        [EnumMember(Value = "EXPIRED")]
+        Expired,
         [EnumMember(Value = "RETURNED_TO_SENDER")]
-        RETURNEDTOSENDER
+        ReturnedToSender
     }
 
     public class CreateEnvelopeBodyInput
@@ -287,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public CreateEnvelopeRecipient[] Recipients { get; set; }
 
         [JsonProperty("signatureLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputSignatureLevelType? SignatureLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo.BodyInputSignatureLevelType.SIMPLE;
+        public BodyInputSignatureLevelType? SignatureLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo.BodyInputSignatureLevelType.Simple;
 
         [JsonProperty("expiresAt")]
         public string ExpiresAt { get; set; }
@@ -302,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public string Language { get; set; }
 
         [JsonProperty("redirectUrl")]
-        public string RedirectURL { get; set; }
+        public string RedirectUrl { get; set; }
 
         [JsonProperty("initialsOnEveryPage")]
         public bool? InitialsOnEveryPage { get; set; }
@@ -328,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public int Page { get; set; } = 1;
 
         [JsonProperty("fieldType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EnvelopeFieldFieldTypeType FieldType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo.EnvelopeFieldFieldTypeType.SIGNATURE;
+        public EnvelopeFieldFieldTypeType FieldType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo.EnvelopeFieldFieldTypeType.Signature;
 
         [JsonProperty("anchorText")]
         public string AnchorTextRecommended { get; set; }
@@ -355,18 +375,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EnvelopeFieldFieldTypeType
     {
-        SIGNATURE,
-        INITIALS,
+        [EnumMember(Value = "SIGNATURE")]
+        Signature,
+        [EnumMember(Value = "INITIALS")]
+        Initials,
         [EnumMember(Value = "DATE_SIGNED")]
-        DATESIGNED,
-        TEXT,
-        CHECKBOX,
-        DROPDOWN,
-        ATTACHMENT,
-        STAMP,
-        DRAWING,
+        DateSigned,
+        [EnumMember(Value = "TEXT")]
+        Text,
+        [EnumMember(Value = "CHECKBOX")]
+        Checkbox,
+        [EnumMember(Value = "DROPDOWN")]
+        Dropdown,
+        [EnumMember(Value = "ATTACHMENT")]
+        Attachment,
+        [EnumMember(Value = "STAMP")]
+        Stamp,
+        [EnumMember(Value = "DRAWING")]
+        Drawing,
         [EnumMember(Value = "RADIO_GROUP")]
-        RADIOGROUP
+        RadioGroup
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -396,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public string RecipientName { get; set; }
 
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEnvelopeRecipientRoleType? Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo.CreateEnvelopeRecipientRoleType.SIGNER;
+        public CreateEnvelopeRecipientRoleType? Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo.CreateEnvelopeRecipientRoleType.Signer;
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -411,35 +439,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateEnvelopeRecipientRoleType
     {
-        SIGNER,
-        VIEWER,
+        [EnumMember(Value = "SIGNER")]
+        Signer,
+        [EnumMember(Value = "VIEWER")]
+        Viewer,
         [EnumMember(Value = "CARBON_COPY")]
-        CARBONCOPY,
-        APPROVER
+        CarbonCopy,
+        [EnumMember(Value = "APPROVER")]
+        Approver
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputSignatureLevelType
     {
-        SIMPLE,
-        ADVANCED,
-        QUALIFIED
+        [EnumMember(Value = "SIMPLE")]
+        Simple,
+        [EnumMember(Value = "ADVANCED")]
+        Advanced,
+        [EnumMember(Value = "QUALIFIED")]
+        Qualified
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputCategoryType
     {
-        CONTRACT,
-        AGREEMENT,
-        INVOICE,
-        LETTER,
-        QUOTE,
-        NDA,
+        [EnumMember(Value = "CONTRACT")]
+        Contract,
+        [EnumMember(Value = "AGREEMENT")]
+        Agreement,
+        [EnumMember(Value = "INVOICE")]
+        Invoice,
+        [EnumMember(Value = "LETTER")]
+        Letter,
+        [EnumMember(Value = "QUOTE")]
+        Quote,
+        [EnumMember(Value = "NDA")]
+        Nda,
         HR,
-        LEGAL,
-        REPORT,
-        PROPOSAL,
-        OTHER
+        [EnumMember(Value = "LEGAL")]
+        Legal,
+        [EnumMember(Value = "REPORT")]
+        Report,
+        [EnumMember(Value = "PROPOSAL")]
+        Proposal,
+        [EnumMember(Value = "OTHER")]
+        Other
     }
 
     public class WebhookSubscription

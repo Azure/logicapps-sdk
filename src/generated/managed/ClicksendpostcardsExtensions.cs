@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         public SendPostcardResponseDataTypeRecipientsTypeItemReturnAddressType ReturnAddress { get; set; }
 
         [JsonProperty("_api_username")]
-        public string ApiUsername { get; set; }
+        public string ApiUserName { get; set; }
     }
 
     public class SendPostcardResponseDataTypeRecipientsTypeItemReturnAddressType

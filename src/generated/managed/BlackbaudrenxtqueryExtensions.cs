@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         public int RowCount { get; set; }
 
         [JsonProperty("sas_uri")]
-        public string QueryResultsURI { get; set; }
+        public string QueryResultsUri { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         public BodyInputFormattingModeType? FormattingMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputFormattingModeType.None;
 
         [JsonProperty("results_file_name")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("time_zone_offset_in_minutes")]
         public int? TimeZoneOffset { get; set; }
@@ -318,13 +318,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         public BodyInputFormattingModeType? FormattingMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputFormattingModeType.None;
 
         [JsonProperty("sql_generation_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputSQLGenerationModeType? SQLGenerationMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputSQLGenerationModeType.Query;
+        public BodyInputSqlGenerationModeType? SqlGenerationMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputSqlGenerationModeType.Query;
 
         [JsonProperty("use_static_query_id_set")]
         public bool? UseStaticQuery { get; set; }
 
         [JsonProperty("results_file_name")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("time_zone_offset_in_minutes")]
         public int? TimeZoneOffset { get; set; }
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputSQLGenerationModeType
+    public enum BodyInputSqlGenerationModeType
     {
         Query,
         Export,

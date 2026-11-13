@@ -909,7 +909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         [JsonProperty("filter")]
         public string Filter { get; set; }
 
-        [JsonProperty("ts_query_id")]
+        [JsonProperty("kb")]
         public string Kb { get; set; }
 
         [JsonProperty("language")]
@@ -923,6 +923,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
 
         [JsonProperty("status")]
         public GetArticlesResponseMetaTypeStatusType Status { get; set; }
+
+        [JsonProperty("ts_query_id")]
+        public string Kb2 { get; set; }
     }
 
     public class GetArticlesResponseMetaTypeStatusType

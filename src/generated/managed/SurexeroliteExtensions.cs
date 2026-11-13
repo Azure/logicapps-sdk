@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<GetInvoicesResponse, ApiConnectionActionConfiguration> GetInvoices(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> statuses = null, Expression<Func<string>> iDs = null, Expression<Func<string>> invoiceNumbers = null, Expression<Func<string>> contactIDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetInvoicesResponse, ApiConnectionActionConfiguration> GetInvoices(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> statuses = null, Expression<Func<string>> ids = null, Expression<Func<string>> invoiceNumbers = null, Expression<Func<string>> contactIds = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_where = WorkflowExpression.Compile(where, nameof(where), required: false);
             var __workflow_statuses = WorkflowExpression.Compile(statuses, nameof(statuses), required: false);
-            var __workflow_iDs = WorkflowExpression.Compile(iDs, nameof(iDs), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             var __workflow_invoiceNumbers = WorkflowExpression.Compile(invoiceNumbers, nameof(invoiceNumbers), required: false);
-            var __workflow_contactIDs = WorkflowExpression.Compile(contactIDs, nameof(contactIDs), required: false);
+            var __workflow_contactIds = WorkflowExpression.Compile(contactIds, nameof(contactIds), required: false);
             var __workflow_summaryOnly = WorkflowExpression.Compile(summaryOnly, nameof(summaryOnly), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<GetInvoicesResponse, ApiConnectionActionConfiguration>(() =>
@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                     callPayload.Queries["where"] = ExpressionConverter.Convert(__workflow_where);
                 if (__workflow_statuses != null)
                     callPayload.Queries["Statuses"] = ExpressionConverter.Convert(__workflow_statuses);
-                if (__workflow_iDs != null)
-                    callPayload.Queries["IDs"] = ExpressionConverter.Convert(__workflow_iDs);
+                if (__workflow_ids != null)
+                    callPayload.Queries["IDs"] = ExpressionConverter.Convert(__workflow_ids);
                 if (__workflow_invoiceNumbers != null)
                     callPayload.Queries["InvoiceNumbers"] = ExpressionConverter.Convert(__workflow_invoiceNumbers);
-                if (__workflow_contactIDs != null)
-                    callPayload.Queries["ContactIDs"] = ExpressionConverter.Convert(__workflow_contactIDs);
+                if (__workflow_contactIds != null)
+                    callPayload.Queries["ContactIDs"] = ExpressionConverter.Convert(__workflow_contactIds);
                 if (__workflow_summaryOnly != null)
                     callPayload.Queries["summaryOnly"] = ExpressionConverter.Convert(__workflow_summaryOnly);
                 if (__workflow_page != null)
@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<GetContactsResponse, ApiConnectionActionConfiguration> GetContacts(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> iDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null, Expression<Func<bool>> includeArchived = null, Expression<Func<string>> searchTerm = null)
+        public IBodyWorkflowAction<GetContactsResponse, ApiConnectionActionConfiguration> GetContacts(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> ids = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null, Expression<Func<bool>> includeArchived = null, Expression<Func<string>> searchTerm = null)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_where = WorkflowExpression.Compile(where, nameof(where), required: false);
-            var __workflow_iDs = WorkflowExpression.Compile(iDs, nameof(iDs), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             var __workflow_summaryOnly = WorkflowExpression.Compile(summaryOnly, nameof(summaryOnly), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_includeArchived = WorkflowExpression.Compile(includeArchived, nameof(includeArchived), required: false);
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_where != null)
                     callPayload.Queries["where"] = ExpressionConverter.Convert(__workflow_where);
-                if (__workflow_iDs != null)
-                    callPayload.Queries["IDs"] = ExpressionConverter.Convert(__workflow_iDs);
+                if (__workflow_ids != null)
+                    callPayload.Queries["IDs"] = ExpressionConverter.Convert(__workflow_ids);
                 if (__workflow_summaryOnly != null)
                     callPayload.Queries["summaryOnly"] = ExpressionConverter.Convert(__workflow_summaryOnly);
                 if (__workflow_page != null)
@@ -174,7 +174,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         public double SubTotal { get; set; }
         public double TotalTax { get; set; }
         public double Total { get; set; }
-        public string UpdatedDateUTC { get; set; }
+
+        [JsonProperty("UpdatedDateUTC")]
+        public string UpdatedDateUtc { get; set; }
         public string CurrencyCode { get; set; }
         public string Type { get; set; }
 
@@ -239,7 +241,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         public double SubTotal { get; set; }
         public double TotalTax { get; set; }
         public double Total { get; set; }
-        public string UpdatedDateUTC { get; set; }
+
+        [JsonProperty("UpdatedDateUTC")]
+        public string UpdatedDateUtc { get; set; }
         public string CurrencyCode { get; set; }
         public string Type { get; set; }
 
@@ -352,7 +356,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         public string BankAccountDetails { get; set; }
         public GetContactsResponseContactsTypeItemAddressesTypeItem[] Addresses { get; set; }
         public GetContactsResponseContactsTypeItemPhonesTypeItem[] Phones { get; set; }
-        public string UpdatedDateUTC { get; set; }
+
+        [JsonProperty("UpdatedDateUTC")]
+        public string UpdatedDateUtc { get; set; }
         public GetContactsResponseContactsTypeItemContactPersonsTypeItem[] ContactPersons { get; set; }
     }
 
@@ -399,7 +405,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         public string BankAccountDetails { get; set; }
         public PostContactsResponseContactsTypeItemAddressesTypeItem[] Addresses { get; set; }
         public PostContactsResponseContactsTypeItemPhonesTypeItem[] Phones { get; set; }
-        public string UpdatedDateUTC { get; set; }
+
+        [JsonProperty("UpdatedDateUTC")]
+        public string UpdatedDateUtc { get; set; }
         public PostContactsResponseContactsTypeItemContactPersonsTypeItem[] ContactPersons { get; set; }
     }
 

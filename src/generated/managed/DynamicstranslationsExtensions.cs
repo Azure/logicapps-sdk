@@ -43,15 +43,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> AlignDownload(Expression<Func<string>> filename)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> AlignDownload(Expression<Func<string>> fileName)
         {
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dts/align/download";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
+                callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }

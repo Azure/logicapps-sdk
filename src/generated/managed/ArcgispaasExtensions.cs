@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EXIF(Expression<Func<string>> data)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Exif(Expression<Func<string>> data)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         public string Country { get; set; }
 
         [JsonProperty("Postal")]
-        public string ZIPOrPostalCode { get; set; }
+        public string ZipOrPostalCode { get; set; }
     }
 
     public class ReverseGeocodeResponseLocationType

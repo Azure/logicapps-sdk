@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         public int Id { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }

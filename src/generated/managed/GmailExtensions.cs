@@ -131,30 +131,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
     public class DetailedReceiveMessage
     {
         public string From { get; set; }
-
-        [JsonProperty("SenderName")]
-        public string SenderSName { get; set; }
+        public string SenderName { get; set; }
         public string To { get; set; }
 
         [JsonProperty("Cc")]
         public string CC { get; set; }
-
-        [JsonProperty("Bcc")]
-        public string BCC { get; set; }
+        public string Bcc { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
         public string Snippet { get; set; }
-
-        [JsonProperty("LabelIds")]
-        public string[] LabelIDs { get; set; }
+        public string[] LabelIds { get; set; }
 
         [JsonProperty("DateTimeReceived")]
         public string ReceivedDateTime { get; set; }
         public int EstimatedSize { get; set; }
         public bool IsRead { get; set; }
-
-        [JsonProperty("IsHtml")]
-        public bool IsHTML { get; set; }
+        public bool IsHtml { get; set; }
         public bool HasAttachments { get; set; }
         public GetEmailAttachmentResponse[] Attachments { get; set; }
 
@@ -178,9 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
 
         [JsonProperty("Cc")]
         public string CC { get; set; }
-
-        [JsonProperty("Bcc")]
-        public string BCC { get; set; }
+        public string Bcc { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
         public bool? ReplyAll { get; set; }
@@ -224,9 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
 
         [JsonProperty("Cc")]
         public string CC { get; set; }
-
-        [JsonProperty("Bcc")]
-        public string BCC { get; set; }
+        public string Bcc { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
         public EmailMessageInputImportanceType? Importance { get; set; }

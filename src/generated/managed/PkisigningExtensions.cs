@@ -135,32 +135,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<DocumentMetaDataModel, ApiConnectionActionConfiguration> DocumentsGet(Expression<Func<string>> requestId, Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<DocumentMetadataModel, ApiConnectionActionConfiguration> DocumentsGet(Expression<Func<string>> requestId, Expression<Func<string>> documentId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            return new DeferredBodyAction<DocumentMetaDataModel, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DocumentMetadataModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/documents/{1}", __workflow_requestId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<DocumentMetaDataModel>(callPayload);
+                return new ApiConnectionAction<DocumentMetadataModel>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<DocumentMetaDataModel, ApiConnectionActionConfiguration> DocumentsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<MetadataInput>> metadata)
+        public IBodyWorkflowAction<DocumentMetadataModel, ApiConnectionActionConfiguration> DocumentsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<MetadataInput>> metadata)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: true);
-            return new DeferredBodyAction<DocumentMetaDataModel, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DocumentMetadataModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/documents/{1}", __workflow_requestId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_metadata);
-                return new ApiConnectionAction<DocumentMetaDataModel>(callPayload);
+                return new ApiConnectionAction<DocumentMetadataModel>(callPayload);
             });
         }
 
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         EN
     }
 
-    public class DocumentMetaDataModel
+    public class DocumentMetadataModel
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public string Id { get; set; }
 
         [JsonProperty("status")]
-        public DocumentMetaDataModelStatusType Status { get; set; }
+        public DocumentMetadataModelStatusType Status { get; set; }
 
         [JsonProperty("signed")]
         public bool Signed { get; set; }
@@ -614,11 +614,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public int DocumentSize { get; set; }
 
         [JsonProperty("documentType")]
-        public DocumentMetaDataModelDocumentTypeType DocumentType { get; set; }
+        public DocumentMetadataModelDocumentTypeType DocumentType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DocumentMetaDataModelStatusType
+    public enum DocumentMetadataModelStatusType
     {
         Active,
         Completed,
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DocumentMetaDataModelDocumentTypeType
+    public enum DocumentMetadataModelDocumentTypeType
     {
         RegularPdf,
         XbrlPublicationVersionAnnualReport,
@@ -716,7 +716,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         PdfAudittrail,
         XbrlCompositionStatement,
         XbrlStatutoryVersionAnnualReport,
-        DNBStaat,
+        [EnumMember(Value = "DNBStaat")]
+        DnbStaat,
         RegularXml,
         ReferencedDocument,
         Json,
@@ -727,13 +728,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         IncomeTaxDeclaration,
         CorporateTaxDeclaration,
         XbrlNexusVersionAnnualReport,
-        XbrlAuditorsReportSFO,
+        [EnumMember(Value = "XbrlAuditorsReportSFO")]
+        XbrlAuditorsReportSfo,
         XbrlAssessmentStatement,
         SignatureStylesheet,
         EnvelopingSignatureData,
         PageImage,
-        SHA256Hash,
-        SHA256Signature,
+        [EnumMember(Value = "SHA256Hash")]
+        Sha256Hash,
+        [EnumMember(Value = "SHA256Signature")]
+        Sha256Signature,
         Unspecified
     }
 
@@ -748,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public string Name { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("documentType", DefaultValueHandling = DefaultValueHandling.Include)]
         public MetadataInputDocumentTypeType DocumentType { get; set; }
@@ -765,7 +769,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         PdfAudittrail,
         XbrlCompositionStatement,
         XbrlStatutoryVersionAnnualReport,
-        DNBStaat,
+        [EnumMember(Value = "DNBStaat")]
+        DnbStaat,
         RegularXml,
         ReferencedDocument,
         Json,
@@ -776,13 +781,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         IncomeTaxDeclaration,
         CorporateTaxDeclaration,
         XbrlNexusVersionAnnualReport,
-        XbrlAuditorsReportSFO,
+        [EnumMember(Value = "XbrlAuditorsReportSFO")]
+        XbrlAuditorsReportSfo,
         XbrlAssessmentStatement,
         SignatureStylesheet,
         EnvelopingSignatureData,
         PageImage,
-        SHA256Hash,
-        SHA256Signature,
+        [EnumMember(Value = "SHA256Hash")]
+        Sha256Hash,
+        [EnumMember(Value = "SHA256Signature")]
+        Sha256Signature,
         Unspecified
     }
 
@@ -797,13 +805,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
 
     public class OrganisationsGetWorkgroupsByUserModelInput
     {
-        public OrganisationsGetWorkgroupsByUserModelInput(string username)
+        public OrganisationsGetWorkgroupsByUserModelInput(string userName)
         {
-            this.Username = username;
+            this.UserName = userName;
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class RequestModel
@@ -895,7 +903,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         PdfAudittrail,
         XbrlCompositionStatement,
         XbrlStatutoryVersionAnnualReport,
-        DNBStaat,
+        [EnumMember(Value = "DNBStaat")]
+        DnbStaat,
         RegularXml,
         ReferencedDocument,
         Json,
@@ -906,13 +915,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         IncomeTaxDeclaration,
         CorporateTaxDeclaration,
         XbrlNexusVersionAnnualReport,
-        XbrlAuditorsReportSFO,
+        [EnumMember(Value = "XbrlAuditorsReportSFO")]
+        XbrlAuditorsReportSfo,
         XbrlAssessmentStatement,
         SignatureStylesheet,
         EnvelopingSignatureData,
         PageImage,
-        SHA256Hash,
-        SHA256Signature,
+        [EnumMember(Value = "SHA256Hash")]
+        Sha256Hash,
+        [EnumMember(Value = "SHA256Signature")]
+        Sha256Signature,
         Unspecified
     }
 
@@ -1034,7 +1046,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         IncomeTaxDeclaration,
         VatDeclaration,
         Unknown,
-        PDF,
+        [EnumMember(Value = "PDF")]
+        Pdf,
         FinancialStatements,
         SbrAssurance,
         SbrNexusAssurance,

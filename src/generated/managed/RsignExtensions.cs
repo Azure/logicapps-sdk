@@ -122,9 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [JsonProperty("AuthTokenExpires")]
         public string AuthenticationTokenExpires { get; set; }
         public string EmailId { get; set; }
-
-        [JsonProperty("ApiId")]
-        public string APIId { get; set; }
+        public string ApiId { get; set; }
     }
 
     public class GetAuthTokenBodyInput
@@ -162,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         public string EnvelopeId { get; set; }
 
         [JsonProperty("SignDoumentUrl")]
-        public string SignDocumentURL { get; set; }
+        public string SignDocumentUrl { get; set; }
         public SendEnvelopeFromTemplateResponseRecipientListTypeItem[] RecipientList { get; set; }
         public string DialCodeDropdownList { get; set; }
         public string EnableMessageToMobile { get; set; }
@@ -181,9 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [JsonProperty("Mobile")]
         public string MobileNumber { get; set; }
         public int MobileMode { get; set; }
-
-        [JsonProperty("SigningUrl")]
-        public string SigningURL { get; set; }
+        public string SigningUrl { get; set; }
     }
 
     public class SendEnvelopeFromTemplateBodyInput
@@ -240,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         public string EnvelopeId { get; set; }
 
         [JsonProperty("SignDoumentUrl")]
-        public string SignDocumentURL { get; set; }
+        public string SignDocumentUrl { get; set; }
         public SendEnvelopeFromRuleResponseRecipientListTypeItem[] RecipientList { get; set; }
         public string DialCodeDropdownList { get; set; }
         public string EnableMessageToMobile { get; set; }

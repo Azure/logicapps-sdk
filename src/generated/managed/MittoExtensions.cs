@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         public string ResponseText { get; set; }
 
         [JsonProperty("test")]
-        public bool WasTestSMS { get; set; }
+        public bool WasTestSms { get; set; }
 
         [JsonProperty("textLength")]
         public int TextLength { get; set; }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         }
 
         [JsonProperty("flash")]
-        public bool? IsFlashSMS { get; set; }
+        public bool? IsFlashSms { get; set; }
 
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sender { get; set; }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         public string CustomerReference { get; set; }
 
         [JsonProperty("test")]
-        public bool? IsTestSMS { get; set; }
+        public bool? IsTestSms { get; set; }
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         public string Receiver { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RequestInputTextTypeType? TextType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mitto.RequestInputTextTypeType.GSM;
+        public RequestInputTextTypeType? TextType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mitto.RequestInputTextTypeType.Gsm;
 
         [JsonProperty("udh")]
         public string UserDataHeader { get; set; }
@@ -112,7 +112,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RequestInputTextTypeType
     {
-        GSM,
+        [EnumMember(Value = "GSM")]
+        Gsm,
         Unicode,
         Binary
     }
@@ -129,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         public string ResponseText { get; set; }
 
         [JsonProperty("test")]
-        public bool WasTestSMS { get; set; }
+        public bool WasTestSms { get; set; }
     }
 
     public class SmsBulkResponseItem
@@ -157,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         }
 
         [JsonProperty("flash")]
-        public bool? IsFlashSMS { get; set; }
+        public bool? IsFlashSms { get; set; }
 
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sender { get; set; }
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         public string CustomerReference { get; set; }
 
         [JsonProperty("test")]
-        public bool? IsTestSMS { get; set; }
+        public bool? IsTestSms { get; set; }
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -178,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         public string[] Receivers { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RequestInputTextTypeType? TextType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mitto.RequestInputTextTypeType.GSM;
+        public RequestInputTextTypeType? TextType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mitto.RequestInputTextTypeType.Gsm;
 
         [JsonProperty("udh")]
         public string UserDataHeader { get; set; }

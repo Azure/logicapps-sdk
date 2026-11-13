@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arm
     public class TemplateLink
     {
         [JsonProperty("uri")]
-        public string TemplateURI { get; set; }
+        public string TemplateUri { get; set; }
 
         [JsonProperty("contentVersion")]
         public string TemplateContentVersion { get; set; }
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arm
     public class ParametersLink
     {
         [JsonProperty("uri")]
-        public string ParametersURI { get; set; }
+        public string ParametersUri { get; set; }
 
         [JsonProperty("contentVersion")]
         public string ParametersContentVersion { get; set; }

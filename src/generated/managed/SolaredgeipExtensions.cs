@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solaredgeip
     public class SiteDetailsResponseDetailsTypeUrisType
     {
         [JsonProperty("IMAGE_URI")]
-        public string IMAGEURI { get; set; }
+        public string ImageUri { get; set; }
     }
 
     public class SiteOverviewResponse
@@ -817,10 +817,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solaredgeip
         public SitePowerFlowResponseSiteCurrentPowerFlowTypeConnectionsTypeItem[] Connections { get; set; }
 
         [JsonProperty("GRID")]
-        public SitePowerFlowResponseSiteCurrentPowerFlowTypeGRIdType GRId { get; set; }
-        public SitePowerFlowResponseSiteCurrentPowerFlowTypeLOADType LOAD { get; set; }
+        public SitePowerFlowResponseSiteCurrentPowerFlowTypeGridType Grid { get; set; }
+
+        [JsonProperty("LOAD")]
+        public SitePowerFlowResponseSiteCurrentPowerFlowTypeLoadType Load { get; set; }
         public SitePowerFlowResponseSiteCurrentPowerFlowTypePVType PV { get; set; }
-        public SitePowerFlowResponseSiteCurrentPowerFlowTypeSTORAGEType STORAGE { get; set; }
+
+        [JsonProperty("STORAGE")]
+        public SitePowerFlowResponseSiteCurrentPowerFlowTypeStorageType Storage { get; set; }
     }
 
     public class SitePowerFlowResponseSiteCurrentPowerFlowTypeConnectionsTypeItem
@@ -832,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solaredgeip
         public string To { get; set; }
     }
 
-    public class SitePowerFlowResponseSiteCurrentPowerFlowTypeGRIdType
+    public class SitePowerFlowResponseSiteCurrentPowerFlowTypeGridType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -841,7 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solaredgeip
         public double CurrentPower { get; set; }
     }
 
-    public class SitePowerFlowResponseSiteCurrentPowerFlowTypeLOADType
+    public class SitePowerFlowResponseSiteCurrentPowerFlowTypeLoadType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -859,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solaredgeip
         public double CurrentPower { get; set; }
     }
 
-    public class SitePowerFlowResponseSiteCurrentPowerFlowTypeSTORAGEType
+    public class SitePowerFlowResponseSiteCurrentPowerFlowTypeStorageType
     {
         [JsonProperty("status")]
         public string Status { get; set; }

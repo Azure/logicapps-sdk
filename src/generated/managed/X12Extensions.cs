@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<EdiEncodeResponse, ApiConnectionActionConfiguration> EncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<string>> body, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<SegmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<string>> iSA12 = null, Expression<Func<string>> gS02 = null, Expression<Func<string>> gS03 = null)
+        public IBodyWorkflowAction<EdiEncodeResponse, ApiConnectionActionConfiguration> EncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<string>> body, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<SegmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<string>> isa12 = null, Expression<Func<string>> gS02 = null, Expression<Func<string>> gS03 = null)
         {
             var __workflow_agreementName = WorkflowExpression.Compile(agreementName, nameof(agreementName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
             var __workflow_replacementCharacter = WorkflowExpression.Compile(replacementCharacter, nameof(replacementCharacter), required: false);
             var __workflow_segmentTerminator = WorkflowExpression.Compile(segmentTerminator, nameof(segmentTerminator), required: false);
             var __workflow_segmentTerminatorSuffix = WorkflowExpression.Compile(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            var __workflow_iSA12 = WorkflowExpression.Compile(iSA12, nameof(iSA12), required: false);
+            var __workflow_isa12 = WorkflowExpression.Compile(isa12, nameof(isa12), required: false);
             var __workflow_gS02 = WorkflowExpression.Compile(gS02, nameof(gS02), required: false);
             var __workflow_gS03 = WorkflowExpression.Compile(gS03, nameof(gS03), required: false);
             return new DeferredBodyAction<EdiEncodeResponse, ApiConnectionActionConfiguration>(() =>
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
                     callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(__workflow_segmentTerminator);
                 if (__workflow_segmentTerminatorSuffix != null)
                     callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(__workflow_segmentTerminatorSuffix);
-                if (__workflow_iSA12 != null)
-                    callPayload.Headers["ISA12"] = ExpressionConverter.Convert(__workflow_iSA12);
+                if (__workflow_isa12 != null)
+                    callPayload.Headers["ISA12"] = ExpressionConverter.Convert(__workflow_isa12);
                 if (__workflow_gS02 != null)
                     callPayload.Headers["GS02"] = ExpressionConverter.Convert(__workflow_gS02);
                 if (__workflow_gS03 != null)
@@ -471,20 +471,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
     public class InterchangeEnvelope
     {
         [JsonProperty("ISA_Segment")]
-        public string ISASegment { get; set; }
-        public string ISA05 { get; set; }
-        public string ISA06 { get; set; }
-        public string ISA07 { get; set; }
-        public string ISA08 { get; set; }
-        public string ISA09 { get; set; }
-        public string ISA10 { get; set; }
-        public string ISA11 { get; set; }
-        public string ISA12 { get; set; }
-        public string ISA13 { get; set; }
-        public string ISA14 { get; set; }
-        public string ISA15 { get; set; }
-        public string IEA01 { get; set; }
-        public string IEA02 { get; set; }
+        public string IsaSegment { get; set; }
+
+        [JsonProperty("ISA05")]
+        public string Isa05 { get; set; }
+
+        [JsonProperty("ISA06")]
+        public string Isa06 { get; set; }
+
+        [JsonProperty("ISA07")]
+        public string Isa07 { get; set; }
+
+        [JsonProperty("ISA08")]
+        public string Isa08 { get; set; }
+
+        [JsonProperty("ISA09")]
+        public string Isa09 { get; set; }
+
+        [JsonProperty("ISA10")]
+        public string Isa10 { get; set; }
+
+        [JsonProperty("ISA11")]
+        public string Isa11 { get; set; }
+
+        [JsonProperty("ISA12")]
+        public string Isa12 { get; set; }
+
+        [JsonProperty("ISA13")]
+        public string Isa13 { get; set; }
+
+        [JsonProperty("ISA14")]
+        public string Isa14 { get; set; }
+
+        [JsonProperty("ISA15")]
+        public string Isa15 { get; set; }
+
+        [JsonProperty("IEA01")]
+        public string Iea01 { get; set; }
+
+        [JsonProperty("IEA02")]
+        public string Iea02 { get; set; }
     }
 
     public class X12FunctionalGroupEnvelope
@@ -805,20 +831,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         public X12FunctionalGroupBatchEnvelope[] FunctionalGroups { get; set; }
 
         [JsonProperty("ISA_Segment")]
-        public string ISASegment { get; set; }
-        public string ISA05 { get; set; }
-        public string ISA06 { get; set; }
-        public string ISA07 { get; set; }
-        public string ISA08 { get; set; }
-        public string ISA09 { get; set; }
-        public string ISA10 { get; set; }
-        public string ISA11 { get; set; }
-        public string ISA12 { get; set; }
-        public string ISA13 { get; set; }
-        public string ISA14 { get; set; }
-        public string ISA15 { get; set; }
-        public string IEA01 { get; set; }
-        public string IEA02 { get; set; }
+        public string IsaSegment { get; set; }
+
+        [JsonProperty("ISA05")]
+        public string Isa05 { get; set; }
+
+        [JsonProperty("ISA06")]
+        public string Isa06 { get; set; }
+
+        [JsonProperty("ISA07")]
+        public string Isa07 { get; set; }
+
+        [JsonProperty("ISA08")]
+        public string Isa08 { get; set; }
+
+        [JsonProperty("ISA09")]
+        public string Isa09 { get; set; }
+
+        [JsonProperty("ISA10")]
+        public string Isa10 { get; set; }
+
+        [JsonProperty("ISA11")]
+        public string Isa11 { get; set; }
+
+        [JsonProperty("ISA12")]
+        public string Isa12 { get; set; }
+
+        [JsonProperty("ISA13")]
+        public string Isa13 { get; set; }
+
+        [JsonProperty("ISA14")]
+        public string Isa14 { get; set; }
+
+        [JsonProperty("ISA15")]
+        public string Isa15 { get; set; }
+
+        [JsonProperty("IEA01")]
+        public string Iea01 { get; set; }
+
+        [JsonProperty("IEA02")]
+        public string Iea02 { get; set; }
     }
 
     public class X12FunctionalGroupBatchEnvelope
@@ -890,7 +942,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         None,
         CR,
         LF,
-        CRLF
+        [EnumMember(Value = "CRLF")]
+        Crlf
     }
 
     public class EdiEncodeResponse

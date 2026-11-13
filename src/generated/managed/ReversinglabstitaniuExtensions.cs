@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     public class ReversinglabstitaniuActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileReputationSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileReputationSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetHistoricalAvRecordsSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> history = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetHistoricalAvRecordsSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> history = null, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetHistoricalAvRecordsBulk(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body, Expression<Func<bool>> history = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetHistoricalAvRecordsBulk(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body, Expression<Func<bool>> history = null, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisMerged(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisMerged(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisLatest(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisLatest(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisSpecific(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> analysisId, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisSpecific(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> analysisId, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveMerged(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveMerged(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveLatest(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveLatest(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetSampleDownloadStatus(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetSampleDownloadStatus(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReanalyzeSampleBulk(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReanalyzeSampleBulk(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetContinuousReputationDataChanges(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> events = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetContinuousReputationDataChanges(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<string>> events = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchSha1FirstPage(Expression<Func<string>> uriSha1, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> classification = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UriToHashSearchSha1FirstPage(Expression<Func<string>> uriSha1, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<string>> classification = null)
         {
             var __workflow_uriSha1 = WorkflowExpression.Compile(uriSha1, nameof(uriSha1), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchSha1Paging(Expression<Func<string>> uriSha1, Expression<Func<string>> nextPageSha1, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> classification = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UriToHashSearchSha1Paging(Expression<Func<string>> uriSha1, Expression<Func<string>> nextPageSha1, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<string>> classification = null)
         {
             var __workflow_uriSha1 = WorkflowExpression.Compile(uriSha1, nameof(uriSha1), required: true);
             var __workflow_nextPageSha1 = WorkflowExpression.Compile(nextPageSha1, nameof(nextPageSha1), required: true);
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchTextPaging(Expression<Func<string>> contentType, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<URIToHashSearchTextPagingBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UriToHashSearchTextPaging(Expression<Func<string>> contentType, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<UriToHashSearchTextPagingBodyInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLReport(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetURLReportBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetUrlReport(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<GetUrlReportBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromURL(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<ListFilesFromURLBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromUrl(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<ListFilesFromUrlBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetLatestURLAnalysesFirst(Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetLatestUrlAnalysesFirst(Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetLatestURLAnalysesPaging(Expression<Func<string>> page, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetLatestUrlAnalysesPaging(Expression<Func<string>> page, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetTimestampedURLAnalysesFirst(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetTimestampedUrlAnalysesFirst(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: true);
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetTimestampedURLAnalysesPaging(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<string>> page, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetTimestampedUrlAnalysesPaging(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<string>> page, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: true);
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AnalyzeURL(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<AnalyzeURLBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AnalyzeUrl(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<AnalyzeUrlBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainReport(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetDomainReportBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainReport(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<GetDomainReportBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromDomain(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<ListFilesFromDomainBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromDomain(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<ListFilesFromDomainBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLFromDomain(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetDomainRelatedDomainsBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetUrlFromDomain(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<GetDomainRelatedDomainsBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -747,7 +747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainResolutions(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetDomainRelatedDomainsBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainResolutions(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<GetDomainRelatedDomainsBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainRelatedDomains(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetDomainRelatedDomainsBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainRelatedDomains(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<GetDomainRelatedDomainsBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -777,7 +777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetIPAddressReport(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetIPAddressReportBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetIPAddressReport(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<GetIPAddressReportBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromIPAddress(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<ListFilesFromIPAddressBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromIPAddress(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<ListFilesFromIPAddressBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLFromIPAddress(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetIPAddressResolutionsBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetUrlFromIPAddress(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<GetIPAddressResolutionsBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetIPAddressResolutions(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetIPAddressResolutionsBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetIPAddressResolutions(Expression<Func<AnalyzeUrlFormatInput>> format, Expression<Func<GetIPAddressResolutionsBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DailyAPIUsageUser(Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DailyApiUsageUser(Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DailyAPIUsageCompany(Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DailyApiUsageCompany(Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MonthlyAPIUsageUser(Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MonthlyApiUsageUser(Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
@@ -912,7 +912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MonthlyAPIUsageCompany(Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MonthlyApiUsageCompany(Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DateRangeAPIUsageUser(Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DateRangeApiUsageUser(Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -953,7 +953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DateRangeAPIUsageCompany(Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DateRangeApiUsageCompany(Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -969,7 +969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetActiveYARARulesets(Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetActiveYaraRulesets(Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -985,7 +985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetAPIQuotaLimitsUser(Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetApiQuotaLimitsUser(Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetAPIQuotaLimitsCompany(Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetApiQuotaLimitsCompany(Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1066,7 +1066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetSpecificDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> specificReport, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetSpecificDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> specificReport, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_sha1Value = WorkflowExpression.Compile(sha1Value, nameof(sha1Value), required: true);
             var __workflow_specificReport = WorkflowExpression.Compile(specificReport, nameof(specificReport), required: true);
@@ -1088,7 +1088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetSpecificDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> specificReport, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetSpecificDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> specificReport, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_base64Value = WorkflowExpression.Compile(base64Value, nameof(base64Value), required: true);
             var __workflow_specificReport = WorkflowExpression.Compile(specificReport, nameof(specificReport), required: true);
@@ -1183,7 +1183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraMatchesFeed(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraMatchesFeed(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
@@ -1232,7 +1232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraRetroMatchesFeed(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraRetroMatchesFeed(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
@@ -1304,7 +1304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GroupByRha1SingleQuery(Expression<Func<string>> rha1Type, Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<int>> limit = null, Expression<Func<bool>> extended = null, Expression<Func<ClassificationInput>> classification = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GroupByRha1SingleQuery(Expression<Func<string>> rha1Type, Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<AnalyzeUrlFormatInput>> format = null, Expression<Func<int>> limit = null, Expression<Func<bool>> extended = null, Expression<Func<ClassificationInput>> classification = null)
         {
             var __workflow_rha1Type = WorkflowExpression.Compile(rha1Type, nameof(rha1Type), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -1337,7 +1337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ImportHashSimilarity(Expression<Func<string>> hashValue, Expression<Func<string>> contentType = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ImportHashSimilarity(Expression<Func<string>> hashValue, Expression<Func<string>> contentType = null, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -1357,7 +1357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ImportHashSimilarityPaginated(Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ImportHashSimilarityPaginated(Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_nextPageSha1 = WorkflowExpression.Compile(nextPageSha1, nameof(nextPageSha1), required: true);
@@ -1393,7 +1393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FileReputationListUserOverrides(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> startHash = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FileReputationListUserOverrides(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> startHash = null, Expression<Func<AnalyzeUrlFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_startHash = WorkflowExpression.Compile(startHash, nameof(startHash), required: false);
@@ -1429,7 +1429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AnalyzeURLFormatInput
+    public enum AnalyzeUrlFormatInput
     {
         [EnumMember(Value = "xml")]
         Xml,
@@ -1583,19 +1583,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string OptionalParameters { get; set; }
     }
 
-    public class URIToHashSearchTextPagingBodyInput
+    public class UriToHashSearchTextPagingBodyInput
     {
         [JsonProperty("rl")]
-        public URIToHashSearchTextPagingBodyInputRlType Rl { get; set; }
+        public UriToHashSearchTextPagingBodyInputRlType Rl { get; set; }
     }
 
-    public class URIToHashSearchTextPagingBodyInputRlType
+    public class UriToHashSearchTextPagingBodyInputRlType
     {
         [JsonProperty("query")]
-        public URIToHashSearchTextPagingBodyInputRlTypeQueryType Query { get; set; }
+        public UriToHashSearchTextPagingBodyInputRlTypeQueryType Query { get; set; }
     }
 
-    public class URIToHashSearchTextPagingBodyInputRlTypeQueryType
+    public class UriToHashSearchTextPagingBodyInputRlTypeQueryType
     {
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -1604,19 +1604,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string NextPageSha1 { get; set; }
     }
 
-    public class GetURLReportBodyInput
+    public class GetUrlReportBodyInput
     {
         [JsonProperty("rl")]
-        public GetURLReportBodyInputRlType Rl { get; set; }
+        public GetUrlReportBodyInputRlType Rl { get; set; }
     }
 
-    public class GetURLReportBodyInputRlType
+    public class GetUrlReportBodyInputRlType
     {
         [JsonProperty("query")]
-        public GetURLReportBodyInputRlTypeQueryType Query { get; set; }
+        public GetUrlReportBodyInputRlTypeQueryType Query { get; set; }
     }
 
-    public class GetURLReportBodyInputRlTypeQueryType
+    public class GetUrlReportBodyInputRlTypeQueryType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1634,19 +1634,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Json
     }
 
-    public class ListFilesFromURLBodyInput
+    public class ListFilesFromUrlBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromURLBodyInputRlType Rl { get; set; } = new ListFilesFromURLBodyInputRlType();
+        public ListFilesFromUrlBodyInputRlType Rl { get; set; } = new ListFilesFromUrlBodyInputRlType();
     }
 
-    public class ListFilesFromURLBodyInputRlType
+    public class ListFilesFromUrlBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromURLBodyInputRlTypeQueryType Query { get; set; } = new ListFilesFromURLBodyInputRlTypeQueryType();
+        public ListFilesFromUrlBodyInputRlTypeQueryType Query { get; set; } = new ListFilesFromUrlBodyInputRlTypeQueryType();
     }
 
-    public class ListFilesFromURLBodyInputRlTypeQueryType
+    public class ListFilesFromUrlBodyInputRlTypeQueryType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1673,19 +1673,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string Page { get; set; }
     }
 
-    public class AnalyzeURLBodyInput
+    public class AnalyzeUrlBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AnalyzeURLBodyInputRlType Rl { get; set; } = new AnalyzeURLBodyInputRlType();
+        public AnalyzeUrlBodyInputRlType Rl { get; set; } = new AnalyzeUrlBodyInputRlType();
     }
 
-    public class AnalyzeURLBodyInputRlType
+    public class AnalyzeUrlBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AnalyzeURLBodyInputRlTypeQueryType Query { get; set; } = new AnalyzeURLBodyInputRlTypeQueryType();
+        public AnalyzeUrlBodyInputRlTypeQueryType Query { get; set; } = new AnalyzeUrlBodyInputRlTypeQueryType();
     }
 
-    public class AnalyzeURLBodyInputRlTypeQueryType
+    public class AnalyzeUrlBodyInputRlTypeQueryType
     {
         [JsonProperty("url")]
         public string Url { get; set; }

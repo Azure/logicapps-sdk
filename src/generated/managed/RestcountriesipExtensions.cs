@@ -13,14 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
     public class RestcountriesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "restcountriesip")]
-        public IBodyWorkflowAction<ALLResponseItem[], ApiConnectionActionConfiguration> ALL()
+        public IBodyWorkflowAction<AllResponseItem[], ApiConnectionActionConfiguration> All()
         {
-            return new DeferredBodyAction<ALLResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AllResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/all";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ALLResponseItem[]>(callPayload);
+                return new ApiConnectionAction<AllResponseItem[]>(callPayload);
             });
         }
     }
@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
     {
     }
 
-    public class ALLResponseItem
+    public class AllResponseItem
     {
         [JsonProperty("name")]
-        public ALLResponseItemNameType Name { get; set; }
+        public AllResponseItemNameType Name { get; set; }
 
         [JsonProperty("tld")]
         public string[] Tld { get; set; }
@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public bool UnMember { get; set; }
 
         [JsonProperty("currencies")]
-        public ALLResponseItemCurrenciesType Currencies { get; set; }
+        public AllResponseItemCurrenciesType Currencies { get; set; }
 
         [JsonProperty("idd")]
-        public ALLResponseItemIddType Idd { get; set; }
+        public AllResponseItemIddType Idd { get; set; }
 
         [JsonProperty("capital")]
         public string[] Capital { get; set; }
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Subregion { get; set; }
 
         [JsonProperty("languages")]
-        public ALLResponseItemLanguagesType Languages { get; set; }
+        public AllResponseItemLanguagesType Languages { get; set; }
 
         [JsonProperty("translations")]
-        public ALLResponseItemTranslationsType Translations { get; set; }
+        public AllResponseItemTranslationsType Translations { get; set; }
 
         [JsonProperty("latlng")]
         public double[] Latlng { get; set; }
@@ -95,25 +95,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public double Area { get; set; }
 
         [JsonProperty("demonyms")]
-        public ALLResponseItemDemonymsType Demonyms { get; set; }
+        public AllResponseItemDemonymsType Demonyms { get; set; }
 
         [JsonProperty("flag")]
         public string Flag { get; set; }
 
         [JsonProperty("maps")]
-        public ALLResponseItemMapsType Maps { get; set; }
+        public AllResponseItemMapsType Maps { get; set; }
 
         [JsonProperty("population")]
         public double Population { get; set; }
 
         [JsonProperty("gini")]
-        public ALLResponseItemGiniType Gini { get; set; }
+        public AllResponseItemGiniType Gini { get; set; }
 
         [JsonProperty("fifa")]
         public string Fifa { get; set; }
 
         [JsonProperty("car")]
-        public ALLResponseItemCarType Car { get; set; }
+        public AllResponseItemCarType Car { get; set; }
 
         [JsonProperty("timezones")]
         public string[] Timezones { get; set; }
@@ -122,22 +122,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string[] Continents { get; set; }
 
         [JsonProperty("flags")]
-        public ALLResponseItemFlagsType Flags { get; set; }
+        public AllResponseItemFlagsType Flags { get; set; }
 
         [JsonProperty("coatOfArms")]
-        public ALLResponseItemCoatOfArmsType CoatOfArms { get; set; }
+        public AllResponseItemCoatOfArmsType CoatOfArms { get; set; }
 
         [JsonProperty("startOfWeek")]
         public string StartOfWeek { get; set; }
 
         [JsonProperty("capitalInfo")]
-        public ALLResponseItemCapitalInfoType CapitalInfo { get; set; }
+        public AllResponseItemCapitalInfoType CapitalInfo { get; set; }
 
         [JsonProperty("postalCode")]
-        public ALLResponseItemPostalCodeType PostalCode { get; set; }
+        public AllResponseItemPostalCodeType PostalCode { get; set; }
     }
 
-    public class ALLResponseItemNameType
+    public class AllResponseItemNameType
     {
         [JsonProperty("common")]
         public string Common { get; set; }
@@ -146,25 +146,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Official { get; set; }
 
         [JsonProperty("nativeName")]
-        public ALLResponseItemNameTypeNativeNameType NativeName { get; set; }
+        public AllResponseItemNameTypeNativeNameType NativeName { get; set; }
     }
 
-    public class ALLResponseItemNameTypeNativeNameType
+    public class AllResponseItemNameTypeNativeNameType
     {
         [JsonProperty("ara")]
-        public ALLResponseItemNameTypeNativeNameTypeAraType Ara { get; set; }
+        public AllResponseItemNameTypeNativeNameTypeAraType Ara { get; set; }
 
         [JsonProperty("sin")]
-        public ALLResponseItemNameTypeNativeNameTypeSinType Sin { get; set; }
+        public AllResponseItemNameTypeNativeNameTypeSinType Sin { get; set; }
 
         [JsonProperty("tam")]
-        public ALLResponseItemNameTypeNativeNameTypeTamType Tam { get; set; }
+        public AllResponseItemNameTypeNativeNameTypeTamType Tam { get; set; }
 
         [JsonProperty("pol")]
-        public ALLResponseItemNameTypeNativeNameTypePolType Pol { get; set; }
+        public AllResponseItemNameTypeNativeNameTypePolType Pol { get; set; }
     }
 
-    public class ALLResponseItemNameTypeNativeNameTypeAraType
+    public class AllResponseItemNameTypeNativeNameTypeAraType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemNameTypeNativeNameTypeSinType
+    public class AllResponseItemNameTypeNativeNameTypeSinType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemNameTypeNativeNameTypeTamType
+    public class AllResponseItemNameTypeNativeNameTypeTamType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemNameTypeNativeNameTypePolType
+    public class AllResponseItemNameTypeNativeNameTypePolType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -200,14 +200,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemCurrenciesType
+    public class AllResponseItemCurrenciesType
     {
-        public ALLResponseItemCurrenciesTypeMRUType MRU { get; set; }
-        public ALLResponseItemCurrenciesTypeLKRType LKR { get; set; }
-        public ALLResponseItemCurrenciesTypePLNType PLN { get; set; }
+        [JsonProperty("MRU")]
+        public AllResponseItemCurrenciesTypeMruType Mru { get; set; }
+
+        [JsonProperty("LKR")]
+        public AllResponseItemCurrenciesTypeLkrType Lkr { get; set; }
+
+        [JsonProperty("PLN")]
+        public AllResponseItemCurrenciesTypePlnType Pln { get; set; }
     }
 
-    public class ALLResponseItemCurrenciesTypeMRUType
+    public class AllResponseItemCurrenciesTypeMruType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -216,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Symbol { get; set; }
     }
 
-    public class ALLResponseItemCurrenciesTypeLKRType
+    public class AllResponseItemCurrenciesTypeLkrType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -225,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Symbol { get; set; }
     }
 
-    public class ALLResponseItemCurrenciesTypePLNType
+    public class AllResponseItemCurrenciesTypePlnType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -234,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Symbol { get; set; }
     }
 
-    public class ALLResponseItemIddType
+    public class AllResponseItemIddType
     {
         [JsonProperty("root")]
         public string Root { get; set; }
@@ -243,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string[] Suffixes { get; set; }
     }
 
-    public class ALLResponseItemLanguagesType
+    public class AllResponseItemLanguagesType
     {
         [JsonProperty("ara")]
         public string Ara { get; set; }
@@ -258,76 +263,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Pol { get; set; }
     }
 
-    public class ALLResponseItemTranslationsType
+    public class AllResponseItemTranslationsType
     {
         [JsonProperty("ara")]
-        public ALLResponseItemTranslationsTypeAraType Ara { get; set; }
+        public AllResponseItemTranslationsTypeAraType Ara { get; set; }
 
         [JsonProperty("ces")]
-        public ALLResponseItemTranslationsTypeCesType Ces { get; set; }
+        public AllResponseItemTranslationsTypeCesType Ces { get; set; }
 
         [JsonProperty("cym")]
-        public ALLResponseItemTranslationsTypeCymType Cym { get; set; }
+        public AllResponseItemTranslationsTypeCymType Cym { get; set; }
 
         [JsonProperty("deu")]
-        public ALLResponseItemTranslationsTypeDeuType Deu { get; set; }
+        public AllResponseItemTranslationsTypeDeuType Deu { get; set; }
 
         [JsonProperty("est")]
-        public ALLResponseItemTranslationsTypeEstType Est { get; set; }
+        public AllResponseItemTranslationsTypeEstType Est { get; set; }
 
         [JsonProperty("fin")]
-        public ALLResponseItemTranslationsTypeFinType Fin { get; set; }
+        public AllResponseItemTranslationsTypeFinType Fin { get; set; }
 
         [JsonProperty("fra")]
-        public ALLResponseItemTranslationsTypeFraType Fra { get; set; }
+        public AllResponseItemTranslationsTypeFraType Fra { get; set; }
 
         [JsonProperty("hrv")]
-        public ALLResponseItemTranslationsTypeHrvType Hrv { get; set; }
+        public AllResponseItemTranslationsTypeHrvType Hrv { get; set; }
 
         [JsonProperty("hun")]
-        public ALLResponseItemTranslationsTypeHunType Hun { get; set; }
+        public AllResponseItemTranslationsTypeHunType Hun { get; set; }
 
         [JsonProperty("ita")]
-        public ALLResponseItemTranslationsTypeItaType Ita { get; set; }
+        public AllResponseItemTranslationsTypeItaType Ita { get; set; }
 
         [JsonProperty("jpn")]
-        public ALLResponseItemTranslationsTypeJpnType Jpn { get; set; }
+        public AllResponseItemTranslationsTypeJpnType Jpn { get; set; }
 
         [JsonProperty("kor")]
-        public ALLResponseItemTranslationsTypeKorType Kor { get; set; }
+        public AllResponseItemTranslationsTypeKorType Kor { get; set; }
 
         [JsonProperty("nld")]
-        public ALLResponseItemTranslationsTypeNldType Nld { get; set; }
+        public AllResponseItemTranslationsTypeNldType Nld { get; set; }
 
         [JsonProperty("per")]
-        public ALLResponseItemTranslationsTypePerType Per { get; set; }
+        public AllResponseItemTranslationsTypePerType Per { get; set; }
 
         [JsonProperty("pol")]
-        public ALLResponseItemTranslationsTypePolType Pol { get; set; }
+        public AllResponseItemTranslationsTypePolType Pol { get; set; }
 
         [JsonProperty("por")]
-        public ALLResponseItemTranslationsTypePorType Por { get; set; }
+        public AllResponseItemTranslationsTypePorType Por { get; set; }
 
         [JsonProperty("rus")]
-        public ALLResponseItemTranslationsTypeRusType Rus { get; set; }
+        public AllResponseItemTranslationsTypeRusType Rus { get; set; }
 
         [JsonProperty("slk")]
-        public ALLResponseItemTranslationsTypeSlkType Slk { get; set; }
+        public AllResponseItemTranslationsTypeSlkType Slk { get; set; }
 
         [JsonProperty("spa")]
-        public ALLResponseItemTranslationsTypeSpaType Spa { get; set; }
+        public AllResponseItemTranslationsTypeSpaType Spa { get; set; }
 
         [JsonProperty("swe")]
-        public ALLResponseItemTranslationsTypeSweType Swe { get; set; }
+        public AllResponseItemTranslationsTypeSweType Swe { get; set; }
 
         [JsonProperty("urd")]
-        public ALLResponseItemTranslationsTypeUrdType Urd { get; set; }
+        public AllResponseItemTranslationsTypeUrdType Urd { get; set; }
 
         [JsonProperty("zho")]
-        public ALLResponseItemTranslationsTypeZhoType Zho { get; set; }
+        public AllResponseItemTranslationsTypeZhoType Zho { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeAraType
+    public class AllResponseItemTranslationsTypeAraType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -336,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeCesType
+    public class AllResponseItemTranslationsTypeCesType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -345,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeCymType
+    public class AllResponseItemTranslationsTypeCymType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -354,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeDeuType
+    public class AllResponseItemTranslationsTypeDeuType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -363,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeEstType
+    public class AllResponseItemTranslationsTypeEstType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -372,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeFinType
+    public class AllResponseItemTranslationsTypeFinType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -381,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeFraType
+    public class AllResponseItemTranslationsTypeFraType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -390,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeHrvType
+    public class AllResponseItemTranslationsTypeHrvType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -399,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeHunType
+    public class AllResponseItemTranslationsTypeHunType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -408,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeItaType
+    public class AllResponseItemTranslationsTypeItaType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -417,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeJpnType
+    public class AllResponseItemTranslationsTypeJpnType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -426,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeKorType
+    public class AllResponseItemTranslationsTypeKorType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -435,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeNldType
+    public class AllResponseItemTranslationsTypeNldType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -444,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypePerType
+    public class AllResponseItemTranslationsTypePerType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -453,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypePolType
+    public class AllResponseItemTranslationsTypePolType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -462,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypePorType
+    public class AllResponseItemTranslationsTypePorType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -471,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeRusType
+    public class AllResponseItemTranslationsTypeRusType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -480,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeSlkType
+    public class AllResponseItemTranslationsTypeSlkType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -489,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeSpaType
+    public class AllResponseItemTranslationsTypeSpaType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -498,7 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeSweType
+    public class AllResponseItemTranslationsTypeSweType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -507,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeUrdType
+    public class AllResponseItemTranslationsTypeUrdType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -516,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemTranslationsTypeZhoType
+    public class AllResponseItemTranslationsTypeZhoType
     {
         [JsonProperty("official")]
         public string Official { get; set; }
@@ -525,16 +530,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Common { get; set; }
     }
 
-    public class ALLResponseItemDemonymsType
+    public class AllResponseItemDemonymsType
     {
         [JsonProperty("eng")]
-        public ALLResponseItemDemonymsTypeEngType Eng { get; set; }
+        public AllResponseItemDemonymsTypeEngType Eng { get; set; }
 
         [JsonProperty("fra")]
-        public ALLResponseItemDemonymsTypeFraType Fra { get; set; }
+        public AllResponseItemDemonymsTypeFraType Fra { get; set; }
     }
 
-    public class ALLResponseItemDemonymsTypeEngType
+    public class AllResponseItemDemonymsTypeEngType
     {
         [JsonProperty("f")]
         public string F { get; set; }
@@ -543,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string M { get; set; }
     }
 
-    public class ALLResponseItemDemonymsTypeFraType
+    public class AllResponseItemDemonymsTypeFraType
     {
         [JsonProperty("f")]
         public string F { get; set; }
@@ -552,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string M { get; set; }
     }
 
-    public class ALLResponseItemMapsType
+    public class AllResponseItemMapsType
     {
         [JsonProperty("googleMaps")]
         public string GoogleMaps { get; set; }
@@ -561,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string OpenStreetMaps { get; set; }
     }
 
-    public class ALLResponseItemGiniType
+    public class AllResponseItemGiniType
     {
         [JsonProperty("2014")]
         public double _2014 { get; set; }
@@ -573,7 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public double _2018 { get; set; }
     }
 
-    public class ALLResponseItemCarType
+    public class AllResponseItemCarType
     {
         [JsonProperty("signs")]
         public string[] Signs { get; set; }
@@ -582,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Side { get; set; }
     }
 
-    public class ALLResponseItemFlagsType
+    public class AllResponseItemFlagsType
     {
         [JsonProperty("png")]
         public string Png { get; set; }
@@ -591,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Svg { get; set; }
     }
 
-    public class ALLResponseItemCoatOfArmsType
+    public class AllResponseItemCoatOfArmsType
     {
         [JsonProperty("png")]
         public string Png { get; set; }
@@ -600,13 +605,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         public string Svg { get; set; }
     }
 
-    public class ALLResponseItemCapitalInfoType
+    public class AllResponseItemCapitalInfoType
     {
         [JsonProperty("latlng")]
         public double[] Latlng { get; set; }
     }
 
-    public class ALLResponseItemPostalCodeType
+    public class AllResponseItemPostalCodeType
     {
         [JsonProperty("format")]
         public string Format { get; set; }

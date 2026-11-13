@@ -174,10 +174,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         public int UserId { get; set; }
 
         [JsonProperty("sAMAccountName")]
-        public string UsernameForOlderSystems { get; set; }
+        public string UserNameForOlderSystems { get; set; }
 
         [JsonProperty("login")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("createdDate")]
         public string Created { get; set; }
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         public JToken CustomItems { get; set; }
 
         [JsonProperty("adGuid")]
-        public string ADGUID { get; set; }
+        public string ADGuid { get; set; }
 
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         public string LastName { get; set; }
 
         [JsonProperty("sid")]
-        public string SId { get; set; }
+        public string Sid { get; set; }
 
         [JsonProperty("adPath")]
         public string ADPath { get; set; }

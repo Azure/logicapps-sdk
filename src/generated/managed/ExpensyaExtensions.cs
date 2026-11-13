@@ -1656,8 +1656,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string MerchantVatNumber { get; set; }
         public double Units { get; set; }
         public ExpenseResponseStateType State { get; set; }
-        public VATResponse VAT { get; set; }
-        public double VATAvgRate { get; set; }
+
+        [JsonProperty("VAT")]
+        public VatResponse Vat { get; set; }
+
+        [JsonProperty("VATAvgRate")]
+        public double VatAvgRate { get; set; }
         public int AttachedFilesCount { get; set; }
         public bool ToReimburse { get; set; }
         public bool IsBillable { get; set; }
@@ -1714,7 +1718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _99 = 99
     }
 
-    public class VATResponse
+    public class VatResponse
     {
         public double[] Rates { get; set; }
         public double[] Values { get; set; }

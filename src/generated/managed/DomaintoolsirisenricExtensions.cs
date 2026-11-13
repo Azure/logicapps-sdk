@@ -776,7 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisenric
     public class AccountResponseAccountType
     {
         [JsonProperty("api_username")]
-        public string ApiUsername { get; set; }
+        public string ApiUserName { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }

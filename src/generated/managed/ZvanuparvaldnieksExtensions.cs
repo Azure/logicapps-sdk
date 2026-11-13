@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
         public int ContactId { get; set; }
 
         [JsonProperty("recordingURL")]
-        public string RecordingURL { get; set; }
+        public string RecordingUrl { get; set; }
     }
 
     public class GetCallHistoryItemByIdResponse
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
         public string VoicemailBoxName { get; set; }
 
         [JsonProperty("messageURL")]
-        public string MessageURL { get; set; }
+        public string MessageUrl { get; set; }
     }
 
     public class GetAudioPromptByIdResponse
@@ -980,7 +980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
         public int ContactId { get; set; }
 
         [JsonProperty("recordingURL")]
-        public string RecordingURL { get; set; }
+        public string RecordingUrl { get; set; }
     }
 
     public class GetCallHistoryResponse
@@ -1109,7 +1109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zvanuparvaldnieks
         public string VoicemailBoxName { get; set; }
 
         [JsonProperty("messageURL")]
-        public string MessageURL { get; set; }
+        public string MessageUrl { get; set; }
     }
 
     public class GetAudioPromptsResponse

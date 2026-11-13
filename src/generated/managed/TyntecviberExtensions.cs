@@ -228,10 +228,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 
     public class BodyInputContentTypeFileType
     {
-        public BodyInputContentTypeFileType(string url, string filename, string filetype)
+        public BodyInputContentTypeFileType(string url, string fileName, string filetype)
         {
             this.Url = url;
-            this.Filename = filename;
+            this.FileName = fileName;
             this.Filetype = filetype;
         }
 
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         public string Url { get; set; }
 
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("filetype", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filetype { get; set; }

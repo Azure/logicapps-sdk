@@ -237,7 +237,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
 
     public class Starship
     {
-        public string MGLT { get; set; }
+        [JsonProperty("MGLT")]
+        public string Mglt { get; set; }
 
         [JsonProperty("cargo_capacity")]
         public string CargoCapacity { get; set; }

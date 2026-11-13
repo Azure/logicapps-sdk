@@ -475,45 +475,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
     public enum PropertyValueMetaColorType
     {
         [EnumMember(Value = "#9CCAFF")]
-        _9CCAFF,
+        _9Ccaff,
         [EnumMember(Value = "#DAE6FF")]
-        DAE6FF,
+        Dae6FF,
         [EnumMember(Value = "#84E3F8")]
         _84E3F8,
         [EnumMember(Value = "#CDF0FF")]
-        CDF0FF,
+        Cdf0FF,
         [EnumMember(Value = "#75E5A2")]
         _75E5A2,
         [EnumMember(Value = "#D6FFE6")]
-        D6FFE6,
+        D6Ffe6,
         [EnumMember(Value = "#B1BECD")]
-        B1BECD,
+        B1Becd,
         [EnumMember(Value = "#E5ECF3")]
-        E5ECF3,
+        E5Ecf3,
         [EnumMember(Value = "#FFA95A")]
-        FFA95A,
+        Ffa95A,
         [EnumMember(Value = "#FFD6B8")]
-        FFD6B8,
+        Ffd6B8,
         [EnumMember(Value = "#FF99EF")]
         FF99EF,
         [EnumMember(Value = "#FFD6F9")]
-        FFD6F9,
+        Ffd6F9,
         [EnumMember(Value = "#C698FF")]
         C698FF,
         [EnumMember(Value = "#EBDCFF")]
-        EBDCFF,
+        Ebdcff,
         [EnumMember(Value = "#FF9F9F")]
         FF9F9F,
         [EnumMember(Value = "#FFCBCB")]
-        FFCBCB,
+        Ffcbcb,
         [EnumMember(Value = "#8EF0E4")]
         _8EF0E4,
         [EnumMember(Value = "#D0F8F3")]
         D0F8F3,
         [EnumMember(Value = "#FFD74A")]
-        FFD74A,
+        Ffd74A,
         [EnumMember(Value = "#FFEFC5")]
-        FFEFC5,
+        Ffefc5,
         [EnumMember(Value = "#283144")]
         _283144,
         [EnumMember(Value = "#717E97")]
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almanac
         [EnumMember(Value = "#00659E")]
         _00659E,
         [EnumMember(Value = "#00BAE2")]
-        _00BAE2,
+        _00Bae2,
         [EnumMember(Value = "#028C3A")]
         _028C3A,
         [EnumMember(Value = "#07BA4F")]

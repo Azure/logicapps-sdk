@@ -59,20 +59,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEventTypeType
     {
-        SHARED,
-        SIGNED,
-        REVIEWED,
-        DECLINED,
-        EDITED,
+        [EnumMember(Value = "SHARED")]
+        Shared,
+        [EnumMember(Value = "SIGNED")]
+        Signed,
+        [EnumMember(Value = "REVIEWED")]
+        Reviewed,
+        [EnumMember(Value = "DECLINED")]
+        Declined,
+        [EnumMember(Value = "EDITED")]
+        Edited,
         [EnumMember(Value = "CARBON_COPIED")]
-        CARBONCOPIED,
-        RECALLED,
-        REMINDED,
-        COMPLETED,
+        CarbonCopied,
+        [EnumMember(Value = "RECALLED")]
+        Recalled,
+        [EnumMember(Value = "REMINDED")]
+        Reminded,
+        [EnumMember(Value = "COMPLETED")]
+        Completed,
         [EnumMember(Value = "EVIDENCE_REPORT_GENERATED")]
-        EVIdENCEREPORTGENERATED,
+        EvidenceReportGenerated,
         [EnumMember(Value = "DOCUMENT_DELETED")]
-        DOCUMENTDELETED
+        DocumentDeleted
     }
 }
 

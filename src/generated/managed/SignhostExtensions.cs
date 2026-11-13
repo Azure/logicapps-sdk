@@ -218,11 +218,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [EnumMember(Value = "eHerkenning")]
         EHerkenning,
         [EnumMember(Value = "eIDAS Login")]
-        EIdASLogin,
+        EidasLogin,
         [EnumMember(Value = "iDeal")]
         IDeal,
         [EnumMember(Value = "iDIN")]
-        IdIN,
+        Idin,
         [EnumMember(Value = "itsme Identification")]
         ItsmeIdentification,
         PhoneNumber,
@@ -230,7 +230,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [EnumMember(Value = "itsme sign")]
         ItsmeSign,
         SigningCertificate,
-        SURFnet,
+        [EnumMember(Value = "SURFnet")]
+        SurFnet,
         [EnumMember(Value = "ZealiD Qualified")]
         ZealiDQualified
     }
@@ -430,11 +431,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [EnumMember(Value = "eHerkenning")]
         EHerkenning,
         [EnumMember(Value = "eIDAS Login")]
-        EIdASLogin,
+        EidasLogin,
         [EnumMember(Value = "iDeal")]
         IDeal,
         [EnumMember(Value = "iDIN")]
-        IdIN,
+        Idin,
         [EnumMember(Value = "itsme Identification")]
         ItsmeIdentification,
         PhoneNumber,
@@ -442,7 +443,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [EnumMember(Value = "itsme sign")]
         ItsmeSign,
         SigningCertificate,
-        SURFnet,
+        [EnumMember(Value = "SURFnet")]
+        SurFnet,
         [EnumMember(Value = "ZealiD Qualified")]
         ZealiDQualified
     }

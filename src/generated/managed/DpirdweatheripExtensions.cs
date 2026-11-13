@@ -1046,13 +1046,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetStationsResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public StationModel[] Collection { get; set; }
     }
 
-    public class ApiMetaDataModel
+    public class ApiMetadataModel
     {
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -1233,7 +1233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetStationsAvailabilityResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public StationAvailabilitySummaryModel[] Collection { get; set; }
@@ -1338,7 +1338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetStationResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public StationModel Data { get; set; }
@@ -1368,7 +1368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetStationsBulletinsResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public StationBulletinsModel[] Collection { get; set; }
@@ -1545,7 +1545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetWeatherStationsRainfallResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public StationRainfallModel[] Collection { get; set; }
@@ -1608,7 +1608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetWeatherStationRainfallResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public StationRainfallModel[] Collection { get; set; }
@@ -1617,7 +1617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetStationsExtremeConditionsResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public StationExtremeConditionModelItem[] Collection { get; set; }
@@ -1869,7 +1869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetStationsExtremeEventsResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public StationExtremeEventModel Data { get; set; }
@@ -1957,7 +1957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetStationsLatestDataResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public StationLatestDataModel[] Collection { get; set; }
@@ -2146,7 +2146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetStationBulletinsResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public StationBulletinsModel Data { get; set; }
@@ -2155,7 +2155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetStationLatestDataResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public StationLatestDataModel Data { get; set; }
@@ -2164,7 +2164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class GetStationMinuteDataResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public SingleStationDataModel[] Collection { get; set; }
@@ -2203,7 +2203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class MultiStationSummarySchemaModel
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public MultiStationSummarySchemaModelCollectionTypeItem[] Collection { get; set; }
@@ -2485,7 +2485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class StationTimeSeriesSchemaModel
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public StationTimeSeriesModel[] Collection { get; set; }
@@ -2569,7 +2569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class SingleStationSummarySchemaModel
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public SingleStationSummarySchemaModelDataType Data { get; set; }

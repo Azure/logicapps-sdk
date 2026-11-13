@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
     public class PdfcrossActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePDF(Expression<Func<FilesInput>> files)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePdf(Expression<Func<FilesInput>> files)
         {
             var __workflow_files = WorkflowExpression.Compile(files, nameof(files), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>

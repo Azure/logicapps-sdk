@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmosign
         public string EnvelopeStatus { get; set; }
 
         [JsonProperty("urlToPublishTo")]
-        public string WebhookURL { get; set; }
+        public string WebhookUrl { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedDate { get; set; }
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmosign
         public string ConnectionTitle { get; set; }
 
         [JsonProperty("urlToPublishTo", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("envelopeEvents", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EnvelopeStatus { get; set; } = "Completed";

@@ -751,7 +751,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     {
         WebApp,
         Mail,
-        API,
+        [EnumMember(Value = "API")]
+        Api,
         Plugin
     }
 
@@ -875,20 +876,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostProcessResult
     {
-        SUCCESS,
-        FAILURE
+        [EnumMember(Value = "SUCCESS")]
+        Success,
+        [EnumMember(Value = "FAILURE")]
+        Failure
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetDocumentApprovalStateResponse
     {
-        UNAPPROVED,
-        PREAPPROVED,
-        PREREJECTED,
-        DELEGATED,
-        ABANDONED,
-        APPROVED,
-        REJECTED
+        [EnumMember(Value = "UNAPPROVED")]
+        Unapproved,
+        [EnumMember(Value = "PREAPPROVED")]
+        Preapproved,
+        [EnumMember(Value = "PREREJECTED")]
+        Prerejected,
+        [EnumMember(Value = "DELEGATED")]
+        Delegated,
+        [EnumMember(Value = "ABANDONED")]
+        Abandoned,
+        [EnumMember(Value = "APPROVED")]
+        Approved,
+        [EnumMember(Value = "REJECTED")]
+        Rejected
     }
 
     public class ApiApproval
@@ -1023,13 +1033,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListAllDocumentsApprovalState
     {
-        UNAPPROVED,
-        PREAPPROVED,
-        PREREJECTED,
-        DELEGATED,
-        ABANDONED,
-        APPROVED,
-        REJECTED
+        [EnumMember(Value = "UNAPPROVED")]
+        Unapproved,
+        [EnumMember(Value = "PREAPPROVED")]
+        Preapproved,
+        [EnumMember(Value = "PREREJECTED")]
+        Prerejected,
+        [EnumMember(Value = "DELEGATED")]
+        Delegated,
+        [EnumMember(Value = "ABANDONED")]
+        Abandoned,
+        [EnumMember(Value = "APPROVED")]
+        Approved,
+        [EnumMember(Value = "REJECTED")]
+        Rejected
     }
 
     public class StringApiFilterNotEqual
@@ -1055,7 +1072,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     {
         WebApp,
         Mail,
-        API,
+        [EnumMember(Value = "API")]
+        Api,
         Plugin
     }
 
@@ -1393,214 +1411,215 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ResponseCode
     {
-        NONE,
+        [EnumMember(Value = "NONE")]
+        None,
         OK,
         [EnumMember(Value = "NO_CONFIG_FILE")]
-        NOCONFIGFILE,
+        NoConfigFile,
         [EnumMember(Value = "INCOMPLETE_CONFIG_FILE")]
-        INCOMPLETECONFIGFILE,
+        IncompleteConfigFile,
         [EnumMember(Value = "INVALID_CONFIG_FILE")]
-        INVALIdCONFIGFILE,
+        InvalidConfigFile,
         [EnumMember(Value = "UNREADABLE_CONFIG_FILE")]
-        UNREADABLECONFIGFILE,
+        UnreadableConfigFile,
         [EnumMember(Value = "DATABASE_NOT_AVAILABLE")]
-        DATABASENOTAVAILABLE,
+        DatabaseNotAvailable,
         [EnumMember(Value = "DOCUMENT_STORAGE_NOT_AVAILABLE")]
-        DOCUMENTSTORAGENOTAVAILABLE,
+        DocumentStorageNotAvailable,
         [EnumMember(Value = "UNKNOWN_USER")]
-        UNKNOWNUSER,
+        UnknownUser,
         [EnumMember(Value = "INTERNAL_ERROR")]
-        INTERNALERROR,
+        InternalError,
         [EnumMember(Value = "USER_ALREADY_EXISTS")]
-        USERALREADYEXISTS,
+        UserAlreadyExists,
         [EnumMember(Value = "LICENSE_SERVER_ERROR")]
-        LICENSESERVERERROR,
+        LicenseServerError,
         [EnumMember(Value = "MODEL_CANT_BE_READ")]
-        MODELCANTBEREAD,
+        ModelCantBeRead,
         [EnumMember(Value = "NOT_AUTHENTICATED")]
-        NOTAUTHENTICATED,
+        NotAuthenticated,
         [EnumMember(Value = "GROUP_ALREADY_EXISTS")]
-        GROUPALREADYEXISTS,
+        GroupAlreadyExists,
         [EnumMember(Value = "UNKNOWN_GROUP")]
-        UNKNOWNGROUP,
+        UnknownGroup,
         [EnumMember(Value = "MODEL_BUILDING")]
-        MODELBUILDING,
+        ModelBuilding,
         [EnumMember(Value = "MODEL_CANT_BE_BUILT")]
-        MODELCANTBEBUILT,
+        ModelCantBeBuilt,
         [EnumMember(Value = "MODEL_STORAGE_NOT_AVAILABLE")]
-        MODELSTORAGENOTAVAILABLE,
+        ModelStorageNotAvailable,
         [EnumMember(Value = "UNDEFINED_LANGUAGE")]
-        UNDEFINEDLANGUAGE,
+        UndefinedLanguage,
         [EnumMember(Value = "FORMAT_NOT_SUPPORTED")]
-        FORMATNOTSUPPORTED,
+        FormatNotSupported,
         [EnumMember(Value = "DOCUMENT_SIZE_EXCEEDED")]
-        DOCUMENTSIZEEXCEEDED,
+        DocumentSizeExceeded,
         [EnumMember(Value = "DOCUMENT_NOT_FOUND")]
-        DOCUMENTNOTFOUND,
+        DocumentNotFound,
         [EnumMember(Value = "DPI_NOT_SUFFICIENT")]
-        DPINOTSUFFICIENT,
+        DpiNotSufficient,
         [EnumMember(Value = "DOCUMENT_ALREADY_EXISTS")]
-        DOCUMENTALREADYEXISTS,
+        DocumentAlreadyExists,
         [EnumMember(Value = "MODEL_NOT_SPECIFIED")]
-        MODELNOTSPECIFIED,
+        ModelNotSpecified,
         [EnumMember(Value = "CLASS_NOT_EXISTS")]
-        CLASSNOTEXISTS,
+        ClassNotExists,
         [EnumMember(Value = "MODEL_NOT_FOUND")]
-        MODELNOTFOUND,
+        ModelNotFound,
         [EnumMember(Value = "USER_NOT_REGISTERED")]
-        USERNOTREGISTERED,
+        UserNotRegistered,
         [EnumMember(Value = "PAGE_NOT_EXIST")]
-        PAGENOTEXIST,
+        PageNotExist,
         [EnumMember(Value = "ATTACHMENT_NOT_VALID")]
-        ATTACHMENTNOTVALId,
+        AttachmentNotValid,
         [EnumMember(Value = "PLUGINS_CANT_BE_LOADED")]
-        PLUGINSCANTBELOADED,
+        PluginsCantBeLoaded,
         [EnumMember(Value = "PLUGIN_NOT_FOUND")]
-        PLUGINNOTFOUND,
+        PluginNotFound,
         [EnumMember(Value = "DISABLED_FEATURE")]
-        DISABLEDFEATURE,
+        DisabledFeature,
         [EnumMember(Value = "METADATA_NOT_VALID")]
-        METADATANOTVALId,
+        MetadataNotValid,
         [EnumMember(Value = "TRANSACTION_ABORTED")]
-        TRANSACTIONABORTED,
+        TransactionAborted,
         [EnumMember(Value = "AUTHBACKEND_INITIALIZATION_FAILED")]
-        AUTHBACKENDINITIALIZATIONFAILED,
+        AuthbackendInitializationFailed,
         [EnumMember(Value = "OUT_OF_MEMORY")]
-        OUTOFMEMORY,
+        OutOfMemory,
         [EnumMember(Value = "ENTITY_COULD_NOT_BE_SAVED")]
-        ENTITYCOULDNOTBESAVED,
+        EntityCouldNotBeSaved,
         [EnumMember(Value = "ENTITY_COULD_NOT_BE_LOADED")]
-        ENTITYCOULDNOTBELOADED,
+        EntityCouldNotBeLoaded,
         [EnumMember(Value = "EXTRACTION_ERROR")]
-        EXTRACTIONERROR,
+        ExtractionError,
         [EnumMember(Value = "TRANSACTION_INVALIDATED")]
-        TRANSACTIONINVALIdATED,
+        TransactionInvalidated,
         [EnumMember(Value = "SERVICE_NOT_AVAILABLE")]
-        SERVICENOTAVAILABLE,
+        ServiceNotAvailable,
         [EnumMember(Value = "BACKEND_NOT_FOUND")]
-        BACKENDNOTFOUND,
+        BackendNotFound,
         [EnumMember(Value = "INCORRECT_DATA")]
-        INCORRECTDATA,
+        IncorrectData,
         [EnumMember(Value = "USER_NOT_FOUND")]
-        USERNOTFOUND,
+        UserNotFound,
         [EnumMember(Value = "PERMISSION_ALREADY_ASSIGNED")]
-        PERMISSIONALREADYASSIGNED,
+        PermissionAlreadyAssigned,
         [EnumMember(Value = "PERMISSION_NOT_FOUND")]
-        PERMISSIONNOTFOUND,
+        PermissionNotFound,
         [EnumMember(Value = "ENTITY_ALREADY_EXISTS")]
-        ENTITYALREADYEXISTS,
+        EntityAlreadyExists,
         [EnumMember(Value = "ENTITY_NOT_FOUND")]
-        ENTITYNOTFOUND,
+        EntityNotFound,
         [EnumMember(Value = "POSTPROCESSING_INITIALIZATION_FAILED")]
-        POSTPROCESSINGINITIALIZATIONFAILED,
+        PostprocessingInitializationFailed,
         [EnumMember(Value = "DOCUMENT_ALREADY_OPENED")]
-        DOCUMENTALREADYOPENED,
+        DocumentAlreadyOpened,
         [EnumMember(Value = "DOCUMENT_OPENED_BY_ANOTHER_USER")]
-        DOCUMENTOPENEDBYANOTHERUSER,
+        DocumentOpenedByAnotherUser,
         [EnumMember(Value = "DOCUMENT_OLD_VERSION")]
-        DOCUMENTOLDVERSION,
+        DocumentOldVersion,
         [EnumMember(Value = "DOCUMENT_FILE_CORRUPTED")]
-        DOCUMENTFILECORRUPTED,
+        DocumentFileCorrupted,
         [EnumMember(Value = "DOCUMENT_FILE_PROTECTED")]
-        DOCUMENTFILEPROTECTED,
+        DocumentFileProtected,
         [EnumMember(Value = "POSTPROCESSING_PREVALIDATION_FAILED")]
-        POSTPROCESSINGPREVALIdATIONFAILED,
+        PostprocessingPrevalidationFailed,
         [EnumMember(Value = "TENANT_ALREADY_EXISTS")]
-        TENANTALREADYEXISTS,
+        TenantAlreadyExists,
         [EnumMember(Value = "NOT_AUTHORIZED")]
-        NOTAUTHORIZED,
+        NotAuthorized,
         [EnumMember(Value = "EXPORT_NO_TEMPLATE")]
-        EXPORTNOTEMPLATE,
+        ExportNoTemplate,
         [EnumMember(Value = "EXPORT_FILL_ERROR")]
-        EXPORTFILLERROR,
+        ExportFillError,
         [EnumMember(Value = "EXPORT_SAVE_ERROR")]
-        EXPORTSAVEERROR,
+        ExportSaveError,
         [EnumMember(Value = "EXPORT_REQUIRED_FIELD_MISSING")]
-        EXPORTREQUIREDFIELDMISSING,
+        ExportRequiredFieldMissing,
         [EnumMember(Value = "EXPORT_TEMPLATE_INVALID")]
-        EXPORTTEMPLATEINVALId,
+        ExportTemplateInvalid,
         [EnumMember(Value = "BATCH_EXPORT_NO_ROOT")]
-        BATCHEXPORTNOROOT,
+        BatchExportNoRoot,
         [EnumMember(Value = "BATCH_EXPORT_NO_DOCS")]
-        BATCHEXPORTNODOCS,
+        BatchExportNoDocs,
         [EnumMember(Value = "BATCH_EXPORT_TOO_MANY_DOCS")]
-        BATCHEXPORTTOOMANYDOCS,
+        BatchExportTooManyDocs,
         [EnumMember(Value = "TENANT_NOT_FOUND")]
-        TENANTNOTFOUND,
+        TenantNotFound,
         [EnumMember(Value = "AUTH_BACKEND_ERROR")]
-        AUTHBACKENDERROR,
+        AuthBackendError,
         [EnumMember(Value = "REQUEST_INVALID")]
-        REQUESTINVALId,
+        RequestInvalid,
         [EnumMember(Value = "FIELD_INVALID")]
-        FIELDINVALId,
+        FieldInvalid,
         [EnumMember(Value = "REQUIRED_FIELD_MISSING")]
-        REQUIREDFIELDMISSING,
+        RequiredFieldMissing,
         [EnumMember(Value = "FIELD_VALUE_INVALID")]
-        FIELDVALUEINVALId,
+        FieldValueInvalid,
         [EnumMember(Value = "FIELD_UNKNOWN")]
-        FIELDUNKNOWN,
+        FieldUnknown,
         [EnumMember(Value = "REQUEST_TIMEOUT")]
-        REQUESTTIMEOUT,
+        RequestTimeout,
         [EnumMember(Value = "NO_CHANGES")]
-        NOCHANGES,
+        NoChanges,
         [EnumMember(Value = "ENUM_UNKNOWN_KEY")]
-        ENUMUNKNOWNKEY,
+        EnumUnknownKey,
         [EnumMember(Value = "ENUM_MISSING_KEY")]
-        ENUMMISSINGKEY,
+        EnumMissingKey,
         [EnumMember(Value = "ENUM_DUPLICATE_KEY")]
-        ENUMDUPLICATEKEY,
+        EnumDuplicateKey,
         [EnumMember(Value = "VALIDATION_THRESHOLD_MET")]
-        VALIdATIONTHRESHOLDMET,
+        ValidationThresholdMet,
         [EnumMember(Value = "VALIDATION_THRESHOLD_EXCEEDED")]
-        VALIdATIONTHRESHOLDEXCEEDED,
+        ValidationThresholdExceeded,
         [EnumMember(Value = "USER_NOT_APPROVED")]
-        USERNOTAPPROVED,
+        UserNotApproved,
         [EnumMember(Value = "WHITELIST_ADDRESS_INVALID")]
-        WHITELISTADDRESSINVALId,
+        WhitelistAddressInvalid,
         [EnumMember(Value = "WHITELIST_USER_ANOTHER_TENANT")]
-        WHITELISTUSERANOTHERTENANT,
+        WhitelistUserAnotherTenant,
         [EnumMember(Value = "LICENSE_MISSING")]
-        LICENSEMISSING,
+        LicenseMissing,
         [EnumMember(Value = "LICENSE_EXPIRED")]
-        LICENSEEXPIRED,
+        LicenseExpired,
         [EnumMember(Value = "LICENSE_NOT_VALID_YET")]
-        LICENSENOTVALIdYET,
+        LicenseNotValidYet,
         [EnumMember(Value = "LICENSE_USAGE_EXCEEDED")]
-        LICENSEUSAGEEXCEEDED,
+        LicenseUsageExceeded,
         [EnumMember(Value = "CONTAINER_PARTIALLY_REMOVED")]
-        CONTAINERPARTIALLYREMOVED,
+        ContainerPartiallyRemoved,
         [EnumMember(Value = "CONTAINER_CREATION_FAILED")]
-        CONTAINERCREATIONFAILED,
+        ContainerCreationFailed,
         [EnumMember(Value = "CONTAINER_NOT_FOUND")]
-        CONTAINERNOTFOUND,
+        ContainerNotFound,
         [EnumMember(Value = "CONTAINER_NOT_REMOVED")]
-        CONTAINERNOTREMOVED,
+        ContainerNotRemoved,
         [EnumMember(Value = "DOCUMENT_NOT_RETURNED")]
-        DOCUMENTNOTRETURNED,
+        DocumentNotReturned,
         [EnumMember(Value = "DOCUMENT_RETURNED_NOT_SAVED")]
-        DOCUMENTRETURNEDNOTSAVED,
+        DocumentReturnedNotSaved,
         [EnumMember(Value = "DOCUMENT_NOT_READY")]
-        DOCUMENTNOTREADY,
+        DocumentNotReady,
         [EnumMember(Value = "DOCUMENT_UNSUPPORTED_TYPE")]
-        DOCUMENTUNSUPPORTEDTYPE,
+        DocumentUnsupportedType,
         [EnumMember(Value = "DOCUMENT_EXTRACT_RESULT_NOT_FOUND")]
-        DOCUMENTEXTRACTRESULTNOTFOUND,
+        DocumentExtractResultNotFound,
         [EnumMember(Value = "DOCUMENT_FILE_NOT_FOUND")]
-        DOCUMENTFILENOTFOUND,
+        DocumentFileNotFound,
         [EnumMember(Value = "DOCUMENT_FILE_UPLOAD_FAILED")]
-        DOCUMENTFILEUPLOADFAILED,
+        DocumentFileUploadFailed,
         [EnumMember(Value = "DOCUMENT_FORBIDDEN_TYPE")]
-        DOCUMENTFORBIdDENTYPE,
+        DocumentForbiddenType,
         [EnumMember(Value = "ATTACHMENT_NOT_ATTACHED")]
-        ATTACHMENTNOTATTACHED,
+        AttachmentNotAttached,
         [EnumMember(Value = "PASSWORD_NOT_ACCEPTED")]
-        PASSWORDNOTACCEPTED,
+        PasswordNotAccepted,
         [EnumMember(Value = "EMAIL_NOT_FOUND")]
-        EMAILNOTFOUND,
+        EmailNotFound,
         [EnumMember(Value = "NO_TEXT_DETECTED")]
-        NOTEXTDETECTED,
+        NoTextDetected,
         [EnumMember(Value = "ENTITY_DELETE_FAILED")]
-        ENTITYDELETEFAILED
+        EntityDeleteFailed
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

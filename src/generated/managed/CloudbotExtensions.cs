@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
     public class CloudbotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<XCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> xCbotFilename, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> fileContents)
+        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<XCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> xCbotFileName, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> fileContents)
         {
             var __workflow_xCbotContentLanguage = WorkflowExpression.Compile(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
             var __workflow_publicId = WorkflowExpression.Compile(publicId, nameof(publicId), required: true);
-            var __workflow_xCbotFilename = WorkflowExpression.Compile(xCbotFilename, nameof(xCbotFilename), required: true);
+            var __workflow_xCbotFileName = WorkflowExpression.Compile(xCbotFileName, nameof(xCbotFileName), required: true);
             var __workflow_fileContents = WorkflowExpression.Compile(fileContents, nameof(fileContents), required: true);
             return new DeferredBodyAction<UploadFileResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);
-                callPayload.Headers["x-cbot-filename"] = ExpressionConverter.Convert(__workflow_xCbotFilename);
+                callPayload.Headers["x-cbot-filename"] = ExpressionConverter.Convert(__workflow_xCbotFileName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_fileContents);
                 return new ApiConnectionAction<UploadFileResponse>(callPayload);
             });
@@ -111,10 +111,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         public string JobId { get; set; }
 
         [JsonProperty("bot_id")]
-        public string BOTId { get; set; }
+        public string BotId { get; set; }
 
         [JsonProperty("bot_name")]
-        public string BOTName { get; set; }
+        public string BotName { get; set; }
 
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         public ExecuteBotResponseOutputType Output { get; set; }
 
         [JsonProperty("cast_url")]
-        public string CastURL { get; set; }
+        public string CastUrl { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         public string Data10 { get; set; }
 
         [JsonProperty("output_json")]
-        public string OutputJSON { get; set; }
+        public string OutputJson { get; set; }
     }
 
     public class ExecuteBotBodyInput
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         public string Data10 { get; set; }
 
         [JsonProperty("api_parameters")]
-        public string APIParameters { get; set; }
+        public string ApiParameters { get; set; }
     }
 
     public class BotDoneResponse

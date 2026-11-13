@@ -1038,9 +1038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
     public class GetTrackCircuitsResponseTrackCircuitsTypeItemNeighborsTypeItem
     {
         public string NeighborType { get; set; }
-
-        [JsonProperty("CircuitIds")]
-        public int[] CircuitIDs { get; set; }
+        public int[] CircuitIds { get; set; }
     }
 
     public class GetBusIncidentsResponse

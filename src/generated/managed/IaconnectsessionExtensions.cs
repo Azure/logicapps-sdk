@@ -139,16 +139,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetProcessByPIdResponse, ApiConnectionActionConfiguration> GetProcessByPId(Expression<Func<GetProcessByPIdInput>> getProcessByPId)
+        public IBodyWorkflowAction<GetProcessByPidResponse, ApiConnectionActionConfiguration> GetProcessByPid(Expression<Func<GetProcessByPidInput>> getProcessByPid)
         {
-            var __workflow_getProcessByPId = WorkflowExpression.Compile(getProcessByPId, nameof(getProcessByPId), required: true);
-            return new DeferredBodyAction<GetProcessByPIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_getProcessByPid = WorkflowExpression.Compile(getProcessByPid, nameof(getProcessByPid), required: true);
+            return new DeferredBodyAction<GetProcessByPidResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetProcessByPID";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getProcessByPId);
-                return new ApiConnectionAction<GetProcessByPIdResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getProcessByPid);
+                return new ApiConnectionAction<GetProcessByPidResponse>(callPayload);
             });
         }
 
@@ -1105,16 +1105,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GenerateRDPFileResponse, ApiConnectionActionConfiguration> GenerateRDPFile(Expression<Func<GenerateRDPFileInput>> generateRDPFile)
+        public IBodyWorkflowAction<GenerateRdpFileResponse, ApiConnectionActionConfiguration> GenerateRdpFile(Expression<Func<GenerateRdpFileInput>> generateRdpFile)
         {
-            var __workflow_generateRDPFile = WorkflowExpression.Compile(generateRDPFile, nameof(generateRDPFile), required: true);
-            return new DeferredBodyAction<GenerateRDPFileResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_generateRdpFile = WorkflowExpression.Compile(generateRdpFile, nameof(generateRdpFile), required: true);
+            return new DeferredBodyAction<GenerateRdpFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GenerateRDPFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generateRDPFile);
-                return new ApiConnectionAction<GenerateRDPFileResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generateRdpFile);
+                return new ApiConnectionAction<GenerateRdpFileResponse>(callPayload);
             });
         }
 
@@ -1133,16 +1133,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<IsTCPPortRespondingResponse, ApiConnectionActionConfiguration> IsTCPPortResponding(Expression<Func<IsTCPPortRespondingInput>> isTCPPortResponding)
+        public IBodyWorkflowAction<IsTcpPortRespondingResponse, ApiConnectionActionConfiguration> IsTcpPortResponding(Expression<Func<IsTcpPortRespondingInput>> isTcpPortResponding)
         {
-            var __workflow_isTCPPortResponding = WorkflowExpression.Compile(isTCPPortResponding, nameof(isTCPPortResponding), required: true);
-            return new DeferredBodyAction<IsTCPPortRespondingResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_isTcpPortResponding = WorkflowExpression.Compile(isTcpPortResponding, nameof(isTcpPortResponding), required: true);
+            return new DeferredBodyAction<IsTcpPortRespondingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/IsTCPPortResponding";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_isTCPPortResponding);
-                return new ApiConnectionAction<IsTCPPortRespondingResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_isTcpPortResponding);
+                return new ApiConnectionAction<IsTcpPortRespondingResponse>(callPayload);
             });
         }
 
@@ -1217,16 +1217,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse, ApiConnectionActionConfiguration> GetFailedActionErrorMessageFromPowerAutomateResultJSON(Expression<Func<GetFailedActionErrorMessageFromPowerAutomateResultJSONInput>> getFailedActionErrorMessageFromPowerAutomateResultJSON)
+        public IBodyWorkflowAction<GetFailedActionErrorMessageFromPowerAutomateResultJsonResponse, ApiConnectionActionConfiguration> GetFailedActionErrorMessageFromPowerAutomateResultJson(Expression<Func<GetFailedActionErrorMessageFromPowerAutomateResultJsonInput>> getFailedActionErrorMessageFromPowerAutomateResultJson)
         {
-            var __workflow_getFailedActionErrorMessageFromPowerAutomateResultJSON = WorkflowExpression.Compile(getFailedActionErrorMessageFromPowerAutomateResultJSON, nameof(getFailedActionErrorMessageFromPowerAutomateResultJSON), required: true);
-            return new DeferredBodyAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_getFailedActionErrorMessageFromPowerAutomateResultJson = WorkflowExpression.Compile(getFailedActionErrorMessageFromPowerAutomateResultJson, nameof(getFailedActionErrorMessageFromPowerAutomateResultJson), required: true);
+            return new DeferredBodyAction<GetFailedActionErrorMessageFromPowerAutomateResultJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetFailedActionErrorMessageFromPowerAutomateResultJSON";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getFailedActionErrorMessageFromPowerAutomateResultJSON);
-                return new ApiConnectionAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getFailedActionErrorMessageFromPowerAutomateResultJson);
+                return new ApiConnectionAction<GetFailedActionErrorMessageFromPowerAutomateResultJsonResponse>(callPayload);
             });
         }
 
@@ -1259,16 +1259,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<SendMessageToWebAPIResponse, ApiConnectionActionConfiguration> SendMessageToWebAPI(Expression<Func<SendMessageToWebAPIInput>> sendMessageToWebAPI)
+        public IBodyWorkflowAction<SendMessageToWebApiResponse, ApiConnectionActionConfiguration> SendMessageToWebApi(Expression<Func<SendMessageToWebApiInput>> sendMessageToWebApi)
         {
-            var __workflow_sendMessageToWebAPI = WorkflowExpression.Compile(sendMessageToWebAPI, nameof(sendMessageToWebAPI), required: true);
-            return new DeferredBodyAction<SendMessageToWebAPIResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sendMessageToWebApi = WorkflowExpression.Compile(sendMessageToWebApi, nameof(sendMessageToWebApi), required: true);
+            return new DeferredBodyAction<SendMessageToWebApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SendMessageToWebAPI";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPI);
-                return new ApiConnectionAction<SendMessageToWebAPIResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sendMessageToWebApi);
+                return new ApiConnectionAction<SendMessageToWebApiResponse>(callPayload);
             });
         }
 
@@ -1567,57 +1567,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetRSAGUITopmost(Expression<Func<SetRSAGUITopmostInput>> setRSAGUITopmost)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetRsaguiTopmost(Expression<Func<SetRsaguiTopmostInput>> setRsaguiTopmost)
         {
-            var __workflow_setRSAGUITopmost = WorkflowExpression.Compile(setRSAGUITopmost, nameof(setRSAGUITopmost), required: true);
+            var __workflow_setRsaguiTopmost = WorkflowExpression.Compile(setRsaguiTopmost, nameof(setRsaguiTopmost), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetRSAGUITopmost";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRSAGUITopmost);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRsaguiTopmost);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetRSAGUIOpacity(Expression<Func<SetRSAGUIOpacityInput>> setRSAGUIOpacity)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetRsaguiOpacity(Expression<Func<SetRsaguiOpacityInput>> setRsaguiOpacity)
         {
-            var __workflow_setRSAGUIOpacity = WorkflowExpression.Compile(setRSAGUIOpacity, nameof(setRSAGUIOpacity), required: true);
+            var __workflow_setRsaguiOpacity = WorkflowExpression.Compile(setRsaguiOpacity, nameof(setRsaguiOpacity), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetRSAGUIOpacity";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRSAGUIOpacity);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRsaguiOpacity);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetRSAGUIPosition(Expression<Func<SetRSAGUIPositionInput>> setRSAGUIPosition)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetRsaguiPosition(Expression<Func<SetRsaguiPositionInput>> setRsaguiPosition)
         {
-            var __workflow_setRSAGUIPosition = WorkflowExpression.Compile(setRSAGUIPosition, nameof(setRSAGUIPosition), required: true);
+            var __workflow_setRsaguiPosition = WorkflowExpression.Compile(setRsaguiPosition, nameof(setRsaguiPosition), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetRSAGUIPosition";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRSAGUIPosition);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRsaguiPosition);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BringRSAGUIToFront(Expression<Func<BringRSAGUIToFrontInput>> bringRSAGUIToFront)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BringRsaguiToFront(Expression<Func<BringRsaguiToFrontInput>> bringRsaguiToFront)
         {
-            var __workflow_bringRSAGUIToFront = WorkflowExpression.Compile(bringRSAGUIToFront, nameof(bringRSAGUIToFront), required: true);
+            var __workflow_bringRsaguiToFront = WorkflowExpression.Compile(bringRsaguiToFront, nameof(bringRsaguiToFront), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/BringRSAGUIToFront";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_bringRSAGUIToFront);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_bringRsaguiToFront);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1651,29 +1651,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CloseRSAServer(Expression<Func<CloseRSAServerInput>> closeRSAServer)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CloseRsaServer(Expression<Func<CloseRsaServerInput>> closeRsaServer)
         {
-            var __workflow_closeRSAServer = WorkflowExpression.Compile(closeRSAServer, nameof(closeRSAServer), required: true);
+            var __workflow_closeRsaServer = WorkflowExpression.Compile(closeRsaServer, nameof(closeRsaServer), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/CloseRSAServer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_closeRSAServer);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_closeRsaServer);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetRPACommandTimeout(Expression<Func<SetRPACommandTimeoutInput>> setRPACommandTimeout)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetRpaCommandTimeout(Expression<Func<SetRpaCommandTimeoutInput>> setRpaCommandTimeout)
         {
-            var __workflow_setRPACommandTimeout = WorkflowExpression.Compile(setRPACommandTimeout, nameof(setRPACommandTimeout), required: true);
+            var __workflow_setRpaCommandTimeout = WorkflowExpression.Compile(setRpaCommandTimeout, nameof(setRpaCommandTimeout), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetRPACommandTimeout";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRPACommandTimeout);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRpaCommandTimeout);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -2585,30 +2585,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetCSVTextAsCollectionResponse, ApiConnectionActionConfiguration> GetCSVTextAsCollection(Expression<Func<GetCSVTextAsCollectionInput>> getCSVTextAsCollection)
+        public IBodyWorkflowAction<GetCsvTextAsCollectionResponse, ApiConnectionActionConfiguration> GetCsvTextAsCollection(Expression<Func<GetCsvTextAsCollectionInput>> getCsvTextAsCollection)
         {
-            var __workflow_getCSVTextAsCollection = WorkflowExpression.Compile(getCSVTextAsCollection, nameof(getCSVTextAsCollection), required: true);
-            return new DeferredBodyAction<GetCSVTextAsCollectionResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_getCsvTextAsCollection = WorkflowExpression.Compile(getCsvTextAsCollection, nameof(getCsvTextAsCollection), required: true);
+            return new DeferredBodyAction<GetCsvTextAsCollectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/GetCSVTextAsCollection";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getCSVTextAsCollection);
-                return new ApiConnectionAction<GetCSVTextAsCollectionResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getCsvTextAsCollection);
+                return new ApiConnectionAction<GetCsvTextAsCollectionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<WriteCollectionToCSVFileResponse, ApiConnectionActionConfiguration> WriteCollectionToCSVFile(Expression<Func<WriteCollectionToCSVFileInput>> writeCollectionToCSVFile)
+        public IBodyWorkflowAction<WriteCollectionToCsvFileResponse, ApiConnectionActionConfiguration> WriteCollectionToCsvFile(Expression<Func<WriteCollectionToCsvFileInput>> writeCollectionToCsvFile)
         {
-            var __workflow_writeCollectionToCSVFile = WorkflowExpression.Compile(writeCollectionToCSVFile, nameof(writeCollectionToCSVFile), required: true);
-            return new DeferredBodyAction<WriteCollectionToCSVFileResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_writeCollectionToCsvFile = WorkflowExpression.Compile(writeCollectionToCsvFile, nameof(writeCollectionToCsvFile), required: true);
+            return new DeferredBodyAction<WriteCollectionToCsvFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/WriteCollectionToCSVFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_writeCollectionToCSVFile);
-                return new ApiConnectionAction<WriteCollectionToCSVFileResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_writeCollectionToCsvFile);
+                return new ApiConnectionAction<WriteCollectionToCsvFileResponse>(callPayload);
             });
         }
 
@@ -2767,72 +2767,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceVariableDataInINIFile(Expression<Func<ReplaceVariableDataInINIFileInput>> replaceVariableDataInINIFile)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceVariableDataInIniFile(Expression<Func<ReplaceVariableDataInIniFileInput>> replaceVariableDataInIniFile)
         {
-            var __workflow_replaceVariableDataInINIFile = WorkflowExpression.Compile(replaceVariableDataInINIFile, nameof(replaceVariableDataInINIFile), required: true);
+            var __workflow_replaceVariableDataInIniFile = WorkflowExpression.Compile(replaceVariableDataInIniFile, nameof(replaceVariableDataInIniFile), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/ReplaceVariableDataInINIFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFile);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInIniFile);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<DownloadHTTPFileResponse, ApiConnectionActionConfiguration> DownloadHTTPFile(Expression<Func<DownloadHTTPFileInput>> downloadHTTPFile)
+        public IBodyWorkflowAction<DownloadHttpFileResponse, ApiConnectionActionConfiguration> DownloadHttpFile(Expression<Func<DownloadHttpFileInput>> downloadHttpFile)
         {
-            var __workflow_downloadHTTPFile = WorkflowExpression.Compile(downloadHTTPFile, nameof(downloadHTTPFile), required: true);
-            return new DeferredBodyAction<DownloadHTTPFileResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_downloadHttpFile = WorkflowExpression.Compile(downloadHttpFile, nameof(downloadHttpFile), required: true);
+            return new DeferredBodyAction<DownloadHttpFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/DownloadHTTPFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_downloadHTTPFile);
-                return new ApiConnectionAction<DownloadHTTPFileResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_downloadHttpFile);
+                return new ApiConnectionAction<DownloadHttpFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<UnZIPFileResponse, ApiConnectionActionConfiguration> UnZIPFile(Expression<Func<UnZIPFileInput>> unZIPFile)
+        public IBodyWorkflowAction<UnZipFileResponse, ApiConnectionActionConfiguration> UnZipFile(Expression<Func<UnZipFileInput>> unZipFile)
         {
-            var __workflow_unZIPFile = WorkflowExpression.Compile(unZIPFile, nameof(unZIPFile), required: true);
-            return new DeferredBodyAction<UnZIPFileResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_unZipFile = WorkflowExpression.Compile(unZipFile, nameof(unZipFile), required: true);
+            return new DeferredBodyAction<UnZipFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/UnZIPFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_unZIPFile);
-                return new ApiConnectionAction<UnZIPFileResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_unZipFile);
+                return new ApiConnectionAction<UnZipFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddFileToZIP(Expression<Func<AddFileToZIPInput>> addFileToZIP)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddFileToZip(Expression<Func<AddFileToZipInput>> addFileToZip)
         {
-            var __workflow_addFileToZIP = WorkflowExpression.Compile(addFileToZIP, nameof(addFileToZIP), required: true);
+            var __workflow_addFileToZip = WorkflowExpression.Compile(addFileToZip, nameof(addFileToZip), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/AddFileToZIP";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_addFileToZIP);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_addFileToZip);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<AddFolderToZIPResponse, ApiConnectionActionConfiguration> AddFolderToZIP(Expression<Func<AddFolderToZIPInput>> addFolderToZIP)
+        public IBodyWorkflowAction<AddFolderToZipResponse, ApiConnectionActionConfiguration> AddFolderToZip(Expression<Func<AddFolderToZipInput>> addFolderToZip)
         {
-            var __workflow_addFolderToZIP = WorkflowExpression.Compile(addFolderToZIP, nameof(addFolderToZIP), required: true);
-            return new DeferredBodyAction<AddFolderToZIPResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_addFolderToZip = WorkflowExpression.Compile(addFolderToZip, nameof(addFolderToZip), required: true);
+            return new DeferredBodyAction<AddFolderToZipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/AddFolderToZIP";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_addFolderToZIP);
-                return new ApiConnectionAction<AddFolderToZIPResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_addFolderToZip);
+                return new ApiConnectionAction<AddFolderToZipResponse>(callPayload);
             });
         }
 
@@ -2869,7 +2869,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class GetMachineDomainResponse
     {
         public string DomainName { get; set; }
-        public string DNSDomainName { get; set; }
+
+        [JsonProperty("DNSDomainName")]
+        public string DnsDomainName { get; set; }
     }
 
     public class GetMachineDomainInput
@@ -2988,14 +2990,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class GetProcessByPIdResponse
+    public class GetProcessByPidResponse
     {
         public bool ProcessRunning { get; set; }
     }
 
-    public class GetProcessByPIdInput
+    public class GetProcessByPidInput
     {
-        public GetProcessByPIdInput(int processId)
+        public GetProcessByPidInput(int processId)
         {
             this.ProcessId = processId;
         }
@@ -3010,7 +3012,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class GetProcessesResponse
     {
         public int NumberOfProcesses { get; set; }
-        public string ProcessesJSON { get; set; }
+
+        [JsonProperty("ProcessesJSON")]
+        public string ProcessesJson { get; set; }
     }
 
     public class GetProcessesInput
@@ -3069,7 +3073,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public RunProcessInputStandardOutputEncodingType? StandardOutputEncoding { get; set; }
         public RunProcessInputStandardErrorEncodingType? StandardErrorEncoding { get; set; }
         public string RunAsDomain { get; set; }
-        public string RunAsUsername { get; set; }
+
+        [JsonProperty("RunAsUsername")]
+        public string RunAsUserName { get; set; }
         public string RunAsPassword { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3101,21 +3107,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RunProcessInputStandardOutputEncodingType
     {
-        UTF8,
-        UTF7,
-        UTF16,
-        ASCII,
-        UTF16BE
+        [EnumMember(Value = "UTF8")]
+        Utf8,
+        [EnumMember(Value = "UTF7")]
+        Utf7,
+        [EnumMember(Value = "UTF16")]
+        Utf16,
+        [EnumMember(Value = "ASCII")]
+        Ascii,
+        [EnumMember(Value = "UTF16BE")]
+        Utf16BE
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RunProcessInputStandardErrorEncodingType
     {
-        UTF8,
-        UTF7,
-        UTF16,
-        ASCII,
-        UTF16BE
+        [EnumMember(Value = "UTF8")]
+        Utf8,
+        [EnumMember(Value = "UTF7")]
+        Utf7,
+        [EnumMember(Value = "UTF16")]
+        Utf16,
+        [EnumMember(Value = "ASCII")]
+        Ascii,
+        [EnumMember(Value = "UTF16BE")]
+        Utf16BE
     }
 
     public class RunPowerShellProcessResponse
@@ -3156,7 +3172,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public RunPowerShellProcessInputStandardOutputEncodingType? StandardOutputEncoding { get; set; }
         public RunPowerShellProcessInputStandardErrorEncodingType? StandardErrorEncoding { get; set; }
         public string RunAsDomain { get; set; }
-        public string RunAsUsername { get; set; }
+
+        [JsonProperty("RunAsUsername")]
+        public string RunAsUserName { get; set; }
         public string RunAsPassword { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3189,21 +3207,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RunPowerShellProcessInputStandardOutputEncodingType
     {
-        UTF8,
-        UTF7,
-        UTF16,
-        ASCII,
-        UTF16BE
+        [EnumMember(Value = "UTF8")]
+        Utf8,
+        [EnumMember(Value = "UTF7")]
+        Utf7,
+        [EnumMember(Value = "UTF16")]
+        Utf16,
+        [EnumMember(Value = "ASCII")]
+        Ascii,
+        [EnumMember(Value = "UTF16BE")]
+        Utf16BE
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RunPowerShellProcessInputStandardErrorEncodingType
     {
-        UTF8,
-        UTF7,
-        UTF16,
-        ASCII,
-        UTF16BE
+        [EnumMember(Value = "UTF8")]
+        Utf8,
+        [EnumMember(Value = "UTF7")]
+        Utf7,
+        [EnumMember(Value = "UTF16")]
+        Utf16,
+        [EnumMember(Value = "ASCII")]
+        Ascii,
+        [EnumMember(Value = "UTF16BE")]
+        Utf16BE
     }
 
     public class GetScreenResolutionResponse
@@ -3272,7 +3300,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetListOfPrintersResponse
     {
-        public string PrintersJSON { get; set; }
+        [JsonProperty("PrintersJSON")]
+        public string PrintersJson { get; set; }
         public int NumberOfPrinters { get; set; }
     }
 
@@ -3997,10 +4026,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TakeScreenshotInputImageFormatType
     {
-        PNG,
-        JPG,
-        BMP,
-        GIF
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "BMP")]
+        Bmp,
+        [EnumMember(Value = "GIF")]
+        Gif
     }
 
     public class GetEnvironmentInfoResponse
@@ -4008,12 +4041,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int OSVersionMajor { get; set; }
         public int OSVersionMinor { get; set; }
         public int OSVersionBuild { get; set; }
-        public bool OSIs64Bit { get; set; }
+
+        [JsonProperty("OSIs64Bit")]
+        public bool Osis64Bit { get; set; }
         public int ProcessorCount { get; set; }
-        public int TotalPhysicalRAMInMB { get; set; }
-        public int TotalVirtualRAMInMB { get; set; }
-        public int AvailablePhysicalRAMInMB { get; set; }
-        public int AvailableVirtualRAMInMB { get; set; }
+
+        [JsonProperty("TotalPhysicalRAMInMB")]
+        public int TotalPhysicalRamInMB { get; set; }
+
+        [JsonProperty("TotalVirtualRAMInMB")]
+        public int TotalVirtualRamInMB { get; set; }
+
+        [JsonProperty("AvailablePhysicalRAMInMB")]
+        public int AvailablePhysicalRamInMB { get; set; }
+
+        [JsonProperty("AvailableVirtualRAMInMB")]
+        public int AvailableVirtualRamInMB { get; set; }
         public string OSFullName { get; set; }
         public string InstalledUICultureName { get; set; }
         public string CurrentUICultureName { get; set; }
@@ -4413,18 +4456,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         Generic
     }
 
-    public class GenerateRDPFileResponse
+    public class GenerateRdpFileResponse
     {
-        public string RDPFilePath { get; set; }
+        [JsonProperty("RDPFilePath")]
+        public string RdpFilePath { get; set; }
     }
 
-    public class GenerateRDPFileInput
+    public class GenerateRdpFileInput
     {
-        public GenerateRDPFileInput(string remoteAddress, string outputFolderPath, string rDPFileName)
+        public GenerateRdpFileInput(string remoteAddress, string outputFolderPath, string rdpFileName)
         {
             this.RemoteAddress = remoteAddress;
             this.OutputFolderPath = outputFolderPath;
-            this.RDPFileName = rDPFileName;
+            this.RdpFileName = rdpFileName;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4433,11 +4477,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OutputFolderPath { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RDPFileName { get; set; }
+        [JsonProperty("RDPFileName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RdpFileName { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? OverwriteRDPFileIfAlreadyExists { get; set; } = true;
+        [JsonProperty("OverwriteRDPFileIfAlreadyExists", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? OverwriteRdpFileIfAlreadyExists { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? TrustRemoteComputer { get; set; } = true;
@@ -4448,10 +4492,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Password { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateRDPFileInputCredentialTypeType? CredentialType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.GenerateRDPFileInputCredentialTypeType.Windows;
+        public GenerateRdpFileInputCredentialTypeType? CredentialType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.GenerateRdpFileInputCredentialTypeType.Windows;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateRDPFileInputCredentialPersistenceType? CredentialPersistence { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.GenerateRDPFileInputCredentialPersistenceType.Session;
+        public GenerateRdpFileInputCredentialPersistenceType? CredentialPersistence { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.GenerateRdpFileInputCredentialPersistenceType.Session;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RedirectPrinters { get; set; } = false;
@@ -4474,8 +4518,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? UseMultiMonitor { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? SessionBPP { get; set; } = 32;
+        [JsonProperty("SessionBPP", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SessionBpp { get; set; } = 32;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SmartSizing { get; set; } = true;
@@ -4485,14 +4529,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateRDPFileInputCredentialTypeType
+    public enum GenerateRdpFileInputCredentialTypeType
     {
         Windows,
         Generic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateRDPFileInputCredentialPersistenceType
+    public enum GenerateRdpFileInputCredentialPersistenceType
     {
         Session,
         LocalMachine,
@@ -4507,13 +4551,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class LaunchRemoteDesktopSessionInput
     {
-        public LaunchRemoteDesktopSessionInput(string rDPFilePath)
+        public LaunchRemoteDesktopSessionInput(string rdpFilePath)
         {
-            this.RDPFilePath = rDPFilePath;
+            this.RdpFilePath = rdpFilePath;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RDPFilePath { get; set; }
+        [JsonProperty("RDPFilePath", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RdpFilePath { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? TrustRemoteComputer { get; set; } = true;
@@ -4522,25 +4566,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class IsTCPPortRespondingResponse
+    public class IsTcpPortRespondingResponse
     {
-        public bool TCPPortConnected { get; set; }
+        [JsonProperty("TCPPortConnected")]
+        public bool TcpPortConnected { get; set; }
         public string ConnectionErrorMessage { get; set; }
     }
 
-    public class IsTCPPortRespondingInput
+    public class IsTcpPortRespondingInput
     {
-        public IsTCPPortRespondingInput(string remoteHost, int tCPPort)
+        public IsTcpPortRespondingInput(string remoteHost, int tcpPort)
         {
             this.RemoteHost = remoteHost;
-            this.TCPPort = tCPPort;
+            this.TcpPort = tcpPort;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RemoteHost { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int TCPPort { get; set; }
+        [JsonProperty("TCPPort", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TcpPort { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? TimeoutInSeconds { get; set; } = 10;
@@ -4611,7 +4656,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetGenericCredentialFromOrchestratorResponse
     {
-        public string Username { get; set; }
+        [JsonProperty("Username")]
+        public string UserName { get; set; }
         public string PlainTextPassword { get; set; }
         public string Hostname { get; set; }
         public string Url { get; set; }
@@ -4672,22 +4718,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse
+    public class GetFailedActionErrorMessageFromPowerAutomateResultJsonResponse
     {
         public string ActionErrorMessage { get; set; }
         public string ActionName { get; set; }
         public string ActionCode { get; set; }
     }
 
-    public class GetFailedActionErrorMessageFromPowerAutomateResultJSONInput
+    public class GetFailedActionErrorMessageFromPowerAutomateResultJsonInput
     {
-        public GetFailedActionErrorMessageFromPowerAutomateResultJSONInput(string[] powerAutomateResultJSON)
+        public GetFailedActionErrorMessageFromPowerAutomateResultJsonInput(string[] powerAutomateResultJson)
         {
-            this.PowerAutomateResultJSON = powerAutomateResultJSON;
+            this.PowerAutomateResultJson = powerAutomateResultJson;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] PowerAutomateResultJSON { get; set; }
+        [JsonProperty("PowerAutomateResultJSON", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] PowerAutomateResultJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchStatus { get; set; } = "Failed";
@@ -4699,8 +4745,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int GreenValue { get; set; }
         public int BlueValue { get; set; }
         public int AlphaValue { get; set; }
-        public string RRGGBBHexValue { get; set; }
-        public string AARRGGBBHexValue { get; set; }
+
+        [JsonProperty("RRGGBBHexValue")]
+        public string RrggbbHexValue { get; set; }
+
+        [JsonProperty("AARRGGBBHexValue")]
+        public string AarrggbbHexValue { get; set; }
     }
 
     public class GetPixelColourAtCoordinateInput
@@ -4776,21 +4826,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         VirtualToPhysical
     }
 
-    public class SendMessageToWebAPIResponse
+    public class SendMessageToWebApiResponse
     {
         public int ResponseStatusCode { get; set; }
         public string ResponseMessage { get; set; }
         public string ResponseContentType { get; set; }
-        public string ResponseHeadersJSON { get; set; }
+
+        [JsonProperty("ResponseHeadersJSON")]
+        public string ResponseHeadersJson { get; set; }
         public int ThreadId { get; set; }
     }
 
-    public class SendMessageToWebAPIInput
+    public class SendMessageToWebApiInput
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMessageToWebAPIInputMethodType? Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SendMessageToWebAPIInputMethodType.GET;
+        public SendMessageToWebApiInputMethodType? Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SendMessageToWebApiInputMethodType.Get;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? TimeoutInSeconds { get; set; } = 20;
@@ -4803,26 +4856,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string MessageBody { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMessageToWebAPIInputTransmitEncodingType? TransmitEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SendMessageToWebAPIInputTransmitEncodingType.UTF8;
+        public SendMessageToWebApiInputTransmitEncodingType? TransmitEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SendMessageToWebApiInputTransmitEncodingType.Utf8;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMessageToWebAPIInputResponseEncodingType? ResponseEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SendMessageToWebAPIInputResponseEncodingType.UTF8;
+        public SendMessageToWebApiInputResponseEncodingType? ResponseEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SendMessageToWebApiInputResponseEncodingType.Utf8;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? BufferSize { get; set; } = 16384;
-        public SendMessageToWebAPIInputHTTPRequestHeadersListTypeItem[] HTTPRequestHeadersList { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? NegotiateTLS10 { get; set; } = false;
+        [JsonProperty("HTTPRequestHeadersList")]
+        public SendMessageToWebApiInputHttpRequestHeadersListTypeItem[] HttpRequestHeadersList { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? NegotiateTLS11 { get; set; } = false;
+        [JsonProperty("NegotiateTLS10", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NegotiateTls10 { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? NegotiateTLS12 { get; set; } = true;
+        [JsonProperty("NegotiateTLS11", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NegotiateTls11 { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? NegotiateTLS13 { get; set; } = false;
+        [JsonProperty("NegotiateTLS12", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NegotiateTls12 { get; set; } = true;
+
+        [JsonProperty("NegotiateTLS13", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NegotiateTls13 { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? KeepAlive { get; set; } = true;
@@ -4845,47 +4900,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendMessageToWebAPIInputMethodType
+    public enum SendMessageToWebApiInputMethodType
     {
-        GET,
-        PUT,
-        POST,
-        PATCH,
-        DELETE,
-        HEAD,
-        OPTIONS,
-        TRACE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete,
+        [EnumMember(Value = "HEAD")]
+        Head,
+        [EnumMember(Value = "OPTIONS")]
+        Options,
+        [EnumMember(Value = "TRACE")]
+        Trace
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendMessageToWebAPIInputTransmitEncodingType
+    public enum SendMessageToWebApiInputTransmitEncodingType
     {
         [EnumMember(Value = "UTF-8")]
-        UTF8,
+        Utf8,
         [EnumMember(Value = "UTF-7")]
-        UTF7,
+        Utf7,
         [EnumMember(Value = "UTF-16")]
-        UTF16,
-        ASCII,
+        Utf16,
+        [EnumMember(Value = "ASCII")]
+        Ascii,
         [EnumMember(Value = "UTF-16BE")]
-        UTF16BE
+        Utf16BE
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendMessageToWebAPIInputResponseEncodingType
+    public enum SendMessageToWebApiInputResponseEncodingType
     {
         [EnumMember(Value = "UTF-8")]
-        UTF8,
+        Utf8,
         [EnumMember(Value = "UTF-7")]
-        UTF7,
+        Utf7,
         [EnumMember(Value = "UTF-16")]
-        UTF16,
-        ASCII,
+        Utf16,
+        [EnumMember(Value = "ASCII")]
+        Ascii,
         [EnumMember(Value = "UTF-16BE")]
-        UTF16BE
+        Utf16BE
     }
 
-    public class SendMessageToWebAPIInputHTTPRequestHeadersListTypeItem
+    public class SendMessageToWebApiInputHttpRequestHeadersListTypeItem
     {
         public string Property { get; set; }
         public string Value { get; set; }
@@ -4906,7 +4971,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Priority { get; set; } = 3;
-        public int? SLA { get; set; }
+
+        [JsonProperty("SLA")]
+        public int? Sla { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? TaskOnHold { get; set; } = false;
@@ -5180,8 +5247,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MinutesUntilDeferralDate { get; set; } = 0;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IgnoreSLA { get; set; } = false;
+        [JsonProperty("IgnoreSLA", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IgnoreSla { get; set; } = false;
         public int[] ExcludeTaskIds { get; set; }
     }
 
@@ -5327,7 +5394,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Priority { get; set; } = 3;
-        public int? SLA { get; set; }
+
+        [JsonProperty("SLA")]
+        public int? Sla { get; set; }
         public string Organisation { get; set; }
         public string Department { get; set; }
         public string Description { get; set; }
@@ -5398,7 +5467,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class GetRemoteLoggingLevelResponse
     {
         public int LoggingLevel { get; set; }
-        public string IAConnectAgentLogFilename { get; set; }
+
+        [JsonProperty("IAConnectAgentLogFilename")]
+        public string IAConnectAgentLogFileName { get; set; }
     }
 
     public class GetRemoteLoggingLevelInput
@@ -5409,17 +5480,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class SetLicenseCodeInput
     {
-        public SetLicenseCodeInput(string customerNETBIOSDomainName, string customerDisplayName, string vendorName, string licenseExpiryDate, string activationCode)
+        public SetLicenseCodeInput(string customerNetbiosDomainName, string customerDisplayName, string vendorName, string licenseExpiryDate, string activationCode)
         {
-            this.CustomerNETBIOSDomainName = customerNETBIOSDomainName;
+            this.CustomerNetbiosDomainName = customerNetbiosDomainName;
             this.CustomerDisplayName = customerDisplayName;
             this.VendorName = vendorName;
             this.LicenseExpiryDate = licenseExpiryDate;
             this.ActivationCode = activationCode;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CustomerNETBIOSDomainName { get; set; }
+        [JsonProperty("CustomerNETBIOSDomainName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CustomerNetbiosDomainName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CustomerDisplayName { get; set; }
@@ -5466,14 +5537,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     {
         public bool IsLicensed { get; set; }
         public string LicenseType { get; set; }
-        public string CustomerNETBIOSDomainName { get; set; }
-        public string DirectorHostnameCSV { get; set; }
+
+        [JsonProperty("CustomerNETBIOSDomainName")]
+        public string CustomerNetbiosDomainName { get; set; }
+
+        [JsonProperty("DirectorHostnameCSV")]
+        public string DirectorHostnameCsv { get; set; }
         public string CustomerDisplayName { get; set; }
         public string VendorName { get; set; }
         public string LicenseExpiryDate { get; set; }
         public int DaysUntilLicenseExpires { get; set; }
         public string LicenseFeatures { get; set; }
-        public bool IsJMLLicense { get; set; }
+
+        [JsonProperty("IsJMLLicense")]
+        public bool IsJmlLicense { get; set; }
     }
 
     public class GetLicenseStateInput
@@ -5482,7 +5559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SetRSAGUITopmostInput
+    public class SetRsaguiTopmostInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? TopMost { get; set; } = true;
@@ -5491,7 +5568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SetRSAGUIOpacityInput
+    public class SetRsaguiOpacityInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double Opacity { get; set; } = 1;
@@ -5500,9 +5577,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SetRSAGUIPositionInput
+    public class SetRsaguiPositionInput
     {
-        public SetRSAGUIPositionInput(int x, int y)
+        public SetRsaguiPositionInput(int x, int y)
         {
             this.X = x;
             this.Y = y;
@@ -5518,7 +5595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class BringRSAGUIToFrontInput
+    public class BringRsaguiToFrontInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Focus { get; set; } = true;
@@ -5551,7 +5628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class CloseRSAServerInput
+    public class CloseRsaServerInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SecondsToWait { get; set; } = 3;
@@ -5560,13 +5637,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SetRPACommandTimeoutInput
+    public class SetRpaCommandTimeoutInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int CommandTimeoutInSeconds { get; set; } = 30;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? TerminateTimedoutRPACommandThreads { get; set; } = true;
+        [JsonProperty("TerminateTimedoutRPACommandThreads", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? TerminateTimedoutRpaCommandThreads { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -5574,13 +5651,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RunAlternativeIAConnectInput
     {
-        public RunAlternativeIAConnectInput(string filename)
+        public RunAlternativeIAConnectInput(string fileName)
         {
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        [JsonProperty("Filename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
         public string Arguments { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -5597,14 +5674,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RunAlternativeIAConnectSentFromDirectorInput
     {
-        public RunAlternativeIAConnectSentFromDirectorInput(string localFilename)
+        public RunAlternativeIAConnectSentFromDirectorInput(string localFileName)
         {
-            this.LocalFilename = localFilename;
+            this.LocalFileName = localFileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LocalFilename { get; set; }
-        public string RemoteFilename { get; set; }
+        [JsonProperty("LocalFilename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LocalFileName { get; set; }
+
+        [JsonProperty("RemoteFilename")]
+        public string RemoteFileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Compress { get; set; } = true;
@@ -5629,14 +5708,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class GetIAConnectAgentInfoResponse
     {
         public string IAConnectAgentVersion { get; set; }
-        public string DotNetCLRVersion { get; set; }
-        public string IAConnectAgentRunAsUsername { get; set; }
+
+        [JsonProperty("DotNetCLRVersion")]
+        public string DotNetClrVersion { get; set; }
+
+        [JsonProperty("IAConnectAgentRunAsUsername")]
+        public string IAConnectAgentRunAsUserName { get; set; }
         public string IAConnectAgentRunAsUserdomain { get; set; }
         public string IAConnectAgentPath { get; set; }
         public bool IAConnectAgentIs64bitProcess { get; set; }
         public string IAConnectAgentReleaseVersion { get; set; }
-        public int IAConnectAgentRPACommandTimeout { get; set; }
-        public string IAConnectAgentLogFilename { get; set; }
+
+        [JsonProperty("IAConnectAgentRPACommandTimeout")]
+        public int IAConnectAgentRpaCommandTimeout { get; set; }
+
+        [JsonProperty("IAConnectAgentLogFilename")]
+        public string IAConnectAgentLogFileName { get; set; }
     }
 
     public class GetIAConnectAgentInfoInput
@@ -5648,7 +5735,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class GetIAConnectAgentLogResponse
     {
         public string IAConnectAgentLogContentsBase64 { get; set; }
-        public string IAConnectAgentLogFilenameOnly { get; set; }
+
+        [JsonProperty("IAConnectAgentLogFilenameOnly")]
+        public string IAConnectAgentLogFileNameOnly { get; set; }
     }
 
     public class GetIAConnectAgentLogInput
@@ -5666,9 +5755,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool? PlaceLogContentInDataItem { get; set; } = false;
         public string LocalSaveFolder { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? UseAgentLogFilename { get; set; } = true;
-        public string LocalSaveFilename { get; set; }
+        [JsonProperty("UseAgentLogFilename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UseAgentLogFileName { get; set; } = true;
+
+        [JsonProperty("LocalSaveFilename")]
+        public string LocalSaveFileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxBytesToRead { get; set; } = 4000;
@@ -5685,7 +5776,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetAllCommandStatsResponse
     {
-        public string CommandStatsJSON { get; set; }
+        [JsonProperty("CommandStatsJSON")]
+        public string CommandStatsJson { get; set; }
     }
 
     public class GetAllCommandStatsInput
@@ -5697,20 +5789,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class EnableNextHopResponse
     {
         public string ActiveNextHopDirectorAddress { get; set; }
-        public int ActiveNextHopDirectorTCPPort { get; set; }
-        public bool ActiveNextHopDirectorUsesHTTPS { get; set; }
-        public string ActiveNextHopDirectorURL { get; set; }
+
+        [JsonProperty("ActiveNextHopDirectorTCPPort")]
+        public int ActiveNextHopDirectorTcpPort { get; set; }
+
+        [JsonProperty("ActiveNextHopDirectorUsesHTTPS")]
+        public bool ActiveNextHopDirectorUsesHttps { get; set; }
+
+        [JsonProperty("ActiveNextHopDirectorURL")]
+        public string ActiveNextHopDirectorUrl { get; set; }
     }
 
     public class EnableNextHopInput
     {
         public string NextHopDirectorAddress { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? NextHopDirectorTCPPort { get; set; } = 8002;
+        [JsonProperty("NextHopDirectorTCPPort", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? NextHopDirectorTcpPort { get; set; } = 8002;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? NextHopDirectorUsesHTTPS { get; set; } = false;
+        [JsonProperty("NextHopDirectorUsesHTTPS", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorUsesHttps { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? NextHopDirectorAddressIsLocalhostname { get; set; } = false;
@@ -5718,11 +5816,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? NextHopDirectorAddressIsHostname { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? NextHopDirectorAddressIsFQDN { get; set; } = false;
+        [JsonProperty("NextHopDirectorAddressIsFQDN", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorAddressIsFqdn { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IncrementNextHopDirectorTCPPortBySessionId { get; set; } = true;
+        [JsonProperty("IncrementNextHopDirectorTCPPortBySessionId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncrementNextHopDirectorTcpPortBySessionId { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DisableBeforeEnable { get; set; } = true;
@@ -5750,10 +5848,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     {
         public bool NextHopEnabled { get; set; }
         public string ActiveNextHopDirectorAddress { get; set; }
-        public int ActiveNextHopDirectorTCPPort { get; set; }
-        public bool ActiveNextHopDirectorUsesHTTPS { get; set; }
+
+        [JsonProperty("ActiveNextHopDirectorTCPPort")]
+        public int ActiveNextHopDirectorTcpPort { get; set; }
+
+        [JsonProperty("ActiveNextHopDirectorUsesHTTPS")]
+        public bool ActiveNextHopDirectorUsesHttps { get; set; }
         public bool ActiveNextHopDirectorIsRunning { get; set; }
-        public string ActiveNextHopDirectorURL { get; set; }
+
+        [JsonProperty("ActiveNextHopDirectorURL")]
+        public string ActiveNextHopDirectorUrl { get; set; }
         public bool ActiveNextHopAgentIsRunning { get; set; }
     }
 
@@ -5778,11 +5882,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     {
         public string NextHopDirectorAddress { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? NextHopDirectorTCPPort { get; set; } = 8002;
+        [JsonProperty("NextHopDirectorTCPPort", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? NextHopDirectorTcpPort { get; set; } = 8002;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? NextHopDirectorUsesHTTPS { get; set; } = false;
+        [JsonProperty("NextHopDirectorUsesHTTPS", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorUsesHttps { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? NextHopDirectorAddressIsLocalhostname { get; set; } = false;
@@ -5790,11 +5894,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? NextHopDirectorAddressIsHostname { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? NextHopDirectorAddressIsFQDN { get; set; } = false;
+        [JsonProperty("NextHopDirectorAddressIsFQDN", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorAddressIsFqdn { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IncrementNextHopDirectorTCPPortBySessionId { get; set; } = true;
+        [JsonProperty("IncrementNextHopDirectorTCPPortBySessionId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncrementNextHopDirectorTcpPortBySessionId { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SecondsToWait { get; set; } = 35;
@@ -5811,11 +5915,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class ConfigureNextHopDirectorInput
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? SOAPEnabled { get; set; } = false;
+        [JsonProperty("SOAPEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SoapEnabled { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? RESTEnabled { get; set; } = false;
+        [JsonProperty("RESTEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RestEnabled { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? WebServerEnabled { get; set; } = false;
@@ -5823,26 +5927,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DirectorIsLocalhostOnly { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? SOAPTCPPort { get; set; } = 8002;
+        [JsonProperty("SOAPTCPPort", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SoapTcpPort { get; set; } = 8002;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? RESTTCPPort { get; set; } = 8002;
+        [JsonProperty("RESTTCPPort", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? RestTcpPort { get; set; } = 8002;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? SOAPUsesHTTPS { get; set; } = false;
+        [JsonProperty("SOAPUsesHTTPS", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SoapUsesHttps { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? RESTUsesHTTPS { get; set; } = false;
+        [JsonProperty("RESTUsesHTTPS", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RestUsesHttps { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IncrementDirectorTCPPortBySessionId { get; set; } = true;
+        [JsonProperty("IncrementDirectorTCPPortBySessionId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncrementDirectorTcpPortBySessionId { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? SOAPUsesUserAuthentication { get; set; } = false;
+        [JsonProperty("SOAPUsesUserAuthentication", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SoapUsesUserAuthentication { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? RESTUsesUserAuthentication { get; set; } = false;
+        [JsonProperty("RESTUsesUserAuthentication", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RestUsesUserAuthentication { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CommandNamedPipeEnabled { get; set; } = true;
@@ -5907,7 +6011,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetOrchestratorFlowStatsResponse
     {
-        public string OrchestratorFlowStatsJSON { get; set; }
+        [JsonProperty("OrchestratorFlowStatsJSON")]
+        public string OrchestratorFlowStatsJson { get; set; }
         public int NumberOfOrchestratorFlowStats { get; set; }
     }
 
@@ -5922,7 +6027,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetOrchestratorWorkerAvailabilityStatsResponse
     {
-        public string WorkerAvailabilityStatsJSON { get; set; }
+        [JsonProperty("WorkerAvailabilityStatsJSON")]
+        public string WorkerAvailabilityStatsJson { get; set; }
         public int NumberOfWorkerAvailabilityStats { get; set; }
     }
 
@@ -5935,7 +6041,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetOrchestratorWorkerFlowUsageHeatmapResponse
     {
-        public string WorkerFlowUsageHeatmapJSON { get; set; }
+        [JsonProperty("WorkerFlowUsageHeatmapJSON")]
+        public string WorkerFlowUsageHeatmapJson { get; set; }
         public int NumberOfWorkerFlowUsageHeatmapItems { get; set; }
     }
 
@@ -5953,14 +6060,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchStartDateEndWindow { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? TimeZoneMinutesOffsetFromUTC { get; set; } = 0;
+        [JsonProperty("TimeZoneMinutesOffsetFromUTC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? TimeZoneMinutesOffsetFromUtc { get; set; } = 0;
         public string WorkerNames { get; set; }
     }
 
     public class GetOrchestratorLoginHistoryResponse
     {
-        public string OrchestratorLoginHistoryJSON { get; set; }
+        [JsonProperty("OrchestratorLoginHistoryJSON")]
+        public string OrchestratorLoginHistoryJson { get; set; }
         public int NumberOfOrchestratorLogins { get; set; }
     }
 
@@ -5983,7 +6091,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class RunCommandResponse
     {
-        public string OutputJSON { get; set; }
+        [JsonProperty("OutputJSON")]
+        public string OutputJson { get; set; }
     }
 
     public class RunCommandInput
@@ -5995,7 +6104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CommandName { get; set; }
-        public string InputJSON { get; set; }
+
+        [JsonProperty("InputJSON")]
+        public string InputJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6004,7 +6115,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class GetLocalLoggingLevelResponse
     {
         public int LoggingLevel { get; set; }
-        public string IAConnectDirectorLogFilename { get; set; }
+
+        [JsonProperty("IAConnectDirectorLogFilename")]
+        public string IAConnectDirectorLogFileName { get; set; }
     }
 
     public class GetLocalLoggingLevelInput
@@ -6024,8 +6137,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool AgentIsLicensed { get; set; }
         public string AgentLicenseFeatures { get; set; }
         public string DirectorHostname { get; set; }
-        public string DirectorNetBIOSDomainName { get; set; }
-        public string DirectorDNSDomainName { get; set; }
+
+        [JsonProperty("DirectorNetBIOSDomainName")]
+        public string DirectorNetBiosDomainName { get; set; }
+
+        [JsonProperty("DirectorDNSDomainName")]
+        public string DirectorDnsDomainName { get; set; }
         public bool AttachedToNextHopDirector { get; set; }
         public string NextHopDirectorSessionType { get; set; }
     }
@@ -6039,13 +6156,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class GetIAConnectDirectorInfoResponse
     {
         public string IAConnectDirectorVersion { get; set; }
-        public string DotNetCLRVersion { get; set; }
-        public string IAConnectDirectorRunAsUsername { get; set; }
+
+        [JsonProperty("DotNetCLRVersion")]
+        public string DotNetClrVersion { get; set; }
+
+        [JsonProperty("IAConnectDirectorRunAsUsername")]
+        public string IAConnectDirectorRunAsUserName { get; set; }
         public string IAConnectDirectorRunAsUserdomain { get; set; }
         public string IAConnectDirectorPath { get; set; }
         public bool IAConnectDirectorIs64bitProcess { get; set; }
         public string IAConnectDirectorReleaseVersion { get; set; }
-        public string IAConnectDirectorLogFilename { get; set; }
+
+        [JsonProperty("IAConnectDirectorLogFilename")]
+        public string IAConnectDirectorLogFileName { get; set; }
     }
 
     public class GetIAConnectDirectorInfoInput
@@ -6056,11 +6179,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetAvailableIAConnectSessionsResponse
     {
-        public string IAConnectSessionsJSON { get; set; }
+        [JsonProperty("IAConnectSessionsJSON")]
+        public string IAConnectSessionsJson { get; set; }
         public int NumberOfIAConnectSessions { get; set; }
         public int NumberOfLocalIAConnectSessions { get; set; }
-        public int NumberOfCitrixICAIAConnectSessions { get; set; }
-        public int NumberOfMicrosoftRDPIAConnectSessions { get; set; }
+
+        [JsonProperty("NumberOfCitrixICAIAConnectSessions")]
+        public int NumberOfCitrixIcaiaConnectSessions { get; set; }
+
+        [JsonProperty("NumberOfMicrosoftRDPIAConnectSessions")]
+        public int NumberOfMicrosoftRdpiaConnectSessions { get; set; }
     }
 
     public class GetAvailableIAConnectSessionsInput
@@ -6071,9 +6199,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class AttachToIAConnectSessionByNameInput
     {
-        public AttachToIAConnectSessionByNameInput(string iAConnectSessionName)
+        public AttachToIAConnectSessionByNameInput(string iaConnectSessionName)
         {
-            this.IAConnectSessionName = iAConnectSessionName;
+            this.IAConnectSessionName = iaConnectSessionName;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -6131,9 +6259,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [EnumMember(Value = "Local Agent")]
         LocalAgent,
         [EnumMember(Value = "Microsoft RDP")]
-        MicrosoftRDP,
+        MicrosoftRdp,
         [EnumMember(Value = "Citrix ICA")]
-        CitrixICA,
+        CitrixIca,
         Remote
     }
 
@@ -6167,9 +6295,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [EnumMember(Value = "Local Agent")]
         LocalAgent,
         [EnumMember(Value = "Microsoft RDP")]
-        MicrosoftRDP,
+        MicrosoftRdp,
         [EnumMember(Value = "Citrix ICA")]
-        CitrixICA,
+        CitrixIca,
         Remote
     }
 
@@ -6191,9 +6319,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DoesIAConnectSessionExistByNameInput
     {
-        public DoesIAConnectSessionExistByNameInput(string iAConnectSessionName)
+        public DoesIAConnectSessionExistByNameInput(string iaConnectSessionName)
         {
-            this.IAConnectSessionName = iAConnectSessionName;
+            this.IAConnectSessionName = iaConnectSessionName;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -6211,9 +6339,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class WaitForIAConnectSessionToCloseByNameInput
     {
-        public WaitForIAConnectSessionToCloseByNameInput(string iAConnectSessionName)
+        public WaitForIAConnectSessionToCloseByNameInput(string iaConnectSessionName)
         {
-            this.IAConnectSessionName = iAConnectSessionName;
+            this.IAConnectSessionName = iaConnectSessionName;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -6238,9 +6366,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class KillIAConnectSessionByNameInput
     {
-        public KillIAConnectSessionByNameInput(string iAConnectSessionName)
+        public KillIAConnectSessionByNameInput(string iaConnectSessionName)
         {
-            this.IAConnectSessionName = iAConnectSessionName;
+            this.IAConnectSessionName = iaConnectSessionName;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -6294,8 +6422,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public SetAgentGlobalCoordinateConfigurationInputJavaCoordinateSystemType? JavaCoordinateSystem { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SetAgentGlobalCoordinateConfigurationInputJavaCoordinateSystemType.NotSet;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetAgentGlobalCoordinateConfigurationInputSAPGUICoordinateSystemType? SAPGUICoordinateSystem { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SetAgentGlobalCoordinateConfigurationInputSAPGUICoordinateSystemType.NotSet;
+        [JsonProperty("SAPGUICoordinateSystem", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetAgentGlobalCoordinateConfigurationInputSapguiCoordinateSystemType? SapguiCoordinateSystem { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SetAgentGlobalCoordinateConfigurationInputSapguiCoordinateSystemType.NotSet;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6338,7 +6466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetAgentGlobalCoordinateConfigurationInputSAPGUICoordinateSystemType
+    public enum SetAgentGlobalCoordinateConfigurationInputSapguiCoordinateSystemType
     {
         NotSet,
         Virtual,
@@ -6356,7 +6484,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public double GlobalMouseYMultiplier { get; set; }
         public string GlobalMouseMoveMethod { get; set; }
         public string JavaCoordinateSystem { get; set; }
-        public string SAPGUICoordinateSystem { get; set; }
+
+        [JsonProperty("SAPGUICoordinateSystem")]
+        public string SapguiCoordinateSystem { get; set; }
     }
 
     public class GetAgentGlobalCoordinateConfigurationInput
@@ -6375,7 +6505,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string IAConnectActionName { get; set; }
         public string ThreadStatusMessage { get; set; }
         public string ThreadErrorMessage { get; set; }
-        public string ThreadOutputJSON { get; set; }
+
+        [JsonProperty("ThreadOutputJSON")]
+        public string ThreadOutputJson { get; set; }
     }
 
     public class GetAgentThreadStatusInput
@@ -6408,7 +6540,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string IAConnectActionName { get; set; }
         public string ThreadStatusMessage { get; set; }
         public string ThreadErrorMessage { get; set; }
-        public string ThreadOutputJSON { get; set; }
+
+        [JsonProperty("ThreadOutputJSON")]
+        public string ThreadOutputJson { get; set; }
     }
 
     public class WaitForAgentThreadToCompleteSuccessfullyInput
@@ -6454,8 +6588,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     {
         public int ThreadId { get; set; }
         public string IAConnectActionName { get; set; }
-        public string ThreadStartDateTimeUTC { get; set; }
-        public string ThreadCompletedDateTimeUTC { get; set; }
+
+        [JsonProperty("ThreadStartDateTimeUTC")]
+        public string ThreadStartDateTimeUtc { get; set; }
+
+        [JsonProperty("ThreadCompletedDateTimeUTC")]
+        public string ThreadCompletedDateTimeUtc { get; set; }
         public int ThreadRuntimeInSeconds { get; set; }
         public bool ThreadStarted { get; set; }
         public bool ThreadRunning { get; set; }
@@ -6568,7 +6706,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class CreateOrchestratorOneTimeSecretResponse
     {
-        public string RetrievalURL { get; set; }
+        [JsonProperty("RetrievalURL")]
+        public string RetrievalUrl { get; set; }
         public string RetrievalId { get; set; }
     }
 
@@ -6644,7 +6783,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string WorkerConnectionTypeName { get; set; }
         public string DirectorRestApiUrl { get; set; }
         public string AzureServiceBusNamespace { get; set; }
-        public string AzureWCFRelayName { get; set; }
+
+        [JsonProperty("AzureWCFRelayName")]
+        public string AzureWcfRelayName { get; set; }
         public string IAConnectAgentConnectionTypeName { get; set; }
         public bool AttachedToNextHopDirector { get; set; }
         public string NextHopDirectorSessionType { get; set; }
@@ -6653,8 +6794,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public double DirectorReleaseVersion { get; set; }
         public double AgentReleaseVersion { get; set; }
         public string DirectorHostname { get; set; }
-        public string DirectorNetBIOSDomainName { get; set; }
-        public string DirectorDNSDomainName { get; set; }
+
+        [JsonProperty("DirectorNetBIOSDomainName")]
+        public string DirectorNetBiosDomainName { get; set; }
+
+        [JsonProperty("DirectorDNSDomainName")]
+        public string DirectorDnsDomainName { get; set; }
         public int SupportedFlowEnvironmentIdsCount { get; set; }
         public int SupportedFlowNamesCount { get; set; }
         public int UnsupportedFlowNamesCount { get; set; }
@@ -6693,13 +6838,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class FileExistsInput
     {
-        public FileExistsInput(string filename)
+        public FileExistsInput(string fileName)
         {
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        [JsonProperty("Filename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6726,13 +6871,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class DeleteFileInput
     {
-        public DeleteFileInput(string filename)
+        public DeleteFileInput(string fileName)
         {
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        [JsonProperty("Filename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6835,13 +6980,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFileSizeInput
     {
-        public GetFileSizeInput(string filename)
+        public GetFileSizeInput(string fileName)
         {
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        [JsonProperty("Filename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6849,13 +6994,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class WriteTextFileInput
     {
-        public WriteTextFileInput(string filename)
+        public WriteTextFileInput(string fileName)
         {
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        [JsonProperty("Filename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
         public string TextToWrite { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -6873,9 +7018,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public enum WriteTextFileInputEncodingType
     {
         Unicode,
-        UTF8,
-        UTF7,
-        ASCII
+        [EnumMember(Value = "UTF8")]
+        Utf8,
+        [EnumMember(Value = "UTF7")]
+        Utf7,
+        [EnumMember(Value = "ASCII")]
+        Ascii
     }
 
     public class ReadAllTextFromFileResponse
@@ -6885,13 +7033,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class ReadAllTextFromFileInput
     {
-        public ReadAllTextFromFileInput(string filename)
+        public ReadAllTextFromFileInput(string fileName)
         {
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        [JsonProperty("Filename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6899,24 +7047,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFilesResponse
     {
-        public string FilesJSON { get; set; }
+        [JsonProperty("FilesJSON")]
+        public string FilesJson { get; set; }
         public int NumberOfFilesReadSuccessfully { get; set; }
         public int NumberOfFilesFailedToRead { get; set; }
     }
 
     public class GetFilesInput
     {
-        public GetFilesInput(string directoryPath, string patternsCSV)
+        public GetFilesInput(string directoryPath, string patternsCsv)
         {
             this.DirectoryPath = directoryPath;
-            this.PatternsCSV = patternsCSV;
+            this.PatternsCsv = patternsCsv;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PatternsCSV { get; set; }
+        [JsonProperty("PatternsCSV", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PatternsCsv { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6924,7 +7073,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFoldersResponse
     {
-        public string FoldersJSON { get; set; }
+        [JsonProperty("FoldersJSON")]
+        public string FoldersJson { get; set; }
         public int NumberOfFoldersReadSuccessfully { get; set; }
         public int NumberOfFoldersFailedToRead { get; set; }
     }
@@ -6988,7 +7138,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetListOfDrivesResponse
     {
-        public string DrivesJSON { get; set; }
+        [JsonProperty("DrivesJSON")]
+        public string DrivesJson { get; set; }
     }
 
     public class GetListOfDrivesInput
@@ -7017,20 +7168,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class GetCSVTextAsCollectionResponse
+    public class GetCsvTextAsCollectionResponse
     {
-        public string CSVDataJSON { get; set; }
+        [JsonProperty("CSVDataJSON")]
+        public string CsvDataJson { get; set; }
     }
 
-    public class GetCSVTextAsCollectionInput
+    public class GetCsvTextAsCollectionInput
     {
-        public GetCSVTextAsCollectionInput(string cSVFilePath)
+        public GetCsvTextAsCollectionInput(string csvFilePath)
         {
-            this.CSVFilePath = cSVFilePath;
+            this.CsvFilePath = csvFilePath;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSVFilePath { get; set; }
+        [JsonProperty("CSVFilePath", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CsvFilePath { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? FirstLineIsHeader { get; set; } = true;
@@ -7048,39 +7200,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class WriteCollectionToCSVFileResponse
+    public class WriteCollectionToCsvFileResponse
     {
-        public bool WriteCollectionToCSVFileResult { get; set; }
+        [JsonProperty("WriteCollectionToCSVFileResult")]
+        public bool WriteCollectionToCsvFileResult { get; set; }
         public string ErrorMessage { get; set; }
     }
 
-    public class WriteCollectionToCSVFileInput
+    public class WriteCollectionToCsvFileInput
     {
-        public WriteCollectionToCSVFileInput(string cSVFilePath)
+        public WriteCollectionToCsvFileInput(string csvFilePath)
         {
-            this.CSVFilePath = cSVFilePath;
+            this.CsvFilePath = csvFilePath;
         }
 
         public JToken[] InputTable { get; set; }
-        public string InputTableJSON { get; set; }
+
+        [JsonProperty("InputTableJSON")]
+        public string InputTableJson { get; set; }
+
+        [JsonProperty("CSVFilePath", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CsvFilePath { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSVFilePath { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public WriteCollectionToCSVFileInputOutputEncodingType? OutputEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.WriteCollectionToCSVFileInputOutputEncodingType.UTF8;
+        public WriteCollectionToCsvFileInputOutputEncodingType? OutputEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.WriteCollectionToCsvFileInputOutputEncodingType.Utf8;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WriteCollectionToCSVFileInputOutputEncodingType
+    public enum WriteCollectionToCsvFileInputOutputEncodingType
     {
-        UTF8,
-        UTF7,
+        [EnumMember(Value = "UTF8")]
+        Utf8,
+        [EnumMember(Value = "UTF7")]
+        Utf7,
         Unicode,
-        ASCII
+        [EnumMember(Value = "ASCII")]
+        Ascii
     }
 
     public class SetOwnerOnFolderInput
@@ -7227,7 +7385,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFolderSecurityPermissionsResponse
     {
-        public string SecurityPermissionsJSON { get; set; }
+        [JsonProperty("SecurityPermissionsJSON")]
+        public string SecurityPermissionsJson { get; set; }
     }
 
     public class GetFolderSecurityPermissionsInput
@@ -7246,7 +7405,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
     public class GetFileSecurityPermissionsResponse
     {
-        public string SecurityPermissionsJSON { get; set; }
+        [JsonProperty("SecurityPermissionsJSON")]
+        public string SecurityPermissionsJson { get; set; }
     }
 
     public class GetFileSecurityPermissionsInput
@@ -7330,20 +7490,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class ReplaceVariableDataInINIFileInput
+    public class ReplaceVariableDataInIniFileInput
     {
-        public ReplaceVariableDataInINIFileInput(string inputFilename)
+        public ReplaceVariableDataInIniFileInput(string inputFileName)
         {
-            this.InputFilename = inputFilename;
+            this.InputFileName = inputFileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputFilename { get; set; }
-        public string OutputFilename { get; set; }
+        [JsonProperty("InputFilename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string InputFileName { get; set; }
+
+        [JsonProperty("OutputFilename")]
+        public string OutputFileName { get; set; }
         public string SearchSection { get; set; }
         public string SearchVariable { get; set; }
         public string ReplaceData { get; set; }
-        public string InputFilenameEncoding { get; set; }
+
+        [JsonProperty("InputFilenameEncoding")]
+        public string InputFileNameEncoding { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CreateNewFileIfNotExists { get; set; } = true;
@@ -7358,21 +7522,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class DownloadHTTPFileResponse
+    public class DownloadHttpFileResponse
     {
         public string DownloadFileContents { get; set; }
     }
 
-    public class DownloadHTTPFileInput
+    public class DownloadHttpFileInput
     {
-        public DownloadHTTPFileInput(string downloadURL)
+        public DownloadHttpFileInput(string downloadUrl)
         {
-            this.DownloadURL = downloadURL;
+            this.DownloadUrl = downloadUrl;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DownloadURL { get; set; }
-        public string SaveFilename { get; set; }
+        [JsonProperty("DownloadURL", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DownloadUrl { get; set; }
+
+        [JsonProperty("SaveFilename")]
+        public string SaveFileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? OverwriteExistingFile { get; set; } = true;
@@ -7386,57 +7552,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Accept { get; set; } = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? SupportTLS10 { get; set; } = true;
+        [JsonProperty("SupportTLS10", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SupportTls10 { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? SupportTLS11 { get; set; } = true;
+        [JsonProperty("SupportTLS11", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SupportTls11 { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? SupportTLS12 { get; set; } = true;
+        [JsonProperty("SupportTLS12", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SupportTls12 { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AutoDecompressDeflate { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? AutoDecompressGZIP { get; set; } = true;
+        [JsonProperty("AutoDecompressGZIP", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AutoDecompressGzip { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnContentsAsString { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public DownloadHTTPFileInputReturnContentEncodingType? ReturnContentEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.DownloadHTTPFileInputReturnContentEncodingType.UTF8;
+        public DownloadHttpFileInputReturnContentEncodingType? ReturnContentEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.DownloadHttpFileInputReturnContentEncodingType.Utf8;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DownloadHTTPFileInputReturnContentEncodingType
+    public enum DownloadHttpFileInputReturnContentEncodingType
     {
-        ASCII,
-        UTF7,
-        UTF8,
-        UTF16,
-        UTF16BE
+        [EnumMember(Value = "ASCII")]
+        Ascii,
+        [EnumMember(Value = "UTF7")]
+        Utf7,
+        [EnumMember(Value = "UTF8")]
+        Utf8,
+        [EnumMember(Value = "UTF16")]
+        Utf16,
+        [EnumMember(Value = "UTF16BE")]
+        Utf16BE
     }
 
-    public class UnZIPFileResponse
+    public class UnZipFileResponse
     {
         public int FilesExtractedSuccessfully { get; set; }
         public int FilesFailedToExtract { get; set; }
         public int FilesExcluded { get; set; }
     }
 
-    public class UnZIPFileInput
+    public class UnZipFileInput
     {
-        public UnZIPFileInput(string zIPFilename)
+        public UnZipFileInput(string zipFileName)
         {
-            this.ZIPFilename = zIPFilename;
+            this.ZipFileName = zipFileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ZIPFilename { get; set; }
+        [JsonProperty("ZIPFilename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ZipFileName { get; set; }
         public string ExtractFolder { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -7448,58 +7619,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class AddFileToZIPInput
+    public class AddFileToZipInput
     {
-        public AddFileToZIPInput(string sourceFilenameToAddToZIP, string outputZIPFilename)
+        public AddFileToZipInput(string sourceFileNameToAddToZip, string outputZipFileName)
         {
-            this.SourceFilenameToAddToZIP = sourceFilenameToAddToZIP;
-            this.OutputZIPFilename = outputZIPFilename;
+            this.SourceFileNameToAddToZip = sourceFileNameToAddToZip;
+            this.OutputZipFileName = outputZipFileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFilenameToAddToZIP { get; set; }
+        [JsonProperty("SourceFilenameToAddToZIP", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceFileNameToAddToZip { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string OutputZIPFilename { get; set; }
-        public string AddFilenameToFolderInZIP { get; set; }
-        public string SourceFilenameToAddToZIPComment { get; set; }
+        [JsonProperty("OutputZIPFilename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OutputZipFileName { get; set; }
+
+        [JsonProperty("AddFilenameToFolderInZIP")]
+        public string AddFileNameToFolderInZip { get; set; }
+
+        [JsonProperty("SourceFilenameToAddToZIPComment")]
+        public string SourceFileNameToAddToZipComment { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Compress { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? AddToExistingZIPFile { get; set; } = false;
+        [JsonProperty("AddToExistingZIPFile", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AddToExistingZipFile { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class AddFolderToZIPResponse
+    public class AddFolderToZipResponse
     {
         public int FilesAddedSuccessfully { get; set; }
         public int FilesExcluded { get; set; }
     }
 
-    public class AddFolderToZIPInput
+    public class AddFolderToZipInput
     {
-        public AddFolderToZIPInput(string sourceFolderToAddToZIP, string outputZIPFilename)
+        public AddFolderToZipInput(string sourceFolderToAddToZip, string outputZipFileName)
         {
-            this.SourceFolderToAddToZIP = sourceFolderToAddToZIP;
-            this.OutputZIPFilename = outputZIPFilename;
+            this.SourceFolderToAddToZip = sourceFolderToAddToZip;
+            this.OutputZipFileName = outputZipFileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFolderToAddToZIP { get; set; }
+        [JsonProperty("SourceFolderToAddToZIP", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceFolderToAddToZip { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string OutputZIPFilename { get; set; }
-        public string AddFilesToFolderInZIP { get; set; }
+        [JsonProperty("OutputZIPFilename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OutputZipFileName { get; set; }
+
+        [JsonProperty("AddFilesToFolderInZIP")]
+        public string AddFilesToFolderInZip { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Compress { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? AddToExistingZIPFile { get; set; } = false;
+        [JsonProperty("AddToExistingZIPFile", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AddToExistingZipFile { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludeSubfolders { get; set; } = true;

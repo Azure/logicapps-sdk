@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public bool? CanSave { get; set; }
 
         [JsonProperty("canCreatePDF")]
-        public bool? CanCreatePDF { get; set; }
+        public bool? CanCreatePdf { get; set; }
 
         [JsonProperty("canViewSettings")]
         public bool? CanViewSettings { get; set; }
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public bool? CanPreview { get; set; }
 
         [JsonProperty("canEditJSON")]
-        public bool? CanEditJSON { get; set; }
+        public bool? CanEditJson { get; set; }
 
         [JsonProperty("canShowHeader")]
         public bool? CanShowHeader { get; set; }
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public int? JsonMode { get; set; }
 
         [JsonProperty("backURL")]
-        public string BackURL { get; set; }
+        public string BackUrl { get; set; }
     }
 
     public class ResponseListTransactions

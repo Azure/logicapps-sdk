@@ -13,14 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
     public class UnsplashipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Users, ApiConnectionActionConfiguration> UserGet(Expression<Func<string>> username, Expression<Func<int>> w = null, Expression<Func<int>> h = null)
+        public IBodyWorkflowAction<Users, ApiConnectionActionConfiguration> UserGet(Expression<Func<string>> userName, Expression<Func<int>> w = null, Expression<Func<int>> h = null)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_w = WorkflowExpression.Compile(w, nameof(w), required: false);
             var __workflow_h = WorkflowExpression.Compile(h, nameof(h), required: false);
             return new DeferredBodyAction<Users, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_username.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_w != null)
@@ -32,15 +32,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Photos[], ApiConnectionActionConfiguration> UserGetPhotos(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<Photos[], ApiConnectionActionConfiguration> UserGetPhotos(Expression<Func<string>> userName, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<Photos[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/photos", __workflow_username.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/photos", __workflow_userName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -54,15 +54,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Photos[], ApiConnectionActionConfiguration> UserGetLiked(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<Photos[], ApiConnectionActionConfiguration> UserGetLiked(Expression<Func<string>> userName, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<Photos[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/likes", __workflow_username.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/likes", __workflow_userName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -76,14 +76,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Collections[], ApiConnectionActionConfiguration> UserGetCollections(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<Collections[], ApiConnectionActionConfiguration> UserGetCollections(Expression<Func<string>> userName, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<Collections[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/collections", __workflow_username.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/collections", __workflow_userName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -145,11 +145,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Photo, ApiConnectionActionConfiguration> PhotoGetRandom(Expression<Func<string>> collections = null, Expression<Func<string>> topics = null, Expression<Func<string>> username = null, Expression<Func<string>> query = null, Expression<Func<OrientationInput>> orientation = null, Expression<Func<ContentFilterInput>> contentFilter = null)
+        public IBodyWorkflowAction<Photo, ApiConnectionActionConfiguration> PhotoGetRandom(Expression<Func<string>> collections = null, Expression<Func<string>> topics = null, Expression<Func<string>> userName = null, Expression<Func<string>> query = null, Expression<Func<OrientationInput>> orientation = null, Expression<Func<ContentFilterInput>> contentFilter = null)
         {
             var __workflow_collections = WorkflowExpression.Compile(collections, nameof(collections), required: false);
             var __workflow_topics = WorkflowExpression.Compile(topics, nameof(topics), required: false);
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_orientation = WorkflowExpression.Compile(orientation, nameof(orientation), required: false);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: false);
@@ -162,8 +162,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
                     callPayload.Queries["collections"] = ExpressionConverter.Convert(__workflow_collections);
                 if (__workflow_topics != null)
                     callPayload.Queries["topics"] = ExpressionConverter.Convert(__workflow_topics);
-                if (__workflow_username != null)
-                    callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                if (__workflow_userName != null)
+                    callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_query != null)
                     callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 if (__workflow_orientation != null)
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
     public class Users
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         public User User { get; set; }
 
         [JsonProperty("urls")]
-        public PhotoURLs Urls { get; set; }
+        public PhotoUrls Urls { get; set; }
 
         [JsonProperty("links")]
         public PhotoLinks Links { get; set; }
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         public string Id { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         public UserLinks Links { get; set; }
     }
 
-    public class PhotoURLs
+    public class PhotoUrls
     {
         [JsonProperty("raw")]
         public string Raw { get; set; }
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         public User User { get; set; }
 
         [JsonProperty("urls")]
-        public PhotoURLs Urls { get; set; }
+        public PhotoUrls Urls { get; set; }
 
         [JsonProperty("links")]
         public PhotoLinks Links { get; set; }

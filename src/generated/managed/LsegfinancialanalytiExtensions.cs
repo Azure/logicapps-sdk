@@ -286,14 +286,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [EnumMember(Value = "Swap Curve")]
         SwapCurve,
         [EnumMember(Value = "Swap RFR Curve")]
-        SwapRFRCurve
+        SwapRfrCurve
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputCurrencyType
     {
-        USD,
-        EUR
+        [EnumMember(Value = "USD")]
+        Usd,
+        [EnumMember(Value = "EUR")]
+        Eur
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -301,25 +303,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     {
         Default,
         Model,
-        CPR,
-        PSA,
+        [EnumMember(Value = "CPR")]
+        Cpr,
+        [EnumMember(Value = "PSA")]
+        Psa,
         PreExpModel
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputOptionModelType
     {
-        OAS,
-        OASEDUR,
-        YCMARGIN
+        [EnumMember(Value = "OAS")]
+        Oas,
+        [EnumMember(Value = "OASEDUR")]
+        Oasedur,
+        [EnumMember(Value = "YCMARGIN")]
+        Ycmargin
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BulkPyAnalyticsBodyInputVolatilityTypeType
     {
         MarketWSkew,
-        LMMSOFR,
-        LMMSOFRFLAT,
+        [EnumMember(Value = "LMMSOFR")]
+        Lmmsofr,
+        [EnumMember(Value = "LMMSOFRFLAT")]
+        Lmmsofrflat,
         Default
     }
 
@@ -841,10 +850,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         SecurityIdEntry,
         [EnumMember(Value = "SecurityID")]
         SecurityId,
-        CUSIP,
-        ISIN,
-        REGSISIN,
-        SEDOL,
+        [EnumMember(Value = "CUSIP")]
+        Cusip,
+        [EnumMember(Value = "ISIN")]
+        Isin,
+        [EnumMember(Value = "REGSISIN")]
+        Regsisin,
+        [EnumMember(Value = "SEDOL")]
+        Sedol,
         Identifier,
         ChinaInterbankCode,
         ShanghaiExchangeCode,
@@ -958,7 +971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public double CurrentYield { get; set; }
 
         [JsonProperty("effectiveWAL")]
-        public double EffectiveWAL { get; set; }
+        public double EffectiveWal { get; set; }
 
         [JsonProperty("maturityDate")]
         public string MaturityDate { get; set; }
@@ -1096,7 +1109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public double SemiAnnualizedYield { get; set; }
 
         [JsonProperty("spreadToRFRSwapCurve")]
-        public double SpreadToRFRSwapCurve { get; set; }
+        public double SpreadToRfrSwapCurve { get; set; }
 
         [JsonProperty("yearsToFinalMaturity")]
         public double YearsToFinalMaturity { get; set; }
@@ -1364,8 +1377,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     public enum BulkScenarioAnalyticsBodyInputVolatilityTypeType
     {
         MarketWSkew,
-        LMMSOFR,
-        LMMSOFRFLAT,
+        [EnumMember(Value = "LMMSOFR")]
+        Lmmsofr,
+        [EnumMember(Value = "LMMSOFRFLAT")]
+        Lmmsofrflat,
         [EnumMember(Value = "default")]
         Default
     }
@@ -1374,7 +1389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     public enum BodyInputHorizonPYMethodType
     {
         [EnumMember(Value = "OAS Change")]
-        OASChange,
+        OasChange,
         [EnumMember(Value = "Spread Change")]
         SpreadChange,
         [EnumMember(Value = "DM Change")]

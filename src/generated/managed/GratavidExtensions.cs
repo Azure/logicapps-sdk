@@ -172,13 +172,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         [EnumMember(Value = "unsubscribe")]
         ContactUnsubscribesFromEmailAfterReceivingGratavidEmail,
         [EnumMember(Value = "stopText")]
-        ContactOptOutOfTextRepliesSTOPAfterReceivingGratavid
+        ContactOptOutOfTextRepliesStopAfterReceivingGratavid
     }
 
     public class NewEventBodyInput
     {
         [JsonProperty("webhookURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

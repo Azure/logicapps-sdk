@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         public string GlobalScore { get; set; }
 
         [JsonProperty("relatedIOCs")]
-        public string[] RelatedIOCs { get; set; }
+        public string[] RelatedIocs { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }

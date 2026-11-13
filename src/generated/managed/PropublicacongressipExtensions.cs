@@ -4840,7 +4840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         public string EffectiveDate { get; set; }
 
         [JsonProperty("xml_filename")]
-        public string XmlFilename { get; set; }
+        public string XmlFileName { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -4954,7 +4954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         public string EffectiveDate { get; set; }
 
         [JsonProperty("xml_filename")]
-        public string XmlFilename { get; set; }
+        public string XmlFileName { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -5035,7 +5035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         public string EffectiveDate { get; set; }
 
         [JsonProperty("xml_filename")]
-        public string XmlFilename { get; set; }
+        public string XmlFileName { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }

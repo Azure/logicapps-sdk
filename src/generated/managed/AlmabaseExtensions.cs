@@ -647,10 +647,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
     public class ListGiftsResponse
     {
         [JsonProperty("nextlink")]
-        public string NextResultsURL { get; set; }
+        public string NextResultsUrl { get; set; }
 
         [JsonProperty("previouslink")]
-        public string PreviousResultsURL { get; set; }
+        public string PreviousResultsUrl { get; set; }
 
         [JsonProperty("total")]
         public int TotalGifts { get; set; }
@@ -767,13 +767,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
         public V1GivingApiTransactionRead Transaction { get; set; }
 
         [JsonProperty("utm_campaign")]
-        public string UTMCampaign { get; set; }
+        public string UtmCampaign { get; set; }
 
         [JsonProperty("utm_medium")]
-        public string UTMMedium { get; set; }
+        public string UtmMedium { get; set; }
 
         [JsonProperty("utm_source")]
-        public string UTMSource { get; set; }
+        public string UtmSource { get; set; }
     }
 
     public class V1GivingApiLocationRead
@@ -909,7 +909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
         public string LastName { get; set; }
 
         [JsonProperty("present_picture")]
-        public string PictureURL { get; set; }
+        public string PictureUrl { get; set; }
 
         [JsonProperty("profile_url")]
         public string Link { get; set; }
@@ -1268,10 +1268,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
     public class ListRecordsResponse
     {
         [JsonProperty("nextlink")]
-        public string NextResultsURL { get; set; }
+        public string NextResultsUrl { get; set; }
 
         [JsonProperty("previouslink")]
-        public string PreviousResultsURL { get; set; }
+        public string PreviousResultsUrl { get; set; }
 
         [JsonProperty("total")]
         public int TotalRecords { get; set; }
@@ -1304,7 +1304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
         public string LastName { get; set; }
 
         [JsonProperty("present_picture")]
-        public string PictureURL { get; set; }
+        public string PictureUrl { get; set; }
 
         [JsonProperty("record_url")]
         public string Link { get; set; }
@@ -1503,10 +1503,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
     public class ListRecordEmailAddressesResponse
     {
         [JsonProperty("nextlink")]
-        public string NextResultsURL { get; set; }
+        public string NextResultsUrl { get; set; }
 
         [JsonProperty("previouslink")]
-        public string PreviousResultsURL { get; set; }
+        public string PreviousResultsUrl { get; set; }
 
         [JsonProperty("total")]
         public int TotalEmailAddresses { get; set; }
@@ -1695,7 +1695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Almabase
         }
 
         [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
         public string When { get; set; } = "com.almabase.customforms.customformentry.created";

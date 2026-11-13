@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
     public class GetLlmListResponse
     {
         [JsonProperty("llms")]
-        public LLM[] Llms { get; set; }
+        public Llm[] Llms { get; set; }
     }
 
-    public class LLM
+    public class Llm
     {
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagepixelsscreenshot
         public string ScreenshotId { get; set; }
 
         [JsonProperty("embed_url")]
-        public string EmbedURL { get; set; }
+        public string EmbedUrl { get; set; }
 
         [JsonProperty("is_browser_extension_screenshot")]
         public bool BrowserExtensionCapture { get; set; }
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagepixelsscreenshot
         public string ScreenshotId { get; set; }
 
         [JsonProperty("embed_url")]
-        public string EmbedURL { get; set; }
+        public string EmbedUrl { get; set; }
 
         [JsonProperty("is_browser_extension_screenshot")]
         public bool BrowserExtensionCapture { get; set; }
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagepixelsscreenshot
         public string ScreenshotId { get; set; }
 
         [JsonProperty("embed_url")]
-        public string EmbedURL { get; set; }
+        public string EmbedUrl { get; set; }
 
         [JsonProperty("is_browser_extension_screenshot")]
         public bool BrowserExtensionCapture { get; set; }
@@ -848,14 +848,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagepixelsscreenshot
         Tunisia,
         Turkey,
         Turkmenistan,
-        UAE,
+        [EnumMember(Value = "UAE")]
+        Uae,
         Uganda,
         Ukraine,
         [EnumMember(Value = "United Kingdom")]
         UnitedKingdom,
         Uruguay,
         US,
-        USA,
+        [EnumMember(Value = "USA")]
+        Usa,
         Utah,
         Uzbekistan,
         Vermont,
@@ -877,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagepixelsscreenshot
         public string ScreenshotId { get; set; }
 
         [JsonProperty("embed_url")]
-        public string EmbedURL { get; set; }
+        public string EmbedUrl { get; set; }
 
         [JsonProperty("is_browser_extension_screenshot")]
         public bool BrowserExtensionCapture { get; set; }

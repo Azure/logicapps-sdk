@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
     public class UipathActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipath")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> StartAndWaitForJobCompletion(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<double>> processId, Expression<Func<object>> dynamicListSchema, Expression<Func<bool>> runAsMe = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> StartAndWaitForJobCompletion(Expression<Func<int>> xUipathOrganizationUnitId, Expression<Func<double>> processId, Expression<Func<object>> dynamicListSchema, Expression<Func<bool>> runAsMe = null)
         {
-            var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
+            var __workflow_xUipathOrganizationUnitId = WorkflowExpression.Compile(xUipathOrganizationUnitId, nameof(xUipathOrganizationUnitId), required: true);
             var __workflow_processId = WorkflowExpression.Compile(processId, nameof(processId), required: true);
             var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: true);
             var __workflow_runAsMe = WorkflowExpression.Compile(runAsMe, nameof(runAsMe), required: false);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
                 callPayload.Queries["runAsMe"] = Convert.ToString(true);
                 if (__workflow_runAsMe != null)
                     callPayload.Queries["runAsMe"] = ExpressionConverter.Convert(__workflow_runAsMe);
-                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUIPATHOrganizationUnitId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUipathOrganizationUnitId);
                 callPayload.Headers["url"] = Convert.ToString("#{listCallbackUrl()}");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipath")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetJobUpdate(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<double>> processId, Expression<Func<BodyInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetJobUpdate(Expression<Func<int>> xUipathOrganizationUnitId, Expression<Func<double>> processId, Expression<Func<BodyInput>> body)
         {
-            var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
+            var __workflow_xUipathOrganizationUnitId = WorkflowExpression.Compile(xUipathOrganizationUnitId, nameof(xUipathOrganizationUnitId), required: true);
             var __workflow_processId = WorkflowExpression.Compile(processId, nameof(processId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -45,16 +45,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/jobupdate/webhook/{0}", __workflow_processId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUIPATHOrganizationUnitId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUipathOrganizationUnitId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipath")]
-        public IBodyWorkflowAction<JobDto, ApiConnectionActionConfiguration> StartJobs(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<double>> processId, Expression<Func<object>> dynamicListSchema = null, Expression<Func<bool>> runAsMe = null)
+        public IBodyWorkflowAction<JobDto, ApiConnectionActionConfiguration> StartJobs(Expression<Func<int>> xUipathOrganizationUnitId, Expression<Func<double>> processId, Expression<Func<object>> dynamicListSchema = null, Expression<Func<bool>> runAsMe = null)
         {
-            var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
+            var __workflow_xUipathOrganizationUnitId = WorkflowExpression.Compile(xUipathOrganizationUnitId, nameof(xUipathOrganizationUnitId), required: true);
             var __workflow_processId = WorkflowExpression.Compile(processId, nameof(processId), required: true);
             var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: false);
             var __workflow_runAsMe = WorkflowExpression.Compile(runAsMe, nameof(runAsMe), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
                 callPayload.Queries["runAsMe"] = Convert.ToString(true);
                 if (__workflow_runAsMe != null)
                     callPayload.Queries["runAsMe"] = ExpressionConverter.Convert(__workflow_runAsMe);
-                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUIPATHOrganizationUnitId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUipathOrganizationUnitId);
                 if (__workflow_dynamicListSchema != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
                 return new ApiConnectionAction<JobDto>(callPayload);
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipath")]
-        public IBodyWorkflowAction<QueueItemDto, ApiConnectionActionConfiguration> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<object>> dynamicListSchema, Expression<Func<int>> queueId, Expression<Func<string>> deferDate = null, Expression<Func<string>> dueDate = null, Expression<Func<string>> riskSlaDate = null, Expression<Func<string>> reference = null, Expression<Func<string>> progress = null, Expression<Func<string>> parentOperationId = null, Expression<Func<PriorityInput>> priority = null)
+        public IBodyWorkflowAction<QueueItemDto, ApiConnectionActionConfiguration> AddQueueItem(Expression<Func<int>> xUipathOrganizationUnitId, Expression<Func<object>> dynamicListSchema, Expression<Func<int>> queueId, Expression<Func<string>> deferDate = null, Expression<Func<string>> dueDate = null, Expression<Func<string>> riskSlaDate = null, Expression<Func<string>> reference = null, Expression<Func<string>> progress = null, Expression<Func<string>> parentOperationId = null, Expression<Func<PriorityInput>> priority = null)
         {
-            var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
+            var __workflow_xUipathOrganizationUnitId = WorkflowExpression.Compile(xUipathOrganizationUnitId, nameof(xUipathOrganizationUnitId), required: true);
             var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: true);
             var __workflow_queueId = WorkflowExpression.Compile(queueId, nameof(queueId), required: true);
             var __workflow_deferDate = WorkflowExpression.Compile(deferDate, nameof(deferDate), required: false);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
                     callPayload.Queries["parentOperationId"] = ExpressionConverter.Convert(__workflow_parentOperationId);
                 if (__workflow_priority != null)
                     callPayload.Queries["priority"] = ExpressionConverter.Convert(__workflow_priority);
-                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUIPATHOrganizationUnitId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUipathOrganizationUnitId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
                 return new ApiConnectionAction<QueueItemDto>(callPayload);
             });
@@ -200,7 +200,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
         public string MachineName { get; set; }
         public int MachineId { get; set; }
         public string Name { get; set; }
-        public string Username { get; set; }
+
+        [JsonProperty("Username")]
+        public string UserName { get; set; }
         public string ExternalName { get; set; }
         public string Description { get; set; }
         public SimpleRobotDtoTypeType Type { get; set; }

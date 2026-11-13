@@ -13,57 +13,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
     public class ActsoftActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
-        public IBodyWorkflowAction<CustomerAPIModelsCustomListsCustomListDefinitionListItemApiModel[], ApiConnectionActionConfiguration> CustomListControllerGet()
+        public IBodyWorkflowAction<CustomerApiModelsCustomListsCustomListDefinitionListItemApiModel[], ApiConnectionActionConfiguration> CustomListControllerGet()
         {
-            return new DeferredBodyAction<CustomerAPIModelsCustomListsCustomListDefinitionListItemApiModel[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiModelsCustomListsCustomListDefinitionListItemApiModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/custom-lists/v1/custom-lists/definitions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-API-Version"] = Convert.ToString(15);
-                return new ApiConnectionAction<CustomerAPIModelsCustomListsCustomListDefinitionListItemApiModel[]>(callPayload);
+                return new ApiConnectionAction<CustomerApiModelsCustomListsCustomListDefinitionListItemApiModel[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
-        public IBodyWorkflowAction<CustomerAPIInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration> EventControllerDelete(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CustomerApiInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration> EventControllerDelete(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CustomerAPIInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/events/v1/definitions/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-API-Version"] = Convert.ToString(15);
-                return new ApiConnectionAction<CustomerAPIInfrastructureErrorHandlingResponseError[]>(callPayload);
+                return new ApiConnectionAction<CustomerApiInfrastructureErrorHandlingResponseError[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
-        public IBodyWorkflowAction<CustomerAPIInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration> EventControllerRemoveEventDataFeedSubscription(Expression<Func<string>> subscriptionId)
+        public IBodyWorkflowAction<CustomerApiInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration> EventControllerRemoveEventDataFeedSubscription(Expression<Func<string>> subscriptionId)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
-            return new DeferredBodyAction<CustomerAPIInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/events/v1/subscribe";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["subscriptionId"] = ExpressionConverter.Convert(__workflow_subscriptionId);
                 callPayload.Headers["X-API-Version"] = Convert.ToString(15);
-                return new ApiConnectionAction<CustomerAPIInfrastructureErrorHandlingResponseError[]>(callPayload);
+                return new ApiConnectionAction<CustomerApiInfrastructureErrorHandlingResponseError[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
-        public IBodyWorkflowAction<CustomerAPIModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[], ApiConnectionActionConfiguration> EventControllerGetSubscriptions()
+        public IBodyWorkflowAction<CustomerApiModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[], ApiConnectionActionConfiguration> EventControllerGetSubscriptions()
         {
-            return new DeferredBodyAction<CustomerAPIModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/events/v1/subscriptions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-API-Version"] = Convert.ToString(15);
-                return new ApiConnectionAction<CustomerAPIModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[]>(callPayload);
+                return new ApiConnectionAction<CustomerApiModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[]>(callPayload);
             });
         }
 
@@ -97,44 +97,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
-        public IBodyWorkflowAction<CustomerAPIInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration> GeofenceControllerDeleteGeofence(Expression<Func<int>> id)
+        public IBodyWorkflowAction<CustomerApiInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration> GeofenceControllerDeleteGeofence(Expression<Func<int>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CustomerAPIInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/geofences/v1/geofences/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-API-Version"] = Convert.ToString(15);
-                return new ApiConnectionAction<CustomerAPIInfrastructureErrorHandlingResponseError[]>(callPayload);
+                return new ApiConnectionAction<CustomerApiInfrastructureErrorHandlingResponseError[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
-        public IBodyWorkflowAction<CustomerAPIInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration> TrackingControllerRemoveGpsDataFeedSubscription(Expression<Func<string>> subscriptionId)
+        public IBodyWorkflowAction<CustomerApiInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration> TrackingControllerRemoveGpsDataFeedSubscription(Expression<Func<string>> subscriptionId)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
-            return new DeferredBodyAction<CustomerAPIInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiInfrastructureErrorHandlingResponseError[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tracking/v1/tracking/gpsdata/subscribe";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["subscriptionId"] = ExpressionConverter.Convert(__workflow_subscriptionId);
                 callPayload.Headers["X-API-Version"] = Convert.ToString(15);
-                return new ApiConnectionAction<CustomerAPIInfrastructureErrorHandlingResponseError[]>(callPayload);
+                return new ApiConnectionAction<CustomerApiInfrastructureErrorHandlingResponseError[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
-        public IBodyWorkflowAction<CustomerAPIModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[], ApiConnectionActionConfiguration> TrackingControllerGetSubscriptions()
+        public IBodyWorkflowAction<CustomerApiModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[], ApiConnectionActionConfiguration> TrackingControllerGetSubscriptions()
         {
-            return new DeferredBodyAction<CustomerAPIModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tracking/v1/tracking/gpsdata/subscriptions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-API-Version"] = Convert.ToString(15);
-                return new ApiConnectionAction<CustomerAPIModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[]>(callPayload);
+                return new ApiConnectionAction<CustomerApiModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel[]>(callPayload);
             });
         }
 
@@ -185,27 +185,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
     {
     }
 
-    public class CustomerAPIModelsCustomListsCustomListDefinitionListItemApiModel
+    public class CustomerApiModelsCustomListsCustomListDefinitionListItemApiModel
     {
         public int CustomListId { get; set; }
         public string Name { get; set; }
         public string Version { get; set; }
     }
 
-    public class CustomerAPIInfrastructureErrorHandlingResponseError
+    public class CustomerApiInfrastructureErrorHandlingResponseError
     {
         public int Code { get; set; }
         public string Message { get; set; }
     }
 
-    public class CustomerAPIModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel
+    public class CustomerApiModelsWebHookSubscriptionWebHookSubscriptionInfoApiModel
     {
         public string SubscriptionId { get; set; }
         public string Url { get; set; }
-        public CustomerAPIModelsWebHookSubscriptionWebHookSubscriptionInfoApiModelStatusType Status { get; set; }
+        public CustomerApiModelsWebHookSubscriptionWebHookSubscriptionInfoApiModelStatusType Status { get; set; }
     }
 
-    public enum CustomerAPIModelsWebHookSubscriptionWebHookSubscriptionInfoApiModelStatusType
+    public enum CustomerApiModelsWebHookSubscriptionWebHookSubscriptionInfoApiModelStatusType
     {
         _1 = 1,
         _2 = 2

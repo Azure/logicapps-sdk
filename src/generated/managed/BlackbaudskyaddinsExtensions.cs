@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         public string FirstName { get; set; }
 
         [JsonProperty("application_id")]
-        public string SKYApplicationId { get; set; }
+        public string SkyApplicationId { get; set; }
 
         [JsonProperty("environment_id")]
         public string EnvironmentId { get; set; }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         }
 
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins.BodyInputMethodType.GET;
+        public BodyInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins.BodyInputMethodType.Get;
 
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RelativePath { get; set; }
@@ -107,11 +107,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputMethodType
     {
-        GET,
-        PUT,
-        POST,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 }
 

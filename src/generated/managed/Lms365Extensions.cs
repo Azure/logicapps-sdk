@@ -13,52 +13,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
     public class Lms365Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ApproveEnrollmentRequest(Expression<Func<string>> id, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApproveEnrollmentRequest(Expression<Func<string>> id, Expression<Func<string>> lms365UserId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_lms365UserId = WorkflowExpression.Compile(lms365UserId, nameof(lms365UserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})/Approve", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_lMS365UserId != null)
-                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
+                if (__workflow_lms365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lms365UserId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<EnrollUserToCourseResponse, ApiConnectionActionConfiguration> EnrollUserToCourse(Expression<Func<string>> courseId, Expression<Func<EnrollUserToCourseBodyInput>> body, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<EnrollUserToCourseResponse, ApiConnectionActionConfiguration> EnrollUserToCourse(Expression<Func<string>> courseId, Expression<Func<EnrollUserToCourseBodyInput>> body, Expression<Func<string>> lms365UserId = null)
         {
             var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_lms365UserId = WorkflowExpression.Compile(lms365UserId, nameof(lms365UserId), required: false);
             return new DeferredBodyAction<EnrollUserToCourseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Courses({0})/Enroll", __workflow_courseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_lMS365UserId != null)
-                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
+                if (__workflow_lms365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lms365UserId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EnrollUserToCourseResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RejectEnrollmentRequest(Expression<Func<string>> id, Expression<Func<RejectEnrollmentRequestBodyInput>> body = null, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RejectEnrollmentRequest(Expression<Func<string>> id, Expression<Func<RejectEnrollmentRequestBodyInput>> body = null, Expression<Func<string>> lms365UserId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_lms365UserId = WorkflowExpression.Compile(lms365UserId, nameof(lms365UserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})/Reject", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_lMS365UserId != null)
-                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
+                if (__workflow_lms365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lms365UserId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -81,34 +81,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<CreateCourseCategoryResponse, ApiConnectionActionConfiguration> CreateCourseCategory(Expression<Func<CreateCourseCategoryBodyInput>> body, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<CreateCourseCategoryResponse, ApiConnectionActionConfiguration> CreateCourseCategory(Expression<Func<CreateCourseCategoryBodyInput>> body, Expression<Func<string>> lms365UserId = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_lms365UserId = WorkflowExpression.Compile(lms365UserId, nameof(lms365UserId), required: false);
             return new DeferredBodyAction<CreateCourseCategoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/v2/CourseCategories";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_lMS365UserId != null)
-                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
+                if (__workflow_lms365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lms365UserId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCourseCategoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<CreateCourseResponse, ApiConnectionActionConfiguration> CreateCourse(Expression<Func<CreateCourseBodyInput>> body, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<CreateCourseResponse, ApiConnectionActionConfiguration> CreateCourse(Expression<Func<CreateCourseBodyInput>> body, Expression<Func<string>> lms365UserId = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_lms365UserId = WorkflowExpression.Compile(lms365UserId, nameof(lms365UserId), required: false);
             return new DeferredBodyAction<CreateCourseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/v2/Courses";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_lMS365UserId != null)
-                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
+                if (__workflow_lms365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lms365UserId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCourseResponse>(callPayload);
             });
@@ -132,34 +132,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CompleteEnrollmentById(Expression<Func<string>> id, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CompleteEnrollmentById(Expression<Func<string>> id, Expression<Func<string>> lms365UserId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_lms365UserId = WorkflowExpression.Compile(lms365UserId, nameof(lms365UserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})/Complete", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_lMS365UserId != null)
-                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
+                if (__workflow_lms365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lms365UserId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetakeEnrollmentById(Expression<Func<string>> id, Expression<Func<RetakeEnrollmentByIdBodyInput>> body = null, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetakeEnrollmentById(Expression<Func<string>> id, Expression<Func<RetakeEnrollmentByIdBodyInput>> body = null, Expression<Func<string>> lms365UserId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_lms365UserId = WorkflowExpression.Compile(lms365UserId, nameof(lms365UserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})/Retake", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_lMS365UserId != null)
-                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
+                if (__workflow_lms365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lms365UserId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -182,17 +182,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<CreateCourseTagResponse, ApiConnectionActionConfiguration> CreateCourseTag(Expression<Func<CreateCourseTagBodyInput>> body, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<CreateCourseTagResponse, ApiConnectionActionConfiguration> CreateCourseTag(Expression<Func<CreateCourseTagBodyInput>> body, Expression<Func<string>> lms365UserId = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_lms365UserId = WorkflowExpression.Compile(lms365UserId, nameof(lms365UserId), required: false);
             return new DeferredBodyAction<CreateCourseTagResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/v2/CourseTags";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_lMS365UserId != null)
-                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
+                if (__workflow_lms365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lms365UserId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCourseTagResponse>(callPayload);
             });
@@ -252,18 +252,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CancelEnrollment(Expression<Func<string>> enrollmentId, Expression<Func<CancelEnrollmentBodyInput>> body = null, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CancelEnrollment(Expression<Func<string>> enrollmentId, Expression<Func<CancelEnrollmentBodyInput>> body = null, Expression<Func<string>> lms365UserId = null)
         {
             var __workflow_enrollmentId = WorkflowExpression.Compile(enrollmentId, nameof(enrollmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_lms365UserId = WorkflowExpression.Compile(lms365UserId, nameof(lms365UserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})/Cancel", __workflow_enrollmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_lMS365UserId != null)
-                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
+                if (__workflow_lms365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lms365UserId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -287,18 +287,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCourseSession(Expression<Func<string>> courseId, Expression<Func<CreateCourseSessionBodyInput>> body, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCourseSession(Expression<Func<string>> courseId, Expression<Func<CreateCourseSessionBodyInput>> body, Expression<Func<string>> lms365UserId = null)
         {
             var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_lms365UserId = WorkflowExpression.Compile(lms365UserId, nameof(lms365UserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Courses({0})/CourseSessions", __workflow_courseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_lMS365UserId != null)
-                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
+                if (__workflow_lms365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lms365UserId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
@@ -470,8 +470,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string CoursePassingStatus { get; set; }
         public string CertificateId { get; set; }
 
+        [JsonProperty("CEU")]
+        public int ContinuingEducationUnits { get; set; }
+
         [JsonProperty("DecimalCEU")]
-        public double ContinuingEducationUnits { get; set; }
+        public double ContinuingEducationUnits2 { get; set; }
         public string DueDate { get; set; }
         public string EndDate { get; set; }
         public bool IsPartOfTrainingPlan { get; set; }
@@ -563,8 +566,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [JsonProperty("LongDescription")]
         public string CourseLongDescription { get; set; }
 
+        [JsonProperty("CEU")]
+        public int ContinuingEducationUnits { get; set; }
+
         [JsonProperty("DecimalCEU")]
-        public double ContinuingEducationUnits { get; set; }
+        public double ContinuingEducationUnits2 { get; set; }
         public bool ShowInCatalog { get; set; }
         public bool IsRequired { get; set; }
         public bool IsPublished { get; set; }
@@ -587,14 +593,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
     public class CreateCourseBodyInput
     {
-        public CreateCourseBodyInput(string courseCatalogId, BodyInputCoursetypeType coursetype, string trainingTitle, string description, string culture, string uICulture, string url)
+        public CreateCourseBodyInput(string courseCatalogId, BodyInputCoursetypeType coursetype, string trainingTitle, string description, string culture, string uiCulture, string url)
         {
             this.CourseCatalogId = courseCatalogId;
             this.Coursetype = coursetype;
             this.TrainingTitle = trainingTitle;
             this.Description = description;
             this.Culture = culture;
-            this.UICulture = uICulture;
+            this.UICulture = uiCulture;
             this.Url = url;
         }
 
@@ -679,7 +685,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
     {
         AutomaticApproval,
         LineManagerApproval,
-        LMSAdministratorsApproval,
+        [EnumMember(Value = "LMSAdministratorsApproval")]
+        LmsAdministratorsApproval,
         CustomApproval,
         ExternalWebhookApproval
     }
@@ -726,8 +733,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string Description { get; set; }
         public string LongDescription { get; set; }
 
+        [JsonProperty("CEU")]
+        public int ContinuingEducationUnits { get; set; }
+
         [JsonProperty("DecimalCEU")]
-        public double ContinuingEducationUnits { get; set; }
+        public double ContinuingEducationUnits2 { get; set; }
         public bool ShowInCatalog { get; set; }
         public bool IsRequired { get; set; }
         public bool IsPublished { get; set; }
@@ -746,15 +756,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string CourseLayoutId { get; set; }
 
         [JsonProperty("DueDate@odata.context")]
-        public string DueDateOdataContext { get; set; }
+        public string DueDateODataContext { get; set; }
         public GetCourseInfoResponseDueDateType DueDate { get; set; }
 
         [JsonProperty("Publishing@odata.context")]
-        public string PublishingOdataContext { get; set; }
+        public string PublishingODataContext { get; set; }
         public GetCourseInfoResponsePublishingType Publishing { get; set; }
 
         [JsonProperty("CertificateExpiry@odata.context")]
-        public string CertificateExpiryOdataContext { get; set; }
+        public string CertificateExpiryODataContext { get; set; }
         public GetCourseInfoResponseCertificateExpiryType CertificateExpiry { get; set; }
         public GetCourseInfoResponseSharepointWebType SharepointWeb { get; set; }
         public GetCourseInfoResponseCategoriesTypeItem[] Categories { get; set; }
@@ -763,7 +773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public GetCourseInfoResponseLearningModulesTypeItem[] LearningModules { get; set; }
 
         [JsonProperty("ProvisioningProgress@odata.context")]
-        public string ProvisioningProgressOdataContext { get; set; }
+        public string ProvisioningProgressODataContext { get; set; }
         public string ProvisioningProgress { get; set; }
         public GetCourseInfoResponseTrainersTypeItem[] Trainers { get; set; }
         public GetCourseInfoResponseAdminsTypeItem[] Admins { get; set; }
@@ -957,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string Id { get; set; }
 
         [JsonProperty("ProvisioningProgress@odata.context")]
-        public string ProvisioningProgressOdataContext { get; set; }
+        public string ProvisioningProgressODataContext { get; set; }
         public string ProvisioningProgress { get; set; }
         public GetCourseProvisioningStatusResponseValueTypeItemSharepointWebType SharepointWeb { get; set; }
     }
@@ -990,8 +1000,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string Description { get; set; }
         public string LongDescription { get; set; }
 
+        [JsonProperty("CEU")]
+        public int ContinuingEducationUnits { get; set; }
+
         [JsonProperty("DecimalCEU")]
-        public double ContinuingEducationUnits { get; set; }
+        public double ContinuingEducationUnits2 { get; set; }
         public bool ShowInCatalog { get; set; }
         public bool IsRequired { get; set; }
         public bool IsPublished { get; set; }
@@ -1034,8 +1047,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string CoursePassingStatus { get; set; }
         public string CertificateId { get; set; }
 
+        [JsonProperty("CEU")]
+        public int ContinuingEducationUnits { get; set; }
+
         [JsonProperty("DecimalCEU")]
-        public double ContinuingEducationUnits { get; set; }
+        public double ContinuingEducationUnits2 { get; set; }
         public string DueDate { get; set; }
         public string EndDate { get; set; }
         public bool IsPartOfTrainingPlan { get; set; }
@@ -1130,11 +1146,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [EnumMember(Value = "Atlantic Standard Time")]
         AtlanticStandardTime,
         [EnumMember(Value = "AUS Central Standard Time")]
-        AUSCentralStandardTime,
+        AusCentralStandardTime,
         [EnumMember(Value = "Aus Central W. Standard Time")]
         AusCentralWStandardTime,
         [EnumMember(Value = "AUS Eastern Standard Time")]
-        AUSEasternStandardTime,
+        AusEasternStandardTime,
         [EnumMember(Value = "Azerbaijan Standard Time")]
         AzerbaijanStandardTime,
         [EnumMember(Value = "Azores Standard Time")]
@@ -1200,17 +1216,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [EnumMember(Value = "Fiji Standard Time")]
         FijiStandardTime,
         [EnumMember(Value = "FLE Standard Time")]
-        FLEStandardTime,
+        FleStandardTime,
         [EnumMember(Value = "Georgian Standard Time")]
         GeorgianStandardTime,
         [EnumMember(Value = "GMT Standard Time")]
-        GMTStandardTime,
+        GmtStandardTime,
         [EnumMember(Value = "Greenland Standard Time")]
         GreenlandStandardTime,
         [EnumMember(Value = "Greenwich Standard Time")]
         GreenwichStandardTime,
         [EnumMember(Value = "GTB Standard Time")]
-        GTBStandardTime,
+        GtbStandardTime,
         [EnumMember(Value = "Haiti Standard Time")]
         HaitiStandardTime,
         [EnumMember(Value = "Hawaiian Standard Time")]
@@ -1349,19 +1365,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         USEasternStandardTime,
         [EnumMember(Value = "US Mountain Standard Time")]
         USMountainStandardTime,
-        UTC,
+        [EnumMember(Value = "UTC")]
+        Utc,
         [EnumMember(Value = "UTC+12")]
-        UTC12,
+        Utc12,
         [EnumMember(Value = "UTC+13")]
-        UTC13,
+        Utc13,
         [EnumMember(Value = "UTC-02")]
-        UTC02,
+        Utc02,
         [EnumMember(Value = "UTC-08")]
-        UTC08,
+        Utc08,
         [EnumMember(Value = "UTC-09")]
-        UTC09,
+        Utc09,
         [EnumMember(Value = "UTC-11")]
-        UTC11,
+        Utc11,
         [EnumMember(Value = "Venezuela Standard Time")]
         VenezuelaStandardTime,
         [EnumMember(Value = "Vladivostok Standard Time")]
@@ -1409,7 +1426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lms365.ParametersInputMethodType.GET;
+        public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lms365.ParametersInputMethodType.Get;
 
         [JsonProperty("uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uri { get; set; }
@@ -1424,11 +1441,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ParametersInputMethodType
     {
-        GET,
-        PUT,
-        POST,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
     public class CourseCompletedBodyInput

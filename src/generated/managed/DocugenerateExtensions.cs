@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public ListTemplatesResponseItemTagsType Tags { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("format")]
         public string Format { get; set; }
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public GetTemplateResponseTagsType Tags { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("format")]
         public string Format { get; set; }
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public int DataLength { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("format")]
         public string Format { get; set; }
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public int DataLength { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("format")]
         public string Format { get; set; }
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public int DataLength { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("format")]
         public string Format { get; set; }
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public int DataLength { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("format")]
         public string Format { get; set; }

@@ -325,9 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
     public class GetFileCabinetsResponseFileCabinetsTypeItem
     {
         public string Name { get; set; }
-
-        [JsonProperty("Guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
         public string Color { get; set; }
         public bool IsTray { get; set; }
     }
@@ -403,9 +401,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
     {
         Original,
         [EnumMember(Value = "PDF with annotations")]
-        PDFWithAnnotations,
+        PdfWithAnnotations,
         [EnumMember(Value = "PDF without annotations")]
-        PDFWithoutAnnotations
+        PdfWithoutAnnotations
     }
 
     public class UpdateIndexFieldsResponse
@@ -575,9 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         public int Rotation { get; set; }
         public bool Transparent { get; set; }
         public int StrokeWidth { get; set; }
-
-        [JsonProperty("Guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
     }
 
     public class PlaceAStampResponseCreatedType
@@ -632,9 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
     public class GetDialogsResponseDialogsTypeItem
     {
         public string Name { get; set; }
-
-        [JsonProperty("Guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
         public string Color { get; set; }
         public bool IsDefault { get; set; }
         public string Type { get; set; }

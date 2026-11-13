@@ -406,8 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
     public class EWayWcfServiceResponsesSaveResponse
     {
-        [JsonProperty("Guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
         public string UserMessage { get; set; }
         public bool IsUserMessageOptionalError { get; set; }
         public string ReturnCode { get; set; }
@@ -453,14 +452,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public int? EmployeesCount { get; set; }
         public string Fax { get; set; }
         public string FirstContactEn { get; set; }
-        public string ICQ { get; set; }
+
+        [JsonProperty("ICQ")]
+        public string Icq { get; set; }
         public string IdentificationNumber { get; set; }
         public string ImportanceEn { get; set; }
         public string LineOfBusiness { get; set; }
         public bool? MailingListOther { get; set; }
         public string Mobile { get; set; }
         public string MobileNormalized { get; set; }
-        public string MSN { get; set; }
+
+        [JsonProperty("MSN")]
+        public string Msn { get; set; }
         public string Note { get; set; }
         public string Phone { get; set; }
         public string PhoneNormalized { get; set; }
@@ -468,7 +471,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public double? Reversal { get; set; }
         public string Skype { get; set; }
         public bool? Suppliers { get; set; }
-        public string VATNumber { get; set; }
+
+        [JsonProperty("VATNumber")]
+        public string VatNumber { get; set; }
         public string WebPage { get; set; }
         public double? AdditionalDiscount { get; set; }
 
@@ -491,11 +496,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
@@ -536,11 +549,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Email2Address { get; set; }
         public string Email3Address { get; set; }
         public string FirstName { get; set; }
-        public string ICQ { get; set; }
+
+        [JsonProperty("ICQ")]
+        public string Icq { get; set; }
         public string ImportanceEn { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
-        public string MSN { get; set; }
+
+        [JsonProperty("MSN")]
+        public string Msn { get; set; }
         public string Note { get; set; }
         public string PrefixEn { get; set; }
         public string SuffixEn { get; set; }
@@ -576,11 +593,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
@@ -602,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CalendarEntryId { get; set; }
 
         [JsonProperty("Calendar_ORIGIN")]
-        public string CalendarORIGIN { get; set; }
+        public string CalendarOrigin { get; set; }
         public string ChangedField { get; set; }
         public string EventEnd { get; set; }
         public string EventStart { get; set; }
@@ -639,11 +664,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
@@ -669,7 +702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string EstimatedEnd { get; set; }
 
         [JsonProperty("HID")]
-        public int? HId { get; set; }
+        public int? Hid { get; set; }
         public string LeadOriginEn { get; set; }
         public string Note { get; set; }
         public string Phone { get; set; }
@@ -707,11 +740,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
@@ -740,7 +781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public double? EstimatedPrice { get; set; }
 
         [JsonProperty("HID")]
-        public int? HId { get; set; }
+        public int? Hid { get; set; }
         public string ProjectOriginEn { get; set; }
         public string PaymentTypeEn { get; set; }
         public double? OtherExpenses { get; set; }
@@ -801,11 +842,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
@@ -824,8 +873,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
     public class EWayWcfServiceItemTypesRelation
     {
-        public string ItemGUID1 { get; set; }
-        public string ItemGUID2 { get; set; }
+        [JsonProperty("ItemGUID1")]
+        public string ItemGuid1 { get; set; }
+
+        [JsonProperty("ItemGUID2")]
+        public string ItemGuid2 { get; set; }
         public EWayWcfServiceItemTypesRelationFolderName1Type? FolderName1 { get; set; }
         public EWayWcfServiceItemTypesRelationFolderName2Type? FolderName2 { get; set; }
 
@@ -1061,11 +1113,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
@@ -1103,14 +1163,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public int EmployeesCount { get; set; }
         public string Fax { get; set; }
         public string FirstContactEn { get; set; }
-        public string ICQ { get; set; }
+
+        [JsonProperty("ICQ")]
+        public string Icq { get; set; }
         public string IdentificationNumber { get; set; }
         public string ImportanceEn { get; set; }
         public string LineOfBusiness { get; set; }
         public bool MailingListOther { get; set; }
         public string Mobile { get; set; }
         public string MobileNormalized { get; set; }
-        public string MSN { get; set; }
+
+        [JsonProperty("MSN")]
+        public string Msn { get; set; }
         public string Note { get; set; }
         public string Phone { get; set; }
         public string PhoneNormalized { get; set; }
@@ -1118,7 +1182,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public double Reversal { get; set; }
         public string Skype { get; set; }
         public bool Suppliers { get; set; }
-        public string VATNumber { get; set; }
+
+        [JsonProperty("VATNumber")]
+        public string VatNumber { get; set; }
         public string WebPage { get; set; }
         public double AdditionalDiscount { get; set; }
 
@@ -1147,25 +1213,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int ItemVersion { get; set; }
     }
 
     public class NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse
     {
-        public string ItemGUID { get; set; }
-        public string RelationDataGUID { get; set; }
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
+
+        [JsonProperty("RelationDataGUID")]
+        public string RelationDataGuid { get; set; }
         public string RelationType { get; set; }
         public string ForeignFolderName { get; set; }
-        public string ForeignItemGUID { get; set; }
+
+        [JsonProperty("ForeignItemGUID")]
+        public string ForeignItemGuid { get; set; }
         public bool DifferDirection { get; set; }
-        public string OwnerGUID { get; set; }
-        public string MainItemGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("MainItemGUID")]
+        public string MainItemGuid { get; set; }
     }
 
     public class SearchCompaniesWrapperInput
@@ -1210,14 +1293,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public int? EmployeesCount { get; set; }
         public string Fax { get; set; }
         public string FirstContactEn { get; set; }
-        public string ICQ { get; set; }
+
+        [JsonProperty("ICQ")]
+        public string Icq { get; set; }
         public string IdentificationNumber { get; set; }
         public string ImportanceEn { get; set; }
         public string LineOfBusiness { get; set; }
         public bool? MailingListOther { get; set; }
         public string Mobile { get; set; }
         public string MobileNormalized { get; set; }
-        public string MSN { get; set; }
+
+        [JsonProperty("MSN")]
+        public string Msn { get; set; }
         public string Note { get; set; }
         public string Phone { get; set; }
         public string PhoneNormalized { get; set; }
@@ -1225,7 +1312,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public double? Reversal { get; set; }
         public string Skype { get; set; }
         public bool? Suppliers { get; set; }
-        public string VATNumber { get; set; }
+
+        [JsonProperty("VATNumber")]
+        public string VatNumber { get; set; }
         public string WebPage { get; set; }
         public double? AdditionalDiscount { get; set; }
 
@@ -1254,25 +1343,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
     public class SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation
     {
-        public string ItemGUID { get; set; }
-        public string RelationDataGUID { get; set; }
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
+
+        [JsonProperty("RelationDataGUID")]
+        public string RelationDataGuid { get; set; }
         public string RelationType { get; set; }
         public string ForeignFolderName { get; set; }
-        public string ForeignItemGUID { get; set; }
+
+        [JsonProperty("ForeignItemGUID")]
+        public string ForeignItemGuid { get; set; }
         public bool? DifferDirection { get; set; }
-        public string OwnerGUID { get; set; }
-        public string MainItemGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("MainItemGUID")]
+        public string MainItemGuid { get; set; }
     }
 
     public class EWayWcfServiceItemTypesBoundRelationsFilter
@@ -1313,11 +1419,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Email2Address { get; set; }
         public string Email3Address { get; set; }
         public string FirstName { get; set; }
-        public string ICQ { get; set; }
+
+        [JsonProperty("ICQ")]
+        public string Icq { get; set; }
         public string ImportanceEn { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
-        public string MSN { get; set; }
+
+        [JsonProperty("MSN")]
+        public string Msn { get; set; }
         public string Note { get; set; }
         public string PrefixEn { get; set; }
         public string SuffixEn { get; set; }
@@ -1356,12 +1466,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int ItemVersion { get; set; }
     }
 
@@ -1410,11 +1528,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Email2Address { get; set; }
         public string Email3Address { get; set; }
         public string FirstName { get; set; }
-        public string ICQ { get; set; }
+
+        [JsonProperty("ICQ")]
+        public string Icq { get; set; }
         public string ImportanceEn { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
-        public string MSN { get; set; }
+
+        [JsonProperty("MSN")]
+        public string Msn { get; set; }
         public string Note { get; set; }
         public string PrefixEn { get; set; }
         public string SuffixEn { get; set; }
@@ -1453,12 +1575,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
@@ -1475,7 +1605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CalendarEntryId { get; set; }
 
         [JsonProperty("Calendar_ORIGIN")]
-        public string CalendarORIGIN { get; set; }
+        public string CalendarOrigin { get; set; }
         public string ChangedField { get; set; }
         public string EventEnd { get; set; }
         public string EventStart { get; set; }
@@ -1503,12 +1633,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int ItemVersion { get; set; }
     }
 
@@ -1551,7 +1689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CalendarEntryId { get; set; }
 
         [JsonProperty("Calendar_ORIGIN")]
-        public string CalendarORIGIN { get; set; }
+        public string CalendarOrigin { get; set; }
         public string ChangedField { get; set; }
         public string EventEnd { get; set; }
         public string EventStart { get; set; }
@@ -1579,12 +1717,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
@@ -1605,7 +1751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string EstimatedEnd { get; set; }
 
         [JsonProperty("HID")]
-        public int HId { get; set; }
+        public int Hid { get; set; }
         public string LeadOriginEn { get; set; }
         public string Note { get; set; }
         public string Phone { get; set; }
@@ -1644,12 +1790,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int ItemVersion { get; set; }
     }
 
@@ -1686,7 +1840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string EstimatedEnd { get; set; }
 
         [JsonProperty("HID")]
-        public int? HId { get; set; }
+        public int? Hid { get; set; }
         public string LeadOriginEn { get; set; }
         public string Note { get; set; }
         public string Phone { get; set; }
@@ -1725,12 +1879,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
@@ -1754,7 +1916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public double EstimatedPrice { get; set; }
 
         [JsonProperty("HID")]
-        public int HId { get; set; }
+        public int Hid { get; set; }
         public string ProjectOriginEn { get; set; }
         public string PaymentTypeEn { get; set; }
         public double OtherExpenses { get; set; }
@@ -1810,12 +1972,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int ItemVersion { get; set; }
     }
 
@@ -1861,7 +2031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public double? EstimatedPrice { get; set; }
 
         [JsonProperty("HID")]
-        public int? HId { get; set; }
+        public int? Hid { get; set; }
         public string ProjectOriginEn { get; set; }
         public string PaymentTypeEn { get; set; }
         public double? OtherExpenses { get; set; }
@@ -1917,12 +2087,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 
@@ -1964,12 +2142,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int ItemVersion { get; set; }
     }
 
@@ -2054,12 +2240,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
-        public string OwnerGUID { get; set; }
-        public string CreatedByGUID { get; set; }
-        public string ModifiedByGUID { get; set; }
+
+        [JsonProperty("OwnerGUID")]
+        public string OwnerGuid { get; set; }
+
+        [JsonProperty("CreatedByGUID")]
+        public string CreatedByGuid { get; set; }
+
+        [JsonProperty("ModifiedByGUID")]
+        public string ModifiedByGuid { get; set; }
         public JToken AdditionalFields { get; set; }
         public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
-        public string ItemGUID { get; set; }
+
+        [JsonProperty("ItemGUID")]
+        public string ItemGuid { get; set; }
         public int? ItemVersion { get; set; }
     }
 

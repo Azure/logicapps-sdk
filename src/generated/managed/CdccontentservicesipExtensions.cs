@@ -146,12 +146,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagGetResponse, ApiConnectionActionConfiguration> TagGet(Expression<Func<string>> tAGId)
+        public IBodyWorkflowAction<TagGetResponse, ApiConnectionActionConfiguration> TagGet(Expression<Func<string>> tagId)
         {
-            var __workflow_tAGId = WorkflowExpression.Compile(tAGId, nameof(tAGId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<TagGetResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}", __workflow_tAGId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagGetResponse>(callPayload);
@@ -159,12 +159,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<MediaTagResponse, ApiConnectionActionConfiguration> MediaTag(Expression<Func<string>> tAGId)
+        public IBodyWorkflowAction<MediaTagResponse, ApiConnectionActionConfiguration> MediaTag(Expression<Func<string>> tagId)
         {
-            var __workflow_tAGId = WorkflowExpression.Compile(tAGId, nameof(tAGId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<MediaTagResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/media", __workflow_tAGId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/media", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MediaTagResponse>(callPayload);
@@ -172,12 +172,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagRelatedResponse, ApiConnectionActionConfiguration> TagRelated(Expression<Func<string>> tAGId)
+        public IBodyWorkflowAction<TagRelatedResponse, ApiConnectionActionConfiguration> TagRelated(Expression<Func<string>> tagId)
         {
-            var __workflow_tAGId = WorkflowExpression.Compile(tAGId, nameof(tAGId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<TagRelatedResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/related", __workflow_tAGId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/related", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagRelatedResponse>(callPayload);
@@ -555,8 +555,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OrderInput
     {
-        ASC,
-        DESC
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc
     }
 
     public class MediaGetResponse

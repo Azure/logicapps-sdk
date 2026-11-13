@@ -659,10 +659,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convinceiq
         public int NotEligible { get; set; }
 
         [JsonProperty("duplicate_member_ids")]
-        public string[] AlreadyAssignedMemberIDs { get; set; }
+        public string[] AlreadyAssignedMemberIds { get; set; }
 
         [JsonProperty("ineligible_member_ids")]
-        public string[] NotEligibleMemberIDs { get; set; }
+        public string[] NotEligibleMemberIds { get; set; }
 
         [JsonProperty("assignments")]
         public Assignment[] Assignments { get; set; }
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convinceiq
         public string TrainingPlan { get; set; }
 
         [JsonProperty("assignee_membership_ids")]
-        public string[] MemberIDs { get; set; }
+        public string[] MemberIds { get; set; }
 
         [JsonProperty("target_type")]
         public BodyInputTargetType? Target { get; set; }

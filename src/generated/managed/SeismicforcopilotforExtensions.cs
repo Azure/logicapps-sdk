@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         public string RecordTitle { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("additionalProperties")]
         public JToken AdditionalProperties { get; set; }
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         public string DateTime { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("additionalProperties")]
         public JToken AdditionalProperties { get; set; }
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         public string DateTime { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("additionalProperties")]
         public JToken AdditionalProperties { get; set; }
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         public string ContentDescription { get; set; }
 
         [JsonProperty("contentIconUrl")]
-        public string ContentIconURL { get; set; }
+        public string ContentIconUrl { get; set; }
 
         [JsonProperty("additionalProperties")]
         public JToken AdditionalProperties { get; set; }
@@ -339,10 +339,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         public string RecordId { get; set; }
 
         [JsonProperty("crmType")]
-        public string CRMType { get; set; }
+        public string CrmType { get; set; }
 
         [JsonProperty("crmOrgUrl")]
-        public string CRMOrgURL { get; set; }
+        public string CrmOrgUrl { get; set; }
 
         [JsonProperty("inputPrompt")]
         public string InputPrompt { get; set; }
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         public string PlainTextBody { get; set; }
 
         [JsonProperty("fullHtmlBody")]
-        public string FullHTMLBody { get; set; }
+        public string FullHtmlBody { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         public string[] CC { get; set; }
 
         [JsonProperty("bcc")]
-        public string[] BCC { get; set; }
+        public string[] Bcc { get; set; }
 
         [JsonProperty("sentDateTime")]
         public string SentDateTime { get; set; }

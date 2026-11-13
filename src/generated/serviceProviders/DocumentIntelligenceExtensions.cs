@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
         [EnumMember(Value = "prebuilt-tax.us.1099")]
         PrebuiltTaxUs1099,
         [EnumMember(Value = "prebuilt-tax.us.1099SSA")]
-        PrebuiltTaxUs1099SSA
+        PrebuiltTaxUs1099Ssa
     }
 }
 

@@ -664,7 +664,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         public string Satellite { get; set; }
         public string Synoptic { get; set; }
         public string MarineStation { get; set; }
-        public double MarineStationGMTOffset { get; set; }
+
+        [JsonProperty("MarineStationGMTOffset")]
+        public double MarineStationGmtOffset { get; set; }
         public string VideoCode { get; set; }
         public string LocationStem { get; set; }
 
@@ -834,10 +836,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         public string Satellite { get; set; }
         public string Synoptic { get; set; }
         public string MarineStation { get; set; }
-        public double MarineStationGMTOffset { get; set; }
+
+        [JsonProperty("MarineStationGMTOffset")]
+        public double MarineStationGmtOffset { get; set; }
         public string VideoCode { get; set; }
         public string LocationStem { get; set; }
-        public GeopositionSearchResponseDetailsTypeDMAType DMA { get; set; }
+
+        [JsonProperty("DMA")]
+        public GeopositionSearchResponseDetailsTypeDmaType Dma { get; set; }
 
         [JsonProperty("PartnerID")]
         public string PartnerId { get; set; }
@@ -846,7 +852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         public string CanonicalLocationKey { get; set; }
     }
 
-    public class GeopositionSearchResponseDetailsTypeDMAType
+    public class GeopositionSearchResponseDetailsTypeDmaType
     {
         [JsonProperty("ID")]
         public string Id { get; set; }
@@ -3745,10 +3751,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         public string Satellite { get; set; }
         public string Synoptic { get; set; }
         public string MarineStation { get; set; }
-        public string MarineStationGMTOffset { get; set; }
+
+        [JsonProperty("MarineStationGMTOffset")]
+        public string MarineStationGmtOffset { get; set; }
         public string VideoCode { get; set; }
         public string LocationStem { get; set; }
-        public SearchLocationIPResponseDetailsTypeDMAType DMA { get; set; }
+
+        [JsonProperty("DMA")]
+        public SearchLocationIPResponseDetailsTypeDmaType Dma { get; set; }
 
         [JsonProperty("PartnerID")]
         public string PartnerId { get; set; }
@@ -3757,7 +3767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         public string CanonicalLocationKey { get; set; }
     }
 
-    public class SearchLocationIPResponseDetailsTypeDMAType
+    public class SearchLocationIPResponseDetailsTypeDmaType
     {
         [JsonProperty("ID")]
         public string Id { get; set; }
@@ -4002,7 +4012,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         public string Name { get; set; }
         public string DisplayName { get; set; }
         public string LocalizedName { get; set; }
-        public string ISO { get; set; }
+
+        [JsonProperty("ISO")]
+        public string Iso { get; set; }
         public int LanguageType { get; set; }
         public string MicroSoftName { get; set; }
         public string MicroSoftCode { get; set; }

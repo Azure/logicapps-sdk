@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
     public class BodyInputAttachmentsTypeItem
     {
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("content")]
         public string Content { get; set; }

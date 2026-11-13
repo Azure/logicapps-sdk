@@ -248,6 +248,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         [JsonProperty("Id")]
         public string ProjectId { get; set; }
         public bool IsCheckedOut { get; set; }
+
+        [JsonProperty("ProjectLastPublishedDate")]
+        public string LastPublishedDate2 { get; set; }
         public string LastPublishedDate { get; set; }
         public string LastSavedDate { get; set; }
         public int OptimizerDecision { get; set; }

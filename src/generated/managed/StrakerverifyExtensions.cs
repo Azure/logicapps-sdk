@@ -133,10 +133,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
     public class GetKeysResponse
     {
         [JsonProperty("api_keys")]
-        public APIKeySchema[] ApiKeys { get; set; }
+        public ApiKeySchema[] ApiKeys { get; set; }
     }
 
-    public class APIKeySchema
+    public class ApiKeySchema
     {
         [JsonProperty("api_key")]
         public string ApiKey { get; set; }
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         public string FileUuid { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("report")]
         public JToken Report { get; set; }

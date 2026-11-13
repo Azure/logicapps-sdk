@@ -176,22 +176,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<GetCRLResponse, ApiConnectionActionConfiguration> GetCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid)
+        public IBodyWorkflowAction<GetCrlResponse, ApiConnectionActionConfiguration> GetCrl(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_crlid = WorkflowExpression.Compile(crlid, nameof(crlid), required: true);
-            return new DeferredBodyAction<GetCRLResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCrlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/crls/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_crlid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetCRLResponse>(callPayload);
+                return new ApiConnectionAction<GetCrlResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryCRLsResponseItem[], ApiConnectionActionConfiguration> QueryCRLs(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid = null, Expression<Func<QueryCRLsStatusInput>> status = null, Expression<Func<int>> issued = null, Expression<Func<int>> expiring = null, Expression<Func<string>> crlnumber = null, Expression<Func<string>> crlnumberdecimal = null, Expression<Func<string>> aki = null, Expression<Func<string>> serialnumber = null)
+        public IBodyWorkflowAction<QueryCrlsResponseItem[], ApiConnectionActionConfiguration> QueryCrls(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid = null, Expression<Func<QueryCrlsStatusInput>> status = null, Expression<Func<int>> issued = null, Expression<Func<int>> expiring = null, Expression<Func<string>> crlnumber = null, Expression<Func<string>> crlnumberdecimal = null, Expression<Func<string>> aki = null, Expression<Func<string>> serialnumber = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var __workflow_crlnumberdecimal = WorkflowExpression.Compile(crlnumberdecimal, nameof(crlnumberdecimal), required: false);
             var __workflow_aki = WorkflowExpression.Compile(aki, nameof(aki), required: false);
             var __workflow_serialnumber = WorkflowExpression.Compile(serialnumber, nameof(serialnumber), required: false);
-            return new DeferredBodyAction<QueryCRLsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<QueryCrlsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/crls", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Queries["aki"] = ExpressionConverter.Convert(__workflow_aki);
                 if (__workflow_serialnumber != null)
                     callPayload.Queries["serialnumber"] = ExpressionConverter.Convert(__workflow_serialnumber);
-                return new ApiConnectionAction<QueryCRLsResponseItem[]>(callPayload);
+                return new ApiConnectionAction<QueryCrlsResponseItem[]>(callPayload);
             });
         }
 
@@ -699,17 +699,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             });
         }
 
-        public IBodyWorkflowTrigger<IssuedCRLResponse, ApiConnectionPollingTriggerConfiguration> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IBodyWorkflowTrigger<IssuedCrlResponse, ApiConnectionPollingTriggerConfiguration> IssuedCrl(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<IssuedCRLResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IssuedCrlResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/issued-crl", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new IssuedCRLBodyInput().ToJToken();
-                return new ApiConnectionPollingTrigger<IssuedCRLResponse>(callPayload);
+                callPayload.Body = new IssuedCrlBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<IssuedCrlResponse>(callPayload);
             });
         }
 
@@ -1243,92 +1243,197 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
     public class GetTemplateResponseBasickeyusagedecodedType
     {
-        public string KEYENCIPHERMENT { get; set; }
-        public string NONREPUDIATION { get; set; }
-        public string KEYAGREEMENT { get; set; }
-        public string DIGITALSIGNATURE { get; set; }
-        public string DATAENCIPHERMENT { get; set; }
-        public string KEYCERTSIGN { get; set; }
-        public string CRLSIGN { get; set; }
+        [JsonProperty("KEYENCIPHERMENT")]
+        public string Keyencipherment { get; set; }
+
+        [JsonProperty("NONREPUDIATION")]
+        public string Nonrepudiation { get; set; }
+
+        [JsonProperty("KEYAGREEMENT")]
+        public string Keyagreement { get; set; }
+
+        [JsonProperty("DIGITALSIGNATURE")]
+        public string Digitalsignature { get; set; }
+
+        [JsonProperty("DATAENCIPHERMENT")]
+        public string Dataencipherment { get; set; }
+
+        [JsonProperty("KEYCERTSIGN")]
+        public string Keycertsign { get; set; }
+
+        [JsonProperty("CRLSIGN")]
+        public string Crlsign { get; set; }
     }
 
     public class GetTemplateResponseTemplateflagsdecodedType
     {
-        public string PRIVATEKEYEXPORTABLE { get; set; }
-        public string ENABLEAUTOENROLLMENT { get; set; }
-        public string ISCOMPUTERCERT { get; set; }
-        public string ISCROSSCA { get; set; }
-        public string ISCA { get; set; }
-        public string PUBLISHTOREQUESTERUSEROBJECT { get; set; }
-        public string ISEDITABLE { get; set; }
-        public string DONOTPERSISTINDB { get; set; }
-        public string ADDDETAILSTOCERT { get; set; }
-        public string ADDEMAIL { get; set; }
-        public string ISDEFAULT { get; set; }
+        [JsonProperty("PRIVATEKEYEXPORTABLE")]
+        public string Privatekeyexportable { get; set; }
+
+        [JsonProperty("ENABLEAUTOENROLLMENT")]
+        public string Enableautoenrollment { get; set; }
+
+        [JsonProperty("ISCOMPUTERCERT")]
+        public string Iscomputercert { get; set; }
+
+        [JsonProperty("ISCROSSCA")]
+        public string Iscrossca { get; set; }
+
+        [JsonProperty("ISCA")]
+        public string Isca { get; set; }
+
+        [JsonProperty("PUBLISHTOREQUESTERUSEROBJECT")]
+        public string Publishtorequesteruserobject { get; set; }
+
+        [JsonProperty("ISEDITABLE")]
+        public string Iseditable { get; set; }
+
+        [JsonProperty("DONOTPERSISTINDB")]
+        public string Donotpersistindb { get; set; }
+
+        [JsonProperty("ADDDETAILSTOCERT")]
+        public string Adddetailstocert { get; set; }
+
+        [JsonProperty("ADDEMAIL")]
+        public string Addemail { get; set; }
+
+        [JsonProperty("ISDEFAULT")]
+        public string Isdefault { get; set; }
     }
 
     public class GetTemplateResponseEnrollmentflagsdecodedType
     {
-        public string ENABLEKEYREUSEONNTTOKENKEYSETSTORAGEFULL { get; set; }
-        public string EXCLUDECRLDETAILSINCERT { get; set; }
+        [JsonProperty("ENABLEKEYREUSEONNTTOKENKEYSETSTORAGEFULL")]
+        public string Enablekeyreuseonnttokenkeysetstoragefull { get; set; }
+
+        [JsonProperty("EXCLUDECRLDETAILSINCERT")]
+        public string Excludecrldetailsincert { get; set; }
 
         [JsonProperty("PREVIOUSAPPROVALVALIDATEREENROLLMENT")]
-        public string PREVIOUSAPPROVALVALIdATEREENROLLMENT { get; set; }
-        public string AUTOENROLLMENTCHECKUSERDSCERTIFICATE { get; set; }
-        public string INCLUDEBASICCONSTRAINTSFOREECERTS { get; set; }
+        public string Previousapprovalvalidatereenrollment { get; set; }
+
+        [JsonProperty("AUTOENROLLMENTCHECKUSERDSCERTIFICATE")]
+        public string Autoenrollmentcheckuserdscertificate { get; set; }
+
+        [JsonProperty("INCLUDEBASICCONSTRAINTSFOREECERTS")]
+        public string Includebasicconstraintsforeecerts { get; set; }
 
         [JsonProperty("REMOVEINVALIDCERTIFICATEFROMPERSONALSTORE")]
-        public string REMOVEINVALIdCERTIFICATEFROMPERSONALSTORE { get; set; }
-        public string EXCLUDEOCSPDETAILSINCERT { get; set; }
-        public string ALLOWISSUANCEPOLICIESFROMREQUEST { get; set; }
-        public string AUTOENROLLMENT { get; set; }
-        public string PUBLISHTODS { get; set; }
-        public string ALLOWENROLLONBEHALFOF { get; set; }
-        public string ALLOWKEYBASEDRENEWAL { get; set; }
-        public string PUBLISHTOKRACONTAINER { get; set; }
-        public string USERINTERACTIONREQUIRED { get; set; }
-        public string CERTMGRAPPROVALREQUIRED { get; set; }
-        public string INCLUDESYMETRICALGORITHMS { get; set; }
+        public string Removeinvalidcertificatefrompersonalstore { get; set; }
+
+        [JsonProperty("EXCLUDEOCSPDETAILSINCERT")]
+        public string Excludeocspdetailsincert { get; set; }
+
+        [JsonProperty("ALLOWISSUANCEPOLICIESFROMREQUEST")]
+        public string Allowissuancepoliciesfromrequest { get; set; }
+
+        [JsonProperty("AUTOENROLLMENT")]
+        public string Autoenrollment { get; set; }
+
+        [JsonProperty("PUBLISHTODS")]
+        public string Publishtods { get; set; }
+
+        [JsonProperty("ALLOWENROLLONBEHALFOF")]
+        public string Allowenrollonbehalfof { get; set; }
+
+        [JsonProperty("ALLOWKEYBASEDRENEWAL")]
+        public string Allowkeybasedrenewal { get; set; }
+
+        [JsonProperty("PUBLISHTOKRACONTAINER")]
+        public string Publishtokracontainer { get; set; }
+
+        [JsonProperty("USERINTERACTIONREQUIRED")]
+        public string Userinteractionrequired { get; set; }
+
+        [JsonProperty("CERTMGRAPPROVALREQUIRED")]
+        public string Certmgrapprovalrequired { get; set; }
+
+        [JsonProperty("INCLUDESYMETRICALGORITHMS")]
+        public string Includesymetricalgorithms { get; set; }
     }
 
     public class GetTemplateResponseCertificatenameflagsdecodedType
     {
-        public string SUBJECTREQUIREDNSASCN { get; set; }
-        public string SUBJECTALTREQUIREEMAIL { get; set; }
-        public string SUBJECTREQUIREEMAIL { get; set; }
-        public string SUBJECTALTREQUIREDNS { get; set; }
-        public string SUBJECTALTREQUIREDOMAINDNS { get; set; }
-        public string ENROLEESUPLIESSUBJECTALTNAME { get; set; }
-        public string OLDCERTSUPPLIESSUBJECTANDALTNAME { get; set; }
-        public string SUBJECTALTREQUIREUPN { get; set; }
-        public string SUBJECTALTREQUIREDIRECTORYGUID { get; set; }
-        public string SUBJECTREQUIRECOMMONNAME { get; set; }
-        public string SUBJECTALTREQUIRESPN { get; set; }
-        public string ENROLEESUPLIESSUBJECT { get; set; }
-        public string SUBJECTREQUIREDIRECTORYPATH { get; set; }
+        [JsonProperty("SUBJECTREQUIREDNSASCN")]
+        public string Subjectrequirednsascn { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIREEMAIL")]
+        public string Subjectaltrequireemail { get; set; }
+
+        [JsonProperty("SUBJECTREQUIREEMAIL")]
+        public string Subjectrequireemail { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIREDNS")]
+        public string Subjectaltrequiredns { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIREDOMAINDNS")]
+        public string Subjectaltrequiredomaindns { get; set; }
+
+        [JsonProperty("ENROLEESUPLIESSUBJECTALTNAME")]
+        public string Enroleesupliessubjectaltname { get; set; }
+
+        [JsonProperty("OLDCERTSUPPLIESSUBJECTANDALTNAME")]
+        public string Oldcertsuppliessubjectandaltname { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIREUPN")]
+        public string Subjectaltrequireupn { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIREDIRECTORYGUID")]
+        public string Subjectaltrequiredirectoryguid { get; set; }
+
+        [JsonProperty("SUBJECTREQUIRECOMMONNAME")]
+        public string Subjectrequirecommonname { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIRESPN")]
+        public string Subjectaltrequirespn { get; set; }
+
+        [JsonProperty("ENROLEESUPLIESSUBJECT")]
+        public string Enroleesupliessubject { get; set; }
+
+        [JsonProperty("SUBJECTREQUIREDIRECTORYPATH")]
+        public string Subjectrequiredirectorypath { get; set; }
     }
 
     public class GetTemplateResponsePrivatekeyflagsdecodedType
     {
-        public string REQUIREALTERNATESIGNATUREALGORITHM { get; set; }
-        public string EXPORTABLEKEY { get; set; }
-        public string REQUIRESAMEKEYRENEWAL { get; set; }
+        [JsonProperty("REQUIREALTERNATESIGNATUREALGORITHM")]
+        public string Requirealternatesignaturealgorithm { get; set; }
+
+        [JsonProperty("EXPORTABLEKEY")]
+        public string Exportablekey { get; set; }
+
+        [JsonProperty("REQUIRESAMEKEYRENEWAL")]
+        public string Requiresamekeyrenewal { get; set; }
 
         [JsonProperty("EKVALIDATECERT")]
-        public string EKVALIdATECERT { get; set; }
+        public string Ekvalidatecert { get; set; }
 
         [JsonProperty("EKVALIDATEKEY")]
-        public string EKVALIdATEKEY { get; set; }
-        public string STRONGKEYPROTECTIONREQUIRED { get; set; }
-        public string ATTESTATIONWITHOUTPOLICY { get; set; }
-        public string EKTRUSTONUSE { get; set; }
-        public string ATTESTREQUIRED { get; set; }
+        public string Ekvalidatekey { get; set; }
+
+        [JsonProperty("STRONGKEYPROTECTIONREQUIRED")]
+        public string Strongkeyprotectionrequired { get; set; }
+
+        [JsonProperty("ATTESTATIONWITHOUTPOLICY")]
+        public string Attestationwithoutpolicy { get; set; }
+
+        [JsonProperty("EKTRUSTONUSE")]
+        public string Ektrustonuse { get; set; }
+
+        [JsonProperty("ATTESTREQUIRED")]
+        public string Attestrequired { get; set; }
 
         [JsonProperty("USELEGACYPROVIDER")]
-        public string USELEGACYPROVIdER { get; set; }
-        public string ATTESTPREFERRED { get; set; }
-        public string REQUIREPRIVATEKEYARCHIVAL { get; set; }
-        public string ATTESTNONE { get; set; }
+        public string Uselegacyprovider { get; set; }
+
+        [JsonProperty("ATTESTPREFERRED")]
+        public string Attestpreferred { get; set; }
+
+        [JsonProperty("REQUIREPRIVATEKEYARCHIVAL")]
+        public string Requireprivatekeyarchival { get; set; }
+
+        [JsonProperty("ATTESTNONE")]
+        public string Attestnone { get; set; }
     }
 
     public class GetTemplateResponseCloudpkiType
@@ -1566,100 +1671,212 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
     public class QueryTemplatesResponseItemBasickeyusagedecodedType
     {
-        public string KEYENCIPHERMENT { get; set; }
-        public string NONREPUDIATION { get; set; }
-        public string KEYAGREEMENT { get; set; }
-        public string DIGITALSIGNATURE { get; set; }
-        public string DATAENCIPHERMENT { get; set; }
-        public string KEYCERTSIGN { get; set; }
-        public string CRLSIGN { get; set; }
+        [JsonProperty("KEYENCIPHERMENT")]
+        public string Keyencipherment { get; set; }
+
+        [JsonProperty("NONREPUDIATION")]
+        public string Nonrepudiation { get; set; }
+
+        [JsonProperty("KEYAGREEMENT")]
+        public string Keyagreement { get; set; }
+
+        [JsonProperty("DIGITALSIGNATURE")]
+        public string Digitalsignature { get; set; }
+
+        [JsonProperty("DATAENCIPHERMENT")]
+        public string Dataencipherment { get; set; }
+
+        [JsonProperty("KEYCERTSIGN")]
+        public string Keycertsign { get; set; }
+
+        [JsonProperty("CRLSIGN")]
+        public string Crlsign { get; set; }
     }
 
     public class QueryTemplatesResponseItemTemplateflagsdecodedType
     {
-        public string PRIVATEKEYEXPORTABLE { get; set; }
-        public string ENABLEAUTOENROLLMENT { get; set; }
-        public string ISCOMPUTERCERT { get; set; }
-        public string ISCROSSCA { get; set; }
-        public string ISCA { get; set; }
-        public string PUBLISHTOREQUESTERUSEROBJECT { get; set; }
-        public string ISEDITABLE { get; set; }
-        public string DONOTPERSISTINDB { get; set; }
-        public string ADDDETAILSTOCERT { get; set; }
-        public string ADDEMAIL { get; set; }
-        public string ISDEFAULT { get; set; }
+        [JsonProperty("PRIVATEKEYEXPORTABLE")]
+        public string Privatekeyexportable { get; set; }
+
+        [JsonProperty("ENABLEAUTOENROLLMENT")]
+        public string Enableautoenrollment { get; set; }
+
+        [JsonProperty("ISCOMPUTERCERT")]
+        public string Iscomputercert { get; set; }
+
+        [JsonProperty("ISCROSSCA")]
+        public string Iscrossca { get; set; }
+
+        [JsonProperty("ISCA")]
+        public string Isca { get; set; }
+
+        [JsonProperty("PUBLISHTOREQUESTERUSEROBJECT")]
+        public string Publishtorequesteruserobject { get; set; }
+
+        [JsonProperty("ISEDITABLE")]
+        public string Iseditable { get; set; }
+
+        [JsonProperty("DONOTPERSISTINDB")]
+        public string Donotpersistindb { get; set; }
+
+        [JsonProperty("ADDDETAILSTOCERT")]
+        public string Adddetailstocert { get; set; }
+
+        [JsonProperty("ADDEMAIL")]
+        public string Addemail { get; set; }
+
+        [JsonProperty("ISDEFAULT")]
+        public string Isdefault { get; set; }
     }
 
     public class QueryTemplatesResponseItemEnrollmentflagsdecodedType
     {
-        public string ENABLEKEYREUSEONNTTOKENKEYSETSTORAGEFULL { get; set; }
-        public string EXCLUDECRLDETAILSINCERT { get; set; }
+        [JsonProperty("ENABLEKEYREUSEONNTTOKENKEYSETSTORAGEFULL")]
+        public string Enablekeyreuseonnttokenkeysetstoragefull { get; set; }
+
+        [JsonProperty("EXCLUDECRLDETAILSINCERT")]
+        public string Excludecrldetailsincert { get; set; }
 
         [JsonProperty("PREVIOUSAPPROVALVALIDATEREENROLLMENT")]
-        public string PREVIOUSAPPROVALVALIdATEREENROLLMENT { get; set; }
-        public string AUTOENROLLMENTCHECKUSERDSCERTIFICATE { get; set; }
-        public string INCLUDEBASICCONSTRAINTSFOREECERTS { get; set; }
+        public string Previousapprovalvalidatereenrollment { get; set; }
+
+        [JsonProperty("AUTOENROLLMENTCHECKUSERDSCERTIFICATE")]
+        public string Autoenrollmentcheckuserdscertificate { get; set; }
+
+        [JsonProperty("INCLUDEBASICCONSTRAINTSFOREECERTS")]
+        public string Includebasicconstraintsforeecerts { get; set; }
 
         [JsonProperty("REMOVEINVALIDCERTIFICATEFROMPERSONALSTORE")]
-        public string REMOVEINVALIdCERTIFICATEFROMPERSONALSTORE { get; set; }
-        public string EXCLUDEOCSPDETAILSINCERT { get; set; }
-        public string ALLOWISSUANCEPOLICIESFROMREQUEST { get; set; }
-        public string AUTOENROLLMENT { get; set; }
-        public string PUBLISHTODS { get; set; }
-        public string ALLOWENROLLONBEHALFOF { get; set; }
-        public string ALLOWKEYBASEDRENEWAL { get; set; }
-        public string PUBLISHTOKRACONTAINER { get; set; }
-        public string USERINTERACTIONREQUIRED { get; set; }
-        public string CERTMGRAPPROVALREQUIRED { get; set; }
-        public string INCLUDESYMETRICALGORITHMS { get; set; }
+        public string Removeinvalidcertificatefrompersonalstore { get; set; }
+
+        [JsonProperty("EXCLUDEOCSPDETAILSINCERT")]
+        public string Excludeocspdetailsincert { get; set; }
+
+        [JsonProperty("ALLOWISSUANCEPOLICIESFROMREQUEST")]
+        public string Allowissuancepoliciesfromrequest { get; set; }
+
+        [JsonProperty("AUTOENROLLMENT")]
+        public string Autoenrollment { get; set; }
+
+        [JsonProperty("PUBLISHTODS")]
+        public string Publishtods { get; set; }
+
+        [JsonProperty("ALLOWENROLLONBEHALFOF")]
+        public string Allowenrollonbehalfof { get; set; }
+
+        [JsonProperty("ALLOWKEYBASEDRENEWAL")]
+        public string Allowkeybasedrenewal { get; set; }
+
+        [JsonProperty("PUBLISHTOKRACONTAINER")]
+        public string Publishtokracontainer { get; set; }
+
+        [JsonProperty("USERINTERACTIONREQUIRED")]
+        public string Userinteractionrequired { get; set; }
+
+        [JsonProperty("CERTMGRAPPROVALREQUIRED")]
+        public string Certmgrapprovalrequired { get; set; }
+
+        [JsonProperty("INCLUDESYMETRICALGORITHMS")]
+        public string Includesymetricalgorithms { get; set; }
     }
 
     public class QueryTemplatesResponseItemCertificatenameflagsdecodedType
     {
-        public string SUBJECTREQUIREDNSASCN { get; set; }
-        public string SUBJECTALTREQUIREEMAIL { get; set; }
-        public string SUBJECTREQUIREEMAIL { get; set; }
-        public string SUBJECTALTREQUIREDNS { get; set; }
-        public string SUBJECTALTREQUIREDOMAINDNS { get; set; }
-        public string ENROLEESUPLIESSUBJECTALTNAME { get; set; }
-        public string OLDCERTSUPPLIESSUBJECTANDALTNAME { get; set; }
-        public string SUBJECTALTREQUIREUPN { get; set; }
-        public string SUBJECTALTREQUIREDIRECTORYGUID { get; set; }
-        public string SUBJECTREQUIRECOMMONNAME { get; set; }
-        public string SUBJECTALTREQUIRESPN { get; set; }
-        public string ENROLEESUPLIESSUBJECT { get; set; }
-        public string SUBJECTREQUIREDIRECTORYPATH { get; set; }
+        [JsonProperty("SUBJECTREQUIREDNSASCN")]
+        public string Subjectrequirednsascn { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIREEMAIL")]
+        public string Subjectaltrequireemail { get; set; }
+
+        [JsonProperty("SUBJECTREQUIREEMAIL")]
+        public string Subjectrequireemail { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIREDNS")]
+        public string Subjectaltrequiredns { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIREDOMAINDNS")]
+        public string Subjectaltrequiredomaindns { get; set; }
+
+        [JsonProperty("ENROLEESUPLIESSUBJECTALTNAME")]
+        public string Enroleesupliessubjectaltname { get; set; }
+
+        [JsonProperty("OLDCERTSUPPLIESSUBJECTANDALTNAME")]
+        public string Oldcertsuppliessubjectandaltname { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIREUPN")]
+        public string Subjectaltrequireupn { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIREDIRECTORYGUID")]
+        public string Subjectaltrequiredirectoryguid { get; set; }
+
+        [JsonProperty("SUBJECTREQUIRECOMMONNAME")]
+        public string Subjectrequirecommonname { get; set; }
+
+        [JsonProperty("SUBJECTALTREQUIRESPN")]
+        public string Subjectaltrequirespn { get; set; }
+
+        [JsonProperty("ENROLEESUPLIESSUBJECT")]
+        public string Enroleesupliessubject { get; set; }
+
+        [JsonProperty("SUBJECTREQUIREDIRECTORYPATH")]
+        public string Subjectrequiredirectorypath { get; set; }
     }
 
     public class QueryTemplatesResponseItemPrivatekeyflagsdecodedType
     {
-        public string REQUIREALTERNATESIGNATUREALGORITHM { get; set; }
-        public string EXPORTABLEKEY { get; set; }
-        public string REQUIRESAMEKEYRENEWAL { get; set; }
+        [JsonProperty("REQUIREALTERNATESIGNATUREALGORITHM")]
+        public string Requirealternatesignaturealgorithm { get; set; }
+
+        [JsonProperty("EXPORTABLEKEY")]
+        public string Exportablekey { get; set; }
+
+        [JsonProperty("REQUIRESAMEKEYRENEWAL")]
+        public string Requiresamekeyrenewal { get; set; }
 
         [JsonProperty("EKVALIDATECERT")]
-        public string EKVALIdATECERT { get; set; }
+        public string Ekvalidatecert { get; set; }
 
         [JsonProperty("EKVALIDATEKEY")]
-        public string EKVALIdATEKEY { get; set; }
-        public string STRONGKEYPROTECTIONREQUIRED { get; set; }
-        public string ATTESTATIONWITHOUTPOLICY { get; set; }
-        public string EKTRUSTONUSE { get; set; }
-        public string ATTESTREQUIRED { get; set; }
+        public string Ekvalidatekey { get; set; }
+
+        [JsonProperty("STRONGKEYPROTECTIONREQUIRED")]
+        public string Strongkeyprotectionrequired { get; set; }
+
+        [JsonProperty("ATTESTATIONWITHOUTPOLICY")]
+        public string Attestationwithoutpolicy { get; set; }
+
+        [JsonProperty("EKTRUSTONUSE")]
+        public string Ektrustonuse { get; set; }
+
+        [JsonProperty("ATTESTREQUIRED")]
+        public string Attestrequired { get; set; }
 
         [JsonProperty("USELEGACYPROVIDER")]
-        public string USELEGACYPROVIdER { get; set; }
-        public string ATTESTPREFERRED { get; set; }
-        public string REQUIREPRIVATEKEYARCHIVAL { get; set; }
-        public string ATTESTNONE { get; set; }
+        public string Uselegacyprovider { get; set; }
+
+        [JsonProperty("ATTESTPREFERRED")]
+        public string Attestpreferred { get; set; }
+
+        [JsonProperty("REQUIREPRIVATEKEYARCHIVAL")]
+        public string Requireprivatekeyarchival { get; set; }
+
+        [JsonProperty("ATTESTNONE")]
+        public string Attestnone { get; set; }
     }
 
     public class QueryTemplatesResponseItemPrivatekeyusagedecodedType
     {
-        public string KEYAGREEMENT { get; set; }
-        public string SIGNING { get; set; }
-        public string DECRYPTION { get; set; }
-        public string ALLUSAGES { get; set; }
+        [JsonProperty("KEYAGREEMENT")]
+        public string Keyagreement { get; set; }
+
+        [JsonProperty("SIGNING")]
+        public string Signing { get; set; }
+
+        [JsonProperty("DECRYPTION")]
+        public string Decryption { get; set; }
+
+        [JsonProperty("ALLUSAGES")]
+        public string Allusages { get; set; }
     }
 
     public class QueryTemplatesResponseItemCloudpkiType
@@ -1731,11 +1948,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum KeytypeInput
     {
-        RSA,
-        ECC
+        [EnumMember(Value = "RSA")]
+        Rsa,
+        [EnumMember(Value = "ECC")]
+        Ecc
     }
 
-    public class GetCRLResponse
+    public class GetCrlResponse
     {
         [JsonProperty("validfrom")]
         public string Validfrom { get; set; }
@@ -1783,7 +2002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string[] Crlentries { get; set; }
     }
 
-    public class QueryCRLsResponseItem
+    public class QueryCrlsResponseItem
     {
         [JsonProperty("validfrom")]
         public string Validfrom { get; set; }
@@ -1832,7 +2051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QueryCRLsStatusInput
+    public enum QueryCrlsStatusInput
     {
         [EnumMember(Value = "valid")]
         Valid,
@@ -3001,7 +3220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         internal string Events { get; set; } = "updated-template";
     }
 
-    public class IssuedCRLResponse
+    public class IssuedCrlResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3013,7 +3232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class IssuedCRLBodyInput
+    public class IssuedCrlBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";

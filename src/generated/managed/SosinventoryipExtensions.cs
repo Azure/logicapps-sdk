@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public double OnPO { get; set; }
 
         [JsonProperty("onRMA")]
-        public double OnRMA { get; set; }
+        public double OnRma { get; set; }
 
         [JsonProperty("reorderPoint")]
         public double ReorderPoint { get; set; }
@@ -445,10 +445,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Values { get; set; }
 
         [JsonProperty("__IMTLENGTH__")]
-        public int IMTLENGTH { get; set; }
+        public int Imtlength { get; set; }
 
         [JsonProperty("__IMTINDEX__")]
-        public int IMTINDEX { get; set; }
+        public int Imtindex { get; set; }
     }
 
     public class ItemResponseDataTypeItemVendorType

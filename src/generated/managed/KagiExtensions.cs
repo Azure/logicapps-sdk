@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<FastGPTResponse, ApiConnectionActionConfiguration> FastGPT(Expression<Func<FastGPTBodyInput>> body)
+        public IBodyWorkflowAction<FastGptResponse, ApiConnectionActionConfiguration> FastGpt(Expression<Func<FastGptBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<FastGPTResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FastGptResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/fastgpt";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<FastGPTResponse>(callPayload);
+                return new ApiConnectionAction<FastGptResponse>(callPayload);
             });
         }
 
@@ -239,19 +239,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         UK,
         ZH,
         [EnumMember(Value = "ZH-HANT")]
-        ZHHANT
+        ZHHant
     }
 
-    public class FastGPTResponse
+    public class FastGptResponse
     {
         [JsonProperty("meta")]
-        public FastGPTResponseMetaType Meta { get; set; }
+        public FastGptResponseMetaType Meta { get; set; }
 
         [JsonProperty("data")]
-        public FastGPTResponseDataType Data { get; set; }
+        public FastGptResponseDataType Data { get; set; }
     }
 
-    public class FastGPTResponseMetaType
+    public class FastGptResponseMetaType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public int Ms { get; set; }
     }
 
-    public class FastGPTResponseDataType
+    public class FastGptResponseDataType
     {
         [JsonProperty("output")]
         public string Output { get; set; }
@@ -272,10 +272,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public int Tokens { get; set; }
 
         [JsonProperty("references")]
-        public FastGPTResponseDataTypeReferencesTypeItem[] References { get; set; }
+        public FastGptResponseDataTypeReferencesTypeItem[] References { get; set; }
     }
 
-    public class FastGPTResponseDataTypeReferencesTypeItem
+    public class FastGptResponseDataTypeReferencesTypeItem
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -287,9 +287,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public string Url { get; set; }
     }
 
-    public class FastGPTBodyInput
+    public class FastGptBodyInput
     {
-        public FastGPTBodyInput(string query)
+        public FastGptBodyInput(string query)
         {
             this.Query = query;
         }

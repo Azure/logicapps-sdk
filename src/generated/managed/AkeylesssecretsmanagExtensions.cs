@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Akeylesssecretsmanag
     public class GetPasswordResponse
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }

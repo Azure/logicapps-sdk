@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     public class ZohosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeAPI(Expression<Func<string>> url, Expression<Func<MethodInput>> method, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeApi(Expression<Func<string>> url, Expression<Func<MethodInput>> method, Expression<Func<object>> body = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -208,9 +208,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MethodInput
     {
-        GET,
-        POST,
-        PUT
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PUT")]
+        Put
     }
 
     public class GetFormDataResponse
@@ -559,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         public string RecipientCountrycode { get; set; }
 
         [JsonProperty("action_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputRequestsTypeActionsTypeItemActionTypeType? ActionType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign.BodyInputRequestsTypeActionsTypeItemActionTypeType.SIGN;
+        public BodyInputRequestsTypeActionsTypeItemActionTypeType? ActionType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign.BodyInputRequestsTypeActionsTypeItemActionTypeType.Sign;
 
         [JsonProperty("private_notes")]
         public string PrivateNotes { get; set; }
@@ -571,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         public bool? VerifyRecipient { get; set; } = false;
 
         [JsonProperty("verification_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputRequestsTypeActionsTypeItemVerificationTypeType? VerificationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign.BodyInputRequestsTypeActionsTypeItemVerificationTypeType.NONE;
+        public BodyInputRequestsTypeActionsTypeItemVerificationTypeType? VerificationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign.BodyInputRequestsTypeActionsTypeItemVerificationTypeType.None;
 
         [JsonProperty("verification_code")]
         public string VerificationCode { get; set; }
@@ -580,19 +583,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputRequestsTypeActionsTypeItemActionTypeType
     {
-        SIGN,
-        VIEW,
-        INPERSONSIGN,
-        APPROVER
+        [EnumMember(Value = "SIGN")]
+        Sign,
+        [EnumMember(Value = "VIEW")]
+        View,
+        [EnumMember(Value = "INPERSONSIGN")]
+        Inpersonsign,
+        [EnumMember(Value = "APPROVER")]
+        Approver
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputRequestsTypeActionsTypeItemVerificationTypeType
     {
-        NONE,
-        OFFLINE,
-        EMAIL,
-        SMS
+        [EnumMember(Value = "NONE")]
+        None,
+        [EnumMember(Value = "OFFLINE")]
+        Offline,
+        [EnumMember(Value = "EMAIL")]
+        Email,
+        [EnumMember(Value = "SMS")]
+        Sms
     }
 
     public class SendSignRequestResponse

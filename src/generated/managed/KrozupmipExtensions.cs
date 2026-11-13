@@ -69,13 +69,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardGroupsResponseItem[], ApiConnectionActionConfiguration> GetBoardGroups(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetBoardGroupsResponseItem[], ApiConnectionActionConfiguration> GetBoardGroups(Expression<Func<string>> boardUuid, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardGroupsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/boardgroups/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/boardgroups/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -140,13 +140,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardListsResponseItem[], ApiConnectionActionConfiguration> GetBoardLists(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetBoardListsResponseItem[], ApiConnectionActionConfiguration> GetBoardLists(Expression<Func<string>> boardUuid, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardListsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/boardlists/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/boardlists/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -155,13 +155,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardCardsResponseItem[], ApiConnectionActionConfiguration> GetBoardCards(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetBoardCardsResponseItem[], ApiConnectionActionConfiguration> GetBoardCards(Expression<Func<string>> boardUuid, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardCardsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/boardcards/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/boardcards/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -170,13 +170,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetListCardsResponseItem[], ApiConnectionActionConfiguration> GetListCards(Expression<Func<string>> listUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetListCardsResponseItem[], ApiConnectionActionConfiguration> GetListCards(Expression<Func<string>> listUuid, Expression<Func<string>> accept)
         {
-            var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
+            var __workflow_listUuid = WorkflowExpression.Compile(listUuid, nameof(listUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetListCardsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/listcards/{0}", __workflow_listUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/listcards/{0}", __workflow_listUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -185,13 +185,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetListResponseItem[], ApiConnectionActionConfiguration> GetList(Expression<Func<string>> listUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetListResponseItem[], ApiConnectionActionConfiguration> GetList(Expression<Func<string>> listUuid, Expression<Func<string>> accept)
         {
-            var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
+            var __workflow_listUuid = WorkflowExpression.Compile(listUuid, nameof(listUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetListResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/list/{0}", __workflow_listUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/list/{0}", __workflow_listUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -200,13 +200,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetCardResponseItem[], ApiConnectionActionConfiguration> GetCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetCardResponseItem[], ApiConnectionActionConfiguration> GetCard(Expression<Func<string>> cardUuid, Expression<Func<string>> accept)
         {
-            var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
+            var __workflow_cardUuid = WorkflowExpression.Compile(cardUuid, nameof(cardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetCardResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/card/{0}", __workflow_cardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/card/{0}", __workflow_cardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -215,13 +215,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetBoardMessages(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetBoardMessages(Expression<Func<string>> boardUuid, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/messages/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/messages/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -230,13 +230,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardMembersResponse, ApiConnectionActionConfiguration> GetBoardMembers(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetBoardMembersResponse, ApiConnectionActionConfiguration> GetBoardMembers(Expression<Func<string>> boardUuid, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/members/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/members/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -245,13 +245,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardRecordsResponseItem[], ApiConnectionActionConfiguration> GetBoardRecords(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetBoardRecordsResponseItem[], ApiConnectionActionConfiguration> GetBoardRecords(Expression<Func<string>> boardUuid, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardRecordsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/boardrecords/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/boardrecords/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -260,13 +260,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetListRecordsResponseItem[], ApiConnectionActionConfiguration> GetListRecords(Expression<Func<string>> listUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetListRecordsResponseItem[], ApiConnectionActionConfiguration> GetListRecords(Expression<Func<string>> listUuid, Expression<Func<string>> accept)
         {
-            var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
+            var __workflow_listUuid = WorkflowExpression.Compile(listUuid, nameof(listUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetListRecordsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/listrecords/{0}", __workflow_listUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/listrecords/{0}", __workflow_listUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -275,13 +275,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetTreeClientsResponse, ApiConnectionActionConfiguration> GetTreeClients(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetTreeClientsResponse, ApiConnectionActionConfiguration> GetTreeClients(Expression<Func<string>> boardUuid, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetTreeClientsResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/clients/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/clients/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -290,13 +290,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<GetBoardHierarchyResponseItem[], ApiConnectionActionConfiguration> GetBoardHierarchy(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetBoardHierarchyResponseItem[], ApiConnectionActionConfiguration> GetBoardHierarchy(Expression<Func<string>> boardUuid, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardHierarchyResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/boardhierarchy/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/boardhierarchy/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -305,14 +305,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddCardResponse, ApiConnectionActionConfiguration> ActionAddCard(Expression<Func<string>> boardUUID, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> accept, Expression<Func<ActionAddCardBodyInput>> body)
+        public IBodyWorkflowAction<ActionAddCardResponse, ApiConnectionActionConfiguration> ActionAddCard(Expression<Func<string>> boardUuid, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> accept, Expression<Func<ActionAddCardBodyInput>> body)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionAddCardResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/add/card/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/add/card/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -322,14 +322,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionDeleteCardResponse, ApiConnectionActionConfiguration> ActionDeleteCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionDeleteCardBodyInput>> body)
+        public IBodyWorkflowAction<ActionDeleteCardResponse, ApiConnectionActionConfiguration> ActionDeleteCard(Expression<Func<string>> cardUuid, Expression<Func<string>> accept, Expression<Func<ActionDeleteCardBodyInput>> body)
         {
-            var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
+            var __workflow_cardUuid = WorkflowExpression.Compile(cardUuid, nameof(cardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionDeleteCardResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/delete/card/{0}", __workflow_cardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/delete/card/{0}", __workflow_cardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -339,14 +339,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddMessageToBoardResponse, ApiConnectionActionConfiguration> ActionAddMessageToBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionAddMessageToBoardBodyInput>> body)
+        public IBodyWorkflowAction<ActionAddMessageToBoardResponse, ApiConnectionActionConfiguration> ActionAddMessageToBoard(Expression<Func<string>> boardUuid, Expression<Func<string>> accept, Expression<Func<ActionAddMessageToBoardBodyInput>> body)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionAddMessageToBoardResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/add/message/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/add/message/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -356,14 +356,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddChecklistToCardResponse, ApiConnectionActionConfiguration> ActionAddChecklistToCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
+        public IBodyWorkflowAction<ActionAddChecklistToCardResponse, ApiConnectionActionConfiguration> ActionAddChecklistToCard(Expression<Func<string>> cardUuid, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
         {
-            var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
+            var __workflow_cardUuid = WorkflowExpression.Compile(cardUuid, nameof(cardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionAddChecklistToCardResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/add/checklist/{0}", __workflow_cardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/add/checklist/{0}", __workflow_cardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -373,14 +373,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddListResponse, ApiConnectionActionConfiguration> ActionAddList(Expression<Func<string>> baordUUID, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
+        public IBodyWorkflowAction<ActionAddListResponse, ApiConnectionActionConfiguration> ActionAddList(Expression<Func<string>> baordUuid, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
         {
-            var __workflow_baordUUID = WorkflowExpression.Compile(baordUUID, nameof(baordUUID), required: true);
+            var __workflow_baordUuid = WorkflowExpression.Compile(baordUuid, nameof(baordUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionAddListResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/add/list/{0}", __workflow_baordUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/add/list/{0}", __workflow_baordUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -390,14 +390,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionListRenameResponse, ApiConnectionActionConfiguration> ActionListRename(Expression<Func<string>> listUUID, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
+        public IBodyWorkflowAction<ActionListRenameResponse, ApiConnectionActionConfiguration> ActionListRename(Expression<Func<string>> listUuid, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
         {
-            var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
+            var __workflow_listUuid = WorkflowExpression.Compile(listUuid, nameof(listUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionListRenameResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/rename/list/{0}", __workflow_listUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/rename/list/{0}", __workflow_listUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -407,14 +407,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionBoardRenameResponse, ApiConnectionActionConfiguration> ActionBoardRename(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
+        public IBodyWorkflowAction<ActionBoardRenameResponse, ApiConnectionActionConfiguration> ActionBoardRename(Expression<Func<string>> boardUuid, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionBoardRenameResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/rename/board/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/rename/board/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -424,14 +424,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAssignToCardResponse, ApiConnectionActionConfiguration> ActionAssignToCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
+        public IBodyWorkflowAction<ActionAssignToCardResponse, ApiConnectionActionConfiguration> ActionAssignToCard(Expression<Func<string>> cardUuid, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
         {
-            var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
+            var __workflow_cardUuid = WorkflowExpression.Compile(cardUuid, nameof(cardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionAssignToCardResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/assign/card/{0}", __workflow_cardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/assign/card/{0}", __workflow_cardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -441,14 +441,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAssignToBoardResponse, ApiConnectionActionConfiguration> ActionAssignToBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
+        public IBodyWorkflowAction<ActionAssignToBoardResponse, ApiConnectionActionConfiguration> ActionAssignToBoard(Expression<Func<string>> boardUuid, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionAssignToBoardResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/assign/board/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/assign/board/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -458,14 +458,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionUnassignFromCardResponse, ApiConnectionActionConfiguration> ActionUnassignFromCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
+        public IBodyWorkflowAction<ActionUnassignFromCardResponse, ApiConnectionActionConfiguration> ActionUnassignFromCard(Expression<Func<string>> cardUuid, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
         {
-            var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
+            var __workflow_cardUuid = WorkflowExpression.Compile(cardUuid, nameof(cardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionUnassignFromCardResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/unassign/card/{0}", __workflow_cardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/unassign/card/{0}", __workflow_cardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -475,14 +475,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionUnassignFromBoardResponse, ApiConnectionActionConfiguration> ActionUnassignFromBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
+        public IBodyWorkflowAction<ActionUnassignFromBoardResponse, ApiConnectionActionConfiguration> ActionUnassignFromBoard(Expression<Func<string>> boardUuid, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
         {
-            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_boardUuid = WorkflowExpression.Compile(boardUuid, nameof(boardUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionUnassignFromBoardResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/unassign/board/{0}", __workflow_boardUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/unassign/board/{0}", __workflow_boardUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -492,14 +492,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionDeleteListResponse, ApiConnectionActionConfiguration> ActionDeleteList(Expression<Func<string>> listUUID, Expression<Func<string>> accept, Expression<Func<ActionDeleteListBodyInput>> body)
+        public IBodyWorkflowAction<ActionDeleteListResponse, ApiConnectionActionConfiguration> ActionDeleteList(Expression<Func<string>> listUuid, Expression<Func<string>> accept, Expression<Func<ActionDeleteListBodyInput>> body)
         {
-            var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
+            var __workflow_listUuid = WorkflowExpression.Compile(listUuid, nameof(listUuid), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActionDeleteListResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/delete/list/{0}", __workflow_listUUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1.00/delete/list/{0}", __workflow_listUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);

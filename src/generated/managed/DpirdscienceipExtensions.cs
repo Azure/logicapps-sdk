@@ -248,13 +248,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
     public class GetStationsResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public StationModel[] Collection { get; set; }
     }
 
-    public class ApiMetaDataModel
+    public class ApiMetadataModel
     {
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
     public class GetStationResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public StationModel Data { get; set; }
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
     public class GetNearbyWeatherStationsResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public StationModel[] Collection { get; set; }
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
     public class GetStationRainfallResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public StationRainfallModel Data { get; set; }
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
     public class GetPotentialYieldResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public PotentialYieldModel Data { get; set; }
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
     public class GetSoilWaterResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public SoilWaterModel Data { get; set; }
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
     public class GetYellowSpotResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public GetYellowSpotResponseDataType Data { get; set; }

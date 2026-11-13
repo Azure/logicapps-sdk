@@ -27,25 +27,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<CompanyInfoByFIdResponse, ApiConnectionActionConfiguration> CompanyInfoByFId(Expression<Func<string>> fId)
+        public IBodyWorkflowAction<CompanyInfoByFidResponse, ApiConnectionActionConfiguration> CompanyInfoByFid(Expression<Func<string>> fid)
         {
-            var __workflow_fId = WorkflowExpression.Compile(fId, nameof(fId), required: true);
-            return new DeferredBodyAction<CompanyInfoByFIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_fid = WorkflowExpression.Compile(fid, nameof(fid), required: true);
+            return new DeferredBodyAction<CompanyInfoByFidResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/v1/companies/{0}", __workflow_fId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/v1/companies/{0}", __workflow_fid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includes"] = Convert.ToString("registered_name&includes=registration_date&includes=other_trading_names&includes=companies_house_id&includes=employee_count_range&includes=last_modified_date&includes=website&includes=tracked_status&includes=company_status&includes=is_sme&includes=sectors&includes=top_level_sector_groups&includes=latest_stage_of_evolution&includes=description&includes=tracking_reasons&includes=target_markets&includes=founder_female_percentage&includes=sic_codes&includes=actively_hiring&includes=n_fundraisings&includes=total_amount_fundraisings&includes=n_grants&includes=total_amount_grants&includes=latest_valuation&includes=country&includes=lep&includes=region&includes=postcode&includes=address&includes=emails&includes=telephone&includes=key_contacts&includes=year_end_date&includes=turnover&includes=ebitda&includes=total_assets&includes=number_of_employees&includes=cash&includes=total_liabilities&includes=net_assets");
-                return new ApiConnectionAction<CompanyInfoByFIdResponse>(callPayload);
+                return new ApiConnectionAction<CompanyInfoByFidResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<FundsByFIdResponse, ApiConnectionActionConfiguration> FundsByFId(Expression<Func<string>> companyIds, Expression<Func<IncludesInput>> includes)
+        public IBodyWorkflowAction<FundsByFidResponse, ApiConnectionActionConfiguration> FundsByFid(Expression<Func<string>> companyIds, Expression<Func<IncludesInput>> includes)
         {
             var __workflow_companyIds = WorkflowExpression.Compile(companyIds, nameof(companyIds), required: true);
             var __workflow_includes = WorkflowExpression.Compile(includes, nameof(includes), required: true);
-            return new DeferredBodyAction<FundsByFIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FundsByFidResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_api/v1/transactions/company";
                 var apiCallHttpMethod = "get";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
                 callPayload.Queries["company_ids"] = ExpressionConverter.Convert(__workflow_companyIds);
                 callPayload.Queries["includes"] = ExpressionConverter.Convert(__workflow_includes);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<FundsByFIdResponse>(callPayload);
+                return new ApiConnectionAction<FundsByFidResponse>(callPayload);
             });
         }
     }
@@ -92,31 +92,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public string Id { get; set; }
     }
 
-    public class CompanyInfoByFIdResponse
+    public class CompanyInfoByFidResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("basic")]
-        public CompanyInfoByFIdResponseBasicType Basic { get; set; }
+        public CompanyInfoByFidResponseBasicType Basic { get; set; }
 
         [JsonProperty("classification")]
-        public CompanyInfoByFIdResponseClassificationType Classification { get; set; }
+        public CompanyInfoByFidResponseClassificationType Classification { get; set; }
 
         [JsonProperty("transactions")]
-        public CompanyInfoByFIdResponseTransactionsType Transactions { get; set; }
+        public CompanyInfoByFidResponseTransactionsType Transactions { get; set; }
 
         [JsonProperty("contact_information")]
-        public CompanyInfoByFIdResponseContactInformationType ContactInformation { get; set; }
+        public CompanyInfoByFidResponseContactInformationType ContactInformation { get; set; }
 
         [JsonProperty("latest_accounts")]
-        public CompanyInfoByFIdResponseLatestAccountsType LatestAccounts { get; set; }
+        public CompanyInfoByFidResponseLatestAccountsType LatestAccounts { get; set; }
 
         [JsonProperty("historic_accounts")]
-        public CompanyInfoByFIdResponseHistoricAccountsTypeItem[] HistoricAccounts { get; set; }
+        public CompanyInfoByFidResponseHistoricAccountsTypeItem[] HistoricAccounts { get; set; }
     }
 
-    public class CompanyInfoByFIdResponseBasicType
+    public class CompanyInfoByFidResponseBasicType
     {
         [JsonProperty("registered_name")]
         public string RegisteredName { get; set; }
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public bool IsSme { get; set; }
     }
 
-    public class CompanyInfoByFIdResponseClassificationType
+    public class CompanyInfoByFidResponseClassificationType
     {
         [JsonProperty("sectors")]
         public string[] Sectors { get; set; }
@@ -173,13 +173,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public string FounderFemalePercentage { get; set; }
 
         [JsonProperty("sic_codes")]
-        public CompanyInfoByFIdResponseClassificationTypeSicCodesTypeItem[] SicCodes { get; set; }
+        public CompanyInfoByFidResponseClassificationTypeSicCodesTypeItem[] SicCodes { get; set; }
 
         [JsonProperty("actively_hiring")]
         public string ActivelyHiring { get; set; }
     }
 
-    public class CompanyInfoByFIdResponseClassificationTypeSicCodesTypeItem
+    public class CompanyInfoByFidResponseClassificationTypeSicCodesTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public string Description { get; set; }
     }
 
-    public class CompanyInfoByFIdResponseTransactionsType
+    public class CompanyInfoByFidResponseTransactionsType
     {
         [JsonProperty("n_fundraisings")]
         public int NFundraisings { get; set; }
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public string LatestValuation { get; set; }
     }
 
-    public class CompanyInfoByFIdResponseContactInformationType
+    public class CompanyInfoByFidResponseContactInformationType
     {
         [JsonProperty("country")]
         public string Country { get; set; }
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public JToken[] KeyContacts { get; set; }
     }
 
-    public class CompanyInfoByFIdResponseLatestAccountsType
+    public class CompanyInfoByFidResponseLatestAccountsType
     {
         [JsonProperty("year_end_date")]
         public string YearEndDate { get; set; }
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public int NetAssets { get; set; }
     }
 
-    public class CompanyInfoByFIdResponseHistoricAccountsTypeItem
+    public class CompanyInfoByFidResponseHistoricAccountsTypeItem
     {
         [JsonProperty("year_end_date")]
         public string YearEndDate { get; set; }
@@ -287,16 +287,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public int NetAssets { get; set; }
     }
 
-    public class FundsByFIdResponse
+    public class FundsByFidResponse
     {
         [JsonProperty("meta")]
-        public FundsByFIdResponseMetaType Meta { get; set; }
+        public FundsByFidResponseMetaType Meta { get; set; }
 
         [JsonProperty("results")]
-        public FundsByFIdResponseResultsTypeItem[] Results { get; set; }
+        public FundsByFidResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class FundsByFIdResponseMetaType
+    public class FundsByFidResponseMetaType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public int Count { get; set; }
     }
 
-    public class FundsByFIdResponseResultsTypeItem
+    public class FundsByFidResponseResultsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -323,10 +323,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public string CompaniesHouseId { get; set; }
 
         [JsonProperty("grants")]
-        public FundsByFIdResponseResultsTypeItemGrantsTypeItem[] Grants { get; set; }
+        public FundsByFidResponseResultsTypeItemGrantsTypeItem[] Grants { get; set; }
     }
 
-    public class FundsByFIdResponseResultsTypeItemGrantsTypeItem
+    public class FundsByFidResponseResultsTypeItemGrantsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }

@@ -191,11 +191,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpEmailsManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<McpQueryResponse, ApiConnectionActionConfiguration> McpEmailsManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<McpQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcp/EmailsManagement";
                 var apiCallHttpMethod = "post";
@@ -204,16 +204,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 if (__workflow_queryRequest != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
-                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                return new ApiConnectionAction<McpQueryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpMeetingManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<McpQueryResponse, ApiConnectionActionConfiguration> McpMeetingManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<McpQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcp/MeetingManagement";
                 var apiCallHttpMethod = "post";
@@ -222,16 +222,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 if (__workflow_queryRequest != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
-                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                return new ApiConnectionAction<McpQueryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpContactsManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<McpQueryResponse, ApiConnectionActionConfiguration> McpContactsManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<McpQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcp/ContactsManagement";
                 var apiCallHttpMethod = "post";
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 if (__workflow_queryRequest != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
-                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                return new ApiConnectionAction<McpQueryResponse>(callPayload);
             });
         }
 
@@ -1279,7 +1279,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     public enum ItemBodyContentTypeType
     {
         Text,
-        HTML
+        [EnumMember(Value = "HTML")]
+        Html
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1319,9 +1320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
         [JsonProperty("Cc")]
         public string CC { get; set; }
-
-        [JsonProperty("Bcc")]
-        public string BCC { get; set; }
+        public string Bcc { get; set; }
         public ClientSendAttachment[] Attachments { get; set; }
         public string Sensitivity { get; set; }
         public string ReplyTo { get; set; }
@@ -1419,13 +1418,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public MessageWithOptionsImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.MessageWithOptionsImportanceType.Normal;
         public ClientSendAttachment[] Attachments { get; set; }
-        public bool? UseOnlyHTMLMessage { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? HideHTMLMessage { get; set; } = false;
+        [JsonProperty("UseOnlyHTMLMessage")]
+        public bool? UseOnlyHtmlMessage { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ShowHTMLConfirmationDialog { get; set; } = false;
+        [JsonProperty("HideHTMLMessage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideHtmlMessage { get; set; } = false;
+
+        [JsonProperty("ShowHTMLConfirmationDialog", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowHtmlConfirmationDialog { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? HideMicrosoftFooter { get; set; } = false;
@@ -1475,13 +1476,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public ApprovalMessageImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Office365.ApprovalMessageImportanceType.Normal;
         public ClientSendAttachment[] Attachments { get; set; }
-        public bool? UseOnlyHTMLMessage { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? HideHTMLMessage { get; set; } = false;
+        [JsonProperty("UseOnlyHTMLMessage")]
+        public bool? UseOnlyHtmlMessage { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ShowHTMLConfirmationDialog { get; set; } = false;
+        [JsonProperty("HideHTMLMessage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideHtmlMessage { get; set; } = false;
+
+        [JsonProperty("ShowHTMLConfirmationDialog", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowHtmlConfirmationDialog { get; set; } = false;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1495,14 +1498,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MethodInput
     {
-        GET,
-        POST,
-        PUT,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
-    public class MCPQueryResponse
+    public class McpQueryResponse
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }
@@ -1565,7 +1573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Body { get; set; }
 
         [JsonProperty("isHtml")]
-        public bool IsHTML { get; set; }
+        public bool IsHtml { get; set; }
 
         [JsonProperty("responseType")]
         public GraphCalendarEventClientReceiveResponseTypeType ResponseType { get; set; }
@@ -1829,277 +1837,277 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         [EnumMember(Value = "")]
         None,
         [EnumMember(Value = "(UTC-12:00) International Date Line West")]
-        UTC1200InternationalDateLineWest,
+        Utc1200InternationalDateLineWest,
         [EnumMember(Value = "(UTC-11:00) Coordinated Universal Time-11")]
-        UTC1100CoordinatedUniversalTime11,
+        Utc1100CoordinatedUniversalTime11,
         [EnumMember(Value = "(UTC-10:00) Aleutian Islands")]
-        UTC1000AleutianIslands,
+        Utc1000AleutianIslands,
         [EnumMember(Value = "(UTC-10:00) Hawaii")]
-        UTC1000Hawaii,
+        Utc1000Hawaii,
         [EnumMember(Value = "(UTC-09:30) Marquesas Islands")]
-        UTC0930MarquesasIslands,
+        Utc0930MarquesasIslands,
         [EnumMember(Value = "(UTC-09:00) Alaska")]
-        UTC0900Alaska,
+        Utc0900Alaska,
         [EnumMember(Value = "(UTC-09:00) Coordinated Universal Time-09")]
-        UTC0900CoordinatedUniversalTime09,
+        Utc0900CoordinatedUniversalTime09,
         [EnumMember(Value = "(UTC-08:00) Baja California")]
-        UTC0800BajaCalifornia,
+        Utc0800BajaCalifornia,
         [EnumMember(Value = "(UTC-08:00) Coordinated Universal Time-08")]
-        UTC0800CoordinatedUniversalTime08,
+        Utc0800CoordinatedUniversalTime08,
         [EnumMember(Value = "(UTC-08:00) Pacific Time (US & Canada)")]
-        UTC0800PacificTimeUSCanada,
+        Utc0800PacificTimeUSCanada,
         [EnumMember(Value = "(UTC-07:00) Arizona")]
-        UTC0700Arizona,
+        Utc0700Arizona,
         [EnumMember(Value = "(UTC-07:00) Chihuahua, La Paz, Mazatlan")]
-        UTC0700ChihuahuaLaPazMazatlan,
+        Utc0700ChihuahuaLaPazMazatlan,
         [EnumMember(Value = "(UTC-07:00) Mountain Time (US & Canada)")]
-        UTC0700MountainTimeUSCanada,
+        Utc0700MountainTimeUSCanada,
         [EnumMember(Value = "(UTC-06:00) Central America")]
-        UTC0600CentralAmerica,
+        Utc0600CentralAmerica,
         [EnumMember(Value = "(UTC-06:00) Central Time (US & Canada)")]
-        UTC0600CentralTimeUSCanada,
+        Utc0600CentralTimeUSCanada,
         [EnumMember(Value = "(UTC-06:00) Easter Island")]
-        UTC0600EasterIsland,
+        Utc0600EasterIsland,
         [EnumMember(Value = "(UTC-06:00) Guadalajara, Mexico City, Monterrey")]
-        UTC0600GuadalajaraMexicoCityMonterrey,
+        Utc0600GuadalajaraMexicoCityMonterrey,
         [EnumMember(Value = "(UTC-06:00) Saskatchewan")]
-        UTC0600Saskatchewan,
+        Utc0600Saskatchewan,
         [EnumMember(Value = "(UTC-05:00) Bogota, Lima, Quito, Rio Branco")]
-        UTC0500BogotaLimaQuitoRioBranco,
+        Utc0500BogotaLimaQuitoRioBranco,
         [EnumMember(Value = "(UTC-05:00) Chetumal")]
-        UTC0500Chetumal,
+        Utc0500Chetumal,
         [EnumMember(Value = "(UTC-05:00) Eastern Time (US & Canada)")]
-        UTC0500EasternTimeUSCanada,
+        Utc0500EasternTimeUSCanada,
         [EnumMember(Value = "(UTC-05:00) Haiti")]
-        UTC0500Haiti,
+        Utc0500Haiti,
         [EnumMember(Value = "(UTC-05:00) Havana")]
-        UTC0500Havana,
+        Utc0500Havana,
         [EnumMember(Value = "(UTC-05:00) Indiana (East)")]
-        UTC0500IndianaEast,
+        Utc0500IndianaEast,
         [EnumMember(Value = "(UTC-04:00) Asuncion")]
-        UTC0400Asuncion,
+        Utc0400Asuncion,
         [EnumMember(Value = "(UTC-04:00) Atlantic Time (Canada)")]
-        UTC0400AtlanticTimeCanada,
+        Utc0400AtlanticTimeCanada,
         [EnumMember(Value = "(UTC-04:00) Caracas")]
-        UTC0400Caracas,
+        Utc0400Caracas,
         [EnumMember(Value = "(UTC-04:00) Cuiaba")]
-        UTC0400Cuiaba,
+        Utc0400Cuiaba,
         [EnumMember(Value = "(UTC-04:00) Georgetown, La Paz, Manaus, San Juan")]
-        UTC0400GeorgetownLaPazManausSanJuan,
+        Utc0400GeorgetownLaPazManausSanJuan,
         [EnumMember(Value = "(UTC-04:00) Santiago")]
-        UTC0400Santiago,
+        Utc0400Santiago,
         [EnumMember(Value = "(UTC-04:00) Turks and Caicos")]
-        UTC0400TurksAndCaicos,
+        Utc0400TurksAndCaicos,
         [EnumMember(Value = "(UTC-03:30) Newfoundland")]
-        UTC0330Newfoundland,
+        Utc0330Newfoundland,
         [EnumMember(Value = "(UTC-03:00) Araguaina")]
-        UTC0300Araguaina,
+        Utc0300Araguaina,
         [EnumMember(Value = "(UTC-03:00) Brasilia")]
-        UTC0300Brasilia,
+        Utc0300Brasilia,
         [EnumMember(Value = "(UTC-03:00) Cayenne, Fortaleza")]
-        UTC0300CayenneFortaleza,
+        Utc0300CayenneFortaleza,
         [EnumMember(Value = "(UTC-03:00) City of Buenos Aires")]
-        UTC0300CityOfBuenosAires,
+        Utc0300CityOfBuenosAires,
         [EnumMember(Value = "(UTC-03:00) Greenland")]
-        UTC0300Greenland,
+        Utc0300Greenland,
         [EnumMember(Value = "(UTC-03:00) Montevideo")]
-        UTC0300Montevideo,
+        Utc0300Montevideo,
         [EnumMember(Value = "(UTC-03:00) Punta Arenas")]
-        UTC0300PuntaArenas,
+        Utc0300PuntaArenas,
         [EnumMember(Value = "(UTC-03:00) Saint Pierre and Miquelon")]
-        UTC0300SaintPierreAndMiquelon,
+        Utc0300SaintPierreAndMiquelon,
         [EnumMember(Value = "(UTC-03:00) Salvador")]
-        UTC0300Salvador,
+        Utc0300Salvador,
         [EnumMember(Value = "(UTC-02:00) Coordinated Universal Time-02")]
-        UTC0200CoordinatedUniversalTime02,
+        Utc0200CoordinatedUniversalTime02,
         [EnumMember(Value = "(UTC-02:00) Mid-Atlantic - Old")]
-        UTC0200MidAtlanticOld,
+        Utc0200MidAtlanticOld,
         [EnumMember(Value = "(UTC-01:00) Azores")]
-        UTC0100Azores,
+        Utc0100Azores,
         [EnumMember(Value = "(UTC-01:00) Cabo Verde Is.")]
-        UTC0100CaboVerdeIs,
+        Utc0100CaboVerdeIs,
         [EnumMember(Value = "(UTC) Coordinated Universal Time")]
-        UTCCoordinatedUniversalTime,
+        UtcCoordinatedUniversalTime,
         [EnumMember(Value = "(UTC+00:00) Casablanca")]
-        UTC0000Casablanca,
+        Utc0000Casablanca,
         [EnumMember(Value = "(UTC+00:00) Dublin, Edinburgh, Lisbon, London")]
-        UTC0000DublinEdinburghLisbonLondon,
+        Utc0000DublinEdinburghLisbonLondon,
         [EnumMember(Value = "(UTC+00:00) Monrovia, Reykjavik")]
-        UTC0000MonroviaReykjavik,
+        Utc0000MonroviaReykjavik,
         [EnumMember(Value = "(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna")]
-        UTC0100AmsterdamBerlinBernRomeStockholmVienna,
+        Utc0100AmsterdamBerlinBernRomeStockholmVienna,
         [EnumMember(Value = "(UTC+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague")]
-        UTC0100BelgradeBratislavaBudapestLjubljanaPrague,
+        Utc0100BelgradeBratislavaBudapestLjubljanaPrague,
         [EnumMember(Value = "(UTC+01:00) Brussels, Copenhagen, Madrid, Paris")]
-        UTC0100BrusselsCopenhagenMadridParis,
+        Utc0100BrusselsCopenhagenMadridParis,
         [EnumMember(Value = "(UTC+01:00) Sarajevo, Skopje, Warsaw, Zagreb")]
-        UTC0100SarajevoSkopjeWarsawZagreb,
+        Utc0100SarajevoSkopjeWarsawZagreb,
         [EnumMember(Value = "(UTC+01:00) West Central Africa")]
-        UTC0100WestCentralAfrica,
+        Utc0100WestCentralAfrica,
         [EnumMember(Value = "(UTC+01:00) Windhoek")]
-        UTC0100Windhoek,
+        Utc0100Windhoek,
         [EnumMember(Value = "(UTC+02:00) Amman")]
-        UTC0200Amman,
+        Utc0200Amman,
         [EnumMember(Value = "(UTC+02:00) Athens, Bucharest")]
-        UTC0200AthensBucharest,
+        Utc0200AthensBucharest,
         [EnumMember(Value = "(UTC+02:00) Beirut")]
-        UTC0200Beirut,
+        Utc0200Beirut,
         [EnumMember(Value = "(UTC+02:00) Cairo")]
-        UTC0200Cairo,
+        Utc0200Cairo,
         [EnumMember(Value = "(UTC+02:00) Chisinau")]
-        UTC0200Chisinau,
+        Utc0200Chisinau,
         [EnumMember(Value = "(UTC+02:00) Damascus")]
-        UTC0200Damascus,
+        Utc0200Damascus,
         [EnumMember(Value = "(UTC+02:00) Gaza, Hebron")]
-        UTC0200GazaHebron,
+        Utc0200GazaHebron,
         [EnumMember(Value = "(UTC+02:00) Harare, Pretoria")]
-        UTC0200HararePretoria,
+        Utc0200HararePretoria,
         [EnumMember(Value = "(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius")]
-        UTC0200HelsinkiKyivRigaSofiaTallinnVilnius,
+        Utc0200HelsinkiKyivRigaSofiaTallinnVilnius,
         [EnumMember(Value = "(UTC+02:00) Jerusalem")]
-        UTC0200Jerusalem,
+        Utc0200Jerusalem,
         [EnumMember(Value = "(UTC+02:00) Kaliningrad")]
-        UTC0200Kaliningrad,
+        Utc0200Kaliningrad,
         [EnumMember(Value = "(UTC+02:00) Tripoli")]
-        UTC0200Tripoli,
+        Utc0200Tripoli,
         [EnumMember(Value = "(UTC+03:00) Baghdad")]
-        UTC0300Baghdad,
+        Utc0300Baghdad,
         [EnumMember(Value = "(UTC+03:00) Istanbul")]
-        UTC0300Istanbul,
+        Utc0300Istanbul,
         [EnumMember(Value = "(UTC+03:00) Kuwait, Riyadh")]
-        UTC0300KuwaitRiyadh,
+        Utc0300KuwaitRiyadh,
         [EnumMember(Value = "(UTC+03:00) Minsk")]
-        UTC0300Minsk,
+        Utc0300Minsk,
         [EnumMember(Value = "(UTC+03:00) Moscow, St. Petersburg")]
-        UTC0300MoscowStPetersburg,
+        Utc0300MoscowStPetersburg,
         [EnumMember(Value = "(UTC+03:00) Nairobi")]
-        UTC0300Nairobi,
+        Utc0300Nairobi,
         [EnumMember(Value = "(UTC+03:30) Tehran")]
-        UTC0330Tehran,
+        Utc0330Tehran,
         [EnumMember(Value = "(UTC+04:00) Abu Dhabi, Muscat")]
-        UTC0400AbuDhabiMuscat,
+        Utc0400AbuDhabiMuscat,
         [EnumMember(Value = "(UTC+04:00) Astrakhan, Ulyanovsk")]
-        UTC0400AstrakhanUlyanovsk,
+        Utc0400AstrakhanUlyanovsk,
         [EnumMember(Value = "(UTC+04:00) Baku")]
-        UTC0400Baku,
+        Utc0400Baku,
         [EnumMember(Value = "(UTC+04:00) Izhevsk, Samara")]
-        UTC0400IzhevskSamara,
+        Utc0400IzhevskSamara,
         [EnumMember(Value = "(UTC+04:00) Port Louis")]
-        UTC0400PortLouis,
+        Utc0400PortLouis,
         [EnumMember(Value = "(UTC+04:00) Saratov")]
-        UTC0400Saratov,
+        Utc0400Saratov,
         [EnumMember(Value = "(UTC+04:00) Tbilisi")]
-        UTC0400Tbilisi,
+        Utc0400Tbilisi,
         [EnumMember(Value = "(UTC+04:00) Volgograd")]
-        UTC0400Volgograd,
+        Utc0400Volgograd,
         [EnumMember(Value = "(UTC+04:00) Yerevan")]
-        UTC0400Yerevan,
+        Utc0400Yerevan,
         [EnumMember(Value = "(UTC+04:30) Kabul")]
-        UTC0430Kabul,
+        Utc0430Kabul,
         [EnumMember(Value = "(UTC+05:00) Ashgabat, Tashkent")]
-        UTC0500AshgabatTashkent,
+        Utc0500AshgabatTashkent,
         [EnumMember(Value = "(UTC+05:00) Ekaterinburg")]
-        UTC0500Ekaterinburg,
+        Utc0500Ekaterinburg,
         [EnumMember(Value = "(UTC+05:00) Islamabad, Karachi")]
-        UTC0500IslamabadKarachi,
+        Utc0500IslamabadKarachi,
         [EnumMember(Value = "(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi")]
-        UTC0530ChennaiKolkataMumbaiNewDelhi,
+        Utc0530ChennaiKolkataMumbaiNewDelhi,
         [EnumMember(Value = "(UTC+05:30) Sri Jayawardenepura")]
-        UTC0530SriJayawardenepura,
+        Utc0530SriJayawardenepura,
         [EnumMember(Value = "(UTC+05:45) Kathmandu")]
-        UTC0545Kathmandu,
+        Utc0545Kathmandu,
         [EnumMember(Value = "(UTC+06:00) Astana")]
-        UTC0600Astana,
+        Utc0600Astana,
         [EnumMember(Value = "(UTC+06:00) Dhaka")]
-        UTC0600Dhaka,
+        Utc0600Dhaka,
         [EnumMember(Value = "(UTC+06:00) Omsk")]
-        UTC0600Omsk,
+        Utc0600Omsk,
         [EnumMember(Value = "(UTC+06:30) Yangon (Rangoon)")]
-        UTC0630YangonRangoon,
+        Utc0630YangonRangoon,
         [EnumMember(Value = "(UTC+07:00) Bangkok, Hanoi, Jakarta")]
-        UTC0700BangkokHanoiJakarta,
+        Utc0700BangkokHanoiJakarta,
         [EnumMember(Value = "(UTC+07:00) Barnaul, Gorno-Altaysk")]
-        UTC0700BarnaulGornoAltaysk,
+        Utc0700BarnaulGornoAltaysk,
         [EnumMember(Value = "(UTC+07:00) Hovd")]
-        UTC0700Hovd,
+        Utc0700Hovd,
         [EnumMember(Value = "(UTC+07:00) Krasnoyarsk")]
-        UTC0700Krasnoyarsk,
+        Utc0700Krasnoyarsk,
         [EnumMember(Value = "(UTC+07:00) Novosibirsk")]
-        UTC0700Novosibirsk,
+        Utc0700Novosibirsk,
         [EnumMember(Value = "(UTC+07:00) Tomsk")]
-        UTC0700Tomsk,
+        Utc0700Tomsk,
         [EnumMember(Value = "(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi")]
-        UTC0800BeijingChongqingHongKongUrumqi,
+        Utc0800BeijingChongqingHongKongUrumqi,
         [EnumMember(Value = "(UTC+08:00) Irkutsk")]
-        UTC0800Irkutsk,
+        Utc0800Irkutsk,
         [EnumMember(Value = "(UTC+08:00) Kuala Lumpur, Singapore")]
-        UTC0800KualaLumpurSingapore,
+        Utc0800KualaLumpurSingapore,
         [EnumMember(Value = "(UTC+08:00) Perth")]
-        UTC0800Perth,
+        Utc0800Perth,
         [EnumMember(Value = "(UTC+08:00) Taipei")]
-        UTC0800Taipei,
+        Utc0800Taipei,
         [EnumMember(Value = "(UTC+08:00) Ulaanbaatar")]
-        UTC0800Ulaanbaatar,
+        Utc0800Ulaanbaatar,
         [EnumMember(Value = "(UTC+08:30) Pyongyang")]
-        UTC0830Pyongyang,
+        Utc0830Pyongyang,
         [EnumMember(Value = "(UTC+08:45) Eucla")]
-        UTC0845Eucla,
+        Utc0845Eucla,
         [EnumMember(Value = "(UTC+09:00) Chita")]
-        UTC0900Chita,
+        Utc0900Chita,
         [EnumMember(Value = "(UTC+09:00) Osaka, Sapporo, Tokyo")]
-        UTC0900OsakaSapporoTokyo,
+        Utc0900OsakaSapporoTokyo,
         [EnumMember(Value = "(UTC+09:00) Seoul")]
-        UTC0900Seoul,
+        Utc0900Seoul,
         [EnumMember(Value = "(UTC+09:00) Yakutsk")]
-        UTC0900Yakutsk,
+        Utc0900Yakutsk,
         [EnumMember(Value = "(UTC+09:30) Adelaide")]
-        UTC0930Adelaide,
+        Utc0930Adelaide,
         [EnumMember(Value = "(UTC+09:30) Darwin")]
-        UTC0930Darwin,
+        Utc0930Darwin,
         [EnumMember(Value = "(UTC+10:00) Brisbane")]
-        UTC1000Brisbane,
+        Utc1000Brisbane,
         [EnumMember(Value = "(UTC+10:00) Canberra, Melbourne, Sydney")]
-        UTC1000CanberraMelbourneSydney,
+        Utc1000CanberraMelbourneSydney,
         [EnumMember(Value = "(UTC+10:00) Guam, Port Moresby")]
-        UTC1000GuamPortMoresby,
+        Utc1000GuamPortMoresby,
         [EnumMember(Value = "(UTC+10:00) Hobart")]
-        UTC1000Hobart,
+        Utc1000Hobart,
         [EnumMember(Value = "(UTC+10:00) Vladivostok")]
-        UTC1000Vladivostok,
+        Utc1000Vladivostok,
         [EnumMember(Value = "(UTC+10:30) Lord Howe Island")]
-        UTC1030LordHoweIsland,
+        Utc1030LordHoweIsland,
         [EnumMember(Value = "(UTC+11:00) Bougainville Island")]
-        UTC1100BougainvilleIsland,
+        Utc1100BougainvilleIsland,
         [EnumMember(Value = "(UTC+11:00) Chokurdakh")]
-        UTC1100Chokurdakh,
+        Utc1100Chokurdakh,
         [EnumMember(Value = "(UTC+11:00) Magadan")]
-        UTC1100Magadan,
+        Utc1100Magadan,
         [EnumMember(Value = "(UTC+11:00) Norfolk Island")]
-        UTC1100NorfolkIsland,
+        Utc1100NorfolkIsland,
         [EnumMember(Value = "(UTC+11:00) Sakhalin")]
-        UTC1100Sakhalin,
+        Utc1100Sakhalin,
         [EnumMember(Value = "(UTC+11:00) Solomon Is., New Caledonia")]
-        UTC1100SolomonIsNewCaledonia,
+        Utc1100SolomonIsNewCaledonia,
         [EnumMember(Value = "(UTC+12:00) Anadyr, Petropavlovsk-Kamchatsky")]
-        UTC1200AnadyrPetropavlovskKamchatsky,
+        Utc1200AnadyrPetropavlovskKamchatsky,
         [EnumMember(Value = "(UTC+12:00) Auckland, Wellington")]
-        UTC1200AucklandWellington,
+        Utc1200AucklandWellington,
         [EnumMember(Value = "(UTC+12:00) Coordinated Universal Time+12")]
-        UTC1200CoordinatedUniversalTime12,
+        Utc1200CoordinatedUniversalTime12,
         [EnumMember(Value = "(UTC+12:00) Fiji")]
-        UTC1200Fiji,
+        Utc1200Fiji,
         [EnumMember(Value = "(UTC+12:00) Petropavlovsk-Kamchatsky - Old")]
-        UTC1200PetropavlovskKamchatskyOld,
+        Utc1200PetropavlovskKamchatskyOld,
         [EnumMember(Value = "(UTC+12:45) Chatham Islands")]
-        UTC1245ChathamIslands,
+        Utc1245ChathamIslands,
         [EnumMember(Value = "(UTC+13:00) Coordinated Universal Time+13")]
-        UTC1300CoordinatedUniversalTime13,
+        Utc1300CoordinatedUniversalTime13,
         [EnumMember(Value = "(UTC+13:00) Nuku'alofa")]
-        UTC1300NukuAlofa,
+        Utc1300NukuAlofa,
         [EnumMember(Value = "(UTC+13:00) Samoa")]
-        UTC1300Samoa,
+        Utc1300Samoa,
         [EnumMember(Value = "(UTC+14:00) Kiritimati Island")]
-        UTC1400KiritimatiIsland
+        Utc1400KiritimatiIsland
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2703,7 +2711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string CC { get; set; }
 
         [JsonProperty("bccRecipients")]
-        public string BCC { get; set; }
+        public string Bcc { get; set; }
 
         [JsonProperty("replyTo")]
         public string ReplyTo { get; set; }
@@ -2742,7 +2750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public GraphClientReceiveFileAttachment[] Attachments { get; set; }
 
         [JsonProperty("isHtml")]
-        public bool IsHTML { get; set; }
+        public bool IsHtml { get; set; }
 
         [JsonProperty("sensitivityLabelInfo")]
         public SensitivityLabelMetadata[] SensitivityLabelInfo { get; set; }
@@ -2821,8 +2829,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         [JsonProperty("deliveryRestricted")]
         public bool IsDeliveryRestricted { get; set; }
 
+        [JsonProperty("externalMemberCount")]
+        public int IsModerated { get; set; }
+
         [JsonProperty("isModerated")]
-        public bool IsModerated { get; set; }
+        public bool IsModerated2 { get; set; }
 
         [JsonProperty("mailboxFull")]
         public bool IsMailboxFull { get; set; }
@@ -2916,9 +2927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
         [JsonProperty("Cc")]
         public string CC { get; set; }
-
-        [JsonProperty("Bcc")]
-        public string BCC { get; set; }
+        public string Bcc { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
         public bool? ReplyAll { get; set; }
@@ -2976,9 +2985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
         [JsonProperty("Cc")]
         public string CC { get; set; }
-
-        [JsonProperty("Bcc")]
-        public string BCC { get; set; }
+        public string Bcc { get; set; }
         public ClientSendAttachment[] Attachments { get; set; }
         public string Sensitivity { get; set; }
         public string ReplyTo { get; set; }
@@ -3157,9 +3164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
         [JsonProperty("Cc")]
         public string CC { get; set; }
-
-        [JsonProperty("Bcc")]
-        public string BCC { get; set; }
+        public string Bcc { get; set; }
         public ClientSendAttachment[] Attachments { get; set; }
         public string Sensitivity { get; set; }
         public string ReplyTo { get; set; }
@@ -3199,7 +3204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Body { get; set; }
 
         [JsonProperty("isHtml")]
-        public bool IsHTML { get; set; }
+        public bool IsHtml { get; set; }
 
         [JsonProperty("responseType")]
         public GraphCalendarEventClientWithActionTypeResponseTypeType ResponseType { get; set; }

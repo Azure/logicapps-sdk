@@ -414,12 +414,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AuditRequestBodyInputStatusCodeType
     {
-        SCHEDULED,
+        [EnumMember(Value = "SCHEDULED")]
+        Scheduled,
         [EnumMember(Value = "CREATE_FAILED")]
-        CREATEFAILED,
+        CreateFailed,
         [EnumMember(Value = "UPDATE_FAILED")]
-        UPDATEFAILED,
-        LINKED
+        UpdateFailed,
+        [EnumMember(Value = "LINKED")]
+        Linked
     }
 
     public class GetReportListResponse
@@ -501,52 +503,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
     public enum ReportFilterOpType
     {
         [EnumMember(Value = "EQUAL_TO")]
-        EQUALTO,
+        EqualTo,
         [EnumMember(Value = "IS_EMPTY")]
-        ISEMPTY,
-        CONTAIN,
+        IsEmpty,
+        [EnumMember(Value = "CONTAIN")]
+        Contain,
         [EnumMember(Value = "START_WITH")]
-        STARTWITH,
+        StartWith,
         [EnumMember(Value = "END_WITH")]
-        ENDWITH,
+        EndWith,
         IN,
         [EnumMember(Value = "GREATER_THAN")]
-        GREATERTHAN,
+        GreaterThan,
         [EnumMember(Value = "LESS_THAN")]
-        LESSTHAN,
+        LessThan,
         [EnumMember(Value = "GREATER_THAN_OR_EQUAL_TO")]
-        GREATERTHANOREQUALTO,
+        GreaterThanOrEqualTo,
         [EnumMember(Value = "LESS_THAN_OR_EQUAL_TO")]
-        LESSTHANOREQUALTO,
-        BETWEEN,
-        OFFSET
+        LessThanOrEqualTo,
+        [EnumMember(Value = "BETWEEN")]
+        Between,
+        [EnumMember(Value = "OFFSET")]
+        Offset
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReportFieldFilterTypeType
     {
-        TEXT,
+        [EnumMember(Value = "TEXT")]
+        Text,
         [EnumMember(Value = "TEXT_REPEATED")]
-        TEXTREPEATED,
+        TextRepeated,
         [EnumMember(Value = "TEXT_PG_ARRAY")]
-        TEXTPGARRAY,
-        BOOLEAN,
-        NUMBER,
-        DECIMAL,
-        DATE,
+        TextPgArray,
+        [EnumMember(Value = "BOOLEAN")]
+        Boolean,
+        [EnumMember(Value = "NUMBER")]
+        Number,
+        [EnumMember(Value = "DECIMAL")]
+        Decimal,
+        [EnumMember(Value = "DATE")]
+        Date,
         [EnumMember(Value = "DATE_OFFSET")]
-        DATEOFFSET,
+        DateOffset,
         [EnumMember(Value = "DATE_TIME")]
-        DATETIME,
+        DateTime,
         [EnumMember(Value = "DATE_TIME_OFFSET")]
-        DATETIMEOFFSET,
-        CURRENCY
+        DateTimeOffset,
+        [EnumMember(Value = "CURRENCY")]
+        Currency
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReportFilterContainerOpType
     {
-        AND,
+        [EnumMember(Value = "AND")]
+        And,
         OR
     }
 
@@ -595,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workspan
     public class SubscribeBodyInputWebhookSettingsType
     {
         [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class SubscribeObjectEventSubscribeBodyInput

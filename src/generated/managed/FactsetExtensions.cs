@@ -202,16 +202,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<NEREntitiesResponse, ApiConnectionActionConfiguration> NEREntities(Expression<Func<NEREntitiesBodyInput>> body)
+        public IBodyWorkflowAction<NerEntitiesResponse, ApiConnectionActionConfiguration> NerEntities(Expression<Func<NerEntitiesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<NEREntitiesResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NerEntitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cognitive/ner/v2/entities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NEREntitiesResponse>(callPayload);
+                return new ApiConnectionAction<NerEntitiesResponse>(callPayload);
             });
         }
 
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetPDF(Expression<Func<string>> bookId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetPdf(Expression<Func<string>> bookId)
         {
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -719,13 +719,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         public string Parameter { get; set; }
     }
 
-    public class NEREntitiesResponse
+    public class NerEntitiesResponse
     {
         [JsonProperty("entities")]
-        public NEREntitiesResponseEntitiesTypeItem[] Entities { get; set; }
+        public NerEntitiesResponseEntitiesTypeItem[] Entities { get; set; }
     }
 
-    public class NEREntitiesResponseEntitiesTypeItem
+    public class NerEntitiesResponseEntitiesTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -749,10 +749,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         public string LookupUrl { get; set; }
 
         [JsonProperty("associatedOrgs")]
-        public NEREntitiesResponseEntitiesTypeItemAssociatedOrgsTypeItem[] AssociatedOrgs { get; set; }
+        public NerEntitiesResponseEntitiesTypeItemAssociatedOrgsTypeItem[] AssociatedOrgs { get; set; }
     }
 
-    public class NEREntitiesResponseEntitiesTypeItemAssociatedOrgsTypeItem
+    public class NerEntitiesResponseEntitiesTypeItemAssociatedOrgsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -764,9 +764,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         public string LookupUrl { get; set; }
     }
 
-    public class NEREntitiesBodyInput
+    public class NerEntitiesBodyInput
     {
-        public NEREntitiesBodyInput(string text)
+        public NerEntitiesBodyInput(string text)
         {
             this.Text = text;
         }

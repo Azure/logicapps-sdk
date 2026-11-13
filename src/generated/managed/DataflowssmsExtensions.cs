@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
     public class DataflowssmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        public IBodyWorkflowAction<SMSResponse, ApiConnectionActionConfiguration> SendSmsGet(Expression<Func<string>> recipient, Expression<Func<string>> senderId, Expression<Func<string>> message, Expression<Func<string>> type = null)
+        public IBodyWorkflowAction<SmsResponse, ApiConnectionActionConfiguration> SendSmsGet(Expression<Func<string>> recipient, Expression<Func<string>> senderId, Expression<Func<string>> message, Expression<Func<string>> type = null)
         {
             var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: true);
             var __workflow_senderId = WorkflowExpression.Compile(senderId, nameof(senderId), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<SMSResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms/send";
                 var apiCallHttpMethod = "get";
@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
                 callPayload.Queries["type"] = Convert.ToString("plain");
                 if (__workflow_type != null)
                     callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
-                return new ApiConnectionAction<SMSResponse>(callPayload);
+                return new ApiConnectionAction<SmsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        public IBodyWorkflowAction<SMSList, ApiConnectionActionConfiguration> ListSms(Expression<Func<int>> page = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<SmsList, ApiConnectionActionConfiguration> ListSms(Expression<Func<int>> page = null, Expression<Func<int>> limit = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<SMSList, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SmsList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms";
                 var apiCallHttpMethod = "get";
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
                 callPayload.Queries["limit"] = Convert.ToString(20);
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
-                return new ApiConnectionAction<SMSList>(callPayload);
+                return new ApiConnectionAction<SmsList>(callPayload);
             });
         }
 
@@ -83,10 +83,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
     {
     }
 
-    public class SMSResponse
+    public class SmsResponse
     {
         [JsonProperty("status")]
-        public SMSResponseStatusType Status { get; set; }
+        public SmsResponseStatusType Status { get; set; }
 
         [JsonProperty("data")]
         public JToken Data { get; set; }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SMSResponseStatusType
+    public enum SmsResponseStatusType
     {
         [EnumMember(Value = "success")]
         Success,
@@ -104,17 +104,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         Error
     }
 
-    public class SMSList
+    public class SmsList
     {
         [JsonProperty("status")]
-        public SMSListStatusType Status { get; set; }
+        public SmsListStatusType Status { get; set; }
 
         [JsonProperty("data")]
-        public SMSListDataType Data { get; set; }
+        public SmsListDataType Data { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SMSListStatusType
+    public enum SmsListStatusType
     {
         [EnumMember(Value = "success")]
         Success,
@@ -122,26 +122,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         Error
     }
 
-    public class SMSListDataType
+    public class SmsListDataType
     {
         [JsonProperty("messages")]
-        public SMSDetails[] Messages { get; set; }
+        public SmsDetails[] Messages { get; set; }
 
         [JsonProperty("pagination")]
-        public SMSListDataTypePaginationType Pagination { get; set; }
+        public SmsListDataTypePaginationType Pagination { get; set; }
     }
 
-    public class SMSDetails
+    public class SmsDetails
     {
         [JsonProperty("status")]
-        public SMSDetailsStatusType Status { get; set; }
+        public SmsDetailsStatusType Status { get; set; }
 
         [JsonProperty("data")]
-        public SMSDetailsDataType Data { get; set; }
+        public SmsDetailsDataType Data { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SMSDetailsStatusType
+    public enum SmsDetailsStatusType
     {
         [EnumMember(Value = "success")]
         Success,
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         Error
     }
 
-    public class SMSDetailsDataType
+    public class SmsDetailsDataType
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public string CreatedAt { get; set; }
     }
 
-    public class SMSListDataTypePaginationType
+    public class SmsListDataTypePaginationType
     {
         [JsonProperty("total")]
         public int Total { get; set; }

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
     public class ConstituentApiFileDefinitionFileUploadType
     {
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("method")]
         public string Method { get; set; }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
     public class ConstituentApiFileDefinitionThumbnailUploadType
     {
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("method")]
         public string Method { get; set; }

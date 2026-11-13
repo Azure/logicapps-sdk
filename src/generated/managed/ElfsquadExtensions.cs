@@ -1324,7 +1324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string City { get; set; }
 
         [JsonProperty("cocNumber")]
-        public string COCNumber { get; set; }
+        public string CocNumber { get; set; }
 
         [JsonProperty("companyName")]
         public string CompanyName { get; set; }
@@ -1369,7 +1369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string HouseNumber { get; set; }
 
         [JsonProperty("iban")]
-        public string IBAN { get; set; }
+        public string Iban { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1414,7 +1414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string UpdatedDate { get; set; }
 
         [JsonProperty("vatNumber")]
-        public string VATNumber { get; set; }
+        public string VatNumber { get; set; }
     }
 
     public class CrmAccountsCrmContactResponse
@@ -1505,7 +1505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string City { get; set; }
 
         [JsonProperty("cocNumber")]
-        public string COCNumber { get; set; }
+        public string CocNumber { get; set; }
 
         [JsonProperty("companyName")]
         public string CompanyName { get; set; }
@@ -1550,7 +1550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string HouseNumber { get; set; }
 
         [JsonProperty("iban")]
-        public string IBAN { get; set; }
+        public string Iban { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1595,7 +1595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string UpdatedDate { get; set; }
 
         [JsonProperty("vatNumber")]
-        public string VATNumber { get; set; }
+        public string VatNumber { get; set; }
     }
 
     public class CrmAccountsCrmContact
@@ -2088,31 +2088,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string[] ThreeDModelItems { get; set; }
 
         [JsonProperty("totalPriceExVAT")]
-        public double TotalPriceExVAT { get; set; }
+        public double TotalPriceExVat { get; set; }
 
         [JsonProperty("totalPriceExVATLabel")]
-        public string TotalPriceExVATLabel { get; set; }
+        public string TotalPriceExVatLabel { get; set; }
 
         [JsonProperty("totalPriceIncVAT")]
-        public double TotalPriceIncVAT { get; set; }
+        public double TotalPriceIncVat { get; set; }
 
         [JsonProperty("totalPriceIncVATLabel")]
-        public string TotalPriceIncVATLabel { get; set; }
+        public string TotalPriceIncVatLabel { get; set; }
 
         [JsonProperty("unitPriceExVAT")]
-        public double UnitPriceExVAT { get; set; }
+        public double UnitPriceExVat { get; set; }
 
         [JsonProperty("unitPriceExVATExExchangeRate")]
-        public double UnitPriceExVATExExchangeRate { get; set; }
+        public double UnitPriceExVatExExchangeRate { get; set; }
 
         [JsonProperty("unitPriceExVATLabel")]
-        public string UnitPriceExVATLabel { get; set; }
+        public string UnitPriceExVatLabel { get; set; }
 
         [JsonProperty("unitPriceIncVAT")]
-        public double UnitPriceIncVAT { get; set; }
+        public double UnitPriceIncVat { get; set; }
 
         [JsonProperty("unitPriceIncVATLabel")]
-        public string UnitPriceIncVATLabel { get; set; }
+        public string UnitPriceIncVatLabel { get; set; }
 
         [JsonProperty("updatedDate")]
         public string UpdatedDate { get; set; }
@@ -2494,31 +2494,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string[] ThreeDModelItems { get; set; }
 
         [JsonProperty("totalPriceExVAT")]
-        public double? TotalPriceExVAT { get; set; }
+        public double? TotalPriceExVat { get; set; }
 
         [JsonProperty("totalPriceExVATLabel")]
-        public string TotalPriceExVATLabel { get; set; }
+        public string TotalPriceExVatLabel { get; set; }
 
         [JsonProperty("totalPriceIncVAT")]
-        public double? TotalPriceIncVAT { get; set; }
+        public double? TotalPriceIncVat { get; set; }
 
         [JsonProperty("totalPriceIncVATLabel")]
-        public string TotalPriceIncVATLabel { get; set; }
+        public string TotalPriceIncVatLabel { get; set; }
 
         [JsonProperty("unitPriceExVAT")]
-        public double? UnitPriceExVAT { get; set; }
+        public double? UnitPriceExVat { get; set; }
 
         [JsonProperty("unitPriceExVATExExchangeRate")]
-        public double? UnitPriceExVATExExchangeRate { get; set; }
+        public double? UnitPriceExVatExExchangeRate { get; set; }
 
         [JsonProperty("unitPriceExVATLabel")]
-        public string UnitPriceExVATLabel { get; set; }
+        public string UnitPriceExVatLabel { get; set; }
 
         [JsonProperty("unitPriceIncVAT")]
-        public double? UnitPriceIncVAT { get; set; }
+        public double? UnitPriceIncVat { get; set; }
 
         [JsonProperty("unitPriceIncVATLabel")]
-        public string UnitPriceIncVATLabel { get; set; }
+        public string UnitPriceIncVatLabel { get; set; }
 
         [JsonProperty("updatedDate")]
         public string UpdatedDate { get; set; }
@@ -2786,7 +2786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string UpdatedDate { get; set; }
 
         [JsonProperty("vatId")]
-        public string VATId { get; set; }
+        public string VatId { get; set; }
     }
 
     public class FeaturesFeatureTextResponse
@@ -3020,7 +3020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string UpdatedDate { get; set; }
 
         [JsonProperty("vatId")]
-        public string VATId { get; set; }
+        public string VatId { get; set; }
     }
 
     public class FeaturesCategory
@@ -3220,7 +3220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string UpdatedDate { get; set; }
 
         [JsonProperty("vatId")]
-        public string VATId { get; set; }
+        public string VatId { get; set; }
     }
 
     public enum FeatureInputTypeType
@@ -3626,13 +3626,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public double TotalInclPrice { get; set; }
 
         [JsonProperty("totalPriceExclVATLabel")]
-        public string TotalPriceExclVATLabel { get; set; }
+        public string TotalPriceExclVatLabel { get; set; }
 
         [JsonProperty("totalPriceInclVAT")]
-        public double TotalPriceInclVAT { get; set; }
+        public double TotalPriceInclVat { get; set; }
 
         [JsonProperty("totalPriceInclVATLabel")]
-        public string TotalPriceInclVATLabel { get; set; }
+        public string TotalPriceInclVatLabel { get; set; }
 
         [JsonProperty("updatedDate")]
         public string UpdatedDate { get; set; }
@@ -3928,7 +3928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string UpdatedDate { get; set; }
 
         [JsonProperty("vatId")]
-        public string VATId { get; set; }
+        public string VatId { get; set; }
     }
 
     public enum QuotationStatusType
@@ -4074,13 +4074,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public double? TotalInclPrice { get; set; }
 
         [JsonProperty("totalPriceExclVATLabel")]
-        public string TotalPriceExclVATLabel { get; set; }
+        public string TotalPriceExclVatLabel { get; set; }
 
         [JsonProperty("totalPriceInclVAT")]
-        public double? TotalPriceInclVAT { get; set; }
+        public double? TotalPriceInclVat { get; set; }
 
         [JsonProperty("totalPriceInclVATLabel")]
-        public string TotalPriceInclVATLabel { get; set; }
+        public string TotalPriceInclVatLabel { get; set; }
 
         [JsonProperty("updatedDate")]
         public string UpdatedDate { get; set; }
@@ -4376,7 +4376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public string UpdatedDate { get; set; }
 
         [JsonProperty("vatId")]
-        public string VATId { get; set; }
+        public string VatId { get; set; }
     }
 
     public enum QuotationsEntityInputStatusType
@@ -4522,13 +4522,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquad
         public double? TotalInclPrice { get; set; }
 
         [JsonProperty("totalPriceExclVATLabel")]
-        public string TotalPriceExclVATLabel { get; set; }
+        public string TotalPriceExclVatLabel { get; set; }
 
         [JsonProperty("totalPriceInclVAT")]
-        public double? TotalPriceInclVAT { get; set; }
+        public double? TotalPriceInclVat { get; set; }
 
         [JsonProperty("totalPriceInclVATLabel")]
-        public string TotalPriceInclVATLabel { get; set; }
+        public string TotalPriceInclVatLabel { get; set; }
 
         [JsonProperty("updatedDate")]
         public string UpdatedDate { get; set; }

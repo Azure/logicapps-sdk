@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgisenterprise")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EXIF(Expression<Func<string>> data)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Exif(Expression<Func<string>> data)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         public string Keywords { get; set; }
 
         [JsonProperty("url")]
-        public string AttachmentURL { get; set; }
+        public string AttachmentUrl { get; set; }
     }
 
     public class DeleteAttachmentsResponseItem
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         public string Country { get; set; }
 
         [JsonProperty("Postal")]
-        public string ZIPOrPostalCode { get; set; }
+        public string ZipOrPostalCode { get; set; }
     }
 
     public class ReverseGeocodeResponseLocationType
@@ -1026,7 +1026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         public CreateFeatureReportBodyInputValueType Value { get; set; }
 
         [JsonProperty("utcOffset")]
-        public string UTCOffset { get; set; }
+        public string UtcOffset { get; set; }
 
         [JsonProperty("outputFileName")]
         public string ReportName { get; set; }
@@ -1044,7 +1044,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         public string FeatureObjectId { get; set; }
 
         [JsonProperty("where")]
-        public string FeatureWHEREClause { get; set; }
+        public string FeatureWhereClause { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1201,7 +1201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         public double WebhookId { get; set; }
 
         [JsonProperty("url")]
-        public string TriggerURL { get; set; }
+        public string TriggerUrl { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1225,7 +1225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         public double WebhookId { get; set; }
 
         [JsonProperty("url")]
-        public string TriggerURL { get; set; }
+        public string TriggerUrl { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1237,7 +1237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         public double WebhookId { get; set; }
 
         [JsonProperty("url")]
-        public string TriggerURL { get; set; }
+        public string TriggerUrl { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1249,7 +1249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         public double WebhookId { get; set; }
 
         [JsonProperty("url")]
-        public string TriggerURL { get; set; }
+        public string TriggerUrl { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1261,7 +1261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         public double WebhookId { get; set; }
 
         [JsonProperty("url")]
-        public string TriggerURL { get; set; }
+        public string TriggerUrl { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1273,7 +1273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgisenterprise
         public double WebhookId { get; set; }
 
         [JsonProperty("url")]
-        public string TriggerURL { get; set; }
+        public string TriggerUrl { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

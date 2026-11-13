@@ -13,32 +13,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
     public class UipathorchestratorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto, ApiConnectionActionConfiguration> StartJobs(Expression<Func<StartJobsBodyInput>> body, Expression<Func<int>> xUIPATHOrganizationUnitId)
+        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto, ApiConnectionActionConfiguration> StartJobs(Expression<Func<StartJobsBodyInput>> body, Expression<Func<int>> xUipathOrganizationUnitId)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
+            var __workflow_xUipathOrganizationUnitId = WorkflowExpression.Compile(xUipathOrganizationUnitId, nameof(xUipathOrganizationUnitId), required: true);
             return new DeferredBodyAction<ODataValueOfIEnumerableOfJobDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUIPATHOrganizationUnitId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUipathOrganizationUnitId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ODataValueOfIEnumerableOfJobDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<QueueItemDto, ApiConnectionActionConfiguration> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<AddQueueItemBodyInput>> body = null)
+        public IBodyWorkflowAction<QueueItemDto, ApiConnectionActionConfiguration> AddQueueItem(Expression<Func<int>> xUipathOrganizationUnitId, Expression<Func<AddQueueItemBodyInput>> body = null)
         {
-            var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
+            var __workflow_xUipathOrganizationUnitId = WorkflowExpression.Compile(xUipathOrganizationUnitId, nameof(xUipathOrganizationUnitId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<QueueItemDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Queues/UiPathODataSvc.AddQueueItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUIPATHOrganizationUnitId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUipathOrganizationUnitId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 else
@@ -123,7 +123,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public string MachineName { get; set; }
         public int MachineId { get; set; }
         public string Name { get; set; }
-        public string Username { get; set; }
+
+        [JsonProperty("Username")]
+        public string UserName { get; set; }
         public string ExternalName { get; set; }
         public string Description { get; set; }
         public SimpleRobotDtoTypeType Type { get; set; }
@@ -748,9 +750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public JToken SpecificContent { get; set; }
         public string DeferDate { get; set; }
         public string DueDate { get; set; }
-
-        [JsonProperty("RiskSlaDate")]
-        public string RiskSLADate { get; set; }
+        public string RiskSlaDate { get; set; }
         public string Reference { get; set; }
         public string Progress { get; set; }
     }

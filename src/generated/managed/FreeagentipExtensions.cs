@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public bool OmitHeader { get; set; }
 
         [JsonProperty("always_show_bic_and_iban")]
-        public bool AlwaysShowBICAndIBAN { get; set; }
+        public bool AlwaysShowBicAndIban { get; set; }
 
         [JsonProperty("send_thank_you_emails")]
         public bool SendThankYouEmails { get; set; }
@@ -508,7 +508,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         Bills,
         Discount,
         Credit,
-        VAT,
+        [EnumMember(Value = "VAT")]
+        Vat,
         Stock
     }
 
@@ -791,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public bool OmitHeader { get; set; }
 
         [JsonProperty("always_show_bic_and_iban")]
-        public bool AlwaysShowBICAndIBAN { get; set; }
+        public bool AlwaysShowBicAndIban { get; set; }
 
         [JsonProperty("payment_terms_in_days")]
         public int PaymentTermsInDays { get; set; }
@@ -872,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public string BankAccount { get; set; }
 
         [JsonProperty("always_show_bic_and_iban")]
-        public bool AlwaysShowBICAndIBAN { get; set; }
+        public bool AlwaysShowBicAndIban { get; set; }
 
         [JsonProperty("payment_terms_in_days")]
         public int PaymentTermsInDays { get; set; }
@@ -947,7 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public bool OmitHeader { get; set; }
 
         [JsonProperty("always_show_bic_and_iban")]
-        public bool AlwaysShowBICAndIBAN { get; set; }
+        public bool AlwaysShowBicAndIban { get; set; }
 
         [JsonProperty("send_thank_you_emails")]
         public bool SendThankYouEmails { get; set; }
@@ -1025,7 +1026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public bool? OmitHeader { get; set; }
 
         [JsonProperty("always_show_bic_and_iban")]
-        public bool? AlwaysShowBICAndIBAN { get; set; }
+        public bool? AlwaysShowBicAndIban { get; set; }
 
         [JsonProperty("payment_terms_in_days")]
         public int? PaymentTermsInDays { get; set; }
@@ -1082,7 +1083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public bool OmitHeader { get; set; }
 
         [JsonProperty("always_show_bic_and_iban")]
-        public bool AlwaysShowBICAndIBAN { get; set; }
+        public bool AlwaysShowBicAndIban { get; set; }
 
         [JsonProperty("payment_terms_in_days")]
         public int PaymentTermsInDays { get; set; }

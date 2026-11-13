@@ -104,25 +104,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
     public class DtoResponseT10A002AV01CV01ExtractXmlFromInvoicePdf
     {
         [JsonProperty("xml")]
-        public string XML { get; set; }
+        public string Xml { get; set; }
     }
 
     public class DtoRequestT10A002AV01CV01ExtractXmlFromInvoicePdfInput
     {
         [JsonProperty("invoicePdf")]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InvoicePDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InvoicePdf { get; set; }
     }
 
     public class DtoResponseT10A003AV01CV01ConvertXmlInvoiceToPdf
     {
         [JsonProperty("pdf")]
-        public string VisualizedInvoicePDF { get; set; }
+        public string VisualizedInvoicePdf { get; set; }
     }
 
     public class DtoRequestT10A003AV01CV01ConvertXmlInvoiceToPdfInput
     {
         [JsonProperty("xml")]
-        public string InvoiceXML { get; set; }
+        public string InvoiceXml { get; set; }
 
         [JsonProperty("type")]
         public string InvoiceType { get; set; }
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
     public class DtoResponseT10A001AV02CV02ConvertInvoiceToZugferdPdf
     {
         [JsonProperty("zugferdPdf")]
-        public string ZUGFeRDPDF { get; set; }
+        public string ZugFeRDPdf { get; set; }
 
         [JsonProperty("notes")]
         public string[] Notes { get; set; }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
     public class DtoRequestT10A001AV02CV02ConvertInvoiceToZugferdPdfInput
     {
         [JsonProperty("invoicePdf")]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InvoicePDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InvoicePdf { get; set; }
 
         [JsonProperty("invoiceNumber")]
         public string InvoiceNumber { get; set; }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string SellerIdentifier { get; set; }
 
         [JsonProperty("sellerVatId")]
-        public string SellerVATId { get; set; }
+        public string SellerVatId { get; set; }
 
         [JsonProperty("sellerTaxNumber")]
         public string SellerTaxNumber { get; set; }
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string BuyerName { get; set; }
 
         [JsonProperty("buyerVatId")]
-        public string BuyerVATId { get; set; }
+        public string BuyerVatId { get; set; }
 
         [JsonProperty("buyerStreet")]
         public string BuyerStreet { get; set; }
@@ -266,10 +266,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string DeliveryCountry { get; set; }
 
         [JsonProperty("iban")]
-        public string IBAN { get; set; }
+        public string Iban { get; set; }
 
         [JsonProperty("bic")]
-        public string BIC { get; set; }
+        public string Bic { get; set; }
 
         [JsonProperty("paymentRecipient")]
         public string PaymentRecipient { get; set; }
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public double? UnitPrice { get; set; }
 
         [JsonProperty("vatPercent")]
-        public double? VATPercent { get; set; }
+        public double? VatPercent { get; set; }
 
         [JsonProperty("categoryCode")]
         public string TaxCategoryCode { get; set; }
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string Reason { get; set; }
 
         [JsonProperty("vatPercent")]
-        public double? VATPercent { get; set; }
+        public double? VatPercent { get; set; }
 
         [JsonProperty("categoryCode")]
         public string TaxCategoryCode { get; set; }
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string FileContent { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string SellerCountry { get; set; }
 
         [JsonProperty("sellerVatId")]
-        public string SellerVATId { get; set; }
+        public string SellerVatId { get; set; }
 
         [JsonProperty("sellerEmail")]
         public string SellerEmail { get; set; }
@@ -446,13 +446,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string BuyerCountry { get; set; }
 
         [JsonProperty("buyerVatId")]
-        public string BuyerVATId { get; set; }
+        public string BuyerVatId { get; set; }
 
         [JsonProperty("iban")]
-        public string IBAN { get; set; }
+        public string Iban { get; set; }
 
         [JsonProperty("bic")]
-        public string BIC { get; set; }
+        public string Bic { get; set; }
 
         [JsonProperty("paymentRecipient")]
         public string PaymentRecipient { get; set; }
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public double TotalNetAmount { get; set; }
 
         [JsonProperty("totalVatAmount")]
-        public double TotalVATAmount { get; set; }
+        public double TotalVatAmount { get; set; }
 
         [JsonProperty("totalGrossAmount")]
         public double TotalGrossAmount { get; set; }
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public double UnitPrice { get; set; }
 
         [JsonProperty("vatPercent")]
-        public double VATPercent { get; set; }
+        public double VatPercent { get; set; }
 
         [JsonProperty("lineNetAmount")]
         public double LineNetAmount { get; set; }
@@ -524,10 +524,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string ValidationMessage { get; set; }
 
         [JsonProperty("compactIban")]
-        public string CompactIBAN { get; set; }
+        public string CompactIban { get; set; }
 
         [JsonProperty("formattedIban")]
-        public string FormattedIBAN { get; set; }
+        public string FormattedIban { get; set; }
 
         [JsonProperty("countryCode")]
         public string CountryCode { get; set; }
@@ -536,13 +536,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string CountryName { get; set; }
 
         [JsonProperty("isSepaCountry")]
-        public bool IsSEPACountry { get; set; }
+        public bool IsSepaCountry { get; set; }
 
         [JsonProperty("bankName")]
         public string BankName { get; set; }
 
         [JsonProperty("bic")]
-        public string BICSWIFTCode { get; set; }
+        public string BicSwiftCode { get; set; }
 
         [JsonProperty("bankCity")]
         public string BankCity { get; set; }
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string AccountNumber { get; set; }
 
         [JsonProperty("bban")]
-        public string BBAN { get; set; }
+        public string Bban { get; set; }
 
         [JsonProperty("notes")]
         public string[] Notes { get; set; }
@@ -568,13 +568,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
 
     public class DtoRequestT10A005AV01CV02ValidateIbanInput
     {
-        public DtoRequestT10A005AV01CV02ValidateIbanInput(string iBAN)
+        public DtoRequestT10A005AV01CV02ValidateIbanInput(string iban)
         {
-            this.IBAN = iBAN;
+            this.Iban = iban;
         }
 
         [JsonProperty("iban", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string IBAN { get; set; }
+        public string Iban { get; set; }
     }
 
     public class DtoResponseT10A006AV01CV02ValidateVatId
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string ValidationMessage { get; set; }
 
         [JsonProperty("compactVatId")]
-        public string CompactVATId { get; set; }
+        public string CompactVatId { get; set; }
 
         [JsonProperty("countryCode")]
         public string CountryCode { get; set; }
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string RequestDate { get; set; }
 
         [JsonProperty("vatNumber")]
-        public string VATNumber { get; set; }
+        public string VatNumber { get; set; }
 
         [JsonProperty("notes")]
         public string[] Notes { get; set; }
@@ -618,16 +618,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
 
     public class DtoRequestT10A006AV01CV02ValidateVatIdInput
     {
-        public DtoRequestT10A006AV01CV02ValidateVatIdInput(string vATId)
+        public DtoRequestT10A006AV01CV02ValidateVatIdInput(string vatId)
         {
-            this.VATId = vATId;
+            this.VatId = vatId;
         }
 
         [JsonProperty("vatId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string VATId { get; set; }
+        public string VatId { get; set; }
 
         [JsonProperty("requesterVatId")]
-        public string YourCompanyVATId { get; set; }
+        public string YourCompanyVatId { get; set; }
     }
 }
 

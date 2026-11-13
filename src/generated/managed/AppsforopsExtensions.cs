@@ -13,16 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
     public class AppsforopsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
-        public IBodyWorkflowAction<NPSCreateResponse, ApiConnectionActionConfiguration> ApiExtNPS(Expression<Func<ApiExtNPSModelInput>> model)
+        public IBodyWorkflowAction<NpsCreateResponse, ApiConnectionActionConfiguration> ApiExtNps(Expression<Func<ApiExtNpsModelInput>> model)
         {
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
-            return new DeferredBodyAction<NPSCreateResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NpsCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ext/NPS";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_model);
-                return new ApiConnectionAction<NPSCreateResponse>(callPayload);
+                return new ApiConnectionAction<NpsCreateResponse>(callPayload);
             });
         }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
     {
     }
 
-    public class NPSCreateResponse
+    public class NpsCreateResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
         public string AdditionalData { get; set; }
     }
 
-    public class ApiExtNPSModelInput
+    public class ApiExtNpsModelInput
     {
-        public ApiExtNPSModelInput(string email, int score, string ratingDate)
+        public ApiExtNpsModelInput(string email, int score, string ratingDate)
         {
             this.Email = email;
             this.Score = score;

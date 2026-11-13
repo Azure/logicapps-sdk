@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
     public class GetRandomChuckNorrisFactResponse
     {
         [JsonProperty("icon_url")]
-        public string IconURL { get; set; }
+        public string IconUrl { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
         public string CreatedAt { get; set; }
 
         [JsonProperty("icon_url")]
-        public string IconURL { get; set; }
+        public string IconUrl { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
         public string UpdatedAt { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }

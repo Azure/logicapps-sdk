@@ -47,14 +47,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotform
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestBodyOfWebhookInputOutputFormatTypeItem[] OutputFormat { get; set; } = new RequestBodyOfWebhookInputOutputFormatTypeItem[]
         {
-            global::Microsoft.Azure.Workflows.Sdk.Connectors.Jotform.RequestBodyOfWebhookInputOutputFormatTypeItem.HTML
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Jotform.RequestBodyOfWebhookInputOutputFormatTypeItem.Html
         };
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RequestBodyOfWebhookInputOutputFormatTypeItem
     {
-        HTML,
+        [EnumMember(Value = "HTML")]
+        Html,
         Text
     }
 }

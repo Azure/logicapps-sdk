@@ -216,7 +216,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MeetingInputConferenceCallInfoType
     {
-        PSTN,
+        [EnumMember(Value = "PSTN")]
+        Pstn,
         Free,
         Hybrid,
         Private,
@@ -255,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
     public class NewMeetingResponse
     {
         [JsonProperty("joinURL")]
-        public string JoinURL { get; set; }
+        public string JoinUrl { get; set; }
 
         [JsonProperty("meetingid")]
         public int MeetingId { get; set; }
@@ -301,7 +302,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewMeetingInputConferenceCallInfoType
     {
-        PSTN,
+        [EnumMember(Value = "PSTN")]
+        Pstn,
         Free,
         Hybrid,
         Private,

@@ -965,20 +965,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudconstituent")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiConstituentIdMap, ApiConnectionActionConfiguration> GetConstituentIdFromLookupId(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<NxtDataIntegrationApiConstituentIdMap, ApiConnectionActionConfiguration> GetConstituentIdFromLookupId(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiConstituentIdMap, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiConstituentIdMap, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/constituentidmap/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<NXTDataIntegrationApiConstituentIdMap>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiConstituentIdMap>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudconstituent")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiConstituentSearchResultCollection, ApiConnectionActionConfiguration> SearchConstituentEnhanced(Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> lookupId = null, Expression<Func<string>> email = null, Expression<Func<string>> phoneNumber = null, Expression<Func<int>> limit = null, Expression<Func<string>> addressLines = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postCode = null, Expression<Func<bool>> includeAlias = null, Expression<Func<string>> aliasType = null, Expression<Func<bool>> includeMaidenName = null)
+        public IBodyWorkflowAction<NxtDataIntegrationApiConstituentSearchResultCollection, ApiConnectionActionConfiguration> SearchConstituentEnhanced(Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> lookupId = null, Expression<Func<string>> email = null, Expression<Func<string>> phoneNumber = null, Expression<Func<int>> limit = null, Expression<Func<string>> addressLines = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postCode = null, Expression<Func<bool>> includeAlias = null, Expression<Func<string>> aliasType = null, Expression<Func<bool>> includeMaidenName = null)
         {
             var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: false);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: false);
@@ -993,7 +993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
             var __workflow_includeAlias = WorkflowExpression.Compile(includeAlias, nameof(includeAlias), required: false);
             var __workflow_aliasType = WorkflowExpression.Compile(aliasType, nameof(aliasType), required: false);
             var __workflow_includeMaidenName = WorkflowExpression.Compile(includeMaidenName, nameof(includeMaidenName), required: false);
-            return new DeferredBodyAction<NXTDataIntegrationApiConstituentSearchResultCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiConstituentSearchResultCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/constituents/customsearch";
                 var apiCallHttpMethod = "get";
@@ -1024,74 +1024,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
                     callPayload.Queries["alias_type"] = ExpressionConverter.Convert(__workflow_aliasType);
                 if (__workflow_includeMaidenName != null)
                     callPayload.Queries["include_maiden_name"] = ExpressionConverter.Convert(__workflow_includeMaidenName);
-                return new ApiConnectionAction<NXTDataIntegrationApiConstituentSearchResultCollection>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiConstituentSearchResultCollection>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudconstituent")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedConstituentTribute, ApiConnectionActionConfiguration> CreateConstituentTribute(Expression<Func<CreateConstituentTributeBodyInput>> body)
+        public IBodyWorkflowAction<NxtDataIntegrationApiCreatedConstituentTribute, ApiConnectionActionConfiguration> CreateConstituentTribute(Expression<Func<CreateConstituentTributeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiCreatedConstituentTribute, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiCreatedConstituentTribute, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/tribute";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NXTDataIntegrationApiCreatedConstituentTribute>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiCreatedConstituentTribute>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudconstituent")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiTribute, ApiConnectionActionConfiguration> GetConstituentTribute(Expression<Func<string>> tributeId)
+        public IBodyWorkflowAction<NxtDataIntegrationApiTribute, ApiConnectionActionConfiguration> GetConstituentTribute(Expression<Func<string>> tributeId)
         {
             var __workflow_tributeId = WorkflowExpression.Compile(tributeId, nameof(tributeId), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiTribute, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiTribute, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/tribute/{0}", __workflow_tributeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<NXTDataIntegrationApiTribute>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiTribute>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudconstituent")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedTributeAcknowledgee, ApiConnectionActionConfiguration> CreateTributeAcknowledgee(Expression<Func<CreateTributeAcknowledgeeBodyInput>> body)
+        public IBodyWorkflowAction<NxtDataIntegrationApiCreatedTributeAcknowledgee, ApiConnectionActionConfiguration> CreateTributeAcknowledgee(Expression<Func<CreateTributeAcknowledgeeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiCreatedTributeAcknowledgee, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiCreatedTributeAcknowledgee, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/tribute/acknowledgee";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NXTDataIntegrationApiCreatedTributeAcknowledgee>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiCreatedTributeAcknowledgee>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudconstituent")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiTributeCollection, ApiConnectionActionConfiguration> ListConstituentTributes(Expression<Func<int>> constituentId)
+        public IBodyWorkflowAction<NxtDataIntegrationApiTributeCollection, ApiConnectionActionConfiguration> ListConstituentTributes(Expression<Func<int>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiTributeCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiTributeCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/tribute/constituent/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<NXTDataIntegrationApiTributeCollection>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiTributeCollection>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudconstituent")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiTributeAcknowledgeeCollection, ApiConnectionActionConfiguration> ListTributeAcknowledgees(Expression<Func<int>> tributeId)
+        public IBodyWorkflowAction<NxtDataIntegrationApiTributeAcknowledgeeCollection, ApiConnectionActionConfiguration> ListTributeAcknowledgees(Expression<Func<int>> tributeId)
         {
             var __workflow_tributeId = WorkflowExpression.Compile(tributeId, nameof(tributeId), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiTributeAcknowledgeeCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiTributeAcknowledgeeCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/tribute/{0}/acknowledgees", __workflow_tributeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<NXTDataIntegrationApiTributeAcknowledgeeCollection>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiTributeAcknowledgeeCollection>(callPayload);
             });
         }
     }
@@ -1310,13 +1310,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Region { get; set; }
 
         [JsonProperty("cart")]
-        public string CART { get; set; }
+        public string Cart { get; set; }
 
         [JsonProperty("lot")]
-        public string LOT { get; set; }
+        public string Lot { get; set; }
 
         [JsonProperty("dpc")]
-        public string DPC { get; set; }
+        public string Dpc { get; set; }
 
         [JsonProperty("start")]
         public string ValidFrom { get; set; }
@@ -1394,13 +1394,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Region { get; set; }
 
         [JsonProperty("cart")]
-        public string CART { get; set; }
+        public string Cart { get; set; }
 
         [JsonProperty("lot")]
-        public string LOT { get; set; }
+        public string Lot { get; set; }
 
         [JsonProperty("dpc")]
-        public string DPC { get; set; }
+        public string Dpc { get; set; }
 
         [JsonProperty("start")]
         public string ValidFrom { get; set; }
@@ -2132,13 +2132,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Region { get; set; }
 
         [JsonProperty("cart")]
-        public string CART { get; set; }
+        public string Cart { get; set; }
 
         [JsonProperty("lot")]
-        public string LOT { get; set; }
+        public string Lot { get; set; }
 
         [JsonProperty("dpc")]
-        public string DPC { get; set; }
+        public string Dpc { get; set; }
 
         [JsonProperty("start")]
         public string ValidFrom { get; set; }
@@ -2240,7 +2240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -2252,7 +2252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -2464,7 +2464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Degree { get; set; }
 
         [JsonProperty("gpa")]
-        public double GPA { get; set; }
+        public double Gpa { get; set; }
 
         [JsonProperty("majors")]
         public string[] Majors { get; set; }
@@ -2913,10 +2913,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string ConstituentId { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
     }
 
     public class EditConstituentProfilePictureBodyInput
@@ -3068,7 +3068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -3099,7 +3099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -3276,7 +3276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Degree { get; set; }
 
         [JsonProperty("gpa")]
-        public double? GPA { get; set; }
+        public double? Gpa { get; set; }
 
         [JsonProperty("subject_of_study")]
         public string SubjectOfStudy { get; set; }
@@ -3375,7 +3375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Degree { get; set; }
 
         [JsonProperty("gpa")]
-        public double? GPA { get; set; }
+        public double? Gpa { get; set; }
 
         [JsonProperty("subject_of_study")]
         public string SubjectOfStudy { get; set; }
@@ -4261,19 +4261,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public double Value { get; set; }
     }
 
-    public class NXTDataIntegrationApiConstituentIdMap
+    public class NxtDataIntegrationApiConstituentIdMap
     {
         [JsonProperty("system_record_id")]
         public int Id { get; set; }
     }
 
-    public class NXTDataIntegrationApiConstituentSearchResultCollection
+    public class NxtDataIntegrationApiConstituentSearchResultCollection
     {
         [JsonProperty("results")]
-        public NXTDataIntegrationApiConstituentSearchResult[] Results { get; set; }
+        public NxtDataIntegrationApiConstituentSearchResult[] Results { get; set; }
     }
 
-    public class NXTDataIntegrationApiConstituentSearchResult
+    public class NxtDataIntegrationApiConstituentSearchResult
     {
         [JsonProperty("record_id")]
         public int Id { get; set; }
@@ -4309,7 +4309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Gender { get; set; }
 
         [JsonProperty("birth_date")]
-        public NXTDataIntegrationApiConstituentSearchResultBirthdateType Birthdate { get; set; }
+        public NxtDataIntegrationApiConstituentSearchResultBirthdateType Birthdate { get; set; }
 
         [JsonProperty("spouse_first_name")]
         public string SpouseFirstName { get; set; }
@@ -4354,7 +4354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public bool IsInactive { get; set; }
     }
 
-    public class NXTDataIntegrationApiConstituentSearchResultBirthdateType
+    public class NxtDataIntegrationApiConstituentSearchResultBirthdateType
     {
         [JsonProperty("d")]
         public int Day { get; set; }
@@ -4366,7 +4366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public int Year { get; set; }
     }
 
-    public class NXTDataIntegrationApiCreatedConstituentTribute
+    public class NxtDataIntegrationApiCreatedConstituentTribute
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -4405,7 +4405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public bool? Active { get; set; }
     }
 
-    public class NXTDataIntegrationApiTribute
+    public class NxtDataIntegrationApiTribute
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -4423,10 +4423,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string Description { get; set; }
 
         [JsonProperty("start_date")]
-        public NXTDataIntegrationApiTributeStartType Start { get; set; }
+        public NxtDataIntegrationApiTributeStartType Start { get; set; }
 
         [JsonProperty("end_date")]
-        public NXTDataIntegrationApiTributeEndType End { get; set; }
+        public NxtDataIntegrationApiTributeEndType End { get; set; }
 
         [JsonProperty("default_fund_id")]
         public int DefaultFundId { get; set; }
@@ -4447,7 +4447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public string DateModified { get; set; }
     }
 
-    public class NXTDataIntegrationApiTributeStartType
+    public class NxtDataIntegrationApiTributeStartType
     {
         [JsonProperty("d")]
         public int Day { get; set; }
@@ -4459,7 +4459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public int Year { get; set; }
     }
 
-    public class NXTDataIntegrationApiTributeEndType
+    public class NxtDataIntegrationApiTributeEndType
     {
         [JsonProperty("d")]
         public int Day { get; set; }
@@ -4471,7 +4471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public int Year { get; set; }
     }
 
-    public class NXTDataIntegrationApiCreatedTributeAcknowledgee
+    public class NxtDataIntegrationApiCreatedTributeAcknowledgee
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -4494,25 +4494,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         public int? LetterId { get; set; }
     }
 
-    public class NXTDataIntegrationApiTributeCollection
+    public class NxtDataIntegrationApiTributeCollection
     {
         [JsonProperty("count")]
         public int Count { get; set; }
 
         [JsonProperty("value")]
-        public NXTDataIntegrationApiTribute[] Value { get; set; }
+        public NxtDataIntegrationApiTribute[] Value { get; set; }
     }
 
-    public class NXTDataIntegrationApiTributeAcknowledgeeCollection
+    public class NxtDataIntegrationApiTributeAcknowledgeeCollection
     {
         [JsonProperty("count")]
         public int Count { get; set; }
 
         [JsonProperty("value")]
-        public NXTDataIntegrationApiTributeAcknowledgee[] Value { get; set; }
+        public NxtDataIntegrationApiTributeAcknowledgee[] Value { get; set; }
     }
 
-    public class NXTDataIntegrationApiTributeAcknowledgee
+    public class NxtDataIntegrationApiTributeAcknowledgee
     {
         [JsonProperty("id")]
         public int Id { get; set; }

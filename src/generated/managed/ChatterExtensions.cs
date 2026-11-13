@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public string Role { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("user")]
         public UserUserResponse User { get; set; }

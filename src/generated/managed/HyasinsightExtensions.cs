@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<PassivednsItem[], ApiConnectionActionConfiguration> PassiveDNS(Expression<Func<PassiveDNSIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<PassivednsItem[], ApiConnectionActionConfiguration> PassiveDns(Expression<Func<PassiveDnsIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<DynamicdnsItem[], ApiConnectionActionConfiguration> DynamicDNS(Expression<Func<DynamicDNSIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<DynamicdnsItem[], ApiConnectionActionConfiguration> DynamicDns(Expression<Func<DynamicDnsIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<PassivehashItem[], ApiConnectionActionConfiguration> PassiveHash(Expression<Func<PassiveDNSIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<PassivehashItem[], ApiConnectionActionConfiguration> PassiveHash(Expression<Func<PassiveDnsIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<Sslcertificate, ApiConnectionActionConfiguration> SSLCertificate(Expression<Func<SSLCertificateIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<Sslcertificate, ApiConnectionActionConfiguration> SslCertificate(Expression<Func<SslCertificateIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PassiveDNSIndicatorTypeInput
+    public enum PassiveDnsIndicatorTypeInput
     {
         [EnumMember(Value = "ipv4")]
         Ipv4,
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DynamicDNSIndicatorTypeInput
+    public enum DynamicDnsIndicatorTypeInput
     {
         [EnumMember(Value = "ip")]
         Ip,
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SSLCertificateIndicatorTypeInput
+    public enum SslCertificateIndicatorTypeInput
     {
         [EnumMember(Value = "hash")]
         Hash,
@@ -844,7 +844,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         public string IdnName { get; set; }
 
         [JsonProperty("meta_data")]
-        public string MetaData { get; set; }
+        public string Metadata { get; set; }
 
         [JsonProperty("name")]
         public string[] Name { get; set; }

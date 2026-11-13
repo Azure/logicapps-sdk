@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
-        public IBodyWorkflowAction<TreeCountMonthResponse, ApiConnectionActionConfiguration> TreeCountMonth(Expression<Func<string>> id, Expression<Func<string>> yYYYMM)
+        public IBodyWorkflowAction<TreeCountMonthResponse, ApiConnectionActionConfiguration> TreeCountMonth(Expression<Func<string>> id, Expression<Func<string>> yyyyMM)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_yYYYMM = WorkflowExpression.Compile(yYYYMM, nameof(yYYYMM), required: true);
+            var __workflow_yyyyMM = WorkflowExpression.Compile(yyyyMM, nameof(yyyyMM), required: true);
             return new DeferredBodyAction<TreeCountMonthResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enterprise/{0}/treeCount/{1}", __workflow_id.WithUrlEncoding(1), __workflow_yYYYMM.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enterprise/{0}/treeCount/{1}", __workflow_id.WithUrlEncoding(1), __workflow_yyyyMM.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TreeCountMonthResponse>(callPayload);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         public string ReforestationCompanyNameFr { get; set; }
 
         [JsonProperty("reforestationProjectImageURL_en")]
-        public string ReforestationProjectImageURLEn { get; set; }
+        public string ReforestationProjectImageUrlEn { get; set; }
 
         [JsonProperty("reforestationCompanyName_en")]
         public string ReforestationCompanyNameEn { get; set; }
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         public string Id { get; set; }
 
         [JsonProperty("reforestationProjectImageURL_fr")]
-        public string ReforestationProjectImageURLFr { get; set; }
+        public string ReforestationProjectImageUrlFr { get; set; }
     }
 
     public class TreePlantResponse

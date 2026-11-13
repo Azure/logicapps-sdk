@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePDF(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePdf(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -1025,20 +1025,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     public enum BodyInputDocumentSecurityTypeItemDocSecurityTypeType
     {
         [EnumMember(Value = "DENY ACCESS")]
-        DENYACCESS,
+        DenyAccess,
         [EnumMember(Value = "ALLOW ACCESS")]
-        ALLOWACCESS,
+        AllowAccess,
         [EnumMember(Value = "NO EDIT")]
-        NOEDIT
+        NOEdit
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputDocumentSecurityTypeItemOperationType
     {
-        ADD,
-        REMOVE,
+        [EnumMember(Value = "ADD")]
+        Add,
+        [EnumMember(Value = "REMOVE")]
+        Remove,
         [EnumMember(Value = "CLEAR ALL")]
-        CLEARALL
+        ClearAll
     }
 
     public class ModifyGroupResponse
@@ -1252,7 +1254,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateUsersUserTypeInput
     {
-        GFRUSERS
+        [EnumMember(Value = "GFRUSERS")]
+        Gfrusers
     }
 
     public class CreateUsersBodyInput
@@ -1301,8 +1304,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputUserTypeType
     {
-        GFRUSERS,
-        CLIENTFLOWUSERS
+        [EnumMember(Value = "GFRUSERS")]
+        Gfrusers,
+        [EnumMember(Value = "CLIENTFLOWUSERS")]
+        Clientflowusers
     }
 
     public class SetUserDocSecurityResponse
@@ -1346,9 +1351,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LicenseInput
     {
-        DEDICATED,
-        CONCURRENT,
-        FIRMFLOW
+        [EnumMember(Value = "DEDICATED")]
+        Dedicated,
+        [EnumMember(Value = "CONCURRENT")]
+        Concurrent,
+        [EnumMember(Value = "FIRMFLOW")]
+        Firmflow
     }
 
     public class ModifyUserResponse
@@ -1369,8 +1377,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetUsersUserTypeInput
     {
-        GFRUSERS,
-        CLIENTFLOWUSERS
+        [EnumMember(Value = "GFRUSERS")]
+        Gfrusers,
+        [EnumMember(Value = "CLIENTFLOWUSERS")]
+        Clientflowusers
     }
 
     public class ModifyUserBodyInput
@@ -1797,8 +1807,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputSortOrderType
     {
-        ASC,
-        DESC
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc
     }
 
     public class TaxsortDocumentResponseItem
@@ -2104,7 +2116,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string[] Indexes { get; set; }
         public string[] InformationFields { get; set; }
         public string OriginalDueDate { get; set; }
-        public string PIC { get; set; }
+
+        [JsonProperty("PIC")]
+        public string Pic { get; set; }
         public string PageNumber { get; set; }
         public string Priority { get; set; }
         public string ReceivedFrom { get; set; }
@@ -2348,7 +2362,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string ClientName { get; set; }
         public string ClientNumber { get; set; }
         public string EngagementType { get; set; }
-        public string PIC { get; set; }
+
+        [JsonProperty("PIC")]
+        public string Pic { get; set; }
         public string Year { get; set; }
         public string PeriodEnd { get; set; }
     }
@@ -2799,7 +2815,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string EngagementType { get; set; }
         public string Workflow { get; set; }
         public string CurrentStep { get; set; }
-        public string PIC { get; set; }
+
+        [JsonProperty("PIC")]
+        public string Pic { get; set; }
         public string AssignedTo { get; set; }
         public string AssignedOn { get; set; }
         public string WorkflowDescription { get; set; }
@@ -3178,7 +3196,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string EngagementType { get; set; }
         public string Workflow { get; set; }
         public string CurrentStep { get; set; }
-        public string PIC { get; set; }
+
+        [JsonProperty("PIC")]
+        public string Pic { get; set; }
         public string AssignedTo { get; set; }
         public string AssignedOn { get; set; }
         public string WorkflowDescription { get; set; }

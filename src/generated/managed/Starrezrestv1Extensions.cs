@@ -455,7 +455,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string DateCreated { get; set; }
         public string DateModified { get; set; }
         public bool DirectoryFlagPrivacy { get; set; }
-        public string DOB { get; set; }
+
+        [JsonProperty("DOB")]
+        public string Dob { get; set; }
 
         [JsonProperty("EntryApplicationID")]
         public int EntryApplicationId { get; set; }
@@ -467,11 +469,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EventID")]
         public int EventId { get; set; }
         public string GenderEnum { get; set; }
-        public string ID1 { get; set; }
-        public string ID2 { get; set; }
-        public string ID3 { get; set; }
-        public int ID4 { get; set; }
-        public int ID5 { get; set; }
+
+        [JsonProperty("ID1")]
+        public string Id1 { get; set; }
+
+        [JsonProperty("ID2")]
+        public string Id2 { get; set; }
+
+        [JsonProperty("ID3")]
+        public string Id3 { get; set; }
+
+        [JsonProperty("ID4")]
+        public int Id4 { get; set; }
+
+        [JsonProperty("ID5")]
+        public int Id5 { get; set; }
         public string LastCheckInOutDate { get; set; }
         public string NameFirst { get; set; }
         public string NameInitials { get; set; }
@@ -529,7 +541,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public BodyInputDateCreatedType DateCreated { get; set; }
         public BodyInputDateModifiedType DateModified { get; set; }
         public bool? DirectoryFlagPrivacy { get; set; }
-        public BodyInputDOBType DOB { get; set; }
+
+        [JsonProperty("DOB")]
+        public BodyInputDobType Dob { get; set; }
 
         [JsonProperty("EntryApplicationID")]
         public int? EntryApplicationId { get; set; }
@@ -541,11 +555,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EventID")]
         public int? EventId { get; set; }
         public BodyInputGenderEnumType? GenderEnum { get; set; }
-        public string ID1 { get; set; }
-        public string ID2 { get; set; }
-        public string ID3 { get; set; }
-        public int? ID4 { get; set; }
-        public int? ID5 { get; set; }
+
+        [JsonProperty("ID1")]
+        public string Id1 { get; set; }
+
+        [JsonProperty("ID2")]
+        public string Id2 { get; set; }
+
+        [JsonProperty("ID3")]
+        public string Id3 { get; set; }
+
+        [JsonProperty("ID4")]
+        public int? Id4 { get; set; }
+
+        [JsonProperty("ID5")]
+        public int? Id5 { get; set; }
         public BodyInputLastCheckInOutDateType LastCheckInOutDate { get; set; }
         public string NameFirst { get; set; }
         public string NameInitials { get; set; }
@@ -631,16 +655,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class BodyInputDOBType
+    public class BodyInputDobType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public BodyInputDOBTypeOperatorType? Operator { get; set; }
+        public BodyInputDobTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputDOBTypeOperatorType
+    public enum BodyInputDobTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -761,7 +785,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("ContactID")]
         public int ContactId { get; set; }
         public bool DirectoryFlagPrivacy { get; set; }
-        public string DOB { get; set; }
+
+        [JsonProperty("DOB")]
+        public string Dob { get; set; }
 
         [JsonProperty("EntryApplicationID")]
         public int EntryApplicationId { get; set; }
@@ -773,11 +799,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EventID")]
         public int EventId { get; set; }
         public string GenderEnum { get; set; }
-        public string ID1 { get; set; }
-        public string ID2 { get; set; }
-        public string ID3 { get; set; }
-        public int ID4 { get; set; }
-        public int ID5 { get; set; }
+
+        [JsonProperty("ID1")]
+        public string Id1 { get; set; }
+
+        [JsonProperty("ID2")]
+        public string Id2 { get; set; }
+
+        [JsonProperty("ID3")]
+        public string Id3 { get; set; }
+
+        [JsonProperty("ID4")]
+        public int Id4 { get; set; }
+
+        [JsonProperty("ID5")]
+        public int Id5 { get; set; }
         public string LastCheckInOutDate { get; set; }
         public string NameFirst { get; set; }
         public string NameInitials { get; set; }
@@ -825,7 +861,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("ContactID")]
         public int? ContactId { get; set; }
         public bool? DirectoryFlagPrivacy { get; set; }
-        public string DOB { get; set; }
+
+        [JsonProperty("DOB")]
+        public string Dob { get; set; }
 
         [JsonProperty("EntryApplicationID")]
         public int? EntryApplicationId { get; set; }
@@ -834,11 +872,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EventID")]
         public int? EventId { get; set; }
         public BodyInputGenderEnumType? GenderEnum { get; set; }
-        public string ID1 { get; set; }
-        public string ID2 { get; set; }
-        public string ID3 { get; set; }
-        public int? ID4 { get; set; }
-        public int? ID5 { get; set; }
+
+        [JsonProperty("ID1")]
+        public string Id1 { get; set; }
+
+        [JsonProperty("ID2")]
+        public string Id2 { get; set; }
+
+        [JsonProperty("ID3")]
+        public string Id3 { get; set; }
+
+        [JsonProperty("ID4")]
+        public int? Id4 { get; set; }
+
+        [JsonProperty("ID5")]
+        public int? Id5 { get; set; }
         public string LastCheckInOutDate { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -884,7 +932,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("ContactID")]
         public int ContactId { get; set; }
         public bool DirectoryFlagPrivacy { get; set; }
-        public string DOB { get; set; }
+
+        [JsonProperty("DOB")]
+        public string Dob { get; set; }
 
         [JsonProperty("EntryApplicationID")]
         public int EntryApplicationId { get; set; }
@@ -896,11 +946,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EventID")]
         public int EventId { get; set; }
         public string GenderEnum { get; set; }
-        public string ID1 { get; set; }
-        public string ID2 { get; set; }
-        public string ID3 { get; set; }
-        public int ID4 { get; set; }
-        public int ID5 { get; set; }
+
+        [JsonProperty("ID1")]
+        public string Id1 { get; set; }
+
+        [JsonProperty("ID2")]
+        public string Id2 { get; set; }
+
+        [JsonProperty("ID3")]
+        public string Id3 { get; set; }
+
+        [JsonProperty("ID4")]
+        public int Id4 { get; set; }
+
+        [JsonProperty("ID5")]
+        public int Id5 { get; set; }
         public string LastCheckInOutDate { get; set; }
         public string NameFirst { get; set; }
         public string NameInitials { get; set; }
@@ -942,7 +1002,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("ContactID")]
         public int? ContactId { get; set; }
         public bool? DirectoryFlagPrivacy { get; set; }
-        public string DOB { get; set; }
+
+        [JsonProperty("DOB")]
+        public string Dob { get; set; }
 
         [JsonProperty("EntryApplicationID")]
         public int? EntryApplicationId { get; set; }
@@ -951,11 +1013,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EventID")]
         public int? EventId { get; set; }
         public BodyInputGenderEnumType? GenderEnum { get; set; }
-        public string ID1 { get; set; }
-        public string ID2 { get; set; }
-        public string ID3 { get; set; }
-        public int? ID4 { get; set; }
-        public int? ID5 { get; set; }
+
+        [JsonProperty("ID1")]
+        public string Id1 { get; set; }
+
+        [JsonProperty("ID2")]
+        public string Id2 { get; set; }
+
+        [JsonProperty("ID3")]
+        public string Id3 { get; set; }
+
+        [JsonProperty("ID4")]
+        public int? Id4 { get; set; }
+
+        [JsonProperty("ID5")]
+        public int? Id5 { get; set; }
         public string LastCheckInOutDate { get; set; }
         public string NameFirst { get; set; }
         public string NameInitials { get; set; }
@@ -2389,8 +2461,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("End_BookingReasonID")]
         public int EndBookingReasonId { get; set; }
         public string EntryStatusEnum { get; set; }
-        public string ETA { get; set; }
-        public string ETD { get; set; }
+
+        [JsonProperty("ETA")]
+        public string Eta { get; set; }
+
+        [JsonProperty("ETD")]
+        public string Etd { get; set; }
 
         [JsonProperty("HousekeepingID")]
         public int HousekeepingId { get; set; }
@@ -2498,8 +2574,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("End_BookingReasonID")]
         public int? EndBookingReasonId { get; set; }
         public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
-        public string ETA { get; set; }
-        public string ETD { get; set; }
+
+        [JsonProperty("ETA")]
+        public string Eta { get; set; }
+
+        [JsonProperty("ETD")]
+        public string Etd { get; set; }
 
         [JsonProperty("HousekeepingID")]
         public int? HousekeepingId { get; set; }
@@ -2736,9 +2816,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("CountryOfResidence_CountryID")]
         public int CountryOfResidenceCountryId { get; set; }
-        public double CumulativeGPA { get; set; }
+
+        [JsonProperty("CumulativeGPA")]
+        public double CumulativeGpa { get; set; }
         public double CumulativeHours { get; set; }
-        public double CurrentGPA { get; set; }
+
+        [JsonProperty("CurrentGPA")]
+        public double CurrentGpa { get; set; }
         public double CurrentHours { get; set; }
         public string CurrentMajor { get; set; }
         public string CurrentMinor { get; set; }
@@ -2864,9 +2948,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("CountryOfResidence_CountryID")]
         public int? CountryOfResidenceCountryId { get; set; }
-        public double? CumulativeGPA { get; set; }
+
+        [JsonProperty("CumulativeGPA")]
+        public double? CumulativeGpa { get; set; }
         public double? CumulativeHours { get; set; }
-        public double? CurrentGPA { get; set; }
+
+        [JsonProperty("CurrentGPA")]
+        public double? CurrentGpa { get; set; }
         public double? CurrentHours { get; set; }
         public string CurrentMajor { get; set; }
         public string CurrentMinor { get; set; }
@@ -3147,9 +3235,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("CountryOfResidence_CountryID")]
         public int CountryOfResidenceCountryId { get; set; }
-        public double CumulativeGPA { get; set; }
+
+        [JsonProperty("CumulativeGPA")]
+        public double CumulativeGpa { get; set; }
         public double CumulativeHours { get; set; }
-        public double CurrentGPA { get; set; }
+
+        [JsonProperty("CurrentGPA")]
+        public double CurrentGpa { get; set; }
         public double CurrentHours { get; set; }
         public string CurrentMajor { get; set; }
         public string CurrentMinor { get; set; }
@@ -3263,9 +3355,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("CountryOfResidence_CountryID")]
         public int? CountryOfResidenceCountryId { get; set; }
-        public double? CumulativeGPA { get; set; }
+
+        [JsonProperty("CumulativeGPA")]
+        public double? CumulativeGpa { get; set; }
         public double? CumulativeHours { get; set; }
-        public double? CurrentGPA { get; set; }
+
+        [JsonProperty("CurrentGPA")]
+        public double? CurrentGpa { get; set; }
         public double? CurrentHours { get; set; }
         public string CurrentMajor { get; set; }
         public string CurrentMinor { get; set; }
@@ -3752,8 +3848,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EntryInvitationID")]
         public int EntryInvitationId { get; set; }
         public string EntryStatusEnum { get; set; }
-        public string ETA { get; set; }
-        public string ETD { get; set; }
+
+        [JsonProperty("ETA")]
+        public string Eta { get; set; }
+
+        [JsonProperty("ETD")]
+        public string Etd { get; set; }
         public double Excess { get; set; }
 
         [JsonProperty("GroupID")]
@@ -3858,8 +3958,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EntryInvitationID")]
         public int? EntryInvitationId { get; set; }
         public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
-        public string ETA { get; set; }
-        public string ETD { get; set; }
+
+        [JsonProperty("ETA")]
+        public string Eta { get; set; }
+
+        [JsonProperty("ETD")]
+        public string Etd { get; set; }
         public double? Excess { get; set; }
 
         [JsonProperty("GroupID")]
@@ -4086,8 +4190,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EntryInvitationID")]
         public int EntryInvitationId { get; set; }
         public string EntryStatusEnum { get; set; }
-        public string ETA { get; set; }
-        public string ETD { get; set; }
+
+        [JsonProperty("ETA")]
+        public string Eta { get; set; }
+
+        [JsonProperty("ETD")]
+        public string Etd { get; set; }
         public double Excess { get; set; }
 
         [JsonProperty("GroupID")]
@@ -4180,8 +4288,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EntryInvitationID")]
         public int? EntryInvitationId { get; set; }
         public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
-        public string ETA { get; set; }
-        public string ETD { get; set; }
+
+        [JsonProperty("ETA")]
+        public string Eta { get; set; }
+
+        [JsonProperty("ETD")]
+        public string Etd { get; set; }
         public double? Excess { get; set; }
 
         [JsonProperty("GroupID")]
@@ -4273,8 +4385,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EntryInvitationID")]
         public int EntryInvitationId { get; set; }
         public string EntryStatusEnum { get; set; }
-        public string ETA { get; set; }
-        public string ETD { get; set; }
+
+        [JsonProperty("ETA")]
+        public string Eta { get; set; }
+
+        [JsonProperty("ETD")]
+        public string Etd { get; set; }
         public double Excess { get; set; }
 
         [JsonProperty("GroupID")]
@@ -4362,8 +4478,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("EntryInvitationID")]
         public int? EntryInvitationId { get; set; }
         public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
-        public string ETA { get; set; }
-        public string ETD { get; set; }
+
+        [JsonProperty("ETA")]
+        public string Eta { get; set; }
+
+        [JsonProperty("ETD")]
+        public string Etd { get; set; }
         public double? Excess { get; set; }
 
         [JsonProperty("GroupID")]
@@ -5093,7 +5213,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public double ContractorCost { get; set; }
         public double ContractorCostEstimate { get; set; }
         public string ContractorDate { get; set; }
-        public string ContractorETA { get; set; }
+
+        [JsonProperty("ContractorETA")]
+        public string ContractorEta { get; set; }
         public string ContractorOrderNumber { get; set; }
 
         [JsonProperty("CreatedBy_SecurityUserID")]
@@ -5184,7 +5306,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public double? ContractorCost { get; set; }
         public double? ContractorCostEstimate { get; set; }
         public BodyInputContractorDateType ContractorDate { get; set; }
-        public string ContractorETA { get; set; }
+
+        [JsonProperty("ContractorETA")]
+        public string ContractorEta { get; set; }
         public string ContractorOrderNumber { get; set; }
 
         [JsonProperty("CreatedBy_SecurityUserID")]
@@ -5369,7 +5493,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public double ContractorCost { get; set; }
         public double ContractorCostEstimate { get; set; }
         public string ContractorDate { get; set; }
-        public string ContractorETA { get; set; }
+
+        [JsonProperty("ContractorETA")]
+        public string ContractorEta { get; set; }
         public string ContractorOrderNumber { get; set; }
 
         [JsonProperty("CreatedBy_SecurityUserID")]
@@ -5454,7 +5580,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public double? ContractorCost { get; set; }
         public double? ContractorCostEstimate { get; set; }
         public string ContractorDate { get; set; }
-        public string ContractorETA { get; set; }
+
+        [JsonProperty("ContractorETA")]
+        public string ContractorEta { get; set; }
         public string ContractorOrderNumber { get; set; }
         public bool? CustomBit1 { get; set; }
         public bool? CustomBit2 { get; set; }
@@ -5526,7 +5654,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public double ContractorCost { get; set; }
         public double ContractorCostEstimate { get; set; }
         public string ContractorDate { get; set; }
-        public string ContractorETA { get; set; }
+
+        [JsonProperty("ContractorETA")]
+        public string ContractorEta { get; set; }
         public string ContractorOrderNumber { get; set; }
 
         [JsonProperty("CreatedBy_SecurityUserID")]
@@ -5606,7 +5736,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public double? ContractorCost { get; set; }
         public double? ContractorCostEstimate { get; set; }
         public string ContractorDate { get; set; }
-        public string ContractorETA { get; set; }
+
+        [JsonProperty("ContractorETA")]
+        public string ContractorEta { get; set; }
         public string ContractorOrderNumber { get; set; }
         public bool? CustomBit1 { get; set; }
         public bool? CustomBit2 { get; set; }

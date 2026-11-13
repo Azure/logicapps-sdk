@@ -64,19 +64,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
         Codabar,
         Datamatrix,
         [EnumMember(Value = "EAN-8")]
-        EAN8,
+        Ean8,
         [EnumMember(Value = "EAN-13")]
-        EAN13,
-        ITF,
+        Ean13,
+        [EnumMember(Value = "ITF")]
+        Itf,
         [EnumMember(Value = "MSI Plessey")]
-        MSIPlessey,
-        PDF417,
+        MsiPlessey,
+        [EnumMember(Value = "PDF417")]
+        Pdf417,
         [EnumMember(Value = "QR Code")]
         QRCode,
         [EnumMember(Value = "UPC-A")]
-        UPCA,
+        UpcA,
         [EnumMember(Value = "UPC-E")]
-        UPCE
+        UpcE
     }
 }
 

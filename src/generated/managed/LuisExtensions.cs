@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
     public class PredictResponse
     {
         [JsonProperty("luisPrediciton")]
-        public string LUISPrediction { get; set; }
+        public string LuisPrediction { get; set; }
 
         [JsonProperty("isDesiredIntent")]
         public bool IsDesiredIntent { get; set; }

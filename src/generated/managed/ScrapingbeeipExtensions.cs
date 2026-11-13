@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
     public class ScrapingbeeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
-        public IBodyWorkflowAction<HTMLResponse, ApiConnectionActionConfiguration> HTML(Expression<Func<string>> url, Expression<Func<bool>> renderJs, Expression<Func<string>> jsScenario = null, Expression<Func<int>> wait = null, Expression<Func<string>> waitFor = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockResources = null, Expression<Func<int>> windowWidth = null, Expression<Func<int>> windowHeight = null, Expression<Func<bool>> premiumProxy = null, Expression<Func<string>> countryCode = null, Expression<Func<bool>> stealthProxy = null, Expression<Func<string>> ownProxy = null, Expression<Func<string>> extractRules = null, Expression<Func<bool>> screenshot = null, Expression<Func<string>> screenshotSelector = null, Expression<Func<bool>> screenshotFullPage = null, Expression<Func<bool>> returnPageSource = null, Expression<Func<int>> sessionId = null, Expression<Func<int>> timeout = null, Expression<Func<string>> cookies = null, Expression<Func<DeviceInput>> device = null, Expression<Func<bool>> customGoogle = null)
+        public IBodyWorkflowAction<HtmlResponse, ApiConnectionActionConfiguration> Html(Expression<Func<string>> url, Expression<Func<bool>> renderJs, Expression<Func<string>> jsScenario = null, Expression<Func<int>> wait = null, Expression<Func<string>> waitFor = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockResources = null, Expression<Func<int>> windowWidth = null, Expression<Func<int>> windowHeight = null, Expression<Func<bool>> premiumProxy = null, Expression<Func<string>> countryCode = null, Expression<Func<bool>> stealthProxy = null, Expression<Func<string>> ownProxy = null, Expression<Func<string>> extractRules = null, Expression<Func<bool>> screenshot = null, Expression<Func<string>> screenshotSelector = null, Expression<Func<bool>> screenshotFullPage = null, Expression<Func<bool>> returnPageSource = null, Expression<Func<int>> sessionId = null, Expression<Func<int>> timeout = null, Expression<Func<string>> cookies = null, Expression<Func<DeviceInput>> device = null, Expression<Func<bool>> customGoogle = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_renderJs = WorkflowExpression.Compile(renderJs, nameof(renderJs), required: true);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
             var __workflow_cookies = WorkflowExpression.Compile(cookies, nameof(cookies), required: false);
             var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: false);
             var __workflow_customGoogle = WorkflowExpression.Compile(customGoogle, nameof(customGoogle), required: false);
-            return new DeferredBodyAction<HTMLResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<HtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1";
                 var apiCallHttpMethod = "get";
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
                     callPayload.Queries["device"] = ExpressionConverter.Convert(__workflow_device);
                 if (__workflow_customGoogle != null)
                     callPayload.Queries["custom_google"] = ExpressionConverter.Convert(__workflow_customGoogle);
-                return new ApiConnectionAction<HTMLResponse>(callPayload);
+                return new ApiConnectionAction<HtmlResponse>(callPayload);
             });
         }
 
@@ -139,13 +139,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
     {
     }
 
-    public class HTMLResponse
+    public class HtmlResponse
     {
         [JsonProperty("body")]
         public string Body { get; set; }
 
         [JsonProperty("cookies")]
-        public HTMLResponseCookiesTypeItem[] Cookies { get; set; }
+        public HtmlResponseCookiesTypeItem[] Cookies { get; set; }
 
         [JsonProperty("evaluate_results")]
         public string[] EvaluateResults { get; set; }
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public JToken JsScenarioReport { get; set; }
 
         [JsonProperty("headers")]
-        public HTMLResponseHeadersType Headers { get; set; }
+        public HtmlResponseHeadersType Headers { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string[] Iframes { get; set; }
 
         [JsonProperty("xhr")]
-        public HTMLResponseXhrTypeItem[] Xhr { get; set; }
+        public HtmlResponseXhrTypeItem[] Xhr { get; set; }
 
         [JsonProperty("cost")]
         public int Cost { get; set; }
@@ -175,10 +175,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string ResolvedUrl { get; set; }
 
         [JsonProperty("metadata")]
-        public HTMLResponseMetadataType Metadata { get; set; }
+        public HtmlResponseMetadataType Metadata { get; set; }
     }
 
-    public class HTMLResponseCookiesTypeItem
+    public class HtmlResponseCookiesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public int SourcePort { get; set; }
     }
 
-    public class HTMLResponseHeadersType
+    public class HtmlResponseHeadersType
     {
         [JsonProperty("age")]
         public string Age { get; set; }
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string XVercelId { get; set; }
     }
 
-    public class HTMLResponseXhrTypeItem
+    public class HtmlResponseXhrTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -280,13 +280,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string Method { get; set; }
 
         [JsonProperty("headers")]
-        public HTMLResponseXhrTypeItemHeadersType Headers { get; set; }
+        public HtmlResponseXhrTypeItemHeadersType Headers { get; set; }
 
         [JsonProperty("body")]
         public string Body { get; set; }
     }
 
-    public class HTMLResponseXhrTypeItemHeadersType
+    public class HtmlResponseXhrTypeItemHeadersType
     {
         [JsonProperty("age")]
         public string Age { get; set; }
@@ -358,22 +358,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string XAmznTraceId { get; set; }
     }
 
-    public class HTMLResponseMetadataType
+    public class HtmlResponseMetadataType
     {
         [JsonProperty("microdata")]
         public string[] Microdata { get; set; }
 
         [JsonProperty("json-ld")]
-        public HTMLResponseMetadataTypeJsonLdTypeItem[] JsonLd { get; set; }
+        public HtmlResponseMetadataTypeJsonLdTypeItem[] JsonLd { get; set; }
 
         [JsonProperty("opengraph")]
-        public HTMLResponseMetadataTypeOpengraphTypeItem[] Opengraph { get; set; }
+        public HtmlResponseMetadataTypeOpengraphTypeItem[] Opengraph { get; set; }
 
         [JsonProperty("dublincore")]
-        public HTMLResponseMetadataTypeDublincoreTypeItem[] Dublincore { get; set; }
+        public HtmlResponseMetadataTypeDublincoreTypeItem[] Dublincore { get; set; }
     }
 
-    public class HTMLResponseMetadataTypeJsonLdTypeItem
+    public class HtmlResponseMetadataTypeJsonLdTypeItem
     {
         [JsonProperty("@context")]
         public string Context { get; set; }
@@ -391,19 +391,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string Description { get; set; }
 
         [JsonProperty("mainEntityOfPage")]
-        public HTMLResponseMetadataTypeJsonLdTypeItemMainEntityOfPageType MainEntityOfPage { get; set; }
+        public HtmlResponseMetadataTypeJsonLdTypeItemMainEntityOfPageType MainEntityOfPage { get; set; }
 
         [JsonProperty("image")]
-        public HTMLResponseMetadataTypeJsonLdTypeItemImageType Image { get; set; }
+        public HtmlResponseMetadataTypeJsonLdTypeItemImageType Image { get; set; }
 
         [JsonProperty("publisher")]
-        public HTMLResponseMetadataTypeJsonLdTypeItemPublisherType Publisher { get; set; }
+        public HtmlResponseMetadataTypeJsonLdTypeItemPublisherType Publisher { get; set; }
 
         [JsonProperty("sameAs")]
         public string SameAs { get; set; }
     }
 
-    public class HTMLResponseMetadataTypeJsonLdTypeItemMainEntityOfPageType
+    public class HtmlResponseMetadataTypeJsonLdTypeItemMainEntityOfPageType
     {
         [JsonProperty("@type")]
         public string Type { get; set; }
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string Url { get; set; }
     }
 
-    public class HTMLResponseMetadataTypeJsonLdTypeItemImageType
+    public class HtmlResponseMetadataTypeJsonLdTypeItemImageType
     {
         [JsonProperty("@type")]
         public string Type { get; set; }
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string Url { get; set; }
     }
 
-    public class HTMLResponseMetadataTypeJsonLdTypeItemPublisherType
+    public class HtmlResponseMetadataTypeJsonLdTypeItemPublisherType
     {
         [JsonProperty("@type")]
         public string Type { get; set; }
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string Url { get; set; }
     }
 
-    public class HTMLResponseMetadataTypeOpengraphTypeItem
+    public class HtmlResponseMetadataTypeOpengraphTypeItem
     {
         [JsonProperty("og:title")]
         public string OgTitle { get; set; }
@@ -454,19 +454,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string Type { get; set; }
 
         [JsonProperty("@context")]
-        public HTMLResponseMetadataTypeOpengraphTypeItemContextType Context { get; set; }
+        public HtmlResponseMetadataTypeOpengraphTypeItemContextType Context { get; set; }
     }
 
-    public class HTMLResponseMetadataTypeOpengraphTypeItemContextType
+    public class HtmlResponseMetadataTypeOpengraphTypeItemContextType
     {
         [JsonProperty("og")]
         public string Og { get; set; }
     }
 
-    public class HTMLResponseMetadataTypeDublincoreTypeItem
+    public class HtmlResponseMetadataTypeDublincoreTypeItem
     {
         [JsonProperty("elements")]
-        public HTMLResponseMetadataTypeDublincoreTypeItemElementsTypeItem[] Elements { get; set; }
+        public HtmlResponseMetadataTypeDublincoreTypeItemElementsTypeItem[] Elements { get; set; }
 
         [JsonProperty("terms")]
         public string[] Terms { get; set; }
@@ -475,14 +475,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public JToken Context { get; set; }
     }
 
-    public class HTMLResponseMetadataTypeDublincoreTypeItemElementsTypeItem
+    public class HtmlResponseMetadataTypeDublincoreTypeItemElementsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("content")]
         public string Content { get; set; }
-        public string URI { get; set; }
+
+        [JsonProperty("URI")]
+        public string Uri { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -515,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
     public class SimpleSearchResponse
     {
         [JsonProperty("meta_data")]
-        public SimpleSearchResponseMetaDataType MetaData { get; set; }
+        public SimpleSearchResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("organic_results")]
         public SimpleSearchResponseOrganicResultsTypeItem[] OrganicResults { get; set; }
@@ -536,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string[] Questions { get; set; }
     }
 
-    public class SimpleSearchResponseMetaDataType
+    public class SimpleSearchResponseMetadataType
     {
         [JsonProperty("url")]
         public string Url { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
     public class OpenpmActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<PackagesResponse, ApiConnectionActionConfiguration> PackagesGET(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<PackagesResponse, ApiConnectionActionConfiguration> PackagesGet(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesPOST(Expression<Func<BodyInput>> body)
+        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> Packages(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Package, ApiConnectionActionConfiguration>(() =>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<Package[], ApiConnectionActionConfiguration> PackagesLookupGET(Expression<Func<string>> ids = null)
+        public IBodyWorkflowAction<Package[], ApiConnectionActionConfiguration> PackagesLookupGet(Expression<Func<string>> ids = null)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             return new DeferredBodyAction<Package[], ApiConnectionActionConfiguration>(() =>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesByPackageIdGET(Expression<Func<string>> packageId)
+        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesByPackageIdGet(Expression<Func<string>> packageId)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             return new DeferredBodyAction<Package, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesByPackageIdPOST(Expression<Func<string>> packageId, Expression<Func<BodyInput>> body)
+        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesByPackageId(Expression<Func<string>> packageId, Expression<Func<BodyInput>> body)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<PackagesOpenapiResponse, ApiConnectionActionConfiguration> PackagesOpenapiByPackageIdGET(Expression<Func<string>> packageId, Expression<Func<FormatInput>> format = null)
+        public IBodyWorkflowAction<PackagesOpenapiResponse, ApiConnectionActionConfiguration> PackagesOpenapiByPackageIdGet(Expression<Func<string>> packageId, Expression<Func<FormatInput>> format = null)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<AiPlugin, ApiConnectionActionConfiguration> PackagesAiPluginByPackageIdGET(Expression<Func<string>> packageId)
+        public IBodyWorkflowAction<AiPlugin, ApiConnectionActionConfiguration> PackagesAiPluginByPackageIdGet(Expression<Func<string>> packageId)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             return new DeferredBodyAction<AiPlugin, ApiConnectionActionConfiguration>(() =>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<AiPlugin[], ApiConnectionActionConfiguration> AiPluginsSearchGET(Expression<Func<string>> query, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<AiPlugin[], ApiConnectionActionConfiguration> AiPluginsSearchGet(Expression<Func<string>> query, Expression<Func<int>> limit = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<AiPlugin[], ApiConnectionActionConfiguration> AiPluginsLookupGET(Expression<Func<string>> ids = null)
+        public IBodyWorkflowAction<AiPlugin[], ApiConnectionActionConfiguration> AiPluginsLookupGet(Expression<Func<string>> ids = null)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             return new DeferredBodyAction<AiPlugin[], ApiConnectionActionConfiguration>(() =>

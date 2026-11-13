@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
     public class NistnvdipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnvdip")]
-        public IBodyWorkflowAction<GetCVECollectionResponse, ApiConnectionActionConfiguration> GetCVECollection(Expression<Func<GetCVECollectionAddOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<string>> cvssV2Metrics = null, Expression<Func<CvssV2SeverityInput>> cvssV2Severity = null, Expression<Func<string>> cvssV3Metrics = null, Expression<Func<CvssV3SeverityInput>> cvssV3Severity = null, Expression<Func<string>> cweId = null, Expression<Func<bool>> includeMatchStringChange = null, Expression<Func<bool>> isExactMatch = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<string>> pubStartDate = null, Expression<Func<string>> pubEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
+        public IBodyWorkflowAction<GetCveCollectionResponse, ApiConnectionActionConfiguration> GetCveCollection(Expression<Func<GetCveCollectionAddOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<string>> cvssV2Metrics = null, Expression<Func<CvssV2SeverityInput>> cvssV2Severity = null, Expression<Func<string>> cvssV3Metrics = null, Expression<Func<CvssV3SeverityInput>> cvssV3Severity = null, Expression<Func<string>> cweId = null, Expression<Func<bool>> includeMatchStringChange = null, Expression<Func<bool>> isExactMatch = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<string>> pubStartDate = null, Expression<Func<string>> pubEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
         {
             var __workflow_addOns = WorkflowExpression.Compile(addOns, nameof(addOns), required: false);
             var __workflow_cpeMatchString = WorkflowExpression.Compile(cpeMatchString, nameof(cpeMatchString), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
             var __workflow_pubEndDate = WorkflowExpression.Compile(pubEndDate, nameof(pubEndDate), required: false);
             var __workflow_resultsPerPage = WorkflowExpression.Compile(resultsPerPage, nameof(resultsPerPage), required: false);
             var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
-            return new DeferredBodyAction<GetCVECollectionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCveCollectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cves/1.0/";
                 var apiCallHttpMethod = "get";
@@ -68,12 +68,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
                     callPayload.Queries["resultsPerPage"] = ExpressionConverter.Convert(__workflow_resultsPerPage);
                 if (__workflow_startIndex != null)
                     callPayload.Queries["startIndex"] = ExpressionConverter.Convert(__workflow_startIndex);
-                return new ApiConnectionAction<GetCVECollectionResponse>(callPayload);
+                return new ApiConnectionAction<GetCveCollectionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnvdip")]
-        public IBodyWorkflowAction<GetCPECollectionResponse, ApiConnectionActionConfiguration> GetCPECollection(Expression<Func<GetCPECollectionAddOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<bool>> includeDeprecated = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
+        public IBodyWorkflowAction<GetCpeCollectionResponse, ApiConnectionActionConfiguration> GetCpeCollection(Expression<Func<GetCpeCollectionAddOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<bool>> includeDeprecated = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
         {
             var __workflow_addOns = WorkflowExpression.Compile(addOns, nameof(addOns), required: false);
             var __workflow_cpeMatchString = WorkflowExpression.Compile(cpeMatchString, nameof(cpeMatchString), required: false);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
             var __workflow_modEndDate = WorkflowExpression.Compile(modEndDate, nameof(modEndDate), required: false);
             var __workflow_resultsPerPage = WorkflowExpression.Compile(resultsPerPage, nameof(resultsPerPage), required: false);
             var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
-            return new DeferredBodyAction<GetCPECollectionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCpeCollectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cpes/1.0/";
                 var apiCallHttpMethod = "get";
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
                     callPayload.Queries["resultsPerPage"] = ExpressionConverter.Convert(__workflow_resultsPerPage);
                 if (__workflow_startIndex != null)
                     callPayload.Queries["startIndex"] = ExpressionConverter.Convert(__workflow_startIndex);
-                return new ApiConnectionAction<GetCPECollectionResponse>(callPayload);
+                return new ApiConnectionAction<GetCpeCollectionResponse>(callPayload);
             });
         }
     }
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
     {
     }
 
-    public class GetCVECollectionResponse
+    public class GetCveCollectionResponse
     {
         [JsonProperty("resultsPerPage")]
         public int ResultsPerPage { get; set; }
@@ -127,37 +127,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public int TotalResults { get; set; }
 
         [JsonProperty("result")]
-        public GetCVECollectionResponseResultType Result { get; set; }
+        public GetCveCollectionResponseResultType Result { get; set; }
     }
 
-    public class GetCVECollectionResponseResultType
+    public class GetCveCollectionResponseResultType
     {
         [JsonProperty("CVE_data_type")]
-        public string CVEDataType { get; set; }
+        public string CveDataType { get; set; }
 
         [JsonProperty("CVE_data_format")]
-        public string CVEDataFormat { get; set; }
+        public string CveDataFormat { get; set; }
 
         [JsonProperty("CVE_data_version")]
-        public string CVEDataVersion { get; set; }
+        public string CveDataVersion { get; set; }
 
         [JsonProperty("CVE_data_timestamp")]
-        public string CVEDataTimestamp { get; set; }
+        public string CveDataTimestamp { get; set; }
 
         [JsonProperty("CVE_Items")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItem[] CVEItems { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItem[] CveItems { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItem
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItem
     {
         [JsonProperty("cve")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemCveType Cve { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemCveType Cve { get; set; }
 
         [JsonProperty("configurations")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemConfigurationsType Configurations { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemConfigurationsType Configurations { get; set; }
 
         [JsonProperty("impact")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemImpactType Impact { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemImpactType Impact { get; set; }
 
         [JsonProperty("publishedDate")]
         public string PublishedDate { get; set; }
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public string LastModifiedDate { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemCveType
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemCveType
     {
         [JsonProperty("data_type")]
         public string DataType { get; set; }
@@ -178,38 +178,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public string DataVersion { get; set; }
 
         [JsonProperty("CVE_data_meta")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeCVEDataMetaType CVEDataMeta { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeCveDataMetaType CveDataMeta { get; set; }
 
         [JsonProperty("problemtype")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeProblemtypeType Problemtype { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeProblemtypeType Problemtype { get; set; }
 
         [JsonProperty("references")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeReferencesType References { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeReferencesType References { get; set; }
 
         [JsonProperty("description")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeDescriptionType Description { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeDescriptionType Description { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeCVEDataMetaType
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeCveDataMetaType
     {
         [JsonProperty("ID")]
         public string Id { get; set; }
-        public string ASSIGNER { get; set; }
+
+        [JsonProperty("ASSIGNER")]
+        public string Assigner { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeProblemtypeType
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeProblemtypeType
     {
         [JsonProperty("problemtype_data")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeProblemtypeTypeProblemtypeDataTypeItem[] ProblemtypeData { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeProblemtypeTypeProblemtypeDataTypeItem[] ProblemtypeData { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeProblemtypeTypeProblemtypeDataTypeItem
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeProblemtypeTypeProblemtypeDataTypeItem
     {
         [JsonProperty("description")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeProblemtypeTypeProblemtypeDataTypeItemDescriptionTypeItem[] Description { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeProblemtypeTypeProblemtypeDataTypeItemDescriptionTypeItem[] Description { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeProblemtypeTypeProblemtypeDataTypeItemDescriptionTypeItem
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeProblemtypeTypeProblemtypeDataTypeItemDescriptionTypeItem
     {
         [JsonProperty("lang")]
         public string Lang { get; set; }
@@ -218,13 +220,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public string Value { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeReferencesType
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeReferencesType
     {
         [JsonProperty("reference_data")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeReferencesTypeReferenceDataTypeItem[] ReferenceData { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeReferencesTypeReferenceDataTypeItem[] ReferenceData { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeReferencesTypeReferenceDataTypeItem
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeReferencesTypeReferenceDataTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -239,13 +241,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public string[] Tags { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeDescriptionType
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeDescriptionType
     {
         [JsonProperty("description_data")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeDescriptionTypeDescriptionDataTypeItem[] DescriptionData { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeDescriptionTypeDescriptionDataTypeItem[] DescriptionData { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeDescriptionTypeDescriptionDataTypeItem
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemCveTypeDescriptionTypeDescriptionDataTypeItem
     {
         [JsonProperty("lang")]
         public string Lang { get; set; }
@@ -254,16 +256,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public string Value { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemConfigurationsType
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemConfigurationsType
     {
         [JsonProperty("CVE_data_version")]
-        public string CVEDataVersion { get; set; }
+        public string CveDataVersion { get; set; }
 
         [JsonProperty("nodes")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemConfigurationsTypeNodesTypeItem[] Nodes { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemConfigurationsTypeNodesTypeItem[] Nodes { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemConfigurationsTypeNodesTypeItem
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemConfigurationsTypeNodesTypeItem
     {
         [JsonProperty("operator")]
         public string Operator { get; set; }
@@ -272,10 +274,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public JToken[] Children { get; set; }
 
         [JsonProperty("cpe_match")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemConfigurationsTypeNodesTypeItemCpeMatchTypeItem[] CpeMatch { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemConfigurationsTypeNodesTypeItemCpeMatchTypeItem[] CpeMatch { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemConfigurationsTypeNodesTypeItemCpeMatchTypeItem
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemConfigurationsTypeNodesTypeItemCpeMatchTypeItem
     {
         [JsonProperty("vulnerable")]
         public bool Vulnerable { get; set; }
@@ -287,10 +289,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public string VersionEndExcluding { get; set; }
 
         [JsonProperty("cpe_name")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemConfigurationsTypeNodesTypeItemCpeMatchTypeItemCpeNameTypeItem[] CpeName { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemConfigurationsTypeNodesTypeItemCpeMatchTypeItemCpeNameTypeItem[] CpeName { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemConfigurationsTypeNodesTypeItemCpeMatchTypeItemCpeNameTypeItem
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemConfigurationsTypeNodesTypeItemCpeMatchTypeItemCpeNameTypeItem
     {
         [JsonProperty("cpe23Uri")]
         public string Cpe23Uri { get; set; }
@@ -299,19 +301,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public string LastModifiedDate { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemImpactType
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemImpactType
     {
         [JsonProperty("baseMetricV3")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemImpactTypeBaseMetricV3Type BaseMetricV3 { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemImpactTypeBaseMetricV3Type BaseMetricV3 { get; set; }
 
         [JsonProperty("baseMetricV2")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemImpactTypeBaseMetricV2Type BaseMetricV2 { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemImpactTypeBaseMetricV2Type BaseMetricV2 { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemImpactTypeBaseMetricV3Type
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemImpactTypeBaseMetricV3Type
     {
         [JsonProperty("cvssV3")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemImpactTypeBaseMetricV3TypeCvssV3Type CvssV3 { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemImpactTypeBaseMetricV3TypeCvssV3Type CvssV3 { get; set; }
 
         [JsonProperty("exploitabilityScore")]
         public JToken ExploitabilityScore { get; set; }
@@ -320,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public JToken ImpactScore { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemImpactTypeBaseMetricV3TypeCvssV3Type
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemImpactTypeBaseMetricV3TypeCvssV3Type
     {
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -359,10 +361,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public string BaseSeverity { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemImpactTypeBaseMetricV2Type
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemImpactTypeBaseMetricV2Type
     {
         [JsonProperty("cvssV2")]
-        public GetCVECollectionResponseResultTypeCVEItemsTypeItemImpactTypeBaseMetricV2TypeCvssV2Type CvssV2 { get; set; }
+        public GetCveCollectionResponseResultTypeCveItemsTypeItemImpactTypeBaseMetricV2TypeCvssV2Type CvssV2 { get; set; }
 
         [JsonProperty("severity")]
         public string Severity { get; set; }
@@ -389,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public bool UserInteractionRequired { get; set; }
     }
 
-    public class GetCVECollectionResponseResultTypeCVEItemsTypeItemImpactTypeBaseMetricV2TypeCvssV2Type
+    public class GetCveCollectionResponseResultTypeCveItemsTypeItemImpactTypeBaseMetricV2TypeCvssV2Type
     {
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -420,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetCVECollectionAddOnsInput
+    public enum GetCveCollectionAddOnsInput
     {
         [EnumMember(Value = "dictionaryCpes")]
         DictionaryCpes
@@ -429,21 +431,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CvssV2SeverityInput
     {
-        LOW,
-        MEDIUM,
-        HIGH
+        [EnumMember(Value = "LOW")]
+        Low,
+        [EnumMember(Value = "MEDIUM")]
+        Medium,
+        [EnumMember(Value = "HIGH")]
+        High
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CvssV3SeverityInput
     {
-        LOW,
-        MEDIUM,
-        HIGH,
-        CRITICAL
+        [EnumMember(Value = "LOW")]
+        Low,
+        [EnumMember(Value = "MEDIUM")]
+        Medium,
+        [EnumMember(Value = "HIGH")]
+        High,
+        [EnumMember(Value = "CRITICAL")]
+        Critical
     }
 
-    public class GetCPECollectionResponse
+    public class GetCpeCollectionResponse
     {
         [JsonProperty("resultsPerPage")]
         public int ResultsPerPage { get; set; }
@@ -455,10 +464,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public int TotalResults { get; set; }
 
         [JsonProperty("result")]
-        public GetCPECollectionResponseResultType Result { get; set; }
+        public GetCpeCollectionResponseResultType Result { get; set; }
     }
 
-    public class GetCPECollectionResponseResultType
+    public class GetCpeCollectionResponseResultType
     {
         [JsonProperty("dataType")]
         public string DataType { get; set; }
@@ -473,10 +482,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public string FeedTimestamp { get; set; }
 
         [JsonProperty("cpes")]
-        public GetCPECollectionResponseResultTypeCpesTypeItem[] Cpes { get; set; }
+        public GetCpeCollectionResponseResultTypeCpesTypeItem[] Cpes { get; set; }
     }
 
-    public class GetCPECollectionResponseResultTypeCpesTypeItem
+    public class GetCpeCollectionResponseResultTypeCpesTypeItem
     {
         [JsonProperty("deprecated")]
         public bool Deprecated { get; set; }
@@ -488,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public string LastModifiedDate { get; set; }
 
         [JsonProperty("titles")]
-        public GetCPECollectionResponseResultTypeCpesTypeItemTitlesTypeItem[] Titles { get; set; }
+        public GetCpeCollectionResponseResultTypeCpesTypeItemTitlesTypeItem[] Titles { get; set; }
 
         [JsonProperty("refs")]
         public JToken[] Refs { get; set; }
@@ -500,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public JToken[] Vulnerabilities { get; set; }
     }
 
-    public class GetCPECollectionResponseResultTypeCpesTypeItemTitlesTypeItem
+    public class GetCpeCollectionResponseResultTypeCpesTypeItemTitlesTypeItem
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -510,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetCPECollectionAddOnsInput
+    public enum GetCpeCollectionAddOnsInput
     {
         [EnumMember(Value = "cves")]
         Cves

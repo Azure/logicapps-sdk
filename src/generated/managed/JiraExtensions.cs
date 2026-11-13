@@ -113,11 +113,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpJiraIssueManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<McpQueryResponse, ApiConnectionActionConfiguration> McpJiraIssueManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<McpQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcp/JiraIssueManagement";
                 var apiCallHttpMethod = "post";
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 if (__workflow_queryRequest != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
-                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                return new ApiConnectionAction<McpQueryResponse>(callPayload);
             });
         }
 
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
             });
         }
 
-        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration> OnNewIssueJQLDatacenter(Expression<Func<string>> jql, Expression<Func<string>> xRequestJirainstance = null)
+        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration> OnNewIssueJqlDatacenter(Expression<Func<string>> jql, Expression<Func<string>> xRequestJirainstance = null)
         {
             var __workflow_jql = WorkflowExpression.Compile(jql, nameof(jql), required: true);
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
             });
         }
 
-        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration> OnNewIssueJQL(Expression<Func<string>> jql, Expression<Func<string>> xRequestJirainstance = null)
+        public IBodyWorkflowTrigger<FullIssue[], ApiConnectionPollingTriggerConfiguration> OnNewIssueJql(Expression<Func<string>> jql, Expression<Func<string>> xRequestJirainstance = null)
         {
             var __workflow_jql = WorkflowExpression.Compile(jql, nameof(jql), required: true);
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: false);
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string SiteName { get; set; }
 
         [JsonProperty("url")]
-        public string SiteURL { get; set; }
+        public string SiteUrl { get; set; }
     }
 
     public class ListIssuesResponse
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string Body { get; set; }
     }
 
-    public class MCPQueryResponse
+    public class McpQueryResponse
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }
@@ -973,7 +973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string IssueKey { get; set; }
 
         [JsonProperty("self")]
-        public string IssueURL { get; set; }
+        public string IssueUrl { get; set; }
 
         [JsonProperty("fields")]
         public FullIssueFieldsType Fields { get; set; }
@@ -1011,7 +1011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         [JsonProperty("timeestimate")]
         public int TimeEstimate { get; set; }
 
-        [JsonProperty("aggregatetimeestimate")]
+        [JsonProperty("aggregatetimeoriginalestimate")]
         public int AggregateTimeEstimate { get; set; }
 
         [JsonProperty("assignee")]
@@ -1028,6 +1028,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
 
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        [JsonProperty("aggregatetimeestimate")]
+        public int AggregateTimeEstimate2 { get; set; }
 
         [JsonProperty("summary")]
         public string Summary { get; set; }
@@ -1063,7 +1066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string IssueTypeDescription { get; set; }
 
         [JsonProperty("iconUrl")]
-        public string IssueTypeIconURL { get; set; }
+        public string IssueTypeIconUrl { get; set; }
 
         [JsonProperty("name")]
         public string IssueTypeName { get; set; }
@@ -1087,7 +1090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
     public class FullIssueFieldsTypeResolutionType
     {
         [JsonProperty("self")]
-        public string URLOfTheIssueResolution { get; set; }
+        public string UrlOfTheIssueResolution { get; set; }
 
         [JsonProperty("id")]
         public string IdOfTheIssueResolution { get; set; }
@@ -1102,7 +1105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
     public class FullIssueFieldsTypePriorityType
     {
         [JsonProperty("iconUrl")]
-        public string PriorityIconURL { get; set; }
+        public string PriorityIconUrl { get; set; }
 
         [JsonProperty("name")]
         public string PriorityName { get; set; }
@@ -1132,7 +1135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string StatusDescription { get; set; }
 
         [JsonProperty("iconUrl")]
-        public string StatusIconURL { get; set; }
+        public string StatusIconUrl { get; set; }
 
         [JsonProperty("name")]
         public string StatusName { get; set; }
@@ -1240,7 +1243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string Name { get; set; }
 
         [JsonProperty("jql")]
-        public string JQL { get; set; }
+        public string Jql { get; set; }
     }
 
     public class ListProjectsResponseV2

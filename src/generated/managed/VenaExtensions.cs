@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportLIDs(Expression<Func<string>> modelIdPath, Expression<Func<LidsBodyInput>> lidsBody)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportLids(Expression<Func<string>> modelIdPath, Expression<Func<LidsBodyInput>> lidsBody)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
             var __workflow_lidsBody = WorkflowExpression.Compile(lidsBody, nameof(lidsBody), required: true);
@@ -86,13 +86,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         public bool? ShowHeader { get; set; } = false;
 
         [JsonProperty("queryString")]
-        public string MQLQueryString { get; set; }
+        public string MqlQueryString { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FileFormat? FileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.FileFormat.CSV;
+        public FileFormat? FileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.FileFormat.Csv;
 
         [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Encoding? FileEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.Encoding.UTF8;
+        public Encoding? FileEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.Encoding.Utf8;
 
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Destination { get; set; } = "ToCSV";
@@ -101,18 +101,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FileFormat
     {
-        CSV,
-        PSV,
-        TDF
+        [EnumMember(Value = "CSV")]
+        Csv,
+        [EnumMember(Value = "PSV")]
+        Psv,
+        [EnumMember(Value = "TDF")]
+        Tdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Encoding
     {
         [EnumMember(Value = "UTF-8")]
-        UTF8,
+        Utf8,
         [EnumMember(Value = "UTF-16")]
-        UTF16,
+        Utf16,
         Cp1252
     }
 
@@ -122,19 +125,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         public bool? ShowHeader { get; set; } = false;
 
         [JsonProperty("queryString")]
-        public string MQLQueryString { get; set; }
+        public string MqlQueryString { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FileFormat? FileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.FileFormat.CSV;
+        public FileFormat? FileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.FileFormat.Csv;
 
         [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Encoding? FileEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.Encoding.UTF8;
+        public Encoding? FileEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.Encoding.Utf8;
 
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Destination { get; set; } = "ToCSV";
 
         [JsonProperty("exportMemberIds", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ExportMemberIDs { get; set; } = false;
+        public bool? ExportMemberIds { get; set; } = false;
     }
 
     public class ValuesBodyInput
@@ -143,19 +146,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         public bool? ShowHeader { get; set; } = false;
 
         [JsonProperty("queryString")]
-        public string MQLQueryString { get; set; }
+        public string MqlQueryString { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FileFormat? FileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.FileFormat.CSV;
+        public FileFormat? FileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.FileFormat.Csv;
 
         [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Encoding? FileEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.Encoding.UTF8;
+        public Encoding? FileEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.Encoding.Utf8;
 
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Destination { get; set; } = "ToCSV";
 
         [JsonProperty("includeExternalId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IncludeExternalIDs { get; set; } = false;
+        public bool? IncludeExternalIds { get; set; } = false;
 
         [JsonProperty("isNamedHeader", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? NamedDimensions { get; set; } = false;

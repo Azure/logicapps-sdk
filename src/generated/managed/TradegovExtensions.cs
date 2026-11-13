@@ -13,14 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
     public class TradegovActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<BSPResponse, ApiConnectionActionConfiguration> BusinessServiceProvidersSearch(Expression<Func<string>> q = null, Expression<Func<string>> categories = null, Expression<Func<string>> itaOffices = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<BspResponse, ApiConnectionActionConfiguration> BusinessServiceProvidersSearch(Expression<Func<string>> q = null, Expression<Func<string>> categories = null, Expression<Func<string>> itaOffices = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
             var __workflow_itaOffices = WorkflowExpression.Compile(itaOffices, nameof(itaOffices), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<BSPResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<BspResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/business_service_providers/v1/search";
                 var apiCallHttpMethod = "get";
@@ -35,19 +35,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
-                return new ApiConnectionAction<BSPResponse>(callPayload);
+                return new ApiConnectionAction<BspResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<BSPCountResponse, ApiConnectionActionConfiguration> BusinessServiceProvidersCount()
+        public IBodyWorkflowAction<BspCountResponse, ApiConnectionActionConfiguration> BusinessServiceProvidersCount()
         {
-            return new DeferredBodyAction<BSPCountResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<BspCountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/business_service_providers/v1/count";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<BSPCountResponse>(callPayload);
+                return new ApiConnectionAction<BspCountResponse>(callPayload);
             });
         }
 
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ITAOfficeSearchResponse, ApiConnectionActionConfiguration> ITAOfficeLocationsSearch(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> states = null, Expression<Func<string>> assignedZipCodes = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ItaOfficeSearchResponse, ApiConnectionActionConfiguration> ItaOfficeLocationsSearch(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> states = null, Expression<Func<string>> assignedZipCodes = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_countryCodes = WorkflowExpression.Compile(countryCodes, nameof(countryCodes), required: false);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var __workflow_assignedZipCodes = WorkflowExpression.Compile(assignedZipCodes, nameof(assignedZipCodes), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ITAOfficeSearchResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ItaOfficeSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ita_office_locations/v1/search";
                 var apiCallHttpMethod = "get";
@@ -176,19 +176,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
-                return new ApiConnectionAction<ITAOfficeSearchResponse>(callPayload);
+                return new ApiConnectionAction<ItaOfficeSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ITAOfficeCountResponse, ApiConnectionActionConfiguration> ITAOfficeLocationsCount()
+        public IBodyWorkflowAction<ItaOfficeCountResponse, ApiConnectionActionConfiguration> ItaOfficeLocationsCount()
         {
-            return new DeferredBodyAction<ITAOfficeCountResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ItaOfficeCountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ita_office_locations/v1/count";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ITAOfficeCountResponse>(callPayload);
+                return new ApiConnectionAction<ItaOfficeCountResponse>(callPayload);
             });
         }
 
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
     {
     }
 
-    public class BSPResponse
+    public class BspResponse
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -314,13 +314,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         public int NextOffset { get; set; }
 
         [JsonProperty("results")]
-        public BSPItem[] Results { get; set; }
+        public BspItem[] Results { get; set; }
 
         [JsonProperty("aggregations")]
-        public BSPResponseAggregationsType Aggregations { get; set; }
+        public BspResponseAggregationsType Aggregations { get; set; }
     }
 
-    public class BSPItem
+    public class BspItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         public string ContactTitle { get; set; }
     }
 
-    public class BSPResponseAggregationsType
+    public class BspResponseAggregationsType
     {
         [JsonProperty("categories")]
         public AggregationItem[] Categories { get; set; }
@@ -377,16 +377,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         public string Value { get; set; }
     }
 
-    public class BSPCountResponse
+    public class BspCountResponse
     {
         [JsonProperty("total")]
         public int Total { get; set; }
 
         [JsonProperty("aggregations")]
-        public BSPCountResponseAggregationsType Aggregations { get; set; }
+        public BspCountResponseAggregationsType Aggregations { get; set; }
     }
 
-    public class BSPCountResponseAggregationsType
+    public class BspCountResponseAggregationsType
     {
         [JsonProperty("categories")]
         public AggregationItem[] Categories { get; set; }
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         public string Comment { get; set; }
     }
 
-    public class ITAOfficeSearchResponse
+    public class ItaOfficeSearchResponse
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -590,13 +590,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         public int NextOffset { get; set; }
 
         [JsonProperty("results")]
-        public ITAOffice[] Results { get; set; }
+        public ItaOffice[] Results { get; set; }
 
         [JsonProperty("aggregations")]
-        public ITAOfficeSearchResponseAggregationsType Aggregations { get; set; }
+        public ItaOfficeSearchResponseAggregationsType Aggregations { get; set; }
     }
 
-    public class ITAOffice
+    public class ItaOffice
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         public string[] AssignedZipCodes { get; set; }
     }
 
-    public class ITAOfficeSearchResponseAggregationsType
+    public class ItaOfficeSearchResponseAggregationsType
     {
         [JsonProperty("country_codes")]
         public AggregationItem[] CountryCodes { get; set; }
@@ -653,16 +653,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         public AggregationItem[] States { get; set; }
     }
 
-    public class ITAOfficeCountResponse
+    public class ItaOfficeCountResponse
     {
         [JsonProperty("total")]
         public int Total { get; set; }
 
         [JsonProperty("aggregations")]
-        public ITAOfficeCountResponseAggregationsType Aggregations { get; set; }
+        public ItaOfficeCountResponseAggregationsType Aggregations { get; set; }
     }
 
-    public class ITAOfficeCountResponseAggregationsType
+    public class ItaOfficeCountResponseAggregationsType
     {
         [JsonProperty("country_codes")]
         public AggregationItem[] CountryCodes { get; set; }

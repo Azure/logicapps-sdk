@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
     public class EndpointInput
     {
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

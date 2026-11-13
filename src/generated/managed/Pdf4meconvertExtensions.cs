@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CustomApi(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
         {
             var __workflow_featurePath = WorkflowExpression.Compile(featurePath, nameof(featurePath), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         public BodyInputAuthTypeType? AuthType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputAuthTypeType.NoAuth;
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -380,15 +380,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SchemaValInput
     {
-        PDF,
-        BMP,
-        GIF,
-        PNG,
-        JPG,
-        SVG,
-        TIFF,
-        HTML,
-        VSDX
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "BMP")]
+        Bmp,
+        [EnumMember(Value = "GIF")]
+        Gif,
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "SVG")]
+        Svg,
+        [EnumMember(Value = "TIFF")]
+        Tiff,
+        [EnumMember(Value = "HTML")]
+        Html,
+        [EnumMember(Value = "VSDX")]
+        Vsdx
     }
 
     public class CreatePdfABodyInput
@@ -471,7 +480,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         [EnumMember(Value = "")]
         None,
         Excel,
-        CSV
+        [EnumMember(Value = "CSV")]
+        Csv
     }
 
     public class PdfToPowerPointBodyInput

@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public DocumentFileInfoFileStream[] File { get; set; }
 
         [JsonProperty("signatureType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AgreementCreationInfoIdFileStreamInputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoIdFileStreamInputSignatureTypeType.ESIGN;
+        public AgreementCreationInfoIdFileStreamInputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoIdFileStreamInputSignatureTypeType.Esign;
 
         [JsonProperty("participantSetsInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParticipantCreateSetInfoV6[] Unnamed { get; set; }
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public EmailOption EmailOption { get; set; } = new EmailOption();
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal AgreementCreationInfoIdFileStreamInputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoIdFileStreamInputStateType.INPROCESS;
+        internal AgreementCreationInfoIdFileStreamInputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoIdFileStreamInputStateType.InProcess;
     }
 
     public class DocumentFileInfoFileStream
@@ -626,8 +626,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoIdFileStreamInputSignatureTypeType
     {
-        ESIGN,
-        WRITTEN
+        [EnumMember(Value = "ESIGN")]
+        Esign,
+        [EnumMember(Value = "WRITTEN")]
+        Written
     }
 
     public class ParticipantCreateSetInfoV6
@@ -644,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public int Order { get; set; } = 1;
 
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParticipantCreateSetInfoV6RoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.ParticipantCreateSetInfoV6RoleType.SIGNER;
+        public ParticipantCreateSetInfoV6RoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.ParticipantCreateSetInfoV6RoleType.Signer;
     }
 
     public class CreateAgreementByFileStreamMemberInfosV6
@@ -676,12 +678,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateAgreementByFileStreamMemberInfosV6UnnamedTypeAuthenticationType
     {
-        NONE,
-        PASSWORD,
-        PHONE,
-        KBA,
+        [EnumMember(Value = "NONE")]
+        None,
+        [EnumMember(Value = "PASSWORD")]
+        Password,
+        [EnumMember(Value = "PHONE")]
+        Phone,
+        [EnumMember(Value = "KBA")]
+        Kba,
         [EnumMember(Value = "ADOBE_SIGN")]
-        ADOBESIGN
+        AdobeSign
     }
 
     public class CreateAgreementByFileStreamMemberInfosV6UnnamedTypeUnnamedType
@@ -696,23 +702,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ParticipantCreateSetInfoV6RoleType
     {
-        SIGNER,
-        APPROVER,
-        ACCEPTOR,
+        [EnumMember(Value = "SIGNER")]
+        Signer,
+        [EnumMember(Value = "APPROVER")]
+        Approver,
+        [EnumMember(Value = "ACCEPTOR")]
+        Acceptor,
         [EnumMember(Value = "CERTIFIED_RECIPIENT")]
-        CERTIFIEDRECIPIENT,
+        CertifiedRecipient,
         [EnumMember(Value = "FORM_FILLER")]
-        FORMFILLER,
+        FormFiller,
         [EnumMember(Value = "DELEGATE_TO_SIGNER")]
-        DELEGATETOSIGNER,
+        DelegateToSigner,
         [EnumMember(Value = "DELEGATE_TO_APPROVER")]
-        DELEGATETOAPPROVER,
+        DelegateToApprover,
         [EnumMember(Value = "DELEGATE_TO_ACCEPTOR")]
-        DELEGATETOACCEPTOR,
+        DelegateToAcceptor,
         [EnumMember(Value = "DELEGATE_TO_CERTIFIED_RECIPIENT")]
-        DELEGATETOCERTIFIEDRECIPIENT,
+        DelegateToCertifiedRecipient,
         [EnumMember(Value = "DELEGATE_TO_FORM_FILLER")]
-        DELEGATETOFORMFILLER
+        DelegateToFormFiller
     }
 
     public class AgreementCcInfo
@@ -725,9 +734,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     public enum AgreementCreationInfoIdFileStreamInputReminderFrequencyType
     {
         [EnumMember(Value = "DAILY_UNTIL_SIGNED")]
-        DAILYUNTILSIGNED,
+        DailyUntilSigned,
         [EnumMember(Value = "WEEKLY_UNTIL_SIGNED")]
-        WEEKLYUNTILSIGNED
+        WeeklyUntilSigned
     }
 
     public class AgreementCreationInfoIdFileStreamInputSecurityOptionType
@@ -751,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public string RedirectDelay { get; set; }
 
         [JsonProperty("redirectUrl")]
-        public string RedirectURL { get; set; }
+        public string RedirectUrl { get; set; }
     }
 
     public class EmailOption
@@ -763,23 +772,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     public class EmailOptionSendOptionsType
     {
         [JsonProperty("initEmails", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EmailOptionSendOptionsTypeInitialEmailsType? InitialEmails { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.EmailOptionSendOptionsTypeInitialEmailsType.ALL;
+        public EmailOptionSendOptionsTypeInitialEmailsType? InitialEmails { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.EmailOptionSendOptionsTypeInitialEmailsType.All;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EmailOptionSendOptionsTypeInitialEmailsType
     {
-        ALL,
-        NONE
+        [EnumMember(Value = "ALL")]
+        All,
+        [EnumMember(Value = "NONE")]
+        None
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoIdFileStreamInputStateType
     {
-        AUTHORING,
-        DRAFT,
+        [EnumMember(Value = "AUTHORING")]
+        Authoring,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
         [EnumMember(Value = "IN_PROCESS")]
-        INPROCESS
+        InProcess
     }
 
     public class CancelAgreementInput
@@ -869,10 +882,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserWidgetV6StatusType
     {
-        AUTHORING,
-        ACTIVE,
-        DRAFT,
-        DISABLED
+        [EnumMember(Value = "AUTHORING")]
+        Authoring,
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
+        [EnumMember(Value = "DISABLED")]
+        Disabled
     }
 
     public class UserWorkflowListV6
@@ -917,20 +934,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserWorkflowV6StatusType
     {
-        ACTIVE,
-        DRAFT,
-        INACTIVE,
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
+        [EnumMember(Value = "INACTIVE")]
+        Inactive,
         [EnumMember(Value = "HIDDEN")]
-        HIdDEN,
-        OTHER
+        Hidden,
+        [EnumMember(Value = "OTHER")]
+        Other
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserWorkflowV6ScopeType
     {
-        ACCOUNT,
-        GROUP,
-        OTHER
+        [EnumMember(Value = "ACCOUNT")]
+        Account,
+        [EnumMember(Value = "GROUP")]
+        Group,
+        [EnumMember(Value = "OTHER")]
+        Other
     }
 
     public class WorkflowDescriptionV6
@@ -1056,10 +1080,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WorkflowLibraryDocumentV6SharingModeType
     {
-        USER,
-        GROUP,
-        ACCOUNT,
-        GLOBAL
+        [EnumMember(Value = "USER")]
+        User,
+        [EnumMember(Value = "GROUP")]
+        Group,
+        [EnumMember(Value = "ACCOUNT")]
+        Account,
+        [EnumMember(Value = "GLOBAL")]
+        Global
     }
 
     public class MergeFieldInfoDescriptionV6
@@ -1122,55 +1150,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RecipientsListInfoDescriptionV6AuthenticationMethodType
     {
-        NONE,
-        KBA,
-        PASSWORD,
+        [EnumMember(Value = "NONE")]
+        None,
+        [EnumMember(Value = "KBA")]
+        Kba,
+        [EnumMember(Value = "PASSWORD")]
+        Password,
         [EnumMember(Value = "WEB_IDENTITY")]
-        WEBIdENTITY,
-        PHONE,
+        WebIdentity,
+        [EnumMember(Value = "PHONE")]
+        Phone,
         [EnumMember(Value = "ADOBE_SIGN")]
-        ADOBESIGN
+        AdobeSign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RecipientsListInfoDescriptionV6RoleType
     {
-        SIGNER,
-        APPROVER,
-        ACCEPTOR,
+        [EnumMember(Value = "SIGNER")]
+        Signer,
+        [EnumMember(Value = "APPROVER")]
+        Approver,
+        [EnumMember(Value = "ACCEPTOR")]
+        Acceptor,
         [EnumMember(Value = "FORM_FILLER")]
-        FORMFILLER,
+        FormFiller,
         [EnumMember(Value = "CERTIFIED_RECIPIENT")]
-        CERTIFIEDRECIPIENT,
+        CertifiedRecipient,
         [EnumMember(Value = "DELEGATE_TO_SIGNER")]
-        DELEGATETOSIGNER,
+        DelegateToSigner,
         [EnumMember(Value = "DELEGATE_TO_APPROVER")]
-        DELEGATETOAPPROVER,
+        DelegateToApprover,
         [EnumMember(Value = "DELEGATE_TO_ACCEPTOR")]
-        DELEGATETOACCEPTOR,
+        DelegateToAcceptor,
         [EnumMember(Value = "DELEGATE_TO_FORM_FILLER")]
-        DELEGATETOFORMFILLER,
+        DelegateToFormFiller,
         [EnumMember(Value = "DELEGATE_TO_CERTIFIED_RECIPIENT")]
-        DELEGATETOCERTIFIEDRECIPIENT
+        DelegateToCertifiedRecipient
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WorkflowDescriptionV6ScopeType
     {
-        ACCOUNT,
-        GROUP,
-        OTHER
+        [EnumMember(Value = "ACCOUNT")]
+        Account,
+        [EnumMember(Value = "GROUP")]
+        Group,
+        [EnumMember(Value = "OTHER")]
+        Other
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WorkflowDescriptionV6StatusType
     {
-        ACTIVE,
-        DRAFT,
-        INACTIVE,
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
+        [EnumMember(Value = "INACTIVE")]
+        Inactive,
         [EnumMember(Value = "HIDDEN")]
-        HIdDEN,
-        OTHER
+        Hidden,
+        [EnumMember(Value = "OTHER")]
+        Other
     }
 
     public class UserGroupsInfoV6
@@ -1206,8 +1248,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserGroupInfoV6StatusType
     {
-        ACTIVE,
-        DELETED
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "DELETED")]
+        Deleted
     }
 
     public class SettingsInfoV6
@@ -1304,61 +1348,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     public enum UserAgreementV6StatusType
     {
         [EnumMember(Value = "WAITING_FOR_MY_SIGNATURE")]
-        WAITINGFORMYSIGNATURE,
+        WaitingForMySignature,
         [EnumMember(Value = "WAITING_FOR_MY_APPROVAL")]
-        WAITINGFORMYAPPROVAL,
+        WaitingForMyApproval,
         [EnumMember(Value = "WAITING_FOR_MY_DELEGATION")]
-        WAITINGFORMYDELEGATION,
+        WaitingForMyDelegation,
         [EnumMember(Value = "WAITING_FOR_MY_ACKNOWLEDGEMENT")]
-        WAITINGFORMYACKNOWLEDGEMENT,
+        WaitingForMyAcknowledgement,
         [EnumMember(Value = "WAITING_FOR_MY_ACCEPTANCE")]
-        WAITINGFORMYACCEPTANCE,
+        WaitingForMyAcceptance,
         [EnumMember(Value = "WAITING_FOR_MY_FORM_FILLING")]
-        WAITINGFORMYFORMFILLING,
+        WaitingForMyFormFilling,
         [EnumMember(Value = "OUT_FOR_SIGNATURE")]
-        OUTFORSIGNATURE,
+        OutForSignature,
         [EnumMember(Value = "OUT_FOR_APPROVAL")]
-        OUTFORAPPROVAL,
+        OutForApproval,
         [EnumMember(Value = "OUT_FOR_DELIVERY")]
-        OUTFORDELIVERY,
+        OutForDelivery,
         [EnumMember(Value = "OUT_FOR_ACCEPTANCE")]
-        OUTFORACCEPTANCE,
+        OutForAcceptance,
         [EnumMember(Value = "OUT_FOR_FORM_FILLING")]
-        OUTFORFORMFILLING,
+        OutForFormFilling,
         [EnumMember(Value = "FORM_FILLED")]
-        FORMFILLED,
-        DELIVERED,
-        CANCELLED,
-        SIGNED,
-        APPROVED,
-        RECALLED,
+        FormFilled,
+        [EnumMember(Value = "DELIVERED")]
+        Delivered,
+        [EnumMember(Value = "CANCELLED")]
+        Cancelled,
+        [EnumMember(Value = "SIGNED")]
+        Signed,
+        [EnumMember(Value = "APPROVED")]
+        Approved,
+        [EnumMember(Value = "RECALLED")]
+        Recalled,
         [EnumMember(Value = "WAITING_FOR_FAXIN")]
-        WAITINGFORFAXIN,
-        ARCHIVED,
-        FORM,
-        EXPIRED,
+        WaitingForFaxin,
+        [EnumMember(Value = "ARCHIVED")]
+        Archived,
+        [EnumMember(Value = "FORM")]
+        Form,
+        [EnumMember(Value = "EXPIRED")]
+        Expired,
         [EnumMember(Value = "WIDGET")]
-        WIdGET,
+        Widget,
         [EnumMember(Value = "WAITING_FOR_PREFILL")]
-        WAITINGFORPREFILL,
+        WaitingForPrefill,
         [EnumMember(Value = "DOCUMENTS_NOT_YET_PROCESSED")]
-        DOCUMENTSNOTYETPROCESSED,
+        DocumentsNotYetProcessed,
         [EnumMember(Value = "WAITING_FOR_MY_VERIFICATION")]
-        WAITINGFORMYVERIFICATION,
+        WaitingForMyVerification,
         [EnumMember(Value = "WAITING_FOR_VERIFICATION")]
-        WAITINGFORVERIFICATION,
+        WaitingForVerification,
         [EnumMember(Value = "WAITING_FOR_AUTHORING")]
-        WAITINGFORAUTHORING
+        WaitingForAuthoring
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserAgreementV6TypeType
     {
-        AGREEMENT,
+        [EnumMember(Value = "AGREEMENT")]
+        Agreement,
         [EnumMember(Value = "MEGASIGN_CHILD")]
-        MEGASIGNCHILD,
+        MegasignChild,
         [EnumMember(Value = "WIDGET_INSTANCE")]
-        WIdGETINSTANCE
+        WidgetInstance
     }
 
     public class SearchRequestBodyInput
@@ -1416,7 +1469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public DocumentFileInfoId[] Document { get; set; }
 
         [JsonProperty("signatureType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AgreementCreationInfoIdV6InputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoIdV6InputSignatureTypeType.ESIGN;
+        public AgreementCreationInfoIdV6InputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoIdV6InputSignatureTypeType.Esign;
 
         [JsonProperty("participantSetsInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParticipantCreateSetInfoV6[] Unnamed { get; set; }
@@ -1449,7 +1502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public EmailOption EmailOption { get; set; } = new EmailOption();
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal AgreementCreationInfoIdV6InputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoIdV6InputStateType.INPROCESS;
+        internal AgreementCreationInfoIdV6InputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoIdV6InputStateType.InProcess;
     }
 
     public class DocumentFileInfoId
@@ -1466,17 +1519,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoIdV6InputSignatureTypeType
     {
-        ESIGN,
-        WRITTEN
+        [EnumMember(Value = "ESIGN")]
+        Esign,
+        [EnumMember(Value = "WRITTEN")]
+        Written
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoIdV6InputReminderFrequencyType
     {
         [EnumMember(Value = "DAILY_UNTIL_SIGNED")]
-        DAILYUNTILSIGNED,
+        DailyUntilSigned,
         [EnumMember(Value = "WEEKLY_UNTIL_SIGNED")]
-        WEEKLYUNTILSIGNED
+        WeeklyUntilSigned
     }
 
     public class AgreementCreationInfoIdV6InputSecurityOptionType
@@ -1488,10 +1543,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoIdV6InputStateType
     {
-        AUTHORING,
-        DRAFT,
+        [EnumMember(Value = "AUTHORING")]
+        Authoring,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
         [EnumMember(Value = "IN_PROCESS")]
-        INPROCESS
+        InProcess
     }
 
     public class AgreementCreationInfoTemplateV6Input
@@ -1510,7 +1567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public DocumentFileInfoTemplate[] Library { get; set; }
 
         [JsonProperty("signatureType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AgreementCreationInfoTemplateV6InputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoTemplateV6InputSignatureTypeType.ESIGN;
+        public AgreementCreationInfoTemplateV6InputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoTemplateV6InputSignatureTypeType.Esign;
 
         [JsonProperty("participantSetsInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParticipantCreateSetInfoV6[] Unnamed { get; set; }
@@ -1543,7 +1600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public EmailOption EmailOption { get; set; } = new EmailOption();
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal AgreementCreationInfoTemplateV6InputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoTemplateV6InputStateType.INPROCESS;
+        internal AgreementCreationInfoTemplateV6InputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoTemplateV6InputStateType.InProcess;
     }
 
     public class DocumentFileInfoTemplate
@@ -1560,17 +1617,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoTemplateV6InputSignatureTypeType
     {
-        ESIGN,
-        WRITTEN
+        [EnumMember(Value = "ESIGN")]
+        Esign,
+        [EnumMember(Value = "WRITTEN")]
+        Written
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoTemplateV6InputReminderFrequencyType
     {
         [EnumMember(Value = "DAILY_UNTIL_SIGNED")]
-        DAILYUNTILSIGNED,
+        DailyUntilSigned,
         [EnumMember(Value = "WEEKLY_UNTIL_SIGNED")]
-        WEEKLYUNTILSIGNED
+        WeeklyUntilSigned
     }
 
     public class AgreementCreationInfoTemplateV6InputSecurityOptionType
@@ -1582,10 +1641,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoTemplateV6InputStateType
     {
-        AUTHORING,
-        DRAFT,
+        [EnumMember(Value = "AUTHORING")]
+        Authoring,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
         [EnumMember(Value = "IN_PROCESS")]
-        INPROCESS
+        InProcess
     }
 
     public class AgreementCreationInfoUrlV6Input
@@ -1604,7 +1665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public DocumentFileInfoUrl[] Document { get; set; }
 
         [JsonProperty("signatureType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AgreementCreationInfoUrlV6InputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoUrlV6InputSignatureTypeType.ESIGN;
+        public AgreementCreationInfoUrlV6InputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoUrlV6InputSignatureTypeType.Esign;
 
         [JsonProperty("participantSetsInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParticipantCreateSetInfoV6[] Unnamed { get; set; }
@@ -1637,23 +1698,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public EmailOption EmailOption { get; set; } = new EmailOption();
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal AgreementCreationInfoUrlV6InputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoUrlV6InputStateType.INPROCESS;
+        internal AgreementCreationInfoUrlV6InputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.AgreementCreationInfoUrlV6InputStateType.InProcess;
     }
 
     public class DocumentFileInfoUrl
     {
-        public DocumentFileInfoUrl(URLFileInfo urlFileInfo)
+        public DocumentFileInfoUrl(UrlFileInfo urlFileInfo)
         {
             this.UrlFileInfo = urlFileInfo;
         }
 
         [JsonProperty("urlFileInfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public URLFileInfo UrlFileInfo { get; set; }
+        public UrlFileInfo UrlFileInfo { get; set; }
     }
 
-    public class URLFileInfo
+    public class UrlFileInfo
     {
-        public URLFileInfo(string url, string name, URLFileInfoMimeTypeType mimeType)
+        public UrlFileInfo(string url, string name, UrlFileInfoMimeTypeType mimeType)
         {
             this.Url = url;
             this.Name = name;
@@ -1667,11 +1728,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public string Name { get; set; }
 
         [JsonProperty("mimeType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public URLFileInfoMimeTypeType MimeType { get; set; }
+        public UrlFileInfoMimeTypeType MimeType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum URLFileInfoMimeTypeType
+    public enum UrlFileInfoMimeTypeType
     {
         [EnumMember(Value = "application/pdf")]
         ApplicationPdf,
@@ -1710,17 +1771,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoUrlV6InputSignatureTypeType
     {
-        ESIGN,
-        WRITTEN
+        [EnumMember(Value = "ESIGN")]
+        Esign,
+        [EnumMember(Value = "WRITTEN")]
+        Written
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoUrlV6InputReminderFrequencyType
     {
         [EnumMember(Value = "DAILY_UNTIL_SIGNED")]
-        DAILYUNTILSIGNED,
+        DailyUntilSigned,
         [EnumMember(Value = "WEEKLY_UNTIL_SIGNED")]
-        WEEKLYUNTILSIGNED
+        WeeklyUntilSigned
     }
 
     public class AgreementCreationInfoUrlV6InputSecurityOptionType
@@ -1732,10 +1795,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementCreationInfoUrlV6InputStateType
     {
-        AUTHORING,
-        DRAFT,
+        [EnumMember(Value = "AUTHORING")]
+        Authoring,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
         [EnumMember(Value = "IN_PROCESS")]
-        INPROCESS
+        InProcess
     }
 
     public class LibraryDocumentCreationResponseV6
@@ -1758,17 +1823,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         [JsonProperty("templateTypes", DefaultValueHandling = DefaultValueHandling.Include)]
         public LibraryDocumentInfoIdInputTemplateTypeTypeItem[] TemplateType { get; set; } = new LibraryDocumentInfoIdInputTemplateTypeTypeItem[]
         {
-            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoIdInputTemplateTypeTypeItem.DOCUMENT
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoIdInputTemplateTypeTypeItem.Document
         };
 
         [JsonProperty("sharingMode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LibraryDocumentInfoIdInputSharingModeType SharingMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoIdInputSharingModeType.USER;
+        public LibraryDocumentInfoIdInputSharingModeType SharingMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoIdInputSharingModeType.User;
 
         [JsonProperty("fileInfos", DefaultValueHandling = DefaultValueHandling.Include)]
         public LibraryDocumentFileInfoId[] Document { get; set; }
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LibraryDocumentInfoIdInputTemplateStateType TemplateState { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoIdInputTemplateStateType.ACTIVE;
+        public LibraryDocumentInfoIdInputTemplateStateType TemplateState { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoIdInputTemplateStateType.Active;
 
         [JsonProperty("groupId")]
         public string GroupId { get; set; }
@@ -1777,17 +1842,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LibraryDocumentInfoIdInputTemplateTypeTypeItem
     {
-        DOCUMENT,
+        [EnumMember(Value = "DOCUMENT")]
+        Document,
         [EnumMember(Value = "FORM_FIELD_LAYER")]
-        FORMFIELDLAYER
+        FormFieldLayer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LibraryDocumentInfoIdInputSharingModeType
     {
-        USER,
-        GROUP,
-        ACCOUNT
+        [EnumMember(Value = "USER")]
+        User,
+        [EnumMember(Value = "GROUP")]
+        Group,
+        [EnumMember(Value = "ACCOUNT")]
+        Account
     }
 
     public class LibraryDocumentFileInfoId
@@ -1804,8 +1873,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LibraryDocumentInfoIdInputTemplateStateType
     {
-        AUTHORING,
-        ACTIVE
+        [EnumMember(Value = "AUTHORING")]
+        Authoring,
+        [EnumMember(Value = "ACTIVE")]
+        Active
     }
 
     public class LibraryDocumentInfoUrlInput
@@ -1822,17 +1893,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         [JsonProperty("templateTypes", DefaultValueHandling = DefaultValueHandling.Include)]
         public LibraryDocumentInfoUrlInputTemplateTypeTypeItem[] TemplateType { get; set; } = new LibraryDocumentInfoUrlInputTemplateTypeTypeItem[]
         {
-            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoUrlInputTemplateTypeTypeItem.DOCUMENT
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoUrlInputTemplateTypeTypeItem.Document
         };
 
         [JsonProperty("sharingMode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LibraryDocumentInfoUrlInputSharingModeType SharingMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoUrlInputSharingModeType.USER;
+        public LibraryDocumentInfoUrlInputSharingModeType SharingMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoUrlInputSharingModeType.User;
 
         [JsonProperty("fileInfos", DefaultValueHandling = DefaultValueHandling.Include)]
         public LibraryDocumentFileInfoUrl[] Document { get; set; }
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LibraryDocumentInfoUrlInputTemplateStateType TemplateState { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoUrlInputTemplateStateType.ACTIVE;
+        public LibraryDocumentInfoUrlInputTemplateStateType TemplateState { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.LibraryDocumentInfoUrlInputTemplateStateType.Active;
 
         [JsonProperty("groupId")]
         public string GroupNameId { get; set; }
@@ -1841,35 +1912,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LibraryDocumentInfoUrlInputTemplateTypeTypeItem
     {
-        DOCUMENT,
+        [EnumMember(Value = "DOCUMENT")]
+        Document,
         [EnumMember(Value = "FORM_FIELD_LAYER")]
-        FORMFIELDLAYER
+        FormFieldLayer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LibraryDocumentInfoUrlInputSharingModeType
     {
-        USER,
-        GROUP,
-        ACCOUNT
+        [EnumMember(Value = "USER")]
+        User,
+        [EnumMember(Value = "GROUP")]
+        Group,
+        [EnumMember(Value = "ACCOUNT")]
+        Account
     }
 
     public class LibraryDocumentFileInfoUrl
     {
-        public LibraryDocumentFileInfoUrl(URLFileInfo urlFileInfo)
+        public LibraryDocumentFileInfoUrl(UrlFileInfo urlFileInfo)
         {
             this.UrlFileInfo = urlFileInfo;
         }
 
         [JsonProperty("urlFileInfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public URLFileInfo UrlFileInfo { get; set; }
+        public UrlFileInfo UrlFileInfo { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LibraryDocumentInfoUrlInputTemplateStateType
     {
-        AUTHORING,
-        ACTIVE
+        [EnumMember(Value = "AUTHORING")]
+        Authoring,
+        [EnumMember(Value = "ACTIVE")]
+        Active
     }
 
     public class AgreementInfoV6
@@ -1930,17 +2007,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     public enum AgreementInfoV6ReminderFrequencyType
     {
         [EnumMember(Value = "DAILY_UNTIL_SIGNED")]
-        DAILYUNTILSIGNED,
+        DailyUntilSigned,
         [EnumMember(Value = "WEEKDAILY_UNTIL_SIGNED")]
-        WEEKDAILYUNTILSIGNED,
+        WeekdailyUntilSigned,
         [EnumMember(Value = "EVERY_OTHER_DAY_UNTIL_SIGNED")]
-        EVERYOTHERDAYUNTILSIGNED,
+        EveryOtherDayUntilSigned,
         [EnumMember(Value = "EVERY_THIRD_DAY_UNTIL_SIGNED")]
-        EVERYTHIRDDAYUNTILSIGNED,
+        EveryThirdDayUntilSigned,
         [EnumMember(Value = "EVERY_FIFTH_DAY_UNTIL_SIGNED")]
-        EVERYFIFTHDAYUNTILSIGNED,
+        EveryFifthDayUntilSigned,
         [EnumMember(Value = "WEEKLY_UNTIL_SIGNED")]
-        WEEKLYUNTILSIGNED
+        WeeklyUntilSigned
     }
 
     public class ParticipantSetInfoV6
@@ -1988,12 +2065,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetAgreementInfoMemberInfosV6UnnamedTypeAuthenticationTypeResponse
     {
-        NONE,
-        PASSWORD,
-        PHONE,
-        KBA,
+        [EnumMember(Value = "NONE")]
+        None,
+        [EnumMember(Value = "PASSWORD")]
+        Password,
+        [EnumMember(Value = "PHONE")]
+        Phone,
+        [EnumMember(Value = "KBA")]
+        Kba,
         [EnumMember(Value = "ADOBE_SIGN")]
-        ADOBESIGN
+        AdobeSign
     }
 
     public class GetAgreementInfoMemberInfosV6UnnamedTypeUnnamedTypeResponse
@@ -2008,66 +2089,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ParticipantSetInfoV6RoleType
     {
-        SIGNER,
-        APPROVER,
-        ACCEPTOR,
+        [EnumMember(Value = "SIGNER")]
+        Signer,
+        [EnumMember(Value = "APPROVER")]
+        Approver,
+        [EnumMember(Value = "ACCEPTOR")]
+        Acceptor,
         [EnumMember(Value = "CERTIFIED_RECIPIENT")]
-        CERTIFIEDRECIPIENT,
+        CertifiedRecipient,
         [EnumMember(Value = "FORM_FILLER")]
-        FORMFILLER,
+        FormFiller,
         [EnumMember(Value = "DELEGATE_TO_SIGNER")]
-        DELEGATETOSIGNER,
+        DelegateToSigner,
         [EnumMember(Value = "DELEGATE_TO_APPROVER")]
-        DELEGATETOAPPROVER,
+        DelegateToApprover,
         [EnumMember(Value = "DELEGATE_TO_ACCEPTOR")]
-        DELEGATETOACCEPTOR,
+        DelegateToAcceptor,
         [EnumMember(Value = "DELEGATE_TO_CERTIFIED_RECIPIENT")]
-        DELEGATETOCERTIFIEDRECIPIENT,
+        DelegateToCertifiedRecipient,
         [EnumMember(Value = "DELEGATE_TO_FORM_FILLER")]
-        DELEGATETOFORMFILLER,
-        SHARE
+        DelegateToFormFiller,
+        [EnumMember(Value = "SHARE")]
+        Share
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementInfoV6SignatureTypeType
     {
-        ESIGN,
-        WRITTEN
+        [EnumMember(Value = "ESIGN")]
+        Esign,
+        [EnumMember(Value = "WRITTEN")]
+        Written
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgreementInfoV6StatusType
     {
         [EnumMember(Value = "OUT_FOR_SIGNATURE")]
-        OUTFORSIGNATURE,
+        OutForSignature,
         [EnumMember(Value = "OUT_FOR_DELIVERY")]
-        OUTFORDELIVERY,
+        OutForDelivery,
         [EnumMember(Value = "OUT_FOR_ACCEPTANCE")]
-        OUTFORACCEPTANCE,
+        OutForAcceptance,
         [EnumMember(Value = "OUT_FOR_FORM_FILLING")]
-        OUTFORFORMFILLING,
+        OutForFormFilling,
         [EnumMember(Value = "OUT_FOR_APPROVAL")]
-        OUTFORAPPROVAL,
-        AUTHORING,
-        CANCELLED,
-        SIGNED,
-        APPROVED,
-        DELIVERED,
-        ACCEPTED,
+        OutForApproval,
+        [EnumMember(Value = "AUTHORING")]
+        Authoring,
+        [EnumMember(Value = "CANCELLED")]
+        Cancelled,
+        [EnumMember(Value = "SIGNED")]
+        Signed,
+        [EnumMember(Value = "APPROVED")]
+        Approved,
+        [EnumMember(Value = "DELIVERED")]
+        Delivered,
+        [EnumMember(Value = "ACCEPTED")]
+        Accepted,
         [EnumMember(Value = "FORM_FILLED")]
-        FORMFILLED,
-        EXPIRED,
-        ARCHIVED,
-        PREFILL,
+        FormFilled,
+        [EnumMember(Value = "EXPIRED")]
+        Expired,
+        [EnumMember(Value = "ARCHIVED")]
+        Archived,
+        [EnumMember(Value = "PREFILL")]
+        Prefill,
         [EnumMember(Value = "WIDGET_WAITING_FOR_VERIFICATION")]
-        WIdGETWAITINGFORVERIFICATION,
-        DRAFT,
+        WidgetWaitingForVerification,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
         [EnumMember(Value = "DOCUMENTS_NOT_YET_PROCESSED")]
-        DOCUMENTSNOTYETPROCESSED,
+        DocumentsNotYetProcessed,
         [EnumMember(Value = "WAITING_FOR_FAXIN")]
-        WAITINGFORFAXIN,
+        WaitingForFaxin,
         [EnumMember(Value = "WAITING_FOR_VERIFICATION")]
-        WAITINGFORVERIFICATION
+        WaitingForVerification
     }
 
     public class CcInfo
@@ -2127,9 +2224,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SupportingDocumentContentFormatInput
     {
-        ORIGINAL,
+        [EnumMember(Value = "ORIGINAL")]
+        Original,
         [EnumMember(Value = "CONVERTED_PDF")]
-        CONVERTEDPDF
+        ConvertedPdf
     }
 
     public class LibraryDocuments
@@ -2174,26 +2272,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LibraryDocumentTemplateTypeSTypeItem
     {
-        DOCUMENT,
+        [EnumMember(Value = "DOCUMENT")]
+        Document,
         [EnumMember(Value = "FORM_FIELD_LAYER")]
-        FORMFIELDLAYER
+        FormFieldLayer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LibraryDocumentSharingModeType
     {
-        USER,
-        GROUP,
-        ACCOUNT,
-        GLOBAL
+        [EnumMember(Value = "USER")]
+        User,
+        [EnumMember(Value = "GROUP")]
+        Group,
+        [EnumMember(Value = "ACCOUNT")]
+        Account,
+        [EnumMember(Value = "GLOBAL")]
+        Global
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LibraryDocumentStatusType
     {
-        AUTHORING,
-        ACTIVE,
-        REMOVED
+        [EnumMember(Value = "AUTHORING")]
+        Authoring,
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "REMOVED")]
+        Removed
     }
 
     public class WebhookCreationResponse
@@ -2225,7 +2331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         [JsonProperty("webhookSubscriptionEvents", DefaultValueHandling = DefaultValueHandling.Include)]
         internal CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; } = new CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[]
         {
-            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem.AGREEMENTCREATED
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem.AgreementCreated
         };
 
         [JsonProperty("webhookConditionalParams", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2253,7 +2359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     public enum CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem
     {
         [EnumMember(Value = "AGREEMENT_CREATED")]
-        AGREEMENTCREATED
+        AgreementCreated
     }
 
     public class WebhookConditionalParamsForAgreementCreatedEvent
@@ -2292,7 +2398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputScopeType Scope { get; set; }
 
         [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType.AGREEMENT;
+        internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType.Agreement;
 
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; }
@@ -2300,7 +2406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         [JsonProperty("webhookSubscriptionEvents", DefaultValueHandling = DefaultValueHandling.Include)]
         internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; } = new CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[]
         {
-            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem.AGREEMENTACTIONREQUESTED
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem.AgreementActionRequested
         };
 
         [JsonProperty("webhookConditionalParams", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2323,14 +2429,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType
     {
-        AGREEMENT
+        [EnumMember(Value = "AGREEMENT")]
+        Agreement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem
     {
         [EnumMember(Value = "AGREEMENT_ACTION_REQUESTED")]
-        AGREEMENTACTIONREQUESTED
+        AgreementActionRequested
     }
 
     public class WebhookConditionalParams
@@ -2372,7 +2479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputScopeType Scope { get; set; }
 
         [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType.AGREEMENT;
+        internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType.Agreement;
 
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; }
@@ -2380,7 +2487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         [JsonProperty("webhookSubscriptionEvents", DefaultValueHandling = DefaultValueHandling.Include)]
         internal CreateWebhookForAgreementSignedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; } = new CreateWebhookForAgreementSignedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[]
         {
-            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementSignedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem.AGREEMENTWORKFLOWCOMPLETED
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementSignedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem.AgreementWorkflowCompleted
         };
 
         [JsonProperty("webhookConditionalParams", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2391,7 +2498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     public enum CreateWebhookForAgreementSignedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem
     {
         [EnumMember(Value = "AGREEMENT_WORKFLOW_COMPLETED")]
-        AGREEMENTWORKFLOWCOMPLETED
+        AgreementWorkflowCompleted
     }
 
     public class WebhookConditionalParamsForAgreementSignedEvent
@@ -2437,7 +2544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputScopeType Scope { get; set; }
 
         [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType.AGREEMENT;
+        internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType.Agreement;
 
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; }
@@ -2590,7 +2697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         [EnumMember(Value = "When an agreement participant is authenticated through social identity")]
         WhenAnAgreementParticipantIsAuthenticatedThroughSocialIdentity,
         [EnumMember(Value = "When an agreement participant is authenticated through KBA")]
-        WhenAnAgreementParticipantIsAuthenticatedThroughKBA,
+        WhenAnAgreementParticipantIsAuthenticatedThroughKba,
         [EnumMember(Value = "When any mega sign event occurs")]
         WhenAnyMegaSignEventOccurs,
         [EnumMember(Value = "When a mega sign is created")]
@@ -2679,13 +2786,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
         public string Name { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputScopeType Scope { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputScopeType.RESOURCE;
+        internal CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputScopeType Scope { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputScopeType.Resource;
 
         [JsonProperty("pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
         public WebhookCreationInfoInputPageSizeType? PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.WebhookCreationInfoInputPageSizeType._50;
 
         [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputResourceTypeType.WIdGET;
+        internal CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand.CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputResourceTypeType.Widget;
 
         [JsonProperty("resourceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResourceId { get; set; }
@@ -2700,7 +2807,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputScopeType
     {
-        RESOURCE
+        [EnumMember(Value = "RESOURCE")]
+        Resource
     }
 
     public enum WebhookCreationInfoInputPageSizeType
@@ -2717,7 +2825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobeacrobatsignsand
     public enum CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputResourceTypeType
     {
         [EnumMember(Value = "WIDGET")]
-        WIdGET
+        Widget
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

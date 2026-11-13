@@ -73,13 +73,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
         public string State { get; set; }
 
         [JsonProperty("state_fips")]
-        public string StateFIPSCode { get; set; }
+        public string StateFipsCode { get; set; }
 
         [JsonProperty("zip")]
-        public string ZIPCode { get; set; }
+        public string ZipCode { get; set; }
 
         [JsonProperty("zip4")]
-        public string ZIP4Code { get; set; }
+        public string Zip4Code { get; set; }
 
         [JsonProperty("intersection")]
         public bool IsIntersection { get; set; }

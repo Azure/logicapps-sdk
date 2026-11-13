@@ -13,15 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
     public class DocumentmergeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentmerge")]
-        public IBodyWorkflowAction<ValuesDocumentMergeResponse, ApiConnectionActionConfiguration> ValuesDocumentMerge(Expression<Func<string>> linkToItem, Expression<Func<string>> preConfigTemplate = null, Expression<Func<string>> source = null, Expression<Func<string>> destination = null, Expression<Func<bool>> saveAsPDF = null, Expression<Func<bool>> saveAsPDFOnly = null, Expression<Func<bool>> saveAsPDFA = null, Expression<Func<bool>> displayImage = null, Expression<Func<string>> outputFileName = null, Expression<Func<bool>> overWrite = null, Expression<Func<bool>> sendMail = null, Expression<Func<string>> mailTemplate = null)
+        public IBodyWorkflowAction<ValuesDocumentMergeResponse, ApiConnectionActionConfiguration> ValuesDocumentMerge(Expression<Func<string>> linkToItem, Expression<Func<string>> preConfigTemplate = null, Expression<Func<string>> source = null, Expression<Func<string>> destination = null, Expression<Func<bool>> saveAsPdf = null, Expression<Func<bool>> saveAsPdfOnly = null, Expression<Func<bool>> saveAsPdfa = null, Expression<Func<bool>> displayImage = null, Expression<Func<string>> outputFileName = null, Expression<Func<bool>> overWrite = null, Expression<Func<bool>> sendMail = null, Expression<Func<string>> mailTemplate = null)
         {
             var __workflow_linkToItem = WorkflowExpression.Compile(linkToItem, nameof(linkToItem), required: true);
             var __workflow_preConfigTemplate = WorkflowExpression.Compile(preConfigTemplate, nameof(preConfigTemplate), required: false);
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: false);
-            var __workflow_saveAsPDF = WorkflowExpression.Compile(saveAsPDF, nameof(saveAsPDF), required: false);
-            var __workflow_saveAsPDFOnly = WorkflowExpression.Compile(saveAsPDFOnly, nameof(saveAsPDFOnly), required: false);
-            var __workflow_saveAsPDFA = WorkflowExpression.Compile(saveAsPDFA, nameof(saveAsPDFA), required: false);
+            var __workflow_saveAsPdf = WorkflowExpression.Compile(saveAsPdf, nameof(saveAsPdf), required: false);
+            var __workflow_saveAsPdfOnly = WorkflowExpression.Compile(saveAsPdfOnly, nameof(saveAsPdfOnly), required: false);
+            var __workflow_saveAsPdfa = WorkflowExpression.Compile(saveAsPdfa, nameof(saveAsPdfa), required: false);
             var __workflow_displayImage = WorkflowExpression.Compile(displayImage, nameof(displayImage), required: false);
             var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
             var __workflow_overWrite = WorkflowExpression.Compile(overWrite, nameof(overWrite), required: false);
@@ -39,12 +39,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
                     callPayload.Queries["Source"] = ExpressionConverter.Convert(__workflow_source);
                 if (__workflow_destination != null)
                     callPayload.Queries["Destination"] = ExpressionConverter.Convert(__workflow_destination);
-                if (__workflow_saveAsPDF != null)
-                    callPayload.Queries["SaveAsPDF"] = ExpressionConverter.Convert(__workflow_saveAsPDF);
-                if (__workflow_saveAsPDFOnly != null)
-                    callPayload.Queries["SaveAsPDFOnly"] = ExpressionConverter.Convert(__workflow_saveAsPDFOnly);
-                if (__workflow_saveAsPDFA != null)
-                    callPayload.Queries["SaveAsPDFA"] = ExpressionConverter.Convert(__workflow_saveAsPDFA);
+                if (__workflow_saveAsPdf != null)
+                    callPayload.Queries["SaveAsPDF"] = ExpressionConverter.Convert(__workflow_saveAsPdf);
+                if (__workflow_saveAsPdfOnly != null)
+                    callPayload.Queries["SaveAsPDFOnly"] = ExpressionConverter.Convert(__workflow_saveAsPdfOnly);
+                if (__workflow_saveAsPdfa != null)
+                    callPayload.Queries["SaveAsPDFA"] = ExpressionConverter.Convert(__workflow_saveAsPdfa);
                 if (__workflow_displayImage != null)
                     callPayload.Queries["DisplayImage"] = ExpressionConverter.Convert(__workflow_displayImage);
                 if (__workflow_outputFileName != null)
@@ -68,7 +68,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
     {
         [JsonProperty("message")]
         public string Message { get; set; }
-        public string URL { get; set; }
+
+        [JsonProperty("URL")]
+        public string Url { get; set; }
     }
 }
 

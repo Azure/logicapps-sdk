@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
     public class User
     {
         [JsonProperty("name")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("job_title")]
         public string JobTitle { get; set; }
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         public string ClientId { get; set; }
 
         [JsonProperty("client_url")]
-        public string ClientURL { get; set; }
+        public string ClientUrl { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }

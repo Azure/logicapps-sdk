@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public string CreatedDateTime { get; set; }
 
         [JsonProperty("creator-avatar-url")]
-        public string CreatorAvatarURL { get; set; }
+        public string CreatorAvatarUrl { get; set; }
 
         [JsonProperty("creator-firstname")]
         public string CreatorFirstName { get; set; }
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
     public class UserResponse
     {
         [JsonProperty("avatar-url")]
-        public string AvatarURL { get; set; }
+        public string AvatarUrl { get; set; }
 
         [JsonProperty("company-id")]
         public string CompanyId { get; set; }
@@ -629,8 +629,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [JsonProperty("phone-number-home")]
         public string Home { get; set; }
 
+        [JsonProperty("phone-number-mobile")]
+        public string Mobile { get; set; }
+
         [JsonProperty("phone-number-mobile-parts")]
-        public UserResponseMobileType Mobile { get; set; }
+        public UserResponseMobile2Type Mobile2 { get; set; }
 
         [JsonProperty("phone-number-office")]
         public string Office { get; set; }
@@ -648,16 +651,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public string Twitter { get; set; }
 
         [JsonProperty("user-name")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("user-type")]
         public string Type { get; set; }
 
         [JsonProperty("userUUID")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
     }
 
-    public class UserResponseMobileType
+    public class UserResponseMobile2Type
     {
         [JsonProperty("countryCode")]
         public string CountryCode { get; set; }
@@ -688,12 +691,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
     public class BodyInputPersonType
     {
-        public BodyInputPersonType(string emailAddress, string firstName, string lastName, string username)
+        public BodyInputPersonType(string emailAddress, string firstName, string lastName, string userName)
         {
             this.EmailAddress = emailAddress;
             this.FirstName = firstName;
             this.LastName = lastName;
-            this.Username = username;
+            this.UserName = userName;
         }
 
         [JsonProperty("email-address", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -727,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public string Fax { get; set; }
 
         [JsonProperty("user-name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class GetUserResponse
@@ -738,8 +741,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
     public class WebhookCreateProjectBodyInput
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string STATUS { get; set; } = "OK";
+        [JsonProperty("STATUS", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Status { get; set; } = "OK";
 
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
         public WebhookCreateProjectBodyInputWebhookType Webhook { get; set; } = new WebhookCreateProjectBodyInputWebhookType();
@@ -759,8 +762,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
     public class WebhookCreateTaskBodyInput
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string STATUS { get; set; } = "OK";
+        [JsonProperty("STATUS", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Status { get; set; } = "OK";
 
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
         public WebhookCreateTaskBodyInputWebhookType Webhook { get; set; } = new WebhookCreateTaskBodyInputWebhookType();
@@ -780,8 +783,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
     public class WebhookCreateUserBodyInput
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string STATUS { get; set; } = "OK";
+        [JsonProperty("STATUS", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Status { get; set; } = "OK";
 
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
         public WebhookCreateUserBodyInputWebhookType Webhook { get; set; } = new WebhookCreateUserBodyInputWebhookType();

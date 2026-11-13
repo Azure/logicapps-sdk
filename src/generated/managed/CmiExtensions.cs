@@ -13,16 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
     public class CmiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cmi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> xCMITENANTNAME, Expression<Func<ParametersInput>> parameters)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> xCmiTenantName, Expression<Func<ParametersInput>> parameters)
         {
-            var __workflow_xCMITENANTNAME = WorkflowExpression.Compile(xCMITENANTNAME, nameof(xCMITENANTNAME), required: true);
+            var __workflow_xCmiTenantName = WorkflowExpression.Compile(xCmiTenantName, nameof(xCmiTenantName), required: true);
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/virtual/httprequest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-CMI-TENANT-NAME"] = ExpressionConverter.Convert(__workflow_xCMITENANTNAME);
+                callPayload.Headers["X-CMI-TENANT-NAME"] = ExpressionConverter.Convert(__workflow_xCmiTenantName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction(callPayload);
             });
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
         }
 
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cmi.ParametersInputMethodType.GET;
+        public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cmi.ParametersInputMethodType.Get;
 
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
@@ -56,11 +56,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ParametersInputMethodType
     {
-        GET,
-        PUT,
-        POST,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 }
 

@@ -13,38 +13,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
     public class GroopitActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groopit")]
-        public IBodyWorkflowAction<GroopDataExportDTO[], ApiConnectionActionConfiguration> GetGroups()
+        public IBodyWorkflowAction<GroopDataExportDto[], ApiConnectionActionConfiguration> GetGroups()
         {
-            return new DeferredBodyAction<GroopDataExportDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GroopDataExportDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/data/groups";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GroopDataExportDTO[]>(callPayload);
+                return new ApiConnectionAction<GroopDataExportDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groopit")]
-        public IBodyWorkflowAction<AssignmentDataExportDTO[], ApiConnectionActionConfiguration> GetForms(Expression<Func<string>> groupId)
+        public IBodyWorkflowAction<AssignmentDataExportDto[], ApiConnectionActionConfiguration> GetForms(Expression<Func<string>> groupId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            return new DeferredBodyAction<AssignmentDataExportDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AssignmentDataExportDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/forms", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<AssignmentDataExportDTO[]>(callPayload);
+                return new ApiConnectionAction<AssignmentDataExportDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groopit")]
-        public IBodyWorkflowAction<GroopItDataExportDTO[], ApiConnectionActionConfiguration> GetReports(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<GroopItDataExportDto[], ApiConnectionActionConfiguration> GetReports(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<GroopItDataExportDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GroopItDataExportDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/forms/{1}/reports", __workflow_groupId.WithUrlEncoding(1), __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -55,17 +55,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
                 callPayload.Queries["perPage"] = Convert.ToString(25);
                 if (__workflow_perPage != null)
                     callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
-                return new ApiConnectionAction<GroopItDataExportDTO[]>(callPayload);
+                return new ApiConnectionAction<GroopItDataExportDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groopit")]
-        public IBodyWorkflowAction<GroopItDataExportDTO[], ApiConnectionActionConfiguration> GetReports2(Expression<Func<string>> groupId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<GroopItDataExportDto[], ApiConnectionActionConfiguration> GetReports2(Expression<Func<string>> groupId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<GroopItDataExportDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GroopItDataExportDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/reports", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -76,17 +76,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
                 callPayload.Queries["perPage"] = Convert.ToString(25);
                 if (__workflow_perPage != null)
                     callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
-                return new ApiConnectionAction<GroopItDataExportDTO[]>(callPayload);
+                return new ApiConnectionAction<GroopItDataExportDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groopit")]
-        public IBodyWorkflowAction<LinkedGroupMembershipDataExportDTO[], ApiConnectionActionConfiguration> GetLinkedMembers(Expression<Func<string>> groupId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<LinkedGroupMembershipDataExportDto[], ApiConnectionActionConfiguration> GetLinkedMembers(Expression<Func<string>> groupId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<LinkedGroupMembershipDataExportDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<LinkedGroupMembershipDataExportDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/linked-members", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
                 callPayload.Queries["perPage"] = Convert.ToString(25);
                 if (__workflow_perPage != null)
                     callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
-                return new ApiConnectionAction<LinkedGroupMembershipDataExportDTO[]>(callPayload);
+                return new ApiConnectionAction<LinkedGroupMembershipDataExportDto[]>(callPayload);
             });
         }
 
@@ -122,51 +122,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
 
     public class GroopitTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration> SubscribeToReports(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe)
+        public IBodyWorkflowTrigger<GroopItWebhookDto, ApiConnectionPollingTriggerConfiguration> SubscribeToReports(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
-            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GroopItWebhookDto, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/forms/{1}/reports/subscribe", __workflow_groupId.WithUrlEncoding(1), __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribe);
-                return new ApiConnectionPollingTrigger<GroopItWebhookDTO>(callPayload);
+                return new ApiConnectionPollingTrigger<GroopItWebhookDto>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration> SubscribeToReports2(Expression<Func<string>> groupId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe)
+        public IBodyWorkflowTrigger<GroopItWebhookDto, ApiConnectionPollingTriggerConfiguration> SubscribeToReports2(Expression<Func<string>> groupId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
-            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GroopItWebhookDto, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/reports/subscribe", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribe);
-                return new ApiConnectionPollingTrigger<GroopItWebhookDTO>(callPayload);
+                return new ApiConnectionPollingTrigger<GroopItWebhookDto>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration> SubscribeToLinkedMembers(Expression<Func<string>> groupId, Expression<Func<SubscribeToLinkedMembersSubscribeInput>> subscribe)
+        public IBodyWorkflowTrigger<GroopItWebhookDto, ApiConnectionPollingTriggerConfiguration> SubscribeToLinkedMembers(Expression<Func<string>> groupId, Expression<Func<SubscribeToLinkedMembersSubscribeInput>> subscribe)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
-            return new DeferredBodyTrigger<GroopItWebhookDTO, ApiConnectionPollingTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GroopItWebhookDto, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/groups/{0}/linked-members/subscribe", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscribe);
-                return new ApiConnectionPollingTrigger<GroopItWebhookDTO>(callPayload);
+                return new ApiConnectionPollingTrigger<GroopItWebhookDto>(callPayload);
             });
         }
     }
 
-    public class GroopDataExportDTO
+    public class GroopDataExportDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         public string Name { get; set; }
     }
 
-    public class AssignmentDataExportDTO
+    public class AssignmentDataExportDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -187,10 +187,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         public string Description { get; set; }
 
         [JsonProperty("fields")]
-        public ComponentModelDataExportDTO[] Fields { get; set; }
+        public ComponentModelDataExportDto[] Fields { get; set; }
     }
 
-    public class ComponentModelDataExportDTO
+    public class ComponentModelDataExportDto
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         Unknown
     }
 
-    public class GroopItDataExportDTO
+    public class GroopItDataExportDto
     {
         [JsonProperty("baseUri")]
         public string BaseUri { get; set; }
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         public string GroupUrl { get; set; }
 
         [JsonProperty("creator")]
-        public UserDataExportDTO Creator { get; set; }
+        public UserDataExportDto Creator { get; set; }
 
         [JsonProperty("createTime")]
         public string CreateTime { get; set; }
@@ -262,13 +262,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         public string LastEditTime { get; set; }
 
         [JsonProperty("lastEditor")]
-        public UserDataExportDTO LastEditor { get; set; }
+        public UserDataExportDto LastEditor { get; set; }
 
         [JsonProperty("flag")]
         public string Flag { get; set; }
 
         [JsonProperty("data")]
-        public ComponentDataDataExportDTO[] Data { get; set; }
+        public ComponentDataDataExportDto[] Data { get; set; }
 
         [JsonProperty("dataBlob")]
         public string DataBlob { get; set; }
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         public string FilteredDataBlob { get; set; }
     }
 
-    public class UserDataExportDTO
+    public class UserDataExportDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -289,10 +289,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         public string Email { get; set; }
     }
 
-    public class ComponentDataDataExportDTO
+    public class ComponentDataDataExportDto
     {
         [JsonProperty("field")]
-        public ComponentModelDataExportDTO Field { get; set; }
+        public ComponentModelDataExportDto Field { get; set; }
 
         [JsonProperty("displayValue")]
         public string DisplayValue { get; set; }
@@ -301,16 +301,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         public string StringValue { get; set; }
     }
 
-    public class LinkedGroupMembershipDataExportDTO
+    public class LinkedGroupMembershipDataExportDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("member")]
-        public UserDataExportDTO Member { get; set; }
+        public UserDataExportDto Member { get; set; }
 
         [JsonProperty("group")]
-        public GroopDataExportDTO Group { get; set; }
+        public GroopDataExportDto Group { get; set; }
 
         [JsonProperty("role")]
         public UserRole Role { get; set; }
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         Publisher
     }
 
-    public class GroopItWebhookDTO
+    public class GroopItWebhookDto
     {
         public int Id { get; set; }
         public string CreatorId { get; set; }

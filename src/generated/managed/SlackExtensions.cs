@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
     public class SlackActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<SetDNDResponse, ApiConnectionActionConfiguration> SetDND(Expression<Func<string>> numMinutes = null)
+        public IBodyWorkflowAction<SetDndResponse, ApiConnectionActionConfiguration> SetDnd(Expression<Func<string>> numMinutes = null)
         {
             var __workflow_numMinutes = WorkflowExpression.Compile(numMinutes, nameof(numMinutes), required: false);
-            return new DeferredBodyAction<SetDNDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SetDndResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dnd.setSnooze";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_numMinutes != null)
                     callPayload.Queries["num_minutes"] = ExpressionConverter.Convert(__workflow_numMinutes);
-                return new ApiConnectionAction<SetDNDResponse>(callPayload);
+                return new ApiConnectionAction<SetDndResponse>(callPayload);
             });
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         }
     }
 
-    public class SetDNDResponse
+    public class SetDndResponse
     {
         [JsonProperty("snooze_enabled")]
         public bool SnoozeEnabled { get; set; }

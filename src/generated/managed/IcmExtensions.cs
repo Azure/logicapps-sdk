@@ -882,7 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     public class IcmBridge
     {
         [JsonProperty("bridgeURI")]
-        public string BridgeURI { get; set; }
+        public string BridgeUri { get; set; }
 
         [JsonProperty("bridgeNumber")]
         public string BridgeNumber { get; set; }
@@ -1707,8 +1707,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [JsonProperty("value")]
         public IcmIncidentResponse[] Value { get; set; }
 
-        [JsonProperty("@odata.nextLink")]
+        [JsonProperty("odata.nextLink")]
         public string NextLink { get; set; }
+
+        [JsonProperty("@odata.nextLink")]
+        public string NextLink2 { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1790,8 +1793,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [JsonProperty("value")]
         public IcmTeam[] Value { get; set; }
 
-        [JsonProperty("@odata.nextLink")]
+        [JsonProperty("odata.nextLink")]
         public string NextLink { get; set; }
+
+        [JsonProperty("@odata.nextLink")]
+        public string NextLink2 { get; set; }
     }
 
     public class IcmTeam
@@ -2050,11 +2056,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MethodInput
     {
-        GET,
-        POST,
-        PUT,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
     public class IcmIncidentResponseTriggerBatchResponse

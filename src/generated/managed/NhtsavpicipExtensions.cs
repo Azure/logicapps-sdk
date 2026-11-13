@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
     public class NhtsavpicipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nhtsavpicip")]
-        public IBodyWorkflowAction<DecodeResponse, ApiConnectionActionConfiguration> Decode(Expression<Func<string>> vIN, Expression<Func<int>> modelyear = null)
+        public IBodyWorkflowAction<DecodeResponse, ApiConnectionActionConfiguration> Decode(Expression<Func<string>> vin, Expression<Func<int>> modelyear = null)
         {
-            var __workflow_vIN = WorkflowExpression.Compile(vIN, nameof(vIN), required: true);
+            var __workflow_vin = WorkflowExpression.Compile(vin, nameof(vin), required: true);
             var __workflow_modelyear = WorkflowExpression.Compile(modelyear, nameof(modelyear), required: false);
             return new DeferredBodyAction<DecodeResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/vehicles/DecodeVinValuesExtended/{0}", __workflow_vIN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/vehicles/DecodeVinValuesExtended/{0}", __workflow_vin.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_modelyear != null)
@@ -29,31 +29,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nhtsavpicip")]
-        public IBodyWorkflowAction<DecodeWMIResponse, ApiConnectionActionConfiguration> DecodeWMI(Expression<Func<string>> wMI)
+        public IBodyWorkflowAction<DecodeWmiResponse, ApiConnectionActionConfiguration> DecodeWmi(Expression<Func<string>> wmi)
         {
-            var __workflow_wMI = WorkflowExpression.Compile(wMI, nameof(wMI), required: true);
-            return new DeferredBodyAction<DecodeWMIResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_wmi = WorkflowExpression.Compile(wmi, nameof(wmi), required: true);
+            return new DeferredBodyAction<DecodeWmiResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/vehicles/DecodeWMI/{0}", __workflow_wMI.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/vehicles/DecodeWMI/{0}", __workflow_wmi.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<DecodeWMIResponse>(callPayload);
+                return new ApiConnectionAction<DecodeWmiResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nhtsavpicip")]
-        public IBodyWorkflowAction<WMIGetResponse, ApiConnectionActionConfiguration> WMIGet(Expression<Func<string>> query, Expression<Func<string>> vehicleType = null)
+        public IBodyWorkflowAction<WmiGetResponse, ApiConnectionActionConfiguration> WmiGet(Expression<Func<string>> query, Expression<Func<string>> vehicleType = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_vehicleType = WorkflowExpression.Compile(vehicleType, nameof(vehicleType), required: false);
-            return new DeferredBodyAction<WMIGetResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WmiGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/vehicles/GetWMIsForManufacturer/{0}", __workflow_query.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_vehicleType != null)
                     callPayload.Queries["vehicleType"] = ExpressionConverter.Convert(__workflow_vehicleType);
-                return new ApiConnectionAction<WMIGetResponse>(callPayload);
+                return new ApiConnectionAction<WmiGetResponse>(callPayload);
             });
         }
 
@@ -263,7 +263,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
 
     public class DecodeResponseResultsTypeItem
     {
-        public string ABS { get; set; }
+        [JsonProperty("ABS")]
+        public string Abs { get; set; }
         public string ActiveSafetySysNote { get; set; }
         public string AdaptiveCruiseControl { get; set; }
         public string AdaptiveDrivingBeam { get; set; }
@@ -309,8 +310,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string BusType { get; set; }
 
         [JsonProperty("CAN_AACN")]
-        public string CANAACN { get; set; }
-        public string CIB { get; set; }
+        public string CanAacn { get; set; }
+
+        [JsonProperty("CIB")]
+        public string Cib { get; set; }
         public string CashForClunkers { get; set; }
         public string ChargerLevel { get; set; }
         public string ChargerPowerKW { get; set; }
@@ -326,8 +329,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string DriveType { get; set; }
         public string DriverAssist { get; set; }
         public string DynamicBrakeSupport { get; set; }
-        public string EDR { get; set; }
-        public string ESC { get; set; }
+
+        [JsonProperty("EDR")]
+        public string Edr { get; set; }
+
+        [JsonProperty("ESC")]
+        public string Esc { get; set; }
         public string EVDriveUnit { get; set; }
         public string ElectrificationLevel { get; set; }
         public string EngineConfiguration { get; set; }
@@ -347,14 +354,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string FuelInjectionType { get; set; }
         public string FuelTypePrimary { get; set; }
         public string FuelTypeSecondary { get; set; }
-        public string GCWR { get; set; }
+
+        [JsonProperty("GCWR")]
+        public string Gcwr { get; set; }
 
         [JsonProperty("GCWR_to")]
-        public string GCWRTo { get; set; }
-        public string GVWR { get; set; }
+        public string GcwrTo { get; set; }
+
+        [JsonProperty("GVWR")]
+        public string Gvwr { get; set; }
 
         [JsonProperty("GVWR_to")]
-        public string GVWRTo { get; set; }
+        public string GvwrTo { get; set; }
         public string KeylessIgnition { get; set; }
         public string LaneCenteringAssistance { get; set; }
         public string LaneDepartureWarning { get; set; }
@@ -373,13 +384,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string ModelYear { get; set; }
         public string MotorcycleChassisType { get; set; }
         public string MotorcycleSuspensionType { get; set; }
-        public string NCSABodyType { get; set; }
-        public string NCSAMake { get; set; }
-        public string NCSAMapExcApprovedBy { get; set; }
-        public string NCSAMapExcApprovedOn { get; set; }
-        public string NCSAMappingException { get; set; }
-        public string NCSAModel { get; set; }
-        public string NCSANote { get; set; }
+
+        [JsonProperty("NCSABodyType")]
+        public string NcsaBodyType { get; set; }
+
+        [JsonProperty("NCSAMake")]
+        public string NcsaMake { get; set; }
+
+        [JsonProperty("NCSAMapExcApprovedBy")]
+        public string NcsaMapExcApprovedBy { get; set; }
+
+        [JsonProperty("NCSAMapExcApprovedOn")]
+        public string NcsaMapExcApprovedOn { get; set; }
+
+        [JsonProperty("NCSAMappingException")]
+        public string NcsaMappingException { get; set; }
+
+        [JsonProperty("NCSAModel")]
+        public string NcsaModel { get; set; }
+
+        [JsonProperty("NCSANote")]
+        public string NcsaNote { get; set; }
         public string NonLandUse { get; set; }
         public string Note { get; set; }
         public string OtherBusInfo { get; set; }
@@ -398,10 +423,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string RearAutomaticEmergencyBraking { get; set; }
         public string RearCrossTrafficAlert { get; set; }
         public string RearVisibilitySystem { get; set; }
-        public string SAEAutomationLevel { get; set; }
+
+        [JsonProperty("SAEAutomationLevel")]
+        public string SaeAutomationLevel { get; set; }
 
         [JsonProperty("SAEAutomationLevel_to")]
-        public string SAEAutomationLevelTo { get; set; }
+        public string SaeAutomationLevelTo { get; set; }
         public string SeatBeltsAll { get; set; }
         public string SeatRows { get; set; }
         public string Seats { get; set; }
@@ -409,9 +436,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string Series { get; set; }
         public string Series2 { get; set; }
         public string SteeringLocation { get; set; }
-        public string SuggestedVIN { get; set; }
-        public string TPMS { get; set; }
-        public string TopSpeedMPH { get; set; }
+
+        [JsonProperty("SuggestedVIN")]
+        public string SuggestedVin { get; set; }
+
+        [JsonProperty("TPMS")]
+        public string Tpms { get; set; }
+
+        [JsonProperty("TopSpeedMPH")]
+        public string TopSpeedMph { get; set; }
         public string TrackWidth { get; set; }
         public string TractionControl { get; set; }
         public string TrailerBodyType { get; set; }
@@ -422,7 +455,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string Trim { get; set; }
         public string Trim2 { get; set; }
         public string Turbo { get; set; }
-        public string VIN { get; set; }
+
+        [JsonProperty("VIN")]
+        public string Vin { get; set; }
         public string ValveTrainDesign { get; set; }
         public string VehicleType { get; set; }
         public string WheelBaseLong { get; set; }
@@ -434,15 +469,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string Windows { get; set; }
     }
 
-    public class DecodeWMIResponse
+    public class DecodeWmiResponse
     {
         public int Count { get; set; }
         public string Message { get; set; }
         public string SearchCriteria { get; set; }
-        public DecodeWMIResponseResultsTypeItem[] Results { get; set; }
+        public DecodeWmiResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class DecodeWMIResponseResultsTypeItem
+    public class DecodeWmiResponseResultsTypeItem
     {
         public string CommonName { get; set; }
         public string CreatedOn { get; set; }
@@ -450,20 +485,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string Make { get; set; }
         public string ManufacturerName { get; set; }
         public string ParentCompanyName { get; set; }
-        public string URL { get; set; }
+
+        [JsonProperty("URL")]
+        public string Url { get; set; }
         public string UpdatedOn { get; set; }
         public string VehicleType { get; set; }
     }
 
-    public class WMIGetResponse
+    public class WmiGetResponse
     {
         public int Count { get; set; }
         public string Message { get; set; }
         public string SearchCriteria { get; set; }
-        public WMIGetResponseResultsTypeItem[] Results { get; set; }
+        public WmiGetResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class WMIGetResponseResultsTypeItem
+    public class WmiGetResponseResultsTypeItem
     {
         public string Country { get; set; }
         public string CreatedOn { get; set; }
@@ -472,7 +509,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string Name { get; set; }
         public string UpdatedOn { get; set; }
         public string VehicleType { get; set; }
-        public string WMI { get; set; }
+
+        [JsonProperty("WMI")]
+        public string Wmi { get; set; }
     }
 
     public class MakeResponse
@@ -502,7 +541,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
 
     public class PartResponseResultsTypeItem
     {
-        public string CoverLetterURL { get; set; }
+        [JsonProperty("CoverLetterURL")]
+        public string CoverLetterUrl { get; set; }
         public string LetterDate { get; set; }
         public int ManufacturerId { get; set; }
         public string ManufacturerName { get; set; }
@@ -510,7 +550,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string ModelYearTo { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
-        public string URL { get; set; }
+
+        [JsonProperty("URL")]
+        public string Url { get; set; }
     }
 
     public enum TypeInput
@@ -565,7 +607,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string ContactFax { get; set; }
         public string ContactPhone { get; set; }
         public string Country { get; set; }
-        public string DBAs { get; set; }
+
+        [JsonProperty("DBAs")]
+        public string Dbas { get; set; }
         public JToken[] EquipmentItems { get; set; }
         public string LastUpdated { get; set; }
         public ManufacturerDetailResponseResultsTypeItemManufacturerTypesTypeItem[] ManufacturerTypes { get; set; }
@@ -598,8 +642,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
 
     public class ManufacturerDetailResponseResultsTypeItemVehicleTypesTypeItem
     {
-        public string GVWRFrom { get; set; }
-        public string GVWRTo { get; set; }
+        [JsonProperty("GVWRFrom")]
+        public string GvwrFrom { get; set; }
+
+        [JsonProperty("GVWRTo")]
+        public string GvwrTo { get; set; }
         public bool IsPrimary { get; set; }
         public string Name { get; set; }
     }
@@ -685,7 +732,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nhtsavpicip
         public string Address { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public string DOTCode { get; set; }
+
+        [JsonProperty("DOTCode")]
+        public string DotCode { get; set; }
         public string Name { get; set; }
         public string OldDotCode { get; set; }
         public string PostalCode { get; set; }

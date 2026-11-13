@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         public string LastLogin { get; set; }
 
         [JsonProperty("api_key")]
-        public string APIKey { get; set; }
+        public string ApiKey { get; set; }
 
         [JsonProperty("status")]
         public int Status { get; set; }

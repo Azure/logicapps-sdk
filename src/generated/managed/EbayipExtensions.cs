@@ -177,19 +177,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetInventoryItemsResponse, ApiConnectionActionConfiguration> GetInventoryItems(Expression<Func<string>> Limit = null, Expression<Func<string>> Offset = null)
+        public IBodyWorkflowAction<GetInventoryItemsResponse, ApiConnectionActionConfiguration> GetInventoryItems(Expression<Func<string>> limit = null, Expression<Func<string>> offset = null)
         {
-            var __workflow_Limit = WorkflowExpression.Compile(Limit, nameof(Limit), required: false);
-            var __workflow_Offset = WorkflowExpression.Compile(Offset, nameof(Offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<GetInventoryItemsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sell/inventory/v1/inventory_item";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Limit != null)
-                    callPayload.Queries[" limit"] = ExpressionConverter.Convert(__workflow_Limit);
-                if (__workflow_Offset != null)
-                    callPayload.Queries[" offset"] = ExpressionConverter.Convert(__workflow_Offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries[" limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries[" offset"] = ExpressionConverter.Convert(__workflow_offset);
                 callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
                 return new ApiConnectionAction<GetInventoryItemsResponse>(callPayload);
             });
@@ -226,61 +226,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetInventoryLocationsResponse, ApiConnectionActionConfiguration> GetInventoryLocations(Expression<Func<string>> Offset = null, Expression<Func<string>> Limit = null)
+        public IBodyWorkflowAction<GetInventoryLocationsResponse, ApiConnectionActionConfiguration> GetInventoryLocations(Expression<Func<string>> offset = null, Expression<Func<string>> limit = null)
         {
-            var __workflow_Offset = WorkflowExpression.Compile(Offset, nameof(Offset), required: false);
-            var __workflow_Limit = WorkflowExpression.Compile(Limit, nameof(Limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<GetInventoryLocationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sell/inventory/v1/location";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Offset != null)
-                    callPayload.Queries[" offset"] = ExpressionConverter.Convert(__workflow_Offset);
-                if (__workflow_Limit != null)
-                    callPayload.Queries[" limit"] = ExpressionConverter.Convert(__workflow_Limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries[" offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries[" limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<GetInventoryLocationsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetItemConditionPoliciesResponse, ApiConnectionActionConfiguration> GetItemConditionPolicies(Expression<Func<string>> marketplaceId, Expression<Func<string>> Filter = null)
+        public IBodyWorkflowAction<GetItemConditionPoliciesResponse, ApiConnectionActionConfiguration> GetItemConditionPolicies(Expression<Func<string>> marketplaceId, Expression<Func<string>> filter = null)
         {
             var __workflow_marketplaceId = WorkflowExpression.Compile(marketplaceId, nameof(marketplaceId), required: true);
-            var __workflow_Filter = WorkflowExpression.Compile(Filter, nameof(Filter), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetItemConditionPoliciesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/metadata/v1/marketplace/{0}/get_item_condition_policies", __workflow_marketplaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Filter != null)
-                    callPayload.Queries[" filter"] = ExpressionConverter.Convert(__workflow_Filter);
+                if (__workflow_filter != null)
+                    callPayload.Queries[" filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetItemConditionPoliciesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetOffersResponse, ApiConnectionActionConfiguration> GetOffers(Expression<Func<string>> sku, Expression<Func<string>> MarketplaceId = null, Expression<Func<string>> Format = null, Expression<Func<string>> Limit = null, Expression<Func<string>> Offset = null)
+        public IBodyWorkflowAction<GetOffersResponse, ApiConnectionActionConfiguration> GetOffers(Expression<Func<string>> sku, Expression<Func<string>> marketplaceId = null, Expression<Func<string>> format = null, Expression<Func<string>> limit = null, Expression<Func<string>> offset = null)
         {
             var __workflow_sku = WorkflowExpression.Compile(sku, nameof(sku), required: true);
-            var __workflow_MarketplaceId = WorkflowExpression.Compile(MarketplaceId, nameof(MarketplaceId), required: false);
-            var __workflow_Format = WorkflowExpression.Compile(Format, nameof(Format), required: false);
-            var __workflow_Limit = WorkflowExpression.Compile(Limit, nameof(Limit), required: false);
-            var __workflow_Offset = WorkflowExpression.Compile(Offset, nameof(Offset), required: false);
+            var __workflow_marketplaceId = WorkflowExpression.Compile(marketplaceId, nameof(marketplaceId), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<GetOffersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sell/inventory/v1/offer";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sku"] = ExpressionConverter.Convert(__workflow_sku);
-                if (__workflow_MarketplaceId != null)
-                    callPayload.Queries[" marketplace_id"] = ExpressionConverter.Convert(__workflow_MarketplaceId);
-                if (__workflow_Format != null)
-                    callPayload.Queries[" format"] = ExpressionConverter.Convert(__workflow_Format);
-                if (__workflow_Limit != null)
-                    callPayload.Queries[" limit"] = ExpressionConverter.Convert(__workflow_Limit);
-                if (__workflow_Offset != null)
-                    callPayload.Queries[" offset"] = ExpressionConverter.Convert(__workflow_Offset);
+                if (__workflow_marketplaceId != null)
+                    callPayload.Queries[" marketplace_id"] = ExpressionConverter.Convert(__workflow_marketplaceId);
+                if (__workflow_format != null)
+                    callPayload.Queries[" format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_limit != null)
+                    callPayload.Queries[" limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries[" offset"] = ExpressionConverter.Convert(__workflow_offset);
                 callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
                 return new ApiConnectionAction<GetOffersResponse>(callPayload);
             });
@@ -1598,11 +1598,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     public enum BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItemAvailabilityTypeType
     {
         [EnumMember(Value = "IN_STOCK")]
-        INSTOCK,
+        InStock,
         [EnumMember(Value = "OUT_OF_STOCK")]
-        OUTOFSTOCK,
+        OutOfStock,
         [EnumMember(Value = "SHIP_TO_STORE")]
-        SHIPTOSTORE
+        ShipToStore
     }
 
     public class BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItemFulfillmentTimeType
@@ -1617,17 +1617,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItemFulfillmentTimeTypeUnitType
     {
-        YEAR,
-        MONTH,
-        DAY,
-        HOUR,
+        [EnumMember(Value = "YEAR")]
+        Year,
+        [EnumMember(Value = "MONTH")]
+        Month,
+        [EnumMember(Value = "DAY")]
+        Day,
+        [EnumMember(Value = "HOUR")]
+        Hour,
         [EnumMember(Value = "CALENDAR_DAY")]
-        CALENDARDAY,
+        CalendarDay,
         [EnumMember(Value = "BUSINESS_DAY")]
-        BUSINESSDAY,
-        MINUTE,
-        SECOND,
-        MILLISECOND
+        BusinessDay,
+        [EnumMember(Value = "MINUTE")]
+        Minute,
+        [EnumMember(Value = "SECOND")]
+        Second,
+        [EnumMember(Value = "MILLISECOND")]
+        Millisecond
     }
 
     public class BodyInputAvailabilityTypeShipToLocationAvailabilityType
@@ -1663,51 +1670,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItemFulfillmentTimeTypeUnitType
     {
-        YEAR,
-        MONTH,
-        DAY,
-        HOUR,
+        [EnumMember(Value = "YEAR")]
+        Year,
+        [EnumMember(Value = "MONTH")]
+        Month,
+        [EnumMember(Value = "DAY")]
+        Day,
+        [EnumMember(Value = "HOUR")]
+        Hour,
         [EnumMember(Value = "CALENDAR_DAY")]
-        CALENDARDAY,
+        CalendarDay,
         [EnumMember(Value = "BUSINESS_DAY")]
-        BUSINESSDAY,
-        MINUTE,
-        SECOND,
-        MILLISECOND
+        BusinessDay,
+        [EnumMember(Value = "MINUTE")]
+        Minute,
+        [EnumMember(Value = "SECOND")]
+        Second,
+        [EnumMember(Value = "MILLISECOND")]
+        Millisecond
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputConditionType
     {
-        NEW,
+        [EnumMember(Value = "NEW")]
+        New,
         [EnumMember(Value = "LIKE_NEW")]
-        LIKENEW,
+        LikeNew,
         [EnumMember(Value = "NEW_OTHER")]
-        NEWOTHER,
+        NewOther,
         [EnumMember(Value = "NEW_WITH_DEFECTS")]
-        NEWWITHDEFECTS,
+        NewWithDefects,
         [EnumMember(Value = "MANUFACTURER_REFURBISHED")]
-        MANUFACTURERREFURBISHED,
+        ManufacturerRefurbished,
         [EnumMember(Value = "CERTIFIED_REFURBISHED")]
-        CERTIFIEDREFURBISHED,
+        CertifiedRefurbished,
         [EnumMember(Value = "EXCELLENT_REFURBISHED")]
-        EXCELLENTREFURBISHED,
+        ExcellentRefurbished,
         [EnumMember(Value = "VERY_GOOD_REFURBISHED")]
-        VERYGOODREFURBISHED,
+        VeryGoodRefurbished,
         [EnumMember(Value = "GOOD_REFURBISHED")]
-        GOODREFURBISHED,
+        GoodRefurbished,
         [EnumMember(Value = "SELLER_REFURBISHED")]
-        SELLERREFURBISHED,
+        SellerRefurbished,
         [EnumMember(Value = "USED_EXCELLENT")]
-        USEDEXCELLENT,
+        UsedExcellent,
         [EnumMember(Value = "USED_VERY_GOOD")]
-        USEDVERYGOOD,
+        UsedVeryGood,
         [EnumMember(Value = "USED_GOOD")]
-        USEDGOOD,
+        UsedGood,
         [EnumMember(Value = "USED_ACCEPTABLE")]
-        USEDACCEPTABLE,
+        UsedAcceptable,
         [EnumMember(Value = "FOR_PARTS_OR_NOT_WORKING")]
-        FORPARTSORNOTWORKING
+        ForPartsOrNotWorking
     }
 
     public class BodyInputPackageWeightAndSizeType
@@ -1740,64 +1755,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputPackageWeightAndSizeTypeDimensionsTypeUnitType
     {
-        INCH,
-        FEET,
-        CENTIMETER,
-        METER
+        [EnumMember(Value = "INCH")]
+        Inch,
+        [EnumMember(Value = "FEET")]
+        Feet,
+        [EnumMember(Value = "CENTIMETER")]
+        Centimeter,
+        [EnumMember(Value = "METER")]
+        Meter
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputPackageWeightAndSizeTypePackageTypeType
     {
-        LETTER,
+        [EnumMember(Value = "LETTER")]
+        Letter,
         [EnumMember(Value = "BULKY_GOODS")]
-        BULKYGOODS,
-        CARAVAN,
-        CARS,
-        EUROPALLET,
+        BulkyGoods,
+        [EnumMember(Value = "CARAVAN")]
+        Caravan,
+        [EnumMember(Value = "CARS")]
+        Cars,
+        [EnumMember(Value = "EUROPALLET")]
+        Europallet,
         [EnumMember(Value = "EXPANDABLE_TOUGH_BAGS")]
-        EXPANDABLETOUGHBAGS,
+        ExpandableToughBags,
         [EnumMember(Value = "EXTRA_LARGE_PACK")]
-        EXTRALARGEPACK,
-        FURNITURE,
+        ExtraLargePack,
+        [EnumMember(Value = "FURNITURE")]
+        Furniture,
         [EnumMember(Value = "INDUSTRY_VEHICLES")]
-        INDUSTRYVEHICLES,
+        IndustryVehicles,
         [EnumMember(Value = "LARGE_CANADA_POSTBOX")]
-        LARGECANADAPOSTBOX,
+        LargeCanadaPostbox,
         [EnumMember(Value = "LARGE_CANADA_POST_BUBBLE_MAILER")]
-        LARGECANADAPOSTBUBBLEMAILER,
+        LargeCanadaPostBubbleMailer,
         [EnumMember(Value = "LARGE_ENVELOPE")]
-        LARGEENVELOPE,
+        LargeEnvelope,
         [EnumMember(Value = "MAILING_BOX")]
-        MAILINGBOX,
+        MailingBox,
         [EnumMember(Value = "MEDIUM_CANADA_POST_BOX")]
-        MEDIUMCANADAPOSTBOX,
+        MediumCanadaPostBox,
         [EnumMember(Value = "MEDIUM_CANADA_POST_BUBBLE_MAILER")]
-        MEDIUMCANADAPOSTBUBBLEMAILER,
-        MOTORBIKES,
+        MediumCanadaPostBubbleMailer,
+        [EnumMember(Value = "MOTORBIKES")]
+        Motorbikes,
         [EnumMember(Value = "ONE_WAY_PALLET")]
-        ONEWAYPALLET,
+        OneWayPallet,
         [EnumMember(Value = "PACKAGE_THICK_ENVELOPE")]
-        PACKAGETHICKENVELOPE,
+        PackageThickEnvelope,
         [EnumMember(Value = "PADDED_BAGS")]
-        PADDEDBAGS,
+        PaddedBags,
         [EnumMember(Value = "PARCEL_OR_PADDED_ENVELOPE")]
-        PARCELORPADDEDENVELOPE,
-        ROLL,
+        ParcelOrPaddedEnvelope,
+        [EnumMember(Value = "ROLL")]
+        Roll,
         [EnumMember(Value = "SMALL_CANADA_POST_BOX")]
-        SMALLCANADAPOSTBOX,
+        SmallCanadaPostBox,
         [EnumMember(Value = "TOUGH_BAGS")]
-        TOUGHBAGS,
+        ToughBags,
         [EnumMember(Value = "UPS_LETTER")]
-        UPSLETTER,
+        UpsLetter,
         [EnumMember(Value = "USPS_FLAT_RATE_ENVELOPE")]
-        USPSFLATRATEENVELOPE,
+        UspsFlatRateEnvelope,
         [EnumMember(Value = "USPS_LARGE_PACK")]
-        USPSLARGEPACK,
+        UspsLargePack,
         [EnumMember(Value = "VERY_LARGE_PACK")]
-        VERYLARGEPACK,
+        VeryLargePack,
         [EnumMember(Value = "WINE_PAK")]
-        WINEPAK
+        WinePak
     }
 
     public class BodyInputPackageWeightAndSizeTypeWeightType
@@ -1812,10 +1838,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputPackageWeightAndSizeTypeWeightTypeUnitType
     {
-        POUND,
-        KILOGRAM,
-        OUNCE,
-        GRAM
+        [EnumMember(Value = "POUND")]
+        Pound,
+        [EnumMember(Value = "KILOGRAM")]
+        Kilogram,
+        [EnumMember(Value = "OUNCE")]
+        Ounce,
+        [EnumMember(Value = "GRAM")]
+        Gram
     }
 
     public class BodyInputProductType
@@ -2256,8 +2286,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputLocationTypesTypeItem
     {
-        STORE,
-        WAREHOUSE
+        [EnumMember(Value = "STORE")]
+        Store,
+        [EnumMember(Value = "WAREHOUSE")]
+        Warehouse
     }
 
     public class BodyInputOperatingHoursTypeItem
@@ -2272,14 +2304,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputOperatingHoursTypeItemDayOfWeekEnumType
     {
-        MONDAY,
-        TUESDAY,
-        WEDNESDAY,
-        THURSDAY,
+        [EnumMember(Value = "MONDAY")]
+        Monday,
+        [EnumMember(Value = "TUESDAY")]
+        Tuesday,
+        [EnumMember(Value = "WEDNESDAY")]
+        Wednesday,
+        [EnumMember(Value = "THURSDAY")]
+        Thursday,
         [EnumMember(Value = "FRIDAY")]
-        FRIdAY,
-        SATURDAY,
-        SUNDAY
+        Friday,
+        [EnumMember(Value = "SATURDAY")]
+        Saturday,
+        [EnumMember(Value = "SUNDAY")]
+        Sunday
     }
 
     public class BodyInputOperatingHoursTypeItemIntervalsTypeItem
@@ -2990,29 +3028,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputFormatType
     {
-        AUCTION,
+        [EnumMember(Value = "AUCTION")]
+        Auction,
         [EnumMember(Value = "FIXED_PRICE")]
-        FIXEDPRICE
+        FixedPrice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputListingDurationType
     {
         [EnumMember(Value = "DAYS_1")]
-        DAYS1,
+        Days1,
         [EnumMember(Value = "DAYS_3")]
-        DAYS3,
+        Days3,
         [EnumMember(Value = "DAYS_5")]
-        DAYS5,
+        Days5,
         [EnumMember(Value = "DAYS_7")]
-        DAYS7,
+        Days7,
         [EnumMember(Value = "DAYS_10")]
-        DAYS10,
+        Days10,
         [EnumMember(Value = "DAYS_21")]
-        DAYS21,
+        Days21,
         [EnumMember(Value = "DAYS_30")]
-        DAYS30,
-        GTC
+        Days30,
+        [EnumMember(Value = "GTC")]
+        Gtc
     }
 
     public class BodyInputListingPoliciesType
@@ -3108,8 +3148,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputListingPoliciesTypeShippingCostOverridesTypeItemShippingServiceTypeType
     {
-        DOMESTIC,
-        INTERNATIONAL
+        [EnumMember(Value = "DOMESTIC")]
+        Domestic,
+        [EnumMember(Value = "INTERNATIONAL")]
+        International
     }
 
     public class BodyInputPricingSummaryType
@@ -3167,11 +3209,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     public enum BodyInputPricingSummaryTypeOriginallySoldForRetailPriceOnType
     {
         [EnumMember(Value = "ON_EBAY")]
-        ONEBAY,
+        OnEbay,
         [EnumMember(Value = "OFF_EBAY")]
-        OFFEBAY,
+        OffEbay,
         [EnumMember(Value = "ON_AND_OFF_EBAY")]
-        ONANDOFFEBAY
+        OnAndOffEbay
     }
 
     public class BodyInputPricingSummaryTypeOriginalRetailPriceType
@@ -3195,11 +3237,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputPricingSummaryTypePricingVisibilityType
     {
-        NONE,
+        [EnumMember(Value = "NONE")]
+        None,
         [EnumMember(Value = "PRE_CHECKOUT")]
-        PRECHECKOUT,
+        PreCheckout,
         [EnumMember(Value = "DURING_CHECKOUT")]
-        DURINGCHECKOUT
+        DuringCheckout
     }
 
     public class BodyInputTaxType

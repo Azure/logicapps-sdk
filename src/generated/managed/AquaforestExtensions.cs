@@ -27,29 +27,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<GetPDFInfoResponse, ApiConnectionActionConfiguration> GetPdfInformation(Expression<Func<GetPDFInfoRequestInput>> getPDFInfoRequest)
+        public IBodyWorkflowAction<GetPdfInfoResponse, ApiConnectionActionConfiguration> GetPdfInformation(Expression<Func<GetPdfInfoRequestInput>> getPdfInfoRequest)
         {
-            var __workflow_getPDFInfoRequest = WorkflowExpression.Compile(getPDFInfoRequest, nameof(getPDFInfoRequest), required: true);
-            return new DeferredBodyAction<GetPDFInfoResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_getPdfInfoRequest = WorkflowExpression.Compile(getPdfInfoRequest, nameof(getPdfInfoRequest), required: true);
+            return new DeferredBodyAction<GetPdfInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetPDFInfo";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getPDFInfoRequest);
-                return new ApiConnectionAction<GetPDFInfoResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getPdfInfoRequest);
+                return new ApiConnectionAction<GetPdfInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetDataFromPdf(Expression<Func<GetDataFromPDFRequestInput>> getDataFromPDFRequest)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetDataFromPdf(Expression<Func<GetDataFromPdfRequestInput>> getDataFromPdfRequest)
         {
-            var __workflow_getDataFromPDFRequest = WorkflowExpression.Compile(getDataFromPDFRequest, nameof(getDataFromPDFRequest), required: true);
+            var __workflow_getDataFromPdfRequest = WorkflowExpression.Compile(getDataFromPdfRequest, nameof(getDataFromPdfRequest), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetPageData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getDataFromPDFRequest);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getDataFromPdfRequest);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -235,41 +235,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     {
         [EnumMember(Value = "All 1D")]
         All1D,
-        AZTEC,
-        CODABAR,
+        [EnumMember(Value = "AZTEC")]
+        Aztec,
+        [EnumMember(Value = "CODABAR")]
+        Codabar,
         [EnumMember(Value = "CODE 128")]
-        CODE128,
+        Code128,
         [EnumMember(Value = "CODE 39")]
-        CODE39,
+        Code39,
         [EnumMember(Value = "CODE 93")]
-        CODE93,
+        Code93,
         [EnumMember(Value = "DATA MATRIX")]
-        DATAMATRIX,
+        DataMatrix,
         [EnumMember(Value = "EAN 13")]
-        EAN13,
+        Ean13,
         [EnumMember(Value = "EAN 8")]
-        EAN8,
-        ITF,
-        MAXICODE,
-        MSI,
+        Ean8,
+        [EnumMember(Value = "ITF")]
+        Itf,
+        [EnumMember(Value = "MAXICODE")]
+        Maxicode,
+        [EnumMember(Value = "MSI")]
+        Msi,
         [EnumMember(Value = "PDF 417")]
-        PDF417,
-        PLESSEY,
+        Pdf417,
+        [EnumMember(Value = "PLESSEY")]
+        Plessey,
         [EnumMember(Value = "QR CODE")]
-        QRCODE,
+        QRCode,
         [EnumMember(Value = "RSS 14")]
-        RSS14,
+        Rss14,
         [EnumMember(Value = "RSS EXPANDED")]
-        RSSEXPANDED,
+        RssExpanded,
         [EnumMember(Value = "UPC A")]
-        UPCA,
+        UpcA,
         [EnumMember(Value = "UPC E")]
-        UPCE,
+        UpcE,
         [EnumMember(Value = "UPC EAN EXTENSION")]
-        UPCEANEXTENSION
+        UpcEanExtension
     }
 
-    public class GetPDFInfoResponse
+    public class GetPdfInfoResponse
     {
         public bool AllowAssembly { get; set; }
         public bool AllowDegradedPrinting { get; set; }
@@ -300,19 +306,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public int NumberOfPages { get; set; }
 
         [JsonProperty("PDFversion")]
-        public double PDFVersion { get; set; }
+        public double PdfVersion { get; set; }
         public string Producer { get; set; }
         public string Subject { get; set; }
         public string Title { get; set; }
         public string Trapped { get; set; }
-
-        [JsonProperty("XmpMetadata")]
-        public string XMPMetadata { get; set; }
+        public string XmpMetadata { get; set; }
     }
 
-    public class GetPDFInfoRequestInput
+    public class GetPdfInfoRequestInput
     {
-        public GetPDFInfoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        public GetPdfInfoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
         {
             this.FileContent = fileContent;
         }
@@ -324,21 +328,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public int? PageLimit { get; set; } = 10;
     }
 
-    public class GetDataFromPDFRequestInput
+    public class GetDataFromPdfRequestInput
     {
-        public GetDataFromPDFRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
+        public GetDataFromPdfRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent fileContent)
         {
             this.FileContent = fileContent;
         }
 
         [JsonProperty("advancedFlags")]
-        public GetDataFromPDFRequestInputAdvancedSettingsTypeItem[] AdvancedSettings { get; set; }
+        public GetDataFromPdfRequestInputAdvancedSettingsTypeItem[] AdvancedSettings { get; set; }
 
         [JsonProperty("confidenceScore")]
         public double? ConfidenceScore { get; set; }
 
         [JsonProperty("dateAsISO", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDataFromPDFRequestInputDateConversionType? DateConversion { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.GetDataFromPDFRequestInputDateConversionType.ISOConversionDMYInputAssumed;
+        public GetDataFromPdfRequestInputDateConversionType? DateConversion { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.GetDataFromPdfRequestInputDateConversionType.IsoConversionDmyInputAssumed;
 
         [JsonProperty("expectedKeys")]
         public string ExpectedKeys { get; set; }
@@ -365,9 +369,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public bool? TrimSymbols { get; set; } = true;
     }
 
-    public class GetDataFromPDFRequestInputAdvancedSettingsTypeItem
+    public class GetDataFromPdfRequestInputAdvancedSettingsTypeItem
     {
-        public GetDataFromPDFRequestInputAdvancedSettingsTypeItem(string name, string value)
+        public GetDataFromPdfRequestInputAdvancedSettingsTypeItem(string name, string value)
         {
             this.Name = name;
             this.Value = value;
@@ -381,14 +385,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetDataFromPDFRequestInputDateConversionType
+    public enum GetDataFromPdfRequestInputDateConversionType
     {
         [EnumMember(Value = "Do not convert date values")]
         DoNotConvertDateValues,
         [EnumMember(Value = "ISO conversion (DMY input assumed)")]
-        ISOConversionDMYInputAssumed,
+        IsoConversionDmyInputAssumed,
         [EnumMember(Value = "ISO conversion (MDY input assumed)")]
-        ISOConversionMDYInputAssumed
+        IsoConversionMdyInputAssumed
     }
 
     public class ApiGetTextValueJsonResponse
@@ -552,10 +556,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public bool? EnableDebugOutput { get; set; } = false;
 
         [JsonProperty("enableMrc", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CompressPDFMRC { get; set; } = false;
+        public bool? CompressPdfMrc { get; set; } = false;
 
         [JsonProperty("enablePDFAOutput", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? PDFAOutput { get; set; } = false;
+        public bool? PdfAOutput { get; set; } = false;
 
         [JsonProperty("errorMode", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ErrorMode { get; set; } = 7;
@@ -642,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public int? PdfToImageMinRes { get; set; } = 200;
 
         [JsonProperty("pdfaVersion")]
-        public OcrDataInputPDFAVersionType? PDFAVersion { get; set; }
+        public OcrDataInputPdfAVersionType? PdfAVersion { get; set; }
 
         [JsonProperty("pipeClientConnectionTimeout", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? PipeClientConnectionTimeout { get; set; } = 60000;
@@ -708,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public int? TidyUpMode { get; set; } = 1;
 
         [JsonProperty("validatePDFA", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ValidatePDFA { get; set; } = false;
+        public bool? ValidatePdfA { get; set; } = false;
 
         [JsonProperty("wordMatchThreshold", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? WordMatchThreshold { get; set; } = 10;
@@ -756,40 +760,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OcrDataInputPdfToImageCompressionType
     {
-        CCITT4,
-        LZW
+        [EnumMember(Value = "CCITT4")]
+        Ccitt4,
+        [EnumMember(Value = "LZW")]
+        Lzw
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OcrDataInputPdfToImageDpiType
     {
         [EnumMember(Value = "DPI_72")]
-        DPI72,
+        Dpi72,
         [EnumMember(Value = "DPI_100")]
-        DPI100,
+        Dpi100,
         [EnumMember(Value = "DPI_150")]
-        DPI150,
+        Dpi150,
         [EnumMember(Value = "DPI_200")]
-        DPI200,
+        Dpi200,
         [EnumMember(Value = "DPI_300")]
-        DPI300,
+        Dpi300,
         [EnumMember(Value = "DPI_400")]
-        DPI400,
+        Dpi400,
         [EnumMember(Value = "DPI_500")]
-        DPI500,
+        Dpi500,
         [EnumMember(Value = "DPI_600")]
-        DPI600
+        Dpi600
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrDataInputPDFAVersionType
+    public enum OcrDataInputPdfAVersionType
     {
         [EnumMember(Value = "PDF_A1b")]
-        PDFA1b,
+        PdfA1b,
         [EnumMember(Value = "PDF_A2b")]
-        PDFA2b,
+        PdfA2b,
         [EnumMember(Value = "PDF_A3b")]
-        PDFA3b
+        PdfA3b
     }
 
     public class ApiSplitPost200ApplicationJsonResponse
@@ -885,38 +891,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     {
         [EnumMember(Value = "All 1D")]
         All1D,
-        AZTEC,
-        CODABAR,
+        [EnumMember(Value = "AZTEC")]
+        Aztec,
+        [EnumMember(Value = "CODABAR")]
+        Codabar,
         [EnumMember(Value = "CODE 128")]
-        CODE128,
+        Code128,
         [EnumMember(Value = "CODE 39")]
-        CODE39,
+        Code39,
         [EnumMember(Value = "CODE 93")]
-        CODE93,
+        Code93,
         [EnumMember(Value = "DATA MATRIX")]
-        DATAMATRIX,
+        DataMatrix,
         [EnumMember(Value = "EAN 13")]
-        EAN13,
+        Ean13,
         [EnumMember(Value = "EAN 8")]
-        EAN8,
-        ITF,
-        MAXICODE,
-        MSI,
+        Ean8,
+        [EnumMember(Value = "ITF")]
+        Itf,
+        [EnumMember(Value = "MAXICODE")]
+        Maxicode,
+        [EnumMember(Value = "MSI")]
+        Msi,
         [EnumMember(Value = "PDF 417")]
-        PDF417,
-        PLESSEY,
+        Pdf417,
+        [EnumMember(Value = "PLESSEY")]
+        Plessey,
         [EnumMember(Value = "QR CODE")]
-        QRCODE,
+        QRCode,
         [EnumMember(Value = "RSS 14")]
-        RSS14,
+        Rss14,
         [EnumMember(Value = "RSS EXPANDED")]
-        RSSEXPANDED,
+        RssExpanded,
         [EnumMember(Value = "UPC A")]
-        UPCA,
+        UpcA,
         [EnumMember(Value = "UPC E")]
-        UPCE,
+        UpcE,
         [EnumMember(Value = "UPC EAN EXTENSION")]
-        UPCEANEXTENSION
+        UpcEanExtension
     }
 
     public class SplitTextInput
@@ -1071,38 +1083,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     {
         [EnumMember(Value = "All 1D")]
         All1D,
-        AZTEC,
-        CODABAR,
+        [EnumMember(Value = "AZTEC")]
+        Aztec,
+        [EnumMember(Value = "CODABAR")]
+        Codabar,
         [EnumMember(Value = "CODE 128")]
-        CODE128,
+        Code128,
         [EnumMember(Value = "CODE 39")]
-        CODE39,
+        Code39,
         [EnumMember(Value = "CODE 93")]
-        CODE93,
+        Code93,
         [EnumMember(Value = "DATA MATRIX")]
-        DATAMATRIX,
+        DataMatrix,
         [EnumMember(Value = "EAN 13")]
-        EAN13,
+        Ean13,
         [EnumMember(Value = "EAN 8")]
-        EAN8,
-        ITF,
-        MAXICODE,
-        MSI,
+        Ean8,
+        [EnumMember(Value = "ITF")]
+        Itf,
+        [EnumMember(Value = "MAXICODE")]
+        Maxicode,
+        [EnumMember(Value = "MSI")]
+        Msi,
         [EnumMember(Value = "PDF 417")]
-        PDF417,
-        PLESSEY,
+        Pdf417,
+        [EnumMember(Value = "PLESSEY")]
+        Plessey,
         [EnumMember(Value = "QR CODE")]
-        QRCODE,
+        QRCode,
         [EnumMember(Value = "RSS 14")]
-        RSS14,
+        Rss14,
         [EnumMember(Value = "RSS EXPANDED")]
-        RSSEXPANDED,
+        RssExpanded,
         [EnumMember(Value = "UPC A")]
-        UPCA,
+        UpcA,
         [EnumMember(Value = "UPC E")]
-        UPCE,
+        UpcE,
         [EnumMember(Value = "UPC EAN EXTENSION")]
-        UPCEANEXTENSION
+        UpcEanExtension
     }
 
     public class ExtractTextInput

@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
     public class BodyInputSettingsType
     {
         [JsonProperty("isOcrEnabled")]
-        public bool? OCREnabled { get; set; }
+        public bool? OcrEnabled { get; set; }
 
         [JsonProperty("itemMinorVersionLimit")]
         public int? ItemMinorVersionLimit { get; set; }
@@ -1213,10 +1213,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
     public class DriveItem
     {
         [JsonProperty("@microsoft.graph.downloadUrl")]
-        public string DownloadURL { get; set; }
+        public string DownloadUrl { get; set; }
 
         [JsonProperty("@microsoft.graph.downloadUrlNoAuth")]
-        public string DownloadURLNoAuth { get; set; }
+        public string DownloadUrlNoAuth { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1228,7 +1228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
         public int Size { get; set; }
 
         [JsonProperty("webUrl")]
-        public string WebURL { get; set; }
+        public string WebUrl { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedTime { get; set; }
@@ -1342,7 +1342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
     public class DriveItemFileType
     {
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("hashes")]
         public DriveItemFileTypeHashesType Hashes { get; set; }
@@ -1399,7 +1399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
         public SharingLinkLinkTypeLinkScopeType LinkScope { get; set; }
 
         [JsonProperty("webUrl")]
-        public string WebURL { get; set; }
+        public string WebUrl { get; set; }
 
         [JsonProperty("application")]
         public SharingLinkLinkTypeApplicationType Application { get; set; }
@@ -1528,7 +1528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
         public string LinkType { get; set; }
 
         [JsonProperty("webUrl")]
-        public string WebURL { get; set; }
+        public string WebUrl { get; set; }
     }
 
     public class SharingPermissionResponseInvitationType
@@ -1609,13 +1609,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
     public class CreateFilePreviewResponse
     {
         [JsonProperty("getUrl")]
-        public string GetURL { get; set; }
+        public string GetUrl { get; set; }
 
         [JsonProperty("postParameters")]
         public string PostParameters { get; set; }
 
         [JsonProperty("postUrl")]
-        public string PostURL { get; set; }
+        public string PostUrl { get; set; }
     }
 
     public class CreateFilePreviewBodyInput
@@ -1720,7 +1720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
         public int Width { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1814,13 +1814,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointembedded
 
     public class PermanentDeleteRecycledFilesBodyInput
     {
-        public PermanentDeleteRecycledFilesBodyInput(string[] itemIDs)
+        public PermanentDeleteRecycledFilesBodyInput(string[] itemIds)
         {
-            this.ItemIDs = itemIDs;
+            this.ItemIds = itemIds;
         }
 
         [JsonProperty("ids", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] ItemIDs { get; set; }
+        public string[] ItemIds { get; set; }
     }
 
     public class GetChangesContainerResponse

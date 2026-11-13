@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         public string Classification { get; set; }
 
         [JsonProperty("ncic")]
-        public string NCICNumber { get; set; }
+        public string NcicNumber { get; set; }
 
         [JsonProperty("age_min")]
         public int MinimumAge { get; set; }
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         public string PublicationDate { get; set; }
 
         [JsonProperty("path")]
-        public string APIPath { get; set; }
+        public string ApiPath { get; set; }
     }
 
     public class WantedPersonImagesTypeItem
@@ -268,19 +268,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         public string ImageCaption { get; set; }
 
         [JsonProperty("original")]
-        public string OriginalImageURL { get; set; }
+        public string OriginalImageUrl { get; set; }
 
         [JsonProperty("large")]
-        public string LargeImageURL { get; set; }
+        public string LargeImageUrl { get; set; }
 
         [JsonProperty("thumb")]
-        public string ThumbnailImageURL { get; set; }
+        public string ThumbnailImageUrl { get; set; }
     }
 
     public class WantedPersonFilesTypeItem
     {
         [JsonProperty("url")]
-        public string FileURL { get; set; }
+        public string FileUrl { get; set; }
 
         [JsonProperty("name")]
         public string FileName { get; set; }
@@ -525,16 +525,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         public string PublicationDate { get; set; }
 
         [JsonProperty("path")]
-        public string APIPath { get; set; }
+        public string ApiPath { get; set; }
     }
 
     public class ArtCrimeImagesTypeItem
     {
         [JsonProperty("original")]
-        public string OriginalImageURL { get; set; }
+        public string OriginalImageUrl { get; set; }
 
         [JsonProperty("thumb")]
-        public string ThumbnailImageURL { get; set; }
+        public string ThumbnailImageUrl { get; set; }
     }
 }
 

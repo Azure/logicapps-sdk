@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
     public class AdobepdftoolsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
-        public IBodyWorkflowAction<CombinePDFResponse, ApiConnectionActionConfiguration> CombinePDF(Expression<Func<FilesArrayInput>> filesArray, Expression<Func<XRegionValueInput>> xRegionValue = null)
+        public IBodyWorkflowAction<CombinePdfResponse, ApiConnectionActionConfiguration> CombinePdf(Expression<Func<FilesArrayInput>> filesArray, Expression<Func<XRegionValueInput>> xRegionValue = null)
         {
             var __workflow_filesArray = WorkflowExpression.Compile(filesArray, nameof(filesArray), required: true);
             var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
-            return new DeferredBodyAction<CombinePDFResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CombinePdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/operation/v1/combinePDF";
                 var apiCallHttpMethod = "post";
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_filesArray);
-                return new ApiConnectionAction<CombinePDFResponse>(callPayload);
+                return new ApiConnectionAction<CombinePdfResponse>(callPayload);
             });
         }
     }
@@ -36,28 +36,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
     {
     }
 
-    public class CombinePDFResponse
+    public class CombinePdfResponse
     {
         [JsonProperty("fileName")]
-        public string PDFFileName { get; set; }
+        public string PdfFileName { get; set; }
 
         [JsonProperty("fileContent")]
-        public string PDFFileContent { get; set; }
+        public string PdfFileContent { get; set; }
 
         [JsonProperty("fileContentType")]
-        public string PDFFileContentType { get; set; }
+        public string PdfFileContentType { get; set; }
     }
 
     public class FilesArrayInput
     {
-        public FilesArrayInput(string mergedPDFFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] files)
+        public FilesArrayInput(string mergedPdfFileName, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] files)
         {
-            this.MergedPDFFileName = mergedPDFFileName;
+            this.MergedPdfFileName = mergedPdfFileName;
             this.Files = files;
         }
 
         [JsonProperty("outputFileName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MergedPDFFileName { get; set; }
+        public string MergedPdfFileName { get; set; }
 
         [JsonProperty("files", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] Files { get; set; }

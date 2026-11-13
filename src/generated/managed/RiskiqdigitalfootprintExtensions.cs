@@ -534,25 +534,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqdigitalfootprint
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DeltaSummaryTypeType
     {
-        CONTACT,
+        [EnumMember(Value = "CONTACT")]
+        Contact,
         [EnumMember(Value = "SSL_CERT")]
-        SSLCERT,
+        SslCert,
         [EnumMember(Value = "MAIL_SERVER")]
-        MAILSERVER,
+        MailServer,
         [EnumMember(Value = "IP_BLOCK")]
-        IPBLOCK,
-        PAGE,
+        IPBlock,
+        [EnumMember(Value = "PAGE")]
+        Page,
         AS,
-        DOMAIN,
+        [EnumMember(Value = "DOMAIN")]
+        Domain,
         [EnumMember(Value = "IP_ADDRESS")]
-        IPADDRESS,
-        HOST,
+        IPAddress,
+        [EnumMember(Value = "HOST")]
+        Host,
         [EnumMember(Value = "NAME_SERVER")]
-        NAMESERVER,
+        NameServer,
         [EnumMember(Value = "SELF_HOSTED_RESOURCE")]
-        SELFHOSTEDRESOURCE,
+        SelfHostedResource,
         [EnumMember(Value = "THIRDPARTY_HOSTED_RESOURCE")]
-        THIRDPARTYHOSTEDRESOURCE
+        ThirdpartyHostedResource
     }
 
     public class Aggregation
@@ -660,7 +664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqdigitalfootprint
         AS,
         Page,
         [EnumMember(Value = "SSL_Cert")]
-        SSLCert,
+        SslCert,
         [EnumMember(Value = "Name_Server")]
         NameServer,
         [EnumMember(Value = "Mail_Server")]
@@ -848,7 +852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqdigitalfootprint
         AS,
         Page,
         [EnumMember(Value = "SSL_Cert")]
-        SSLCert,
+        SslCert,
         [EnumMember(Value = "Name_Server")]
         NameServer,
         [EnumMember(Value = "Mail_Server")]
@@ -863,8 +867,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqdigitalfootprint
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MeasureInput
     {
-        ADDED,
-        REMOVED
+        [EnumMember(Value = "ADDED")]
+        Added,
+        [EnumMember(Value = "REMOVED")]
+        Removed
     }
 }
 

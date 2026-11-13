@@ -761,7 +761,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class CreateBlankDocxResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -780,7 +781,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class DeleteDocxTableRowResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -794,7 +796,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class DeleteDocxTableRowRangeResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -985,7 +988,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxGetImagesDocxImageResponse
     {
-        public string ImageContentsURL { get; set; }
+        [JsonProperty("ImageContentsURL")]
+        public string ImageContentsUrl { get; set; }
         public string ImageDataContentType { get; set; }
         public string ImageDataEmbedId { get; set; }
         public string ImageDescription { get; set; }
@@ -1065,7 +1069,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class InsertDocxCommentOnParagraphResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1092,13 +1097,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class DocxInsertImageResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
     public class EditDocumentDocxInsertImageReqConfigInput
     {
-        public int? HeightInEMUs { get; set; }
+        [JsonProperty("HeightInEMUs")]
+        public int? HeightInEmus { get; set; }
         public EditDocumentDocxInsertImageDocxImage ImageToAdd { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputDocumentFileBytes { get; set; }
         public string InputDocumentFileUrl { get; set; }
@@ -1106,12 +1113,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string InputImageFileUrl { get; set; }
         public string InsertPath { get; set; }
         public string InsertPlacement { get; set; }
-        public int? WidthInEMUs { get; set; }
+
+        [JsonProperty("WidthInEMUs")]
+        public int? WidthInEmus { get; set; }
     }
 
     public class EditDocumentDocxInsertImageDocxImage
     {
-        public string ImageContentsURL { get; set; }
+        [JsonProperty("ImageContentsURL")]
+        public string ImageContentsUrl { get; set; }
         public string ImageDataContentType { get; set; }
         public string ImageDataEmbedId { get; set; }
         public string ImageDescription { get; set; }
@@ -1128,7 +1138,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class InsertDocxInsertParagraphResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1172,7 +1183,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class InsertDocxTablesResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1251,7 +1263,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class InsertDocxTableRowResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1266,7 +1279,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class RemoveDocxHeadersAndFootersResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1280,7 +1294,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class DocxRemoveObjectResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1302,7 +1317,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class DocxSetFooterResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1335,7 +1351,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class DocxSetHeaderResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1355,7 +1372,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class UpdateDocxTableCellResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1371,7 +1389,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class UpdateDocxTableRowResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1399,7 +1418,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class ClearXlsxCellResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1420,7 +1440,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class CreateBlankSpreadsheetResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1431,7 +1452,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class CreateSpreadsheetFromDataResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1528,7 +1550,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class XlsxImage
     {
-        public string ImageContentsURL { get; set; }
+        [JsonProperty("ImageContentsURL")]
+        public string ImageContentsUrl { get; set; }
         public string ImageDataContentType { get; set; }
         public string ImageDataEmbedId { get; set; }
         public string ImageInternalFileName { get; set; }
@@ -1584,7 +1607,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class InsertXlsxWorksheetResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1597,7 +1621,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class SetXlsxCellByIdentifierResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 
@@ -1612,7 +1637,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class SetXlsxCellResponse
     {
-        public string EditedDocumentURL { get; set; }
+        [JsonProperty("EditedDocumentURL")]
+        public string EditedDocumentUrl { get; set; }
         public bool Successful { get; set; }
     }
 

@@ -127,7 +127,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoteaminbox
         [JsonProperty("CONTENT")]
         public string EmailContent { get; set; }
         public string CC { get; set; }
-        public string BCC { get; set; }
+
+        [JsonProperty("BCC")]
+        public string Bcc { get; set; }
 
         [JsonProperty("SENTTIMEINMILLIS")]
         public string SentTime { get; set; }
@@ -164,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoteaminbox
         public string CC { get; set; }
 
         [JsonProperty("bccAddress")]
-        public string BCC { get; set; }
+        public string Bcc { get; set; }
 
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailSubject { get; set; }

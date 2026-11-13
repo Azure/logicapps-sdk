@@ -474,13 +474,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     public class RfcTransactionDetails
     {
         [JsonProperty("RfcNames")]
-        public string[] TheNamesOfTheRFCsInTheTransaction { get; set; }
+        public string[] TheNamesOfTheRfcsInTheTransaction { get; set; }
 
         [JsonProperty("TId")]
-        public string TheTransactionIdentifierTId { get; set; }
+        public string TheTransactionIdentifierTid { get; set; }
 
         [JsonProperty("Guid")]
-        public string TheGUIdFormOfTheTransactionIdentifierTId { get; set; }
+        public string TheGuidFormOfTheTransactionIdentifierTid { get; set; }
 
         [JsonProperty("QueueName")]
         public string TheQueueName { get; set; }
@@ -489,12 +489,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     public class CallBapiResponse
     {
         public BapiRet2 BapiReturn { get; set; }
-
-        [JsonProperty("BapiReturns")]
-        public BapiRet2[] BAPIReturns { get; set; }
-
-        [JsonProperty("XmlResponse")]
-        public string XMLResponse { get; set; }
+        public BapiRet2[] BapiReturns { get; set; }
+        public string XmlResponse { get; set; }
         public JToken JsonResponse { get; set; }
     }
 
@@ -518,8 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class CallRfcResponse
     {
-        [JsonProperty("XmlResponse")]
-        public string XMLResponse { get; set; }
+        public string XmlResponse { get; set; }
         public JToken JsonResponse { get; set; }
     }
 
@@ -556,13 +551,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     public class IdocStatusResponse
     {
         [JsonProperty("IdocStatus")]
-        public int IdOCStatusCode { get; set; }
+        public int IdocStatusCode { get; set; }
     }
 
     public class IdocNumbersList
     {
-        [JsonProperty("IdocNumbers")]
-        public int[] IdOCNumbers { get; set; }
+        public int[] IdocNumbers { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -574,8 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class ReadTableResponse
     {
-        [JsonProperty("XmlResponse")]
-        public string XMLResponse { get; set; }
+        public string XmlResponse { get; set; }
         public FieldMetadata[] FieldsMetadata { get; set; }
         public string[] Rows { get; set; }
     }
@@ -590,9 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
         [JsonProperty("Length")]
         public int FieldLength { get; set; }
-
-        [JsonProperty("AbapDataType")]
-        public string ABAPDataType { get; set; }
+        public string AbapDataType { get; set; }
 
         [JsonProperty("Description")]
         public string FieldDescription { get; set; }
@@ -719,22 +710,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class RfcCallParameters
     {
-        public RfcCallParameters(string rFCName)
+        public RfcCallParameters(string rfcName)
         {
-            this.RFCName = rFCName;
+            this.RfcName = rfcName;
         }
 
-        [JsonProperty("RfcName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RFCName { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RfcName { get; set; }
 
         [JsonProperty("Payload")]
-        public string InputRFCParametersInline { get; set; }
+        public string InputRfcParametersInline { get; set; }
 
         [JsonProperty("PayloadReference")]
-        public string InputRFCParametersReference { get; set; }
-
-        [JsonProperty("RfcGroupFilter")]
-        public string RFCGroupFilter { get; set; }
+        public string InputRfcParametersReference { get; set; }
+        public string RfcGroupFilter { get; set; }
         public bool? AutoCommit { get; set; }
         public string QueueName { get; set; }
     }
@@ -742,19 +731,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     public class SubscriptionInput
     {
         public string[] SapActions { get; set; }
-
-        [JsonProperty("IdocFormat")]
-        public SubscriptionInputIdOCFormatType? IdOCFormat { get; set; }
-
-        [JsonProperty("ReceiveIdocsWithUnreleasedSegments")]
-        public bool? ReceiveIdOCsWithUnreleasedSegments { get; set; }
+        public SubscriptionInputIdocFormatType? IdocFormat { get; set; }
+        public bool? ReceiveIdocsWithUnreleasedSegments { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SubscriptionInputIdOCFormatType
+    public enum SubscriptionInputIdocFormatType
     {
         MicrosoftLobNamespaceXml,
         SapPlainXml,

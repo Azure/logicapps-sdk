@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         Code128C,
         GS1Code128,
         [EnumMember(Value = "UPC_A")]
-        UPCA
+        UpcA
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -677,10 +677,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class PdfWatermarkInputDataInput
     {
-        public PdfWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDFWatermark, string width, string height)
+        public PdfWatermarkInputDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceFileContent, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdfWatermark, string width, string height)
         {
             this.SourceFileContent = sourceFileContent;
-            this.PDFWatermark = pDFWatermark;
+            this.PdfWatermark = pdfWatermark;
             this.Width = width;
             this.Height = height;
         }
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("pdf_file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFWatermark { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfWatermark { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;

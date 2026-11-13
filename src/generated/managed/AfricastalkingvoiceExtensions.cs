@@ -56,16 +56,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
 
     public class BodyInput
     {
-        public BodyInput(string username, string from, string[] to, BodyInputActionsTypeItem[] actions)
+        public BodyInput(string userName, string from, string[] to, BodyInputActionsTypeItem[] actions)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.From = from;
             this.To = to;
             this.Actions = actions;
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }

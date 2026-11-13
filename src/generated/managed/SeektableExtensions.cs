@@ -13,20 +13,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
     public class SeektableActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CubeImportCsv(Expression<Func<string>> cubeId, Expression<Func<object>> cSVContent, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CubeImportCsv(Expression<Func<string>> cubeId, Expression<Func<object>> csvContent, Expression<Func<string>> fileName = null)
         {
             var __workflow_cubeId = WorkflowExpression.Compile(cubeId, nameof(cubeId), required: true);
-            var __workflow_cSVContent = WorkflowExpression.Compile(cSVContent, nameof(cSVContent), required: true);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_csvContent = WorkflowExpression.Compile(csvContent, nameof(csvContent), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/cube/import/csv";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["cubeId"] = ExpressionConverter.Convert(__workflow_cubeId);
-                if (__workflow_filename != null)
-                    callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_cSVContent);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_fileName);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_csvContent);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }

@@ -81,17 +81,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeCPUResponse, ApiConnectionActionConfiguration> ComputeCPU(Expression<Func<string>> provider, Expression<Func<ComputeCPUBodyInput>> body)
+        public IBodyWorkflowAction<ComputeCpuResponse, ApiConnectionActionConfiguration> ComputeCpu(Expression<Func<string>> provider, Expression<Func<ComputeCpuBodyInput>> body)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<ComputeCPUResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ComputeCpuResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/compute/{0}/cpu", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ComputeCPUResponse>(callPayload);
+                return new ApiConnectionAction<ComputeCpuResponse>(callPayload);
             });
         }
 
@@ -1060,7 +1060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public string[] MemoryRegions { get; set; }
     }
 
-    public class ComputeCPUResponse
+    public class ComputeCpuResponse
     {
         [JsonProperty("co2e")]
         public double Co2e { get; set; }
@@ -1075,13 +1075,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public string Co2eCalculationOrigin { get; set; }
 
         [JsonProperty("emission_factor")]
-        public ComputeCPUResponseEmissionFactorType EmissionFactor { get; set; }
+        public ComputeCpuResponseEmissionFactorType EmissionFactor { get; set; }
 
         [JsonProperty("constituent_gases")]
-        public ComputeCPUResponseConstituentGasesType ConstituentGases { get; set; }
+        public ComputeCpuResponseConstituentGasesType ConstituentGases { get; set; }
     }
 
-    public class ComputeCPUResponseEmissionFactorType
+    public class ComputeCpuResponseEmissionFactorType
     {
         [JsonProperty("activity_id")]
         public string ActivityId { get; set; }
@@ -1114,7 +1114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public string[] DataQualityFlags { get; set; }
     }
 
-    public class ComputeCPUResponseConstituentGasesType
+    public class ComputeCpuResponseConstituentGasesType
     {
         [JsonProperty("co2e_total")]
         public double Co2eTotal { get; set; }
@@ -1132,9 +1132,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class ComputeCPUBodyInput
+    public class ComputeCpuBodyInput
     {
-        public ComputeCPUBodyInput(int cpuCount, string region, int cpuLoad, int duration)
+        public ComputeCpuBodyInput(int cpuCount, string region, int cpuLoad, int duration)
         {
             this.CpuCount = cpuCount;
             this.Region = region;

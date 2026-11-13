@@ -167,9 +167,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputInputPersonTypeGenderType
     {
-        MALE,
-        FEMALE,
-        UNKNOWN
+        [EnumMember(Value = "MALE")]
+        Male,
+        [EnumMember(Value = "FEMALE")]
+        Female,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     public class DetectDeaResponse

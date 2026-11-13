@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         public string ApiKey { get; set; }
 
         [JsonProperty("meta_data")]
-        public FilescanResponseMetaDataType MetaData { get; set; }
+        public FilescanResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("report_id")]
         public string ReportId { get; set; }
@@ -113,19 +113,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         public string ClientId { get; set; }
     }
 
-    public class FilescanResponseMetaDataType
+    public class FilescanResponseMetadataType
     {
         [JsonProperty("plugin_info")]
-        public FilescanResponseMetaDataTypePluginInfoType PluginInfo { get; set; }
+        public FilescanResponseMetadataTypePluginInfoType PluginInfo { get; set; }
 
         [JsonProperty("capability")]
         public string Capability { get; set; }
 
         [JsonProperty("vendor_info")]
-        public FilescanResponseMetaDataTypeVendorInfoType VendorInfo { get; set; }
+        public FilescanResponseMetadataTypeVendorInfoType VendorInfo { get; set; }
     }
 
-    public class FilescanResponseMetaDataTypePluginInfoType
+    public class FilescanResponseMetadataTypePluginInfoType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         public string Name { get; set; }
     }
 
-    public class FilescanResponseMetaDataTypeVendorInfoType
+    public class FilescanResponseMetadataTypeVendorInfoType
     {
         [JsonProperty("vendor_config_name")]
         public string VendorConfigName { get; set; }
@@ -154,14 +154,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
 
     public class FilescanBodyInput
     {
-        public FilescanBodyInput(string filename, string data)
+        public FilescanBodyInput(string fileName, string data)
         {
-            this.Filename = filename;
+            this.FileName = fileName;
             this.Data = data;
         }
 
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("filetype", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Filetype { get; set; } = "text/plain";
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         public string ApiKey { get; set; }
 
         [JsonProperty("meta_data")]
-        public EmailScanResponseMetaDataType MetaData { get; set; }
+        public EmailScanResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("report_id")]
         public string ReportId { get; set; }
@@ -227,19 +227,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         public string ClientId { get; set; }
     }
 
-    public class EmailScanResponseMetaDataType
+    public class EmailScanResponseMetadataType
     {
         [JsonProperty("plugin_info")]
-        public EmailScanResponseMetaDataTypePluginInfoType PluginInfo { get; set; }
+        public EmailScanResponseMetadataTypePluginInfoType PluginInfo { get; set; }
 
         [JsonProperty("capability")]
         public string Capability { get; set; }
 
         [JsonProperty("vendor_info")]
-        public EmailScanResponseMetaDataTypeVendorInfoType VendorInfo { get; set; }
+        public EmailScanResponseMetadataTypeVendorInfoType VendorInfo { get; set; }
     }
 
-    public class EmailScanResponseMetaDataTypePluginInfoType
+    public class EmailScanResponseMetadataTypePluginInfoType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         public string Name { get; set; }
     }
 
-    public class EmailScanResponseMetaDataTypeVendorInfoType
+    public class EmailScanResponseMetadataTypeVendorInfoType
     {
         [JsonProperty("vendor_config_name")]
         public string VendorConfigName { get; set; }
@@ -268,14 +268,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
 
     public class EmailScanBodyInput
     {
-        public EmailScanBodyInput(string filename, string data)
+        public EmailScanBodyInput(string fileName, string data)
         {
-            this.Filename = filename;
+            this.FileName = fileName;
             this.Data = data;
         }
 
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("cte", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Cte { get; set; } = "base64";

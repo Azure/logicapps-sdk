@@ -1468,7 +1468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string Mobile { get; set; }
 
         [JsonProperty("sms_auth")]
-        public string SMSAuth { get; set; }
+        public string SmsAuth { get; set; }
 
         [JsonProperty("type")]
         public BodyInputRecipientsTypeItemRecipientTypeType? RecipientType { get; set; }

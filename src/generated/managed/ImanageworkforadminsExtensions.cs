@@ -206,17 +206,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse, ApiConnectionActionConfiguration> GetRowsFromCSVDocument(Expression<Func<GetRowsFromCSVDocumentBodyInput>> body)
+        public IBodyWorkflowAction<GetRowsFromCsvDocumentResponse, ApiConnectionActionConfiguration> GetRowsFromCsvDocument(Expression<Func<GetRowsFromCsvDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<GetRowsFromCSVDocumentResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetRowsFromCsvDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getRowsFromCSVDocument";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GetRowsFromCSVDocumentResponse>(callPayload);
+                return new ApiConnectionAction<GetRowsFromCsvDocumentResponse>(callPayload);
             });
         }
 
@@ -1033,13 +1033,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string CategoryId { get; set; }
     }
 
-    public class GetRowsFromCSVDocumentResponse
+    public class GetRowsFromCsvDocumentResponse
     {
         [JsonProperty("data")]
-        public GetRowsFromCSVDocumentResponseDataType Data { get; set; }
+        public GetRowsFromCsvDocumentResponseDataType Data { get; set; }
     }
 
-    public class GetRowsFromCSVDocumentResponseDataType
+    public class GetRowsFromCsvDocumentResponseDataType
     {
         [JsonProperty("rows")]
         public JToken[] Rows { get; set; }
@@ -1048,9 +1048,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public int Count { get; set; }
     }
 
-    public class GetRowsFromCSVDocumentBodyInput
+    public class GetRowsFromCsvDocumentBodyInput
     {
-        public GetRowsFromCSVDocumentBodyInput(string documentId, string columnNames)
+        public GetRowsFromCsvDocumentBodyInput(string documentId, string columnNames)
         {
             this.DocumentId = documentId;
             this.ColumnNames = columnNames;

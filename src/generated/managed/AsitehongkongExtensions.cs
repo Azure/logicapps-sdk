@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
     public class AsitehongkongActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asitehongkong")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FILEDOWNLOADBYURL(Expression<Func<string>> downloadUrl)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FileDownloadByUrl(Expression<Func<string>> downloadUrl)
         {
             var __workflow_downloadUrl = WorkflowExpression.Compile(downloadUrl, nameof(downloadUrl), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asitehongkong")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SETFILEMETADATA(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<object>> items)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetFileMetadata(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<object>> items)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asitehongkong")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UPLOADBINARYFILE(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> metadataId, Expression<Func<string>> fileBinary)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UploadBinaryFile(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> metadataId, Expression<Func<string>> fileBinary)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
 
     public class AsitehongkongTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<BodyInput>> body)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AsiteTriggerEvent(Expression<Func<string>> projectId, Expression<Func<BodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<BodyInput>> body)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AsiteTriggerEventAppForm(Expression<Func<string>> projectId, Expression<Func<BodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
         }
 
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("resourceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TriggerName { get; set; }

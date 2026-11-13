@@ -39,44 +39,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPSendOTPResponse, ApiConnectionActionConfiguration> OTPSendOTP(Expression<Func<OTPSendOTPBodyInput>> body)
+        public IBodyWorkflowAction<OtpSendOtpResponse, ApiConnectionActionConfiguration> OtpSendOtp(Expression<Func<OtpSendOtpBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<OTPSendOTPResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<OtpSendOtpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/send-otp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<OTPSendOTPResponse>(callPayload);
+                return new ApiConnectionAction<OtpSendOtpResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPResendOTPResponse, ApiConnectionActionConfiguration> OTPResendOTP(Expression<Func<OTPResendOTPBodyInput>> body)
+        public IBodyWorkflowAction<OtpResendOtpResponse, ApiConnectionActionConfiguration> OtpResendOtp(Expression<Func<OtpResendOtpBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<OTPResendOTPResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<OtpResendOtpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/resend-otp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<OTPResendOTPResponse>(callPayload);
+                return new ApiConnectionAction<OtpResendOtpResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration> OTPVerifyOTP(Expression<Func<OTPVerifyOTPBodyInput>> body)
+        public IBodyWorkflowAction<OtpVerifyOtpResponse, ApiConnectionActionConfiguration> OtpVerifyOtp(Expression<Func<OtpVerifyOtpBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<OtpVerifyOtpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/verify-otp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<OTPVerifyOTPResponse>(callPayload);
+                return new ApiConnectionAction<OtpVerifyOtpResponse>(callPayload);
             });
         }
     }
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public string Recipient { get; set; }
     }
 
-    public class OTPSendOTPResponse
+    public class OtpSendOtpResponse
     {
         [JsonProperty("otp_id")]
         public string OtpId { get; set; }
@@ -162,9 +162,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public int Expiry { get; set; }
     }
 
-    public class OTPSendOTPBodyInput
+    public class OtpSendOtpBodyInput
     {
-        public OTPSendOTPBodyInput(string originator, string recipient)
+        public OtpSendOtpBodyInput(string originator, string recipient)
         {
             this.Originator = originator;
             this.Recipient = recipient;
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         Alphanumeric
     }
 
-    public class OTPResendOTPResponse
+    public class OtpResendOtpResponse
     {
         [JsonProperty("otp_id")]
         public string OtpId { get; set; }
@@ -241,9 +241,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public int ResendCount { get; set; }
     }
 
-    public class OTPResendOTPBodyInput
+    public class OtpResendOtpBodyInput
     {
-        public OTPResendOTPBodyInput(string otpId)
+        public OtpResendOtpBodyInput(string otpId)
         {
             this.OtpId = otpId;
         }
@@ -252,15 +252,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public string OtpId { get; set; }
     }
 
-    public class OTPVerifyOTPResponse
+    public class OtpVerifyOtpResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class OTPVerifyOTPBodyInput
+    public class OtpVerifyOtpBodyInput
     {
-        public OTPVerifyOTPBodyInput(string otpCode)
+        public OtpVerifyOtpBodyInput(string otpCode)
         {
             this.OtpCode = otpCode;
         }

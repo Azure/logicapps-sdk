@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
     public class IneightActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<DailyPlanGetResponseItem[], ApiConnectionActionConfiguration> DailyPlanGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> jobCode = null)
+        public IBodyWorkflowAction<DailyPlanGetResponseItem[], ApiConnectionActionConfiguration> DailyPlanGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> jobCode = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_jobCode = WorkflowExpression.Compile(jobCode, nameof(jobCode), required: false);
             return new DeferredBodyAction<DailyPlanGetResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -25,32 +25,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_jobCode != null)
                     callPayload.Queries["JobCode"] = ExpressionConverter.Convert(__workflow_jobCode);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<DailyPlanGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<TimeCardGetResponseItem[], ApiConnectionActionConfiguration> TimeCardGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey)
+        public IBodyWorkflowAction<TimeCardGetResponseItem[], ApiConnectionActionConfiguration> TimeCardGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             return new DeferredBodyAction<TimeCardGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/TimeCard";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<TimeCardGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> TimeCardConfirmationImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<TimeCardConfirmationImportBodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> TimeCardConfirmationImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<TimeCardConfirmationImportBodyInputItem[]>> body = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/api/TimeCardConfirmation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CraftsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<CraftsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CraftsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<CraftsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Crafts/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DailyPlanStatusImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<DailyPlanStatusImportBodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DailyPlanStatusImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<DailyPlanStatusImportBodyInputItem[]>> body = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/DailyPlanStatus/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EmployeesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EmployeesImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EmployeesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EmployeesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Employees/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EquipmentsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EquipmentsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Equipments/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -140,9 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentCategoriesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EquipmentCategoriesImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentCategoriesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EquipmentCategoriesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/EquipmentCategories/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -158,9 +158,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentTypesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EquipmentTypesImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentTypesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EquipmentTypesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/EquipmentTypes/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -176,9 +176,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RolesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<RolesImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RolesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<RolesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Roles/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -194,9 +194,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> TradesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<TradesImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> TradesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<TradesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Trades/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -212,9 +212,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UsersImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UsersImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UsersImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UsersImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Users/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -230,9 +230,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UserRolesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UserRolesImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UserRolesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UserRolesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/UserRoles/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -248,9 +248,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContactsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContactsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContactsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContactsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Contacts/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -266,9 +266,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CostCenterImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<CostCenterImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CostCenterImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<CostCenterImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/CostCenters/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -284,9 +284,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AccountCodeImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<AccountCodeImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AccountCodeImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<AccountCodeImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/AccountCodes/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -302,9 +302,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AccountingLedgerImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<AccountingLedgerImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AccountingLedgerImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<AccountingLedgerImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/AccountingLedger/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -320,9 +320,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UsersDelete(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UsersDeleteBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UsersDelete(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UsersDeleteBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Users/Delete";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -338,9 +338,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> IncoTermsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<IncoTermsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> IncoTermsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<IncoTermsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/IncoTerm/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -356,9 +356,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MarketsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MarketsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MarketsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MarketsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Markets/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -374,9 +374,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialCharacteristicTypeImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialCharacteristicTypeImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialCharacteristicTypeImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialCharacteristicTypeImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/MaterialCharacteristicType/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -392,9 +392,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialClassImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialClassImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialClassImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialClassImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/MaterialClass/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -410,9 +410,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialGroupImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialGroupImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialGroupImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialGroupImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/MaterialGroup/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -428,9 +428,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Material/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -446,9 +446,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialSetImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialSetImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialSetImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialSetImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/MaterialSet/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -464,9 +464,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> OrganizationsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<OrganizationsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> OrganizationsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<OrganizationsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Organizations/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -482,9 +482,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PaymentTermImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PaymentTermImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PaymentTermImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PaymentTermImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/PaymentTerm/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -500,9 +500,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectContactsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectContactsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectContactsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectContactsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectContacts/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -518,9 +518,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectCraftImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectCraftImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectCraftImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectCraftImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectCraft/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -536,9 +536,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEmployeeBillingClassesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEmployeeBillingClassesImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEmployeeBillingClassesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEmployeeBillingClassesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectEmployeeBillingClasses/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -554,9 +554,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEmployeesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEmployeesImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEmployeesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEmployeesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectEmployees/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -572,9 +572,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentBillingClassesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEquipmentBillingClassesImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentBillingClassesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEquipmentBillingClassesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectEquipmentBillingClasses/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -590,9 +590,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEquipmentsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEquipmentsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectEquipments/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -608,9 +608,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentTypeImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEquipmentTypeImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentTypeImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEquipmentTypeImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectEquipmentType/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -626,9 +626,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Projects/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -644,9 +644,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectSettingsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectSettingsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectSettingsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectSettingsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -654,7 +654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectSettings/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -662,9 +662,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectVendorsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectVendorsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectVendorsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectVendorsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectVendors/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -680,9 +680,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UnionImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UnionImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UnionImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UnionImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Unions/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -698,9 +698,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VendorsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<VendorsImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VendorsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<VendorsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Vendors/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -716,9 +716,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<AccountCodeGetResponseItem[], ApiConnectionActionConfiguration> AccountCodeGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<int>> count = null)
+        public IBodyWorkflowAction<AccountCodeGetResponseItem[], ApiConnectionActionConfiguration> AccountCodeGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<int>> count = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -740,16 +740,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<AccountCodeGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<ContactsGetResponseItem[], ApiConnectionActionConfiguration> ContactsGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<ContactsGetResponseItem[], ApiConnectionActionConfiguration> ContactsGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -768,16 +768,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<ContactsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<CountryGetResponseItem[], ApiConnectionActionConfiguration> CountryGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bool>> includeTranslation, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<CountryGetResponseItem[], ApiConnectionActionConfiguration> CountryGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bool>> includeTranslation, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_includeTranslation = WorkflowExpression.Compile(includeTranslation, nameof(includeTranslation), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -797,16 +797,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<CountryGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<CraftsGetResponseItem[], ApiConnectionActionConfiguration> CraftsGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> tradeSourceSystemId = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<CraftsGetResponseItem[], ApiConnectionActionConfiguration> CraftsGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> tradeSourceSystemId = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_tradeSourceSystemId = WorkflowExpression.Compile(tradeSourceSystemId, nameof(tradeSourceSystemId), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -828,16 +828,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<CraftsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<CurrenciesGetResponseItem[], ApiConnectionActionConfiguration> CurrenciesGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<int>> count = null)
+        public IBodyWorkflowAction<CurrenciesGetResponseItem[], ApiConnectionActionConfiguration> CurrenciesGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<int>> count = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -859,16 +859,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<CurrenciesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<EmployeesGetResponseItem[], ApiConnectionActionConfiguration> EmployeesGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<EmployeesGetResponseItem[], ApiConnectionActionConfiguration> EmployeesGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -887,16 +887,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<EmployeesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<EquipmentGetResponseItem[], ApiConnectionActionConfiguration> EquipmentGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<EquipmentGetResponseItem[], ApiConnectionActionConfiguration> EquipmentGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -915,16 +915,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<EquipmentGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<EquipmentCategoriesGetResponseItem[], ApiConnectionActionConfiguration> EquipmentCategoriesGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<EquipmentCategoriesGetResponseItem[], ApiConnectionActionConfiguration> EquipmentCategoriesGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -943,16 +943,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<EquipmentCategoriesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<EquipmentTypesGetResponseItem[], ApiConnectionActionConfiguration> EquipmentTypesGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> equipmentCategoryId = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<EquipmentTypesGetResponseItem[], ApiConnectionActionConfiguration> EquipmentTypesGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> equipmentCategoryId = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_equipmentCategoryId = WorkflowExpression.Compile(equipmentCategoryId, nameof(equipmentCategoryId), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -974,16 +974,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<EquipmentTypesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<LanguagesGetResponseItem[], ApiConnectionActionConfiguration> LanguagesGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<LanguagesGetResponseItem[], ApiConnectionActionConfiguration> LanguagesGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1002,16 +1002,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<LanguagesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<MarketsGetResponseItem[], ApiConnectionActionConfiguration> MarketsGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<MarketsGetResponseItem[], ApiConnectionActionConfiguration> MarketsGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1030,16 +1030,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<MarketsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<OrganizationsGetResponseItem[], ApiConnectionActionConfiguration> OrganizationsGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> sourceSystemId = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<OrganizationsGetResponseItem[], ApiConnectionActionConfiguration> OrganizationsGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> sourceSystemId = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_sourceSystemId = WorkflowExpression.Compile(sourceSystemId, nameof(sourceSystemId), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -1061,17 +1061,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<OrganizationsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<ProjectContactsGetResponseItem[], ApiConnectionActionConfiguration> ProjectContactsGet(Expression<Func<string>> projectId, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<ProjectContactsGetResponseItem[], ApiConnectionActionConfiguration> ProjectContactsGet(Expression<Func<string>> projectId, Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1090,17 +1090,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<ProjectContactsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<ProjectEmployeeBillingClassesGetResponseItem[], ApiConnectionActionConfiguration> ProjectEmployeeBillingClassesGet(Expression<Func<string>> projectId, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<ProjectEmployeeBillingClassesGetResponseItem[], ApiConnectionActionConfiguration> ProjectEmployeeBillingClassesGet(Expression<Func<string>> projectId, Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1119,17 +1119,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<ProjectEmployeeBillingClassesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<ProjectEmployeesGetResponseItem[], ApiConnectionActionConfiguration> ProjectEmployeesGet(Expression<Func<string>> projectId, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<ProjectEmployeesGetResponseItem[], ApiConnectionActionConfiguration> ProjectEmployeesGet(Expression<Func<string>> projectId, Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1148,17 +1148,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<ProjectEmployeesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<ProjectEquipmentBillingClassesGetResponseItem[], ApiConnectionActionConfiguration> ProjectEquipmentBillingClassesGet(Expression<Func<string>> projectId, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<ProjectEquipmentBillingClassesGetResponseItem[], ApiConnectionActionConfiguration> ProjectEquipmentBillingClassesGet(Expression<Func<string>> projectId, Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1177,17 +1177,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<ProjectEquipmentBillingClassesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<ProjectEquipmentsGetResponseItem[], ApiConnectionActionConfiguration> ProjectEquipmentsGet(Expression<Func<string>> projectId, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<ProjectEquipmentsGetResponseItem[], ApiConnectionActionConfiguration> ProjectEquipmentsGet(Expression<Func<string>> projectId, Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1206,17 +1206,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<ProjectEquipmentsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<ProjectsGetResponseItem[], ApiConnectionActionConfiguration> ProjectsGet(Expression<Func<bool>> includeAttributes, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> organizationSourceSystemId = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<ProjectsGetResponseItem[], ApiConnectionActionConfiguration> ProjectsGet(Expression<Func<bool>> includeAttributes, Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> organizationSourceSystemId = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_includeAttributes = WorkflowExpression.Compile(includeAttributes, nameof(includeAttributes), required: true);
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_organizationSourceSystemId = WorkflowExpression.Compile(organizationSourceSystemId, nameof(organizationSourceSystemId), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -1239,34 +1239,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<ProjectsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<ProjectSettingsGetResponseItem[], ApiConnectionActionConfiguration> ProjectSettingsGet(Expression<Func<string>> projectId, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey)
+        public IBodyWorkflowAction<ProjectSettingsGetResponseItem[], ApiConnectionActionConfiguration> ProjectSettingsGet(Expression<Func<string>> projectId, Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             return new DeferredBodyAction<ProjectSettingsGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ProjectSettings/ProjectId='{0}'", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<ProjectSettingsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<ProjectVendorsGetResponseItem[], ApiConnectionActionConfiguration> ProjectVendorsGet(Expression<Func<string>> projectId, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<ProjectVendorsGetResponseItem[], ApiConnectionActionConfiguration> ProjectVendorsGet(Expression<Func<string>> projectId, Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1285,19 +1285,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<ProjectVendorsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<RegionsGetResponseItem[], ApiConnectionActionConfiguration> RegionsGet(Expression<Func<IncludeTranslationInput>> includeTranslation, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> countryISOCode = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<RegionsGetResponseItem[], ApiConnectionActionConfiguration> RegionsGet(Expression<Func<IncludeTranslationInput>> includeTranslation, Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> countryIsoCode = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_includeTranslation = WorkflowExpression.Compile(includeTranslation, nameof(includeTranslation), required: true);
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
-            var __workflow_countryISOCode = WorkflowExpression.Compile(countryISOCode, nameof(countryISOCode), required: false);
+            var __workflow_countryIsoCode = WorkflowExpression.Compile(countryIsoCode, nameof(countryIsoCode), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1308,8 +1308,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeTranslation"] = ExpressionConverter.Convert(__workflow_includeTranslation);
-                if (__workflow_countryISOCode != null)
-                    callPayload.Queries["CountryISOCode"] = ExpressionConverter.Convert(__workflow_countryISOCode);
+                if (__workflow_countryIsoCode != null)
+                    callPayload.Queries["CountryISOCode"] = ExpressionConverter.Convert(__workflow_countryIsoCode);
                 if (__workflow_filter != null)
                     callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 if (__workflow_orderby != null)
@@ -1318,16 +1318,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<RegionsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<RolesGetResponseItem[], ApiConnectionActionConfiguration> RolesGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<RolesGetResponseItem[], ApiConnectionActionConfiguration> RolesGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1346,17 +1346,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<RolesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<TimeZoneGetResponseItem[], ApiConnectionActionConfiguration> TimeZoneGet(Expression<Func<bool>> includeTranslation, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<TimeZoneGetResponseItem[], ApiConnectionActionConfiguration> TimeZoneGet(Expression<Func<bool>> includeTranslation, Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_includeTranslation = WorkflowExpression.Compile(includeTranslation, nameof(includeTranslation), required: true);
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1375,16 +1375,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<TimeZoneGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<TradesGetResponseItem[], ApiConnectionActionConfiguration> TradesGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<TradesGetResponseItem[], ApiConnectionActionConfiguration> TradesGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1403,22 +1403,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<TradesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<UOMsGetResponseItem[], ApiConnectionActionConfiguration> UOMsGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<UomsGetResponseItem[], ApiConnectionActionConfiguration> UomsGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<UOMsGetResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UomsGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UOMs";
                 var apiCallHttpMethod = "get";
@@ -1431,16 +1431,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
-                return new ApiConnectionAction<UOMsGetResponseItem[]>(callPayload);
+                return new ApiConnectionAction<UomsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<UsersGetResponseItem[], ApiConnectionActionConfiguration> UsersGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<UsersGetResponseItem[], ApiConnectionActionConfiguration> UsersGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1459,16 +1459,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<UsersGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<VendorsGetResponseItem[], ApiConnectionActionConfiguration> VendorsGet(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<VendorsGetResponseItem[], ApiConnectionActionConfiguration> VendorsGet(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1487,16 +1487,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 return new ApiConnectionAction<VendorsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PurchaseOrderImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PurchaseOrderImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PurchaseOrderImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PurchaseOrderImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1504,7 +1504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/PurchaseOrder/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -1512,9 +1512,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PaymentRequestImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PaymentRequestImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PaymentRequestImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PaymentRequestImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1522,7 +1522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/PaymentRequest/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -1530,9 +1530,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GoodsReceiptImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<GoodsReceiptImportBodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GoodsReceiptImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<GoodsReceiptImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1540,7 +1540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/GoodsReceipt/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -1548,9 +1548,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContractTaxImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContractTaxImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContractTaxImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContractTaxImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1558,7 +1558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ContractTax/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -1566,9 +1566,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> StorageLocationsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<StorageLocationsImportBodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> StorageLocationsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<StorageLocationsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1576,7 +1576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/StorageLocations/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -1584,9 +1584,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectShippingAddressImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectShippingAddressImportBodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectShippingAddressImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectShippingAddressImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1594,7 +1594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectShippingAddress/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -1602,9 +1602,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LegalEntitiesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<LegalEntitiesImportBodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LegalEntitiesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<LegalEntitiesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1612,7 +1612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/LegalEntities/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -1620,9 +1620,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectLegalEntityImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectLegalEntityImportBodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectLegalEntityImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectLegalEntityImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1630,7 +1630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectLegalEntities/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -1638,9 +1638,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectStorageLocationImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectStorageLocationImportBodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectStorageLocationImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectStorageLocationImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1648,7 +1648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ProjectStorageLocations/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -1656,9 +1656,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PlantsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PlantsImportBodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PlantsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PlantsImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1666,7 +1666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Plants/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -1674,9 +1674,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ContractEquipmentImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContractEquipmentImportBodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ContractEquipmentImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContractEquipmentImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1684,7 +1684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ContractEquipment/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
@@ -1692,9 +1692,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContractAccrualResponseImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContractAccrualResponseImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContractAccrualResponseImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContractAccrualResponseImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1702,7 +1702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/ContractAccrualResponse/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -1710,9 +1710,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> InvoicesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<InvoicesImportBodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> InvoicesImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<InvoicesImportBodyInputItem[]>> body)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1720,7 +1720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Invoices/Import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
@@ -1728,9 +1728,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImportActuals(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<BodyInput>> body, Expression<Func<string>> xTaskCompleteCallbackUri = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImportActuals(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<BodyInput>> body, Expression<Func<string>> xTaskCompleteCallbackUri = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xTaskCompleteCallbackUri = WorkflowExpression.Compile(xTaskCompleteCallbackUri, nameof(xTaskCompleteCallbackUri), required: false);
@@ -1739,7 +1739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Actuals/ActualsImport";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 if (__workflow_xTaskCompleteCallbackUri != null)
                     callPayload.Headers["X-TaskCompleteCallbackUri"] = ExpressionConverter.Convert(__workflow_xTaskCompleteCallbackUri);
@@ -1749,9 +1749,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MultiProjectActualsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> xTaskCompleteCallbackUri = null, Expression<Func<MultiProjectActualsImportBodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MultiProjectActualsImport(Expression<Func<string>> xin8TenantPrefix, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> xTaskCompleteCallbackUri = null, Expression<Func<MultiProjectActualsImportBodyInputItem[]>> body = null)
         {
-            var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
+            var __workflow_xin8TenantPrefix = WorkflowExpression.Compile(xin8TenantPrefix, nameof(xin8TenantPrefix), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
             var __workflow_xTaskCompleteCallbackUri = WorkflowExpression.Compile(xTaskCompleteCallbackUri, nameof(xTaskCompleteCallbackUri), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -1760,7 +1760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
                 var apiCallPath = "/Actuals/MultiProjectActualsImport";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xIN8TENANTPREFIX);
+                callPayload.Headers["X-IN8-TENANT-PREFIX"] = ExpressionConverter.Convert(__workflow_xin8TenantPrefix);
                 callPayload.Headers["Ocp-Apim-Subscription-Key"] = ExpressionConverter.Convert(__workflow_ocpApimSubscriptionKey);
                 if (__workflow_xTaskCompleteCallbackUri != null)
                     callPayload.Headers["X-TaskCompleteCallbackUri"] = ExpressionConverter.Convert(__workflow_xTaskCompleteCallbackUri);
@@ -1825,7 +1825,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public double SubmittedQuantity { get; set; }
         public double ApprovedQuantity { get; set; }
         public string CostItemSourceSystemId { get; set; }
-        public string WBSCode { get; set; }
+
+        [JsonProperty("WBSCode")]
+        public string WbsCode { get; set; }
     }
 
     public class DailyPlanGetResponseItemDailyPlanCostItemTypeItemDailyPlanCostItemEmployeeTypeItem
@@ -1916,7 +1918,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
     public class DailyPlanGetResponseItemDailyPlanNoteTypeItemDailyPlanNoteMaintenanceTypeItem
     {
         public string MaintenanceEquipmentId { get; set; }
-        public string WBSPhaseCode { get; set; }
+
+        [JsonProperty("WBSPhaseCode")]
+        public string WbsPhaseCode { get; set; }
         public string WorkOrderId { get; set; }
     }
 
@@ -1987,7 +1991,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public int DailyPlanNoteId { get; set; }
         public int CostItemId { get; set; }
         public string PayrollIdentifier { get; set; }
-        public string WBSPhaseCode { get; set; }
+
+        [JsonProperty("WBSPhaseCode")]
+        public string WbsPhaseCode { get; set; }
         public string EmployeeSourceSystemId { get; set; }
     }
 
@@ -2001,7 +2007,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
     {
         public string EmployeeId { get; set; }
         public string WorkOrderId { get; set; }
-        public string WBSPhaseCode { get; set; }
+
+        [JsonProperty("WBSPhaseCode")]
+        public string WbsPhaseCode { get; set; }
         public string CostItemSourceSystemId { get; set; }
         public double TotalHours { get; set; }
         public string MaintenanceEquipmentId { get; set; }
@@ -2166,14 +2174,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LastName { get; set; }
         public bool? IsActive { get; set; }
-        public string EmployeePIN { get; set; }
+
+        [JsonProperty("EmployeePIN")]
+        public string EmployeePin { get; set; }
         public bool? CanReportTime { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string CurrencyCode { get; set; }
-        public string UOMName { get; set; }
+
+        [JsonProperty("UOMName")]
+        public string UomName { get; set; }
         public double? StraightTimeRate { get; set; }
         public double? OverTimeFactor { get; set; }
         public double? OverTimeRate { get; set; }
@@ -2185,7 +2197,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string JobTitle { get; set; }
         public string UnionJobTitle { get; set; }
         public string SupervisorId { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public string DefaultCostCenterSourceSystemId { get; set; }
         public string AdditionalPayrollInstructionCode { get; set; }
         public bool? IsOverrideAdditionalPayrollInstructionCodeAllowed { get; set; }
@@ -2406,8 +2420,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Address2 { get; set; }
         public string City { get; set; }
         public string ZipCode { get; set; }
-        public string RegionISOCode { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("RegionISOCode")]
+        public string RegionIsoCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public bool? IsActive { get; set; }
     }
 
@@ -2464,9 +2482,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public bool? PrimaryAutoQuantity { get; set; }
         public bool? SecondaryAutoQuantity { get; set; }
         public bool? IsTerminal { get; set; }
-        public string PrimaryUOMReference { get; set; }
+
+        [JsonProperty("PrimaryUOMReference")]
+        public string PrimaryUomReference { get; set; }
         public string CurrencyCode { get; set; }
-        public string SecondaryUOMReference { get; set; }
+
+        [JsonProperty("SecondaryUOMReference")]
+        public string SecondaryUomReference { get; set; }
         public bool? ContributePrimaryToPrimary { get; set; }
         public bool? ContributePrimaryToSecondary { get; set; }
         public bool? ContributeSecondaryToSecondary { get; set; }
@@ -2953,7 +2975,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string EquipmentProjectEndDate { get; set; }
         public string ContractReference { get; set; }
         public string ContractLineNumberReference { get; set; }
-        public string ContractURL { get; set; }
+
+        [JsonProperty("ContractURL")]
+        public string ContractUrl { get; set; }
         public string BillingClass { get; set; }
         public string ProjectEquipmentBillingClassSourceSystemId { get; set; }
     }
@@ -3009,8 +3033,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string City { get; set; }
-        public string RegionISOCode { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("RegionISOCode")]
+        public string RegionIsoCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public string ZipCode { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -3108,10 +3136,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class BodyInputItemFuelTypesTypeItem
     {
-        public BodyInputItemFuelTypesTypeItem(string fuelTypeDisplay, string uOMSourceSystemId, string currencyCode)
+        public BodyInputItemFuelTypesTypeItem(string fuelTypeDisplay, string uomSourceSystemId, string currencyCode)
         {
             this.FuelTypeDisplay = fuelTypeDisplay;
-            this.UOMSourceSystemId = uOMSourceSystemId;
+            this.UomSourceSystemId = uomSourceSystemId;
             this.CurrencyCode = currencyCode;
         }
 
@@ -3120,8 +3148,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FuelTypeDisplay { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string UOMSourceSystemId { get; set; }
+        [JsonProperty("UOMSourceSystemId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UomSourceSystemId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CurrencyCode { get; set; }
@@ -3191,13 +3219,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Address2 { get; set; }
         public string ZipCode { get; set; }
         public string City { get; set; }
-        public string RegionISOCode { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("RegionISOCode")]
+        public string RegionIsoCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public string TelephoneNumber { get; set; }
         public string FaxNumber { get; set; }
         public string DefaultPaymentTerms { get; set; }
-        public string DefaultINCOTerms { get; set; }
-        public string DefaultINCOTermsLocation { get; set; }
+
+        [JsonProperty("DefaultINCOTerms")]
+        public string DefaultIncoTerms { get; set; }
+
+        [JsonProperty("DefaultINCOTermsLocation")]
+        public string DefaultIncoTermsLocation { get; set; }
         public string VendorTypeReference { get; set; }
         public string DefaultCurrencyCode { get; set; }
         public string PreferredLanguage { get; set; }
@@ -3216,8 +3252,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Address2 { get; set; }
         public string ZipCode { get; set; }
         public string City { get; set; }
-        public string RegionISOCode { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("RegionISOCode")]
+        public string RegionIsoCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public string TelephoneNumber { get; set; }
         public string FaxNumber { get; set; }
     }
@@ -3235,9 +3275,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public bool PrimaryAutoQuantity { get; set; }
         public bool SecondaryAutoQuantity { get; set; }
         public bool IsTerminal { get; set; }
-        public string PrimaryUOMReference { get; set; }
+
+        [JsonProperty("PrimaryUOMReference")]
+        public string PrimaryUomReference { get; set; }
         public string CurrencyCode { get; set; }
-        public string SecondaryUOMReference { get; set; }
+
+        [JsonProperty("SecondaryUOMReference")]
+        public string SecondaryUomReference { get; set; }
         public bool ContributePrimaryToPrimary { get; set; }
         public bool ContributePrimaryToSecondary { get; set; }
         public bool ContributeSecondaryToSecondary { get; set; }
@@ -3300,15 +3344,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Address2 { get; set; }
         public string City { get; set; }
         public string ZipCode { get; set; }
-        public string RegionISOCode { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("RegionISOCode")]
+        public string RegionIsoCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public bool IsActive { get; set; }
     }
 
     public class CountryGetResponseItem
     {
         public string Name { get; set; }
-        public string ISOCode { get; set; }
+
+        [JsonProperty("ISOCode")]
+        public string IsoCode { get; set; }
         public CountryGetResponseItemCountryTranslationsTypeItem[] CountryTranslations { get; set; }
     }
 
@@ -3326,7 +3376,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string CurrencyCode { get; set; }
         public string VendorCode { get; set; }
         public string UnionSourceSystemId { get; set; }
-        public string UOMName { get; set; }
+
+        [JsonProperty("UOMName")]
+        public string UomName { get; set; }
         public bool UseBaseWageFactors { get; set; }
         public double StraightTimeRate { get; set; }
         public double OverTimeFactor { get; set; }
@@ -3357,14 +3409,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool IsActive { get; set; }
-        public string EmployeePIN { get; set; }
+
+        [JsonProperty("EmployeePIN")]
+        public string EmployeePin { get; set; }
         public bool CanReportTime { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string CurrencyCode { get; set; }
-        public string UOMName { get; set; }
+
+        [JsonProperty("UOMName")]
+        public string UomName { get; set; }
         public double StraightTimeRate { get; set; }
         public double OverTimeFactor { get; set; }
         public double OverTimeRate { get; set; }
@@ -3376,7 +3432,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string JobTitle { get; set; }
         public string UnionJobTitle { get; set; }
         public string SupervisorId { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public string DefaultCostCenterSourceSystemId { get; set; }
         public string AdditionalPayrollInstructionCode { get; set; }
         public bool IsOverrideAdditionalPayrollInstructionCodeAllowed { get; set; }
@@ -3522,7 +3580,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public bool IsAvailableDailyPlan { get; set; }
         public string ContractReference { get; set; }
         public string ContractLineNumberReference { get; set; }
-        public string ContractURL { get; set; }
+
+        [JsonProperty("ContractURL")]
+        public string ContractUrl { get; set; }
         public string BillingClass { get; set; }
         public string ProjectEquipmentBillingClassSourceSystemId { get; set; }
     }
@@ -3540,8 +3600,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string City { get; set; }
-        public string RegionISOCode { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("RegionISOCode")]
+        public string RegionIsoCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public string ZipCode { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -3628,7 +3692,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
     {
         public bool IsEstimatingResourceMapped { get; set; }
         public string FuelTypeDisplay { get; set; }
-        public string UOMSourceSystemId { get; set; }
+
+        [JsonProperty("UOMSourceSystemId")]
+        public string UomSourceSystemId { get; set; }
         public string CurrencyCode { get; set; }
         public double UnitCost { get; set; }
         public string AccountCodeReference { get; set; }
@@ -3648,9 +3714,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class RegionsGetResponseItem
     {
-        public string ISOCode { get; set; }
+        [JsonProperty("ISOCode")]
+        public string IsoCode { get; set; }
         public string Name { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public RegionsGetResponseItemTranslationsTypeItem[] Translations { get; set; }
     }
 
@@ -3700,7 +3769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string SourceSystemName { get; set; }
     }
 
-    public class UOMsGetResponseItem
+    public class UomsGetResponseItem
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -3708,10 +3777,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string MeasurementSystemName { get; set; }
         public string AlternateUomSourceSystemId { get; set; }
         public double ConversionFactor { get; set; }
-        public string BaseUOMName { get; set; }
+
+        [JsonProperty("BaseUOMName")]
+        public string BaseUomName { get; set; }
         public string DefaultAlternateMeasurement { get; set; }
         public bool IsBaseUoM { get; set; }
-        public string SKFUOM { get; set; }
+
+        [JsonProperty("SKFUOM")]
+        public string Skfuom { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
         public bool IsActive { get; set; }
@@ -3748,13 +3821,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Address2 { get; set; }
         public string ZipCode { get; set; }
         public string City { get; set; }
-        public string RegionISOCode { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("RegionISOCode")]
+        public string RegionIsoCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public string TelephoneNumber { get; set; }
         public string FaxNumber { get; set; }
         public string DefaultPaymentTerms { get; set; }
-        public string DefaultINCOTerms { get; set; }
-        public string DefaultINCOTermsLocation { get; set; }
+
+        [JsonProperty("DefaultINCOTerms")]
+        public string DefaultIncoTerms { get; set; }
+
+        [JsonProperty("DefaultINCOTermsLocation")]
+        public string DefaultIncoTermsLocation { get; set; }
         public string VendorTypeReference { get; set; }
         public string DefaultCurrencyCode { get; set; }
         public string PreferredLanguage { get; set; }
@@ -3771,8 +3852,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Address2 { get; set; }
         public string ZipCode { get; set; }
         public string City { get; set; }
-        public string RegionISOCode { get; set; }
-        public string CountryISOCode { get; set; }
+
+        [JsonProperty("RegionISOCode")]
+        public string RegionIsoCode { get; set; }
+
+        [JsonProperty("CountryISOCode")]
+        public string CountryIsoCode { get; set; }
         public string TelephoneNumber { get; set; }
         public string FaxNumber { get; set; }
     }
@@ -3793,7 +3878,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string PaymentTermReference { get; set; }
         public string ProjectCurrencyReference { get; set; }
         public string CurrencyReference { get; set; }
-        public string INCOTerms { get; set; }
+
+        [JsonProperty("INCOTerms")]
+        public string IncoTerms { get; set; }
         public string AgreementNumber { get; set; }
         public string AgreementValue { get; set; }
         public string PurchaseOrderNumber { get; set; }
@@ -3879,14 +3966,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string ReturnPOFlag { get; set; }
         public string MaterialCharacteristicReference { get; set; }
         public string AccountAssignmentCategory { get; set; }
-        public string CDSSplitMethod { get; set; }
+
+        [JsonProperty("CDSSplitMethod")]
+        public string CdsSplitMethod { get; set; }
         public string Comments { get; set; }
         public string RetentionPercent { get; set; }
         public string FairMarketValue { get; set; }
         public string EquipmentPrefix { get; set; }
         public string RentalType { get; set; }
-        public string NAICScode { get; set; }
-        public string WBSCategoryReference { get; set; }
+
+        [JsonProperty("NAICScode")]
+        public string NaicScode { get; set; }
+
+        [JsonProperty("WBSCategoryReference")]
+        public string WbsCategoryReference { get; set; }
         public string NoFurtherInvoiceIndicator { get; set; }
         public string GoodsReceiptStatus { get; set; }
         public string IsTaxable { get; set; }
@@ -4080,13 +4173,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string TaxAmountInProjectCurrency { get; set; }
         public BodyInputItemGoodsReceiptItemTypeItemProjectCurrencyLineAmountTaxDetailTypeItem[] ProjectCurrencyLineAmountTaxDetail { get; set; }
         public string ReceivedQuantity { get; set; }
-        public string ReceivedUOM { get; set; }
-        public string ReceivedQuantityInBaseUOM { get; set; }
-        public string BaseUOM { get; set; }
-        public string ReceivedQuantityInPOPriceUOM { get; set; }
-        public string POPriceUOM { get; set; }
-        public string ReceivedQuantityInPOUOM { get; set; }
-        public string POUOM { get; set; }
+
+        [JsonProperty("ReceivedUOM")]
+        public string ReceivedUom { get; set; }
+
+        [JsonProperty("ReceivedQuantityInBaseUOM")]
+        public string ReceivedQuantityInBaseUom { get; set; }
+
+        [JsonProperty("BaseUOM")]
+        public string BaseUom { get; set; }
+
+        [JsonProperty("ReceivedQuantityInPOPriceUOM")]
+        public string ReceivedQuantityInPOPriceUom { get; set; }
+
+        [JsonProperty("POPriceUOM")]
+        public string POPriceUom { get; set; }
+
+        [JsonProperty("ReceivedQuantityInPOUOM")]
+        public string ReceivedQuantityInPouom { get; set; }
+
+        [JsonProperty("POUOM")]
+        public string Pouom { get; set; }
         public string DeliveryCompletedIndicator { get; set; }
         public string Text { get; set; }
         public string GoodsRecipientUserReference { get; set; }
@@ -4134,7 +4241,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string PaymentTermReference { get; set; }
         public string ProjectCurrencyReference { get; set; }
         public string CurrencyReference { get; set; }
-        public string INCOTerms { get; set; }
+
+        [JsonProperty("INCOTerms")]
+        public string IncoTerms { get; set; }
         public string AgreementNumber { get; set; }
         public string AgreementValue { get; set; }
         public string PurchaseOrderNumber { get; set; }
@@ -4174,14 +4283,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string ReturnPOFlag { get; set; }
         public string MaterialCharacteristicReference { get; set; }
         public string AccountAssignmentCategory { get; set; }
-        public string CDSSplitMethod { get; set; }
+
+        [JsonProperty("CDSSplitMethod")]
+        public string CdsSplitMethod { get; set; }
         public string Comments { get; set; }
         public string RetentionPercent { get; set; }
         public string FairMarketValue { get; set; }
         public string EquipmentPrefix { get; set; }
         public string RentalType { get; set; }
-        public string NAICScode { get; set; }
-        public string WBSCategoryReference { get; set; }
+
+        [JsonProperty("NAICScode")]
+        public string NaicScode { get; set; }
+
+        [JsonProperty("WBSCategoryReference")]
+        public string WbsCategoryReference { get; set; }
         public string NoFurtherInvoiceIndicator { get; set; }
         public string GoodsReceiptStatus { get; set; }
         public BodyInputItemContractDetailResponseTypeItemContractDetailTaxTypeItem[] ContractDetailTax { get; set; }
@@ -4312,7 +4427,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string RecordId { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
-        public string InvoiceURL { get; set; }
+
+        [JsonProperty("InvoiceURL")]
+        public string InvoiceUrl { get; set; }
         public BodyInputItemInvoiceTaxDetailTypeItem[] InvoiceTaxDetail { get; set; }
     }
 
@@ -4332,7 +4449,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class BodyInputActualsTypeItem
     {
-        public string CBSPositionCode { get; set; }
+        [JsonProperty("CBSPositionCode")]
+        public string CbsPositionCode { get; set; }
         public BodyInputActualsTypeItemCostType Cost { get; set; }
         public string EquipmentHours { get; set; }
         public string ManHours { get; set; }
@@ -4363,7 +4481,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
 
     public class BodyInputItemActualsTypeItem
     {
-        public string CBSPositionCode { get; set; }
+        [JsonProperty("CBSPositionCode")]
+        public string CbsPositionCode { get; set; }
         public BodyInputItemActualsTypeItemCostType Cost { get; set; }
         public string EquipmentHours { get; set; }
         public string ManHours { get; set; }

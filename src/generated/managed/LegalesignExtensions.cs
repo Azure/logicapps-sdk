@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public string Timezone { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class MemberListResponse
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public string Description { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("group")]
         public string Group { get; set; }
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public string Description { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("group")]
         public string Group { get; set; }
@@ -591,11 +591,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public class PostAttachmentBodyInput
     {
-        public PostAttachmentBodyInput(string group, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdfFile, string filename)
+        public PostAttachmentBodyInput(string group, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdfFile, string fileName)
         {
             this.Group = group;
             this.PdfFile = pdfFile;
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
         [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfFile { get; set; }
 
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("user")]
         public string User { get; set; }

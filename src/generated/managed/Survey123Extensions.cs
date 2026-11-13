@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
         public CreateFeatureReportBodyInputValueType Value { get; set; }
 
         [JsonProperty("utcOffset")]
-        public string UTCOffset { get; set; }
+        public string UtcOffset { get; set; }
 
         [JsonProperty("outputReportName")]
         public string ReportName { get; set; }
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
         public string FeatureObjectId { get; set; }
 
         [JsonProperty("where")]
-        public string FeatureWHEREClause { get; set; }
+        public string FeatureWhereClause { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

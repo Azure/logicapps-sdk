@@ -449,12 +449,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
 
     public class StampMappingIntegrationPostInput
     {
-        public StampMappingIntegrationPostInput(string planId, string flowId, string externalSystemId, string externalSystemURL)
+        public StampMappingIntegrationPostInput(string planId, string flowId, string externalSystemId, string externalSystemUrl)
         {
             this.PlanId = planId;
             this.FlowId = flowId;
             this.ExternalSystemId = externalSystemId;
-            this.ExternalSystemURL = externalSystemURL;
+            this.ExternalSystemUrl = externalSystemUrl;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         public string ExternalSystemId { get; set; }
 
         [JsonProperty("ItemUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExternalSystemURL { get; set; }
+        public string ExternalSystemUrl { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int IntegrationVersion { get; set; } = 0;
@@ -578,8 +578,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Strategy { get; set; } = "Power Automate Step Change Trigger";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int EventURLType { get; set; } = 1;
+        [JsonProperty("EventURLType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int EventUrlType { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int[] Triggers { get; set; } = new int[]
@@ -599,8 +599,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Strategy { get; set; } = "Power Automate Plan Added Trigger";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int EventURLType { get; set; } = 1;
+        [JsonProperty("EventURLType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int EventUrlType { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int[] Triggers { get; set; } = new int[]
@@ -617,8 +617,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Strategy { get; set; } = "Power Automate Plan Update Trigger";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int EventURLType { get; set; } = 1;
+        [JsonProperty("EventURLType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int EventUrlType { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int[] Triggers { get; set; } = new int[]
@@ -638,8 +638,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Strategy { get; set; } = "Power Automate Automation Trigger";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int EventURLType { get; set; } = 1;
+        [JsonProperty("EventURLType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int EventUrlType { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int[] Triggers { get; set; } = new int[]

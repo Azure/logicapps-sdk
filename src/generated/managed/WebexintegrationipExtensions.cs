@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool EnabledFileTransfer { get; set; }
 
         [JsonProperty("enabledUCFRichMedia")]
-        public bool EnabledUCFRichMedia { get; set; }
+        public bool EnabledUcfRichMedia { get; set; }
     }
 
     public class ReadMeetingResponseAttendeePrivilegesType
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool EnabledGlobalCallIn { get; set; }
 
         [JsonProperty("enabledAudienceCallBack")]
-        public bool EnabledAudienceCallBack { get; set; }
+        public bool EnabledAudienceCallback { get; set; }
 
         [JsonProperty("entryAndExitTone")]
         public string EntryAndExitTone { get; set; }
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool EnabledFileTransfer { get; set; }
 
         [JsonProperty("enabledUCFRichMedia")]
-        public bool EnabledUCFRichMedia { get; set; }
+        public bool EnabledUcfRichMedia { get; set; }
     }
 
     public class CreateAMeetingResponseAttendeePrivilegesType
@@ -931,7 +931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool EnabledGlobalCallIn { get; set; }
 
         [JsonProperty("enabledAudienceCallBack")]
-        public bool EnabledAudienceCallBack { get; set; }
+        public bool EnabledAudienceCallback { get; set; }
 
         [JsonProperty("entryAndExitTone")]
         public string EntryAndExitTone { get; set; }
@@ -1121,7 +1121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool? EnabledFileTransfer { get; set; }
 
         [JsonProperty("enabledUCFRichMedia")]
-        public bool? EnabledUCFRichMedia { get; set; }
+        public bool? EnabledUcfRichMedia { get; set; }
     }
 
     public class BodyInputAttendeePrivilegesType
@@ -1187,7 +1187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool? EnabledGlobalCallIn { get; set; }
 
         [JsonProperty("enabledAudienceCallBack")]
-        public bool? EnabledAudienceCallBack { get; set; }
+        public bool? EnabledAudienceCallback { get; set; }
 
         [JsonProperty("entryAndExitTone")]
         public string EntryAndExitTone { get; set; }

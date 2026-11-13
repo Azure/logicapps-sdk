@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
     public class CreateOcrRequestResponse
     {
         [JsonProperty("request_id")]
-        public string OCRRequestId { get; set; }
+        public string OcrRequestId { get; set; }
 
         [JsonProperty("file_id")]
         public string FileId { get; set; }
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
     public class GetOcrRequestStatusResponse
     {
         [JsonProperty("status")]
-        public string OCRRequestStatus { get; set; }
+        public string OcrRequestStatus { get; set; }
 
         [JsonProperty("is_finished")]
         public bool IsFinished { get; set; }
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         public string FileId { get; set; }
 
         [JsonProperty("field_ids")]
-        public string[] FieldIDs { get; set; }
+        public string[] FieldIds { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         public string FileId { get; set; }
 
         [JsonProperty("field_ids")]
-        public string[] FieldIDs { get; set; }
+        public string[] FieldIds { get; set; }
     }
 
     public class GetFieldExtractionRequestStatusResponse
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
     public class CreateMlcRequestResponse
     {
         [JsonProperty("request_id")]
-        public string MLCRequestId { get; set; }
+        public string MlcRequestId { get; set; }
 
         [JsonProperty("file_id")]
         public string FileId { get; set; }
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
     public class GetMlcRequestStatusResponse
     {
         [JsonProperty("status")]
-        public string MLCRequestStatus { get; set; }
+        public string MlcRequestStatus { get; set; }
 
         [JsonProperty("is_finished")]
         public bool IsFinished { get; set; }

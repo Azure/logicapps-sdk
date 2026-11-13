@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
     public class AgilepointnxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IBodyWorkflowAction<CompleteAutoWorkItemResponse, ApiConnectionActionConfiguration> CompleteAutoWorkItem(Expression<Func<string>> wORKITEMId)
+        public IBodyWorkflowAction<CompleteAutoWorkItemResponse, ApiConnectionActionConfiguration> CompleteAutoWorkItem(Expression<Func<string>> workitemid)
         {
-            var __workflow_wORKITEMId = WorkflowExpression.Compile(wORKITEMId, nameof(wORKITEMId), required: true);
+            var __workflow_workitemid = WorkflowExpression.Compile(workitemid, nameof(workitemid), required: true);
             return new DeferredBodyAction<CompleteAutoWorkItemResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Workflow/CompleteProcedure/{0}", __workflow_wORKITEMId.WithUrlEncoding(2)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Workflow/CompleteProcedure/{0}", __workflow_workitemid.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompleteAutoWorkItemResponse>(callPayload);
@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetCustomAttrs(Expression<Func<string>> cUSTOMId, Expression<Func<SetCustomAttrsBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetCustomAttrs(Expression<Func<string>> customid, Expression<Func<SetCustomAttrsBodyInput>> body = null)
         {
-            var __workflow_cUSTOMId = WorkflowExpression.Compile(cUSTOMId, nameof(cUSTOMId), required: true);
+            var __workflow_customid = WorkflowExpression.Compile(customid, nameof(customid), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Workflow/SetCustomAttrs/{0}", __workflow_cUSTOMId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Workflow/SetCustomAttrs/{0}", __workflow_customid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
@@ -56,13 +56,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetCustomAttr(Expression<Func<string>> cUSTOMId, Expression<Func<GetCustomAttrBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetCustomAttr(Expression<Func<string>> customid, Expression<Func<GetCustomAttrBodyInput>> body)
         {
-            var __workflow_cUSTOMId = WorkflowExpression.Compile(cUSTOMId, nameof(cUSTOMId), required: true);
+            var __workflow_customid = WorkflowExpression.Compile(customid, nameof(customid), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Workflow/GetCustomAttr/{0}", __workflow_cUSTOMId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Workflow/GetCustomAttr/{0}", __workflow_customid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -71,14 +71,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IBodyWorkflowAction<GetUUIdResponse, ApiConnectionActionConfiguration> GetUUID()
+        public IBodyWorkflowAction<GetUuidResponse, ApiConnectionActionConfiguration> GetUuid()
         {
-            return new DeferredBodyAction<GetUUIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetUuidResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Workflow/GetUUID";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetUUIdResponse>(callPayload);
+                return new ApiConnectionAction<GetUuidResponse>(callPayload);
             });
         }
 
@@ -367,10 +367,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         public string AttrName { get; set; }
     }
 
-    public class GetUUIdResponse
+    public class GetUuidResponse
     {
         [JsonProperty("GetUUIDResult")]
-        public string GetUUIdResult { get; set; }
+        public string GetUuidResult { get; set; }
     }
 
     public class GetProcessInstanceResponse
@@ -440,8 +440,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         public string SupportedLanguage { get; set; }
         public string TimeZone { get; set; }
         public string Title { get; set; }
-        public string UALExpirationDate { get; set; }
-        public bool UALNeverExpires { get; set; }
+
+        [JsonProperty("UALExpirationDate")]
+        public string UalExpirationDate { get; set; }
+
+        [JsonProperty("UALNeverExpires")]
+        public bool UalNeverExpires { get; set; }
         public string UserName { get; set; }
         public string UserOrgInfo { get; set; }
 

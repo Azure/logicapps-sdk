@@ -1117,25 +1117,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class Entity
     {
-        public string EntityGUID { get; set; }
+        [JsonProperty("EntityGUID")]
+        public string EntityGuid { get; set; }
         public string EntityName { get; set; }
         public string EntityDescription { get; set; }
         public bool AllowPartialAggregation { get; set; }
         public bool IsChangeRequestEnabled { get; set; }
         public int ProviderCurrencyDigits { get; set; }
         public string ProviderCurrencyCode { get; set; }
-        public string WorkflowStageGUID { get; set; }
+
+        [JsonProperty("WorkflowStageGUID")]
+        public string WorkflowStageGuid { get; set; }
         public string WorkflowStageName { get; set; }
-        public string CalendarTypeGUID { get; set; }
-        public string WorkflowInstanceGUID { get; set; }
-        public string CalendarGUID { get; set; }
+
+        [JsonProperty("CalendarTypeGUID")]
+        public string CalendarTypeGuid { get; set; }
+
+        [JsonProperty("WorkflowInstanceGUID")]
+        public string WorkflowInstanceGuid { get; set; }
+
+        [JsonProperty("CalendarGUID")]
+        public string CalendarGuid { get; set; }
         public string CurrencyCode { get; set; }
         public string CurrencyCodeDescription { get; set; }
         public string CurrencyCodeSymbol { get; set; }
         public bool IsCustomRate { get; set; }
-        public string GTGUID { get; set; }
+
+        [JsonProperty("GTGUID")]
+        public string Gtguid { get; set; }
         public string GTName { get; set; }
-        public string EntityTypeGUID { get; set; }
+
+        [JsonProperty("EntityTypeGUID")]
+        public string EntityTypeGuid { get; set; }
         public string EntityTypeName { get; set; }
         public string EntityTypeDescription { get; set; }
         public string StartDate { get; set; }
@@ -1179,7 +1192,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         public string AllocationCenterId { get; set; }
         public JToken Value { get; set; }
         public string CustomFieldName { get; set; }
-        public string URL { get; set; }
+
+        [JsonProperty("URL")]
+        public string Url { get; set; }
         public string FinancialEntityId { get; set; }
     }
 
@@ -1238,13 +1253,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class EventCreationInformationInput
     {
-        public EventCreationInformationInput(string siteURL)
+        public EventCreationInformationInput(string siteUrl)
         {
-            this.SiteURL = siteURL;
+            this.SiteUrl = siteUrl;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
+        [JsonProperty("SiteURL", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteUrl { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";

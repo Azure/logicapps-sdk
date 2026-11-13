@@ -335,16 +335,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
-        public IBodyWorkflowAction<BrowserNavigateToURLResponse, ApiConnectionActionConfiguration> BrowserNavigateToURL(Expression<Func<BrowserNavigateToURLInput>> browserNavigateToURL)
+        public IBodyWorkflowAction<BrowserNavigateToUrlResponse, ApiConnectionActionConfiguration> BrowserNavigateToUrl(Expression<Func<BrowserNavigateToUrlInput>> browserNavigateToUrl)
         {
-            var __workflow_browserNavigateToURL = WorkflowExpression.Compile(browserNavigateToURL, nameof(browserNavigateToURL), required: true);
-            return new DeferredBodyAction<BrowserNavigateToURLResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_browserNavigateToUrl = WorkflowExpression.Compile(browserNavigateToUrl, nameof(browserNavigateToUrl), required: true);
+            return new DeferredBodyAction<BrowserNavigateToUrlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/BrowserControl/NavigateToURL";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_browserNavigateToURL);
-                return new ApiConnectionAction<BrowserNavigateToURLResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_browserNavigateToUrl);
+                return new ApiConnectionAction<BrowserNavigateToUrlResponse>(callPayload);
             });
         }
 
@@ -1201,7 +1201,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserGetChromeBrowserVersionFromFileInput
     {
-        public string ChromeBrowserEXE { get; set; }
+        [JsonProperty("ChromeBrowserEXE")]
+        public string ChromeBrowserExe { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -1222,7 +1223,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
         public int? ChromeMajorVersion { get; set; }
-        public string ChromeBrowserEXE { get; set; }
+
+        [JsonProperty("ChromeBrowserEXE")]
+        public string ChromeBrowserExe { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -1240,22 +1243,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             this.ChromeDriverDownloadParentFolder = chromeDriverDownloadParentFolder;
         }
 
-        public string ChromeBrowserEXE { get; set; }
+        [JsonProperty("ChromeBrowserEXE")]
+        public string ChromeBrowserExe { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChromeDriverDownloadParentFolder { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? AttemptToLocateChromeDriverURLViaXMLIndex { get; set; } = true;
+        [JsonProperty("AttemptToLocateChromeDriverURLViaXMLIndex", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AttemptToLocateChromeDriverUrlViaXmlIndex { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ChromeDriverRootWebPageURL { get; set; } = "https://chromedriver.storage.googleapis.com/";
+        [JsonProperty("ChromeDriverRootWebPageURL", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChromeDriverRootWebPageUrl { get; set; } = "https://chromedriver.storage.googleapis.com/";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? AttemptToLocateChromeDriverURLViaJSONIndex { get; set; } = true;
+        [JsonProperty("AttemptToLocateChromeDriverURLViaJSONIndex", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AttemptToLocateChromeDriverUrlViaJsonIndex { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ChromeDriverJSONIndexWebPageURL { get; set; } = "https://googlechromelabs.github.io/chrome-for-testing/latest-versions-per-milestone-with-downloads.json";
+        [JsonProperty("ChromeDriverJSONIndexWebPageURL", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChromeDriverJsonIndexWebPageUrl { get; set; } = "https://googlechromelabs.github.io/chrome-for-testing/latest-versions-per-milestone-with-downloads.json";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Prefer64bitChromeDriver { get; set; } = false;
@@ -1275,7 +1279,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
     public class BrowserIsSuitableChromeDriverAvailableInput
     {
         public string ChromeDriverFolder { get; set; }
-        public string ChromeBrowserEXE { get; set; }
+
+        [JsonProperty("ChromeBrowserEXE")]
+        public string ChromeBrowserExe { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -1303,12 +1309,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
     public class BrowserOpenChromeResponse
     {
         [JsonProperty("ChromeDriverPID")]
-        public int ChromeDriverPId { get; set; }
-        public int ChromeDriverTCPPort { get; set; }
+        public int ChromeDriverPid { get; set; }
+
+        [JsonProperty("ChromeDriverTCPPort")]
+        public int ChromeDriverTcpPort { get; set; }
 
         [JsonProperty("ChromePID")]
-        public int ChromePId { get; set; }
-        public int ChromeTCPPort { get; set; }
+        public int ChromePid { get; set; }
+
+        [JsonProperty("ChromeTCPPort")]
+        public int ChromeTcpPort { get; set; }
         public string ChromeInstanceUserDataDir { get; set; }
         public bool ChromeInstanceAlreadyOpen { get; set; }
     }
@@ -1325,11 +1335,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public bool? PrintToDefaultPrinter { get; set; } = true;
         public string DefaultDownloadDirectory { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? DownloadPDFInsteadOfOpening { get; set; } = false;
-        public string ChromeDriverLogFilename { get; set; }
+        [JsonProperty("DownloadPDFInsteadOfOpening", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DownloadPdfInsteadOfOpening { get; set; } = false;
+
+        [JsonProperty("ChromeDriverLogFilename")]
+        public string ChromeDriverLogFileName { get; set; }
         public string LocalChromeDriverFolder { get; set; }
-        public string ChromeBrowserEXE { get; set; }
+
+        [JsonProperty("ChromeBrowserEXE")]
+        public string ChromeBrowserExe { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IgnoreCertificateErrors { get; set; } = false;
@@ -1404,7 +1418,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryPath { get; set; }
         public int? ChromiumEdgeMajorVersion { get; set; }
-        public string ChromiumEdgeBrowserEXE { get; set; }
+
+        [JsonProperty("ChromiumEdgeBrowserEXE")]
+        public string ChromiumEdgeBrowserExe { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -1418,7 +1434,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserGetChromiumEdgeBrowserVersionFromFileInput
     {
-        public string ChromiumEdgeBrowserEXE { get; set; }
+        [JsonProperty("ChromiumEdgeBrowserEXE")]
+        public string ChromiumEdgeBrowserExe { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -1436,13 +1453,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             this.ChromiumEdgeDriverDownloadParentFolder = chromiumEdgeDriverDownloadParentFolder;
         }
 
-        public string ChromiumEdgeBrowserEXE { get; set; }
+        [JsonProperty("ChromiumEdgeBrowserEXE")]
+        public string ChromiumEdgeBrowserExe { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChromiumEdgeDriverDownloadParentFolder { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ChromiumEdgeDriverRootWebPageURL { get; set; } = "https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver/";
+        [JsonProperty("ChromiumEdgeDriverRootWebPageURL", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChromiumEdgeDriverRootWebPageUrl { get; set; } = "https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver/";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -1459,7 +1477,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
     public class BrowserIsSuitableChromiumEdgeDriverAvailableInput
     {
         public string ChromiumEdgeDriverFolder { get; set; }
-        public string ChromiumEdgeBrowserEXE { get; set; }
+
+        [JsonProperty("ChromiumEdgeBrowserEXE")]
+        public string ChromiumEdgeBrowserExe { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -1487,12 +1507,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
     public class BrowserOpenChromiumEdgeResponse
     {
         [JsonProperty("ChromiumEdgeDriverPID")]
-        public int ChromiumEdgeDriverPId { get; set; }
-        public int ChromiumEdgeDriverTCPPort { get; set; }
+        public int ChromiumEdgeDriverPid { get; set; }
+
+        [JsonProperty("ChromiumEdgeDriverTCPPort")]
+        public int ChromiumEdgeDriverTcpPort { get; set; }
 
         [JsonProperty("ChromiumEdgePID")]
-        public int ChromiumEdgePId { get; set; }
-        public int ChromiumEdgeTCPPort { get; set; }
+        public int ChromiumEdgePid { get; set; }
+
+        [JsonProperty("ChromiumEdgeTCPPort")]
+        public int ChromiumEdgeTcpPort { get; set; }
         public string ChromiumEdgeInstanceUserDataDir { get; set; }
         public bool ChromiumEdgeInstanceAlreadyOpen { get; set; }
     }
@@ -1509,14 +1533,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public bool? PrintToDefaultPrinter { get; set; } = true;
         public string DefaultDownloadDirectory { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? DownloadPDFInsteadOfOpening { get; set; } = false;
-        public string ChromiumEdgeDriverLogFilename { get; set; }
+        [JsonProperty("DownloadPDFInsteadOfOpening", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DownloadPdfInsteadOfOpening { get; set; } = false;
+
+        [JsonProperty("ChromiumEdgeDriverLogFilename")]
+        public string ChromiumEdgeDriverLogFileName { get; set; }
         public string LocalChromiumEdgeDriverFolder { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? HideBrowserIsBeingAutomatedMessage { get; set; } = true;
-        public string ChromiumEdgeBrowserEXE { get; set; }
+
+        [JsonProperty("ChromiumEdgeBrowserEXE")]
+        public string ChromiumEdgeBrowserExe { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IgnoreCertificateErrors { get; set; } = false;
@@ -1622,21 +1650,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class BrowserNavigateToURLResponse
+    public class BrowserNavigateToUrlResponse
     {
         public string PageTitle { get; set; }
-        public string PageURL { get; set; }
+
+        [JsonProperty("PageURL")]
+        public string PageUrl { get; set; }
     }
 
-    public class BrowserNavigateToURLInput
+    public class BrowserNavigateToUrlInput
     {
-        public BrowserNavigateToURLInput(string uRL)
+        public BrowserNavigateToUrlInput(string url)
         {
-            this.URL = uRL;
+            this.Url = url;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string URL { get; set; }
+        [JsonProperty("URL", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -1670,7 +1700,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -1720,7 +1752,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -1770,7 +1804,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -1821,8 +1857,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public double ElementHeight { get; set; }
         public bool ElementSelected { get; set; }
         public string ElementType { get; set; }
-        public string InnerHTML { get; set; }
-        public string OuterHTML { get; set; }
+
+        [JsonProperty("InnerHTML")]
+        public string InnerHtml { get; set; }
+
+        [JsonProperty("OuterHTML")]
+        public string OuterHtml { get; set; }
         public double ChildElementCount { get; set; }
         public string ParentTagName { get; set; }
         public double ElementHandle { get; set; }
@@ -1839,7 +1879,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -1868,8 +1910,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? OnlyElementTopLeftNeedsToBeInBoundingBox { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? GetHTMLCode { get; set; } = false;
+        [JsonProperty("GetHTMLCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? GetHtmlCode { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnElementHandle { get; set; } = true;
@@ -1895,7 +1937,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
         public string SearchElementMatchValue { get; set; }
         public string SearchElementMatchText { get; set; }
         public string SearchElementType { get; set; }
@@ -1921,8 +1965,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? OnlyElementTopLeftNeedsToBeInBoundingBox { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? GetHTMLCode { get; set; } = false;
+        [JsonProperty("GetHTMLCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? GetHtmlCode { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CreateHandle { get; set; } = true;
@@ -1981,7 +2025,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2010,8 +2056,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? OnlyElementTopLeftNeedsToBeInBoundingBox { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? GetHTMLCode { get; set; } = false;
+        [JsonProperty("GetHTMLCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? GetHtmlCode { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CreateHandle { get; set; } = true;
@@ -2037,7 +2083,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
         public string SearchElementMatchValue { get; set; }
         public string SearchElementMatchText { get; set; }
         public string SearchElementType { get; set; }
@@ -2063,8 +2111,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? OnlyElementTopLeftNeedsToBeInBoundingBox { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? GetHTMLCode { get; set; } = false;
+        [JsonProperty("GetHTMLCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? GetHtmlCode { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CreateHandle { get; set; } = true;
@@ -2125,7 +2173,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2167,13 +2217,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserInputTextIntoMultipleElementsInput
     {
-        public BrowserInputTextIntoMultipleElementsInput(string inputElementsJSON)
+        public BrowserInputTextIntoMultipleElementsInput(string inputElementsJson)
         {
-            this.InputElementsJSON = inputElementsJSON;
+            this.InputElementsJson = inputElementsJson;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputElementsJSON { get; set; }
+        [JsonProperty("InputElementsJSON", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string InputElementsJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -2195,7 +2245,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2242,7 +2294,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2286,7 +2340,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2330,7 +2386,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2368,13 +2426,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserCheckMultipleElementsInput
     {
-        public BrowserCheckMultipleElementsInput(string inputElementsJSON)
+        public BrowserCheckMultipleElementsInput(string inputElementsJson)
         {
-            this.InputElementsJSON = inputElementsJSON;
+            this.InputElementsJson = inputElementsJson;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputElementsJSON { get; set; }
+        [JsonProperty("InputElementsJSON", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string InputElementsJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -2399,7 +2457,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2443,7 +2503,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2492,7 +2554,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2541,7 +2605,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2578,7 +2644,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
     {
         public double NumberOfRows { get; set; }
         public double NumberOfColumns { get; set; }
-        public string TableContentsJSON { get; set; }
+
+        [JsonProperty("TableContentsJSON")]
+        public string TableContentsJson { get; set; }
     }
 
     public class BrowserGetTableContentsInput
@@ -2592,7 +2660,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2645,7 +2715,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2718,7 +2790,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2762,7 +2836,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2820,7 +2896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
     public class BrowserGetBrowserParentWindowDetailsInput
     {
         [JsonProperty("BrowserPID")]
-        public int? BrowserPId { get; set; }
+        public int? BrowserPid { get; set; }
         public string SearchDocumentElementClassName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2850,7 +2926,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2894,7 +2972,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2938,7 +3018,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -2982,7 +3064,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3029,7 +3113,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3076,7 +3162,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3130,7 +3218,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3177,7 +3267,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3226,7 +3318,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3272,7 +3366,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserOpenNewTabInput
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SwitchControlToNewTab { get; set; } = true;
@@ -3285,7 +3380,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
     {
         public int NumberOfTabs { get; set; }
         public string CurrentTabHandle { get; set; }
-        public string BrowserTabsJSON { get; set; }
+
+        [JsonProperty("BrowserTabsJSON")]
+        public string BrowserTabsJson { get; set; }
     }
 
     public class BrowserGetTabsInput
@@ -3311,13 +3408,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
     public class BrowserSavePageToFileInput
     {
-        public BrowserSavePageToFileInput(string saveFilename)
+        public BrowserSavePageToFileInput(string saveFileName)
         {
-            this.SaveFilename = saveFilename;
+            this.SaveFileName = saveFileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SaveFilename { get; set; }
+        [JsonProperty("SaveFilename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SaveFileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -3345,7 +3442,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3426,7 +3525,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3470,7 +3571,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3519,7 +3622,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3572,7 +3677,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3640,7 +3747,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3689,7 +3798,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3751,7 +3862,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         public string SearchElementTagName { get; set; }
         public string SearchElementXPath { get; set; }
         public string SearchElementClassName { get; set; }
-        public string SearchElementCSSSelector { get; set; }
+
+        [JsonProperty("SearchElementCSSSelector")]
+        public string SearchElementCssSelector { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SearchElementIndex { get; set; } = 1;
@@ -3841,7 +3954,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
     {
         public int NumberOfElementsFound { get; set; }
         public int NumberOfElementsReturned { get; set; }
-        public string ElementPropertiesJSON { get; set; }
+
+        [JsonProperty("ElementPropertiesJSON")]
+        public string ElementPropertiesJson { get; set; }
     }
 
     public class BrowserGetWebElementPropertiesAsListInput
@@ -3854,8 +3969,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ElementHandle { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? GetHTMLCode { get; set; } = false;
+        [JsonProperty("GetHTMLCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? GetHtmlCode { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnValue { get; set; } = true;

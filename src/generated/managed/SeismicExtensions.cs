@@ -617,10 +617,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenInputReqInputOutputsTypeItemFormatType
     {
-        PPTX,
-        DOCX,
-        PDF,
-        XLSX
+        [EnumMember(Value = "PPTX")]
+        Pptx,
+        [EnumMember(Value = "DOCX")]
+        Docx,
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "XLSX")]
+        Xlsx
     }
 
     public class GenInputReqInputOutputsTypeItemPdfOptionsType
@@ -800,7 +804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string Title { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

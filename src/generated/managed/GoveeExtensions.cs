@@ -63,15 +63,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
 
     public class BodyInput
     {
-        public BodyInput(string deviceMACAddress, string deviceModel, BodyInputCmdType cmd)
+        public BodyInput(string deviceMacAddress, string deviceModel, BodyInputCmdType cmd)
         {
-            this.DeviceMACAddress = deviceMACAddress;
+            this.DeviceMacAddress = deviceMacAddress;
             this.DeviceModel = deviceModel;
             this.Cmd = cmd;
         }
 
         [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DeviceMACAddress { get; set; }
+        public string DeviceMacAddress { get; set; }
 
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceModel { get; set; }
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
     public class GetDeviceInformationResponseDataTypeDevicesTypeItem
     {
         [JsonProperty("device")]
-        public string DeviceMACAddress { get; set; }
+        public string DeviceMacAddress { get; set; }
 
         [JsonProperty("model")]
         public string DeviceModel { get; set; }

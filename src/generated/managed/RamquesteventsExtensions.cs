@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 
     public class RamquesteventsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CCEEventTrigger(Expression<Func<CCEEventTriggerBodyInput>> body)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CceEventTrigger(Expression<Func<CceEventTriggerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
         }
     }
 
-    public class CCEEventTriggerBodyInput
+    public class CceEventTriggerBodyInput
     {
         [JsonProperty("webHook", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHook { get; set; } = "#{listCallbackUrl()}";

@@ -950,7 +950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public UserDataEmailsTypeItem[] Emails { get; set; }
 
         [JsonProperty("groupIDs")]
-        public string[] GroupIDs { get; set; }
+        public string[] GroupIds { get; set; }
 
         [JsonProperty("position")]
         public string Position { get; set; }
@@ -1013,7 +1013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public BodyInputEmailsTypeItem[] Emails { get; set; }
 
         [JsonProperty("groupIDs")]
-        public string[] GroupIDs { get; set; }
+        public string[] GroupIds { get; set; }
 
         [JsonProperty("position")]
         public string Position { get; set; }

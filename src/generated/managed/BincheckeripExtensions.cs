@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bincheckerip
     public class BincheckeripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bincheckerip")]
-        public IBodyWorkflowAction<SeachResponse, ApiConnectionActionConfiguration> Seach(Expression<Func<int>> bIN)
+        public IBodyWorkflowAction<SeachResponse, ApiConnectionActionConfiguration> Seach(Expression<Func<int>> bin)
         {
-            var __workflow_bIN = WorkflowExpression.Compile(bIN, nameof(bIN), required: true);
+            var __workflow_bin = WorkflowExpression.Compile(bin, nameof(bin), required: true);
             return new DeferredBodyAction<SeachResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_bIN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_bin.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeachResponse>(callPayload);

@@ -125,16 +125,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryGetDomainFQDNFromDNResponse, ApiConnectionActionConfiguration> ActiveDirectoryGetDomainFQDNFromDN(Expression<Func<ActiveDirectoryGetDomainFQDNFromDNInput>> activeDirectoryGetDomainFQDNFromDN)
+        public IBodyWorkflowAction<ActiveDirectoryGetDomainFqdnFromDNResponse, ApiConnectionActionConfiguration> ActiveDirectoryGetDomainFqdnFromDN(Expression<Func<ActiveDirectoryGetDomainFqdnFromDNInput>> activeDirectoryGetDomainFqdnFromDN)
         {
-            var __workflow_activeDirectoryGetDomainFQDNFromDN = WorkflowExpression.Compile(activeDirectoryGetDomainFQDNFromDN, nameof(activeDirectoryGetDomainFQDNFromDN), required: true);
-            return new DeferredBodyAction<ActiveDirectoryGetDomainFQDNFromDNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_activeDirectoryGetDomainFqdnFromDN = WorkflowExpression.Compile(activeDirectoryGetDomainFqdnFromDN, nameof(activeDirectoryGetDomainFqdnFromDN), required: true);
+            return new DeferredBodyAction<ActiveDirectoryGetDomainFqdnFromDNResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetDomainFQDNFromDN";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_activeDirectoryGetDomainFQDNFromDN);
-                return new ApiConnectionAction<ActiveDirectoryGetDomainFQDNFromDNResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_activeDirectoryGetDomainFqdnFromDN);
+                return new ApiConnectionAction<ActiveDirectoryGetDomainFqdnFromDNResponse>(callPayload);
             });
         }
 
@@ -1343,16 +1343,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2GetAzureADLicenseSKUsResponse, ApiConnectionActionConfiguration> AzureADv2GetAzureADLicenseSKUs(Expression<Func<AzureADv2GetAzureADLicenseSKUsInput>> azureADv2GetAzureADLicenseSKUs)
+        public IBodyWorkflowAction<AzureADv2GetAzureADLicenseSkusResponse, ApiConnectionActionConfiguration> AzureADv2GetAzureADLicenseSkus(Expression<Func<AzureADv2GetAzureADLicenseSkusInput>> azureADv2GetAzureADLicenseSkus)
         {
-            var __workflow_azureADv2GetAzureADLicenseSKUs = WorkflowExpression.Compile(azureADv2GetAzureADLicenseSKUs, nameof(azureADv2GetAzureADLicenseSKUs), required: true);
-            return new DeferredBodyAction<AzureADv2GetAzureADLicenseSKUsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_azureADv2GetAzureADLicenseSkus = WorkflowExpression.Compile(azureADv2GetAzureADLicenseSkus, nameof(azureADv2GetAzureADLicenseSkus), required: true);
+            return new DeferredBodyAction<AzureADv2GetAzureADLicenseSkusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADLicenseSKUs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_azureADv2GetAzureADLicenseSKUs);
-                return new ApiConnectionAction<AzureADv2GetAzureADLicenseSKUsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_azureADv2GetAzureADLicenseSkus);
+                return new ApiConnectionAction<AzureADv2GetAzureADLicenseSkusResponse>(callPayload);
             });
         }
 
@@ -1973,30 +1973,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<JMLGetNextAvailableAccountNameResponse, ApiConnectionActionConfiguration> JMLGetNextAvailableAccountName(Expression<Func<JMLGetNextAvailableAccountNameInput>> jMLGetNextAvailableAccountName)
+        public IBodyWorkflowAction<JmlGetNextAvailableAccountNameResponse, ApiConnectionActionConfiguration> JmlGetNextAvailableAccountName(Expression<Func<JmlGetNextAvailableAccountNameInput>> jmlGetNextAvailableAccountName)
         {
-            var __workflow_jMLGetNextAvailableAccountName = WorkflowExpression.Compile(jMLGetNextAvailableAccountName, nameof(jMLGetNextAvailableAccountName), required: true);
-            return new DeferredBodyAction<JMLGetNextAvailableAccountNameResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jmlGetNextAvailableAccountName = WorkflowExpression.Compile(jmlGetNextAvailableAccountName, nameof(jmlGetNextAvailableAccountName), required: true);
+            return new DeferredBodyAction<JmlGetNextAvailableAccountNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/JMLGetNextAvailableAccountName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jMLGetNextAvailableAccountName);
-                return new ApiConnectionAction<JMLGetNextAvailableAccountNameResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jmlGetNextAvailableAccountName);
+                return new ApiConnectionAction<JmlGetNextAvailableAccountNameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<JMLConnectToJMLEnvironmentResponse, ApiConnectionActionConfiguration> JMLConnectToJMLEnvironment(Expression<Func<JMLConnectToJMLEnvironmentInput>> jMLConnectToJMLEnvironment)
+        public IBodyWorkflowAction<JmlConnectToJmlEnvironmentResponse, ApiConnectionActionConfiguration> JmlConnectToJmlEnvironment(Expression<Func<JmlConnectToJmlEnvironmentInput>> jmlConnectToJmlEnvironment)
         {
-            var __workflow_jMLConnectToJMLEnvironment = WorkflowExpression.Compile(jMLConnectToJMLEnvironment, nameof(jMLConnectToJMLEnvironment), required: true);
-            return new DeferredBodyAction<JMLConnectToJMLEnvironmentResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jmlConnectToJmlEnvironment = WorkflowExpression.Compile(jmlConnectToJmlEnvironment, nameof(jmlConnectToJmlEnvironment), required: true);
+            return new DeferredBodyAction<JmlConnectToJmlEnvironmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/JMLConnectToJMLEnvironment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jMLConnectToJMLEnvironment);
-                return new ApiConnectionAction<JMLConnectToJMLEnvironmentResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jmlConnectToJmlEnvironment);
+                return new ApiConnectionAction<JmlConnectToJmlEnvironmentResponse>(callPayload);
             });
         }
     }
@@ -2007,7 +2007,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class RunActiveDirectoryPowerShellAutomationScriptResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int ThreadId { get; set; }
     }
 
@@ -2029,7 +2030,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnDateAsDate { get; set; } = false;
-        public string PropertiesToReturnAsCollectionJSON { get; set; }
+
+        [JsonProperty("PropertiesToReturnAsCollectionJSON")]
+        public string PropertiesToReturnAsCollectionJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RunScriptAsThread { get; set; } = false;
@@ -2043,8 +2046,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? LogVerboseOutput { get; set; } = false;
-        public string PropertyNamesToSerializeJSON { get; set; }
-        public string PropertyTypesToSerializeJSON { get; set; }
+
+        [JsonProperty("PropertyNamesToSerializeJSON")]
+        public string PropertyNamesToSerializeJson { get; set; }
+
+        [JsonProperty("PropertyTypesToSerializeJSON")]
+        public string PropertyTypesToSerializeJson { get; set; }
         public RunActiveDirectoryPowerShellAutomationScriptInputPowerShellCommandParametersTypeItem[] PowerShellCommandParameters { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2069,22 +2076,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class OpenActiveDirectoryPowerShellRunspaceWithCredentialsInput
     {
-        public OpenActiveDirectoryPowerShellRunspaceWithCredentialsInput(string username, string password)
+        public OpenActiveDirectoryPowerShellRunspaceWithCredentialsInput(string userName, string password)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.Password = password;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        [JsonProperty("Username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
         public string RemoteComputer { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? UseSSL { get; set; } = false;
-        public int? AlternativeTCPPort { get; set; }
+        [JsonProperty("UseSSL", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UseSsl { get; set; } = false;
+
+        [JsonProperty("AlternativeTCPPort")]
+        public int? AlternativeTcpPort { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -2107,9 +2116,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public bool ActiveDirectoryRunspaceOpen { get; set; }
         public bool ActiveDirectoryLocalPassthroughRunspace { get; set; }
         public string ActiveDirectoryServer { get; set; }
-        public string ActiveDirectoryDNSDomain { get; set; }
+
+        [JsonProperty("ActiveDirectoryDNSDomain")]
+        public string ActiveDirectoryDnsDomain { get; set; }
         public string ActiveDirectoryDomainDN { get; set; }
-        public string AuthenticatedUsername { get; set; }
+
+        [JsonProperty("AuthenticatedUsername")]
+        public string AuthenticatedUserName { get; set; }
     }
 
     public class IsActiveDirectoryPowerShellRunspaceOpenInput
@@ -2132,9 +2145,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryAddADUserResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public string CreatedUserDistinguishedName { get; set; }
-        public string CreatedUserSAMAccountName { get; set; }
+
+        [JsonProperty("CreatedUserSAMAccountName")]
+        public string CreatedUserSamAccountName { get; set; }
         public string CreatedUserPrincipalName { get; set; }
     }
 
@@ -2178,7 +2194,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryGetADUserByIdentityResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfUsersFound { get; set; }
     }
 
@@ -2196,9 +2213,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public bool? SearchOUBaseSubtree { get; set; } = true;
         public string Properties { get; set; }
         public string ADServer { get; set; }
-        public string PropertiesToReturnAsCollectionJSON { get; set; }
-        public string PropertyNamesToSerializeJSON { get; set; }
-        public string PropertyTypesToSerializeJSON { get; set; }
+
+        [JsonProperty("PropertiesToReturnAsCollectionJSON")]
+        public string PropertiesToReturnAsCollectionJson { get; set; }
+
+        [JsonProperty("PropertyNamesToSerializeJSON")]
+        public string PropertyNamesToSerializeJson { get; set; }
+
+        [JsonProperty("PropertyTypesToSerializeJSON")]
+        public string PropertyTypesToSerializeJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -2222,7 +2245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [EnumMember(Value = "Raw")]
         RawEnterFilterManually,
         [EnumMember(Value = "LDAP")]
-        LDAPEnterLDAPFilter
+        LdapEnterLdapFilter
     }
 
     public class ActiveDirectoryGetOUFromUserDNResponse
@@ -2244,16 +2267,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class ActiveDirectoryGetDomainFQDNFromDNResponse
+    public class ActiveDirectoryGetDomainFqdnFromDNResponse
     {
-        public string DomainFQDN { get; set; }
+        [JsonProperty("DomainFQDN")]
+        public string DomainFqdn { get; set; }
     }
 
-    public class ActiveDirectoryGetDomainFQDNFromDNInput
+    public class ActiveDirectoryGetDomainFqdnFromDNInput
     {
-        public ActiveDirectoryGetDomainFQDNFromDNInput(string dN)
+        public ActiveDirectoryGetDomainFqdnFromDNInput(string dn)
         {
-            this.DN = dN;
+            this.DN = dn;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2265,7 +2289,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryGetADGroupByIdentityResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfGroupsFound { get; set; }
     }
 
@@ -2308,7 +2333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [EnumMember(Value = "Raw")]
         RawEnterFilterManually,
         [EnumMember(Value = "LDAP")]
-        LDAPEnterLDAPFilter
+        LdapEnterLdapFilter
     }
 
     public class ActiveDirectoryAddADGroupMemberByIdentityResponse
@@ -2345,7 +2370,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class ActiveDirectoryAddMultipleADGroupMembersByIdentityInput
     {
         public string GroupIdentity { get; set; }
-        public string GroupMembersJSON { get; set; }
+
+        [JsonProperty("GroupMembersJSON")]
+        public string GroupMembersJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExceptionIfAnyMembersFailToAdd { get; set; } = false;
@@ -2377,7 +2404,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
-        public string GroupNamesJSON { get; set; }
+
+        [JsonProperty("GroupNamesJSON")]
+        public string GroupNamesJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExceptionIfAnyGroupsFailToAdd { get; set; } = false;
@@ -2393,7 +2422,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryGetADUserGroupMembershipResponse
     {
-        public string GroupMembershipJSON { get; set; }
+        [JsonProperty("GroupMembershipJSON")]
+        public string GroupMembershipJson { get; set; }
         public int CountOfGroupsFound { get; set; }
     }
 
@@ -2490,7 +2520,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string Company { get; set; }
         public string Country { get; set; }
         public string CountryString { get; set; }
-        public string CountryISO3166 { get; set; }
+
+        [JsonProperty("CountryISO3166")]
+        public string CountryIso3166 { get; set; }
         public string Department { get; set; }
         public string Description { get; set; }
         public string DisplayName { get; set; }
@@ -2565,7 +2597,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryDirSyncResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
     }
 
     public class ActiveDirectoryDirSyncInput
@@ -2826,7 +2859,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentity { get; set; }
-        public string GroupNamesJSON { get; set; }
+
+        [JsonProperty("GroupNamesJSON")]
+        public string GroupNamesJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExceptionIfAnyGroupsFailToRemove { get; set; } = false;
@@ -2852,7 +2887,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class ActiveDirectoryRemoveADUserFromAllGroupsInput
     {
         public string UserIdentity { get; set; }
-        public string GroupsToExcludeJSON { get; set; }
+
+        [JsonProperty("GroupsToExcludeJSON")]
+        public string GroupsToExcludeJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExceptionIfExcludedGroupDoesNotExist { get; set; } = false;
@@ -2871,15 +2908,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryCheckOUExistsResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public bool OUExists { get; set; }
     }
 
     public class ActiveDirectoryCheckOUExistsInput
     {
-        public ActiveDirectoryCheckOUExistsInput(string oUIdentity)
+        public ActiveDirectoryCheckOUExistsInput(string ouIdentity)
         {
-            this.OUIdentity = oUIdentity;
+            this.OUIdentity = ouIdentity;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2924,7 +2962,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class ActiveDirectoryRemoveMultipleADGroupMembersByIdentityInput
     {
         public string GroupIdentity { get; set; }
-        public string GroupMembersJSON { get; set; }
+
+        [JsonProperty("GroupMembersJSON")]
+        public string GroupMembersJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExceptionIfAnyMembersFailToRemove { get; set; } = false;
@@ -2981,9 +3021,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public enum ActiveDirectorySetADServerInputPredefinedADServerChoiceType
     {
         [EnumMember(Value = "User PDC: PDC emulator of logged-in user domain")]
-        UserPDCPDCEmulatorOfLoggedInUserDomain,
+        UserPdcPdcEmulatorOfLoggedInUserDomain,
         [EnumMember(Value = "Computer PDC: PDC emulator of local computer domain")]
-        ComputerPDCPDCEmulatorOfLocalComputerDomain,
+        ComputerPdcPdcEmulatorOfLocalComputerDomain,
         [EnumMember(Value = "Manual: Specify in AD server field")]
         ManualSpecifyInADServerField
     }
@@ -2991,19 +3031,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class ActiveDirectoryGetDomainInfoResponse
     {
         public string DistinguishedName { get; set; }
-        public string DNSRoot { get; set; }
+
+        [JsonProperty("DNSRoot")]
+        public string DnsRoot { get; set; }
         public string DomainMode { get; set; }
 
         [JsonProperty("DomainSID")]
-        public string DomainSId { get; set; }
+        public string DomainSid { get; set; }
         public string Forest { get; set; }
         public string InfrastructureMaster { get; set; }
-        public string NetBIOSName { get; set; }
-        public string ObjectGUID { get; set; }
-        public string PDCEmulator { get; set; }
+
+        [JsonProperty("NetBIOSName")]
+        public string NetBiosName { get; set; }
+
+        [JsonProperty("ObjectGUID")]
+        public string ObjectGuid { get; set; }
+
+        [JsonProperty("PDCEmulator")]
+        public string PdcEmulator { get; set; }
 
         [JsonProperty("RIDMaster")]
-        public string RIdMaster { get; set; }
+        public string RidMaster { get; set; }
     }
 
     public class ActiveDirectoryGetDomainInfoInput
@@ -3031,9 +3079,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryAddADGroupResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public string CreatedGroupDistinguishedName { get; set; }
-        public string CreatedGroupSAMAccountName { get; set; }
+
+        [JsonProperty("CreatedGroupSAMAccountName")]
+        public string CreatedGroupSamAccountName { get; set; }
     }
 
     public class ActiveDirectoryAddADGroupInput
@@ -3133,7 +3184,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryAddOUResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public string CreatedOUDistinguishedName { get; set; }
     }
 
@@ -3170,9 +3222,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryRemoveOUInput
     {
-        public ActiveDirectoryRemoveOUInput(string oUIdentity)
+        public ActiveDirectoryRemoveOUInput(string ouIdentity)
         {
-            this.OUIdentity = oUIdentity;
+            this.OUIdentity = ouIdentity;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3224,7 +3276,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ActiveDirectoryGetADGroupMembersResponse
     {
-        public string GroupMembersJSON { get; set; }
+        [JsonProperty("GroupMembersJSON")]
+        public string GroupMembersJson { get; set; }
         public int CountOfGroupMembersFound { get; set; }
     }
 
@@ -3254,19 +3307,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class OpenExchangePowerShellRunspaceInput
     {
-        public OpenExchangePowerShellRunspaceInput(string exchangeServerFQDN)
+        public OpenExchangePowerShellRunspaceInput(string exchangeServerFqdn)
         {
-            this.ExchangeServerFQDN = exchangeServerFQDN;
+            this.ExchangeServerFqdn = exchangeServerFqdn;
         }
 
-        public string Username { get; set; }
+        [JsonProperty("Username")]
+        public string UserName { get; set; }
         public string Password { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExchangeServerFQDN { get; set; }
+        [JsonProperty("ExchangeServerFQDN", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ExchangeServerFqdn { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? UseSSL { get; set; } = false;
+        [JsonProperty("UseSSL", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UseSsl { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public OpenExchangePowerShellRunspaceInputConnectionMethodType? ConnectionMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenExchangePowerShellRunspaceInputConnectionMethodType.RemoteCommandsRunInRemoteExchangeRunspace;
@@ -3279,7 +3333,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public OpenExchangePowerShellRunspaceInputCommandTypesToImportLocallyType? CommandTypesToImportLocally { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenExchangePowerShellRunspaceInputCommandTypesToImportLocallyType.AllAllExchangePSCommands;
-        public string AdditionalCommandsToImportLocallyCSV { get; set; }
+
+        [JsonProperty("AdditionalCommandsToImportLocallyCSV")]
+        public string AdditionalCommandsToImportLocallyCsv { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -3298,7 +3354,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public enum OpenExchangePowerShellRunspaceInputAuthenticationMechanismType
     {
         Basic,
-        CredSSP,
+        [EnumMember(Value = "CredSSP")]
+        CredSsp,
         Default,
         Digest,
         Kerberos,
@@ -3322,7 +3379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ExchangeConnectionMethod { get; set; }
 
         [JsonProperty("PowerShellRunspacePID")]
-        public int PowerShellRunspacePId { get; set; }
+        public int PowerShellRunspacePid { get; set; }
         public bool IsAgentHostingPowerShellRunSpace { get; set; }
     }
 
@@ -3332,7 +3389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public bool? TestCommunications { get; set; } = true;
 
         [JsonProperty("RetrievePowerShellRunSpacePID", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? RetrievePowerShellRunSpacePId { get; set; } = false;
+        public bool? RetrievePowerShellRunSpacePid { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -3340,7 +3397,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class RunExchangePowerShellAutomationScriptResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int ThreadId { get; set; }
     }
 
@@ -3362,7 +3420,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnDateAsDate { get; set; } = false;
-        public string PropertiesToReturnAsCollectionJSON { get; set; }
+
+        [JsonProperty("PropertiesToReturnAsCollectionJSON")]
+        public string PropertiesToReturnAsCollectionJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RunScriptAsThread { get; set; } = false;
@@ -3376,8 +3436,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? LogVerboseOutput { get; set; } = false;
-        public string PropertyNamesToSerializeJSON { get; set; }
-        public string PropertyTypesToSerializeJSON { get; set; }
+
+        [JsonProperty("PropertyNamesToSerializeJSON")]
+        public string PropertyNamesToSerializeJson { get; set; }
+
+        [JsonProperty("PropertyTypesToSerializeJSON")]
+        public string PropertyTypesToSerializeJson { get; set; }
         public RunExchangePowerShellAutomationScriptInputPowerShellCommandParametersTypeItem[] PowerShellCommandParameters { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3408,7 +3472,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeGetMailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfMailboxesFound { get; set; }
     }
 
@@ -3571,7 +3636,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeGetDistributionGroupResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfDistributionGroupsFound { get; set; }
     }
 
@@ -3612,7 +3678,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeGetDistributionGroupMembersResponse
     {
-        public string DistributionGroupMembersJSON { get; set; }
+        [JsonProperty("DistributionGroupMembersJSON")]
+        public string DistributionGroupMembersJson { get; set; }
         public int CountOfDistributionGroupsMembers { get; set; }
     }
 
@@ -3632,7 +3699,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeGetMailboxDistributionGroupMembershipResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfDistributionGroupsFound { get; set; }
     }
 
@@ -3652,10 +3720,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeNewDistributionGroupResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public bool GroupAlreadyExists { get; set; }
         public string NewGroupDN { get; set; }
-        public string NewGroupGUID { get; set; }
+
+        [JsonProperty("NewGroupGUID")]
+        public string NewGroupGuid { get; set; }
     }
 
     public class ExchangeNewDistributionGroupInput
@@ -3803,7 +3874,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeDisableMailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
     }
 
     public class ExchangeDisableMailboxInput
@@ -3822,7 +3894,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeDisableRemoteMailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
     }
 
     public class ExchangeDisableRemoteMailboxInput
@@ -3841,9 +3914,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeEnableMailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public string NewMailboxDN { get; set; }
-        public string NewMailboxGUID { get; set; }
+
+        [JsonProperty("NewMailboxGUID")]
+        public string NewMailboxGuid { get; set; }
     }
 
     public class ExchangeEnableMailboxInput
@@ -3869,9 +3945,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeEnableRemoteMailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public string NewMailboxDN { get; set; }
-        public string NewMailboxGUID { get; set; }
+
+        [JsonProperty("NewMailboxGUID")]
+        public string NewMailboxGuid { get; set; }
     }
 
     public class ExchangeEnableRemoteMailboxInput
@@ -3898,7 +3977,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeGetRemoteMailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfMailboxesFound { get; set; }
     }
 
@@ -3976,9 +4056,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeNewMailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public string NewMailboxDN { get; set; }
-        public string NewMailboxGUID { get; set; }
+
+        [JsonProperty("NewMailboxGUID")]
+        public string NewMailboxGuid { get; set; }
     }
 
     public class ExchangeNewMailboxInput
@@ -4024,9 +4107,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class ExchangeNewRemoteMailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public string NewMailboxDN { get; set; }
-        public string NewMailboxGUID { get; set; }
+
+        [JsonProperty("NewMailboxGUID")]
+        public string NewMailboxGuid { get; set; }
     }
 
     public class ExchangeNewRemoteMailboxInput
@@ -4516,21 +4602,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class OpenAzureADv2PowerShellRunspaceInput
     {
-        public OpenAzureADv2PowerShellRunspaceInput(string username, string password)
+        public OpenAzureADv2PowerShellRunspaceInput(string userName, string password)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.Password = password;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        [JsonProperty("Username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
         public string TenantId { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenAzureADv2PowerShellRunspaceInputAPIToUseType? APIToUse { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenAzureADv2PowerShellRunspaceInputAPIToUseType.AutoDetect;
+        [JsonProperty("APIToUse", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OpenAzureADv2PowerShellRunspaceInputApiToUseType? ApiToUse { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenAzureADv2PowerShellRunspaceInputApiToUseType.AutoDetect;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string AuthenticationScope { get; set; } = "User.ReadWrite.All Group.ReadWrite.All LicenseAssignment.ReadWrite.All";
@@ -4540,12 +4626,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OpenAzureADv2PowerShellRunspaceInputAPIToUseType
+    public enum OpenAzureADv2PowerShellRunspaceInputApiToUseType
     {
         [EnumMember(Value = "Auto")]
         AutoDetect,
         [EnumMember(Value = "AzureADv2")]
-        AzureADV2Powershell,
+        AzureAdV2Powershell,
         [EnumMember(Value = "MSGraphUsersPS")]
         MicrosoftGraphUsersPowerShell
     }
@@ -4574,20 +4660,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TenantId { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenAzureADv2PowerShellRunspaceWithCertificateInputAPIToUseType? APIToUse { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenAzureADv2PowerShellRunspaceWithCertificateInputAPIToUseType.AutoDetect;
+        [JsonProperty("APIToUse", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OpenAzureADv2PowerShellRunspaceWithCertificateInputApiToUseType? ApiToUse { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenAzureADv2PowerShellRunspaceWithCertificateInputApiToUseType.AutoDetect;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OpenAzureADv2PowerShellRunspaceWithCertificateInputAPIToUseType
+    public enum OpenAzureADv2PowerShellRunspaceWithCertificateInputApiToUseType
     {
         [EnumMember(Value = "Auto")]
         AutoDetect,
         [EnumMember(Value = "AzureADv2")]
-        AzureADV2Powershell,
+        AzureAdV2Powershell,
         [EnumMember(Value = "MSGraphUsersPS")]
         MicrosoftGraphUsersPowerShell
     }
@@ -4595,17 +4681,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class IsAzureADv2PowerShellRunspaceOpenResponse
     {
         public bool AzureADv2RunspaceOpen { get; set; }
-        public string AzureADAPI { get; set; }
+
+        [JsonProperty("AzureADAPI")]
+        public string AzureADApi { get; set; }
 
         [JsonProperty("PowerShellRunspacePID")]
-        public int PowerShellRunspacePId { get; set; }
+        public int PowerShellRunspacePid { get; set; }
         public bool IsAgentHostingPowerShellRunSpace { get; set; }
     }
 
     public class IsAzureADv2PowerShellRunspaceOpenInput
     {
         [JsonProperty("RetrievePowerShellRunSpacePID", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? RetrievePowerShellRunSpacePId { get; set; } = false;
+        public bool? RetrievePowerShellRunSpacePid { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -4613,7 +4701,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class RunAzureADv2PowerShellAutomationScriptResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int ThreadId { get; set; }
     }
 
@@ -4635,7 +4724,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnDateAsDate { get; set; } = false;
-        public string PropertiesToReturnAsCollectionJSON { get; set; }
+
+        [JsonProperty("PropertiesToReturnAsCollectionJSON")]
+        public string PropertiesToReturnAsCollectionJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RunScriptAsThread { get; set; } = false;
@@ -4649,8 +4740,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? LogVerboseOutput { get; set; } = false;
-        public string PropertyNamesToSerializeJSON { get; set; }
-        public string PropertyTypesToSerializeJSON { get; set; }
+
+        [JsonProperty("PropertyNamesToSerializeJSON")]
+        public string PropertyNamesToSerializeJson { get; set; }
+
+        [JsonProperty("PropertyTypesToSerializeJSON")]
+        public string PropertyTypesToSerializeJson { get; set; }
         public RunAzureADv2PowerShellAutomationScriptInputPowerShellCommandParametersTypeItem[] PowerShellCommandParameters { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4681,7 +4776,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADUsersResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfUsersFound { get; set; }
     }
 
@@ -4717,7 +4813,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2AddAzureADUserResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public string CreatedUserPrincipalName { get; set; }
         public string CreatedUserObjectId { get; set; }
     }
@@ -4857,7 +4954,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADUserGroupMembershipResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfGroupsFound { get; set; }
     }
 
@@ -4969,7 +5067,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
-        public string GroupNamesJSON { get; set; }
+
+        [JsonProperty("GroupNamesJSON")]
+        public string GroupNamesJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExceptionIfAnyGroupsFailToAdd { get; set; } = false;
@@ -5001,7 +5101,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
-        public string GroupNamesJSON { get; set; }
+
+        [JsonProperty("GroupNamesJSON")]
+        public string GroupNamesJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExceptionIfAnyGroupsFailToRemove { get; set; } = false;
@@ -5045,23 +5147,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class AzureADv2GetAzureADLicenseSKUsResponse
+    public class AzureADv2GetAzureADLicenseSkusResponse
     {
-        public string LicenseSKUJSONOutput { get; set; }
-        public int CountOfSKUsFound { get; set; }
+        [JsonProperty("LicenseSKUJSONOutput")]
+        public string LicenseSkujsonOutput { get; set; }
+
+        [JsonProperty("CountOfSKUsFound")]
+        public int CountOfSkusFound { get; set; }
     }
 
-    public class AzureADv2GetAzureADLicenseSKUsInput
+    public class AzureADv2GetAzureADLicenseSkusInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AzureADv2GetAzureADLicenseSKUsInputExpandPropertyType? ExpandProperty { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.AzureADv2GetAzureADLicenseSKUsInputExpandPropertyType.None;
+        public AzureADv2GetAzureADLicenseSkusInputExpandPropertyType? ExpandProperty { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.AzureADv2GetAzureADLicenseSkusInputExpandPropertyType.None;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AzureADv2GetAzureADLicenseSKUsInputExpandPropertyType
+    public enum AzureADv2GetAzureADLicenseSkusInputExpandPropertyType
     {
         None,
         PrepaidUnits,
@@ -5087,8 +5192,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public AzureADv2SetAzureADUserLicenseInputLicensePlansChoiceType? LicensePlansChoice { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.AzureADv2SetAzureADUserLicenseInputLicensePlansChoiceType.AllEnableAllPlans;
-        public string LicensePlansCSV { get; set; }
-        public string LicensesToRemoveCSV { get; set; }
+
+        [JsonProperty("LicensePlansCSV")]
+        public string LicensePlansCsv { get; set; }
+
+        [JsonProperty("LicensesToRemoveCSV")]
+        public string LicensesToRemoveCsv { get; set; }
         public string UsageLocation { get; set; }
         public bool? LocalScope { get; set; }
 
@@ -5109,8 +5218,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADUserLicensesResponse
     {
-        public string UserLicenseSKUJSONOutput { get; set; }
-        public int CountOfUserLicenseSKUsFound { get; set; }
+        [JsonProperty("UserLicenseSKUJSONOutput")]
+        public string UserLicenseSkujsonOutput { get; set; }
+
+        [JsonProperty("CountOfUserLicenseSKUsFound")]
+        public int CountOfUserLicenseSkusFound { get; set; }
     }
 
     public class AzureADv2GetAzureADUserLicensesInput
@@ -5129,23 +5241,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADUserLicenseServicePlansResponse
     {
-        public string UserLicenseSKUServicePlansJSONOutput { get; set; }
-        public int CountOfUserLicenseSKUServicePlansFound { get; set; }
+        [JsonProperty("UserLicenseSKUServicePlansJSONOutput")]
+        public string UserLicenseSkuServicePlansJsonOutput { get; set; }
+
+        [JsonProperty("CountOfUserLicenseSKUServicePlansFound")]
+        public int CountOfUserLicenseSkuServicePlansFound { get; set; }
     }
 
     public class AzureADv2GetAzureADUserLicenseServicePlansInput
     {
-        public AzureADv2GetAzureADUserLicenseServicePlansInput(string objectId, string licenseSKUPartNumber)
+        public AzureADv2GetAzureADUserLicenseServicePlansInput(string objectId, string licenseSkuPartNumber)
         {
             this.ObjectId = objectId;
-            this.LicenseSKUPartNumber = licenseSKUPartNumber;
+            this.LicenseSkuPartNumber = licenseSkuPartNumber;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LicenseSKUPartNumber { get; set; }
+        [JsonProperty("LicenseSKUPartNumber", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LicenseSkuPartNumber { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -5330,7 +5445,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2NewSecurityGroupResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public bool GroupAlreadyExists { get; set; }
         public string CreatedGroupObjectId { get; set; }
     }
@@ -5377,7 +5493,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2NewMicrosoft365GroupResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public bool GroupAlreadyExists { get; set; }
         public string CreatedGroupObjectId { get; set; }
     }
@@ -5415,7 +5532,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetGroupsResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfGroupsFound { get; set; }
     }
 
@@ -5540,7 +5658,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
-        public string RolesJSON { get; set; }
+
+        [JsonProperty("RolesJSON")]
+        public string RolesJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExceptionIfAnyRolesFailToAssign { get; set; } = false;
@@ -5577,7 +5697,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserObjectId { get; set; }
-        public string RolesJSON { get; set; }
+
+        [JsonProperty("RolesJSON")]
+        public string RolesJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DirectoryScopeId { get; set; } = "*";
@@ -5620,7 +5742,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADUserRoleAssignmentsResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfRoleAssignmentsFound { get; set; }
     }
 
@@ -5699,7 +5822,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class AzureADv2GetAzureADGroupMembersResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfGroupMembersFound { get; set; }
     }
 
@@ -5727,28 +5851,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class OpenO365PowerShellRunspaceInput
     {
-        public OpenO365PowerShellRunspaceInput(string office365Username, string office365Password)
+        public OpenO365PowerShellRunspaceInput(string office365UserName, string office365Password)
         {
-            this.Office365Username = office365Username;
+            this.Office365UserName = office365UserName;
             this.Office365Password = office365Password;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Office365Username { get; set; }
+        [JsonProperty("Office365Username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Office365UserName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Office365Password { get; set; }
-        public string ExchangeURL { get; set; }
+
+        [JsonProperty("ExchangeURL")]
+        public string ExchangeUrl { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenO365PowerShellRunspaceInputConnectionMethodType? ConnectionMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenO365PowerShellRunspaceInputConnectionMethodType.EXOV1LocalRemoteExchangeOnlineIsImportedLocally;
+        public OpenO365PowerShellRunspaceInputConnectionMethodType? ConnectionMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenO365PowerShellRunspaceInputConnectionMethodType.ExoV1LocalRemoteExchangeOnlineIsImportedLocally;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? OnlyConnectIfNotAlreadyConnected { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public OpenO365PowerShellRunspaceInputCommandTypesToImportLocallyType? CommandTypesToImportLocally { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenO365PowerShellRunspaceInputCommandTypesToImportLocallyType.AllAllO365ExchangePSCommands;
-        public string AdditionalCommandsToImportLocallyCSV { get; set; }
+
+        [JsonProperty("AdditionalCommandsToImportLocallyCSV")]
+        public string AdditionalCommandsToImportLocallyCsv { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -5758,11 +5886,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public enum OpenO365PowerShellRunspaceInputConnectionMethodType
     {
         [EnumMember(Value = "EXO V1 local")]
-        EXOV1LocalRemoteExchangeOnlineIsImportedLocally,
+        ExoV1LocalRemoteExchangeOnlineIsImportedLocally,
         [EnumMember(Value = "EXO V1 remote")]
-        EXOV1RemoteCommandsRunInRemoteExchangeOnline,
+        ExoV1RemoteCommandsRunInRemoteExchangeOnline,
         [EnumMember(Value = "EXO V2")]
-        EXOV2ExchangeOnlinePowerShellV2
+        ExoV2ExchangeOnlinePowerShellV2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -5799,17 +5927,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Organization { get; set; }
-        public string ExchangeURL { get; set; }
+
+        [JsonProperty("ExchangeURL")]
+        public string ExchangeUrl { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenO365PowerShellRunspaceWithCertificateInputConnectionMethodType? ConnectionMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenO365PowerShellRunspaceWithCertificateInputConnectionMethodType.EXOV2ExchangeOnlinePowerShellV2;
+        public OpenO365PowerShellRunspaceWithCertificateInputConnectionMethodType? ConnectionMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenO365PowerShellRunspaceWithCertificateInputConnectionMethodType.ExoV2ExchangeOnlinePowerShellV2;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? OnlyConnectIfNotAlreadyConnected { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public OpenO365PowerShellRunspaceWithCertificateInputCommandTypesToImportLocallyType? CommandTypesToImportLocally { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenO365PowerShellRunspaceWithCertificateInputCommandTypesToImportLocallyType.AllAllO365ExchangePSCommands;
-        public string AdditionalCommandsToImportLocallyCSV { get; set; }
+
+        [JsonProperty("AdditionalCommandsToImportLocallyCSV")]
+        public string AdditionalCommandsToImportLocallyCsv { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -5819,7 +5951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public enum OpenO365PowerShellRunspaceWithCertificateInputConnectionMethodType
     {
         [EnumMember(Value = "EXO V2")]
-        EXOV2ExchangeOnlinePowerShellV2
+        ExoV2ExchangeOnlinePowerShellV2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -5839,7 +5971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string Office365ConnectionMethod { get; set; }
 
         [JsonProperty("PowerShellRunspacePID")]
-        public int PowerShellRunspacePId { get; set; }
+        public int PowerShellRunspacePid { get; set; }
         public bool IsAgentHostingPowerShellRunSpace { get; set; }
     }
 
@@ -5849,7 +5981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public bool? TestCommunications { get; set; } = true;
 
         [JsonProperty("RetrievePowerShellRunSpacePID", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? RetrievePowerShellRunSpacePId { get; set; } = false;
+        public bool? RetrievePowerShellRunSpacePid { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -5857,7 +5989,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class RunO365PowerShellAutomationScriptResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int ThreadId { get; set; }
     }
 
@@ -5879,7 +6012,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnDateAsDate { get; set; } = false;
-        public string PropertiesToReturnAsCollectionJSON { get; set; }
+
+        [JsonProperty("PropertiesToReturnAsCollectionJSON")]
+        public string PropertiesToReturnAsCollectionJson { get; set; }
         public bool? LocalScope { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -5894,8 +6029,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? LogVerboseOutput { get; set; } = false;
-        public string PropertyNamesToSerializeJSON { get; set; }
-        public string PropertyTypesToSerializeJSON { get; set; }
+
+        [JsonProperty("PropertyNamesToSerializeJSON")]
+        public string PropertyNamesToSerializeJson { get; set; }
+
+        [JsonProperty("PropertyTypesToSerializeJSON")]
+        public string PropertyTypesToSerializeJson { get; set; }
         public RunO365PowerShellAutomationScriptInputPowerShellCommandParametersTypeItem[] PowerShellCommandParameters { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -5926,7 +6065,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365GetO365MailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfMailboxesFound { get; set; }
     }
 
@@ -6070,7 +6210,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365GetO365DistributionGroupResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfGroupsFound { get; set; }
     }
 
@@ -6111,10 +6252,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365NewO365DistributionGroupResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public bool GroupAlreadyExists { get; set; }
         public string CreatedGroupDN { get; set; }
-        public string CreatedGroupGUID { get; set; }
+
+        [JsonProperty("CreatedGroupGUID")]
+        public string CreatedGroupGuid { get; set; }
         public string CreatedGroupIdentity { get; set; }
     }
 
@@ -6238,7 +6382,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365WaitForO365MailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfMailboxesFound { get; set; }
     }
 
@@ -6359,7 +6504,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365GetMailboxDistributionGroupMembershipResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int CountOfDistributionGroupsFound { get; set; }
     }
 
@@ -6372,7 +6518,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string MailboxIdentity { get; set; }
-        public string PropertiesToRetrieveJSON { get; set; }
+
+        [JsonProperty("PropertiesToRetrieveJSON")]
+        public string PropertiesToRetrieveJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6380,7 +6528,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365GetDistributionGroupMembersResponse
     {
-        public string O365DistributionGroupMembersJSON { get; set; }
+        [JsonProperty("O365DistributionGroupMembersJSON")]
+        public string O365DistributionGroupMembersJson { get; set; }
         public int O365CountOfDistributionGroupsMembers { get; set; }
     }
 
@@ -6393,7 +6542,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupIdentity { get; set; }
-        public string PropertiesToRetrieveJSON { get; set; }
+
+        [JsonProperty("PropertiesToRetrieveJSON")]
+        public string PropertiesToRetrieveJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6420,7 +6571,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExceptionIfAllGroupsFailToRemove { get; set; } = true;
-        public string GroupDNsToExcludeJSON { get; set; }
+
+        [JsonProperty("GroupDNsToExcludeJSON")]
+        public string GroupDNsToExcludeJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RunAsThread { get; set; } = false;
@@ -6435,11 +6588,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365NewMailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
 
         [JsonProperty("NewUserMicrosoftOnlineServicesID")]
         public string NewUserMicrosoftOnlineServicesId { get; set; }
-        public string NewMailboxGUID { get; set; }
+
+        [JsonProperty("NewMailboxGUID")]
+        public string NewMailboxGuid { get; set; }
         public string NewMailboxPrimarySmtpAddress { get; set; }
     }
 
@@ -6481,11 +6637,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
     public class O365NewSharedMailboxResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
 
         [JsonProperty("NewUserMicrosoftOnlineServicesID")]
         public string NewUserMicrosoftOnlineServicesId { get; set; }
-        public string NewMailboxGUID { get; set; }
+
+        [JsonProperty("NewMailboxGUID")]
+        public string NewMailboxGuid { get; set; }
         public string NewMailboxPrimarySmtpAddress { get; set; }
     }
 
@@ -6559,17 +6718,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JMLGetNextAvailableAccountNameResponse
+    public class JmlGetNextAvailableAccountNameResponse
     {
-        public string ActiveDirectorySAMAccountName { get; set; }
+        [JsonProperty("ActiveDirectorySAMAccountName")]
+        public string ActiveDirectorySamAccountName { get; set; }
         public string ActiveDirectoryAccountName { get; set; }
-        public string ActiveDirectoryUPN { get; set; }
+
+        [JsonProperty("ActiveDirectoryUPN")]
+        public string ActiveDirectoryUpn { get; set; }
         public string ActiveDirectoryEmailAddress { get; set; }
         public string ExchangeMailboxAddress { get; set; }
         public string ExchangeMailboxAlias { get; set; }
         public string ExchangeRemoteMailboxAddress { get; set; }
-        public string AzureADUPN { get; set; }
-        public string Office365UPN { get; set; }
+
+        [JsonProperty("AzureADUPN")]
+        public string AzureAdupn { get; set; }
+
+        [JsonProperty("Office365UPN")]
+        public string Office365Upn { get; set; }
         public string Office365MailboxEmailAddress { get; set; }
         public int MValue { get; set; }
         public int NValue { get; set; }
@@ -6577,7 +6743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int FormatIndexUsed { get; set; }
     }
 
-    public class JMLGetNextAvailableAccountNameInput
+    public class JmlGetNextAvailableAccountNameInput
     {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -6610,30 +6776,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RemoveNonAlphaNumericFromInputs { get; set; } = true;
         public string SequenceA1 { get; set; }
-        public JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItem[] PropertiesToCheckList { get; set; }
+        public JmlGetNextAvailableAccountNameInputPropertiesToCheckListTypeItem[] PropertiesToCheckList { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItem
+    public class JmlGetNextAvailableAccountNameInputPropertiesToCheckListTypeItem
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyToCheckType? PropertyToCheck { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyToCheckType.ActiveDirectorySAMAccountName;
+        public JmlGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyToCheckType? PropertyToCheck { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.JmlGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyToCheckType.ActiveDirectorySamAccountName;
         public string PropertyNameFormat { get; set; }
         public string PropertyNameFallbackFormat { get; set; }
         public string PropertyNameFallbackFormat2 { get; set; }
         public int? PropertyNameMaxLength { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyNameMaxLengthFieldToCutType? PropertyNameMaxLengthFieldToCut { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyNameMaxLengthFieldToCutType.LastName;
+        public JmlGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyNameMaxLengthFieldToCutType? PropertyNameMaxLengthFieldToCut { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.JmlGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyNameMaxLengthFieldToCutType.LastName;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyToCheckType
+    public enum JmlGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyToCheckType
     {
         [EnumMember(Value = "ADSAMAccountName")]
-        ActiveDirectorySAMAccountName,
+        ActiveDirectorySamAccountName,
         [EnumMember(Value = "ADAccountName")]
         ActiveDirectoryAccountName,
         [EnumMember(Value = "ADUPN")]
@@ -6655,7 +6821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyNameMaxLengthFieldToCutType
+    public enum JmlGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyNameMaxLengthFieldToCutType
     {
         FirstName,
         MiddleName,
@@ -6666,13 +6832,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         FieldD
     }
 
-    public class JMLConnectToJMLEnvironmentResponse
+    public class JmlConnectToJmlEnvironmentResponse
     {
-        public bool JMLConnectToJMLEnvironmentResult { get; set; }
+        [JsonProperty("JMLConnectToJMLEnvironmentResult")]
+        public bool JmlConnectToJmlEnvironmentResult { get; set; }
         public string ErrorMessage { get; set; }
     }
 
-    public class JMLConnectToJMLEnvironmentInput
+    public class JmlConnectToJmlEnvironmentInput
     {
         public string FriendlyName { get; set; }
 

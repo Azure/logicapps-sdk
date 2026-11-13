@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         public string Did { get; set; }
 
         [JsonProperty("spectrumRGB")]
-        public int? SpectrumRGB { get; set; }
+        public int? SpectrumRgb { get; set; }
 
         [JsonProperty("region")]
         public string Region { get; set; }
@@ -219,10 +219,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
 
     public class QueryResponse
     {
-        public QueryResponseM1GAxtaW9A0LXNwZWMtdjIVgoAFGA55ZWVsaWdodC1sYW1wMRUUGAg0NTAxOTQ4MhWsAgAType M1GAxtaW9A0LXNwZWMtdjIVgoAFGA55ZWVsaWdodC1sYW1wMRUUGAg0NTAxOTQ4MhWsAgA { get; set; }
+        [JsonProperty("M1GAxtaW9A0LXNwZWMtdjIVgoAFGA55ZWVsaWdodC1sYW1wMRUUGAg0NTAxOTQ4MhWsAgA")]
+        public QueryResponseM1GAxtaW9A0LXNwZWMtdjIVgoAfga55ZWVsaWdodC1sYW1wMruugAg0NTAxOtq4MhWsAgAType M1GAxtaW9A0LXNwZWMtdjIVgoAfga55ZWVsaWdodC1sYW1wMruugAg0NTAxOtq4MhWsAgA { get; set; }
     }
 
-    public class QueryResponseM1GAxtaW9A0LXNwZWMtdjIVgoAFGA55ZWVsaWdodC1sYW1wMRUUGAg0NTAxOTQ4MhWsAgAType
+    public class QueryResponseM1GAxtaW9A0LXNwZWMtdjIVgoAfga55ZWVsaWdodC1sYW1wMruugAg0NTAxOtq4MhWsAgAType
     {
         [JsonProperty("online")]
         public bool Online { get; set; }

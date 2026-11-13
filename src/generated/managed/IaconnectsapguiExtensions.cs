@@ -13,1457 +13,1457 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
     public class IaconnectsapguiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPEnableScripting(Expression<Func<SAPEnableScriptingInput>> sAPEnableScripting)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapEnableScripting(Expression<Func<SapEnableScriptingInput>> sapEnableScripting)
         {
-            var __workflow_sAPEnableScripting = WorkflowExpression.Compile(sAPEnableScripting, nameof(sAPEnableScripting), required: true);
+            var __workflow_sapEnableScripting = WorkflowExpression.Compile(sapEnableScripting, nameof(sapEnableScripting), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPEnableScripting";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPEnableScripting);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapEnableScripting);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPLaunchSAPGUIResponse, ApiConnectionActionConfiguration> SAPLaunchSAPGUI(Expression<Func<SAPLaunchSAPGUIInput>> sAPLaunchSAPGUI)
+        public IBodyWorkflowAction<SapLaunchSapguiResponse, ApiConnectionActionConfiguration> SapLaunchSapgui(Expression<Func<SapLaunchSapguiInput>> sapLaunchSapgui)
         {
-            var __workflow_sAPLaunchSAPGUI = WorkflowExpression.Compile(sAPLaunchSAPGUI, nameof(sAPLaunchSAPGUI), required: true);
-            return new DeferredBodyAction<SAPLaunchSAPGUIResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapLaunchSapgui = WorkflowExpression.Compile(sapLaunchSapgui, nameof(sapLaunchSapgui), required: true);
+            return new DeferredBodyAction<SapLaunchSapguiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPLaunchSAPGUI";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPLaunchSAPGUI);
-                return new ApiConnectionAction<SAPLaunchSAPGUIResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapLaunchSapgui);
+                return new ApiConnectionAction<SapLaunchSapguiResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPAttachToSAPGUIResponse, ApiConnectionActionConfiguration> SAPAttachToSAPGUI(Expression<Func<SAPAttachToSAPGUIInput>> sAPAttachToSAPGUI)
+        public IBodyWorkflowAction<SapAttachToSapguiResponse, ApiConnectionActionConfiguration> SapAttachToSapgui(Expression<Func<SapAttachToSapguiInput>> sapAttachToSapgui)
         {
-            var __workflow_sAPAttachToSAPGUI = WorkflowExpression.Compile(sAPAttachToSAPGUI, nameof(sAPAttachToSAPGUI), required: true);
-            return new DeferredBodyAction<SAPAttachToSAPGUIResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapAttachToSapgui = WorkflowExpression.Compile(sapAttachToSapgui, nameof(sapAttachToSapgui), required: true);
+            return new DeferredBodyAction<SapAttachToSapguiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPAttachToSAPGUI";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPAttachToSAPGUI);
-                return new ApiConnectionAction<SAPAttachToSAPGUIResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapAttachToSapgui);
+                return new ApiConnectionAction<SapAttachToSapguiResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPDetachFromSAPGUI(Expression<Func<SAPDetachFromSAPGUIInput>> sAPDetachFromSAPGUI)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapDetachFromSapgui(Expression<Func<SapDetachFromSapguiInput>> sapDetachFromSapgui)
         {
-            var __workflow_sAPDetachFromSAPGUI = WorkflowExpression.Compile(sAPDetachFromSAPGUI, nameof(sAPDetachFromSAPGUI), required: true);
+            var __workflow_sapDetachFromSapgui = WorkflowExpression.Compile(sapDetachFromSapgui, nameof(sapDetachFromSapgui), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDetachFromSAPGUI";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPDetachFromSAPGUI);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapDetachFromSapgui);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPGUIStatusResponse, ApiConnectionActionConfiguration> SAPGetSAPGUIStatus(Expression<Func<SAPGetSAPGUIStatusInput>> sAPGetSAPGUIStatus)
+        public IBodyWorkflowAction<SapGetSapguiStatusResponse, ApiConnectionActionConfiguration> SapGetSapguiStatus(Expression<Func<SapGetSapguiStatusInput>> sapGetSapguiStatus)
         {
-            var __workflow_sAPGetSAPGUIStatus = WorkflowExpression.Compile(sAPGetSAPGUIStatus, nameof(sAPGetSAPGUIStatus), required: true);
-            return new DeferredBodyAction<SAPGetSAPGUIStatusResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapguiStatus = WorkflowExpression.Compile(sapGetSapguiStatus, nameof(sapGetSapguiStatus), required: true);
+            return new DeferredBodyAction<SapGetSapguiStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGUIStatus";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPGUIStatus);
-                return new ApiConnectionAction<SAPGetSAPGUIStatusResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapguiStatus);
+                return new ApiConnectionAction<SapGetSapguiStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPSessionsResponse, ApiConnectionActionConfiguration> SAPGetSAPSessions(Expression<Func<SAPGetSAPSessionsInput>> sAPGetSAPSessions)
+        public IBodyWorkflowAction<SapGetSapSessionsResponse, ApiConnectionActionConfiguration> SapGetSapSessions(Expression<Func<SapGetSapSessionsInput>> sapGetSapSessions)
         {
-            var __workflow_sAPGetSAPSessions = WorkflowExpression.Compile(sAPGetSAPSessions, nameof(sAPGetSAPSessions), required: true);
-            return new DeferredBodyAction<SAPGetSAPSessionsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapSessions = WorkflowExpression.Compile(sapGetSapSessions, nameof(sapGetSapSessions), required: true);
+            return new DeferredBodyAction<SapGetSapSessionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPSessions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPSessions);
-                return new ApiConnectionAction<SAPGetSAPSessionsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapSessions);
+                return new ApiConnectionAction<SapGetSapSessionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPAttachToSessionResponse, ApiConnectionActionConfiguration> SAPAttachToSession(Expression<Func<SAPAttachToSessionInput>> sAPAttachToSession)
+        public IBodyWorkflowAction<SapAttachToSessionResponse, ApiConnectionActionConfiguration> SapAttachToSession(Expression<Func<SapAttachToSessionInput>> sapAttachToSession)
         {
-            var __workflow_sAPAttachToSession = WorkflowExpression.Compile(sAPAttachToSession, nameof(sAPAttachToSession), required: true);
-            return new DeferredBodyAction<SAPAttachToSessionResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapAttachToSession = WorkflowExpression.Compile(sapAttachToSession, nameof(sapAttachToSession), required: true);
+            return new DeferredBodyAction<SapAttachToSessionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPAttachToSession";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPAttachToSession);
-                return new ApiConnectionAction<SAPAttachToSessionResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapAttachToSession);
+                return new ApiConnectionAction<SapAttachToSessionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPCloseSession(Expression<Func<SAPCloseSessionInput>> sAPCloseSession)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapCloseSession(Expression<Func<SapCloseSessionInput>> sapCloseSession)
         {
-            var __workflow_sAPCloseSession = WorkflowExpression.Compile(sAPCloseSession, nameof(sAPCloseSession), required: true);
+            var __workflow_sapCloseSession = WorkflowExpression.Compile(sapCloseSession, nameof(sapCloseSession), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPCloseSession";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPCloseSession);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapCloseSession);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetAttachedSessionPropertiesResponse, ApiConnectionActionConfiguration> SAPGetAttachedSessionProperties(Expression<Func<SAPGetAttachedSessionPropertiesInput>> sAPGetAttachedSessionProperties)
+        public IBodyWorkflowAction<SapGetAttachedSessionPropertiesResponse, ApiConnectionActionConfiguration> SapGetAttachedSessionProperties(Expression<Func<SapGetAttachedSessionPropertiesInput>> sapGetAttachedSessionProperties)
         {
-            var __workflow_sAPGetAttachedSessionProperties = WorkflowExpression.Compile(sAPGetAttachedSessionProperties, nameof(sAPGetAttachedSessionProperties), required: true);
-            return new DeferredBodyAction<SAPGetAttachedSessionPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetAttachedSessionProperties = WorkflowExpression.Compile(sapGetAttachedSessionProperties, nameof(sapGetAttachedSessionProperties), required: true);
+            return new DeferredBodyAction<SapGetAttachedSessionPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetAttachedSessionProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetAttachedSessionProperties);
-                return new ApiConnectionAction<SAPGetAttachedSessionPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetAttachedSessionProperties);
+                return new ApiConnectionAction<SapGetAttachedSessionPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPWaitForAttachedSessionNotBusyResponse, ApiConnectionActionConfiguration> SAPWaitForAttachedSessionNotBusy(Expression<Func<SAPWaitForAttachedSessionNotBusyInput>> sAPWaitForAttachedSessionNotBusy)
+        public IBodyWorkflowAction<SapWaitForAttachedSessionNotBusyResponse, ApiConnectionActionConfiguration> SapWaitForAttachedSessionNotBusy(Expression<Func<SapWaitForAttachedSessionNotBusyInput>> sapWaitForAttachedSessionNotBusy)
         {
-            var __workflow_sAPWaitForAttachedSessionNotBusy = WorkflowExpression.Compile(sAPWaitForAttachedSessionNotBusy, nameof(sAPWaitForAttachedSessionNotBusy), required: true);
-            return new DeferredBodyAction<SAPWaitForAttachedSessionNotBusyResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapWaitForAttachedSessionNotBusy = WorkflowExpression.Compile(sapWaitForAttachedSessionNotBusy, nameof(sapWaitForAttachedSessionNotBusy), required: true);
+            return new DeferredBodyAction<SapWaitForAttachedSessionNotBusyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWaitForAttachedSessionNotBusy";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPWaitForAttachedSessionNotBusy);
-                return new ApiConnectionAction<SAPWaitForAttachedSessionNotBusyResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapWaitForAttachedSessionNotBusy);
+                return new ApiConnectionAction<SapWaitForAttachedSessionNotBusyResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPInputTextIntoSAPElement(Expression<Func<SAPInputTextIntoSAPElementInput>> sAPInputTextIntoSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapInputTextIntoSapElement(Expression<Func<SapInputTextIntoSapElementInput>> sapInputTextIntoSapElement)
         {
-            var __workflow_sAPInputTextIntoSAPElement = WorkflowExpression.Compile(sAPInputTextIntoSAPElement, nameof(sAPInputTextIntoSAPElement), required: true);
+            var __workflow_sapInputTextIntoSapElement = WorkflowExpression.Compile(sapInputTextIntoSapElement, nameof(sapInputTextIntoSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPInputTextIntoSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPInputTextIntoSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapInputTextIntoSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPInputPasswordIntoSAPElement(Expression<Func<SAPInputPasswordIntoSAPElementInput>> sAPInputPasswordIntoSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapInputPasswordIntoSapElement(Expression<Func<SapInputPasswordIntoSapElementInput>> sapInputPasswordIntoSapElement)
         {
-            var __workflow_sAPInputPasswordIntoSAPElement = WorkflowExpression.Compile(sAPInputPasswordIntoSAPElement, nameof(sAPInputPasswordIntoSAPElement), required: true);
+            var __workflow_sapInputPasswordIntoSapElement = WorkflowExpression.Compile(sapInputPasswordIntoSapElement, nameof(sapInputPasswordIntoSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPInputPasswordIntoSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPInputPasswordIntoSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapInputPasswordIntoSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetElementPropertiesResponse, ApiConnectionActionConfiguration> SAPGetElementProperties(Expression<Func<SAPGetElementPropertiesInput>> sAPGetElementProperties)
+        public IBodyWorkflowAction<SapGetElementPropertiesResponse, ApiConnectionActionConfiguration> SapGetElementProperties(Expression<Func<SapGetElementPropertiesInput>> sapGetElementProperties)
         {
-            var __workflow_sAPGetElementProperties = WorkflowExpression.Compile(sAPGetElementProperties, nameof(sAPGetElementProperties), required: true);
-            return new DeferredBodyAction<SAPGetElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetElementProperties = WorkflowExpression.Compile(sapGetElementProperties, nameof(sapGetElementProperties), required: true);
+            return new DeferredBodyAction<SapGetElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetElementProperties);
-                return new ApiConnectionAction<SAPGetElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetElementProperties);
+                return new ApiConnectionAction<SapGetElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPWaitForElementIdResponse, ApiConnectionActionConfiguration> SAPWaitForElementId(Expression<Func<SAPWaitForElementIdInput>> sAPWaitForElementId)
+        public IBodyWorkflowAction<SapWaitForElementIdResponse, ApiConnectionActionConfiguration> SapWaitForElementId(Expression<Func<SapWaitForElementIdInput>> sapWaitForElementId)
         {
-            var __workflow_sAPWaitForElementId = WorkflowExpression.Compile(sAPWaitForElementId, nameof(sAPWaitForElementId), required: true);
-            return new DeferredBodyAction<SAPWaitForElementIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapWaitForElementId = WorkflowExpression.Compile(sapWaitForElementId, nameof(sapWaitForElementId), required: true);
+            return new DeferredBodyAction<SapWaitForElementIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWaitForElementId";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPWaitForElementId);
-                return new ApiConnectionAction<SAPWaitForElementIdResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapWaitForElementId);
+                return new ApiConnectionAction<SapWaitForElementIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPWaitForWindowResponse, ApiConnectionActionConfiguration> SAPWaitForWindow(Expression<Func<SAPWaitForWindowInput>> sAPWaitForWindow)
+        public IBodyWorkflowAction<SapWaitForWindowResponse, ApiConnectionActionConfiguration> SapWaitForWindow(Expression<Func<SapWaitForWindowInput>> sapWaitForWindow)
         {
-            var __workflow_sAPWaitForWindow = WorkflowExpression.Compile(sAPWaitForWindow, nameof(sAPWaitForWindow), required: true);
-            return new DeferredBodyAction<SAPWaitForWindowResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapWaitForWindow = WorkflowExpression.Compile(sapWaitForWindow, nameof(sapWaitForWindow), required: true);
+            return new DeferredBodyAction<SapWaitForWindowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWaitForWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPWaitForWindow);
-                return new ApiConnectionAction<SAPWaitForWindowResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapWaitForWindow);
+                return new ApiConnectionAction<SapWaitForWindowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetElementTextValueResponse, ApiConnectionActionConfiguration> SAPGetElementTextValue(Expression<Func<SAPGetElementTextValueInput>> sAPGetElementTextValue)
+        public IBodyWorkflowAction<SapGetElementTextValueResponse, ApiConnectionActionConfiguration> SapGetElementTextValue(Expression<Func<SapGetElementTextValueInput>> sapGetElementTextValue)
         {
-            var __workflow_sAPGetElementTextValue = WorkflowExpression.Compile(sAPGetElementTextValue, nameof(sAPGetElementTextValue), required: true);
-            return new DeferredBodyAction<SAPGetElementTextValueResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetElementTextValue = WorkflowExpression.Compile(sapGetElementTextValue, nameof(sapGetElementTextValue), required: true);
+            return new DeferredBodyAction<SapGetElementTextValueResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetElementTextValue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetElementTextValue);
-                return new ApiConnectionAction<SAPGetElementTextValueResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetElementTextValue);
+                return new ApiConnectionAction<SapGetElementTextValueResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPPressSAPElement(Expression<Func<SAPPressSAPElementInput>> sAPPressSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapPressSapElement(Expression<Func<SapPressSapElementInput>> sapPressSapElement)
         {
-            var __workflow_sAPPressSAPElement = WorkflowExpression.Compile(sAPPressSAPElement, nameof(sAPPressSAPElement), required: true);
+            var __workflow_sapPressSapElement = WorkflowExpression.Compile(sapPressSapElement, nameof(sapPressSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPPressSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapPressSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectSAPElement(Expression<Func<SAPSelectSAPElementInput>> sAPSelectSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectSapElement(Expression<Func<SapSelectSapElementInput>> sapSelectSapElement)
         {
-            var __workflow_sAPSelectSAPElement = WorkflowExpression.Compile(sAPSelectSAPElement, nameof(sAPSelectSAPElement), required: true);
+            var __workflow_sapSelectSapElement = WorkflowExpression.Compile(sapSelectSapElement, nameof(sapSelectSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPFocusSAPElement(Expression<Func<SAPFocusSAPElementInput>> sAPFocusSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapFocusSapElement(Expression<Func<SapFocusSapElementInput>> sapFocusSapElement)
         {
-            var __workflow_sAPFocusSAPElement = WorkflowExpression.Compile(sAPFocusSAPElement, nameof(sAPFocusSAPElement), required: true);
+            var __workflow_sapFocusSapElement = WorkflowExpression.Compile(sapFocusSapElement, nameof(sapFocusSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPFocusSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPFocusSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapFocusSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPCheckSAPElement(Expression<Func<SAPCheckSAPElementInput>> sAPCheckSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapCheckSapElement(Expression<Func<SapCheckSapElementInput>> sapCheckSapElement)
         {
-            var __workflow_sAPCheckSAPElement = WorkflowExpression.Compile(sAPCheckSAPElement, nameof(sAPCheckSAPElement), required: true);
+            var __workflow_sapCheckSapElement = WorkflowExpression.Compile(sapCheckSapElement, nameof(sapCheckSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPCheckSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPCheckSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapCheckSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPVisualiseSAPElement(Expression<Func<SAPVisualiseSAPElementInput>> sAPVisualiseSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapVisualiseSapElement(Expression<Func<SapVisualiseSapElementInput>> sapVisualiseSapElement)
         {
-            var __workflow_sAPVisualiseSAPElement = WorkflowExpression.Compile(sAPVisualiseSAPElement, nameof(sAPVisualiseSAPElement), required: true);
+            var __workflow_sapVisualiseSapElement = WorkflowExpression.Compile(sapVisualiseSapElement, nameof(sapVisualiseSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPVisualiseSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPVisualiseSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapVisualiseSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPDrawRectangleAroundSAPElement(Expression<Func<SAPDrawRectangleAroundSAPElementInput>> sAPDrawRectangleAroundSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapDrawRectangleAroundSapElement(Expression<Func<SapDrawRectangleAroundSapElementInput>> sapDrawRectangleAroundSapElement)
         {
-            var __workflow_sAPDrawRectangleAroundSAPElement = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPElement, nameof(sAPDrawRectangleAroundSAPElement), required: true);
+            var __workflow_sapDrawRectangleAroundSapElement = WorkflowExpression.Compile(sapDrawRectangleAroundSapElement, nameof(sapDrawRectangleAroundSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDrawRectangleAroundSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPDrawRectangleAroundSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapDrawRectangleAroundSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSendCommand(Expression<Func<SAPSendCommandInput>> sAPSendCommand)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSendCommand(Expression<Func<SapSendCommandInput>> sapSendCommand)
         {
-            var __workflow_sAPSendCommand = WorkflowExpression.Compile(sAPSendCommand, nameof(sAPSendCommand), required: true);
+            var __workflow_sapSendCommand = WorkflowExpression.Compile(sapSendCommand, nameof(sapSendCommand), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSendCommand";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSendCommand);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSendCommand);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPEnterTCode(Expression<Func<SAPEnterTCodeInput>> sAPEnterTCode)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapEnterTCode(Expression<Func<SapEnterTCodeInput>> sapEnterTCode)
         {
-            var __workflow_sAPEnterTCode = WorkflowExpression.Compile(sAPEnterTCode, nameof(sAPEnterTCode), required: true);
+            var __workflow_sapEnterTCode = WorkflowExpression.Compile(sapEnterTCode, nameof(sapEnterTCode), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPEnterTCode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPEnterTCode);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapEnterTCode);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSendVKey(Expression<Func<SAPSendVKeyInput>> sAPSendVKey)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSendVKey(Expression<Func<SapSendVKeyInput>> sapSendVKey)
         {
-            var __workflow_sAPSendVKey = WorkflowExpression.Compile(sAPSendVKey, nameof(sAPSendVKey), required: true);
+            var __workflow_sapSendVKey = WorkflowExpression.Compile(sapSendVKey, nameof(sapSendVKey), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSendVKey";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSendVKey);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSendVKey);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSendEnterVKey(Expression<Func<SAPSendEnterVKeyInput>> sAPSendEnterVKey)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSendEnterVKey(Expression<Func<SapSendEnterVKeyInput>> sapSendEnterVKey)
         {
-            var __workflow_sAPSendEnterVKey = WorkflowExpression.Compile(sAPSendEnterVKey, nameof(sAPSendEnterVKey), required: true);
+            var __workflow_sapSendEnterVKey = WorkflowExpression.Compile(sapSendEnterVKey, nameof(sapSendEnterVKey), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSendEnterVKey";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSendEnterVKey);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSendEnterVKey);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPWindowRestore(Expression<Func<SAPWindowRestoreInput>> sAPWindowRestore)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapWindowRestore(Expression<Func<SapWindowRestoreInput>> sapWindowRestore)
         {
-            var __workflow_sAPWindowRestore = WorkflowExpression.Compile(sAPWindowRestore, nameof(sAPWindowRestore), required: true);
+            var __workflow_sapWindowRestore = WorkflowExpression.Compile(sapWindowRestore, nameof(sapWindowRestore), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWindowRestore";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPWindowRestore);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapWindowRestore);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPWindowMaximise(Expression<Func<SAPWindowMaximiseInput>> sAPWindowMaximise)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapWindowMaximise(Expression<Func<SapWindowMaximiseInput>> sapWindowMaximise)
         {
-            var __workflow_sAPWindowMaximise = WorkflowExpression.Compile(sAPWindowMaximise, nameof(sAPWindowMaximise), required: true);
+            var __workflow_sapWindowMaximise = WorkflowExpression.Compile(sapWindowMaximise, nameof(sapWindowMaximise), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWindowMaximise";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPWindowMaximise);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapWindowMaximise);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPWindowMinimise(Expression<Func<SAPWindowMinimiseInput>> sAPWindowMinimise)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapWindowMinimise(Expression<Func<SapWindowMinimiseInput>> sapWindowMinimise)
         {
-            var __workflow_sAPWindowMinimise = WorkflowExpression.Compile(sAPWindowMinimise, nameof(sAPWindowMinimise), required: true);
+            var __workflow_sapWindowMinimise = WorkflowExpression.Compile(sapWindowMinimise, nameof(sapWindowMinimise), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWindowMinimise";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPWindowMinimise);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapWindowMinimise);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPWindowClose(Expression<Func<SAPWindowCloseInput>> sAPWindowClose)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapWindowClose(Expression<Func<SapWindowCloseInput>> sapWindowClose)
         {
-            var __workflow_sAPWindowClose = WorkflowExpression.Compile(sAPWindowClose, nameof(sAPWindowClose), required: true);
+            var __workflow_sapWindowClose = WorkflowExpression.Compile(sapWindowClose, nameof(sapWindowClose), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWindowClose";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPWindowClose);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapWindowClose);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPBringWindowToFront(Expression<Func<SAPBringWindowToFrontInput>> sAPBringWindowToFront)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapBringWindowToFront(Expression<Func<SapBringWindowToFrontInput>> sapBringWindowToFront)
         {
-            var __workflow_sAPBringWindowToFront = WorkflowExpression.Compile(sAPBringWindowToFront, nameof(sAPBringWindowToFront), required: true);
+            var __workflow_sapBringWindowToFront = WorkflowExpression.Compile(sapBringWindowToFront, nameof(sapBringWindowToFront), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPBringWindowToFront";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPBringWindowToFront);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapBringWindowToFront);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGlobalLeftMouseClickOnSAPElement(Expression<Func<SAPGlobalLeftMouseClickOnSAPElementInput>> sAPGlobalLeftMouseClickOnSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGlobalLeftMouseClickOnSapElement(Expression<Func<SapGlobalLeftMouseClickOnSapElementInput>> sapGlobalLeftMouseClickOnSapElement)
         {
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElement = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElement, nameof(sAPGlobalLeftMouseClickOnSAPElement), required: true);
+            var __workflow_sapGlobalLeftMouseClickOnSapElement = WorkflowExpression.Compile(sapGlobalLeftMouseClickOnSapElement, nameof(sapGlobalLeftMouseClickOnSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalLeftMouseClickOnSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGlobalLeftMouseClickOnSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGlobalLeftMouseClickOnSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGlobalRightMouseClickOnSAPElement(Expression<Func<SAPGlobalRightMouseClickOnSAPElementInput>> sAPGlobalRightMouseClickOnSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGlobalRightMouseClickOnSapElement(Expression<Func<SapGlobalRightMouseClickOnSapElementInput>> sapGlobalRightMouseClickOnSapElement)
         {
-            var __workflow_sAPGlobalRightMouseClickOnSAPElement = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElement, nameof(sAPGlobalRightMouseClickOnSAPElement), required: true);
+            var __workflow_sapGlobalRightMouseClickOnSapElement = WorkflowExpression.Compile(sapGlobalRightMouseClickOnSapElement, nameof(sapGlobalRightMouseClickOnSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalRightMouseClickOnSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGlobalRightMouseClickOnSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGlobalRightMouseClickOnSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGlobalMiddleMouseClickOnSAPElement(Expression<Func<SAPGlobalMiddleMouseClickOnSAPElementInput>> sAPGlobalMiddleMouseClickOnSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGlobalMiddleMouseClickOnSapElement(Expression<Func<SapGlobalMiddleMouseClickOnSapElementInput>> sapGlobalMiddleMouseClickOnSapElement)
         {
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElement = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElement, nameof(sAPGlobalMiddleMouseClickOnSAPElement), required: true);
+            var __workflow_sapGlobalMiddleMouseClickOnSapElement = WorkflowExpression.Compile(sapGlobalMiddleMouseClickOnSapElement, nameof(sapGlobalMiddleMouseClickOnSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalMiddleMouseClickOnSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGlobalMiddleMouseClickOnSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGlobalMiddleMouseClickOnSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGlobalDoubleLeftMouseClickOnSAPElement(Expression<Func<SAPGlobalDoubleLeftMouseClickOnSAPElementInput>> sAPGlobalDoubleLeftMouseClickOnSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGlobalDoubleLeftMouseClickOnSapElement(Expression<Func<SapGlobalDoubleLeftMouseClickOnSapElementInput>> sapGlobalDoubleLeftMouseClickOnSapElement)
         {
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElement = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElement, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElement), required: true);
+            var __workflow_sapGlobalDoubleLeftMouseClickOnSapElement = WorkflowExpression.Compile(sapGlobalDoubleLeftMouseClickOnSapElement, nameof(sapGlobalDoubleLeftMouseClickOnSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalDoubleLeftMouseClickOnSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGlobalDoubleLeftMouseClickOnSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGlobalInputTextIntoSAPElement(Expression<Func<SAPGlobalInputTextIntoSAPElementInput>> sAPGlobalInputTextIntoSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGlobalInputTextIntoSapElement(Expression<Func<SapGlobalInputTextIntoSapElementInput>> sapGlobalInputTextIntoSapElement)
         {
-            var __workflow_sAPGlobalInputTextIntoSAPElement = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElement, nameof(sAPGlobalInputTextIntoSAPElement), required: true);
+            var __workflow_sapGlobalInputTextIntoSapElement = WorkflowExpression.Compile(sapGlobalInputTextIntoSapElement, nameof(sapGlobalInputTextIntoSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalInputTextIntoSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGlobalInputTextIntoSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGlobalInputTextIntoSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGlobalInputPasswordIntoSAPElement(Expression<Func<SAPGlobalInputPasswordIntoSAPElementInput>> sAPGlobalInputPasswordIntoSAPElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGlobalInputPasswordIntoSapElement(Expression<Func<SapGlobalInputPasswordIntoSapElementInput>> sapGlobalInputPasswordIntoSapElement)
         {
-            var __workflow_sAPGlobalInputPasswordIntoSAPElement = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElement, nameof(sAPGlobalInputPasswordIntoSAPElement), required: true);
+            var __workflow_sapGlobalInputPasswordIntoSapElement = WorkflowExpression.Compile(sapGlobalInputPasswordIntoSapElement, nameof(sapGlobalInputPasswordIntoSapElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalInputPasswordIntoSAPElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGlobalInputPasswordIntoSAPElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGlobalInputPasswordIntoSapElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSetListSelectionByName(Expression<Func<SAPSetListSelectionByNameInput>> sAPSetListSelectionByName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSetListSelectionByName(Expression<Func<SapSetListSelectionByNameInput>> sapSetListSelectionByName)
         {
-            var __workflow_sAPSetListSelectionByName = WorkflowExpression.Compile(sAPSetListSelectionByName, nameof(sAPSetListSelectionByName), required: true);
+            var __workflow_sapSetListSelectionByName = WorkflowExpression.Compile(sapSetListSelectionByName, nameof(sapSetListSelectionByName), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetListSelectionByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSetListSelectionByName);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSetListSelectionByName);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSetListSelectionByKey(Expression<Func<SAPSetListSelectionByKeyInput>> sAPSetListSelectionByKey)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSetListSelectionByKey(Expression<Func<SapSetListSelectionByKeyInput>> sapSetListSelectionByKey)
         {
-            var __workflow_sAPSetListSelectionByKey = WorkflowExpression.Compile(sAPSetListSelectionByKey, nameof(sAPSetListSelectionByKey), required: true);
+            var __workflow_sapSetListSelectionByKey = WorkflowExpression.Compile(sapSetListSelectionByKey, nameof(sapSetListSelectionByKey), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetListSelectionByKey";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSetListSelectionByKey);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSetListSelectionByKey);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetListSelectionElementItemsResponse, ApiConnectionActionConfiguration> SAPGetListSelectionElementItems(Expression<Func<SAPGetListSelectionElementItemsInput>> sAPGetListSelectionElementItems)
+        public IBodyWorkflowAction<SapGetListSelectionElementItemsResponse, ApiConnectionActionConfiguration> SapGetListSelectionElementItems(Expression<Func<SapGetListSelectionElementItemsInput>> sapGetListSelectionElementItems)
         {
-            var __workflow_sAPGetListSelectionElementItems = WorkflowExpression.Compile(sAPGetListSelectionElementItems, nameof(sAPGetListSelectionElementItems), required: true);
-            return new DeferredBodyAction<SAPGetListSelectionElementItemsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetListSelectionElementItems = WorkflowExpression.Compile(sapGetListSelectionElementItems, nameof(sapGetListSelectionElementItems), required: true);
+            return new DeferredBodyAction<SapGetListSelectionElementItemsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetListSelectionElementItems";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetListSelectionElementItems);
-                return new ApiConnectionAction<SAPGetListSelectionElementItemsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetListSelectionElementItems);
+                return new ApiConnectionAction<SapGetListSelectionElementItemsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetAllChildSAPElementPropertiesResponse, ApiConnectionActionConfiguration> SAPGetAllChildSAPElementProperties(Expression<Func<SAPGetAllChildSAPElementPropertiesInput>> sAPGetAllChildSAPElementProperties)
+        public IBodyWorkflowAction<SapGetAllChildSapElementPropertiesResponse, ApiConnectionActionConfiguration> SapGetAllChildSapElementProperties(Expression<Func<SapGetAllChildSapElementPropertiesInput>> sapGetAllChildSapElementProperties)
         {
-            var __workflow_sAPGetAllChildSAPElementProperties = WorkflowExpression.Compile(sAPGetAllChildSAPElementProperties, nameof(sAPGetAllChildSAPElementProperties), required: true);
-            return new DeferredBodyAction<SAPGetAllChildSAPElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetAllChildSapElementProperties = WorkflowExpression.Compile(sapGetAllChildSapElementProperties, nameof(sapGetAllChildSapElementProperties), required: true);
+            return new DeferredBodyAction<SapGetAllChildSapElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetAllChildSAPElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetAllChildSAPElementProperties);
-                return new ApiConnectionAction<SAPGetAllChildSAPElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetAllChildSapElementProperties);
+                return new ApiConnectionAction<SapGetAllChildSapElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPSessionTopLevelSAPElementPropertiesResponse, ApiConnectionActionConfiguration> SAPGetSAPSessionTopLevelSAPElementProperties(Expression<Func<SAPGetSAPSessionTopLevelSAPElementPropertiesInput>> sAPGetSAPSessionTopLevelSAPElementProperties)
+        public IBodyWorkflowAction<SapGetSapSessionTopLevelSapElementPropertiesResponse, ApiConnectionActionConfiguration> SapGetSapSessionTopLevelSapElementProperties(Expression<Func<SapGetSapSessionTopLevelSapElementPropertiesInput>> sapGetSapSessionTopLevelSapElementProperties)
         {
-            var __workflow_sAPGetSAPSessionTopLevelSAPElementProperties = WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementProperties, nameof(sAPGetSAPSessionTopLevelSAPElementProperties), required: true);
-            return new DeferredBodyAction<SAPGetSAPSessionTopLevelSAPElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapSessionTopLevelSapElementProperties = WorkflowExpression.Compile(sapGetSapSessionTopLevelSapElementProperties, nameof(sapGetSapSessionTopLevelSapElementProperties), required: true);
+            return new DeferredBodyAction<SapGetSapSessionTopLevelSapElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPSessionTopLevelSAPElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPSessionTopLevelSAPElementProperties);
-                return new ApiConnectionAction<SAPGetSAPSessionTopLevelSAPElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapSessionTopLevelSapElementProperties);
+                return new ApiConnectionAction<SapGetSapSessionTopLevelSapElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPElementParentIdResponse, ApiConnectionActionConfiguration> SAPGetSAPElementParentId(Expression<Func<SAPGetSAPElementParentIdInput>> sAPGetSAPElementParentId)
+        public IBodyWorkflowAction<SapGetSapElementParentIdResponse, ApiConnectionActionConfiguration> SapGetSapElementParentId(Expression<Func<SapGetSapElementParentIdInput>> sapGetSapElementParentId)
         {
-            var __workflow_sAPGetSAPElementParentId = WorkflowExpression.Compile(sAPGetSAPElementParentId, nameof(sAPGetSAPElementParentId), required: true);
-            return new DeferredBodyAction<SAPGetSAPElementParentIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapElementParentId = WorkflowExpression.Compile(sapGetSapElementParentId, nameof(sapGetSapElementParentId), required: true);
+            return new DeferredBodyAction<SapGetSapElementParentIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPElementParentId";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPElementParentId);
-                return new ApiConnectionAction<SAPGetSAPElementParentIdResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapElementParentId);
+                return new ApiConnectionAction<SapGetSapElementParentIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration> SAPGetElementPropertiesAsList(Expression<Func<SAPGetElementPropertiesAsListInput>> sAPGetElementPropertiesAsList)
+        public IBodyWorkflowAction<SapGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration> SapGetElementPropertiesAsList(Expression<Func<SapGetElementPropertiesAsListInput>> sapGetElementPropertiesAsList)
         {
-            var __workflow_sAPGetElementPropertiesAsList = WorkflowExpression.Compile(sAPGetElementPropertiesAsList, nameof(sAPGetElementPropertiesAsList), required: true);
-            return new DeferredBodyAction<SAPGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetElementPropertiesAsList = WorkflowExpression.Compile(sapGetElementPropertiesAsList, nameof(sapGetElementPropertiesAsList), required: true);
+            return new DeferredBodyAction<SapGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetElementPropertiesAsList";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetElementPropertiesAsList);
-                return new ApiConnectionAction<SAPGetElementPropertiesAsListResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetElementPropertiesAsList);
+                return new ApiConnectionAction<SapGetElementPropertiesAsListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPElementAtScreenCoordinateResponse, ApiConnectionActionConfiguration> SAPGetSAPElementAtScreenCoordinate(Expression<Func<SAPGetSAPElementAtScreenCoordinateInput>> sAPGetSAPElementAtScreenCoordinate)
+        public IBodyWorkflowAction<SapGetSapElementAtScreenCoordinateResponse, ApiConnectionActionConfiguration> SapGetSapElementAtScreenCoordinate(Expression<Func<SapGetSapElementAtScreenCoordinateInput>> sapGetSapElementAtScreenCoordinate)
         {
-            var __workflow_sAPGetSAPElementAtScreenCoordinate = WorkflowExpression.Compile(sAPGetSAPElementAtScreenCoordinate, nameof(sAPGetSAPElementAtScreenCoordinate), required: true);
-            return new DeferredBodyAction<SAPGetSAPElementAtScreenCoordinateResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapElementAtScreenCoordinate = WorkflowExpression.Compile(sapGetSapElementAtScreenCoordinate, nameof(sapGetSapElementAtScreenCoordinate), required: true);
+            return new DeferredBodyAction<SapGetSapElementAtScreenCoordinateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPElementAtScreenCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPElementAtScreenCoordinate);
-                return new ApiConnectionAction<SAPGetSAPElementAtScreenCoordinateResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapElementAtScreenCoordinate);
+                return new ApiConnectionAction<SapGetSapElementAtScreenCoordinateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPOpenConnectionResponse, ApiConnectionActionConfiguration> SAPOpenConnection(Expression<Func<SAPOpenConnectionInput>> sAPOpenConnection)
+        public IBodyWorkflowAction<SapOpenConnectionResponse, ApiConnectionActionConfiguration> SapOpenConnection(Expression<Func<SapOpenConnectionInput>> sapOpenConnection)
         {
-            var __workflow_sAPOpenConnection = WorkflowExpression.Compile(sAPOpenConnection, nameof(sAPOpenConnection), required: true);
-            return new DeferredBodyAction<SAPOpenConnectionResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapOpenConnection = WorkflowExpression.Compile(sapOpenConnection, nameof(sapOpenConnection), required: true);
+            return new DeferredBodyAction<SapOpenConnectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPOpenConnection";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPOpenConnection);
-                return new ApiConnectionAction<SAPOpenConnectionResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapOpenConnection);
+                return new ApiConnectionAction<SapOpenConnectionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPTablePropertiesResponse, ApiConnectionActionConfiguration> SAPGetSAPTableProperties(Expression<Func<SAPGetSAPTablePropertiesInput>> sAPGetSAPTableProperties)
+        public IBodyWorkflowAction<SapGetSapTablePropertiesResponse, ApiConnectionActionConfiguration> SapGetSapTableProperties(Expression<Func<SapGetSapTablePropertiesInput>> sapGetSapTableProperties)
         {
-            var __workflow_sAPGetSAPTableProperties = WorkflowExpression.Compile(sAPGetSAPTableProperties, nameof(sAPGetSAPTableProperties), required: true);
-            return new DeferredBodyAction<SAPGetSAPTablePropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapTableProperties = WorkflowExpression.Compile(sapGetSapTableProperties, nameof(sapGetSapTableProperties), required: true);
+            return new DeferredBodyAction<SapGetSapTablePropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPTableProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPTableProperties);
-                return new ApiConnectionAction<SAPGetSAPTablePropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapTableProperties);
+                return new ApiConnectionAction<SapGetSapTablePropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPTableVisibleCellTextContentsAtIndexResponse, ApiConnectionActionConfiguration> SAPGetSAPTableVisibleCellTextContentsAtIndex(Expression<Func<SAPGetSAPTableVisibleCellTextContentsAtIndexInput>> sAPGetSAPTableVisibleCellTextContentsAtIndex)
+        public IBodyWorkflowAction<SapGetSapTableVisibleCellTextContentsAtIndexResponse, ApiConnectionActionConfiguration> SapGetSapTableVisibleCellTextContentsAtIndex(Expression<Func<SapGetSapTableVisibleCellTextContentsAtIndexInput>> sapGetSapTableVisibleCellTextContentsAtIndex)
         {
-            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndex = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndex, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndex), required: true);
-            return new DeferredBodyAction<SAPGetSAPTableVisibleCellTextContentsAtIndexResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapTableVisibleCellTextContentsAtIndex = WorkflowExpression.Compile(sapGetSapTableVisibleCellTextContentsAtIndex, nameof(sapGetSapTableVisibleCellTextContentsAtIndex), required: true);
+            return new DeferredBodyAction<SapGetSapTableVisibleCellTextContentsAtIndexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPTableVisibleCellTextContentsAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPTableVisibleCellTextContentsAtIndex);
-                return new ApiConnectionAction<SAPGetSAPTableVisibleCellTextContentsAtIndexResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapTableVisibleCellTextContentsAtIndex);
+                return new ApiConnectionAction<SapGetSapTableVisibleCellTextContentsAtIndexResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPTableVisibleCellPropertiesAtIndexResponse, ApiConnectionActionConfiguration> SAPGetSAPTableVisibleCellPropertiesAtIndex(Expression<Func<SAPGetSAPTableVisibleCellPropertiesAtIndexInput>> sAPGetSAPTableVisibleCellPropertiesAtIndex)
+        public IBodyWorkflowAction<SapGetSapTableVisibleCellPropertiesAtIndexResponse, ApiConnectionActionConfiguration> SapGetSapTableVisibleCellPropertiesAtIndex(Expression<Func<SapGetSapTableVisibleCellPropertiesAtIndexInput>> sapGetSapTableVisibleCellPropertiesAtIndex)
         {
-            var __workflow_sAPGetSAPTableVisibleCellPropertiesAtIndex = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellPropertiesAtIndex, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndex), required: true);
-            return new DeferredBodyAction<SAPGetSAPTableVisibleCellPropertiesAtIndexResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapTableVisibleCellPropertiesAtIndex = WorkflowExpression.Compile(sapGetSapTableVisibleCellPropertiesAtIndex, nameof(sapGetSapTableVisibleCellPropertiesAtIndex), required: true);
+            return new DeferredBodyAction<SapGetSapTableVisibleCellPropertiesAtIndexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPTableVisibleCellPropertiesAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPTableVisibleCellPropertiesAtIndex);
-                return new ApiConnectionAction<SAPGetSAPTableVisibleCellPropertiesAtIndexResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapTableVisibleCellPropertiesAtIndex);
+                return new ApiConnectionAction<SapGetSapTableVisibleCellPropertiesAtIndexResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSetSAPTableVisibleCellTextContentsAtIndex(Expression<Func<SAPSetSAPTableVisibleCellTextContentsAtIndexInput>> sAPSetSAPTableVisibleCellTextContentsAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSetSapTableVisibleCellTextContentsAtIndex(Expression<Func<SapSetSapTableVisibleCellTextContentsAtIndexInput>> sapSetSapTableVisibleCellTextContentsAtIndex)
         {
-            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndex = WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndex, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndex), required: true);
+            var __workflow_sapSetSapTableVisibleCellTextContentsAtIndex = WorkflowExpression.Compile(sapSetSapTableVisibleCellTextContentsAtIndex, nameof(sapSetSapTableVisibleCellTextContentsAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPTableVisibleCellTextContentsAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSetSAPTableVisibleCellTextContentsAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSetSapTableVisibleCellTextContentsAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPCheckSAPTableVisibleCellCheckboxAtIndex(Expression<Func<SAPCheckSAPTableVisibleCellCheckboxAtIndexInput>> sAPCheckSAPTableVisibleCellCheckboxAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapCheckSapTableVisibleCellCheckboxAtIndex(Expression<Func<SapCheckSapTableVisibleCellCheckboxAtIndexInput>> sapCheckSapTableVisibleCellCheckboxAtIndex)
         {
-            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndex = WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndex, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndex), required: true);
+            var __workflow_sapCheckSapTableVisibleCellCheckboxAtIndex = WorkflowExpression.Compile(sapCheckSapTableVisibleCellCheckboxAtIndex, nameof(sapCheckSapTableVisibleCellCheckboxAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPCheckSAPTableVisibleCellCheckboxAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapCheckSapTableVisibleCellCheckboxAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPPressSAPTableVisibleCellAtIndex(Expression<Func<SAPPressSAPTableVisibleCellAtIndexInput>> sAPPressSAPTableVisibleCellAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapPressSapTableVisibleCellAtIndex(Expression<Func<SapPressSapTableVisibleCellAtIndexInput>> sapPressSapTableVisibleCellAtIndex)
         {
-            var __workflow_sAPPressSAPTableVisibleCellAtIndex = WorkflowExpression.Compile(sAPPressSAPTableVisibleCellAtIndex, nameof(sAPPressSAPTableVisibleCellAtIndex), required: true);
+            var __workflow_sapPressSapTableVisibleCellAtIndex = WorkflowExpression.Compile(sapPressSapTableVisibleCellAtIndex, nameof(sapPressSapTableVisibleCellAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPTableVisibleCellAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPPressSAPTableVisibleCellAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapPressSapTableVisibleCellAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPScrollSAPTable(Expression<Func<SAPScrollSAPTableInput>> sAPScrollSAPTable)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapScrollSapTable(Expression<Func<SapScrollSapTableInput>> sapScrollSapTable)
         {
-            var __workflow_sAPScrollSAPTable = WorkflowExpression.Compile(sAPScrollSAPTable, nameof(sAPScrollSAPTable), required: true);
+            var __workflow_sapScrollSapTable = WorkflowExpression.Compile(sapScrollSapTable, nameof(sapScrollSapTable), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPScrollSAPTable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPScrollSAPTable);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapScrollSapTable);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetTableVisibleTextContentsResponse, ApiConnectionActionConfiguration> SAPGetTableVisibleTextContents(Expression<Func<SAPGetTableVisibleTextContentsInput>> sAPGetTableVisibleTextContents)
+        public IBodyWorkflowAction<SapGetTableVisibleTextContentsResponse, ApiConnectionActionConfiguration> SapGetTableVisibleTextContents(Expression<Func<SapGetTableVisibleTextContentsInput>> sapGetTableVisibleTextContents)
         {
-            var __workflow_sAPGetTableVisibleTextContents = WorkflowExpression.Compile(sAPGetTableVisibleTextContents, nameof(sAPGetTableVisibleTextContents), required: true);
-            return new DeferredBodyAction<SAPGetTableVisibleTextContentsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetTableVisibleTextContents = WorkflowExpression.Compile(sapGetTableVisibleTextContents, nameof(sapGetTableVisibleTextContents), required: true);
+            return new DeferredBodyAction<SapGetTableVisibleTextContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetTableVisibleTextContents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetTableVisibleTextContents);
-                return new ApiConnectionAction<SAPGetTableVisibleTextContentsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetTableVisibleTextContents);
+                return new ApiConnectionAction<SapGetTableVisibleTextContentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectSAPTableRow(Expression<Func<SAPSelectSAPTableRowInput>> sAPSelectSAPTableRow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectSapTableRow(Expression<Func<SapSelectSapTableRowInput>> sapSelectSapTableRow)
         {
-            var __workflow_sAPSelectSAPTableRow = WorkflowExpression.Compile(sAPSelectSAPTableRow, nameof(sAPSelectSAPTableRow), required: true);
+            var __workflow_sapSelectSapTableRow = WorkflowExpression.Compile(sapSelectSapTableRow, nameof(sapSelectSapTableRow), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPTableRow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectSAPTableRow);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectSapTableRow);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectSAPTableColumn(Expression<Func<SAPSelectSAPTableColumnInput>> sAPSelectSAPTableColumn)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectSapTableColumn(Expression<Func<SapSelectSapTableColumnInput>> sapSelectSapTableColumn)
         {
-            var __workflow_sAPSelectSAPTableColumn = WorkflowExpression.Compile(sAPSelectSAPTableColumn, nameof(sAPSelectSAPTableColumn), required: true);
+            var __workflow_sapSelectSapTableColumn = WorkflowExpression.Compile(sapSelectSapTableColumn, nameof(sapSelectSapTableColumn), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPTableColumn";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectSAPTableColumn);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectSapTableColumn);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetTreeNodesResponse, ApiConnectionActionConfiguration> SAPGetTreeNodes(Expression<Func<SAPGetTreeNodesInput>> sAPGetTreeNodes)
+        public IBodyWorkflowAction<SapGetTreeNodesResponse, ApiConnectionActionConfiguration> SapGetTreeNodes(Expression<Func<SapGetTreeNodesInput>> sapGetTreeNodes)
         {
-            var __workflow_sAPGetTreeNodes = WorkflowExpression.Compile(sAPGetTreeNodes, nameof(sAPGetTreeNodes), required: true);
-            return new DeferredBodyAction<SAPGetTreeNodesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetTreeNodes = WorkflowExpression.Compile(sapGetTreeNodes, nameof(sapGetTreeNodes), required: true);
+            return new DeferredBodyAction<SapGetTreeNodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeNodes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetTreeNodes);
-                return new ApiConnectionAction<SAPGetTreeNodesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetTreeNodes);
+                return new ApiConnectionAction<SapGetTreeNodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPDoubleClickTreeItem(Expression<Func<SAPDoubleClickTreeItemInput>> sAPDoubleClickTreeItem)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapDoubleClickTreeItem(Expression<Func<SapDoubleClickTreeItemInput>> sapDoubleClickTreeItem)
         {
-            var __workflow_sAPDoubleClickTreeItem = WorkflowExpression.Compile(sAPDoubleClickTreeItem, nameof(sAPDoubleClickTreeItem), required: true);
+            var __workflow_sapDoubleClickTreeItem = WorkflowExpression.Compile(sapDoubleClickTreeItem, nameof(sapDoubleClickTreeItem), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDoubleClickTreeItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPDoubleClickTreeItem);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapDoubleClickTreeItem);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectTreeItem(Expression<Func<SAPSelectTreeItemInput>> sAPSelectTreeItem)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectTreeItem(Expression<Func<SapSelectTreeItemInput>> sapSelectTreeItem)
         {
-            var __workflow_sAPSelectTreeItem = WorkflowExpression.Compile(sAPSelectTreeItem, nameof(sAPSelectTreeItem), required: true);
+            var __workflow_sapSelectTreeItem = WorkflowExpression.Compile(sapSelectTreeItem, nameof(sapSelectTreeItem), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectTreeItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectTreeItem);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectTreeItem);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPExpandTreeNode(Expression<Func<SAPExpandTreeNodeInput>> sAPExpandTreeNode)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapExpandTreeNode(Expression<Func<SapExpandTreeNodeInput>> sapExpandTreeNode)
         {
-            var __workflow_sAPExpandTreeNode = WorkflowExpression.Compile(sAPExpandTreeNode, nameof(sAPExpandTreeNode), required: true);
+            var __workflow_sapExpandTreeNode = WorkflowExpression.Compile(sapExpandTreeNode, nameof(sapExpandTreeNode), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPExpandTreeNode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPExpandTreeNode);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapExpandTreeNode);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPDeselectAllTreeNodes(Expression<Func<SAPDeselectAllTreeNodesInput>> sAPDeselectAllTreeNodes)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapDeselectAllTreeNodes(Expression<Func<SapDeselectAllTreeNodesInput>> sapDeselectAllTreeNodes)
         {
-            var __workflow_sAPDeselectAllTreeNodes = WorkflowExpression.Compile(sAPDeselectAllTreeNodes, nameof(sAPDeselectAllTreeNodes), required: true);
+            var __workflow_sapDeselectAllTreeNodes = WorkflowExpression.Compile(sapDeselectAllTreeNodes, nameof(sapDeselectAllTreeNodes), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDeselectAllTreeNodes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPDeselectAllTreeNodes);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapDeselectAllTreeNodes);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPPressKeyOnTree(Expression<Func<SAPPressKeyOnTreeInput>> sAPPressKeyOnTree)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapPressKeyOnTree(Expression<Func<SapPressKeyOnTreeInput>> sapPressKeyOnTree)
         {
-            var __workflow_sAPPressKeyOnTree = WorkflowExpression.Compile(sAPPressKeyOnTree, nameof(sAPPressKeyOnTree), required: true);
+            var __workflow_sapPressKeyOnTree = WorkflowExpression.Compile(sapPressKeyOnTree, nameof(sapPressKeyOnTree), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressKeyOnTree";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPPressKeyOnTree);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapPressKeyOnTree);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPOpenContextMenuOnTreeItem(Expression<Func<SAPOpenContextMenuOnTreeItemInput>> sAPOpenContextMenuOnTreeItem)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapOpenContextMenuOnTreeItem(Expression<Func<SapOpenContextMenuOnTreeItemInput>> sapOpenContextMenuOnTreeItem)
         {
-            var __workflow_sAPOpenContextMenuOnTreeItem = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItem, nameof(sAPOpenContextMenuOnTreeItem), required: true);
+            var __workflow_sapOpenContextMenuOnTreeItem = WorkflowExpression.Compile(sapOpenContextMenuOnTreeItem, nameof(sapOpenContextMenuOnTreeItem), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPOpenContextMenuOnTreeItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPOpenContextMenuOnTreeItem);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapOpenContextMenuOnTreeItem);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetTreeTextContentsResponse, ApiConnectionActionConfiguration> SAPGetTreeTextContents(Expression<Func<SAPGetTreeTextContentsInput>> sAPGetTreeTextContents)
+        public IBodyWorkflowAction<SapGetTreeTextContentsResponse, ApiConnectionActionConfiguration> SapGetTreeTextContents(Expression<Func<SapGetTreeTextContentsInput>> sapGetTreeTextContents)
         {
-            var __workflow_sAPGetTreeTextContents = WorkflowExpression.Compile(sAPGetTreeTextContents, nameof(sAPGetTreeTextContents), required: true);
-            return new DeferredBodyAction<SAPGetTreeTextContentsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetTreeTextContents = WorkflowExpression.Compile(sapGetTreeTextContents, nameof(sapGetTreeTextContents), required: true);
+            return new DeferredBodyAction<SapGetTreeTextContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeTextContents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetTreeTextContents);
-                return new ApiConnectionAction<SAPGetTreeTextContentsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetTreeTextContents);
+                return new ApiConnectionAction<SapGetTreeTextContentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSetTreeColumnWidth(Expression<Func<SAPSetTreeColumnWidthInput>> sAPSetTreeColumnWidth)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSetTreeColumnWidth(Expression<Func<SapSetTreeColumnWidthInput>> sapSetTreeColumnWidth)
         {
-            var __workflow_sAPSetTreeColumnWidth = WorkflowExpression.Compile(sAPSetTreeColumnWidth, nameof(sAPSetTreeColumnWidth), required: true);
+            var __workflow_sapSetTreeColumnWidth = WorkflowExpression.Compile(sapSetTreeColumnWidth, nameof(sapSetTreeColumnWidth), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetTreeColumnWidth";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSetTreeColumnWidth);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSetTreeColumnWidth);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPPressButtonOnTreeItem(Expression<Func<SAPPressButtonOnTreeItemInput>> sAPPressButtonOnTreeItem)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapPressButtonOnTreeItem(Expression<Func<SapPressButtonOnTreeItemInput>> sapPressButtonOnTreeItem)
         {
-            var __workflow_sAPPressButtonOnTreeItem = WorkflowExpression.Compile(sAPPressButtonOnTreeItem, nameof(sAPPressButtonOnTreeItem), required: true);
+            var __workflow_sapPressButtonOnTreeItem = WorkflowExpression.Compile(sapPressButtonOnTreeItem, nameof(sapPressButtonOnTreeItem), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressButtonOnTreeItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPPressButtonOnTreeItem);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapPressButtonOnTreeItem);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPClickLinkOnTreeItem(Expression<Func<SAPClickLinkOnTreeItemInput>> sAPClickLinkOnTreeItem)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapClickLinkOnTreeItem(Expression<Func<SapClickLinkOnTreeItemInput>> sapClickLinkOnTreeItem)
         {
-            var __workflow_sAPClickLinkOnTreeItem = WorkflowExpression.Compile(sAPClickLinkOnTreeItem, nameof(sAPClickLinkOnTreeItem), required: true);
+            var __workflow_sapClickLinkOnTreeItem = WorkflowExpression.Compile(sapClickLinkOnTreeItem, nameof(sapClickLinkOnTreeItem), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPClickLinkOnTreeItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPClickLinkOnTreeItem);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapClickLinkOnTreeItem);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPCheckTreeItem(Expression<Func<SAPCheckTreeItemInput>> sAPCheckTreeItem)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapCheckTreeItem(Expression<Func<SapCheckTreeItemInput>> sapCheckTreeItem)
         {
-            var __workflow_sAPCheckTreeItem = WorkflowExpression.Compile(sAPCheckTreeItem, nameof(sAPCheckTreeItem), required: true);
+            var __workflow_sapCheckTreeItem = WorkflowExpression.Compile(sapCheckTreeItem, nameof(sapCheckTreeItem), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPCheckTreeItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPCheckTreeItem);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapCheckTreeItem);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetTreeColumnHeadersResponse, ApiConnectionActionConfiguration> SAPGetTreeColumnHeaders(Expression<Func<SAPGetTreeColumnHeadersInput>> sAPGetTreeColumnHeaders)
+        public IBodyWorkflowAction<SapGetTreeColumnHeadersResponse, ApiConnectionActionConfiguration> SapGetTreeColumnHeaders(Expression<Func<SapGetTreeColumnHeadersInput>> sapGetTreeColumnHeaders)
         {
-            var __workflow_sAPGetTreeColumnHeaders = WorkflowExpression.Compile(sAPGetTreeColumnHeaders, nameof(sAPGetTreeColumnHeaders), required: true);
-            return new DeferredBodyAction<SAPGetTreeColumnHeadersResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetTreeColumnHeaders = WorkflowExpression.Compile(sapGetTreeColumnHeaders, nameof(sapGetTreeColumnHeaders), required: true);
+            return new DeferredBodyAction<SapGetTreeColumnHeadersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeColumnHeaders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetTreeColumnHeaders);
-                return new ApiConnectionAction<SAPGetTreeColumnHeadersResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetTreeColumnHeaders);
+                return new ApiConnectionAction<SapGetTreeColumnHeadersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetTreeItemPropertiesResponse, ApiConnectionActionConfiguration> SAPGetTreeItemProperties(Expression<Func<SAPGetTreeItemPropertiesInput>> sAPGetTreeItemProperties)
+        public IBodyWorkflowAction<SapGetTreeItemPropertiesResponse, ApiConnectionActionConfiguration> SapGetTreeItemProperties(Expression<Func<SapGetTreeItemPropertiesInput>> sapGetTreeItemProperties)
         {
-            var __workflow_sAPGetTreeItemProperties = WorkflowExpression.Compile(sAPGetTreeItemProperties, nameof(sAPGetTreeItemProperties), required: true);
-            return new DeferredBodyAction<SAPGetTreeItemPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetTreeItemProperties = WorkflowExpression.Compile(sapGetTreeItemProperties, nameof(sapGetTreeItemProperties), required: true);
+            return new DeferredBodyAction<SapGetTreeItemPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeItemProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetTreeItemProperties);
-                return new ApiConnectionAction<SAPGetTreeItemPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetTreeItemProperties);
+                return new ApiConnectionAction<SapGetTreeItemPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetShellToolbarElementsResponse, ApiConnectionActionConfiguration> SAPGetShellToolbarElements(Expression<Func<SAPGetShellToolbarElementsInput>> sAPGetShellToolbarElements)
+        public IBodyWorkflowAction<SapGetShellToolbarElementsResponse, ApiConnectionActionConfiguration> SapGetShellToolbarElements(Expression<Func<SapGetShellToolbarElementsInput>> sapGetShellToolbarElements)
         {
-            var __workflow_sAPGetShellToolbarElements = WorkflowExpression.Compile(sAPGetShellToolbarElements, nameof(sAPGetShellToolbarElements), required: true);
-            return new DeferredBodyAction<SAPGetShellToolbarElementsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetShellToolbarElements = WorkflowExpression.Compile(sapGetShellToolbarElements, nameof(sapGetShellToolbarElements), required: true);
+            return new DeferredBodyAction<SapGetShellToolbarElementsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetShellToolbarElements";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetShellToolbarElements);
-                return new ApiConnectionAction<SAPGetShellToolbarElementsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetShellToolbarElements);
+                return new ApiConnectionAction<SapGetShellToolbarElementsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPPressShellToolbarElement(Expression<Func<SAPPressShellToolbarElementInput>> sAPPressShellToolbarElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapPressShellToolbarElement(Expression<Func<SapPressShellToolbarElementInput>> sapPressShellToolbarElement)
         {
-            var __workflow_sAPPressShellToolbarElement = WorkflowExpression.Compile(sAPPressShellToolbarElement, nameof(sAPPressShellToolbarElement), required: true);
+            var __workflow_sapPressShellToolbarElement = WorkflowExpression.Compile(sapPressShellToolbarElement, nameof(sapPressShellToolbarElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressShellToolbarElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPPressShellToolbarElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapPressShellToolbarElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPPressShellToolbarElementContextButton(Expression<Func<SAPPressShellToolbarElementContextButtonInput>> sAPPressShellToolbarElementContextButton)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapPressShellToolbarElementContextButton(Expression<Func<SapPressShellToolbarElementContextButtonInput>> sapPressShellToolbarElementContextButton)
         {
-            var __workflow_sAPPressShellToolbarElementContextButton = WorkflowExpression.Compile(sAPPressShellToolbarElementContextButton, nameof(sAPPressShellToolbarElementContextButton), required: true);
+            var __workflow_sapPressShellToolbarElementContextButton = WorkflowExpression.Compile(sapPressShellToolbarElementContextButton, nameof(sapPressShellToolbarElementContextButton), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressShellToolbarElementContextButton";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPPressShellToolbarElementContextButton);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapPressShellToolbarElementContextButton);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectShellToolbarMenuItem(Expression<Func<SAPSelectShellToolbarMenuItemInput>> sAPSelectShellToolbarMenuItem)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectShellToolbarMenuItem(Expression<Func<SapSelectShellToolbarMenuItemInput>> sapSelectShellToolbarMenuItem)
         {
-            var __workflow_sAPSelectShellToolbarMenuItem = WorkflowExpression.Compile(sAPSelectShellToolbarMenuItem, nameof(sAPSelectShellToolbarMenuItem), required: true);
+            var __workflow_sapSelectShellToolbarMenuItem = WorkflowExpression.Compile(sapSelectShellToolbarMenuItem, nameof(sapSelectShellToolbarMenuItem), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectShellToolbarMenuItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectShellToolbarMenuItem);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectShellToolbarMenuItem);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPGridViewPropertiesResponse, ApiConnectionActionConfiguration> SAPGetSAPGridViewProperties(Expression<Func<SAPGetSAPGridViewPropertiesInput>> sAPGetSAPGridViewProperties)
+        public IBodyWorkflowAction<SapGetSapGridViewPropertiesResponse, ApiConnectionActionConfiguration> SapGetSapGridViewProperties(Expression<Func<SapGetSapGridViewPropertiesInput>> sapGetSapGridViewProperties)
         {
-            var __workflow_sAPGetSAPGridViewProperties = WorkflowExpression.Compile(sAPGetSAPGridViewProperties, nameof(sAPGetSAPGridViewProperties), required: true);
-            return new DeferredBodyAction<SAPGetSAPGridViewPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapGridViewProperties = WorkflowExpression.Compile(sapGetSapGridViewProperties, nameof(sapGetSapGridViewProperties), required: true);
+            return new DeferredBodyAction<SapGetSapGridViewPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPGridViewProperties);
-                return new ApiConnectionAction<SAPGetSAPGridViewPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapGridViewProperties);
+                return new ApiConnectionAction<SapGetSapGridViewPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPGridViewCellContentsAtIndexResponse, ApiConnectionActionConfiguration> SAPGetSAPGridViewCellContentsAtIndex(Expression<Func<SAPGetSAPGridViewCellContentsAtIndexInput>> sAPGetSAPGridViewCellContentsAtIndex)
+        public IBodyWorkflowAction<SapGetSapGridViewCellContentsAtIndexResponse, ApiConnectionActionConfiguration> SapGetSapGridViewCellContentsAtIndex(Expression<Func<SapGetSapGridViewCellContentsAtIndexInput>> sapGetSapGridViewCellContentsAtIndex)
         {
-            var __workflow_sAPGetSAPGridViewCellContentsAtIndex = WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndex, nameof(sAPGetSAPGridViewCellContentsAtIndex), required: true);
-            return new DeferredBodyAction<SAPGetSAPGridViewCellContentsAtIndexResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapGridViewCellContentsAtIndex = WorkflowExpression.Compile(sapGetSapGridViewCellContentsAtIndex, nameof(sapGetSapGridViewCellContentsAtIndex), required: true);
+            return new DeferredBodyAction<SapGetSapGridViewCellContentsAtIndexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewCellContentsAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPGridViewCellContentsAtIndex);
-                return new ApiConnectionAction<SAPGetSAPGridViewCellContentsAtIndexResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapGridViewCellContentsAtIndex);
+                return new ApiConnectionAction<SapGetSapGridViewCellContentsAtIndexResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPGridViewCellPropertiesAtIndexResponse, ApiConnectionActionConfiguration> SAPGetSAPGridViewCellPropertiesAtIndex(Expression<Func<SAPGetSAPGridViewCellPropertiesAtIndexInput>> sAPGetSAPGridViewCellPropertiesAtIndex)
+        public IBodyWorkflowAction<SapGetSapGridViewCellPropertiesAtIndexResponse, ApiConnectionActionConfiguration> SapGetSapGridViewCellPropertiesAtIndex(Expression<Func<SapGetSapGridViewCellPropertiesAtIndexInput>> sapGetSapGridViewCellPropertiesAtIndex)
         {
-            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndex = WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndex, nameof(sAPGetSAPGridViewCellPropertiesAtIndex), required: true);
-            return new DeferredBodyAction<SAPGetSAPGridViewCellPropertiesAtIndexResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapGridViewCellPropertiesAtIndex = WorkflowExpression.Compile(sapGetSapGridViewCellPropertiesAtIndex, nameof(sapGetSapGridViewCellPropertiesAtIndex), required: true);
+            return new DeferredBodyAction<SapGetSapGridViewCellPropertiesAtIndexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewCellPropertiesAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPGridViewCellPropertiesAtIndex);
-                return new ApiConnectionAction<SAPGetSAPGridViewCellPropertiesAtIndexResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapGridViewCellPropertiesAtIndex);
+                return new ApiConnectionAction<SapGetSapGridViewCellPropertiesAtIndexResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPDrawRectangleAroundSAPGridViewCellAtIndex(Expression<Func<SAPDrawRectangleAroundSAPGridViewCellAtIndexInput>> sAPDrawRectangleAroundSAPGridViewCellAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapDrawRectangleAroundSapGridViewCellAtIndex(Expression<Func<SapDrawRectangleAroundSapGridViewCellAtIndexInput>> sapDrawRectangleAroundSapGridViewCellAtIndex)
         {
-            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndex = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndex, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndex), required: true);
+            var __workflow_sapDrawRectangleAroundSapGridViewCellAtIndex = WorkflowExpression.Compile(sapDrawRectangleAroundSapGridViewCellAtIndex, nameof(sapDrawRectangleAroundSapGridViewCellAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDrawRectangleAroundSAPGridViewCellAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapDrawRectangleAroundSapGridViewCellAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGlobalLeftClickSAPGridViewCellAtIndex(Expression<Func<SAPGlobalLeftClickSAPGridViewCellAtIndexInput>> sAPGlobalLeftClickSAPGridViewCellAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGlobalLeftClickSapGridViewCellAtIndex(Expression<Func<SapGlobalLeftClickSapGridViewCellAtIndexInput>> sapGlobalLeftClickSapGridViewCellAtIndex)
         {
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndex = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndex, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndex), required: true);
+            var __workflow_sapGlobalLeftClickSapGridViewCellAtIndex = WorkflowExpression.Compile(sapGlobalLeftClickSapGridViewCellAtIndex, nameof(sapGlobalLeftClickSapGridViewCellAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalLeftClickSAPGridViewCellAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGlobalLeftClickSapGridViewCellAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGlobalRightClickSAPGridViewCellAtIndex(Expression<Func<SAPGlobalRightClickSAPGridViewCellAtIndexInput>> sAPGlobalRightClickSAPGridViewCellAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGlobalRightClickSapGridViewCellAtIndex(Expression<Func<SapGlobalRightClickSapGridViewCellAtIndexInput>> sapGlobalRightClickSapGridViewCellAtIndex)
         {
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndex = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndex, nameof(sAPGlobalRightClickSAPGridViewCellAtIndex), required: true);
+            var __workflow_sapGlobalRightClickSapGridViewCellAtIndex = WorkflowExpression.Compile(sapGlobalRightClickSapGridViewCellAtIndex, nameof(sapGlobalRightClickSapGridViewCellAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalRightClickSAPGridViewCellAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGlobalRightClickSapGridViewCellAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGlobalDoubleLeftClickSAPGridViewCellAtIndex(Expression<Func<SAPGlobalDoubleLeftClickSAPGridViewCellAtIndexInput>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGlobalDoubleLeftClickSapGridViewCellAtIndex(Expression<Func<SapGlobalDoubleLeftClickSapGridViewCellAtIndexInput>> sapGlobalDoubleLeftClickSapGridViewCellAtIndex)
         {
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex), required: true);
+            var __workflow_sapGlobalDoubleLeftClickSapGridViewCellAtIndex = WorkflowExpression.Compile(sapGlobalDoubleLeftClickSapGridViewCellAtIndex, nameof(sapGlobalDoubleLeftClickSapGridViewCellAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalDoubleLeftClickSAPGridViewCellAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGlobalDoubleLeftClickSapGridViewCellAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPGridViewColumnHeadersResponse, ApiConnectionActionConfiguration> SAPGetSAPGridViewColumnHeaders(Expression<Func<SAPGetSAPGridViewColumnHeadersInput>> sAPGetSAPGridViewColumnHeaders)
+        public IBodyWorkflowAction<SapGetSapGridViewColumnHeadersResponse, ApiConnectionActionConfiguration> SapGetSapGridViewColumnHeaders(Expression<Func<SapGetSapGridViewColumnHeadersInput>> sapGetSapGridViewColumnHeaders)
         {
-            var __workflow_sAPGetSAPGridViewColumnHeaders = WorkflowExpression.Compile(sAPGetSAPGridViewColumnHeaders, nameof(sAPGetSAPGridViewColumnHeaders), required: true);
-            return new DeferredBodyAction<SAPGetSAPGridViewColumnHeadersResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetSapGridViewColumnHeaders = WorkflowExpression.Compile(sapGetSapGridViewColumnHeaders, nameof(sapGetSapGridViewColumnHeaders), required: true);
+            return new DeferredBodyAction<SapGetSapGridViewColumnHeadersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewColumnHeaders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetSAPGridViewColumnHeaders);
-                return new ApiConnectionAction<SAPGetSAPGridViewColumnHeadersResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetSapGridViewColumnHeaders);
+                return new ApiConnectionAction<SapGetSapGridViewColumnHeadersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPClickSAPGridViewCellAtIndex(Expression<Func<SAPClickSAPGridViewCellAtIndexInput>> sAPClickSAPGridViewCellAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapClickSapGridViewCellAtIndex(Expression<Func<SapClickSapGridViewCellAtIndexInput>> sapClickSapGridViewCellAtIndex)
         {
-            var __workflow_sAPClickSAPGridViewCellAtIndex = WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndex, nameof(sAPClickSAPGridViewCellAtIndex), required: true);
+            var __workflow_sapClickSapGridViewCellAtIndex = WorkflowExpression.Compile(sapClickSapGridViewCellAtIndex, nameof(sapClickSapGridViewCellAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPClickSAPGridViewCellAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPClickSAPGridViewCellAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapClickSapGridViewCellAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPDoubleClickSAPGridViewCellAtIndex(Expression<Func<SAPDoubleClickSAPGridViewCellAtIndexInput>> sAPDoubleClickSAPGridViewCellAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapDoubleClickSapGridViewCellAtIndex(Expression<Func<SapDoubleClickSapGridViewCellAtIndexInput>> sapDoubleClickSapGridViewCellAtIndex)
         {
-            var __workflow_sAPDoubleClickSAPGridViewCellAtIndex = WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndex, nameof(sAPDoubleClickSAPGridViewCellAtIndex), required: true);
+            var __workflow_sapDoubleClickSapGridViewCellAtIndex = WorkflowExpression.Compile(sapDoubleClickSapGridViewCellAtIndex, nameof(sapDoubleClickSapGridViewCellAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDoubleClickSAPGridViewCellAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPDoubleClickSAPGridViewCellAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapDoubleClickSapGridViewCellAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPPressSAPGridViewCellButtonAtIndex(Expression<Func<SAPPressSAPGridViewCellButtonAtIndexInput>> sAPPressSAPGridViewCellButtonAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapPressSapGridViewCellButtonAtIndex(Expression<Func<SapPressSapGridViewCellButtonAtIndexInput>> sapPressSapGridViewCellButtonAtIndex)
         {
-            var __workflow_sAPPressSAPGridViewCellButtonAtIndex = WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndex, nameof(sAPPressSAPGridViewCellButtonAtIndex), required: true);
+            var __workflow_sapPressSapGridViewCellButtonAtIndex = WorkflowExpression.Compile(sapPressSapGridViewCellButtonAtIndex, nameof(sapPressSapGridViewCellButtonAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPGridViewCellButtonAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPPressSAPGridViewCellButtonAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapPressSapGridViewCellButtonAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPCheckSAPGridViewCellCheckboxAtIndex(Expression<Func<SAPCheckSAPGridViewCellCheckboxAtIndexInput>> sAPCheckSAPGridViewCellCheckboxAtIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapCheckSapGridViewCellCheckboxAtIndex(Expression<Func<SapCheckSapGridViewCellCheckboxAtIndexInput>> sapCheckSapGridViewCellCheckboxAtIndex)
         {
-            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndex = WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndex, nameof(sAPCheckSAPGridViewCellCheckboxAtIndex), required: true);
+            var __workflow_sapCheckSapGridViewCellCheckboxAtIndex = WorkflowExpression.Compile(sapCheckSapGridViewCellCheckboxAtIndex, nameof(sapCheckSapGridViewCellCheckboxAtIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPCheckSAPGridViewCellCheckboxAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPCheckSAPGridViewCellCheckboxAtIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapCheckSapGridViewCellCheckboxAtIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPModifySAPGridViewCellAtIndexResponse, ApiConnectionActionConfiguration> SAPModifySAPGridViewCellAtIndex(Expression<Func<SAPModifySAPGridViewCellAtIndexInput>> sAPModifySAPGridViewCellAtIndex)
+        public IBodyWorkflowAction<SapModifySapGridViewCellAtIndexResponse, ApiConnectionActionConfiguration> SapModifySapGridViewCellAtIndex(Expression<Func<SapModifySapGridViewCellAtIndexInput>> sapModifySapGridViewCellAtIndex)
         {
-            var __workflow_sAPModifySAPGridViewCellAtIndex = WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndex, nameof(sAPModifySAPGridViewCellAtIndex), required: true);
-            return new DeferredBodyAction<SAPModifySAPGridViewCellAtIndexResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapModifySapGridViewCellAtIndex = WorkflowExpression.Compile(sapModifySapGridViewCellAtIndex, nameof(sapModifySapGridViewCellAtIndex), required: true);
+            return new DeferredBodyAction<SapModifySapGridViewCellAtIndexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPModifySAPGridViewCellAtIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPModifySAPGridViewCellAtIndex);
-                return new ApiConnectionAction<SAPModifySAPGridViewCellAtIndexResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapModifySapGridViewCellAtIndex);
+                return new ApiConnectionAction<SapModifySapGridViewCellAtIndexResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSetSAPGridViewCurrentRow(Expression<Func<SAPSetSAPGridViewCurrentRowInput>> sAPSetSAPGridViewCurrentRow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSetSapGridViewCurrentRow(Expression<Func<SapSetSapGridViewCurrentRowInput>> sapSetSapGridViewCurrentRow)
         {
-            var __workflow_sAPSetSAPGridViewCurrentRow = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentRow, nameof(sAPSetSAPGridViewCurrentRow), required: true);
+            var __workflow_sapSetSapGridViewCurrentRow = WorkflowExpression.Compile(sapSetSapGridViewCurrentRow, nameof(sapSetSapGridViewCurrentRow), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentRow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSetSAPGridViewCurrentRow);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSetSapGridViewCurrentRow);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPPressSAPGridViewColumnHeader(Expression<Func<SAPPressSAPGridViewColumnHeaderInput>> sAPPressSAPGridViewColumnHeader)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapPressSapGridViewColumnHeader(Expression<Func<SapPressSapGridViewColumnHeaderInput>> sapPressSapGridViewColumnHeader)
         {
-            var __workflow_sAPPressSAPGridViewColumnHeader = WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeader, nameof(sAPPressSAPGridViewColumnHeader), required: true);
+            var __workflow_sapPressSapGridViewColumnHeader = WorkflowExpression.Compile(sapPressSapGridViewColumnHeader, nameof(sapPressSapGridViewColumnHeader), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPGridViewColumnHeader";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPPressSAPGridViewColumnHeader);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapPressSapGridViewColumnHeader);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleRowResponse, ApiConnectionActionConfiguration> SAPSetSAPGridViewFirstVisibleRow(Expression<Func<SAPSetSAPGridViewFirstVisibleRowInput>> sAPSetSAPGridViewFirstVisibleRow)
+        public IBodyWorkflowAction<SapSetSapGridViewFirstVisibleRowResponse, ApiConnectionActionConfiguration> SapSetSapGridViewFirstVisibleRow(Expression<Func<SapSetSapGridViewFirstVisibleRowInput>> sapSetSapGridViewFirstVisibleRow)
         {
-            var __workflow_sAPSetSAPGridViewFirstVisibleRow = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleRow, nameof(sAPSetSAPGridViewFirstVisibleRow), required: true);
-            return new DeferredBodyAction<SAPSetSAPGridViewFirstVisibleRowResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapSetSapGridViewFirstVisibleRow = WorkflowExpression.Compile(sapSetSapGridViewFirstVisibleRow, nameof(sapSetSapGridViewFirstVisibleRow), required: true);
+            return new DeferredBodyAction<SapSetSapGridViewFirstVisibleRowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewFirstVisibleRow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSetSAPGridViewFirstVisibleRow);
-                return new ApiConnectionAction<SAPSetSAPGridViewFirstVisibleRowResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSetSapGridViewFirstVisibleRow);
+                return new ApiConnectionAction<SapSetSapGridViewFirstVisibleRowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectSAPGridViewRow(Expression<Func<SAPSelectSAPGridViewRowInput>> sAPSelectSAPGridViewRow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectSapGridViewRow(Expression<Func<SapSelectSapGridViewRowInput>> sapSelectSapGridViewRow)
         {
-            var __workflow_sAPSelectSAPGridViewRow = WorkflowExpression.Compile(sAPSelectSAPGridViewRow, nameof(sAPSelectSAPGridViewRow), required: true);
+            var __workflow_sapSelectSapGridViewRow = WorkflowExpression.Compile(sapSelectSapGridViewRow, nameof(sapSelectSapGridViewRow), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewRow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectSAPGridViewRow);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectSapGridViewRow);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectSAPGridViewMultipleRows(Expression<Func<SAPSelectSAPGridViewMultipleRowsInput>> sAPSelectSAPGridViewMultipleRows)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectSapGridViewMultipleRows(Expression<Func<SapSelectSapGridViewMultipleRowsInput>> sapSelectSapGridViewMultipleRows)
         {
-            var __workflow_sAPSelectSAPGridViewMultipleRows = WorkflowExpression.Compile(sAPSelectSAPGridViewMultipleRows, nameof(sAPSelectSAPGridViewMultipleRows), required: true);
+            var __workflow_sapSelectSapGridViewMultipleRows = WorkflowExpression.Compile(sapSelectSapGridViewMultipleRows, nameof(sapSelectSapGridViewMultipleRows), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewMultipleRows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectSAPGridViewMultipleRows);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectSapGridViewMultipleRows);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSetSAPGridViewCurrentColumn(Expression<Func<SAPSetSAPGridViewCurrentColumnInput>> sAPSetSAPGridViewCurrentColumn)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSetSapGridViewCurrentColumn(Expression<Func<SapSetSapGridViewCurrentColumnInput>> sapSetSapGridViewCurrentColumn)
         {
-            var __workflow_sAPSetSAPGridViewCurrentColumn = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumn, nameof(sAPSetSAPGridViewCurrentColumn), required: true);
+            var __workflow_sapSetSapGridViewCurrentColumn = WorkflowExpression.Compile(sapSetSapGridViewCurrentColumn, nameof(sapSetSapGridViewCurrentColumn), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentColumn";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSetSAPGridViewCurrentColumn);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSetSapGridViewCurrentColumn);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSetSAPGridViewCurrentCell(Expression<Func<SAPSetSAPGridViewCurrentCellInput>> sAPSetSAPGridViewCurrentCell)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSetSapGridViewCurrentCell(Expression<Func<SapSetSapGridViewCurrentCellInput>> sapSetSapGridViewCurrentCell)
         {
-            var __workflow_sAPSetSAPGridViewCurrentCell = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCell, nameof(sAPSetSAPGridViewCurrentCell), required: true);
+            var __workflow_sapSetSapGridViewCurrentCell = WorkflowExpression.Compile(sapSetSapGridViewCurrentCell, nameof(sapSetSapGridViewCurrentCell), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentCell";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSetSAPGridViewCurrentCell);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSetSapGridViewCurrentCell);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectSAPGridViewColumn(Expression<Func<SAPSelectSAPGridViewColumnInput>> sAPSelectSAPGridViewColumn)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectSapGridViewColumn(Expression<Func<SapSelectSapGridViewColumnInput>> sapSelectSapGridViewColumn)
         {
-            var __workflow_sAPSelectSAPGridViewColumn = WorkflowExpression.Compile(sAPSelectSAPGridViewColumn, nameof(sAPSelectSAPGridViewColumn), required: true);
+            var __workflow_sapSelectSapGridViewColumn = WorkflowExpression.Compile(sapSelectSapGridViewColumn, nameof(sapSelectSapGridViewColumn), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewColumn";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectSAPGridViewColumn);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectSapGridViewColumn);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGridViewSelectAll(Expression<Func<SAPGridViewSelectAllInput>> sAPGridViewSelectAll)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGridViewSelectAll(Expression<Func<SapGridViewSelectAllInput>> sapGridViewSelectAll)
         {
-            var __workflow_sAPGridViewSelectAll = WorkflowExpression.Compile(sAPGridViewSelectAll, nameof(sAPGridViewSelectAll), required: true);
+            var __workflow_sapGridViewSelectAll = WorkflowExpression.Compile(sapGridViewSelectAll, nameof(sapGridViewSelectAll), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGridViewSelectAll";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGridViewSelectAll);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGridViewSelectAll);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGridViewDeselectAll(Expression<Func<SAPGridViewDeselectAllInput>> sAPGridViewDeselectAll)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGridViewDeselectAll(Expression<Func<SapGridViewDeselectAllInput>> sapGridViewDeselectAll)
         {
-            var __workflow_sAPGridViewDeselectAll = WorkflowExpression.Compile(sAPGridViewDeselectAll, nameof(sAPGridViewDeselectAll), required: true);
+            var __workflow_sapGridViewDeselectAll = WorkflowExpression.Compile(sapGridViewDeselectAll, nameof(sapGridViewDeselectAll), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGridViewDeselectAll";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGridViewDeselectAll);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGridViewDeselectAll);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleColumnResponse, ApiConnectionActionConfiguration> SAPSetSAPGridViewFirstVisibleColumn(Expression<Func<SAPSetSAPGridViewFirstVisibleColumnInput>> sAPSetSAPGridViewFirstVisibleColumn)
+        public IBodyWorkflowAction<SapSetSapGridViewFirstVisibleColumnResponse, ApiConnectionActionConfiguration> SapSetSapGridViewFirstVisibleColumn(Expression<Func<SapSetSapGridViewFirstVisibleColumnInput>> sapSetSapGridViewFirstVisibleColumn)
         {
-            var __workflow_sAPSetSAPGridViewFirstVisibleColumn = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumn, nameof(sAPSetSAPGridViewFirstVisibleColumn), required: true);
-            return new DeferredBodyAction<SAPSetSAPGridViewFirstVisibleColumnResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapSetSapGridViewFirstVisibleColumn = WorkflowExpression.Compile(sapSetSapGridViewFirstVisibleColumn, nameof(sapSetSapGridViewFirstVisibleColumn), required: true);
+            return new DeferredBodyAction<SapSetSapGridViewFirstVisibleColumnResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewFirstVisibleColumn";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSetSAPGridViewFirstVisibleColumn);
-                return new ApiConnectionAction<SAPSetSAPGridViewFirstVisibleColumnResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSetSapGridViewFirstVisibleColumn);
+                return new ApiConnectionAction<SapSetSapGridViewFirstVisibleColumnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPGridViewOpenContextMenu(Expression<Func<SAPGridViewOpenContextMenuInput>> sAPGridViewOpenContextMenu)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapGridViewOpenContextMenu(Expression<Func<SapGridViewOpenContextMenuInput>> sapGridViewOpenContextMenu)
         {
-            var __workflow_sAPGridViewOpenContextMenu = WorkflowExpression.Compile(sAPGridViewOpenContextMenu, nameof(sAPGridViewOpenContextMenu), required: true);
+            var __workflow_sapGridViewOpenContextMenu = WorkflowExpression.Compile(sapGridViewOpenContextMenu, nameof(sapGridViewOpenContextMenu), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGridViewOpenContextMenu";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGridViewOpenContextMenu);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGridViewOpenContextMenu);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetGridViewTextContentsResponse, ApiConnectionActionConfiguration> SAPGetGridViewTextContents(Expression<Func<SAPGetGridViewTextContentsInput>> sAPGetGridViewTextContents)
+        public IBodyWorkflowAction<SapGetGridViewTextContentsResponse, ApiConnectionActionConfiguration> SapGetGridViewTextContents(Expression<Func<SapGetGridViewTextContentsInput>> sapGetGridViewTextContents)
         {
-            var __workflow_sAPGetGridViewTextContents = WorkflowExpression.Compile(sAPGetGridViewTextContents, nameof(sAPGetGridViewTextContents), required: true);
-            return new DeferredBodyAction<SAPGetGridViewTextContentsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sapGetGridViewTextContents = WorkflowExpression.Compile(sapGetGridViewTextContents, nameof(sapGetGridViewTextContents), required: true);
+            return new DeferredBodyAction<SapGetGridViewTextContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetGridViewTextContents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPGetGridViewTextContents);
-                return new ApiConnectionAction<SAPGetGridViewTextContentsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapGetGridViewTextContents);
+                return new ApiConnectionAction<SapGetGridViewTextContentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectCalendarMonth(Expression<Func<SAPSelectCalendarMonthInput>> sAPSelectCalendarMonth)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectCalendarMonth(Expression<Func<SapSelectCalendarMonthInput>> sapSelectCalendarMonth)
         {
-            var __workflow_sAPSelectCalendarMonth = WorkflowExpression.Compile(sAPSelectCalendarMonth, nameof(sAPSelectCalendarMonth), required: true);
+            var __workflow_sapSelectCalendarMonth = WorkflowExpression.Compile(sapSelectCalendarMonth, nameof(sapSelectCalendarMonth), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectCalendarMonth";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectCalendarMonth);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectCalendarMonth);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectCalendarWeek(Expression<Func<SAPSelectCalendarWeekInput>> sAPSelectCalendarWeek)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectCalendarWeek(Expression<Func<SapSelectCalendarWeekInput>> sapSelectCalendarWeek)
         {
-            var __workflow_sAPSelectCalendarWeek = WorkflowExpression.Compile(sAPSelectCalendarWeek, nameof(sAPSelectCalendarWeek), required: true);
+            var __workflow_sapSelectCalendarWeek = WorkflowExpression.Compile(sapSelectCalendarWeek, nameof(sapSelectCalendarWeek), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectCalendarWeek";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectCalendarWeek);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectCalendarWeek);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPSelectCalendarRange(Expression<Func<SAPSelectCalendarRangeInput>> sAPSelectCalendarRange)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapSelectCalendarRange(Expression<Func<SapSelectCalendarRangeInput>> sapSelectCalendarRange)
         {
-            var __workflow_sAPSelectCalendarRange = WorkflowExpression.Compile(sAPSelectCalendarRange, nameof(sAPSelectCalendarRange), required: true);
+            var __workflow_sapSelectCalendarRange = WorkflowExpression.Compile(sapSelectCalendarRange, nameof(sapSelectCalendarRange), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectCalendarRange";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPSelectCalendarRange);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapSelectCalendarRange);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SAPFocusCalendarDate(Expression<Func<SAPFocusCalendarDateInput>> sAPFocusCalendarDate)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SapFocusCalendarDate(Expression<Func<SapFocusCalendarDateInput>> sapFocusCalendarDate)
         {
-            var __workflow_sAPFocusCalendarDate = WorkflowExpression.Compile(sAPFocusCalendarDate, nameof(sAPFocusCalendarDate), required: true);
+            var __workflow_sapFocusCalendarDate = WorkflowExpression.Compile(sapFocusCalendarDate, nameof(sapFocusCalendarDate), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPFocusCalendarDate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sAPFocusCalendarDate);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapFocusCalendarDate);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1473,10 +1473,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
     {
     }
 
-    public class SAPEnableScriptingInput
+    public class SapEnableScriptingInput
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? NotifyWhenScriptAttachesToGUI { get; set; } = false;
+        [JsonProperty("NotifyWhenScriptAttachesToGUI", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NotifyWhenScriptAttachesToGui { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? NotifyWhenScriptOpensConnection { get; set; } = false;
@@ -1488,25 +1488,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPLaunchSAPGUIResponse
+    public class SapLaunchSapguiResponse
     {
-        public int SAPGUIMajorVersion { get; set; }
-        public int SAPGUIRevision { get; set; }
-        public int SAPGUIPatchLevel { get; set; }
-        public int SAPGUIMinorVersion { get; set; }
-        public bool SAPGUINewVisualDesign { get; set; }
+        [JsonProperty("SAPGUIMajorVersion")]
+        public int SapguiMajorVersion { get; set; }
+
+        [JsonProperty("SAPGUIRevision")]
+        public int SapguiRevision { get; set; }
+
+        [JsonProperty("SAPGUIPatchLevel")]
+        public int SapguiPatchLevel { get; set; }
+
+        [JsonProperty("SAPGUIMinorVersion")]
+        public int SapguiMinorVersion { get; set; }
+
+        [JsonProperty("SAPGUINewVisualDesign")]
+        public bool SapguiNewVisualDesign { get; set; }
     }
 
-    public class SAPLaunchSAPGUIInput
+    public class SapLaunchSapguiInput
     {
-        public string SAPLogonEXE { get; set; }
-        public string SAPLogonArguments { get; set; }
+        [JsonProperty("SAPLogonEXE")]
+        public string SapLogonExe { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? EnableSAPScripting { get; set; } = true;
+        [JsonProperty("SAPLogonArguments")]
+        public string SapLogonArguments { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? NotifyWhenScriptAttachesToGUI { get; set; } = false;
+        [JsonProperty("EnableSAPScripting", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? EnableSapScripting { get; set; } = true;
+
+        [JsonProperty("NotifyWhenScriptAttachesToGUI", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NotifyWhenScriptAttachesToGui { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? NotifyWhenScriptOpensConnection { get; set; } = false;
@@ -1520,8 +1532,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SecondsToWait { get; set; } = 15;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SAPProgId { get; set; } = "SAPGUI";
+        [JsonProperty("SAPProgId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SapProgId { get; set; } = "SAPGUI";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DisableSystemMessages { get; set; } = true;
@@ -1530,20 +1542,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPAttachToSAPGUIResponse
+    public class SapAttachToSapguiResponse
     {
-        public int NumberOfSAPConnections { get; set; }
-        public int SAPGUIMajorVersion { get; set; }
-        public int SAPGUIRevision { get; set; }
-        public int SAPGUIPatchLevel { get; set; }
-        public int SAPGUIMinorVersion { get; set; }
-        public bool SAPGUINewVisualDesign { get; set; }
+        [JsonProperty("NumberOfSAPConnections")]
+        public int NumberOfSapConnections { get; set; }
+
+        [JsonProperty("SAPGUIMajorVersion")]
+        public int SapguiMajorVersion { get; set; }
+
+        [JsonProperty("SAPGUIRevision")]
+        public int SapguiRevision { get; set; }
+
+        [JsonProperty("SAPGUIPatchLevel")]
+        public int SapguiPatchLevel { get; set; }
+
+        [JsonProperty("SAPGUIMinorVersion")]
+        public int SapguiMinorVersion { get; set; }
+
+        [JsonProperty("SAPGUINewVisualDesign")]
+        public bool SapguiNewVisualDesign { get; set; }
     }
 
-    public class SAPAttachToSAPGUIInput
+    public class SapAttachToSapguiInput
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SAPProgId { get; set; } = "SAPGUI";
+        [JsonProperty("SAPProgId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SapProgId { get; set; } = "SAPGUI";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DisableSystemMessages { get; set; } = true;
@@ -1552,55 +1575,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPDetachFromSAPGUIInput
+    public class SapDetachFromSapguiInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPGUIStatusResponse
+    public class SapGetSapguiStatusResponse
     {
         public bool Connected { get; set; }
         public string ConnectionError { get; set; }
-        public int NumberOfSAPConnections { get; set; }
-        public int SAPGUIMajorVersion { get; set; }
-        public int SAPGUIRevision { get; set; }
-        public int SAPGUIPatchLevel { get; set; }
-        public int SAPGUIMinorVersion { get; set; }
-        public bool SAPGUINewVisualDesign { get; set; }
+
+        [JsonProperty("NumberOfSAPConnections")]
+        public int NumberOfSapConnections { get; set; }
+
+        [JsonProperty("SAPGUIMajorVersion")]
+        public int SapguiMajorVersion { get; set; }
+
+        [JsonProperty("SAPGUIRevision")]
+        public int SapguiRevision { get; set; }
+
+        [JsonProperty("SAPGUIPatchLevel")]
+        public int SapguiPatchLevel { get; set; }
+
+        [JsonProperty("SAPGUIMinorVersion")]
+        public int SapguiMinorVersion { get; set; }
+
+        [JsonProperty("SAPGUINewVisualDesign")]
+        public bool SapguiNewVisualDesign { get; set; }
         public bool ConnectedToSession { get; set; }
         public string SessionError { get; set; }
         public string SessionName { get; set; }
         public string SessionSystemName { get; set; }
     }
 
-    public class SAPGetSAPGUIStatusInput
+    public class SapGetSapguiStatusInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPSessionsResponse
+    public class SapGetSapSessionsResponse
     {
-        public int NumberOfSAPConnections { get; set; }
-        public string SAPConnectionsJSON { get; set; }
-        public int NumberOfSAPSessions { get; set; }
-        public string SAPSessionsJSON { get; set; }
+        [JsonProperty("NumberOfSAPConnections")]
+        public int NumberOfSapConnections { get; set; }
+
+        [JsonProperty("SAPConnectionsJSON")]
+        public string SapConnectionsJson { get; set; }
+
+        [JsonProperty("NumberOfSAPSessions")]
+        public int NumberOfSapSessions { get; set; }
+
+        [JsonProperty("SAPSessionsJSON")]
+        public string SapSessionsJson { get; set; }
     }
 
-    public class SAPGetSAPSessionsInput
+    public class SapGetSapSessionsInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPAttachToSessionResponse
+    public class SapAttachToSessionResponse
     {
         public string AttachedConnectionName { get; set; }
         public string AttachedSessionName { get; set; }
     }
 
-    public class SAPAttachToSessionInput
+    public class SapAttachToSessionInput
     {
         public string SearchConnectionName { get; set; }
         public string SearchSessionName { get; set; }
@@ -1609,7 +1651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPCloseSessionInput
+    public class SapCloseSessionInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CloseAttachedSession { get; set; } = true;
@@ -1620,7 +1662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetAttachedSessionPropertiesResponse
+    public class SapGetAttachedSessionPropertiesResponse
     {
         public bool ConnectedToSession { get; set; }
         public string SessionError { get; set; }
@@ -1633,18 +1675,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string ActiveTransaction { get; set; }
     }
 
-    public class SAPGetAttachedSessionPropertiesInput
+    public class SapGetAttachedSessionPropertiesInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPWaitForAttachedSessionNotBusyResponse
+    public class SapWaitForAttachedSessionNotBusyResponse
     {
         public bool BusyAfterWait { get; set; }
     }
 
-    public class SAPWaitForAttachedSessionNotBusyInput
+    public class SapWaitForAttachedSessionNotBusyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double SecondsToWait { get; set; } = 15;
@@ -1656,15 +1698,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPInputTextIntoSAPElementInput
+    public class SapInputTextIntoSapElementInput
     {
-        public SAPInputTextIntoSAPElementInput(string searchSAPElementId)
+        public SapInputTextIntoSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string TextToInput { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1677,16 +1719,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPInputPasswordIntoSAPElementInput
+    public class SapInputPasswordIntoSapElementInput
     {
-        public SAPInputPasswordIntoSAPElementInput(string searchSAPElementId, string passwordToInput)
+        public SapInputPasswordIntoSapElementInput(string searchSapElementId, string passwordToInput)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
             this.PasswordToInput = passwordToInput;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PasswordToInput { get; set; }
@@ -1695,62 +1737,110 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetElementPropertiesResponse
+    public class SapGetElementPropertiesResponse
     {
-        public string SAPElementType { get; set; }
-        public int SAPElementTypeCode { get; set; }
-        public string SAPElementName { get; set; }
-        public string SAPElementId { get; set; }
-        public string SAPElementSubType { get; set; }
-        public string SAPElementTextValue { get; set; }
-        public bool SAPElementIsContainer { get; set; }
-        public int SAPElementNumberOfChildren { get; set; }
-        public bool SAPElementIsChangeable { get; set; }
-        public bool SAPElementIsModified { get; set; }
-        public bool SAPElementIsSelected { get; set; }
-        public bool SAPElementIsHighlighted { get; set; }
-        public bool SAPElementIsVisible { get; set; }
-        public int SAPElementLeftEdge { get; set; }
-        public int SAPElementTopEdge { get; set; }
-        public int SAPElementWidth { get; set; }
-        public int SAPElementHeight { get; set; }
-        public int SAPElementRightEdge { get; set; }
-        public int SAPElementBottomEdge { get; set; }
-        public string SAPElementMessageType { get; set; }
+        [JsonProperty("SAPElementType")]
+        public string SapElementType { get; set; }
+
+        [JsonProperty("SAPElementTypeCode")]
+        public int SapElementTypeCode { get; set; }
+
+        [JsonProperty("SAPElementName")]
+        public string SapElementName { get; set; }
+
+        [JsonProperty("SAPElementId")]
+        public string SapElementId { get; set; }
+
+        [JsonProperty("SAPElementSubType")]
+        public string SapElementSubType { get; set; }
+
+        [JsonProperty("SAPElementTextValue")]
+        public string SapElementTextValue { get; set; }
+
+        [JsonProperty("SAPElementIsContainer")]
+        public bool SapElementIsContainer { get; set; }
+
+        [JsonProperty("SAPElementNumberOfChildren")]
+        public int SapElementNumberOfChildren { get; set; }
+
+        [JsonProperty("SAPElementIsChangeable")]
+        public bool SapElementIsChangeable { get; set; }
+
+        [JsonProperty("SAPElementIsModified")]
+        public bool SapElementIsModified { get; set; }
+
+        [JsonProperty("SAPElementIsSelected")]
+        public bool SapElementIsSelected { get; set; }
+
+        [JsonProperty("SAPElementIsHighlighted")]
+        public bool SapElementIsHighlighted { get; set; }
+
+        [JsonProperty("SAPElementIsVisible")]
+        public bool SapElementIsVisible { get; set; }
+
+        [JsonProperty("SAPElementLeftEdge")]
+        public int SapElementLeftEdge { get; set; }
+
+        [JsonProperty("SAPElementTopEdge")]
+        public int SapElementTopEdge { get; set; }
+
+        [JsonProperty("SAPElementWidth")]
+        public int SapElementWidth { get; set; }
+
+        [JsonProperty("SAPElementHeight")]
+        public int SapElementHeight { get; set; }
+
+        [JsonProperty("SAPElementRightEdge")]
+        public int SapElementRightEdge { get; set; }
+
+        [JsonProperty("SAPElementBottomEdge")]
+        public int SapElementBottomEdge { get; set; }
+
+        [JsonProperty("SAPElementMessageType")]
+        public string SapElementMessageType { get; set; }
     }
 
-    public class SAPGetElementPropertiesInput
+    public class SapGetElementPropertiesInput
     {
-        public SAPGetElementPropertiesInput(string searchSAPElementId)
+        public SapGetElementPropertiesInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPWaitForElementIdResponse
+    public class SapWaitForElementIdResponse
     {
-        public bool SAPElementExists { get; set; }
-        public string SAPElementType { get; set; }
-        public int SAPElementTypeCode { get; set; }
-        public string SAPElementName { get; set; }
-        public string SAPElementSubType { get; set; }
+        [JsonProperty("SAPElementExists")]
+        public bool SapElementExists { get; set; }
+
+        [JsonProperty("SAPElementType")]
+        public string SapElementType { get; set; }
+
+        [JsonProperty("SAPElementTypeCode")]
+        public int SapElementTypeCode { get; set; }
+
+        [JsonProperty("SAPElementName")]
+        public string SapElementName { get; set; }
+
+        [JsonProperty("SAPElementSubType")]
+        public string SapElementSubType { get; set; }
     }
 
-    public class SAPWaitForElementIdInput
+    public class SapWaitForElementIdInput
     {
-        public SAPWaitForElementIdInput(string searchSAPElementId)
+        public SapWaitForElementIdInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? SecondsToWait { get; set; } = 15;
@@ -1762,25 +1852,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPWaitForWindowResponse
+    public class SapWaitForWindowResponse
     {
-        public bool SAPWindowExists { get; set; }
-        public string SAPElementId { get; set; }
-        public string SAPElementType { get; set; }
-        public int SAPElementTypeCode { get; set; }
-        public string SAPElementName { get; set; }
-        public string SAPElementSubType { get; set; }
+        [JsonProperty("SAPWindowExists")]
+        public bool SapWindowExists { get; set; }
+
+        [JsonProperty("SAPElementId")]
+        public string SapElementId { get; set; }
+
+        [JsonProperty("SAPElementType")]
+        public string SapElementType { get; set; }
+
+        [JsonProperty("SAPElementTypeCode")]
+        public int SapElementTypeCode { get; set; }
+
+        [JsonProperty("SAPElementName")]
+        public string SapElementName { get; set; }
+
+        [JsonProperty("SAPElementSubType")]
+        public string SapElementSubType { get; set; }
     }
 
-    public class SAPWaitForWindowInput
+    public class SapWaitForWindowInput
     {
-        public SAPWaitForWindowInput(string searchSAPWindowTitle)
+        public SapWaitForWindowInput(string searchSapWindowTitle)
         {
-            this.SearchSAPWindowTitle = searchSAPWindowTitle;
+            this.SearchSapWindowTitle = searchSapWindowTitle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPWindowTitle { get; set; }
+        [JsonProperty("SearchSAPWindowTitle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapWindowTitle { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchIsRegularExpression { get; set; } = false;
@@ -1798,77 +1899,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetElementTextValueResponse
+    public class SapGetElementTextValueResponse
     {
-        public string SAPElementTextValue { get; set; }
-        public string SAPElementMessageType { get; set; }
+        [JsonProperty("SAPElementTextValue")]
+        public string SapElementTextValue { get; set; }
+
+        [JsonProperty("SAPElementMessageType")]
+        public string SapElementMessageType { get; set; }
     }
 
-    public class SAPGetElementTextValueInput
+    public class SapGetElementTextValueInput
     {
-        public SAPGetElementTextValueInput(string searchSAPElementId)
+        public SapGetElementTextValueInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPPressSAPElementInput
+    public class SapPressSapElementInput
     {
-        public SAPPressSAPElementInput(string searchSAPElementId)
+        public SapPressSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectSAPElementInput
+    public class SapSelectSapElementInput
     {
-        public SAPSelectSAPElementInput(string searchSAPElementId)
+        public SapSelectSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPFocusSAPElementInput
+    public class SapFocusSapElementInput
     {
-        public SAPFocusSAPElementInput(string searchSAPElementId)
+        public SapFocusSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPCheckSAPElementInput
+    public class SapCheckSapElementInput
     {
-        public SAPCheckSAPElementInput(string searchSAPElementId)
+        public SapCheckSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CheckElement { get; set; } = true;
@@ -1877,15 +1981,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPVisualiseSAPElementInput
+    public class SapVisualiseSapElementInput
     {
-        public SAPVisualiseSAPElementInput(string searchSAPElementId)
+        public SapVisualiseSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? VisualiseOn { get; set; } = true;
@@ -1894,15 +1998,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPDrawRectangleAroundSAPElementInput
+    public class SapDrawRectangleAroundSapElementInput
     {
-        public SAPDrawRectangleAroundSAPElementInput(string searchSAPElementId)
+        public SapDrawRectangleAroundSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PenColour { get; set; } = "#009FDE";
@@ -1914,46 +2018,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSendCommandInput
+    public class SapSendCommandInput
     {
-        public SAPSendCommandInput(string sAPCommand)
+        public SapSendCommandInput(string sapCommand)
         {
-            this.SAPCommand = sAPCommand;
+            this.SapCommand = sapCommand;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SAPCommand { get; set; }
+        [JsonProperty("SAPCommand", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SapCommand { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPEnterTCodeInput
+    public class SapEnterTCodeInput
     {
-        public SAPEnterTCodeInput(string sAPTCode)
+        public SapEnterTCodeInput(string saptCode)
         {
-            this.SAPTCode = sAPTCode;
+            this.SaptCode = saptCode;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SAPTCode { get; set; }
+        [JsonProperty("SAPTCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SaptCode { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSendVKeyInput
+    public class SapSendVKeyInput
     {
-        public SAPSendVKeyInput(string searchSAPElementId)
+        public SapSendVKeyInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SAPVKey { get; set; } = 0;
+        [JsonProperty("SAPVKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SapvKey { get; set; } = 0;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DetectParentWindowElement { get; set; } = true;
@@ -1962,15 +2066,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSendEnterVKeyInput
+    public class SapSendEnterVKeyInput
     {
-        public SAPSendEnterVKeyInput(string searchSAPElementId)
+        public SapSendEnterVKeyInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DetectParentWindowElement { get; set; } = true;
@@ -1979,15 +2083,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPWindowRestoreInput
+    public class SapWindowRestoreInput
     {
-        public SAPWindowRestoreInput(string searchSAPElementId)
+        public SapWindowRestoreInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DetectParentWindowElement { get; set; } = true;
@@ -1996,15 +2100,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPWindowMaximiseInput
+    public class SapWindowMaximiseInput
     {
-        public SAPWindowMaximiseInput(string searchSAPElementId)
+        public SapWindowMaximiseInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DetectParentWindowElement { get; set; } = true;
@@ -2013,15 +2117,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPWindowMinimiseInput
+    public class SapWindowMinimiseInput
     {
-        public SAPWindowMinimiseInput(string searchSAPElementId)
+        public SapWindowMinimiseInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DetectParentWindowElement { get; set; } = true;
@@ -2030,15 +2134,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPWindowCloseInput
+    public class SapWindowCloseInput
     {
-        public SAPWindowCloseInput(string searchSAPElementId)
+        public SapWindowCloseInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DetectParentWindowElement { get; set; } = true;
@@ -2047,15 +2151,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPBringWindowToFrontInput
+    public class SapBringWindowToFrontInput
     {
-        public SAPBringWindowToFrontInput(string searchSAPElementId)
+        public SapBringWindowToFrontInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ToggleWindow { get; set; } = true;
@@ -2073,15 +2177,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGlobalLeftMouseClickOnSAPElementInput
+    public class SapGlobalLeftMouseClickOnSapElementInput
     {
-        public SAPGlobalLeftMouseClickOnSAPElementInput(string searchSAPElementId)
+        public SapGlobalLeftMouseClickOnSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SetElementWindowTopMost { get; set; } = false;
@@ -2103,14 +2207,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public SAPGlobalLeftMouseClickOnSAPElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public SapGlobalLeftMouseClickOnSapElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SAPGlobalLeftMouseClickOnSAPElementInputOffsetRelativeToType
+    public enum SapGlobalLeftMouseClickOnSapElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -2127,15 +2231,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public class SAPGlobalRightMouseClickOnSAPElementInput
+    public class SapGlobalRightMouseClickOnSapElementInput
     {
-        public SAPGlobalRightMouseClickOnSAPElementInput(string searchSAPElementId)
+        public SapGlobalRightMouseClickOnSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SetElementWindowTopMost { get; set; } = false;
@@ -2157,14 +2261,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public SAPGlobalRightMouseClickOnSAPElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public SapGlobalRightMouseClickOnSapElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SAPGlobalRightMouseClickOnSAPElementInputOffsetRelativeToType
+    public enum SapGlobalRightMouseClickOnSapElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -2181,15 +2285,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public class SAPGlobalMiddleMouseClickOnSAPElementInput
+    public class SapGlobalMiddleMouseClickOnSapElementInput
     {
-        public SAPGlobalMiddleMouseClickOnSAPElementInput(string searchSAPElementId)
+        public SapGlobalMiddleMouseClickOnSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SetElementWindowTopMost { get; set; } = false;
@@ -2211,14 +2315,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public SAPGlobalMiddleMouseClickOnSAPElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public SapGlobalMiddleMouseClickOnSapElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SAPGlobalMiddleMouseClickOnSAPElementInputOffsetRelativeToType
+    public enum SapGlobalMiddleMouseClickOnSapElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -2235,15 +2339,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public class SAPGlobalDoubleLeftMouseClickOnSAPElementInput
+    public class SapGlobalDoubleLeftMouseClickOnSapElementInput
     {
-        public SAPGlobalDoubleLeftMouseClickOnSAPElementInput(string searchSAPElementId)
+        public SapGlobalDoubleLeftMouseClickOnSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SetElementWindowTopMost { get; set; } = false;
@@ -2265,7 +2369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public SAPGlobalDoubleLeftMouseClickOnSAPElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public SapGlobalDoubleLeftMouseClickOnSapElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? DoubleClickDelayInMilliseconds { get; set; } = 10;
@@ -2275,7 +2379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SAPGlobalDoubleLeftMouseClickOnSAPElementInputOffsetRelativeToType
+    public enum SapGlobalDoubleLeftMouseClickOnSapElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -2292,15 +2396,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public class SAPGlobalInputTextIntoSAPElementInput
+    public class SapGlobalInputTextIntoSapElementInput
     {
-        public SAPGlobalInputTextIntoSAPElementInput(string searchSAPElementId)
+        public SapGlobalInputTextIntoSapElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SetElementWindowTopMost { get; set; } = false;
@@ -2323,8 +2427,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReplaceExistingValueUsingDoubleClickDelete { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ReplaceExistingValueUsingCTRLADelete { get; set; } = false;
+        [JsonProperty("ReplaceExistingValueUsingCTRLADelete", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReplaceExistingValueUsingCtrlaDelete { get; set; } = false;
         public string TextToInput { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2343,16 +2447,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGlobalInputPasswordIntoSAPElementInput
+    public class SapGlobalInputPasswordIntoSapElementInput
     {
-        public SAPGlobalInputPasswordIntoSAPElementInput(string searchSAPElementId, string passwordToInput)
+        public SapGlobalInputPasswordIntoSapElementInput(string searchSapElementId, string passwordToInput)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
             this.PasswordToInput = passwordToInput;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SetElementWindowTopMost { get; set; } = false;
@@ -2375,8 +2479,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReplaceExistingValueUsingDoubleClickDelete { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ReplaceExistingValueUsingCTRLADelete { get; set; } = false;
+        [JsonProperty("ReplaceExistingValueUsingCTRLADelete", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReplaceExistingValueUsingCtrlaDelete { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PasswordToInput { get; set; }
@@ -2397,16 +2501,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSetListSelectionByNameInput
+    public class SapSetListSelectionByNameInput
     {
-        public SAPSetListSelectionByNameInput(string searchSAPElementId, string listItemName)
+        public SapSetListSelectionByNameInput(string searchSapElementId, string listItemName)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
             this.ListItemName = listItemName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListItemName { get; set; }
@@ -2415,16 +2519,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSetListSelectionByKeyInput
+    public class SapSetListSelectionByKeyInput
     {
-        public SAPSetListSelectionByKeyInput(string searchSAPElementId, string listItemKey)
+        public SapSetListSelectionByKeyInput(string searchSapElementId, string listItemKey)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
             this.ListItemKey = listItemKey;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListItemKey { get; set; }
@@ -2433,52 +2537,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetListSelectionElementItemsResponse
+    public class SapGetListSelectionElementItemsResponse
     {
         public int NumberOfItemsInList { get; set; }
-        public string SAPSelectionListItemsJSON { get; set; }
+
+        [JsonProperty("SAPSelectionListItemsJSON")]
+        public string SapSelectionListItemsJson { get; set; }
         public string CurrentlySelectedValue { get; set; }
         public string CurrentlySelectedKey { get; set; }
         public bool ValueRequired { get; set; }
     }
 
-    public class SAPGetListSelectionElementItemsInput
+    public class SapGetListSelectionElementItemsInput
     {
-        public SAPGetListSelectionElementItemsInput(string searchSAPElementId)
+        public SapGetListSelectionElementItemsInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetAllChildSAPElementPropertiesResponse
+    public class SapGetAllChildSapElementPropertiesResponse
     {
         public int NumberOfChildElementsReturned { get; set; }
         public bool MoreElementsAvailableAtCurrentDepth { get; set; }
-        public string SAPChildElementsJSON { get; set; }
+
+        [JsonProperty("SAPChildElementsJSON")]
+        public string SapChildElementsJson { get; set; }
     }
 
-    public class SAPGetAllChildSAPElementPropertiesInput
+    public class SapGetAllChildSapElementPropertiesInput
     {
-        public SAPGetAllChildSAPElementPropertiesInput(string searchSAPElementId)
+        public SapGetAllChildSapElementPropertiesInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? FirstItemToReturn { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxItemsToReturn { get; set; } = 0;
-        public string SearchSAPElementType { get; set; }
+
+        [JsonProperty("SearchSAPElementType")]
+        public string SearchSapElementType { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxTextLength { get; set; } = 0;
@@ -2487,21 +2597,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPSessionTopLevelSAPElementPropertiesResponse
+    public class SapGetSapSessionTopLevelSapElementPropertiesResponse
     {
         public int NumberOfChildElementsReturned { get; set; }
         public bool MoreElementsAvailableAtCurrentDepth { get; set; }
-        public string SAPChildElementsJSON { get; set; }
+
+        [JsonProperty("SAPChildElementsJSON")]
+        public string SapChildElementsJson { get; set; }
     }
 
-    public class SAPGetSAPSessionTopLevelSAPElementPropertiesInput
+    public class SapGetSapSessionTopLevelSapElementPropertiesInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? FirstItemToReturn { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxItemsToReturn { get; set; } = 0;
-        public string SearchSAPElementType { get; set; }
+
+        [JsonProperty("SearchSAPElementType")]
+        public string SearchSapElementType { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxTextLength { get; set; } = 0;
@@ -2510,42 +2624,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPElementParentIdResponse
+    public class SapGetSapElementParentIdResponse
     {
-        public string SAPParentElementId { get; set; }
-        public string SAPParentElementType { get; set; }
-        public int SAPParentElementTypeCode { get; set; }
+        [JsonProperty("SAPParentElementId")]
+        public string SapParentElementId { get; set; }
+
+        [JsonProperty("SAPParentElementType")]
+        public string SapParentElementType { get; set; }
+
+        [JsonProperty("SAPParentElementTypeCode")]
+        public int SapParentElementTypeCode { get; set; }
     }
 
-    public class SAPGetSAPElementParentIdInput
+    public class SapGetSapElementParentIdInput
     {
-        public SAPGetSAPElementParentIdInput(string searchSAPElementId)
+        public SapGetSapElementParentIdInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetElementPropertiesAsListResponse
+    public class SapGetElementPropertiesAsListResponse
     {
         public int NumberOfElementsReturned { get; set; }
-        public string SAPElementsJSON { get; set; }
+
+        [JsonProperty("SAPElementsJSON")]
+        public string SapElementsJson { get; set; }
     }
 
-    public class SAPGetElementPropertiesAsListInput
+    public class SapGetElementPropertiesAsListInput
     {
-        public SAPGetElementPropertiesAsListInput(string searchSAPElementId)
+        public SapGetElementPropertiesAsListInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxTextLength { get; set; } = 0;
@@ -2554,14 +2675,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPElementAtScreenCoordinateResponse
+    public class SapGetSapElementAtScreenCoordinateResponse
     {
-        public string SAPElementId { get; set; }
+        [JsonProperty("SAPElementId")]
+        public string SapElementId { get; set; }
     }
 
-    public class SAPGetSAPElementAtScreenCoordinateInput
+    public class SapGetSapElementAtScreenCoordinateInput
     {
-        public SAPGetSAPElementAtScreenCoordinateInput(int screenX, int screenY)
+        public SapGetSapElementAtScreenCoordinateInput(int screenX, int screenY)
         {
             this.ScreenX = screenX;
             this.ScreenY = screenY;
@@ -2577,18 +2699,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPOpenConnectionResponse
+    public class SapOpenConnectionResponse
     {
         public string OpenedConnectionName { get; set; }
         public bool ScriptingDisabledByServer { get; set; }
-        public int NumberOfSAPSessions { get; set; }
+
+        [JsonProperty("NumberOfSAPSessions")]
+        public int NumberOfSapSessions { get; set; }
         public string ConnectedSessionName { get; set; }
     }
 
-    public class SAPOpenConnectionInput
+    public class SapOpenConnectionInput
     {
-        public string SAPConnectionDescription { get; set; }
-        public string SAPConnectionAddress { get; set; }
+        [JsonProperty("SAPConnectionDescription")]
+        public string SapConnectionDescription { get; set; }
+
+        [JsonProperty("SAPConnectionAddress")]
+        public string SapConnectionAddress { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ConnectSynchronous { get; set; } = true;
@@ -2600,7 +2727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPTablePropertiesResponse
+    public class SapGetSapTablePropertiesResponse
     {
         public int NumberOfVisibleRows { get; set; }
         public int NumberOfVisibleColumns { get; set; }
@@ -2618,21 +2745,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string ColumnSelectMode { get; set; }
     }
 
-    public class SAPGetSAPTablePropertiesInput
+    public class SapGetSapTablePropertiesInput
     {
-        public SAPGetSAPTablePropertiesInput(string searchSAPElementId)
+        public SapGetSapTablePropertiesInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPTableVisibleCellTextContentsAtIndexResponse
+    public class SapGetSapTableVisibleCellTextContentsAtIndexResponse
     {
         public string CellTextContents { get; set; }
         public string CellColumnName { get; set; }
@@ -2642,15 +2769,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public int EstimatedActualColumnIndex { get; set; }
     }
 
-    public class SAPGetSAPTableVisibleCellTextContentsAtIndexInput
+    public class SapGetSapTableVisibleCellTextContentsAtIndexInput
     {
-        public SAPGetSAPTableVisibleCellTextContentsAtIndexInput(string searchSAPElementId)
+        public SapGetSapTableVisibleCellTextContentsAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? VisibleRowIndex { get; set; } = 1;
@@ -2665,27 +2792,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPTableVisibleCellPropertiesAtIndexResponse
+    public class SapGetSapTableVisibleCellPropertiesAtIndexResponse
     {
-        public string SAPElementType { get; set; }
-        public int SAPElementTypeCode { get; set; }
-        public string SAPElementName { get; set; }
-        public string SAPElementId { get; set; }
-        public string SAPElementSubType { get; set; }
-        public string SAPElementTextValue { get; set; }
-        public bool SAPElementIsContainer { get; set; }
-        public int SAPElementNumberOfChildren { get; set; }
-        public bool SAPElementIsChangeable { get; set; }
-        public bool SAPElementIsModified { get; set; }
-        public bool SAPElementIsSelected { get; set; }
-        public bool SAPElementIsHighlighted { get; set; }
-        public bool SAPElementIsVisible { get; set; }
-        public int SAPElementLeftEdge { get; set; }
-        public int SAPElementTopEdge { get; set; }
-        public int SAPElementWidth { get; set; }
-        public int SAPElementHeight { get; set; }
-        public int SAPElementRightEdge { get; set; }
-        public int SAPElementBottomEdge { get; set; }
+        [JsonProperty("SAPElementType")]
+        public string SapElementType { get; set; }
+
+        [JsonProperty("SAPElementTypeCode")]
+        public int SapElementTypeCode { get; set; }
+
+        [JsonProperty("SAPElementName")]
+        public string SapElementName { get; set; }
+
+        [JsonProperty("SAPElementId")]
+        public string SapElementId { get; set; }
+
+        [JsonProperty("SAPElementSubType")]
+        public string SapElementSubType { get; set; }
+
+        [JsonProperty("SAPElementTextValue")]
+        public string SapElementTextValue { get; set; }
+
+        [JsonProperty("SAPElementIsContainer")]
+        public bool SapElementIsContainer { get; set; }
+
+        [JsonProperty("SAPElementNumberOfChildren")]
+        public int SapElementNumberOfChildren { get; set; }
+
+        [JsonProperty("SAPElementIsChangeable")]
+        public bool SapElementIsChangeable { get; set; }
+
+        [JsonProperty("SAPElementIsModified")]
+        public bool SapElementIsModified { get; set; }
+
+        [JsonProperty("SAPElementIsSelected")]
+        public bool SapElementIsSelected { get; set; }
+
+        [JsonProperty("SAPElementIsHighlighted")]
+        public bool SapElementIsHighlighted { get; set; }
+
+        [JsonProperty("SAPElementIsVisible")]
+        public bool SapElementIsVisible { get; set; }
+
+        [JsonProperty("SAPElementLeftEdge")]
+        public int SapElementLeftEdge { get; set; }
+
+        [JsonProperty("SAPElementTopEdge")]
+        public int SapElementTopEdge { get; set; }
+
+        [JsonProperty("SAPElementWidth")]
+        public int SapElementWidth { get; set; }
+
+        [JsonProperty("SAPElementHeight")]
+        public int SapElementHeight { get; set; }
+
+        [JsonProperty("SAPElementRightEdge")]
+        public int SapElementRightEdge { get; set; }
+
+        [JsonProperty("SAPElementBottomEdge")]
+        public int SapElementBottomEdge { get; set; }
         public string CellColumnName { get; set; }
         public int HorizontalScrollbarPosition { get; set; }
         public int VerticalScrollbarPosition { get; set; }
@@ -2693,15 +2857,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public int EstimatedActualColumnIndex { get; set; }
     }
 
-    public class SAPGetSAPTableVisibleCellPropertiesAtIndexInput
+    public class SapGetSapTableVisibleCellPropertiesAtIndexInput
     {
-        public SAPGetSAPTableVisibleCellPropertiesAtIndexInput(string searchSAPElementId)
+        public SapGetSapTableVisibleCellPropertiesAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? VisibleRowIndex { get; set; } = 1;
@@ -2713,15 +2877,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSetSAPTableVisibleCellTextContentsAtIndexInput
+    public class SapSetSapTableVisibleCellTextContentsAtIndexInput
     {
-        public SAPSetSAPTableVisibleCellTextContentsAtIndexInput(string searchSAPElementId)
+        public SapSetSapTableVisibleCellTextContentsAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? VisibleRowIndex { get; set; } = 1;
@@ -2740,15 +2904,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPCheckSAPTableVisibleCellCheckboxAtIndexInput
+    public class SapCheckSapTableVisibleCellCheckboxAtIndexInput
     {
-        public SAPCheckSAPTableVisibleCellCheckboxAtIndexInput(string searchSAPElementId)
+        public SapCheckSapTableVisibleCellCheckboxAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? VisibleRowIndex { get; set; } = 1;
@@ -2763,15 +2927,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPPressSAPTableVisibleCellAtIndexInput
+    public class SapPressSapTableVisibleCellAtIndexInput
     {
-        public SAPPressSAPTableVisibleCellAtIndexInput(string searchSAPElementId)
+        public SapPressSapTableVisibleCellAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? VisibleRowIndex { get; set; } = 1;
@@ -2783,15 +2947,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPScrollSAPTableInput
+    public class SapScrollSapTableInput
     {
-        public SAPScrollSAPTableInput(string searchSAPElementId)
+        public SapScrollSapTableInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? MoveHorizontalScrollbar { get; set; } = false;
@@ -2805,22 +2969,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetTableVisibleTextContentsResponse
+    public class SapGetTableVisibleTextContentsResponse
     {
-        public string SAPTableTextContentsJSON { get; set; }
+        [JsonProperty("SAPTableTextContentsJSON")]
+        public string SapTableTextContentsJson { get; set; }
         public int NumberOfRowsReturned { get; set; }
         public int NumberOfColumnsReturned { get; set; }
     }
 
-    public class SAPGetTableVisibleTextContentsInput
+    public class SapGetTableVisibleTextContentsInput
     {
-        public SAPGetTableVisibleTextContentsInput(string searchSAPElementId)
+        public SapGetTableVisibleTextContentsInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? FirstVisibleRowToReturn { get; set; } = 1;
@@ -2848,15 +3013,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectSAPTableRowInput
+    public class SapSelectSapTableRowInput
     {
-        public SAPSelectSAPTableRowInput(string searchSAPElementId)
+        public SapSelectSapTableRowInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? VisibleRowIndex { get; set; } = 1;
@@ -2868,15 +3033,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectSAPTableColumnInput
+    public class SapSelectSapTableColumnInput
     {
-        public SAPSelectSAPTableColumnInput(string searchSAPElementId)
+        public SapSelectSapTableColumnInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? VisibleColumnIndex { get; set; } = 1;
@@ -2888,25 +3053,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetTreeNodesResponse
+    public class SapGetTreeNodesResponse
     {
         public int NumberOfNodesInTree { get; set; }
-        public string SAPTreeNodesJSON { get; set; }
+
+        [JsonProperty("SAPTreeNodesJSON")]
+        public string SapTreeNodesJson { get; set; }
         public int NumberOfSelectedNodes { get; set; }
         public string CurrentlySelectedNode { get; set; }
         public string TreeType { get; set; }
         public string TreeSelectionMode { get; set; }
     }
 
-    public class SAPGetTreeNodesInput
+    public class SapGetTreeNodesInput
     {
-        public SAPGetTreeNodesInput(string searchSAPElementId)
+        public SapGetTreeNodesInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string ParentNodeKey { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2916,15 +3083,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPDoubleClickTreeItemInput
+    public class SapDoubleClickTreeItemInput
     {
-        public SAPDoubleClickTreeItemInput(string searchSAPElementId)
+        public SapDoubleClickTreeItemInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchNodeKey { get; set; }
         public string SearchNodePath { get; set; }
         public string SearchNodeText { get; set; }
@@ -2947,15 +3114,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectTreeItemInput
+    public class SapSelectTreeItemInput
     {
-        public SAPSelectTreeItemInput(string searchSAPElementId)
+        public SapSelectTreeItemInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchNodeKey { get; set; }
         public string SearchNodePath { get; set; }
         public string SearchNodeText { get; set; }
@@ -2984,15 +3151,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPExpandTreeNodeInput
+    public class SapExpandTreeNodeInput
     {
-        public SAPExpandTreeNodeInput(string searchSAPElementId)
+        public SapExpandTreeNodeInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchNodeKey { get; set; }
         public string SearchNodePath { get; set; }
         public string SearchNodeText { get; set; }
@@ -3010,30 +3177,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPDeselectAllTreeNodesInput
+    public class SapDeselectAllTreeNodesInput
     {
-        public SAPDeselectAllTreeNodesInput(string searchSAPElementId)
+        public SapDeselectAllTreeNodesInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPPressKeyOnTreeInput
+    public class SapPressKeyOnTreeInput
     {
-        public SAPPressKeyOnTreeInput(string searchSAPElementId, string key)
+        public SapPressKeyOnTreeInput(string searchSapElementId, string key)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
             this.Key = key;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
@@ -3042,15 +3209,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPOpenContextMenuOnTreeItemInput
+    public class SapOpenContextMenuOnTreeItemInput
     {
-        public SAPOpenContextMenuOnTreeItemInput(string searchSAPElementId)
+        public SapOpenContextMenuOnTreeItemInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchNodeKey { get; set; }
         public string SearchNodePath { get; set; }
         public string SearchNodeText { get; set; }
@@ -3073,22 +3240,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetTreeTextContentsResponse
+    public class SapGetTreeTextContentsResponse
     {
-        public string SAPTreeTextContentsJSON { get; set; }
+        [JsonProperty("SAPTreeTextContentsJSON")]
+        public string SapTreeTextContentsJson { get; set; }
         public int NumberOfRowsReturned { get; set; }
         public int NumberOfColumnsReturned { get; set; }
     }
 
-    public class SAPGetTreeTextContentsInput
+    public class SapGetTreeTextContentsInput
     {
-        public SAPGetTreeTextContentsInput(string searchSAPElementId)
+        public SapGetTreeTextContentsInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? FirstRowToReturn { get; set; } = 1;
@@ -3113,15 +3281,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSetTreeColumnWidthInput
+    public class SapSetTreeColumnWidthInput
     {
-        public SAPSetTreeColumnWidthInput(string searchSAPElementId)
+        public SapSetTreeColumnWidthInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchColumnName { get; set; }
         public string SearchColumnTitle { get; set; }
 
@@ -3138,15 +3306,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPPressButtonOnTreeItemInput
+    public class SapPressButtonOnTreeItemInput
     {
-        public SAPPressButtonOnTreeItemInput(string searchSAPElementId)
+        public SapPressButtonOnTreeItemInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchNodeKey { get; set; }
         public string SearchNodePath { get; set; }
         public string SearchNodeText { get; set; }
@@ -3172,15 +3340,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPClickLinkOnTreeItemInput
+    public class SapClickLinkOnTreeItemInput
     {
-        public SAPClickLinkOnTreeItemInput(string searchSAPElementId)
+        public SapClickLinkOnTreeItemInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchNodeKey { get; set; }
         public string SearchNodePath { get; set; }
         public string SearchNodeText { get; set; }
@@ -3206,15 +3374,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPCheckTreeItemInput
+    public class SapCheckTreeItemInput
     {
-        public SAPCheckTreeItemInput(string searchSAPElementId)
+        public SapCheckTreeItemInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchNodeKey { get; set; }
         public string SearchNodePath { get; set; }
         public string SearchNodeText { get; set; }
@@ -3243,27 +3411,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetTreeColumnHeadersResponse
+    public class SapGetTreeColumnHeadersResponse
     {
-        public string SAPTreeColumnHeadersJSON { get; set; }
+        [JsonProperty("SAPTreeColumnHeadersJSON")]
+        public string SapTreeColumnHeadersJson { get; set; }
         public int NumberOfColumnHeaders { get; set; }
     }
 
-    public class SAPGetTreeColumnHeadersInput
+    public class SapGetTreeColumnHeadersInput
     {
-        public SAPGetTreeColumnHeadersInput(string searchSAPElementId)
+        public SapGetTreeColumnHeadersInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetTreeItemPropertiesResponse
+    public class SapGetTreeItemPropertiesResponse
     {
         public string ItemType { get; set; }
         public string ItemTextValue { get; set; }
@@ -3281,15 +3450,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public int ItemStyle { get; set; }
     }
 
-    public class SAPGetTreeItemPropertiesInput
+    public class SapGetTreeItemPropertiesInput
     {
-        public SAPGetTreeItemPropertiesInput(string searchSAPElementId)
+        public SapGetTreeItemPropertiesInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchNodeKey { get; set; }
         public string SearchNodePath { get; set; }
         public string SearchNodeText { get; set; }
@@ -3312,35 +3481,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetShellToolbarElementsResponse
+    public class SapGetShellToolbarElementsResponse
     {
         public int NumberOfToolbarButtons { get; set; }
-        public string SAPShellToolbarElementsJSON { get; set; }
+
+        [JsonProperty("SAPShellToolbarElementsJSON")]
+        public string SapShellToolbarElementsJson { get; set; }
     }
 
-    public class SAPGetShellToolbarElementsInput
+    public class SapGetShellToolbarElementsInput
     {
-        public SAPGetShellToolbarElementsInput(string searchSAPElementId)
+        public SapGetShellToolbarElementsInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPPressShellToolbarElementInput
+    public class SapPressShellToolbarElementInput
     {
-        public SAPPressShellToolbarElementInput(string searchSAPElementId)
+        public SapPressShellToolbarElementInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchToolbarElementId { get; set; }
         public string SearchToolbarElementText { get; set; }
 
@@ -3357,15 +3528,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPPressShellToolbarElementContextButtonInput
+    public class SapPressShellToolbarElementContextButtonInput
     {
-        public SAPPressShellToolbarElementContextButtonInput(string searchSAPElementId)
+        public SapPressShellToolbarElementContextButtonInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchToolbarElementId { get; set; }
         public string SearchToolbarElementText { get; set; }
 
@@ -3382,15 +3553,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectShellToolbarMenuItemInput
+    public class SapSelectShellToolbarMenuItemInput
     {
-        public SAPSelectShellToolbarMenuItemInput(string searchSAPElementId)
+        public SapSelectShellToolbarMenuItemInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchToolbarElementId { get; set; }
         public string SearchToolbarElementText { get; set; }
 
@@ -3407,7 +3578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPGridViewPropertiesResponse
+    public class SapGetSapGridViewPropertiesResponse
     {
         public int NumberOfRows { get; set; }
         public int NumberOfVisibleRows { get; set; }
@@ -3422,21 +3593,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string GridViewTitle { get; set; }
     }
 
-    public class SAPGetSAPGridViewPropertiesInput
+    public class SapGetSapGridViewPropertiesInput
     {
-        public SAPGetSAPGridViewPropertiesInput(string searchSAPElementId)
+        public SapGetSapGridViewPropertiesInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPGridViewCellContentsAtIndexResponse
+    public class SapGetSapGridViewCellContentsAtIndexResponse
     {
         public string CellTextContents { get; set; }
         public bool CellIsChangeable { get; set; }
@@ -3444,15 +3615,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public bool CellIsChecked { get; set; }
     }
 
-    public class SAPGetSAPGridViewCellContentsAtIndexInput
+    public class SapGetSapGridViewCellContentsAtIndexInput
     {
-        public SAPGetSAPGridViewCellContentsAtIndexInput(string searchSAPElementId)
+        public SapGetSapGridViewCellContentsAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3469,7 +3640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetSAPGridViewCellPropertiesAtIndexResponse
+    public class SapGetSapGridViewCellPropertiesAtIndexResponse
     {
         public string CellTextContents { get; set; }
         public bool CellIsChangeable { get; set; }
@@ -3490,15 +3661,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public bool CellIsLink { get; set; }
     }
 
-    public class SAPGetSAPGridViewCellPropertiesAtIndexInput
+    public class SapGetSapGridViewCellPropertiesAtIndexInput
     {
-        public SAPGetSAPGridViewCellPropertiesAtIndexInput(string searchSAPElementId)
+        public SapGetSapGridViewCellPropertiesAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3515,15 +3686,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPDrawRectangleAroundSAPGridViewCellAtIndexInput
+    public class SapDrawRectangleAroundSapGridViewCellAtIndexInput
     {
-        public SAPDrawRectangleAroundSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        public SapDrawRectangleAroundSapGridViewCellAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3546,15 +3717,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGlobalLeftClickSAPGridViewCellAtIndexInput
+    public class SapGlobalLeftClickSapGridViewCellAtIndexInput
     {
-        public SAPGlobalLeftClickSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        public SapGlobalLeftClickSapGridViewCellAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3587,14 +3758,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public SAPGlobalLeftClickSAPGridViewCellAtIndexInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public SapGlobalLeftClickSapGridViewCellAtIndexInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SAPGlobalLeftClickSAPGridViewCellAtIndexInputOffsetRelativeToType
+    public enum SapGlobalLeftClickSapGridViewCellAtIndexInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -3611,15 +3782,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public class SAPGlobalRightClickSAPGridViewCellAtIndexInput
+    public class SapGlobalRightClickSapGridViewCellAtIndexInput
     {
-        public SAPGlobalRightClickSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        public SapGlobalRightClickSapGridViewCellAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3652,14 +3823,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public SAPGlobalRightClickSAPGridViewCellAtIndexInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public SapGlobalRightClickSapGridViewCellAtIndexInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SAPGlobalRightClickSAPGridViewCellAtIndexInputOffsetRelativeToType
+    public enum SapGlobalRightClickSapGridViewCellAtIndexInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -3676,15 +3847,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public class SAPGlobalDoubleLeftClickSAPGridViewCellAtIndexInput
+    public class SapGlobalDoubleLeftClickSapGridViewCellAtIndexInput
     {
-        public SAPGlobalDoubleLeftClickSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        public SapGlobalDoubleLeftClickSapGridViewCellAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3717,7 +3888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public SAPGlobalDoubleLeftClickSAPGridViewCellAtIndexInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public SapGlobalDoubleLeftClickSapGridViewCellAtIndexInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? DoubleClickDelayInMilliseconds { get; set; } = 10;
@@ -3727,7 +3898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SAPGlobalDoubleLeftClickSAPGridViewCellAtIndexInputOffsetRelativeToType
+    public enum SapGlobalDoubleLeftClickSapGridViewCellAtIndexInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -3744,35 +3915,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public class SAPGetSAPGridViewColumnHeadersResponse
+    public class SapGetSapGridViewColumnHeadersResponse
     {
-        public string SAPGridViewColumnHeadersJSON { get; set; }
+        [JsonProperty("SAPGridViewColumnHeadersJSON")]
+        public string SapGridViewColumnHeadersJson { get; set; }
         public int NumberOfColumnHeaders { get; set; }
     }
 
-    public class SAPGetSAPGridViewColumnHeadersInput
+    public class SapGetSapGridViewColumnHeadersInput
     {
-        public SAPGetSAPGridViewColumnHeadersInput(string searchSAPElementId)
+        public SapGetSapGridViewColumnHeadersInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPClickSAPGridViewCellAtIndexInput
+    public class SapClickSapGridViewCellAtIndexInput
     {
-        public SAPClickSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        public SapClickSapGridViewCellAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3789,15 +3961,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPDoubleClickSAPGridViewCellAtIndexInput
+    public class SapDoubleClickSapGridViewCellAtIndexInput
     {
-        public SAPDoubleClickSAPGridViewCellAtIndexInput(string searchSAPElementId)
+        public SapDoubleClickSapGridViewCellAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3814,15 +3986,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPPressSAPGridViewCellButtonAtIndexInput
+    public class SapPressSapGridViewCellButtonAtIndexInput
     {
-        public SAPPressSAPGridViewCellButtonAtIndexInput(string searchSAPElementId)
+        public SapPressSapGridViewCellButtonAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3839,15 +4011,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPCheckSAPGridViewCellCheckboxAtIndexInput
+    public class SapCheckSapGridViewCellCheckboxAtIndexInput
     {
-        public SAPCheckSAPGridViewCellCheckboxAtIndexInput(string searchSAPElementId)
+        public SapCheckSapGridViewCellCheckboxAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3867,20 +4039,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPModifySAPGridViewCellAtIndexResponse
+    public class SapModifySapGridViewCellAtIndexResponse
     {
         public string ModifiedValue { get; set; }
     }
 
-    public class SAPModifySAPGridViewCellAtIndexInput
+    public class SapModifySapGridViewCellAtIndexInput
     {
-        public SAPModifySAPGridViewCellAtIndexInput(string searchSAPElementId)
+        public SapModifySapGridViewCellAtIndexInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3898,15 +4070,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSetSAPGridViewCurrentRowInput
+    public class SapSetSapGridViewCurrentRowInput
     {
-        public SAPSetSAPGridViewCurrentRowInput(string searchSAPElementId)
+        public SapSetSapGridViewCurrentRowInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3915,15 +4087,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPPressSAPGridViewColumnHeaderInput
+    public class SapPressSapGridViewColumnHeaderInput
     {
-        public SAPPressSAPGridViewColumnHeaderInput(string searchSAPElementId)
+        public SapPressSapGridViewColumnHeaderInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchColumnName { get; set; }
         public string SearchColumnTitle { get; set; }
 
@@ -3937,20 +4109,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSetSAPGridViewFirstVisibleRowResponse
+    public class SapSetSapGridViewFirstVisibleRowResponse
     {
         public int ActualFirstVisibleRowIndex { get; set; }
     }
 
-    public class SAPSetSAPGridViewFirstVisibleRowInput
+    public class SapSetSapGridViewFirstVisibleRowInput
     {
-        public SAPSetSAPGridViewFirstVisibleRowInput(string searchSAPElementId)
+        public SapSetSapGridViewFirstVisibleRowInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int FirstVisibleRowIndex { get; set; } = 1;
@@ -3959,15 +4131,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectSAPGridViewRowInput
+    public class SapSelectSapGridViewRowInput
     {
-        public SAPSelectSAPGridViewRowInput(string searchSAPElementId)
+        public SapSelectSapGridViewRowInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -3979,16 +4151,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectSAPGridViewMultipleRowsInput
+    public class SapSelectSapGridViewMultipleRowsInput
     {
-        public SAPSelectSAPGridViewMultipleRowsInput(string searchSAPElementId, string rowsToSelect)
+        public SapSelectSapGridViewMultipleRowsInput(string searchSapElementId, string rowsToSelect)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
             this.RowsToSelect = rowsToSelect;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RowsToSelect { get; set; }
@@ -3997,15 +4169,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSetSAPGridViewCurrentColumnInput
+    public class SapSetSapGridViewCurrentColumnInput
     {
-        public SAPSetSAPGridViewCurrentColumnInput(string searchSAPElementId)
+        public SapSetSapGridViewCurrentColumnInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchColumnName { get; set; }
         public string SearchColumnTitle { get; set; }
 
@@ -4019,15 +4191,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSetSAPGridViewCurrentCellInput
+    public class SapSetSapGridViewCurrentCellInput
     {
-        public SAPSetSAPGridViewCurrentCellInput(string searchSAPElementId)
+        public SapSetSapGridViewCurrentCellInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -4044,15 +4216,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectSAPGridViewColumnInput
+    public class SapSelectSapGridViewColumnInput
     {
-        public SAPSelectSAPGridViewColumnInput(string searchSAPElementId)
+        public SapSelectSapGridViewColumnInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchColumnName { get; set; }
         public string SearchColumnTitle { get; set; }
 
@@ -4075,48 +4247,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGridViewSelectAllInput
+    public class SapGridViewSelectAllInput
     {
-        public SAPGridViewSelectAllInput(string searchSAPElementId)
+        public SapGridViewSelectAllInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGridViewDeselectAllInput
+    public class SapGridViewDeselectAllInput
     {
-        public SAPGridViewDeselectAllInput(string searchSAPElementId)
+        public SapGridViewDeselectAllInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSetSAPGridViewFirstVisibleColumnResponse
+    public class SapSetSapGridViewFirstVisibleColumnResponse
     {
         public string ActualFirstVisibleColumnName { get; set; }
     }
 
-    public class SAPSetSAPGridViewFirstVisibleColumnInput
+    public class SapSetSapGridViewFirstVisibleColumnInput
     {
-        public SAPSetSAPGridViewFirstVisibleColumnInput(string searchSAPElementId)
+        public SapSetSapGridViewFirstVisibleColumnInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
         public string SearchColumnName { get; set; }
         public string SearchColumnTitle { get; set; }
 
@@ -4130,15 +4302,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGridViewOpenContextMenuInput
+    public class SapGridViewOpenContextMenuInput
     {
-        public SAPGridViewOpenContextMenuInput(string searchSAPElementId)
+        public SapGridViewOpenContextMenuInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; } = 1;
@@ -4155,22 +4327,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPGetGridViewTextContentsResponse
+    public class SapGetGridViewTextContentsResponse
     {
-        public string SAPGridViewTextContentsJSON { get; set; }
+        [JsonProperty("SAPGridViewTextContentsJSON")]
+        public string SapGridViewTextContentsJson { get; set; }
         public int NumberOfRowsReturned { get; set; }
         public int NumberOfColumnsReturned { get; set; }
     }
 
-    public class SAPGetGridViewTextContentsInput
+    public class SapGetGridViewTextContentsInput
     {
-        public SAPGetGridViewTextContentsInput(string searchSAPElementId)
+        public SapGetGridViewTextContentsInput(string searchSapElementId)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? FirstRowToReturn { get; set; } = 1;
@@ -4203,17 +4376,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectCalendarMonthInput
+    public class SapSelectCalendarMonthInput
     {
-        public SAPSelectCalendarMonthInput(string searchSAPElementId, int month, int year)
+        public SapSelectCalendarMonthInput(string searchSapElementId, int month, int year)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
             this.Month = month;
             this.Year = year;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int Month { get; set; }
@@ -4225,17 +4398,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectCalendarWeekInput
+    public class SapSelectCalendarWeekInput
     {
-        public SAPSelectCalendarWeekInput(string searchSAPElementId, int week, int year)
+        public SapSelectCalendarWeekInput(string searchSapElementId, int week, int year)
         {
-            this.SearchSAPElementId = searchSAPElementId;
+            this.SearchSapElementId = searchSapElementId;
             this.Week = week;
             this.Year = year;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int Week { get; set; }
@@ -4247,41 +4420,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPSelectCalendarRangeInput
+    public class SapSelectCalendarRangeInput
     {
-        public SAPSelectCalendarRangeInput(string searchSAPElementId, string fromDateYYYYMMDD, string toDateYYYYMMDD)
+        public SapSelectCalendarRangeInput(string searchSapElementId, string fromDateYyyymmdd, string toDateYyyymmdd)
         {
-            this.SearchSAPElementId = searchSAPElementId;
-            this.FromDateYYYYMMDD = fromDateYYYYMMDD;
-            this.ToDateYYYYMMDD = toDateYYYYMMDD;
+            this.SearchSapElementId = searchSapElementId;
+            this.FromDateYyyymmdd = fromDateYyyymmdd;
+            this.ToDateYyyymmdd = toDateYyyymmdd;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FromDateYYYYMMDD { get; set; }
+        [JsonProperty("FromDateYYYYMMDD", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FromDateYyyymmdd { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ToDateYYYYMMDD { get; set; }
+        [JsonProperty("ToDateYYYYMMDD", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ToDateYyyymmdd { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SAPFocusCalendarDateInput
+    public class SapFocusCalendarDateInput
     {
-        public SAPFocusCalendarDateInput(string searchSAPElementId, string dateYYYYMMDD)
+        public SapFocusCalendarDateInput(string searchSapElementId, string dateYyyymmdd)
         {
-            this.SearchSAPElementId = searchSAPElementId;
-            this.DateYYYYMMDD = dateYYYYMMDD;
+            this.SearchSapElementId = searchSapElementId;
+            this.DateYyyymmdd = dateYyyymmdd;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SearchSAPElementId { get; set; }
+        [JsonProperty("SearchSAPElementId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchSapElementId { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DateYYYYMMDD { get; set; }
+        [JsonProperty("DateYYYYMMDD", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DateYyyymmdd { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";

@@ -644,16 +644,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
     public class ExportPayloadPowerBIReportInput
     {
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExportPayloadPowerBIReportInputFormatType Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi.ExportPayloadPowerBIReportInputFormatType.PDF;
+        public ExportPayloadPowerBIReportInputFormatType Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi.ExportPayloadPowerBIReportInputFormatType.Pdf;
         public ExportPayloadPowerBIReportInputPowerBIReportExportConfigurationType PowerBIReportExportConfiguration { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExportPayloadPowerBIReportInputFormatType
     {
-        PDF,
-        PPTX,
-        PNG
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "PPTX")]
+        Pptx,
+        [EnumMember(Value = "PNG")]
+        Png
     }
 
     public class ExportPayloadPowerBIReportInputPowerBIReportExportConfigurationType
@@ -712,13 +715,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
     public class EffectiveIdentity
     {
-        public EffectiveIdentity(string username)
+        public EffectiveIdentity(string userName)
         {
-            this.Username = username;
+            this.UserName = userName;
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("datasets")]
         public string[] Datasets { get; set; }
@@ -750,7 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
     public class ExportPayloadPaginatedReportInput
     {
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExportPayloadPaginatedReportInputFormatType Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi.ExportPayloadPaginatedReportInputFormatType.PDF;
+        public ExportPayloadPaginatedReportInputFormatType Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi.ExportPayloadPaginatedReportInputFormatType.Pdf;
 
         [JsonProperty("paginatedReportConfiguration")]
         public ExportPayloadPaginatedReportInputPaginatedReportConfigurationType PaginatedReportConfiguration { get; set; }
@@ -759,15 +762,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExportPayloadPaginatedReportInputFormatType
     {
-        PDF,
-        CSV,
-        DOCX,
-        IMAGE,
-        MHTML,
-        PPTX,
-        XLSX,
-        XML,
-        ACCESSIBLEPDF
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "CSV")]
+        Csv,
+        [EnumMember(Value = "DOCX")]
+        Docx,
+        [EnumMember(Value = "IMAGE")]
+        Image,
+        [EnumMember(Value = "MHTML")]
+        Mhtml,
+        [EnumMember(Value = "PPTX")]
+        Pptx,
+        [EnumMember(Value = "XLSX")]
+        Xlsx,
+        [EnumMember(Value = "XML")]
+        Xml,
+        [EnumMember(Value = "ACCESSIBLEPDF")]
+        Accessiblepdf
     }
 
     public class ExportPayloadPaginatedReportInputPaginatedReportConfigurationType

@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
     public class MessageAttachmentsGetResponseAttachmentsTypeItem
     {
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("content-disposition")]
         public string ContentDisposition { get; set; }

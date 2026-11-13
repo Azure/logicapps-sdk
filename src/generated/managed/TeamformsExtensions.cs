@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         public FormMetaContentTypeType ContentType { get; set; }
 
         [JsonProperty("fields@odata.context")]
-        public string FieldsOdataContext { get; set; }
+        public string FieldsODataContext { get; set; }
 
         [JsonProperty("fields")]
         public FormMetaFieldsType Fields { get; set; }

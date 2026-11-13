@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
     public class BodyInput
     {
         [JsonProperty("callbackURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

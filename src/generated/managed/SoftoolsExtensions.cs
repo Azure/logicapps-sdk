@@ -186,7 +186,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softools
 
     public class RecordResponse
     {
-        public string Id { get; set; }
+        [JsonProperty("_id")]
+        public string Id2 { get; set; }
         public string AppIdentifier { get; set; }
         public string CreatedByUserId { get; set; }
         public string CreatedByUser { get; set; }
@@ -196,6 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softools
         public RecordResponseUpdatedDateType UpdatedDate { get; set; }
         public string Identifier { get; set; }
         public string QuickFilterSearchText { get; set; }
+        public string Id { get; set; }
         public bool EditableAccessForUser { get; set; }
     }
 

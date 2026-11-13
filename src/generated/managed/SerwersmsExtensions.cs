@@ -206,18 +206,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
     public class NewAnswerBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms.BodyInputTypeType.NDI;
+        public BodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms.BodyInputTypeType.Ndi;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputTypeType
     {
-        ECO,
+        [EnumMember(Value = "ECO")]
+        Eco,
         ND,
-        NDI,
-        MMS,
+        [EnumMember(Value = "NDI")]
+        Ndi,
+        [EnumMember(Value = "MMS")]
+        Mms,
         [EnumMember(Value = "2WAY")]
-        _2WAY
+        _2Way
     }
 }
 

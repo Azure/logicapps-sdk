@@ -13,19 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
     public class RescocloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescocloud")]
-        public IBodyWorkflowAction<OdataError, ApiConnectionActionConfiguration> RecordDelete(Expression<Func<string>> id, Expression<Func<string>> entity, Expression<Func<string>> ifMatch = null)
+        public IBodyWorkflowAction<ODataError, ApiConnectionActionConfiguration> RecordDelete(Expression<Func<string>> id, Expression<Func<string>> entity, Expression<Func<string>> ifMatch = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: false);
-            return new DeferredBodyAction<OdataError, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ODataError, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}('{1}')", __workflow_entity.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_ifMatch != null)
                     callPayload.Headers["If-Match"] = ExpressionConverter.Convert(__workflow_ifMatch);
-                return new ApiConnectionAction<OdataError>(callPayload);
+                return new ApiConnectionAction<ODataError>(callPayload);
             });
         }
     }
@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
         }
     }
 
-    public class OdataError
+    public class ODataError
     {
         [JsonProperty("error")]
-        public OdataErrorMain Error { get; set; }
+        public ODataErrorMain Error { get; set; }
     }
 
-    public class OdataErrorMain
+    public class ODataErrorMain
     {
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -70,10 +70,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
         public JToken Innererror { get; set; }
 
         [JsonProperty("details")]
-        public OdataErrorDetail[] Details { get; set; }
+        public ODataErrorDetail[] Details { get; set; }
     }
 
-    public class OdataErrorDetail
+    public class ODataErrorDetail
     {
         [JsonProperty("code")]
         public string Code { get; set; }

@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
     public class SystemProperties
     {
         [JsonProperty("EnqueuedTimeUtc")]
-        public string EnqueuedTimeInUTC { get; set; }
+        public string EnqueuedTimeInUtc { get; set; }
         public string Offset { get; set; }
         public string PartitionKey { get; set; }
         public int SequenceNumber { get; set; }

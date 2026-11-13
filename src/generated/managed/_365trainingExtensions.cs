@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public string Name { get; set; }
 
         [JsonProperty("onelineBIO")]
-        public string OnelineBIO { get; set; }
+        public string OnelineBio { get; set; }
 
         [JsonProperty("thumbnailUrl")]
         public string ThumbnailUrl { get; set; }
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public string Name { get; set; }
 
         [JsonProperty("onelineBIO")]
-        public string OnelineBIO { get; set; }
+        public string OnelineBio { get; set; }
 
         [JsonProperty("thumbnailUrl")]
         public string ThumbnailUrl { get; set; }
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public string InstructorUrl { get; set; }
 
         [JsonProperty("blogURL")]
-        public string BlogURL { get; set; }
+        public string BlogUrl { get; set; }
 
         [JsonProperty("twitterHandle")]
         public string TwitterHandle { get; set; }
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public string Name { get; set; }
 
         [JsonProperty("onelineBIO")]
-        public string OnelineBIO { get; set; }
+        public string OnelineBio { get; set; }
 
         [JsonProperty("thumbnailUrl")]
         public string ThumbnailUrl { get; set; }
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public string Url { get; set; }
 
         [JsonProperty("displayURL")]
-        public string DisplayURL { get; set; }
+        public string DisplayUrl { get; set; }
 
         [JsonProperty("snippet")]
         public string Snippet { get; set; }

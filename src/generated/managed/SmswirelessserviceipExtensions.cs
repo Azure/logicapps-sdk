@@ -40,15 +40,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
 
     public class BodyInput
     {
-        public BodyInput(string username, string password, string body)
+        public BodyInput(string userName, string password, string body)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.Password = password;
             this.Body = body;
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }

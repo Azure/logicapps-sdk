@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> GenerateAcceptancePDFWebHook()
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> GenerateAcceptancePdfWebHook()
         {
             return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         public string CommentUser { get; set; }
 
         [JsonProperty("imageUrl")]
-        public string CommentAttachmentURL { get; set; }
+        public string CommentAttachmentUrl { get; set; }
     }
 
     public enum ChecklistCommentCommentTypeType
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         public string InstanceTitle { get; set; }
 
         [JsonProperty("url")]
-        public string InstanceURL { get; set; }
+        public string InstanceUrl { get; set; }
 
         [JsonProperty("created")]
         public string InstanceCreatedDate { get; set; }
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         public string CreatedBy { get; set; }
 
         [JsonProperty("url")]
-        public string ProcedureURL { get; set; }
+        public string ProcedureUrl { get; set; }
 
         [JsonProperty("restricted")]
         public bool Restricted { get; set; }
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         public int WebhookId { get; set; }
 
         [JsonProperty("callbackurl")]
-        public string CallbackURL { get; set; }
+        public string CallbackUrl { get; set; }
 
         [JsonProperty("created")]
         public string CreatedDate { get; set; }
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
     public class WebhookRegistrationInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

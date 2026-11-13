@@ -27,16 +27,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<ChartURLResponse, ApiConnectionActionConfiguration> ChartURL(Expression<Func<ChartBodyInput>> body)
+        public IBodyWorkflowAction<ChartUrlResponse, ApiConnectionActionConfiguration> ChartUrl(Expression<Func<ChartBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<ChartURLResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ChartUrlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chart/create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ChartURLResponse>(callPayload);
+                return new ApiConnectionAction<ChartUrlResponse>(callPayload);
             });
         }
 
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         Base64
     }
 
-    public class ChartURLResponse
+    public class ChartUrlResponse
     {
         [JsonProperty("success")]
         public bool Success { get; set; }

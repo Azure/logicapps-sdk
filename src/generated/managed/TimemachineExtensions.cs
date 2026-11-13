@@ -2111,9 +2111,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     public enum BodyInputTypeType
     {
         [EnumMember(Value = "MULTIPLE_CHOICE")]
-        MULTIPLECHOICE,
+        MultipleChoice,
         [EnumMember(Value = "OPEN_ENDED")]
-        OPENENDED
+        OpenEnded
     }
 
     public class QuestionOptionInput
@@ -2866,9 +2866,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     public enum BodyInputTrainingTypeType
     {
         [EnumMember(Value = "DEMO_TRAINING")]
-        DEMOTRAINING,
+        DemoTraining,
         [EnumMember(Value = "APPLICATION_TRAINING")]
-        APPLICATIONTRAINING
+        ApplicationTraining
     }
 
     public class ReprocessDemoTrainingBodyInput
@@ -3069,19 +3069,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputTargetType
     {
-        LESSON,
+        [EnumMember(Value = "LESSON")]
+        Lesson,
         [EnumMember(Value = "LESSON_QUESTIONS")]
-        LESSONQUESTIONS,
-        QUIZ,
-        INTRO,
-        EXERCISE
+        LessonQuestions,
+        [EnumMember(Value = "QUIZ")]
+        Quiz,
+        [EnumMember(Value = "INTRO")]
+        Intro,
+        [EnumMember(Value = "EXERCISE")]
+        Exercise
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputParentTypeType
     {
-        MODULE,
-        TOPIC
+        [EnumMember(Value = "MODULE")]
+        Module,
+        [EnumMember(Value = "TOPIC")]
+        Topic
     }
 
     public class GenerateCourseResponse
@@ -3639,9 +3645,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     public enum QuizSettingSnapshotQuestionTypeType
     {
         [EnumMember(Value = "MULTIPLE_CHOICE")]
-        MULTIPLECHOICE,
+        MultipleChoice,
         [EnumMember(Value = "OPEN_ENDED")]
-        OPENENDED
+        OpenEnded
     }
 
     public class QuestionSnapshot
@@ -3675,16 +3681,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     public enum QuestionSnapshotQuestionTypeType
     {
         [EnumMember(Value = "MULTIPLE_CHOICE")]
-        MULTIPLECHOICE,
+        MultipleChoice,
         [EnumMember(Value = "OPEN_ENDED")]
-        OPENENDED
+        OpenEnded
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QuestionSnapshotSourceType
     {
         AI,
-        MANUAL
+        [EnumMember(Value = "MANUAL")]
+        Manual
     }
 
     public class AuditSnapshot
@@ -3787,7 +3794,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     public enum LearningByteSnapshotSourceType
     {
         AI,
-        MANUAL
+        [EnumMember(Value = "MANUAL")]
+        Manual
     }
 
     public class LessonSnapshot
@@ -3821,7 +3829,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     public enum LessonSnapshotSourceType
     {
         AI,
-        MANUAL
+        [EnumMember(Value = "MANUAL")]
+        Manual
     }
 
     public class MediaSnapshot
@@ -3845,16 +3854,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MediaSnapshotMediaTypeType
     {
-        IMAGE,
+        [EnumMember(Value = "IMAGE")]
+        Image,
         [EnumMember(Value = "VIDEO")]
-        VIdEO
+        Video
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MediaSnapshotSourceType
     {
         AI,
-        MANUAL
+        [EnumMember(Value = "MANUAL")]
+        Manual
     }
 
     public class ExerciseSnapshot
@@ -3927,18 +3938,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     public enum ExerciseSnapshotExerciseTypeType
     {
         [EnumMember(Value = "ILE_TEXT")]
-        ILETEXT,
+        IleText,
         [EnumMember(Value = "RPE_VOICE")]
-        RPEVOICE,
+        RpeVoice,
         [EnumMember(Value = "RPE_VIDEO")]
-        RPEVIdEO
+        RpeVideo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExerciseSnapshotSourceType
     {
         AI,
-        MANUAL
+        [EnumMember(Value = "MANUAL")]
+        Manual
     }
 
     public class LinkedDocumentSnapshot

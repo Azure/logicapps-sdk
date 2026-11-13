@@ -921,11 +921,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nrelip
     {
         public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeBDType BD { get; set; }
         public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeE85Type E85 { get; set; }
-        public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeELECType ELEC { get; set; }
+
+        [JsonProperty("ELEC")]
+        public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeElecType Elec { get; set; }
         public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeHYType HY { get; set; }
-        public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeLNGType LNG { get; set; }
-        public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeCNGType CNG { get; set; }
-        public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeLPGType LPG { get; set; }
+
+        [JsonProperty("LNG")]
+        public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeLngType Lng { get; set; }
+
+        [JsonProperty("CNG")]
+        public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeCngType Cng { get; set; }
+
+        [JsonProperty("LPG")]
+        public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeLpgType Lpg { get; set; }
     }
 
     public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeBDType
@@ -940,16 +948,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nrelip
         public int Total { get; set; }
     }
 
-    public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeELECType
+    public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeElecType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
 
         [JsonProperty("stations")]
-        public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeELECTypeStationsType Stations { get; set; }
+        public AlternativeFuelStationsResponseStationCountsTypeFuelsTypeElecTypeStationsType Stations { get; set; }
     }
 
-    public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeELECTypeStationsType
+    public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeElecTypeStationsType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -961,19 +969,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nrelip
         public int Total { get; set; }
     }
 
-    public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeLNGType
+    public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeLngType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
     }
 
-    public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeCNGType
+    public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeCngType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
     }
 
-    public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeLPGType
+    public class AlternativeFuelStationsResponseStationCountsTypeFuelsTypeLpgType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -1234,13 +1242,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nrelip
     {
         [EnumMember(Value = "all")]
         All,
-        NEMA1450,
-        NEMA515,
-        NEMA520,
+        [EnumMember(Value = "NEMA1450")]
+        Nema1450,
+        [EnumMember(Value = "NEMA515")]
+        Nema515,
+        [EnumMember(Value = "NEMA520")]
+        Nema520,
         J1772,
-        J1772COMBO,
-        CHADEMO,
-        TESLA
+        [EnumMember(Value = "J1772COMBO")]
+        J1772Combo,
+        [EnumMember(Value = "CHADEMO")]
+        Chademo,
+        [EnumMember(Value = "TESLA")]
+        Tesla
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1527,11 +1541,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nrelip
     {
         public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeBDType BD { get; set; }
         public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeE85Type E85 { get; set; }
-        public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeELECType ELEC { get; set; }
+
+        [JsonProperty("ELEC")]
+        public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeElecType Elec { get; set; }
         public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeHYType HY { get; set; }
-        public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeLNGType LNG { get; set; }
-        public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeCNGType CNG { get; set; }
-        public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeLPGType LPG { get; set; }
+
+        [JsonProperty("LNG")]
+        public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeLngType Lng { get; set; }
+
+        [JsonProperty("CNG")]
+        public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeCngType Cng { get; set; }
+
+        [JsonProperty("LPG")]
+        public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeLpgType Lpg { get; set; }
     }
 
     public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeBDType
@@ -1546,16 +1568,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nrelip
         public int Total { get; set; }
     }
 
-    public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeELECType
+    public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeElecType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
 
         [JsonProperty("stations")]
-        public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeELECTypeStationsType Stations { get; set; }
+        public AlternativeFuelNearestResponseStationCountsTypeFuelsTypeElecTypeStationsType Stations { get; set; }
     }
 
-    public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeELECTypeStationsType
+    public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeElecTypeStationsType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -1567,19 +1589,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nrelip
         public int Total { get; set; }
     }
 
-    public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeLNGType
+    public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeLngType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
     }
 
-    public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeCNGType
+    public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeCngType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
     }
 
-    public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeLPGType
+    public class AlternativeFuelNearestResponseStationCountsTypeFuelsTypeLpgType
     {
         [JsonProperty("total")]
         public int Total { get; set; }

@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendRCS(Expression<Func<object>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendRcs(Expression<Func<object>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>

@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> teamName, Expression<Func<CreateJobContentTypeInput>> contentType, Expression<Func<string>> contentId, Expression<Func<string>> workflowName, Expression<Func<ContentInput>> content, Expression<Func<string>> callBackEndpoint = null)
+        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> teamName, Expression<Func<CreateJobContentTypeInput>> contentType, Expression<Func<string>> contentId, Expression<Func<string>> workflowName, Expression<Func<ContentInput>> content, Expression<Func<string>> callbackEndpoint = null)
         {
             var __workflow_teamName = WorkflowExpression.Compile(teamName, nameof(teamName), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_contentId = WorkflowExpression.Compile(contentId, nameof(contentId), required: true);
             var __workflow_workflowName = WorkflowExpression.Compile(workflowName, nameof(workflowName), required: true);
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
-            var __workflow_callBackEndpoint = WorkflowExpression.Compile(callBackEndpoint, nameof(callBackEndpoint), required: false);
+            var __workflow_callbackEndpoint = WorkflowExpression.Compile(callbackEndpoint, nameof(callbackEndpoint), required: false);
             return new DeferredBodyAction<CreateJobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contentmoderator/review/v1.0/teams/{0}/jobs", __workflow_teamName.WithUrlEncoding(1)));
@@ -45,20 +45,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                 callPayload.Queries["ContentType"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Queries["ContentId"] = ExpressionConverter.Convert(__workflow_contentId);
                 callPayload.Queries["WorkflowName"] = ExpressionConverter.Convert(__workflow_workflowName);
-                if (__workflow_callBackEndpoint != null)
-                    callPayload.Queries["CallBackEndpoint"] = ExpressionConverter.Convert(__workflow_callBackEndpoint);
+                if (__workflow_callbackEndpoint != null)
+                    callPayload.Queries["CallBackEndpoint"] = ExpressionConverter.Convert(__workflow_callbackEndpoint);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<CreateJobResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<OCRResponse, ApiConnectionActionConfiguration> OCR(Expression<Func<string>> language, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
+        public IBodyWorkflowAction<OcrResponse, ApiConnectionActionConfiguration> Ocr(Expression<Func<string>> language, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
-            return new DeferredBodyAction<OCRResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<OcrResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/OCR";
                 var apiCallHttpMethod = "post";
@@ -66,18 +66,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                 callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
-                return new ApiConnectionAction<OCRResponse>(callPayload);
+                return new ApiConnectionAction<OcrResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<ScreenTextResponse, ApiConnectionActionConfiguration> ScreenText(Expression<Func<DetectLanguageContentTypeInput>> contentType, Expression<Func<string>> textContent, Expression<Func<string>> language = null, Expression<Func<bool>> autocorrect = null, Expression<Func<bool>> pII = null, Expression<Func<string>> listId = null, Expression<Func<bool>> classify = null)
+        public IBodyWorkflowAction<ScreenTextResponse, ApiConnectionActionConfiguration> ScreenText(Expression<Func<DetectLanguageContentTypeInput>> contentType, Expression<Func<string>> textContent, Expression<Func<string>> language = null, Expression<Func<bool>> autocorrect = null, Expression<Func<bool>> pii = null, Expression<Func<string>> listId = null, Expression<Func<bool>> classify = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_textContent = WorkflowExpression.Compile(textContent, nameof(textContent), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             var __workflow_autocorrect = WorkflowExpression.Compile(autocorrect, nameof(autocorrect), required: false);
-            var __workflow_pII = WorkflowExpression.Compile(pII, nameof(pII), required: false);
+            var __workflow_pii = WorkflowExpression.Compile(pii, nameof(pii), required: false);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: false);
             var __workflow_classify = WorkflowExpression.Compile(classify, nameof(classify), required: false);
             return new DeferredBodyAction<ScreenTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -89,8 +89,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                     callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 if (__workflow_autocorrect != null)
                     callPayload.Queries["autocorrect"] = ExpressionConverter.Convert(__workflow_autocorrect);
-                if (__workflow_pII != null)
-                    callPayload.Queries["PII"] = ExpressionConverter.Convert(__workflow_pII);
+                if (__workflow_pii != null)
+                    callPayload.Queries["PII"] = ExpressionConverter.Convert(__workflow_pii);
                 if (__workflow_listId != null)
                     callPayload.Queries["listId"] = ExpressionConverter.Convert(__workflow_listId);
                 if (__workflow_classify != null)
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         [EnumMember(Value = "Image Content")]
         ImageContent,
         [EnumMember(Value = "Image URL")]
-        ImageURL
+        ImageUrl
     }
 
     public class CreateJobResponse
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         public string ContentValue { get; set; }
     }
 
-    public class OCRResponse
+    public class OcrResponse
     {
         public string TrackingId { get; set; }
         public string CacheId { get; set; }
@@ -228,10 +228,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         public string DetectedText { get; set; }
 
         [JsonProperty("Candidates")]
-        public OCRResponseDetectedCandidatesTypeItem[] DetectedCandidates { get; set; }
+        public OcrResponseDetectedCandidatesTypeItem[] DetectedCandidates { get; set; }
     }
 
-    public class OCRResponseDetectedCandidatesTypeItem
+    public class OcrResponseDetectedCandidatesTypeItem
     {
         [JsonProperty("Text")]
         public string DetectedTextContentCandidates { get; set; }
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         public ScreenTextResponsePersonalIdentifiableInformationTypeDetectedEmailTypeItem[] DetectedEmail { get; set; }
 
         [JsonProperty("SSN")]
-        public ScreenTextResponsePersonalIdentifiableInformationTypeDetectedSSNTypeItem[] DetectedSSN { get; set; }
+        public ScreenTextResponsePersonalIdentifiableInformationTypeDetectedSsnTypeItem[] DetectedSsn { get; set; }
 
         [JsonProperty("IPA")]
         public ScreenTextResponsePersonalIdentifiableInformationTypeDetectedIPAddressTypeItem[] DetectedIPAddress { get; set; }
@@ -294,13 +294,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         public int EmailIndex { get; set; }
     }
 
-    public class ScreenTextResponsePersonalIdentifiableInformationTypeDetectedSSNTypeItem
+    public class ScreenTextResponsePersonalIdentifiableInformationTypeDetectedSsnTypeItem
     {
         [JsonProperty("Text")]
-        public string SSN { get; set; }
+        public string Ssn { get; set; }
 
         [JsonProperty("Index")]
-        public int SSNIndex { get; set; }
+        public int SsnIndex { get; set; }
     }
 
     public class ScreenTextResponsePersonalIdentifiableInformationTypeDetectedIPAddressTypeItem

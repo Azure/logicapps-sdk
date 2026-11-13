@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
     public class NunifyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nunify")]
-        public IBodyWorkflowAction<ADDREGISTRANTResponse, ApiConnectionActionConfiguration> ADDREGISTRANT(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<ADDREGISTRANTBodyInput>> body = null)
+        public IBodyWorkflowAction<AddRegistrantResponse, ApiConnectionActionConfiguration> AddRegistrant(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<AddRegistrantBodyInput>> body = null)
         {
             var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ADDREGISTRANTResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AddRegistrantResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", __workflow_platformId.WithUrlEncoding(1), __workflow_domainId.WithUrlEncoding(1), __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -30,15 +30,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 else
-                    callPayload.Body = new ADDREGISTRANTBodyInput().ToJToken();
-                return new ApiConnectionAction<ADDREGISTRANTResponse>(callPayload);
+                    callPayload.Body = new AddRegistrantBodyInput().ToJToken();
+                return new ApiConnectionAction<AddRegistrantResponse>(callPayload);
             });
         }
     }
 
     public class NunifyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NewRegistration(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId)
         {
             var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Body = new NEWREGISTRATIONBodyInput().ToJToken();
+                callPayload.Body = new NewRegistrationBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NewCheckin(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId)
         {
             var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
@@ -67,13 +67,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Body = new NEWCHECKINBodyInput().ToJToken();
+                callPayload.Body = new NewCheckinBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
 
-    public class ADDREGISTRANTResponse
+    public class AddRegistrantResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
         public string Email { get; set; }
     }
 
-    public class ADDREGISTRANTBodyInput
+    public class AddRegistrantBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
         public string TicketTypeId { get; set; } = "Default";
     }
 
-    public class NEWREGISTRATIONBodyInput
+    public class NewRegistrationBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
         internal string Kind { get; set; } = "ticket_create";
     }
 
-    public class NEWCHECKINBodyInput
+    public class NewCheckinBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         public string Url { get; set; }
 
         [JsonProperty("viewEventURL")]
-        public string ViewEventURL { get; set; }
+        public string ViewEventUrl { get; set; }
 
         [JsonProperty("dateandtime")]
         public SingleEventResDateandtimeType Dateandtime { get; set; }
@@ -320,10 +320,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
     public enum TimezoneInput
     {
         [EnumMember(Value = "Etc/GMT+12")]
-        EtcGMT12,
+        EtcGmt12,
         [EnumMember(Value = "Etc/GMT+11")]
-        EtcGMT11,
-        MIT,
+        EtcGmt11,
+        [EnumMember(Value = "MIT")]
+        Mit,
         [EnumMember(Value = "Pacific/Apia")]
         PacificApia,
         [EnumMember(Value = "Pacific/Midway")]
@@ -341,8 +342,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "America/Atka")]
         AmericaAtka,
         [EnumMember(Value = "Etc/GMT+10")]
-        EtcGMT10,
-        HST,
+        EtcGmt10,
+        [EnumMember(Value = "HST")]
+        Hst,
         [EnumMember(Value = "Pacific/Fakaofo")]
         PacificFakaofo,
         [EnumMember(Value = "Pacific/Honolulu")]
@@ -354,14 +356,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Pacific/Tahiti")]
         PacificTahiti,
         [EnumMember(Value = "SystemV/HST10")]
-        SystemVHST10,
+        SystemVHst10,
         [EnumMember(Value = "US/Aleutian")]
         USAleutian,
         [EnumMember(Value = "US/Hawaii")]
         USHawaii,
         [EnumMember(Value = "Pacific/Marquesas")]
         PacificMarquesas,
-        AST,
+        [EnumMember(Value = "AST")]
+        Ast,
         [EnumMember(Value = "America/Anchorage")]
         AmericaAnchorage,
         [EnumMember(Value = "America/Juneau")]
@@ -371,13 +374,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "America/Yakutat")]
         AmericaYakutat,
         [EnumMember(Value = "Etc/GMT+9")]
-        EtcGMT9,
+        EtcGmt9,
         [EnumMember(Value = "Pacific/Gambier")]
         PacificGambier,
         [EnumMember(Value = "SystemV/YST9")]
-        SystemVYST9,
+        SystemVYst9,
         [EnumMember(Value = "SystemV/YST9YDT")]
-        SystemVYST9YDT,
+        SystemVyst9Ydt,
         [EnumMember(Value = "US/Alaska")]
         USAlaska,
         [EnumMember(Value = "America/Dawson")]
@@ -397,17 +400,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Canada/Yukon")]
         CanadaYukon,
         [EnumMember(Value = "Etc/GMT+8")]
-        EtcGMT8,
+        EtcGmt8,
         [EnumMember(Value = "Mexico/BajaNorte")]
         MexicoBajaNorte,
-        PST,
-        PST8PDT,
+        [EnumMember(Value = "PST")]
+        Pst,
+        [EnumMember(Value = "PST8PDT")]
+        Pst8Pdt,
         [EnumMember(Value = "Pacific/Pitcairn")]
         PacificPitcairn,
         [EnumMember(Value = "SystemV/PST8")]
-        SystemVPST8,
+        SystemVPst8,
         [EnumMember(Value = "SystemV/PST8PDT")]
-        SystemVPST8PDT,
+        SystemVpst8Pdt,
         [EnumMember(Value = "US/Pacific")]
         USPacific,
         [EnumMember(Value = "America/Boise")]
@@ -437,17 +442,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Canada/Mountain")]
         CanadaMountain,
         [EnumMember(Value = "Etc/GMT+7")]
-        EtcGMT7,
-        MST,
-        MST7MDT,
+        EtcGmt7,
+        [EnumMember(Value = "MST")]
+        Mst,
+        [EnumMember(Value = "MST7MDT")]
+        Mst7Mdt,
         [EnumMember(Value = "Mexico/BajaSur")]
         MexicoBajaSur,
         Navajo,
-        PNT,
+        [EnumMember(Value = "PNT")]
+        Pnt,
         [EnumMember(Value = "SystemV/MST7")]
-        SystemVMST7,
+        SystemVMst7,
         [EnumMember(Value = "SystemV/MST7MDT")]
-        SystemVMST7MDT,
+        SystemVmst7Mdt,
         [EnumMember(Value = "US/Arizona")]
         USArizona,
         [EnumMember(Value = "US/Mountain")]
@@ -498,8 +506,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         AmericaTegucigalpa,
         [EnumMember(Value = "America/Winnipeg")]
         AmericaWinnipeg,
-        CST,
-        CST6CDT,
+        [EnumMember(Value = "CST")]
+        Cst,
+        [EnumMember(Value = "CST6CDT")]
+        Cst6Cdt,
         [EnumMember(Value = "Canada/Central")]
         CanadaCentral,
         [EnumMember(Value = "Canada/East-Saskatchewan")]
@@ -509,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Chile/EasterIsland")]
         ChileEasterIsland,
         [EnumMember(Value = "Etc/GMT+6")]
-        EtcGMT6,
+        EtcGmt6,
         [EnumMember(Value = "Mexico/General")]
         MexicoGeneral,
         [EnumMember(Value = "Pacific/Easter")]
@@ -517,9 +527,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Pacific/Galapagos")]
         PacificGalapagos,
         [EnumMember(Value = "SystemV/CST6")]
-        SystemVCST6,
+        SystemVCst6,
         [EnumMember(Value = "SystemV/CST6CDT")]
-        SystemVCST6CDT,
+        SystemVcst6Cdt,
         [EnumMember(Value = "US/Central")]
         USCentral,
         [EnumMember(Value = "US/Indiana-Starke")]
@@ -591,16 +601,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Canada/Eastern")]
         CanadaEastern,
         Cuba,
-        EST,
-        EST5EDT,
+        [EnumMember(Value = "EST")]
+        Est,
+        [EnumMember(Value = "EST5EDT")]
+        Est5Edt,
         [EnumMember(Value = "Etc/GMT+5")]
-        EtcGMT5,
-        IET,
+        EtcGmt5,
+        [EnumMember(Value = "IET")]
+        Iet,
         Jamaica,
         [EnumMember(Value = "SystemV/EST5")]
-        SystemVEST5,
+        SystemVEst5,
         [EnumMember(Value = "SystemV/EST5EDT")]
-        SystemVEST5EDT,
+        SystemVest5Edt,
         [EnumMember(Value = "US/East-Indiana")]
         USEastIndiana,
         [EnumMember(Value = "US/Eastern")]
@@ -690,18 +703,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Chile/Continental")]
         ChileContinental,
         [EnumMember(Value = "Etc/GMT+4")]
-        EtcGMT4,
-        PRT,
+        EtcGmt4,
+        [EnumMember(Value = "PRT")]
+        Prt,
         [EnumMember(Value = "SystemV/AST4")]
-        SystemVAST4,
+        SystemVAst4,
         [EnumMember(Value = "SystemV/AST4ADT")]
-        SystemVAST4ADT,
+        SystemVast4Adt,
         [EnumMember(Value = "America/St_Johns")]
         AmericaStJohns,
-        CNT,
+        [EnumMember(Value = "CNT")]
+        Cnt,
         [EnumMember(Value = "Canada/Newfoundland")]
         CanadaNewfoundland,
-        AGT,
+        [EnumMember(Value = "AGT")]
+        Agt,
         [EnumMember(Value = "America/Araguaina")]
         AmericaAraguaina,
         [EnumMember(Value = "America/Argentina/Buenos_Aires")]
@@ -762,11 +778,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         AmericaSaoPaulo,
         [EnumMember(Value = "Antarctica/Rothera")]
         AntarcticaRothera,
-        BET,
+        [EnumMember(Value = "BET")]
+        Bet,
         [EnumMember(Value = "Brazil/East")]
         BrazilEast,
         [EnumMember(Value = "Etc/GMT+3")]
-        EtcGMT3,
+        EtcGmt3,
         [EnumMember(Value = "America/Noronha")]
         AmericaNoronha,
         [EnumMember(Value = "Atlantic/South_Georgia")]
@@ -774,7 +791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Brazil/DeNoronha")]
         BrazilDeNoronha,
         [EnumMember(Value = "Etc/GMT+2")]
-        EtcGMT2,
+        EtcGmt2,
         [EnumMember(Value = "America/Scoresbysund")]
         AmericaScoresbysund,
         [EnumMember(Value = "Atlantic/Azores")]
@@ -782,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Atlantic/Cape_Verde")]
         AtlanticCapeVerde,
         [EnumMember(Value = "Etc/GMT+1")]
-        EtcGMT1,
+        EtcGmt1,
         [EnumMember(Value = "Africa/Abidjan")]
         AfricaAbidjan,
         [EnumMember(Value = "Africa/Accra")]
@@ -829,19 +846,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         AtlanticStHelena,
         Eire,
         [EnumMember(Value = "Etc/GMT")]
-        EtcGMT,
+        EtcGmt,
         [EnumMember(Value = "Etc/GMT+0")]
-        EtcGMT0,
+        EtcGmt0,
         [EnumMember(Value = "Etc/GMT-0")]
-        EtcGMT02,
+        EtcGmt02,
         [EnumMember(Value = "Etc/GMT0")]
-        EtcGMT03,
+        EtcGmt03,
         [EnumMember(Value = "Etc/Greenwich")]
         EtcGreenwich,
         [EnumMember(Value = "Etc/UCT")]
-        EtcUCT,
+        EtcUct,
         [EnumMember(Value = "Etc/UTC")]
-        EtcUTC,
+        EtcUtc,
         [EnumMember(Value = "Etc/Universal")]
         EtcUniversal,
         [EnumMember(Value = "Etc/Zulu")]
@@ -863,15 +880,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         GB,
         [EnumMember(Value = "GB-Eire")]
         GBEire,
-        GMT,
-        GMT0,
+        [EnumMember(Value = "GMT")]
+        Gmt,
+        [EnumMember(Value = "GMT0")]
+        Gmt0,
         Greenwich,
         Iceland,
         Portugal,
-        UCT,
-        UTC,
+        [EnumMember(Value = "UCT")]
+        Uct,
+        [EnumMember(Value = "UTC")]
+        Utc,
         Universal,
-        WET,
+        [EnumMember(Value = "WET")]
+        Wet,
         Zulu,
         [EnumMember(Value = "Africa/Algiers")]
         AfricaAlgiers,
@@ -907,10 +929,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         ArcticLongyearbyen,
         [EnumMember(Value = "Atlantic/Jan_Mayen")]
         AtlanticJanMayen,
-        CET,
-        ECT,
+        [EnumMember(Value = "CET")]
+        Cet,
+        [EnumMember(Value = "ECT")]
+        Ect,
         [EnumMember(Value = "Etc/GMT-1")]
-        EtcGMT15,
+        EtcGmt15,
         [EnumMember(Value = "Europe/Amsterdam")]
         EuropeAmsterdam,
         [EnumMember(Value = "Europe/Andorra")]
@@ -971,9 +995,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         EuropeZagreb,
         [EnumMember(Value = "Europe/Zurich")]
         EuropeZurich,
-        MET,
+        [EnumMember(Value = "MET")]
+        Met,
         Poland,
-        ART,
+        [EnumMember(Value = "ART")]
+        Art,
         [EnumMember(Value = "Africa/Blantyre")]
         AfricaBlantyre,
         [EnumMember(Value = "Africa/Bujumbura")]
@@ -1016,11 +1042,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         AsiaNicosia,
         [EnumMember(Value = "Asia/Tel_Aviv")]
         AsiaTelAviv,
-        CAT,
-        EET,
+        [EnumMember(Value = "CAT")]
+        Cat,
+        [EnumMember(Value = "EET")]
+        Eet,
         Egypt,
         [EnumMember(Value = "Etc/GMT-2")]
-        EtcGMT22,
+        EtcGmt22,
         [EnumMember(Value = "Europe/Athens")]
         EuropeAthens,
         [EnumMember(Value = "Europe/Bucharest")]
@@ -1090,9 +1118,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         AsiaQatar,
         [EnumMember(Value = "Asia/Riyadh")]
         AsiaRiyadh,
-        EAT,
+        [EnumMember(Value = "EAT")]
+        Eat,
         [EnumMember(Value = "Etc/GMT-3")]
-        EtcGMT32,
+        EtcGmt32,
         [EnumMember(Value = "Europe/Moscow")]
         EuropeMoscow,
         [EnumMember(Value = "Europe/Volgograd")]
@@ -1104,7 +1133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Indian/Mayotte")]
         IndianMayotte,
         [EnumMember(Value = "W-SU")]
-        WSU,
+        Wsu,
         [EnumMember(Value = "Asia/Riyadh87")]
         AsiaRiyadh87,
         [EnumMember(Value = "Asia/Riyadh88")]
@@ -1131,7 +1160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Asia/Yerevan")]
         AsiaYerevan,
         [EnumMember(Value = "Etc/GMT-4")]
-        EtcGMT42,
+        EtcGmt42,
         [EnumMember(Value = "Europe/Samara")]
         EuropeSamara,
         [EnumMember(Value = "Indian/Mahe")]
@@ -1140,7 +1169,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         IndianMauritius,
         [EnumMember(Value = "Indian/Reunion")]
         IndianReunion,
-        NET,
+        [EnumMember(Value = "NET")]
+        Net,
         [EnumMember(Value = "Asia/Kabul")]
         AsiaKabul,
         [EnumMember(Value = "Asia/Aqtau")]
@@ -1164,19 +1194,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Asia/Yekaterinburg")]
         AsiaYekaterinburg,
         [EnumMember(Value = "Etc/GMT-5")]
-        EtcGMT52,
+        EtcGmt52,
         [EnumMember(Value = "Indian/Kerguelen")]
         IndianKerguelen,
         [EnumMember(Value = "Indian/Maldives")]
         IndianMaldives,
-        PLT,
+        [EnumMember(Value = "PLT")]
+        Plt,
         [EnumMember(Value = "Asia/Kolkata")]
         AsiaKolkata,
         [EnumMember(Value = "Asia/Calcutta")]
         AsiaCalcutta,
         [EnumMember(Value = "Asia/Colombo")]
         AsiaColombo,
-        IST,
+        [EnumMember(Value = "IST")]
+        Ist,
         [EnumMember(Value = "Asia/Katmandu")]
         AsiaKatmandu,
         [EnumMember(Value = "Antarctica/Mawson")]
@@ -1201,9 +1233,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         AsiaThimbu,
         [EnumMember(Value = "Asia/Thimphu")]
         AsiaThimphu,
-        BST,
+        [EnumMember(Value = "BST")]
+        Bst,
         [EnumMember(Value = "Etc/GMT-6")]
-        EtcGMT62,
+        EtcGmt62,
         [EnumMember(Value = "Indian/Chagos")]
         IndianChagos,
         [EnumMember(Value = "Asia/Rangoon")]
@@ -1229,10 +1262,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Asia/Vientiane")]
         AsiaVientiane,
         [EnumMember(Value = "Etc/GMT-7")]
-        EtcGMT72,
+        EtcGmt72,
         [EnumMember(Value = "Indian/Christmas")]
         IndianChristmas,
-        VST,
+        [EnumMember(Value = "VST")]
+        Vst,
         [EnumMember(Value = "Antarctica/Casey")]
         AntarcticaCasey,
         [EnumMember(Value = "Asia/Brunei")]
@@ -1275,10 +1309,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         AustraliaPerth,
         [EnumMember(Value = "Australia/West")]
         AustraliaWest,
-        CTT,
+        [EnumMember(Value = "CTT")]
+        Ctt,
         [EnumMember(Value = "Etc/GMT-8")]
-        EtcGMT82,
-        PRC,
+        EtcGmt82,
+        [EnumMember(Value = "PRC")]
+        Prc,
         Singapore,
         [EnumMember(Value = "Asia/Choibalsan")]
         AsiaChoibalsan,
@@ -1295,13 +1331,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Asia/Yakutsk")]
         AsiaYakutsk,
         [EnumMember(Value = "Etc/GMT-9")]
-        EtcGMT92,
-        JST,
+        EtcGmt92,
+        [EnumMember(Value = "JST")]
+        Jst,
         Japan,
         [EnumMember(Value = "Pacific/Palau")]
         PacificPalau,
-        ROK,
-        ACT,
+        [EnumMember(Value = "ROK")]
+        Rok,
+        [EnumMember(Value = "ACT")]
+        Act,
         [EnumMember(Value = "Australia/Adelaide")]
         AustraliaAdelaide,
         [EnumMember(Value = "Australia/Broken_Hill")]
@@ -1314,7 +1353,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         AustraliaSouth,
         [EnumMember(Value = "Australia/Yancowinna")]
         AustraliaYancowinna,
-        AET,
+        [EnumMember(Value = "AET")]
+        Aet,
         [EnumMember(Value = "Antarctica/DumontDUrville")]
         AntarcticaDumontDUrville,
         [EnumMember(Value = "Asia/Sakhalin")]
@@ -1322,7 +1362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Asia/Vladivostok")]
         AsiaVladivostok,
         [EnumMember(Value = "Australia/ACT")]
-        AustraliaACT,
+        AustraliaAct,
         [EnumMember(Value = "Australia/Brisbane")]
         AustraliaBrisbane,
         [EnumMember(Value = "Australia/Canberra")]
@@ -1336,7 +1376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Australia/Melbourne")]
         AustraliaMelbourne,
         [EnumMember(Value = "Australia/NSW")]
-        AustraliaNSW,
+        AustraliaNsw,
         [EnumMember(Value = "Australia/Queensland")]
         AustraliaQueensland,
         [EnumMember(Value = "Australia/Sydney")]
@@ -1346,7 +1386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Australia/Victoria")]
         AustraliaVictoria,
         [EnumMember(Value = "Etc/GMT-10")]
-        EtcGMT102,
+        EtcGmt102,
         [EnumMember(Value = "Pacific/Guam")]
         PacificGuam,
         [EnumMember(Value = "Pacific/Port_Moresby")]
@@ -1358,13 +1398,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Pacific/Yap")]
         PacificYap,
         [EnumMember(Value = "Australia/LHI")]
-        AustraliaLHI,
+        AustraliaLhi,
         [EnumMember(Value = "Australia/Lord_Howe")]
         AustraliaLordHowe,
         [EnumMember(Value = "Asia/Magadan")]
         AsiaMagadan,
         [EnumMember(Value = "Etc/GMT-11")]
-        EtcGMT112,
+        EtcGmt112,
         [EnumMember(Value = "Pacific/Efate")]
         PacificEfate,
         [EnumMember(Value = "Pacific/Guadalcanal")]
@@ -1375,7 +1415,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         PacificNoumea,
         [EnumMember(Value = "Pacific/Ponape")]
         PacificPonape,
-        SST,
+        [EnumMember(Value = "SST")]
+        Sst,
         [EnumMember(Value = "Pacific/Norfolk")]
         PacificNorfolk,
         [EnumMember(Value = "Antarctica/McMurdo")]
@@ -1387,9 +1428,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Asia/Kamchatka")]
         AsiaKamchatka,
         [EnumMember(Value = "Etc/GMT-12")]
-        EtcGMT122,
+        EtcGmt122,
         Kwajalein,
-        NST,
+        [EnumMember(Value = "NST")]
+        Nst,
         NZ,
         [EnumMember(Value = "Pacific/Auckland")]
         PacificAuckland,
@@ -1410,17 +1452,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohocalendar
         [EnumMember(Value = "Pacific/Wallis")]
         PacificWallis,
         [EnumMember(Value = "NZ-CHAT")]
-        NZCHAT,
+        NZChat,
         [EnumMember(Value = "Pacific/Chatham")]
         PacificChatham,
         [EnumMember(Value = "Etc/GMT-13")]
-        EtcGMT13,
+        EtcGmt13,
         [EnumMember(Value = "Pacific/Enderbury")]
         PacificEnderbury,
         [EnumMember(Value = "Pacific/Tongatapu")]
         PacificTongatapu,
         [EnumMember(Value = "Etc/GMT-14")]
-        EtcGMT14,
+        EtcGmt14,
         [EnumMember(Value = "Pacific/Kiritimati")]
         PacificKiritimati,
         [EnumMember(Value = "America/Punta_Arenas")]

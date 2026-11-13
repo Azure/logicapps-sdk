@@ -28,17 +28,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetCFNCUSDOCResponse, ApiConnectionActionConfiguration> GetCFNCUSDOC(Expression<Func<GetCFNCUSDOCBodyInput>> body)
+        public IBodyWorkflowAction<GetCfncusdocResponse, ApiConnectionActionConfiguration> GetCfncusdoc(Expression<Func<GetCfncusdocBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<GetCFNCUSDOCResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCfncusdocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getCFNCUSDOC";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GetCFNCUSDOCResponse>(callPayload);
+                return new ApiConnectionAction<GetCfncusdocResponse>(callPayload);
             });
         }
 
@@ -238,17 +238,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSOEMAILResponse, ApiConnectionActionConfiguration> GetSOEMAIL(Expression<Func<GetSOEMAILBodyInput>> body)
+        public IBodyWorkflowAction<GetSoemailResponse, ApiConnectionActionConfiguration> GetSoemail(Expression<Func<GetSoemailBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<GetSOEMAILResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetSoemailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getSoemail";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GetSOEMAILResponse>(callPayload);
+                return new ApiConnectionAction<GetSoemailResponse>(callPayload);
             });
         }
 
@@ -268,17 +268,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSOTASKResponse, ApiConnectionActionConfiguration> GetSOTASK(Expression<Func<GetSOTASKBodyInput>> body)
+        public IBodyWorkflowAction<GetSotaskResponse, ApiConnectionActionConfiguration> GetSotask(Expression<Func<GetSotaskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<GetSOTASKResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetSotaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getSotask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GetSOTASKResponse>(callPayload);
+                return new ApiConnectionAction<GetSotaskResponse>(callPayload);
             });
         }
 
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetCFNCUSDOC(Expression<Func<SetCFNCUSDOCBodyInput>> body)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetCfncusdoc(Expression<Func<SetCfncusdocBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetSOEMAIL(Expression<Func<SetSOEMAILBodyInput>> body)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetSoemail(Expression<Func<SetSoemailBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetSOTASK(Expression<Func<SetSOTASKBodyInput>> body)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetSotask(Expression<Func<SetSotaskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Endpoint { get; set; }
     }
 
-    public class GetCFNCUSDOCResponse
+    public class GetCfncusdocResponse
     {
         [JsonProperty("caption")]
         public string Caption { get; set; }
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string RemoteKey { get; set; }
 
         [JsonProperty("data")]
-        public GetCFNCUSDOCResponseValueType Value { get; set; }
+        public GetCfncusdocResponseValueType Value { get; set; }
 
         [JsonProperty("error")]
         public string Error { get; set; }
@@ -677,87 +677,135 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public bool Success { get; set; }
     }
 
-    public class GetCFNCUSDOCResponseValueType
+    public class GetCfncusdocResponseValueType
     {
-        public GetCFNCUSDOCResponseValueTypeCARDLINESTypeItem[] CARDLINES { get; set; }
-        public GetCFNCUSDOCResponseValueTypeCASHLINESTypeItem[] CASHLINES { get; set; }
+        [JsonProperty("CARDLINES")]
+        public GetCfncusdocResponseValueTypeCardlinesTypeItem[] Cardlines { get; set; }
+
+        [JsonProperty("CASHLINES")]
+        public GetCfncusdocResponseValueTypeCashlinesTypeItem[] Cashlines { get; set; }
 
         [JsonProperty("CFNCUSDOC")]
-        public GetCFNCUSDOCResponseValueTypeCollectionsDocumentType CollectionsDocument { get; set; }
-        public GetCFNCUSDOCResponseValueTypeCHEQUELINESTypeItem[] CHEQUELINES { get; set; }
+        public GetCfncusdocResponseValueTypeCollectionsDocumentType CollectionsDocument { get; set; }
+
+        [JsonProperty("CHEQUELINES")]
+        public GetCfncusdocResponseValueTypeChequelinesTypeItem[] Chequelines { get; set; }
     }
 
-    public class GetCFNCUSDOCResponseValueTypeCARDLINESTypeItem
+    public class GetCfncusdocResponseValueTypeCardlinesTypeItem
     {
-        public string CRDCARDNUM { get; set; }
-        public string CREDITCARDS { get; set; }
-        public string LINENUM { get; set; }
-        public string LINEVAL { get; set; }
+        [JsonProperty("CRDCARDNUM")]
+        public string Crdcardnum { get; set; }
+
+        [JsonProperty("CREDITCARDS")]
+        public string Creditcards { get; set; }
+
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public string Lineval { get; set; }
     }
 
-    public class GetCFNCUSDOCResponseValueTypeCASHLINESTypeItem
+    public class GetCfncusdocResponseValueTypeCashlinesTypeItem
     {
-        public string LINENUM { get; set; }
-        public string LINEVAL { get; set; }
-        public string SOCURRENCY { get; set; }
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public string Lineval { get; set; }
+
+        [JsonProperty("SOCURRENCY")]
+        public string Socurrency { get; set; }
     }
 
-    public class GetCFNCUSDOCResponseValueTypeCollectionsDocumentType
+    public class GetCfncusdocResponseValueTypeCollectionsDocumentType
     {
-        public string COLLECTOR { get; set; }
+        [JsonProperty("COLLECTOR")]
+        public string Collector { get; set; }
 
         [JsonProperty("COLLECTOR_PRSNIN_NAME2")]
-        public string COLLECTORPRSNINNAME2 { get; set; }
-        public string COMPANY { get; set; }
-        public string FINCODE { get; set; }
-        public string PRJC { get; set; }
+        public string CollectorPrsninName2 { get; set; }
+
+        [JsonProperty("COMPANY")]
+        public string Company { get; set; }
+
+        [JsonProperty("FINCODE")]
+        public string Fincode { get; set; }
+
+        [JsonProperty("PRJC")]
+        public string Prjc { get; set; }
 
         [JsonProperty("PRJC_PRJC_NAME")]
-        public string PRJCPRJCNAME { get; set; }
-        public string REMARKS { get; set; }
-        public string SALESMAN { get; set; }
+        public string PrjcPrjcName { get; set; }
+
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
+
+        [JsonProperty("SALESMAN")]
+        public string Salesman { get; set; }
 
         [JsonProperty("SALESMAN_PRSNIN_NAME2")]
-        public string SALESMANPRSNINNAME2 { get; set; }
-        public string SERIES { get; set; }
-        public string SUMAMNT { get; set; }
-        public string TRDR { get; set; }
+        public string SalesmanPrsninName2 { get; set; }
+
+        [JsonProperty("SERIES")]
+        public string Series { get; set; }
+
+        [JsonProperty("SUMAMNT")]
+        public string Sumamnt { get; set; }
+
+        [JsonProperty("TRDR")]
+        public string Trdr { get; set; }
 
         [JsonProperty("TRDR_TRDR_CODE")]
-        public string TRDRTRDRCODE { get; set; }
+        public string TrdrTrdrCode { get; set; }
 
         [JsonProperty("TRDR_TRDR_NAME")]
-        public string TRDRTRDRNAME { get; set; }
-        public string TRNDATE { get; set; }
+        public string TrdrTrdrName { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
-    public class GetCFNCUSDOCResponseValueTypeCHEQUELINESTypeItem
+    public class GetCfncusdocResponseValueTypeChequelinesTypeItem
     {
-        public string CFINALDATE { get; set; }
-        public string CODE { get; set; }
-        public string CSERIES { get; set; }
-        public string LINENUM { get; set; }
-        public string LINEVAL { get; set; }
-        public string TPRMS { get; set; }
+        [JsonProperty("CFINALDATE")]
+        public string Cfinaldate { get; set; }
+
+        [JsonProperty("CODE")]
+        public string Code { get; set; }
+
+        [JsonProperty("CSERIES")]
+        public string Cseries { get; set; }
+
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public string Lineval { get; set; }
+
+        [JsonProperty("TPRMS")]
+        public string Tprms { get; set; }
     }
 
-    public class GetCFNCUSDOCBodyInput
+    public class GetCfncusdocBodyInput
     {
-        public GetCFNCUSDOCBodyInput(string kEY)
+        public GetCfncusdocBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "CARDLINES:CRDCARDNUM,CREDITCARDS,LINENUM,LINEVAL;CASHLINES:LINENUM,LINEVAL,LRATE,SOCURRENCY;CFNCUSDOC:ACNMSK,APPRV,BUSUNITS,COLLECTOR,COLLECTOR_PRSNIN_CODE,COLLECTOR_PRSNIN_NAME2,COMMENTS,COMMENTS1,COMPANY,EXPN,FINCODEG,FINCODE,FINSTATES,FOLDER,INST,INST_INST_CODE,INST_INST_NAME,ISCANCEL,ISPRINT,ORIGIN,PNAMEG,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,REMARKS,SALESMAN,SALESMAN_PRSNIN_CODE,SALESMAN_PRSNIN_NAME2,SERIES,SHIPDATEG,SUMAMNT,SUMLAMNT,SUMTAMNT,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDR,TRDR_TRDR_AFM,TRDR_TRDR_CODE,TRDR_TRDR_NAME,TRDRS,TRDRS_TRDR_CODE,TRDRS_TRDR_NAME,TRNDATE,TRNDATEG;CHEQUELINES:CCHEQUENUMBER,CFINALDATE,CODE,CSERIES,LINENUM,LINEVAL,TPRMS;VCAPTION:CURRBAL;VOUCHERLINES:LINENUM,LINEVAL,VOUCHER,VOUCHER_VOUCHER_CODE,VOUCHER_VOUCHER_FINALDATE,VOUCHER_VOUCHER_NAME,VOUCHER_VOUCHER_VOUCHERVAL";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "CARDLINES:CRDCARDNUM,CREDITCARDS,LINENUM,LINEVAL;CASHLINES:LINENUM,LINEVAL,LRATE,SOCURRENCY;CFNCUSDOC:ACNMSK,APPRV,BUSUNITS,COLLECTOR,COLLECTOR_PRSNIN_CODE,COLLECTOR_PRSNIN_NAME2,COMMENTS,COMMENTS1,COMPANY,EXPN,FINCODEG,FINCODE,FINSTATES,FOLDER,INST,INST_INST_CODE,INST_INST_NAME,ISCANCEL,ISPRINT,ORIGIN,PNAMEG,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,REMARKS,SALESMAN,SALESMAN_PRSNIN_CODE,SALESMAN_PRSNIN_NAME2,SERIES,SHIPDATEG,SUMAMNT,SUMLAMNT,SUMTAMNT,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDR,TRDR_TRDR_AFM,TRDR_TRDR_CODE,TRDR_TRDR_NAME,TRDRS,TRDRS_TRDR_CODE,TRDRS_TRDR_NAME,TRNDATE,TRNDATEG;CHEQUELINES:CCHEQUENUMBER,CFINALDATE,CODE,CSERIES,LINENUM,LINEVAL,TPRMS;VCAPTION:CURRBAL;VOUCHERLINES:LINENUM,LINEVAL,VOUCHER,VOUCHER_VOUCHER_CODE,VOUCHER_VOUCHER_FINALDATE,VOUCHER_VOUCHER_NAME,VOUCHER_VOUCHER_VOUCHERVAL";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "CFNCUSDOC";
@@ -792,87 +840,130 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetCfnsupdocResponseValueType
     {
-        public GetCfnsupdocResponseValueTypeCARDLINESTypeItem[] CARDLINES { get; set; }
-        public GetCfnsupdocResponseValueTypeCASHLINESTypeItem[] CASHLINES { get; set; }
+        [JsonProperty("CARDLINES")]
+        public GetCfnsupdocResponseValueTypeCardlinesTypeItem[] Cardlines { get; set; }
+
+        [JsonProperty("CASHLINES")]
+        public GetCfnsupdocResponseValueTypeCashlinesTypeItem[] Cashlines { get; set; }
 
         [JsonProperty("CFNSUPDOC")]
         public GetCfnsupdocResponseValueTypePaymentsDocumentType PaymentsDocument { get; set; }
-        public GetCfnsupdocResponseValueTypeCHEQUELINESTypeItem[] CHEQUELINES { get; set; }
+
+        [JsonProperty("CHEQUELINES")]
+        public GetCfnsupdocResponseValueTypeChequelinesTypeItem[] Chequelines { get; set; }
     }
 
-    public class GetCfnsupdocResponseValueTypeCARDLINESTypeItem
+    public class GetCfnsupdocResponseValueTypeCardlinesTypeItem
     {
-        public string CRDCARDNUM { get; set; }
-        public string CREDITCARDS { get; set; }
-        public string LINENUM { get; set; }
-        public string LINEVAL { get; set; }
+        [JsonProperty("CRDCARDNUM")]
+        public string Crdcardnum { get; set; }
+
+        [JsonProperty("CREDITCARDS")]
+        public string Creditcards { get; set; }
+
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public string Lineval { get; set; }
     }
 
-    public class GetCfnsupdocResponseValueTypeCASHLINESTypeItem
+    public class GetCfnsupdocResponseValueTypeCashlinesTypeItem
     {
-        public string LINENUM { get; set; }
-        public string LINEVAL { get; set; }
-        public string SOCURRENCY { get; set; }
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public string Lineval { get; set; }
+
+        [JsonProperty("SOCURRENCY")]
+        public string Socurrency { get; set; }
     }
 
     public class GetCfnsupdocResponseValueTypePaymentsDocumentType
     {
         [JsonProperty("COMMENTS")]
         public string Reason { get; set; }
-        public string COMPANY { get; set; }
-        public string FINCODE { get; set; }
-        public string PRJC { get; set; }
+
+        [JsonProperty("COMPANY")]
+        public string Company { get; set; }
+
+        [JsonProperty("FINCODE")]
+        public string Fincode { get; set; }
+
+        [JsonProperty("PRJC")]
+        public string Prjc { get; set; }
 
         [JsonProperty("PRJC_PRJC_NAME")]
-        public string PRJCPRJCNAME { get; set; }
-        public string SERIES { get; set; }
-        public string SUMAMNT { get; set; }
-        public string TRDR { get; set; }
+        public string PrjcPrjcName { get; set; }
+
+        [JsonProperty("SERIES")]
+        public string Series { get; set; }
+
+        [JsonProperty("SUMAMNT")]
+        public string Sumamnt { get; set; }
+
+        [JsonProperty("TRDR")]
+        public string Trdr { get; set; }
 
         [JsonProperty("TRDR_TRDR_ADDRESS")]
-        public string TRDRTRDRADDRESS { get; set; }
+        public string TrdrTrdrAddress { get; set; }
 
         [JsonProperty("TRDR_TRDR_AFM")]
-        public string TRDRTRDRAFM { get; set; }
+        public string TrdrTrdrAfm { get; set; }
 
         [JsonProperty("TRDR_TRDR_CODE")]
-        public string TRDRTRDRCODE { get; set; }
+        public string TrdrTrdrCode { get; set; }
 
         [JsonProperty("TRDR_TRDR_IRSDATA")]
-        public string TRDRTRDRIRSDATA { get; set; }
+        public string TrdrTrdrIrsdata { get; set; }
 
         [JsonProperty("TRDR_TRDR_NAME")]
-        public string TRDRTRDRNAME { get; set; }
-        public string TRNDATE { get; set; }
+        public string TrdrTrdrName { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
-    public class GetCfnsupdocResponseValueTypeCHEQUELINESTypeItem
+    public class GetCfnsupdocResponseValueTypeChequelinesTypeItem
     {
-        public string CFINALDATE { get; set; }
-        public string CODE { get; set; }
-        public string CSERIES { get; set; }
-        public string LINENUM { get; set; }
-        public string LINEVAL { get; set; }
-        public string TPRMS { get; set; }
+        [JsonProperty("CFINALDATE")]
+        public string Cfinaldate { get; set; }
+
+        [JsonProperty("CODE")]
+        public string Code { get; set; }
+
+        [JsonProperty("CSERIES")]
+        public string Cseries { get; set; }
+
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public string Lineval { get; set; }
+
+        [JsonProperty("TPRMS")]
+        public string Tprms { get; set; }
     }
 
     public class GetCfnsupdocBodyInput
     {
-        public GetCfnsupdocBodyInput(string kEY)
+        public GetCfnsupdocBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "CARDLINES:CRDCARDNUM,CREDITCARDS,LINENUM,LINEVAL;CASHLINES:LINENUM,LINEVAL,LRATE,SOCURRENCY;CFNSUPDOC:ACNMSK,APPRV,BRANCH,BUSUNITS,CMPFINCODE,FINCODE,CMPSERIESNUM,COMMENTS,COMMENTS1,COMPANY,EXPN,FINSTATES,FOLDER,FPRMS,INPAYVAT,INST,INST_INST_CODE,INST_INST_NAME,ISCANCEL,ISPRINT,LRATE,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,REMARKS,SERIES,SOCASH,SOCURRENCY,SUMAMNT,SUMLAMNT,SUMTAMNT,TFPRMS,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDR,TRDR_TRDR_AFM,TRDR_TRDR_CODE,TRDR_TRDR_NAME,TRDR_TRDR_ADDRESS,TRDR_TRDR_IRSDATA,TRDRRATE,TRDRS,TRDRS_TRDR_CODE,TRDRS_TRDR_NAME,TRNDATE;CHEQUELINES:CCHEQUENUMBER,CFINALDATE,CODE,CSERIES,LINENUM,LINEVAL,TPRMS;";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "CARDLINES:CRDCARDNUM,CREDITCARDS,LINENUM,LINEVAL;CASHLINES:LINENUM,LINEVAL,LRATE,SOCURRENCY;CFNSUPDOC:ACNMSK,APPRV,BRANCH,BUSUNITS,CMPFINCODE,FINCODE,CMPSERIESNUM,COMMENTS,COMMENTS1,COMPANY,EXPN,FINSTATES,FOLDER,FPRMS,INPAYVAT,INST,INST_INST_CODE,INST_INST_NAME,ISCANCEL,ISPRINT,LRATE,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,REMARKS,SERIES,SOCASH,SOCURRENCY,SUMAMNT,SUMLAMNT,SUMTAMNT,TFPRMS,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDR,TRDR_TRDR_AFM,TRDR_TRDR_CODE,TRDR_TRDR_NAME,TRDR_TRDR_ADDRESS,TRDR_TRDR_IRSDATA,TRDRRATE,TRDRS,TRDRS_TRDR_CODE,TRDRS_TRDR_NAME,TRNDATE;CHEQUELINES:CCHEQUENUMBER,CFINALDATE,CODE,CSERIES,LINENUM,LINEVAL,TPRMS;";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "CFNSUPDOC";
@@ -942,7 +1033,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("CREATORNAME")]
         public string IssuerName { get; set; }
-        public string CREATORPHONE { get; set; }
+
+        [JsonProperty("CREATORPHONE")]
+        public string Creatorphone { get; set; }
 
         [JsonProperty("CRTDATE")]
         public string ReceiptDate { get; set; }
@@ -980,21 +1073,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetChequeBodyInput
     {
-        public GetChequeBodyInput(string kEY)
+        public GetChequeBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "CHEQUE:BANK,BANK_BANK_CODE,BANK_BANK_NAME,CHEQUEBAL,CHEQUENUMBER,CHEQUERATE,CHEQUESTATES,CHEQUEVAL,CMPCODE,CMPSERIESNUM,COMPANY,CREATORADDR,CREATORNAME,CREATORPHONE,CRTDATE,DATEOFS,FINALDATE,HOLDERADDR,HOLDERNAME,LCHEQUEBAL,LCHEQUEVAL,OSMODE,PUBLISHERAFM,REMARKS,SERIES,SOCURRENCY,SODTYPEPOSSESSOR,SODTYPEPUBLISHER,TRDRPOSSESSOR,TRDRPOSSESSOR_TRDR_CODE,TRDRPOSSESSOR_TRDR_NAME,TRDRPUBLISHER,TRDRPUBLISHER_TRDR_CODE,TRDRPUBLISHER_TRDR_NAME";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "CHEQUE:BANK,BANK_BANK_CODE,BANK_BANK_NAME,CHEQUEBAL,CHEQUENUMBER,CHEQUERATE,CHEQUESTATES,CHEQUEVAL,CMPCODE,CMPSERIESNUM,COMPANY,CREATORADDR,CREATORNAME,CREATORPHONE,CRTDATE,DATEOFS,FINALDATE,HOLDERADDR,HOLDERNAME,LCHEQUEBAL,LCHEQUEVAL,OSMODE,PUBLISHERAFM,REMARKS,SERIES,SOCURRENCY,SODTYPEPOSSESSOR,SODTYPEPUBLISHER,TRDRPOSSESSOR,TRDRPOSSESSOR_TRDR_CODE,TRDRPOSSESSOR_TRDR_NAME,TRDRPUBLISHER,TRDRPUBLISHER_TRDR_CODE,TRDRPUBLISHER_TRDR_NAME";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "CHEQUE";
@@ -1031,7 +1125,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     {
         [JsonProperty("PRSNOUT")]
         public GetContactResponseDataTypeContactType Contact { get; set; }
-        public GetContactResponseDataTypeXTRDOCDATATypeItem[] XTRDOCDATA { get; set; }
+
+        [JsonProperty("XTRDOCDATA")]
+        public GetContactResponseDataTypeXtrdocdataTypeItem[] Xtrdocdata { get; set; }
     }
 
     public class GetContactResponseDataTypeContactType
@@ -1118,38 +1214,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Zip { get; set; }
     }
 
-    public class GetContactResponseDataTypeXTRDOCDATATypeItem
+    public class GetContactResponseDataTypeXtrdocdataTypeItem
     {
-        public string LINENUM { get; set; }
-        public string NAME { get; set; }
-        public string SOFNAME { get; set; }
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
+
+        [JsonProperty("SOFNAME")]
+        public string Sofname { get; set; }
     }
 
     public class GetContactBodyInput
     {
-        public GetContactBodyInput(string kEY)
+        public GetContactBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
-        public string FORM { get; set; }
+        internal int Appid { get; set; } = 702;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "PRSNOUT:ADDRESS,AFM,AREAS,BIRTHDATE,BRANCH,CITY,CODE,CONSENT,COUNTRY,DISTRICT,DISTRICT1,EMAIL,EMAIL1,FAX,IDENTITYNUM,IRSDATA,ISACTIVE,MOBILEPHONE,NAME,NAME2,NATIONALITY,NOCONSENT,PHONE1,PHONE2,PHONEEXT,PHONELOCAL,PRSNID_PRSNOUT_CODE,REMARKS,SOSEX,SOTITLE,WEBPAGE,ZIP;PRSREL:PRSN1,PRSN1_PRSN_BIRTHDATE,PRSN1_PRSN_CODE,PRSN1_PRSN_MOBILEPHONE,PRSN1_PRSN_NAME,PRSN1_PRSN_NAME2,PRSN1_PRSN_PHONE1,RELPRSN;XTRDOCDATA:LINENUM,SOFNAME";
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "PRSNOUT:ADDRESS,AFM,AREAS,BIRTHDATE,BRANCH,CITY,CODE,CONSENT,COUNTRY,DISTRICT,DISTRICT1,EMAIL,EMAIL1,FAX,IDENTITYNUM,IRSDATA,ISACTIVE,MOBILEPHONE,NAME,NAME2,NATIONALITY,NOCONSENT,PHONE1,PHONE2,PHONEEXT,PHONELOCAL,PRSNID_PRSNOUT_CODE,REMARKS,SOSEX,SOTITLE,WEBPAGE,ZIP;PRSREL:PRSN1,PRSN1_PRSN_BIRTHDATE,PRSN1_PRSN_CODE,PRSN1_PRSN_MOBILEPHONE,PRSN1_PRSN_NAME,PRSN1_PRSN_NAME2,PRSN1_PRSN_PHONE1,RELPRSN;XTRDOCDATA:LINENUM,SOFNAME";
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "PRSNOUT";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "getData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "getData";
     }
 
     public class GetCustomerResponse
@@ -1235,21 +1338,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetCustomerBodyInput
     {
-        public GetCustomerBodyInput(string kEY)
+        public GetCustomerBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "CUSTOMER:ADDRESS,AFM,AREAS,CITY,CODE,DISCOUNT,DISTRICT,EMAIL,FAX,IRSDATA,ISACTIVE,JOBTYPETRD,NAME,PHONE01,REMARKS,VATSTS,ZIP";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "CUSTOMER:ADDRESS,AFM,AREAS,CITY,CODE,DISCOUNT,DISTRICT,EMAIL,FAX,IRSDATA,ISACTIVE,JOBTYPETRD,NAME,PHONE01,REMARKS,VATSTS,ZIP";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "CUSTOMER";
@@ -1284,11 +1388,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetDraftEntryResponseValueType
     {
-        public GetDraftEntryResponseValueTypeSODRAFTType SODRAFT { get; set; }
-        public GetDraftEntryResponseValueTypeSODRAFTLNKType SODRAFTLNK { get; set; }
+        [JsonProperty("SODRAFT")]
+        public GetDraftEntryResponseValueTypeSodraftType Sodraft { get; set; }
+
+        [JsonProperty("SODRAFTLNK")]
+        public GetDraftEntryResponseValueTypeSodraftlnkType Sodraftlnk { get; set; }
     }
 
-    public class GetDraftEntryResponseValueTypeSODRAFTType
+    public class GetDraftEntryResponseValueTypeSodraftType
     {
         [JsonProperty("ADDRESS")]
         public string Address { get; set; }
@@ -1341,7 +1448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [JsonProperty("NAMEL")]
         public string Surname { get; set; }
 
-        [JsonProperty("ZIP")]
+        [JsonProperty("NUMCG")]
         public string Zip { get; set; }
 
         [JsonProperty("PHONE1")]
@@ -1361,9 +1468,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("WEBPAGE")]
         public string WebPage { get; set; }
+
+        [JsonProperty("ZIP")]
+        public string Zip2 { get; set; }
     }
 
-    public class GetDraftEntryResponseValueTypeSODRAFTLNKType
+    public class GetDraftEntryResponseValueTypeSodraftlnkType
     {
         [JsonProperty("BRANCH")]
         public string Branch { get; set; }
@@ -1383,29 +1493,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetDraftEntryBodyInput
     {
-        public GetDraftEntryBodyInput(string kEY)
+        public GetDraftEntryBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
-        public string FORM { get; set; }
+        internal int Appid { get; set; } = 702;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "SODRAFT:ADDRESS,AFM,CITY,CODE,CONSENT,COUNTRY,DISTRICT,DISTRICT1,DRAFTTYPE,EMAIL,EMAIL1,EMAIL2,FAX,IDENTITYNUM,INSDATE,JOBTYPETRD,MOBILEPHONE,NAME,NAMEC,NAMEF,NAMEL,NOCONSENT,NUMCG,PHONE1,PHONE2,PHONEEXT,PHONELOCAL,REMARKS,SOTITLENAME,WEBPAGE,ZIP;SODRAFTLNK:BRANCH,BUSUNITS,DEPART,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,PRJCLEAD,PRSNIN,PRSNIN_PRSNIN_CODE,PRSNIN_PRSNIN_NAME2,PRSNOUT,PRSNOUT_PRSNOUT_CODE,PRSNOUT_PRSNOUT_NAME2,TRDR,TRDR_TRDR_CODE,TRDR_TRDR_NAME";
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "SODRAFT:ADDRESS,AFM,CITY,CODE,CONSENT,COUNTRY,DISTRICT,DISTRICT1,DRAFTTYPE,EMAIL,EMAIL1,EMAIL2,FAX,IDENTITYNUM,INSDATE,JOBTYPETRD,MOBILEPHONE,NAME,NAMEC,NAMEF,NAMEL,NOCONSENT,NUMCG,PHONE1,PHONE2,PHONEEXT,PHONELOCAL,REMARKS,SOTITLENAME,WEBPAGE,ZIP;SODRAFTLNK:BRANCH,BUSUNITS,DEPART,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,PRJCLEAD,PRSNIN,PRSNIN_PRSNIN_CODE,PRSNIN_PRSNIN_NAME2,PRSNOUT,PRSNOUT_PRSNOUT_CODE,PRSNOUT_PRSNOUT_NAME2,TRDR,TRDR_TRDR_CODE,TRDR_TRDR_NAME";
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SODRAFT";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "getData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "getData";
     }
 
     public class GetExpenseResponse
@@ -1462,26 +1574,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string FeeValue { get; set; }
 
         [JsonProperty("VAT")]
-        public string VATGroup { get; set; }
+        public string VatGroup { get; set; }
     }
 
     public class GetExpenseBodyInput
     {
-        public GetExpenseBodyInput(string kEY)
+        public GetExpenseBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "LINEITEM:CODE,ISACTIVE,LISOURCETYPE,MTRCATEGORY,MTRTYPE,NAME,REMARKS,SOPAYVALUE,VAT";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "LINEITEM:CODE,ISACTIVE,LISOURCETYPE,MTRCATEGORY,MTRTYPE,NAME,REMARKS,SOPAYVALUE,VAT";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "LINEITEM";
@@ -1516,20 +1629,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetExpensesDocResponseValueType
     {
-        public GetExpensesDocResponseValueTypeLINLINESTypeItem[] LINLINES { get; set; }
+        [JsonProperty("LINLINES")]
+        public GetExpensesDocResponseValueTypeLinlinesTypeItem[] Linlines { get; set; }
 
         [JsonProperty("LINSUPDOC")]
         public GetExpensesDocResponseValueTypeExpensesDocumentType ExpensesDocument { get; set; }
     }
 
-    public class GetExpensesDocResponseValueTypeLINLINESTypeItem
+    public class GetExpensesDocResponseValueTypeLinlinesTypeItem
     {
         [JsonProperty("LINENUM")]
         public string LineNumber { get; set; }
 
         [JsonProperty("LINEVAL")]
         public string LineValue { get; set; }
-        public string MTRL { get; set; }
+
+        [JsonProperty("MTRL")]
+        public string Mtrl { get; set; }
 
         [JsonProperty("MTRL_ITEM_CODE")]
         public string Code { get; set; }
@@ -1538,17 +1654,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string ItemName { get; set; }
 
         [JsonProperty("VAT")]
-        public string VATId { get; set; }
+        public string VatId { get; set; }
 
         [JsonProperty("VATAMNT")]
-        public string VATAmount { get; set; }
+        public string VatAmount { get; set; }
     }
 
     public class GetExpensesDocResponseValueTypeExpensesDocumentType
     {
         [JsonProperty("COMPANY")]
         public string Company { get; set; }
-        public string FINCODE { get; set; }
+
+        [JsonProperty("FINCODE")]
+        public string Fincode { get; set; }
 
         [JsonProperty("PAYMENT")]
         public string Payment { get; set; }
@@ -1575,34 +1693,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Date { get; set; }
 
         [JsonProperty("VATAMNT")]
-        public string VATAmount { get; set; }
+        public string VatAmount { get; set; }
     }
 
     public class GetExpensesDocBodyInput
     {
-        public GetExpensesDocBodyInput(string kEY)
+        public GetExpensesDocBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string APPId { get; set; } = "702";
-        public string FORM { get; set; }
+        internal string Appid { get; set; } = "702";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "LINLINES:LINENUM,LINEVAL,MTRL,MTRL_LINEITEM_CODE,MTRL_LINEITEM_NAME,VAT,VATAMNT;LINSUPDOC:COMPANY,ACNMSK,APPRV,BRANCH,BUSUNITS,CASHDEVICE,CBANK,CBANKBRANCH,CMPFINCODE,FINCODE,CMPSERIESNUM,COMMENTS,COMMENTS1,CRCONTROL,EXPN,FINSTATES,FPRMS,GSISFLG,GSISMD,GSISNET,GSISPACKAGES,GSISQTY,GSISVAT,INPAYVAT,INST,INST_INST_CODE,INST_INST_NAME,INTDATE,INTEXPN,INTFDOCTYPE,INTRATE,INTSHIPMENT,INTVAL,INTVAT,ISCANCEL,ISPRINT,ISTRIG,KEPYOHANDMD,KEPYOMD,KEPYOQT,LEXPN,LKEPYOVAL,LNETAMNT,LRATE,LVATAMNT,NETAMNT,NOINTRASTAT,PAYMENT,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,REMARKS,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SALESMAN,SALESMAN_PRSNIN_CODE,SALESMAN_PRSNIN_NAME2,SERIES,SHIPKIND,SHIPMENT,SOCURRENCY,SOPAYCODE,SUMAMNT,SUMLAMNT,SUMTAMNT,TEXPN,TNETAMNT,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDBRANCHS,TRDBRANCHS_TRDBRANCH_CODE,TRDBRANCHS_TRDBRANCH_NAME,TRDR,TRDR_SUPPLIER_AFM,TRDR_SUPPLIER_CHKAFM,TRDR_SUPPLIER_CODE,TRDR_SUPPLIER_NAME,TRDRRATE,TRDRS,TRDRS_TRDR_CODE,TRDRS_TRDR_NAME,TRNDATE,TVATAMNT,VATAMNT,VATPROVISIONS,VATSTS;MTRDOC:RECEIPTCARD,TRUCKS,TRUCKSNO;SUPPLIER:BANK";
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "LINLINES:LINENUM,LINEVAL,MTRL,MTRL_LINEITEM_CODE,MTRL_LINEITEM_NAME,VAT,VATAMNT;LINSUPDOC:COMPANY,ACNMSK,APPRV,BRANCH,BUSUNITS,CASHDEVICE,CBANK,CBANKBRANCH,CMPFINCODE,FINCODE,CMPSERIESNUM,COMMENTS,COMMENTS1,CRCONTROL,EXPN,FINSTATES,FPRMS,GSISFLG,GSISMD,GSISNET,GSISPACKAGES,GSISQTY,GSISVAT,INPAYVAT,INST,INST_INST_CODE,INST_INST_NAME,INTDATE,INTEXPN,INTFDOCTYPE,INTRATE,INTSHIPMENT,INTVAL,INTVAT,ISCANCEL,ISPRINT,ISTRIG,KEPYOHANDMD,KEPYOMD,KEPYOQT,LEXPN,LKEPYOVAL,LNETAMNT,LRATE,LVATAMNT,NETAMNT,NOINTRASTAT,PAYMENT,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,REMARKS,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SALESMAN,SALESMAN_PRSNIN_CODE,SALESMAN_PRSNIN_NAME2,SERIES,SHIPKIND,SHIPMENT,SOCURRENCY,SOPAYCODE,SUMAMNT,SUMLAMNT,SUMTAMNT,TEXPN,TNETAMNT,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDBRANCHS,TRDBRANCHS_TRDBRANCH_CODE,TRDBRANCHS_TRDBRANCH_NAME,TRDR,TRDR_SUPPLIER_AFM,TRDR_SUPPLIER_CHKAFM,TRDR_SUPPLIER_CODE,TRDR_SUPPLIER_NAME,TRDRRATE,TRDRS,TRDRS_TRDR_CODE,TRDRS_TRDR_NAME,TRNDATE,TVATAMNT,VATAMNT,VATPROVISIONS,VATSTS;MTRDOC:RECEIPTCARD,TRUCKS,TRUCKSNO;SUPPLIER:BANK";
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "LINSUPDOC";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "getData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "getData";
     }
 
     public class GetItedocResponse
@@ -1628,19 +1748,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetItedocResponseValueType
     {
-        public GetItedocResponseValueTypeITEDOCType ITEDOC { get; set; }
-        public GetItedocResponseValueTypeITELINESTypeItem[] ITELINES { get; set; }
-        public GetItedocResponseValueTypeMTRDOCType MTRDOC { get; set; }
+        [JsonProperty("ITEDOC")]
+        public GetItedocResponseValueTypeItedocType Itedoc { get; set; }
+
+        [JsonProperty("ITELINES")]
+        public GetItedocResponseValueTypeItelinesTypeItem[] Itelines { get; set; }
+
+        [JsonProperty("MTRDOC")]
+        public GetItedocResponseValueTypeMtrdocType Mtrdoc { get; set; }
     }
 
-    public class GetItedocResponseValueTypeITEDOCType
+    public class GetItedocResponseValueTypeItedocType
     {
         [JsonProperty("COMMENTS")]
         public string Reason { get; set; }
 
         [JsonProperty("COMPANY")]
         public string Company { get; set; }
-        public string FINCODE { get; set; }
+
+        [JsonProperty("FINCODE")]
+        public string Fincode { get; set; }
 
         [JsonProperty("REMARKS")]
         public string Comments { get; set; }
@@ -1652,16 +1779,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Date { get; set; }
     }
 
-    public class GetItedocResponseValueTypeITELINESTypeItem
+    public class GetItedocResponseValueTypeItelinesTypeItem
     {
-        public string DISC1PRC { get; set; }
+        [JsonProperty("DISC1PRC")]
+        public string Disc1Prc { get; set; }
 
         [JsonProperty("LINENUM")]
         public string LineNumber { get; set; }
 
         [JsonProperty("LINEVAL")]
         public string LineValue { get; set; }
-        public string MTRL { get; set; }
+
+        [JsonProperty("MTRL")]
+        public string Mtrl { get; set; }
 
         [JsonProperty("MTRL_ITEM_CODE")]
         public string Code { get; set; }
@@ -1671,10 +1801,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("PRICE")]
         public string Price { get; set; }
-        public string QTY { get; set; }
+
+        [JsonProperty("QTY")]
+        public string Qty { get; set; }
     }
 
-    public class GetItedocResponseValueTypeMTRDOCType
+    public class GetItedocResponseValueTypeMtrdocType
     {
         [JsonProperty("COMPANY")]
         public string Company { get; set; }
@@ -1691,21 +1823,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetItedocBodyInput
     {
-        public GetItedocBodyInput(string kEY)
+        public GetItedocBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "ITEDOC:CMPFINCODE,FINCODE,COMMENTS,COMPANY,SERIES,TRNDATE,REMARKS;ITELINES:DISC1PRC,LINENUM,LINEVAL,MTRL,MTRL_ITEM_CODE,MTRL_ITEM_CODE1,MTRL_ITEM_CODE2,MTRL_ITEM_NAME,MTRL_ITEM_NAME1,PRICE,QTY1,QTY;MTRDOC:COMPANY,WHOUSE,SHIPPINGADDR,DELIVDATE";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "ITEDOC:CMPFINCODE,FINCODE,COMMENTS,COMPANY,SERIES,TRNDATE,REMARKS;ITELINES:DISC1PRC,LINENUM,LINEVAL,MTRL,MTRL_ITEM_CODE,MTRL_ITEM_CODE1,MTRL_ITEM_CODE2,MTRL_ITEM_NAME,MTRL_ITEM_NAME1,PRICE,QTY1,QTY;MTRDOC:COMPANY,WHOUSE,SHIPPINGADDR,DELIVDATE";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "ITEDOC";
@@ -1772,29 +1905,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("REMARKS")]
         public string Comments { get; set; }
-        public string SODISCOUNT { get; set; }
+
+        [JsonProperty("SODISCOUNT")]
+        public string Sodiscount { get; set; }
 
         [JsonProperty("VAT")]
-        public string VATGroup { get; set; }
+        public string VatGroup { get; set; }
     }
 
     public class GetItemBodyInput
     {
-        public GetItemBodyInput(string kEY)
+        public GetItemBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "ITEM:CODE,ISACTIVE,MTRCATEGORY,MTRGROUP,MTRUNIT1,NAME,PRICER,PRICEW,REMARKS,SODISCOUNT,VAT";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "ITEM:CODE,ISACTIVE,MTRCATEGORY,MTRGROUP,MTRUNIT1,NAME,PRICER,PRICEW,REMARKS,SODISCOUNT,VAT";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "ITEM";
@@ -1828,61 +1964,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     {
         [JsonProperty("PRJC")]
         public GetProjectResponseDataTypeProjectType Project { get; set; }
-        public GetProjectResponseDataTypeXTRDOCDATATypeItem[] XTRDOCDATA { get; set; }
+
+        [JsonProperty("XTRDOCDATA")]
+        public GetProjectResponseDataTypeXtrdocdataTypeItem[] Xtrdocdata { get; set; }
     }
 
     public class GetProjectResponseDataTypeProjectType
     {
-        public string ACTSTATUS { get; set; }
+        [JsonProperty("ACTSTATUS")]
+        public string Actstatus { get; set; }
 
         [JsonProperty("CODE")]
         public string Code { get; set; }
-        public string FINALDATE { get; set; }
-        public string FROMDATE { get; set; }
+
+        [JsonProperty("FINALDATE")]
+        public string Finaldate { get; set; }
+
+        [JsonProperty("FROMDATE")]
+        public string Fromdate { get; set; }
 
         [JsonProperty("ISACTIVE")]
         public string Active { get; set; }
 
-        [JsonProperty("PRJC")]
+        [JsonProperty("NAME")]
         public string Name { get; set; }
-        public string PRJCRM { get; set; }
+
+        [JsonProperty("PRJC")]
+        public string Name2 { get; set; }
+
+        [JsonProperty("PRJCRM")]
+        public string Prjcrm { get; set; }
 
         [JsonProperty("REMARKS")]
         public string Comments { get; set; }
     }
 
-    public class GetProjectResponseDataTypeXTRDOCDATATypeItem
+    public class GetProjectResponseDataTypeXtrdocdataTypeItem
     {
-        public string LINENUM { get; set; }
-        public string NAME { get; set; }
-        public string SOFNAME { get; set; }
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
+
+        [JsonProperty("SOFNAME")]
+        public string Sofname { get; set; }
     }
 
     public class GetProjectBodyInput
     {
-        public GetProjectBodyInput(string kEY)
+        public GetProjectBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
-        public string FORM { get; set; }
+        internal int Appid { get; set; } = 702;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "PRJC:ACTSTATUS,CODE,FINALDATE,FROMDATE,ISACTIVE,NAME,PRJC,PRJCRM,REMARKS;XTRDOCDATA:LINENUM,SOFNAME,NAME";
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "PRJC:ACTSTATUS,CODE,FINALDATE,FROMDATE,ISACTIVE,NAME,PRJC,PRJCRM,REMARKS;XTRDOCDATA:LINENUM,SOFNAME,NAME";
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "PRJC";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "getData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "getData";
     }
 
     public class GetPurdocResponse
@@ -1908,32 +2063,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetPurdocResponseValueType
     {
-        public GetPurdocResponseValueTypeITELINESTypeItem[] ITELINES { get; set; }
-        public GetPurdocResponseValueTypeMTRDOCType MTRDOC { get; set; }
+        [JsonProperty("ITELINES")]
+        public GetPurdocResponseValueTypeItelinesTypeItem[] Itelines { get; set; }
+
+        [JsonProperty("MTRDOC")]
+        public GetPurdocResponseValueTypeMtrdocType Mtrdoc { get; set; }
 
         [JsonProperty("PURDOC")]
         public GetPurdocResponseValueTypePurchasesDocumentType PurchasesDocument { get; set; }
-        public GetPurdocResponseValueTypeSRVLINESTypeItem[] SRVLINES { get; set; }
-        public GetPurdocResponseValueTypeVATANALTypeItem[] VATANAL { get; set; }
+
+        [JsonProperty("SRVLINES")]
+        public GetPurdocResponseValueTypeSrvlinesTypeItem[] Srvlines { get; set; }
+
+        [JsonProperty("VATANAL")]
+        public GetPurdocResponseValueTypeVatanalTypeItem[] Vatanal { get; set; }
     }
 
-    public class GetPurdocResponseValueTypeITELINESTypeItem
+    public class GetPurdocResponseValueTypeItelinesTypeItem
     {
-        public string DISC1PRC { get; set; }
-        public string LINENUM { get; set; }
-        public string LINEVAL { get; set; }
-        public string MTRL { get; set; }
+        [JsonProperty("DISC1PRC")]
+        public string Disc1Prc { get; set; }
+
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public string Lineval { get; set; }
+
+        [JsonProperty("MTRL")]
+        public string Mtrl { get; set; }
 
         [JsonProperty("MTRL_ITEM_CODE")]
-        public string MTRLITEMCODE { get; set; }
+        public string MtrlItemCode { get; set; }
 
         [JsonProperty("MTRL_ITEM_NAME")]
-        public string MTRLITEMNAME { get; set; }
-        public string PRICE { get; set; }
-        public string QTY { get; set; }
+        public string MtrlItemName { get; set; }
+
+        [JsonProperty("PRICE")]
+        public string Price { get; set; }
+
+        [JsonProperty("QTY")]
+        public string Qty { get; set; }
     }
 
-    public class GetPurdocResponseValueTypeMTRDOCType
+    public class GetPurdocResponseValueTypeMtrdocType
     {
         [JsonProperty("COMPANY")]
         public string Company { get; set; }
@@ -1952,47 +2125,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     {
         [JsonProperty("COMPANY")]
         public string Company { get; set; }
-        public string DISC1PRC { get; set; }
+
+        [JsonProperty("DISC1PRC")]
+        public string Disc1Prc { get; set; }
 
         [JsonProperty("DISC1VAL")]
         public string DiscountValue { get; set; }
 
         [JsonProperty("EXPN")]
         public string Expenses { get; set; }
-        public string FINCODE { get; set; }
+
+        [JsonProperty("FINCODE")]
+        public string Fincode { get; set; }
 
         [JsonProperty("FPRMS")]
         public string Type { get; set; }
 
         [JsonProperty("NETAMNT")]
         public string NetAmount { get; set; }
-        public string PAYMENT { get; set; }
-        public string PRJC { get; set; }
+
+        [JsonProperty("PAYMENT")]
+        public string Payment { get; set; }
+
+        [JsonProperty("PRJC")]
+        public string Prjc { get; set; }
 
         [JsonProperty("PRJC_PRJC_CODE")]
-        public string PRJCPRJCCODE { get; set; }
+        public string PrjcPrjcCode { get; set; }
 
         [JsonProperty("PRJC_PRJC_NAME")]
-        public string PRJCPRJCNAME { get; set; }
+        public string PrjcPrjcName { get; set; }
 
         [JsonProperty("REMARKS")]
         public string Comments { get; set; }
-        public string SERIES { get; set; }
+
+        [JsonProperty("SERIES")]
+        public string Series { get; set; }
 
         [JsonProperty("SHIPKIND")]
         public string PurposeOfDelivery { get; set; }
-        public string SOCURRENCY { get; set; }
-        public string SUMAMNT { get; set; }
-        public string TRDR { get; set; }
+
+        [JsonProperty("SOCURRENCY")]
+        public string Socurrency { get; set; }
+
+        [JsonProperty("SUMAMNT")]
+        public string Sumamnt { get; set; }
+
+        [JsonProperty("TRDR")]
+        public string Trdr { get; set; }
 
         [JsonProperty("TRDR_SUPPLIER_ADDRESS")]
         public string SupplierAddress { get; set; }
 
         [JsonProperty("TRDR_SUPPLIER_AFM")]
-        public string TRDRSUPPLIERAFM { get; set; }
+        public string TrdrSupplierAfm { get; set; }
 
         [JsonProperty("TRDR_SUPPLIER_CODE")]
-        public string TRDRSUPPLIERCODE { get; set; }
+        public string TrdrSupplierCode { get; set; }
 
         [JsonProperty("TRDR_SUPPLIER_IRSDATA")]
         public string SupplierTaxOffice { get; set; }
@@ -2001,34 +2190,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string SupplierProfession { get; set; }
 
         [JsonProperty("TRDR_SUPPLIER_NAME")]
-        public string TRDRSUPPLIERNAME { get; set; }
+        public string TrdrSupplierName { get; set; }
 
         [JsonProperty("TRDR_SUPPLIER_PHONE01")]
         public string SupplierPhone { get; set; }
-        public string TRNDATE { get; set; }
-        public string VATAMNT { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
+
+        [JsonProperty("VATAMNT")]
+        public string Vatamnt { get; set; }
     }
 
-    public class GetPurdocResponseValueTypeSRVLINESTypeItem
+    public class GetPurdocResponseValueTypeSrvlinesTypeItem
     {
-        public string DISC1PRC { get; set; }
-        public string LINENUM { get; set; }
-        public string LINEVAL { get; set; }
-        public string MTRL { get; set; }
+        [JsonProperty("DISC1PRC")]
+        public string Disc1Prc { get; set; }
+
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public string Lineval { get; set; }
+
+        [JsonProperty("MTRL")]
+        public string Mtrl { get; set; }
 
         [JsonProperty("MTRL_SERVICE_CODE")]
-        public string MTRLSERVICECODE { get; set; }
+        public string MtrlServiceCode { get; set; }
 
         [JsonProperty("MTRL_SERVICE_NAME")]
-        public string MTRLSERVICENAME { get; set; }
-        public string PRICE { get; set; }
-        public string QTY { get; set; }
+        public string MtrlServiceName { get; set; }
+
+        [JsonProperty("PRICE")]
+        public string Price { get; set; }
+
+        [JsonProperty("QTY")]
+        public string Qty { get; set; }
     }
 
-    public class GetPurdocResponseValueTypeVATANALTypeItem
+    public class GetPurdocResponseValueTypeVatanalTypeItem
     {
         [JsonProperty("SUBVAL")]
-        public string ValueSubjectToVAT { get; set; }
+        public string ValueSubjectToVat { get; set; }
 
         [JsonProperty("VAT")]
         public string IdAndCategory { get; set; }
@@ -2042,29 +2246,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetPurdocBodyInput
     {
-        public GetPurdocBodyInput(string kEY)
+        public GetPurdocBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
-        public string FORM { get; set; }
+        internal int Appid { get; set; } = 702;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "ITELINES:DISC1PRC,LINENUM,LINEVAL,MTRL,MTRL_ITEM_CODE,MTRL_ITEM_NAME,PRICE,QTY;MTRDOC:WHOUSE,COMPANY,DELIVDATE,SHIPPINGADDR;PURDOC:FINCODE,DISC1PRC,PAYMENT,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,SERIES,SOCURRENCY,SUMAMNT,TRDR,TRDR_SUPPLIER_AFM,TRDR_SUPPLIER_NAME,TRDR_SUPPLIER_JOBTYPETRD,TRDR_SUPPLIER_ADDRESS,TRDR_SUPPLIER_IRSDATA,TRDR_SUPPLIER_PHONE01,TRNDATE,VATAMNT,DISC1VAL,EXPN,REMARKS,NETAMNT,COMPANY,FPRMS,SHIPKIND;SRVLINES:DISC1PRC,LINENUM,LINEVAL,MTRL,MTRL_SERVICE_CODE,MTRL_SERVICE_NAME,PRICE,QTY;VATANAL:VAT,VATVAL,SUBVAL,VAT_VAT_PERCNT";
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "ITELINES:DISC1PRC,LINENUM,LINEVAL,MTRL,MTRL_ITEM_CODE,MTRL_ITEM_NAME,PRICE,QTY;MTRDOC:WHOUSE,COMPANY,DELIVDATE,SHIPPINGADDR;PURDOC:FINCODE,DISC1PRC,PAYMENT,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,SERIES,SOCURRENCY,SUMAMNT,TRDR,TRDR_SUPPLIER_AFM,TRDR_SUPPLIER_NAME,TRDR_SUPPLIER_JOBTYPETRD,TRDR_SUPPLIER_ADDRESS,TRDR_SUPPLIER_IRSDATA,TRDR_SUPPLIER_PHONE01,TRNDATE,VATAMNT,DISC1VAL,EXPN,REMARKS,NETAMNT,COMPANY,FPRMS,SHIPKIND;SRVLINES:DISC1PRC,LINENUM,LINEVAL,MTRL,MTRL_SERVICE_CODE,MTRL_SERVICE_NAME,PRICE,QTY;VATANAL:VAT,VATVAL,SUBVAL,VAT_VAT_PERCNT";
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "PURDOC";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "getData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "getData";
     }
 
     public class GetSaldocResponse
@@ -2090,23 +2296,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetSaldocResponseValueType
     {
-        public GetSaldocResponseValueTypeITELINESTypeItem[] ITELINES { get; set; }
-        public GetSaldocResponseValueTypeMTRDOCType MTRDOC { get; set; }
-        public GetSaldocResponseValueTypeSALDOCType SALDOC { get; set; }
-        public GetSaldocResponseValueTypeSRVLINESTypeItem[] SRVLINES { get; set; }
-        public GetSaldocResponseValueTypeVATANALTypeItem[] VATANAL { get; set; }
+        [JsonProperty("ITELINES")]
+        public GetSaldocResponseValueTypeItelinesTypeItem[] Itelines { get; set; }
+
+        [JsonProperty("MTRDOC")]
+        public GetSaldocResponseValueTypeMtrdocType Mtrdoc { get; set; }
+
+        [JsonProperty("SALDOC")]
+        public GetSaldocResponseValueTypeSaldocType Saldoc { get; set; }
+
+        [JsonProperty("SRVLINES")]
+        public GetSaldocResponseValueTypeSrvlinesTypeItem[] Srvlines { get; set; }
+
+        [JsonProperty("VATANAL")]
+        public GetSaldocResponseValueTypeVatanalTypeItem[] Vatanal { get; set; }
     }
 
-    public class GetSaldocResponseValueTypeITELINESTypeItem
+    public class GetSaldocResponseValueTypeItelinesTypeItem
     {
-        public string DISC1PRC { get; set; }
+        [JsonProperty("DISC1PRC")]
+        public string Disc1Prc { get; set; }
 
         [JsonProperty("LINENUM")]
         public string LineNumber { get; set; }
 
         [JsonProperty("LINEVAL")]
         public string LineValue { get; set; }
-        public string MTRL { get; set; }
+
+        [JsonProperty("MTRL")]
+        public string Mtrl { get; set; }
 
         [JsonProperty("MTRL_ITEM_CODE")]
         public string Code { get; set; }
@@ -2116,10 +2334,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("PRICE")]
         public string Price { get; set; }
-        public string QTY { get; set; }
+
+        [JsonProperty("QTY")]
+        public string Qty { get; set; }
     }
 
-    public class GetSaldocResponseValueTypeMTRDOCType
+    public class GetSaldocResponseValueTypeMtrdocType
     {
         [JsonProperty("COMPANY")]
         public string Company { get; set; }
@@ -2134,7 +2354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Warehouse { get; set; }
     }
 
-    public class GetSaldocResponseValueTypeSALDOCType
+    public class GetSaldocResponseValueTypeSaldocType
     {
         [JsonProperty("COMPANY")]
         public string Company { get; set; }
@@ -2147,7 +2367,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("EXPN")]
         public string Expenses { get; set; }
-        public string FINCODE { get; set; }
+
+        [JsonProperty("FINCODE")]
+        public string Fincode { get; set; }
 
         [JsonProperty("FPRMS")]
         public string Type { get; set; }
@@ -2201,29 +2423,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Date { get; set; }
 
         [JsonProperty("VATAMNT")]
-        public string VATAmount { get; set; }
+        public string VatAmount { get; set; }
     }
 
-    public class GetSaldocResponseValueTypeSRVLINESTypeItem
+    public class GetSaldocResponseValueTypeSrvlinesTypeItem
     {
-        public string DISC1PRC { get; set; }
-        public string LINENUM { get; set; }
-        public string LINEVAL { get; set; }
-        public string MTRL { get; set; }
+        [JsonProperty("DISC1PRC")]
+        public string Disc1Prc { get; set; }
+
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public string Lineval { get; set; }
+
+        [JsonProperty("MTRL")]
+        public string Mtrl { get; set; }
 
         [JsonProperty("MTRL_SERVICE_CODE")]
-        public string MTRLSERVICECODE { get; set; }
+        public string MtrlServiceCode { get; set; }
 
         [JsonProperty("MTRL_SERVICE_NAME")]
-        public string MTRLSERVICENAME { get; set; }
-        public string PRICE { get; set; }
-        public string QTY { get; set; }
+        public string MtrlServiceName { get; set; }
+
+        [JsonProperty("PRICE")]
+        public string Price { get; set; }
+
+        [JsonProperty("QTY")]
+        public string Qty { get; set; }
     }
 
-    public class GetSaldocResponseValueTypeVATANALTypeItem
+    public class GetSaldocResponseValueTypeVatanalTypeItem
     {
         [JsonProperty("SUBVAL")]
-        public string ValueSubjectToVAT { get; set; }
+        public string ValueSubjectToVat { get; set; }
 
         [JsonProperty("VAT")]
         public string IdAndCategory { get; set; }
@@ -2237,21 +2470,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetSaldocBodyInput
     {
-        public GetSaldocBodyInput(string kEY)
+        public GetSaldocBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "ITELINES:DISC1PRC,LINENUM,LINEVAL,MTRL,MTRL_ITEM_CODE,MTRL_ITEM_NAME,PRICE,QTY;MTRDOC:SHIPPINGADDR,WHOUSE;SALDOC:COMPANY,DISC1VAL,SHIPKIND,REMARKS,EXPN,FPRMS,FINCODE,DISC1PRC,NETAMNT,PAYMENT,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,REMARKS,SERIES,SOCURRENCY,SUMAMNT,TRDR,TRDR_CUSTOMER_AFM,TRDR_CUSTOMER_CODE,TRDR_CUSTOMER_NAME,TRDR_CUSTOMER_PHONE01,TRDR_CUSTOMER_IRSDATA,TRDR_CUSTOMER_ADDRESS,TRDR_CUSTOMER_JOBTYPETRD,TRNDATE,VATAMNT;SRVLINES:DISC1PRC,LINENUM,LINEVAL,MTRL,MTRL_SERVICE_CODE,MTRL_SERVICE_NAME,PRICE,QTY,QTY1;VATANAL:VAT,VATVAL,SUBVAL,VAT_VAT_PERCNT";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "ITELINES:DISC1PRC,LINENUM,LINEVAL,MTRL,MTRL_ITEM_CODE,MTRL_ITEM_NAME,PRICE,QTY;MTRDOC:SHIPPINGADDR,WHOUSE;SALDOC:COMPANY,DISC1VAL,SHIPKIND,REMARKS,EXPN,FPRMS,FINCODE,DISC1PRC,NETAMNT,PAYMENT,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,REMARKS,SERIES,SOCURRENCY,SUMAMNT,TRDR,TRDR_CUSTOMER_AFM,TRDR_CUSTOMER_CODE,TRDR_CUSTOMER_NAME,TRDR_CUSTOMER_PHONE01,TRDR_CUSTOMER_IRSDATA,TRDR_CUSTOMER_ADDRESS,TRDR_CUSTOMER_JOBTYPETRD,TRNDATE,VATAMNT;SRVLINES:DISC1PRC,LINENUM,LINEVAL,MTRL,MTRL_SERVICE_CODE,MTRL_SERVICE_NAME,PRICE,QTY,QTY1;VATANAL:VAT,VATVAL,SUBVAL,VAT_VAT_PERCNT";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SALDOC";
@@ -2318,29 +2552,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("REMARKS")]
         public string Comments { get; set; }
-        public string SODISCOUNT { get; set; }
+
+        [JsonProperty("SODISCOUNT")]
+        public string Sodiscount { get; set; }
 
         [JsonProperty("VAT")]
-        public string VATGroup { get; set; }
+        public string VatGroup { get; set; }
     }
 
     public class GetServiceBodyInput
     {
-        public GetServiceBodyInput(string kEY)
+        public GetServiceBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "SERVICE:CODE,ISACTIVE,MTRCATEGORY,MTRGROUP,MTRUNIT1,NAME,PRICER,PRICEW,REMARKS,SODISCOUNT,VAT";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "SERVICE:CODE,ISACTIVE,MTRCATEGORY,MTRGROUP,MTRUNIT1,NAME,PRICER,PRICEW,REMARKS,SODISCOUNT,VAT";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SERVICE";
@@ -2352,7 +2589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         internal string Service { get; set; } = "getData";
     }
 
-    public class GetSOEMAILResponse
+    public class GetSoemailResponse
     {
         [JsonProperty("caption")]
         public string Caption { get; set; }
@@ -2361,7 +2598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string RemoteKey { get; set; }
 
         [JsonProperty("data")]
-        public GetSOEMAILResponseValueType Value { get; set; }
+        public GetSoemailResponseValueType Value { get; set; }
 
         [JsonProperty("error")]
         public string Error { get; set; }
@@ -2373,25 +2610,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public bool Success { get; set; }
     }
 
-    public class GetSOEMAILResponseValueType
+    public class GetSoemailResponseValueType
     {
         [JsonProperty("SOACTION")]
-        public GetSOEMAILResponseValueTypeEmailTaskType EmailTask { get; set; }
-        public GetSOEMAILResponseValueTypeSOMAILType SOMAIL { get; set; }
-        public GetSOEMAILResponseValueTypeXTRDOCDATATypeItem[] XTRDOCDATA { get; set; }
+        public GetSoemailResponseValueTypeEmailTaskType EmailTask { get; set; }
+
+        [JsonProperty("SOMAIL")]
+        public GetSoemailResponseValueTypeSomailType Somail { get; set; }
+
+        [JsonProperty("XTRDOCDATA")]
+        public GetSoemailResponseValueTypeXtrdocdataTypeItem[] Xtrdocdata { get; set; }
     }
 
-    public class GetSOEMAILResponseValueTypeEmailTaskType
+    public class GetSoemailResponseValueTypeEmailTaskType
     {
-        public string ACTOR { get; set; }
+        [JsonProperty("ACTOR")]
+        public string Actor { get; set; }
 
         [JsonProperty("ACTPRSN")]
         public string OperatorContact { get; set; }
-        public string ACTSTATUS { get; set; }
-        public string COMMENTS { get; set; }
-        public string FINALDATE { get; set; }
-        public string FROMDATE { get; set; }
-        public string ORDEREDBY { get; set; }
+
+        [JsonProperty("ACTSTATUS")]
+        public string Actstatus { get; set; }
+
+        [JsonProperty("COMMENTS")]
+        public string Comments { get; set; }
+
+        [JsonProperty("FINALDATE")]
+        public string Finaldate { get; set; }
+
+        [JsonProperty("FROMDATE")]
+        public string Fromdate { get; set; }
+
+        [JsonProperty("ORDEREDBY")]
+        public string Orderedby { get; set; }
 
         [JsonProperty("ORDPRSN")]
         public string OrderedByContact { get; set; }
@@ -2401,51 +2653,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("PRJC")]
         public string Project { get; set; }
-        public string REMARKS { get; set; }
-        public string SERIES { get; set; }
-        public string TASKCOMPLETE { get; set; }
-        public string TRDR { get; set; }
+
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
+
+        [JsonProperty("SERIES")]
+        public string Series { get; set; }
+
+        [JsonProperty("TASKCOMPLETE")]
+        public string Taskcomplete { get; set; }
+
+        [JsonProperty("TRDR")]
+        public string Trdr { get; set; }
 
         [JsonProperty("TRDR_GENTRDR_NAME")]
-        public string TRDRGENTRDRNAME { get; set; }
-        public string TRNDATE { get; set; }
+        public string TrdrGentrdrName { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
-    public class GetSOEMAILResponseValueTypeSOMAILType
+    public class GetSoemailResponseValueTypeSomailType
     {
-        public string FROMADDRESS { get; set; }
-        public string FROMNAME { get; set; }
-        public string MAILDATE { get; set; }
-        public string SOBCC { get; set; }
-        public string SOBODY { get; set; }
-        public string SOCC { get; set; }
-        public string SOTO { get; set; }
+        [JsonProperty("FROMADDRESS")]
+        public string Fromaddress { get; set; }
+
+        [JsonProperty("FROMNAME")]
+        public string Fromname { get; set; }
+
+        [JsonProperty("MAILDATE")]
+        public string Maildate { get; set; }
+
+        [JsonProperty("SOBCC")]
+        public string Sobcc { get; set; }
+
+        [JsonProperty("SOBODY")]
+        public string Sobody { get; set; }
+
+        [JsonProperty("SOCC")]
+        public string Socc { get; set; }
+
+        [JsonProperty("SOTO")]
+        public string Soto { get; set; }
     }
 
-    public class GetSOEMAILResponseValueTypeXTRDOCDATATypeItem
+    public class GetSoemailResponseValueTypeXtrdocdataTypeItem
     {
-        public string LINENUM { get; set; }
-        public string NAME { get; set; }
-        public string SOFNAME { get; set; }
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
+
+        [JsonProperty("SOFNAME")]
+        public string Sofname { get; set; }
     }
 
-    public class GetSOEMAILBodyInput
+    public class GetSoemailBodyInput
     {
-        public GetSOEMAILBodyInput(string kEY)
+        public GetSoemailBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "SOACTION:ACCLEVEL,ACTOR,ACTPRSN,ACTPRSN_PRSN_CODE,ACTPRSN_PRSN_NAME,ACTPRSN_PRSN_NAME2,ACTSTATES,ACTSTATUS,ACTTYPE,BOOL01,BOOL02,BOOL03,BOOL04,BRANCH,CMPCODE,CMPSERIESNUM,CNTR,CNTR_CNTR_CODE,CNTR_CNTR_NAME,COMMENTS,INSDATE,DATE01,DATE02,DATE03,DATE04,DATE05,DURATION,FINALDATE,FROMDATE,GQTY,INST,INST_INST_CODE,INST_INST_NAME,ISLEAD,ISRESPONSE,MSODTYPE,MTRL,MTRL_MTRL_CODE,MTRL_MTRL_NAME,NUM01,NUM02,NUM03,NUM04,NUM05,ORDEREDBY,ORDPRSN,ORDPRSN_PRSNIN_CODE,ORDPRSN_PRSNIN_NAME,ORDPRSN_PRSNIN_NAME2,PRIORITY,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,PRJLINES,PRJLINES_PRJLINES_LINENUM,PRJLINES_PRJLINES_NAME,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SERIES,TASKCOMPLETE,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDPRSN,TRDPRSN_PRSN_CODE,TRDPRSN_PRSN_NAME2,TRDR,TRDR_GENTRDR_CODE,TRDR_GENTRDR_NAME,TRNDATE,TSODTYPE,UTBL01,UTBL02,UTBL03,UTBL04,UTBL05,VARCHAR01,VARCHAR02,VARCHAR03,VARCHAR04,VARCHAR05;SOMAIL:FROMADDRESS,FROMNAME,ISNOTDELIV,ISSEND,MAILDATE,NOTDELIVADDR,SOBCC,SOBODY,SOCC,SOTO;XTRDOCDATA:LINENUM,SOFNAME";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "SOACTION:ACCLEVEL,ACTOR,ACTPRSN,ACTPRSN_PRSN_CODE,ACTPRSN_PRSN_NAME,ACTPRSN_PRSN_NAME2,ACTSTATES,ACTSTATUS,ACTTYPE,BOOL01,BOOL02,BOOL03,BOOL04,BRANCH,CMPCODE,CMPSERIESNUM,CNTR,CNTR_CNTR_CODE,CNTR_CNTR_NAME,COMMENTS,INSDATE,DATE01,DATE02,DATE03,DATE04,DATE05,DURATION,FINALDATE,FROMDATE,GQTY,INST,INST_INST_CODE,INST_INST_NAME,ISLEAD,ISRESPONSE,MSODTYPE,MTRL,MTRL_MTRL_CODE,MTRL_MTRL_NAME,NUM01,NUM02,NUM03,NUM04,NUM05,ORDEREDBY,ORDPRSN,ORDPRSN_PRSNIN_CODE,ORDPRSN_PRSNIN_NAME,ORDPRSN_PRSNIN_NAME2,PRIORITY,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,PRJLINES,PRJLINES_PRJLINES_LINENUM,PRJLINES_PRJLINES_NAME,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SERIES,TASKCOMPLETE,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDPRSN,TRDPRSN_PRSN_CODE,TRDPRSN_PRSN_NAME2,TRDR,TRDR_GENTRDR_CODE,TRDR_GENTRDR_NAME,TRNDATE,TSODTYPE,UTBL01,UTBL02,UTBL03,UTBL04,UTBL05,VARCHAR01,VARCHAR02,VARCHAR03,VARCHAR04,VARCHAR05;SOMAIL:FROMADDRESS,FROMNAME,ISNOTDELIV,ISSEND,MAILDATE,NOTDELIVADDR,SOBCC,SOBODY,SOCC,SOTO;XTRDOCDATA:LINENUM,SOFNAME";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SOEMAIL";
@@ -2486,15 +2767,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetMeetingResponseValueTypeMeetingType
     {
-        public string ACTOR { get; set; }
+        [JsonProperty("ACTOR")]
+        public string Actor { get; set; }
 
         [JsonProperty("ACTPRSN")]
         public string OperatorContact { get; set; }
-        public string ACTSTATUS { get; set; }
-        public string COMMENTS { get; set; }
-        public string FINALDATE { get; set; }
-        public string FROMDATE { get; set; }
-        public string ORDEREDBY { get; set; }
+
+        [JsonProperty("ACTSTATUS")]
+        public string Actstatus { get; set; }
+
+        [JsonProperty("COMMENTS")]
+        public string Comments { get; set; }
+
+        [JsonProperty("FINALDATE")]
+        public string Finaldate { get; set; }
+
+        [JsonProperty("FROMDATE")]
+        public string Fromdate { get; set; }
+
+        [JsonProperty("ORDEREDBY")]
+        public string Orderedby { get; set; }
 
         [JsonProperty("ORDPRSN")]
         public string OrderedByContact { get; set; }
@@ -2504,33 +2796,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("PRJC")]
         public string Project { get; set; }
-        public string REMARKS { get; set; }
-        public string SERIES { get; set; }
-        public string TASKCOMPLETE { get; set; }
-        public string TRDR { get; set; }
+
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
+
+        [JsonProperty("SERIES")]
+        public string Series { get; set; }
+
+        [JsonProperty("TASKCOMPLETE")]
+        public string Taskcomplete { get; set; }
+
+        [JsonProperty("TRDR")]
+        public string Trdr { get; set; }
 
         [JsonProperty("TRDR_GENTRDR_NAME")]
-        public string TRDRGENTRDRNAME { get; set; }
-        public string TRNDATE { get; set; }
+        public string TrdrGentrdrName { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
     public class GetMeetingBodyInput
     {
-        public GetMeetingBodyInput(string kEY)
+        public GetMeetingBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "ACTLINES:CNTR,CNTR_CNTR_NAME,LINENUM,MTRL,MTRL_MTRL_CODE,MTRL_MTRL_NAME,QTY1,SODTYPE,SRVDEBITTYPE,VALUE;SOACTION:ACCLEVEL,ACTOR,ACTPRSN,ACTPRSN_PRSN_CODE,ACTPRSN_PRSN_NAME,ACTPRSN_PRSN_NAME2,ACTSTATES,ACTSTATUS,ACTTYPE,BOOL01,BOOL02,BOOL03,BOOL04,BRANCH,CMPCODE,CMPSERIESNUM,CNTR,CNTR_CNTR_CODE,CNTR_CNTR_NAME,COMMENTS,DATE01,DATE02,DATE03,DATE04,DATE05,DURATION,FINALDATE,FINDOC,FINDOC_SRVCARD_FINCODE,FROMDATE,GQTY,GVAL,INST,INST_INST_CODE,INST_INST_NAME,ISLEAD,ISRESPONSE,MSODTYPE,MTRL,MTRL_MTRL_CODE,MTRL_MTRL_NAME,NUM01,NUM02,NUM03,NUM04,NUM05,ORDEREDBY,ORDPRSN,ORDPRSN_PRSNIN_CODE,ORDPRSN_PRSNIN_NAME,ORDPRSN_PRSNIN_NAME2,PRIORITY,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,PRJLINES,PRJLINES_PRJLINES_LINENUM,PRJLINES_PRJLINES_NAME,REMARKS,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SERIES,SNCODE,SRVDEBITTYPE,TASKCOMPLETE,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDBRANCHS,TRDBRANCHS_TRDBRANCH_CODE,TRDBRANCHS_TRDBRANCH_NAME,TRDPRSN,TRDPRSN_PRSNOUT_CODE,TRDPRSN_PRSNOUT_NAME2,TRDPRSNS,TRDPRSNS_PRSNOUT_CODE,TRDPRSNS_PRSNOUT_NAME2,TRDR,TRDR_GENTRDR_CODE,TRDR_GENTRDR_NAME,TRDRS,TRDRS_GENTRDR_CODE,TRDRS_GENTRDR_NAME,TRNDATE,TSODTYPE,TSSODTYPE,UTBL01,UTBL02,UTBL03,UTBL04,UTBL05,VARCHAR01,VARCHAR02,VARCHAR03,VARCHAR04,VARCHAR05;VACTRMND:HASREMIND,RMBEFORE,RMDATE;VMTPRSN:PRSN,PRSN_PRSN_CODE,PRSN_PRSN_NAME2,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SODTYPE,USERS;XTRDOCDATA:LINENUM,SOFNAME";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "ACTLINES:CNTR,CNTR_CNTR_NAME,LINENUM,MTRL,MTRL_MTRL_CODE,MTRL_MTRL_NAME,QTY1,SODTYPE,SRVDEBITTYPE,VALUE;SOACTION:ACCLEVEL,ACTOR,ACTPRSN,ACTPRSN_PRSN_CODE,ACTPRSN_PRSN_NAME,ACTPRSN_PRSN_NAME2,ACTSTATES,ACTSTATUS,ACTTYPE,BOOL01,BOOL02,BOOL03,BOOL04,BRANCH,CMPCODE,CMPSERIESNUM,CNTR,CNTR_CNTR_CODE,CNTR_CNTR_NAME,COMMENTS,DATE01,DATE02,DATE03,DATE04,DATE05,DURATION,FINALDATE,FINDOC,FINDOC_SRVCARD_FINCODE,FROMDATE,GQTY,GVAL,INST,INST_INST_CODE,INST_INST_NAME,ISLEAD,ISRESPONSE,MSODTYPE,MTRL,MTRL_MTRL_CODE,MTRL_MTRL_NAME,NUM01,NUM02,NUM03,NUM04,NUM05,ORDEREDBY,ORDPRSN,ORDPRSN_PRSNIN_CODE,ORDPRSN_PRSNIN_NAME,ORDPRSN_PRSNIN_NAME2,PRIORITY,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,PRJLINES,PRJLINES_PRJLINES_LINENUM,PRJLINES_PRJLINES_NAME,REMARKS,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SERIES,SNCODE,SRVDEBITTYPE,TASKCOMPLETE,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDBRANCHS,TRDBRANCHS_TRDBRANCH_CODE,TRDBRANCHS_TRDBRANCH_NAME,TRDPRSN,TRDPRSN_PRSNOUT_CODE,TRDPRSN_PRSNOUT_NAME2,TRDPRSNS,TRDPRSNS_PRSNOUT_CODE,TRDPRSNS_PRSNOUT_NAME2,TRDR,TRDR_GENTRDR_CODE,TRDR_GENTRDR_NAME,TRDRS,TRDRS_GENTRDR_CODE,TRDRS_GENTRDR_NAME,TRNDATE,TSODTYPE,TSSODTYPE,UTBL01,UTBL02,UTBL03,UTBL04,UTBL05,VARCHAR01,VARCHAR02,VARCHAR03,VARCHAR04,VARCHAR05;VACTRMND:HASREMIND,RMBEFORE,RMDATE;VMTPRSN:PRSN,PRSN_PRSN_CODE,PRSN_PRSN_NAME2,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SODTYPE,USERS;XTRDOCDATA:LINENUM,SOFNAME";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SOMEETING";
@@ -2542,7 +2845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         internal string Service { get; set; } = "getData";
     }
 
-    public class GetSOTASKResponse
+    public class GetSotaskResponse
     {
         [JsonProperty("caption")]
         public string Caption { get; set; }
@@ -2551,7 +2854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string RemoteKey { get; set; }
 
         [JsonProperty("data")]
-        public GetSOTASKResponseValueType Value { get; set; }
+        public GetSotaskResponseValueType Value { get; set; }
 
         [JsonProperty("error")]
         public string Error { get; set; }
@@ -2563,23 +2866,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public bool Success { get; set; }
     }
 
-    public class GetSOTASKResponseValueType
+    public class GetSotaskResponseValueType
     {
         [JsonProperty("SOACTION")]
-        public GetSOTASKResponseValueTypeTaskObjectType TaskObject { get; set; }
+        public GetSotaskResponseValueTypeTaskObjectType TaskObject { get; set; }
     }
 
-    public class GetSOTASKResponseValueTypeTaskObjectType
+    public class GetSotaskResponseValueTypeTaskObjectType
     {
-        public string ACTOR { get; set; }
+        [JsonProperty("ACTOR")]
+        public string Actor { get; set; }
 
         [JsonProperty("ACTPRSN")]
         public string OperatorContact { get; set; }
-        public string ACTSTATUS { get; set; }
-        public string COMMENTS { get; set; }
-        public string FINALDATE { get; set; }
-        public string FROMDATE { get; set; }
-        public string ORDEREDBY { get; set; }
+
+        [JsonProperty("ACTSTATUS")]
+        public string Actstatus { get; set; }
+
+        [JsonProperty("COMMENTS")]
+        public string Comments { get; set; }
+
+        [JsonProperty("FINALDATE")]
+        public string Finaldate { get; set; }
+
+        [JsonProperty("FROMDATE")]
+        public string Fromdate { get; set; }
+
+        [JsonProperty("ORDEREDBY")]
+        public string Orderedby { get; set; }
 
         [JsonProperty("ORDPRSN")]
         public string OrderedByContact { get; set; }
@@ -2589,33 +2903,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("PRJC")]
         public string Project { get; set; }
-        public string REMARKS { get; set; }
-        public string SERIES { get; set; }
-        public string TASKCOMPLETE { get; set; }
-        public string TRDR { get; set; }
+
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
+
+        [JsonProperty("SERIES")]
+        public string Series { get; set; }
+
+        [JsonProperty("TASKCOMPLETE")]
+        public string Taskcomplete { get; set; }
+
+        [JsonProperty("TRDR")]
+        public string Trdr { get; set; }
 
         [JsonProperty("TRDR_GENTRDR_NAME")]
-        public string TRDRGENTRDRNAME { get; set; }
-        public string TRNDATE { get; set; }
+        public string TrdrGentrdrName { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
-    public class GetSOTASKBodyInput
+    public class GetSotaskBodyInput
     {
-        public GetSOTASKBodyInput(string kEY)
+        public GetSotaskBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
-        public string FORM { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "ACTLINES:CNTR,CNTR_CNTR_NAME,LINENUM,MTRL,MTRL_MTRL_CODE,MTRL_MTRL_NAME,QTY1,SODTYPE,SRVDEBITTYPE,VALUE;SOACTION:ACCLEVEL,ACTOR,ACTPRSN,ACTPRSN_PRSN_CODE,ACTPRSN_PRSN_NAME,ACTPRSN_PRSN_NAME2,ACTSTATES,ACTSTATUS,ACTTYPE,BOOL01,BOOL02,BOOL03,BOOL04,BRANCH,CMPCODE,CMPSERIESNUM,CNTR,CNTR_CNTR_CODE,CNTR_CNTR_NAME,COMMENT,COMMENTS,DATE01,DATE02,DATE03,DATE04,DATE05,DURATION,FINALDATE,INSDATE,FINDOC,FINDOC_SRVCARD_FINCODE,FROMDATE,GQTY,GVAL,INST,INST_INST_CODE,INST_INST_NAME,ISLEAD,ISRESPONSE,LIKE,MSODTYPE,MTRL,MTRL_MTRL_CODE,MTRL_MTRL_NAME,NUM01,NUM02,NUM03,NUM04,NUM05,ORDEREDBY,ORDPRSN,ORDPRSN_PRSNIN_CODE,ORDPRSN_PRSNIN_NAME,ORDPRSN_PRSNIN_NAME2,PRIORITY,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,PRJLINES,PRJLINES_PRJLINES_LINENUM,PRJLINES_PRJLINES_NAME,REMARKS,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SERIES,SHARE,SNCODE,SRVDEBITTYPE,TASKCOMPLETE,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDBRANCHS,TRDBRANCHS_TRDBRANCH_CODE,TRDBRANCHS_TRDBRANCH_NAME,TRDPRSN,TRDPRSN_PRSNOUT_CODE,TRDPRSN_PRSNOUT_NAME2,TRDPRSNS,TRDPRSNS_PRSNOUT_CODE,TRDPRSNS_PRSNOUT_NAME2,TRDR,TRDR_GENTRDR_CODE,TRDR_GENTRDR_NAME,TRDRS,TRDRS_GENTRDR_CODE,TRDRS_GENTRDR_NAME,TRNDATE,TSODTYPE,TSSODTYPE,UTBL01,UTBL02,UTBL03,UTBL04,UTBL05,VARCHAR01,VARCHAR02,VARCHAR03,VARCHAR04,VARCHAR05;VACTRMND:HASREMIND,RMBEFORE,RMDATE;VMTPRSN:PRSN,PRSN_PRSN_CODE,PRSN_PRSN_NAME2,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SODTYPE,USERS;XTRDOCDATA:LINENUM,SOFNAME";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "ACTLINES:CNTR,CNTR_CNTR_NAME,LINENUM,MTRL,MTRL_MTRL_CODE,MTRL_MTRL_NAME,QTY1,SODTYPE,SRVDEBITTYPE,VALUE;SOACTION:ACCLEVEL,ACTOR,ACTPRSN,ACTPRSN_PRSN_CODE,ACTPRSN_PRSN_NAME,ACTPRSN_PRSN_NAME2,ACTSTATES,ACTSTATUS,ACTTYPE,BOOL01,BOOL02,BOOL03,BOOL04,BRANCH,CMPCODE,CMPSERIESNUM,CNTR,CNTR_CNTR_CODE,CNTR_CNTR_NAME,COMMENT,COMMENTS,DATE01,DATE02,DATE03,DATE04,DATE05,DURATION,FINALDATE,INSDATE,FINDOC,FINDOC_SRVCARD_FINCODE,FROMDATE,GQTY,GVAL,INST,INST_INST_CODE,INST_INST_NAME,ISLEAD,ISRESPONSE,LIKE,MSODTYPE,MTRL,MTRL_MTRL_CODE,MTRL_MTRL_NAME,NUM01,NUM02,NUM03,NUM04,NUM05,ORDEREDBY,ORDPRSN,ORDPRSN_PRSNIN_CODE,ORDPRSN_PRSNIN_NAME,ORDPRSN_PRSNIN_NAME2,PRIORITY,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,PRJLINES,PRJLINES_PRJLINES_LINENUM,PRJLINES_PRJLINES_NAME,REMARKS,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SERIES,SHARE,SNCODE,SRVDEBITTYPE,TASKCOMPLETE,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDBRANCHS,TRDBRANCHS_TRDBRANCH_CODE,TRDBRANCHS_TRDBRANCH_NAME,TRDPRSN,TRDPRSN_PRSNOUT_CODE,TRDPRSN_PRSNOUT_NAME2,TRDPRSNS,TRDPRSNS_PRSNOUT_CODE,TRDPRSNS_PRSNOUT_NAME2,TRDR,TRDR_GENTRDR_CODE,TRDR_GENTRDR_NAME,TRDRS,TRDRS_GENTRDR_CODE,TRDRS_GENTRDR_NAME,TRNDATE,TSODTYPE,TSSODTYPE,UTBL01,UTBL02,UTBL03,UTBL04,UTBL05,VARCHAR01,VARCHAR02,VARCHAR03,VARCHAR04,VARCHAR05;VACTRMND:HASREMIND,RMBEFORE,RMDATE;VMTPRSN:PRSN,PRSN_PRSN_CODE,PRSN_PRSN_NAME2,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SODTYPE,USERS;XTRDOCDATA:LINENUM,SOFNAME";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SOTASK";
@@ -2650,67 +2975,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class GetSupplierResponseValueType
     {
-        public GetSupplierResponseValueTypeSUPBANKACCTypeItem[] SUPBANKACC { get; set; }
-        public GetSupplierResponseValueTypeSUPPLIERType SUPPLIER { get; set; }
+        [JsonProperty("SUPBANKACC")]
+        public GetSupplierResponseValueTypeSupbankaccTypeItem[] Supbankacc { get; set; }
+
+        [JsonProperty("SUPPLIER")]
+        public GetSupplierResponseValueTypeSupplierType Supplier { get; set; }
     }
 
-    public class GetSupplierResponseValueTypeSUPBANKACCTypeItem
+    public class GetSupplierResponseValueTypeSupbankaccTypeItem
     {
-        public string BANK { get; set; }
+        [JsonProperty("BANK")]
+        public string Bank { get; set; }
 
         [JsonProperty("BANK_BANK_CODE")]
-        public string BANKBANKCODE { get; set; }
-        public string IBAN { get; set; }
-        public string LINENUM { get; set; }
-        public string REMARKS { get; set; }
+        public string BankBankCode { get; set; }
+
+        [JsonProperty("IBAN")]
+        public string Iban { get; set; }
+
+        [JsonProperty("LINENUM")]
+        public string Linenum { get; set; }
+
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
     }
 
-    public class GetSupplierResponseValueTypeSUPPLIERType
+    public class GetSupplierResponseValueTypeSupplierType
     {
-        public string ADDRESS { get; set; }
-        public string AFM { get; set; }
-        public string CITY { get; set; }
-        public string CODE { get; set; }
-        public string DISTRICT { get; set; }
-        public string EMAIL { get; set; }
-        public string FAX { get; set; }
-        public string IRSDATA { get; set; }
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
+
+        [JsonProperty("AFM")]
+        public string Afm { get; set; }
+
+        [JsonProperty("CITY")]
+        public string City { get; set; }
+
+        [JsonProperty("CODE")]
+        public string Code { get; set; }
+
+        [JsonProperty("DISTRICT")]
+        public string District { get; set; }
+
+        [JsonProperty("EMAIL")]
+        public string Email { get; set; }
+
+        [JsonProperty("FAX")]
+        public string Fax { get; set; }
+
+        [JsonProperty("IRSDATA")]
+        public string Irsdata { get; set; }
 
         [JsonProperty("ISACTIVE")]
         public string Active { get; set; }
-        public string JOBTYPETRD { get; set; }
-        public string NAME { get; set; }
-        public string PHONE01 { get; set; }
-        public string REMARKS { get; set; }
-        public string VATSTS { get; set; }
-        public string ZIP { get; set; }
+
+        [JsonProperty("JOBTYPETRD")]
+        public string Jobtypetrd { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
+
+        [JsonProperty("PHONE01")]
+        public string Phone01 { get; set; }
+
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
+
+        [JsonProperty("VATSTS")]
+        public string Vatsts { get; set; }
+
+        [JsonProperty("ZIP")]
+        public string Zip { get; set; }
     }
 
     public class GetSupplierBodyInput
     {
-        public GetSupplierBodyInput(string kEY)
+        public GetSupplierBodyInput(string key)
         {
-            this.KEY = kEY;
+            this.Key = key;
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
-        public string FORM { get; set; }
+        internal int Appid { get; set; } = 702;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LOCATEINFO { get; set; } = "SUPBANKACC:BANK,BANK_BANK_CODE,BANK_BANK_NAME,IBAN,LINENUM,REMARKS;SUPPLIER:ADDRESS,AFM,CITY,CODE,DISTRICT,EMAIL,FAX,IRSDATA,ISACTIVE,JOBTYPETRD,NAME,PHONE01,REMARKS,VATSTS,ZIP";
+        [JsonProperty("KEY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Key { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("LOCATEINFO", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locateinfo { get; set; } = "SUPBANKACC:BANK,BANK_BANK_CODE,BANK_BANK_NAME,IBAN,LINENUM,REMARKS;SUPPLIER:ADDRESS,AFM,CITY,CODE,DISTRICT,EMAIL,FAX,IRSDATA,ISACTIVE,JOBTYPETRD,NAME,PHONE01,REMARKS,VATSTS,ZIP";
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SUPPLIER";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "getData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "getData";
     }
 
     public class GetSystemParamsResponse
@@ -2803,93 +3167,128 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public bool Success { get; set; }
     }
 
-    public class SetCFNCUSDOCBodyInput
+    public class SetCfncusdocBodyInput
     {
-        public SetCFNCUSDOCBodyInput(SetCFNCUSDOCBodyInputValueType value)
+        public SetCfncusdocBodyInput(SetCfncusdocBodyInputValueType value)
         {
             this.Value = value;
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
+        internal int Appid { get; set; } = 702;
 
         [JsonProperty("DATA", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetCFNCUSDOCBodyInputValueType Value { get; set; }
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        public SetCfncusdocBodyInputValueType Value { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
+
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "CFNCUSDOC";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "setData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "setData";
     }
 
-    public class SetCFNCUSDOCBodyInputValueType
+    public class SetCfncusdocBodyInputValueType
     {
-        public SetCFNCUSDOCBodyInputValueType(BodyInputValueTypeCFNCUSDOCType cFNCUSDOC)
+        public SetCfncusdocBodyInputValueType(BodyInputValueTypeCfncusdocType cfncusdoc)
         {
-            this.CFNCUSDOC = cFNCUSDOC;
+            this.Cfncusdoc = cfncusdoc;
         }
 
-        public BodyInputValueTypeCARDLINESTypeItem[] CARDLINES { get; set; }
-        public SetCFNCUSDOCBodyInputValueTypeCASHLINESTypeItem[] CASHLINES { get; set; }
+        [JsonProperty("CARDLINES")]
+        public BodyInputValueTypeCardlinesTypeItem[] Cardlines { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeCFNCUSDOCType CFNCUSDOC { get; set; }
-        public BodyInputValueTypeCHEQUELINESTypeItem[] CHEQUELINES { get; set; }
+        [JsonProperty("CASHLINES")]
+        public SetCfncusdocBodyInputValueTypeCashlinesTypeItem[] Cashlines { get; set; }
+
+        [JsonProperty("CFNCUSDOC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeCfncusdocType Cfncusdoc { get; set; }
+
+        [JsonProperty("CHEQUELINES")]
+        public BodyInputValueTypeChequelinesTypeItem[] Chequelines { get; set; }
     }
 
-    public class BodyInputValueTypeCARDLINESTypeItem
+    public class BodyInputValueTypeCardlinesTypeItem
     {
-        public string CRDCARDNUM { get; set; }
-        public int? CREDITCARDS { get; set; }
-        public int? LINENUM { get; set; }
-        public int? LINEVAL { get; set; }
+        [JsonProperty("CRDCARDNUM")]
+        public string Crdcardnum { get; set; }
+
+        [JsonProperty("CREDITCARDS")]
+        public int? Creditcards { get; set; }
+
+        [JsonProperty("LINENUM")]
+        public int? Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public int? Lineval { get; set; }
     }
 
-    public class SetCFNCUSDOCBodyInputValueTypeCASHLINESTypeItem
+    public class SetCfncusdocBodyInputValueTypeCashlinesTypeItem
     {
-        public int? LINENUM { get; set; }
-        public int? LINEVAL { get; set; }
+        [JsonProperty("LINENUM")]
+        public int? Linenum { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public int? Lineval { get; set; }
     }
 
-    public class BodyInputValueTypeCFNCUSDOCType
+    public class BodyInputValueTypeCfncusdocType
     {
-        public BodyInputValueTypeCFNCUSDOCType(string sERIES, string tRDR)
+        public BodyInputValueTypeCfncusdocType(string series, string trdr)
         {
-            this.SERIES = sERIES;
-            this.TRDR = tRDR;
+            this.Series = series;
+            this.Trdr = trdr;
         }
 
-        public string COLLECTOR { get; set; }
-        public string COMMENTS { get; set; }
+        [JsonProperty("COLLECTOR")]
+        public string Collector { get; set; }
+
+        [JsonProperty("COMMENTS")]
+        public string Comments { get; set; }
 
         [JsonProperty("PRJC")]
         public string Project { get; set; }
-        public string SALESMAN { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SERIES { get; set; }
+        [JsonProperty("SALESMAN")]
+        public string Salesman { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TRDR { get; set; }
-        public string TRNDATE { get; set; }
+        [JsonProperty("SERIES", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Series { get; set; }
+
+        [JsonProperty("TRDR", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Trdr { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
-    public class BodyInputValueTypeCHEQUELINESTypeItem
+    public class BodyInputValueTypeChequelinesTypeItem
     {
-        public string CCHEQUENUMBER { get; set; }
-        public string CFINALDATE { get; set; }
-        public string CODE { get; set; }
-        public int? CSERIES { get; set; }
+        [JsonProperty("CCHEQUENUMBER")]
+        public string Cchequenumber { get; set; }
+
+        [JsonProperty("CFINALDATE")]
+        public string Cfinaldate { get; set; }
+
+        [JsonProperty("CODE")]
+        public string Code { get; set; }
+
+        [JsonProperty("CSERIES")]
+        public int? Cseries { get; set; }
 
         [JsonProperty("LINENUM")]
         public int? ChequeLineNumber { get; set; }
-        public int? LINEVAL { get; set; }
+
+        [JsonProperty("LINEVAL")]
+        public int? Lineval { get; set; }
 
         [JsonProperty("TPRMS")]
         public int? ChequeTransactionType { get; set; }
@@ -2903,39 +3302,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
+        internal int Appid { get; set; } = 702;
 
         [JsonProperty("DATA", DefaultValueHandling = DefaultValueHandling.Include)]
         public SetCfnsupdocBodyInputValueType Value { get; set; }
-        public string FORM { get; set; }
-        public string KEY { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
+
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "CFNSUPDOC";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "setData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "setData";
     }
 
     public class SetCfnsupdocBodyInputValueType
     {
-        public SetCfnsupdocBodyInputValueType(BodyInputValueTypeCFNSUPDOCType cFNSUPDOC)
+        public SetCfnsupdocBodyInputValueType(BodyInputValueTypeCfnsupdocType cfnsupdoc)
         {
-            this.CFNSUPDOC = cFNSUPDOC;
+            this.Cfnsupdoc = cfnsupdoc;
         }
 
-        public BodyInputValueTypeCARDLINESTypeItem[] CARDLINES { get; set; }
-        public SetCfnsupdocBodyInputValueTypeCASHLINESTypeItem[] CASHLINES { get; set; }
+        [JsonProperty("CARDLINES")]
+        public BodyInputValueTypeCardlinesTypeItem[] Cardlines { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeCFNSUPDOCType CFNSUPDOC { get; set; }
-        public BodyInputValueTypeCHEQUELINESTypeItem[] CHEQUELINES { get; set; }
+        [JsonProperty("CASHLINES")]
+        public SetCfnsupdocBodyInputValueTypeCashlinesTypeItem[] Cashlines { get; set; }
+
+        [JsonProperty("CFNSUPDOC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeCfnsupdocType Cfnsupdoc { get; set; }
+
+        [JsonProperty("CHEQUELINES")]
+        public BodyInputValueTypeChequelinesTypeItem[] Chequelines { get; set; }
     }
 
-    public class SetCfnsupdocBodyInputValueTypeCASHLINESTypeItem
+    public class SetCfnsupdocBodyInputValueTypeCashlinesTypeItem
     {
         [JsonProperty("LINENUM")]
         public int? CashLineNo { get; set; }
@@ -2944,23 +3352,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public int? CashLineValue { get; set; }
     }
 
-    public class BodyInputValueTypeCFNSUPDOCType
+    public class BodyInputValueTypeCfnsupdocType
     {
-        public BodyInputValueTypeCFNSUPDOCType(string sERIES, string tRDR)
+        public BodyInputValueTypeCfnsupdocType(string series, string trdr)
         {
-            this.SERIES = sERIES;
-            this.TRDR = tRDR;
+            this.Series = series;
+            this.Trdr = trdr;
         }
 
-        public string PRJC { get; set; }
-        public string REMARKS { get; set; }
+        [JsonProperty("PRJC")]
+        public string Prjc { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SERIES { get; set; }
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TRDR { get; set; }
-        public string TRNDATE { get; set; }
+        [JsonProperty("SERIES", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Series { get; set; }
+
+        [JsonProperty("TRDR", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Trdr { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
     public class SetChequeBodyInput
@@ -2970,11 +3383,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             this.Value = value;
         }
 
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "CHEQUE";
@@ -2991,18 +3407,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetChequeBodyInputValueType
     {
-        public SetChequeBodyInputValueType(BodyInputValueTypeCHEQUEType cHEQUE)
+        public SetChequeBodyInputValueType(BodyInputValueTypeChequeType cheque)
         {
-            this.CHEQUE = cHEQUE;
+            this.Cheque = cheque;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeCHEQUEType CHEQUE { get; set; }
+        [JsonProperty("CHEQUE", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeChequeType Cheque { get; set; }
     }
 
-    public class BodyInputValueTypeCHEQUEType
+    public class BodyInputValueTypeChequeType
     {
-        public BodyInputValueTypeCHEQUEType(string balance, string chequeNumber, string status, string value, string issueDate, string dueDate, string series)
+        public BodyInputValueTypeChequeType(string balance, string chequeNumber, string status, string value, string issueDate, string dueDate, string series)
         {
             this.Balance = balance;
             this.ChequeNumber = chequeNumber;
@@ -3069,11 +3485,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             this.Value = value;
         }
 
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "PRSNOUT";
@@ -3090,19 +3509,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetContactBodyInputValueType
     {
-        public SetContactBodyInputValueType(BodyInputValueTypePRSNOUTType pRSNOUT)
+        public SetContactBodyInputValueType(BodyInputValueTypePrsnoutType prsnout)
         {
-            this.PRSNOUT = pRSNOUT;
+            this.Prsnout = prsnout;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypePRSNOUTType PRSNOUT { get; set; }
-        public BodyInputValueTypeXTRDOCDATATypeItem[] XTRDOCDATA { get; set; }
+        [JsonProperty("PRSNOUT", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypePrsnoutType Prsnout { get; set; }
+
+        [JsonProperty("XTRDOCDATA")]
+        public BodyInputValueTypeXtrdocdataTypeItem[] Xtrdocdata { get; set; }
     }
 
-    public class BodyInputValueTypePRSNOUTType
+    public class BodyInputValueTypePrsnoutType
     {
-        public BodyInputValueTypePRSNOUTType(string code, string name)
+        public BodyInputValueTypePrsnoutType(string code, string name)
         {
             this.Code = code;
             this.Name = name;
@@ -3116,7 +3537,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("AREAS")]
         public string GeographicalAreas { get; set; }
-        public string BIRTHDATE { get; set; }
+
+        [JsonProperty("BIRTHDATE")]
+        public string Birthdate { get; set; }
 
         [JsonProperty("CITY")]
         public string City { get; set; }
@@ -3161,10 +3584,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Surname { get; set; }
 
         [JsonProperty("NAME3")]
-        public string FatherSName { get; set; }
+        public string FatherName { get; set; }
 
         [JsonProperty("NAME4")]
-        public string MotherSName { get; set; }
+        public string MotherName { get; set; }
 
         [JsonProperty("NAME5")]
         public string NameOfSpouse { get; set; }
@@ -3188,7 +3611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Comments { get; set; }
 
         [JsonProperty("SOSEX")]
-        public BodyInputValueTypePRSNOUTTypeGenderType? Gender { get; set; }
+        public BodyInputValueTypePrsnoutTypeGenderType? Gender { get; set; }
 
         [JsonProperty("WEBPAGE")]
         public string WebPage { get; set; }
@@ -3198,7 +3621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputValueTypePRSNOUTTypeGenderType
+    public enum BodyInputValueTypePrsnoutTypeGenderType
     {
         [EnumMember(Value = "1")]
         _1,
@@ -3206,7 +3629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         _2
     }
 
-    public class BodyInputValueTypeXTRDOCDATATypeItem
+    public class BodyInputValueTypeXtrdocdataTypeItem
     {
         [JsonProperty("LINENUM")]
         public string LineNo { get; set; }
@@ -3225,11 +3648,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             this.Value = value;
         }
 
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "CUSTOMER";
@@ -3246,18 +3672,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetCustomerBodyInputValueType
     {
-        public SetCustomerBodyInputValueType(BodyInputValueTypeCUSTOMERType cUSTOMER)
+        public SetCustomerBodyInputValueType(BodyInputValueTypeCustomerType customer)
         {
-            this.CUSTOMER = cUSTOMER;
+            this.Customer = customer;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeCUSTOMERType CUSTOMER { get; set; }
+        [JsonProperty("CUSTOMER", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeCustomerType Customer { get; set; }
     }
 
-    public class BodyInputValueTypeCUSTOMERType
+    public class BodyInputValueTypeCustomerType
     {
-        public BodyInputValueTypeCUSTOMERType(string code, string name)
+        public BodyInputValueTypeCustomerType(string code, string name)
         {
             this.Code = code;
             this.Name = name;
@@ -3306,14 +3732,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Comments { get; set; }
 
         [JsonProperty("VATSTS")]
-        public BodyInputValueTypeCUSTOMERTypeTaxCategoryType? TaxCategory { get; set; }
+        public BodyInputValueTypeCustomerTypeTaxCategoryType? TaxCategory { get; set; }
 
         [JsonProperty("ZIP")]
         public string Zip { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputValueTypeCUSTOMERTypeTaxCategoryType
+    public enum BodyInputValueTypeCustomerTypeTaxCategoryType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -3330,11 +3756,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             this.Value = value;
         }
 
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SODRAFT";
@@ -3351,19 +3780,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetDraftEntryBodyInputValueType
     {
-        public SetDraftEntryBodyInputValueType(BodyInputValueTypeSODRAFTType sODRAFT)
+        public SetDraftEntryBodyInputValueType(BodyInputValueTypeSodraftType sodraft)
         {
-            this.SODRAFT = sODRAFT;
+            this.Sodraft = sodraft;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeSODRAFTType SODRAFT { get; set; }
-        public BodyInputValueTypeSODRAFTLNKType SODRAFTLNK { get; set; }
+        [JsonProperty("SODRAFT", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeSodraftType Sodraft { get; set; }
+
+        [JsonProperty("SODRAFTLNK")]
+        public BodyInputValueTypeSodraftlnkType Sodraftlnk { get; set; }
     }
 
-    public class BodyInputValueTypeSODRAFTType
+    public class BodyInputValueTypeSodraftType
     {
-        public BodyInputValueTypeSODRAFTType(string code)
+        public BodyInputValueTypeSodraftType(string code)
         {
             this.Code = code;
         }
@@ -3444,7 +3875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Zip2 { get; set; }
     }
 
-    public class BodyInputValueTypeSODRAFTLNKType
+    public class BodyInputValueTypeSodraftlnkType
     {
         [JsonProperty("BRANCH")]
         public string Branch { get; set; }
@@ -3469,11 +3900,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             this.Value = value;
         }
 
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "LINEITEM";
@@ -3490,18 +3924,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetExpenseBodyInputValueType
     {
-        public SetExpenseBodyInputValueType(BodyInputValueTypeLINEITEMType lINEITEM)
+        public SetExpenseBodyInputValueType(BodyInputValueTypeLineitemType lineitem)
         {
-            this.LINEITEM = lINEITEM;
+            this.Lineitem = lineitem;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeLINEITEMType LINEITEM { get; set; }
+        [JsonProperty("LINEITEM", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeLineitemType Lineitem { get; set; }
     }
 
-    public class BodyInputValueTypeLINEITEMType
+    public class BodyInputValueTypeLineitemType
     {
-        public BodyInputValueTypeLINEITEMType(string code, BodyInputValueTypeLINEITEMTypeInvoicingCategoryType invoicingCategory, string name, string vatGroup)
+        public BodyInputValueTypeLineitemType(string code, BodyInputValueTypeLineitemTypeInvoicingCategoryType invoicingCategory, string name, string vatGroup)
         {
             this.Code = code;
             this.InvoicingCategory = invoicingCategory;
@@ -3513,13 +3947,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Code { get; set; }
 
         [JsonProperty("LISOURCETYPE", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeLINEITEMTypeInvoicingCategoryType InvoicingCategory { get; set; }
+        public BodyInputValueTypeLineitemTypeInvoicingCategoryType InvoicingCategory { get; set; }
 
         [JsonProperty("MTRCATEGORY")]
         public string CommercialCategory { get; set; }
 
         [JsonProperty("MTRTYPE")]
-        public BodyInputValueTypeLINEITEMTypeTypeType? Type { get; set; }
+        public BodyInputValueTypeLineitemTypeTypeType? Type { get; set; }
 
         [JsonProperty("NAME", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -3528,14 +3962,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Comments { get; set; }
 
         [JsonProperty("SOPAYVALUE")]
-        public BodyInputValueTypeLINEITEMTypeFeeValueType? FeeValue { get; set; }
+        public BodyInputValueTypeLineitemTypeFeeValueType? FeeValue { get; set; }
 
         [JsonProperty("VAT", DefaultValueHandling = DefaultValueHandling.Include)]
         public string VatGroup { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputValueTypeLINEITEMTypeInvoicingCategoryType
+    public enum BodyInputValueTypeLineitemTypeInvoicingCategoryType
     {
         [EnumMember(Value = "12")]
         _12,
@@ -3550,7 +3984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputValueTypeLINEITEMTypeTypeType
+    public enum BodyInputValueTypeLineitemTypeTypeType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -3561,7 +3995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputValueTypeLINEITEMTypeFeeValueType
+    public enum BodyInputValueTypeLineitemTypeFeeValueType
     {
         [EnumMember(Value = "1")]
         _1,
@@ -3587,11 +4021,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("DATA", DefaultValueHandling = DefaultValueHandling.Include)]
         public SetExpensesDocBodyInputValueType Value { get; set; }
-        public string FORM { get; set; }
-        public string KEY { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
+
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "LINSUPDOC";
@@ -3602,16 +4040,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetExpensesDocBodyInputValueType
     {
-        public SetExpensesDocBodyInputValueType(BodyInputValueTypeLINSUPDOCType lINSUPDOC)
+        public SetExpensesDocBodyInputValueType(BodyInputValueTypeLinsupdocType linsupdoc)
         {
-            this.LINSUPDOC = lINSUPDOC;
+            this.Linsupdoc = linsupdoc;
         }
 
         [JsonProperty("LINLINES")]
         public BodyInputValueTypeUnnamedTypeItem[] Unnamed { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeLINSUPDOCType LINSUPDOC { get; set; }
+        [JsonProperty("LINSUPDOC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeLinsupdocType Linsupdoc { get; set; }
     }
 
     public class BodyInputValueTypeUnnamedTypeItem
@@ -3629,9 +4067,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Item { get; set; }
     }
 
-    public class BodyInputValueTypeLINSUPDOCType
+    public class BodyInputValueTypeLinsupdocType
     {
-        public BodyInputValueTypeLINSUPDOCType(string series, string supplier)
+        public BodyInputValueTypeLinsupdocType(string series, string supplier)
         {
             this.Series = series;
             this.Supplier = supplier;
@@ -3648,7 +4086,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("TRDR", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Supplier { get; set; }
-        public string TRNDATE { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
     public class SetItedocBodyInput
@@ -3658,11 +4098,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             this.Value = value;
         }
 
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "ITEDOC";
@@ -3679,37 +4122,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetItedocBodyInputValueType
     {
-        public SetItedocBodyInputValueType(BodyInputValueTypeITEDOCType iTEDOC, BodyInputValueTypeMTRDOCType mTRDOC)
+        public SetItedocBodyInputValueType(BodyInputValueTypeItedocType itedoc, BodyInputValueTypeMtrdocType mtrdoc)
         {
-            this.ITEDOC = iTEDOC;
-            this.MTRDOC = mTRDOC;
+            this.Itedoc = itedoc;
+            this.Mtrdoc = mtrdoc;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeITEDOCType ITEDOC { get; set; }
-        public SetItedocBodyInputValueTypeITELINESTypeItem[] ITELINES { get; set; }
+        [JsonProperty("ITEDOC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeItedocType Itedoc { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeMTRDOCType MTRDOC { get; set; }
+        [JsonProperty("ITELINES")]
+        public SetItedocBodyInputValueTypeItelinesTypeItem[] Itelines { get; set; }
+
+        [JsonProperty("MTRDOC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeMtrdocType Mtrdoc { get; set; }
     }
 
-    public class BodyInputValueTypeITEDOCType
+    public class BodyInputValueTypeItedocType
     {
-        public BodyInputValueTypeITEDOCType(string series)
+        public BodyInputValueTypeItedocType(string series)
         {
             this.Series = series;
         }
 
         [JsonProperty("COMMENTS")]
         public string Reason { get; set; }
-        public string REMARKS { get; set; }
+
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
 
         [JsonProperty("SERIES", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Series { get; set; }
-        public string TRNDATE { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
-    public class SetItedocBodyInputValueTypeITELINESTypeItem
+    public class SetItedocBodyInputValueTypeItelinesTypeItem
     {
         [JsonProperty("DISC1PRC")]
         public string Discount { get; set; }
@@ -3722,15 +4171,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("MTRL")]
         public string Item { get; set; }
-        public string PRICE { get; set; }
+
+        [JsonProperty("PRICE")]
+        public string Price { get; set; }
 
         [JsonProperty("QTY")]
         public string Quantity { get; set; }
     }
 
-    public class BodyInputValueTypeMTRDOCType
+    public class BodyInputValueTypeMtrdocType
     {
-        public BodyInputValueTypeMTRDOCType(string warehouse)
+        public BodyInputValueTypeMtrdocType(string warehouse)
         {
             this.Warehouse = warehouse;
         }
@@ -3746,11 +4197,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             this.Value = value;
         }
 
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "ITEM";
@@ -3767,18 +4221,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetItemBodyInputValueType
     {
-        public SetItemBodyInputValueType(BodyInputValueTypeITEMType iTEM)
+        public SetItemBodyInputValueType(BodyInputValueTypeItemType item)
         {
-            this.ITEM = iTEM;
+            this.Item = item;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeITEMType ITEM { get; set; }
+        [JsonProperty("ITEM", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeItemType Item { get; set; }
     }
 
-    public class BodyInputValueTypeITEMType
+    public class BodyInputValueTypeItemType
     {
-        public BodyInputValueTypeITEMType(string code, string baseUnitOfMeasure, string name, string vatGroup)
+        public BodyInputValueTypeItemType(string code, string baseUnitOfMeasure, string name, string vatGroup)
         {
             this.Code = code;
             this.BaseUnitOfMeasure = baseUnitOfMeasure;
@@ -3824,11 +4278,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             this.Value = value;
         }
 
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "PRJC";
@@ -3845,41 +4302,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetProjectBodyInputValueType
     {
-        public SetProjectBodyInputValueType(BodyInputValueTypePRJCType pRJC)
+        public SetProjectBodyInputValueType(BodyInputValueTypePrjcType prjc)
         {
-            this.PRJC = pRJC;
+            this.Prjc = prjc;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypePRJCType PRJC { get; set; }
-        public BodyInputValueTypeXTRDOCDATATypeItem[] XTRDOCDATA { get; set; }
+        [JsonProperty("PRJC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypePrjcType Prjc { get; set; }
+
+        [JsonProperty("XTRDOCDATA")]
+        public BodyInputValueTypeXtrdocdataTypeItem[] Xtrdocdata { get; set; }
     }
 
-    public class BodyInputValueTypePRJCType
+    public class BodyInputValueTypePrjcType
     {
-        public BodyInputValueTypePRJCType(string code, string name)
+        public BodyInputValueTypePrjcType(string code, string name)
         {
             this.Code = code;
             this.Name = name;
         }
 
-        public BodyInputValueTypePRJCTypeACTSTATUSType? ACTSTATUS { get; set; }
+        [JsonProperty("ACTSTATUS")]
+        public BodyInputValueTypePrjcTypeActstatusType? Actstatus { get; set; }
 
         [JsonProperty("CODE", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
-        public string FINALDATE { get; set; }
-        public string FROMDATE { get; set; }
+
+        [JsonProperty("FINALDATE")]
+        public string Finaldate { get; set; }
+
+        [JsonProperty("FROMDATE")]
+        public string Fromdate { get; set; }
 
         [JsonProperty("NAME", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
-        public BodyInputValueTypePRJCTypePRJCRMType? PRJCRM { get; set; }
+
+        [JsonProperty("PRJCRM")]
+        public BodyInputValueTypePrjcTypePrjcrmType? Prjcrm { get; set; }
 
         [JsonProperty("REMARKS")]
         public string Comments { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputValueTypePRJCTypeACTSTATUSType
+    public enum BodyInputValueTypePrjcTypeActstatusType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -3898,7 +4364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputValueTypePRJCTypePRJCRMType
+    public enum BodyInputValueTypePrjcTypePrjcrmType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -3916,93 +4382,125 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
+        internal int Appid { get; set; } = 702;
 
         [JsonProperty("DATA", DefaultValueHandling = DefaultValueHandling.Include)]
         public SetPurdocBodyInputValueType Value { get; set; }
-        public string FORM { get; set; }
-        public string KEY { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
+
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "PURDOC";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "setData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "setData";
     }
 
     public class SetPurdocBodyInputValueType
     {
-        public SetPurdocBodyInputValueType(BodyInputValueTypeMTRDOCType mTRDOC, BodyInputValueTypePURDOCType pURDOC)
+        public SetPurdocBodyInputValueType(BodyInputValueTypeMtrdocType mtrdoc, BodyInputValueTypePurdocType purdoc)
         {
-            this.MTRDOC = mTRDOC;
-            this.PURDOC = pURDOC;
+            this.Mtrdoc = mtrdoc;
+            this.Purdoc = purdoc;
         }
 
-        public SetPurdocBodyInputValueTypeITELINESTypeItem[] ITELINES { get; set; }
+        [JsonProperty("ITELINES")]
+        public SetPurdocBodyInputValueTypeItelinesTypeItem[] Itelines { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeMTRDOCType MTRDOC { get; set; }
+        [JsonProperty("MTRDOC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeMtrdocType Mtrdoc { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypePURDOCType PURDOC { get; set; }
-        public SetPurdocBodyInputValueTypeSRVLINESTypeItem[] SRVLINES { get; set; }
+        [JsonProperty("PURDOC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypePurdocType Purdoc { get; set; }
+
+        [JsonProperty("SRVLINES")]
+        public BodyInputValueTypeSrvlinesTypeItem[] Srvlines { get; set; }
     }
 
-    public class SetPurdocBodyInputValueTypeITELINESTypeItem
+    public class SetPurdocBodyInputValueTypeItelinesTypeItem
     {
-        public int? DISC1PRC { get; set; }
+        [JsonProperty("DISC1PRC")]
+        public int? Disc1Prc { get; set; }
 
         [JsonProperty("LINENUM")]
         public string LineNo { get; set; }
 
         [JsonProperty("LINEVAL")]
         public string LineValue { get; set; }
-        public string MTRL { get; set; }
-        public string PRICE { get; set; }
-        public int? QTY { get; set; }
+
+        [JsonProperty("MTRL")]
+        public string Mtrl { get; set; }
+
+        [JsonProperty("PRICE")]
+        public string Price { get; set; }
+
+        [JsonProperty("QTY")]
+        public int? Qty { get; set; }
     }
 
-    public class BodyInputValueTypePURDOCType
+    public class BodyInputValueTypePurdocType
     {
-        public BodyInputValueTypePURDOCType(string sERIES, string sOCURRENCY, string tRDR)
+        public BodyInputValueTypePurdocType(string series, string socurrency, string trdr)
         {
-            this.SERIES = sERIES;
-            this.SOCURRENCY = sOCURRENCY;
-            this.TRDR = tRDR;
+            this.Series = series;
+            this.Socurrency = socurrency;
+            this.Trdr = trdr;
         }
 
-        public string DISC1PRC { get; set; }
-        public string PAYMENT { get; set; }
-        public string PRJC { get; set; }
-        public string REMARKS { get; set; }
+        [JsonProperty("DISC1PRC")]
+        public string Disc1Prc { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SERIES { get; set; }
+        [JsonProperty("PAYMENT")]
+        public string Payment { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SOCURRENCY { get; set; }
-        public string SUMAMNT { get; set; }
+        [JsonProperty("PRJC")]
+        public string Prjc { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TRDR { get; set; }
-        public string TRNDATE { get; set; }
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
+
+        [JsonProperty("SERIES", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Series { get; set; }
+
+        [JsonProperty("SOCURRENCY", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Socurrency { get; set; }
+
+        [JsonProperty("SUMAMNT")]
+        public string Sumamnt { get; set; }
+
+        [JsonProperty("TRDR", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Trdr { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
-    public class SetPurdocBodyInputValueTypeSRVLINESTypeItem
+    public class BodyInputValueTypeSrvlinesTypeItem
     {
-        public int? DISC1PRC { get; set; }
+        [JsonProperty("DISC1PRC")]
+        public int? Disc1Prc { get; set; }
 
         [JsonProperty("LINENUM")]
         public string LineNo { get; set; }
 
         [JsonProperty("LINEVAL")]
         public string LineValue { get; set; }
-        public string MTRL { get; set; }
-        public string PRICE { get; set; }
-        public int? QTY { get; set; }
+
+        [JsonProperty("MTRL")]
+        public string Mtrl { get; set; }
+
+        [JsonProperty("PRICE")]
+        public string Price { get; set; }
+
+        [JsonProperty("QTY")]
+        public int? Qty { get; set; }
     }
 
     public class SetSaldocBodyInput
@@ -4012,11 +4510,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             this.Value = value;
         }
 
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SALDOC";
@@ -4033,46 +4534,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetSaldocBodyInputValueType
     {
-        public SetSaldocBodyInputValueType(BodyInputValueTypeMTRDOCType mTRDOC, BodyInputValueTypeSALDOCType sALDOC)
+        public SetSaldocBodyInputValueType(BodyInputValueTypeMtrdocType mtrdoc, BodyInputValueTypeSaldocType saldoc)
         {
-            this.MTRDOC = mTRDOC;
-            this.SALDOC = sALDOC;
+            this.Mtrdoc = mtrdoc;
+            this.Saldoc = saldoc;
         }
 
-        public SetSaldocBodyInputValueTypeITELINESTypeItem[] ITELINES { get; set; }
+        [JsonProperty("ITELINES")]
+        public SetItedocBodyInputValueTypeItelinesTypeItem[] Itelines { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeMTRDOCType MTRDOC { get; set; }
+        [JsonProperty("MTRDOC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeMtrdocType Mtrdoc { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeSALDOCType SALDOC { get; set; }
-        public SetSaldocBodyInputValueTypeSRVLINESTypeItem[] SRVLINES { get; set; }
+        [JsonProperty("SALDOC", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeSaldocType Saldoc { get; set; }
+
+        [JsonProperty("SRVLINES")]
+        public BodyInputValueTypeSrvlinesTypeItem[] Srvlines { get; set; }
     }
 
-    public class SetSaldocBodyInputValueTypeITELINESTypeItem
+    public class BodyInputValueTypeSaldocType
     {
-        [JsonProperty("DISC1PRC")]
-        public string Discount { get; set; }
-
-        [JsonProperty("LINENUM")]
-        public string LineNo { get; set; }
-
-        [JsonProperty("LINEVAL")]
-        public string LineValue { get; set; }
-
-        [JsonProperty("MTRL")]
-        public string Item { get; set; }
-
-        [JsonProperty("PRICE")]
-        public string Price { get; set; }
-
-        [JsonProperty("QTY")]
-        public string Quantity { get; set; }
-    }
-
-    public class BodyInputValueTypeSALDOCType
-    {
-        public BodyInputValueTypeSALDOCType(string payment, string series, string currency, string customer)
+        public BodyInputValueTypeSaldocType(string payment, string series, string currency, string customer)
         {
             this.Payment = payment;
             this.Series = series;
@@ -4109,26 +4592,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("TRDR", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Customer { get; set; }
-        public string TRNDATE { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
 
         [JsonProperty("VATAMNT")]
-        public string VAT { get; set; }
-    }
-
-    public class SetSaldocBodyInputValueTypeSRVLINESTypeItem
-    {
-        public int? DISC1PRC { get; set; }
-
-        [JsonProperty("LINENUM")]
-        public string LineNo { get; set; }
-
-        [JsonProperty("LINEVAL")]
-        public string LineValue { get; set; }
-        public string MTRL { get; set; }
-
-        [JsonProperty("PRICE")]
-        public string Price { get; set; }
-        public int? QTY { get; set; }
+        public string Vat { get; set; }
     }
 
     public class SetServiceBodyInput
@@ -4138,11 +4607,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             this.Value = value;
         }
 
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SERVICE";
@@ -4159,18 +4631,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class SetServiceBodyInputValueType
     {
-        public SetServiceBodyInputValueType(BodyInputValueTypeSERVICEType sERVICE)
+        public SetServiceBodyInputValueType(BodyInputValueTypeServiceType service)
         {
-            this.SERVICE = sERVICE;
+            this.Service = service;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeSERVICEType SERVICE { get; set; }
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeServiceType Service { get; set; }
     }
 
-    public class BodyInputValueTypeSERVICEType
+    public class BodyInputValueTypeServiceType
     {
-        public BodyInputValueTypeSERVICEType(string code, string baseUnitOfMeasure, string name, string vatGroup)
+        public BodyInputValueTypeServiceType(string code, string baseUnitOfMeasure, string name, string vatGroup)
         {
             this.Code = code;
             this.BaseUnitOfMeasure = baseUnitOfMeasure;
@@ -4209,61 +4681,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string VatGroup { get; set; }
     }
 
-    public class SetSOEMAILBodyInput
+    public class SetSoemailBodyInput
     {
-        public SetSOEMAILBodyInput(SetSOEMAILBodyInputValueType value)
+        public SetSoemailBodyInput(SetSoemailBodyInputValueType value)
         {
             this.Value = value;
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
+        internal int Appid { get; set; } = 702;
 
         [JsonProperty("DATA", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetSOEMAILBodyInputValueType Value { get; set; }
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        public SetSoemailBodyInputValueType Value { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
+
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SOEMAIL";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "setData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "setData";
     }
 
-    public class SetSOEMAILBodyInputValueType
+    public class SetSoemailBodyInputValueType
     {
-        public SetSOEMAILBodyInputValueType(BodyInputValueTypeSOACTIONType sOACTION)
+        public SetSoemailBodyInputValueType(BodyInputValueTypeSoactionType soaction)
         {
-            this.SOACTION = sOACTION;
+            this.Soaction = soaction;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeSOACTIONType SOACTION { get; set; }
-        public BodyInputValueTypeSOMAILType SOMAIL { get; set; }
-        public BodyInputValueTypeXTRDOCDATATypeItem[] XTRDOCDATA { get; set; }
+        [JsonProperty("SOACTION", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeSoactionType Soaction { get; set; }
+
+        [JsonProperty("SOMAIL")]
+        public BodyInputValueTypeSomailType Somail { get; set; }
+
+        [JsonProperty("XTRDOCDATA")]
+        public BodyInputValueTypeXtrdocdataTypeItem[] Xtrdocdata { get; set; }
     }
 
-    public class BodyInputValueTypeSOACTIONType
+    public class BodyInputValueTypeSoactionType
     {
-        public BodyInputValueTypeSOACTIONType(string sERIES)
+        public BodyInputValueTypeSoactionType(string series)
         {
-            this.SERIES = sERIES;
+            this.Series = series;
         }
 
-        public BodyInputValueTypeSOACTIONTypeACTSTATUSType? ACTSTATUS { get; set; }
-        public string COMMENTS { get; set; }
+        [JsonProperty("ACTSTATUS")]
+        public BodyInputValueTypeSoactionTypeActstatusType? Actstatus { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SERIES { get; set; }
-        public string TRNDATE { get; set; }
+        [JsonProperty("COMMENTS")]
+        public string Comments { get; set; }
+
+        [JsonProperty("SERIES", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Series { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputValueTypeSOACTIONTypeACTSTATUSType
+    public enum BodyInputValueTypeSoactionTypeActstatusType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -4281,58 +4766,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         _6
     }
 
-    public class BodyInputValueTypeSOMAILType
+    public class BodyInputValueTypeSomailType
     {
-        public string FROMADDRESS { get; set; }
-        public string FROMNAME { get; set; }
-        public string SOBCC { get; set; }
-        public string SOBODY { get; set; }
-        public string SOCC { get; set; }
-        public string SOTO { get; set; }
+        [JsonProperty("FROMADDRESS")]
+        public string Fromaddress { get; set; }
+
+        [JsonProperty("FROMNAME")]
+        public string Fromname { get; set; }
+
+        [JsonProperty("SOBCC")]
+        public string Sobcc { get; set; }
+
+        [JsonProperty("SOBODY")]
+        public string Sobody { get; set; }
+
+        [JsonProperty("SOCC")]
+        public string Socc { get; set; }
+
+        [JsonProperty("SOTO")]
+        public string Soto { get; set; }
     }
 
     public class SetMeetingBodyInput
     {
-        public SetMeetingBodyInput(BodyInputDATAType dATA)
+        public SetMeetingBodyInput(BodyInputDataType data)
         {
-            this.DATA = dATA;
+            this.Data = data;
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
+        internal int Appid { get; set; } = 702;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputDATAType DATA { get; set; }
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("DATA", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputDataType Data { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
+
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SOMEETING";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "setData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "setData";
     }
 
-    public class BodyInputDATAType
+    public class BodyInputDataType
     {
-        public BodyInputDATAType(BodyInputDATATypeSOACTIONType sOACTION)
+        public BodyInputDataType(BodyInputDataTypeSoactionType soaction)
         {
-            this.SOACTION = sOACTION;
+            this.Soaction = soaction;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputDATATypeSOACTIONType SOACTION { get; set; }
-        public BodyInputDATATypeXTRDOCDATATypeItem[] XTRDOCDATA { get; set; }
+        [JsonProperty("SOACTION", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputDataTypeSoactionType Soaction { get; set; }
+
+        [JsonProperty("XTRDOCDATA")]
+        public BodyInputDataTypeXtrdocdataTypeItem[] Xtrdocdata { get; set; }
     }
 
-    public class BodyInputDATATypeSOACTIONType
+    public class BodyInputDataTypeSoactionType
     {
-        public BodyInputDATATypeSOACTIONType(string sERIES)
+        public BodyInputDataTypeSoactionType(string series)
         {
-            this.SERIES = sERIES;
+            this.Series = series;
         }
 
         [JsonProperty("ACTOR")]
@@ -4340,10 +4842,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("ACTPRSN")]
         public string OperatorContact { get; set; }
-        public BodyInputDATATypeSOACTIONTypeACTSTATUSType? ACTSTATUS { get; set; }
-        public string COMMENTS { get; set; }
-        public string FINALDATE { get; set; }
-        public string FROMDATE { get; set; }
+
+        [JsonProperty("ACTSTATUS")]
+        public BodyInputDataTypeSoactionTypeActstatusType? Actstatus { get; set; }
+
+        [JsonProperty("COMMENTS")]
+        public string Comments { get; set; }
+
+        [JsonProperty("FINALDATE")]
+        public string Finaldate { get; set; }
+
+        [JsonProperty("FROMDATE")]
+        public string Fromdate { get; set; }
 
         [JsonProperty("ORDEREDBY")]
         public string OrderedBy { get; set; }
@@ -4356,16 +4866,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("PRJC")]
         public string Project { get; set; }
-        public string REMARKS { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SERIES { get; set; }
-        public string TRDR { get; set; }
-        public string TRNDATE { get; set; }
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
+
+        [JsonProperty("SERIES", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Series { get; set; }
+
+        [JsonProperty("TRDR")]
+        public string Trdr { get; set; }
+
+        [JsonProperty("TRNDATE")]
+        public string Trndate { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputDATATypeSOACTIONTypeACTSTATUSType
+    public enum BodyInputDataTypeSoactionTypeActstatusType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -4383,7 +4899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         _6
     }
 
-    public class BodyInputDATATypeXTRDOCDATATypeItem
+    public class BodyInputDataTypeXtrdocdataTypeItem
     {
         [JsonProperty("LINENUM")]
         public string LineNo { get; set; }
@@ -4395,29 +4911,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Url { get; set; }
     }
 
-    public class SetSOTASKBodyInput
+    public class SetSotaskBodyInput
     {
-        public SetSOTASKBodyInput(BodyInputDATAType dATA)
+        public SetSotaskBodyInput(BodyInputDataType data)
         {
-            this.DATA = dATA;
+            this.Data = data;
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
+        internal int Appid { get; set; } = 702;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputDATAType DATA { get; set; }
-        public string FORM { get; set; }
-        public string KEY { get; set; }
+        [JsonProperty("DATA", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputDataType Data { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
+
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SOTASK";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "setData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "setData";
     }
 
     public class SetSupplierBodyInput
@@ -4428,68 +4948,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [JsonProperty("APPID", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int APPId { get; set; } = 702;
+        internal int Appid { get; set; } = 702;
 
         [JsonProperty("DATA", DefaultValueHandling = DefaultValueHandling.Include)]
         public SetSupplierBodyInputValueType Value { get; set; }
-        public string FORM { get; set; }
-        public string KEY { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string MODE { get; set; } = "1";
+        [JsonProperty("FORM")]
+        public string Form { get; set; }
+
+        [JsonProperty("KEY")]
+        public string Key { get; set; }
+
+        [JsonProperty("MODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "1";
 
         [JsonProperty("OBJECT", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ObjectEntity { get; set; } = "SUPPLIER";
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SERVICE { get; set; } = "setData";
+        [JsonProperty("SERVICE", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "setData";
     }
 
     public class SetSupplierBodyInputValueType
     {
-        public SetSupplierBodyInputValueType(BodyInputValueTypeSUPPLIERType sUPPLIER)
+        public SetSupplierBodyInputValueType(BodyInputValueTypeSupplierType supplier)
         {
-            this.SUPPLIER = sUPPLIER;
+            this.Supplier = supplier;
         }
 
-        public BodyInputValueTypeSUPBANKACCTypeItem[] SUPBANKACC { get; set; }
+        [JsonProperty("SUPBANKACC")]
+        public BodyInputValueTypeSupbankaccTypeItem[] Supbankacc { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputValueTypeSUPPLIERType SUPPLIER { get; set; }
+        [JsonProperty("SUPPLIER", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputValueTypeSupplierType Supplier { get; set; }
     }
 
-    public class BodyInputValueTypeSUPBANKACCTypeItem
+    public class BodyInputValueTypeSupbankaccTypeItem
     {
-        public string BANK { get; set; }
-        public string IBAN { get; set; }
-        public string REMARKS { get; set; }
+        [JsonProperty("BANK")]
+        public string Bank { get; set; }
+
+        [JsonProperty("IBAN")]
+        public string Iban { get; set; }
+
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
     }
 
-    public class BodyInputValueTypeSUPPLIERType
+    public class BodyInputValueTypeSupplierType
     {
-        public BodyInputValueTypeSUPPLIERType(string cODE, string nAME)
+        public BodyInputValueTypeSupplierType(string code, string name)
         {
-            this.CODE = cODE;
-            this.NAME = nAME;
+            this.Code = code;
+            this.Name = name;
         }
 
-        public string ADDRESS { get; set; }
-        public string AFM { get; set; }
-        public string CITY { get; set; }
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CODE { get; set; }
-        public string DISTRICT { get; set; }
-        public string EMAIL { get; set; }
-        public string FAX { get; set; }
-        public string IRSDATA { get; set; }
-        public string JOBTYPETRD { get; set; }
+        [JsonProperty("AFM")]
+        public string Afm { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string NAME { get; set; }
-        public string PHONE01 { get; set; }
-        public string REMARKS { get; set; }
-        public string ZIP { get; set; }
+        [JsonProperty("CITY")]
+        public string City { get; set; }
+
+        [JsonProperty("CODE", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Code { get; set; }
+
+        [JsonProperty("DISTRICT")]
+        public string District { get; set; }
+
+        [JsonProperty("EMAIL")]
+        public string Email { get; set; }
+
+        [JsonProperty("FAX")]
+        public string Fax { get; set; }
+
+        [JsonProperty("IRSDATA")]
+        public string Irsdata { get; set; }
+
+        [JsonProperty("JOBTYPETRD")]
+        public string Jobtypetrd { get; set; }
+
+        [JsonProperty("NAME", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("PHONE01")]
+        public string Phone01 { get; set; }
+
+        [JsonProperty("REMARKS")]
+        public string Remarks { get; set; }
+
+        [JsonProperty("ZIP")]
+        public string Zip { get; set; }
     }
 
     public class WebhookBodyInput

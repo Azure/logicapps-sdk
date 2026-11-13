@@ -240,9 +240,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        public IBodyWorkflowAction<FindAgentResponse, ApiConnectionActionConfiguration> FindAgent(Expression<Func<string>> username)
+        public IBodyWorkflowAction<FindAgentResponse, ApiConnectionActionConfiguration> FindAgent(Expression<Func<string>> userName)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             return new DeferredBodyAction<FindAgentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/find_agent";
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["mod"] = Convert.ToString("agent");
                 callPayload.Queries["cmd"] = Convert.ToString("find");
-                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 return new ApiConnectionAction<FindAgentResponse>(callPayload);
             });
         }
@@ -528,10 +528,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
     public class CreateAgentBodyInputAccountType
     {
-        public CreateAgentBodyInputAccountType(string password, string username)
+        public CreateAgentBodyInputAccountType(string password, string userName)
         {
             this.Password = password;
-            this.Username = username;
+            this.UserName = userName;
         }
 
         [JsonProperty("external_id")]
@@ -553,10 +553,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public string TimeZone { get; set; } = "Europe/Helsinki";
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("voip_username")]
-        public string VoipUsername { get; set; }
+        public string VoipUserName { get; set; }
     }
 
     public class CreateAgentBodyInputContactInformationType
@@ -909,10 +909,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public string TimeZone { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("voip_username")]
-        public string VoipUsername { get; set; }
+        public string VoipUserName { get; set; }
     }
 
     public class ModifyAgentBodyInputContactInformationType

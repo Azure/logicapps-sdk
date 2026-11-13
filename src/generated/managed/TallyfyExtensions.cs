@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public string Email { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public string Timezone { get; set; }
 
         [JsonProperty("UTC_offset")]
-        public string UTCOffset { get; set; }
+        public string UtcOffset { get; set; }
 
         [JsonProperty("last_accessed_at")]
         public string LastAccessedAt { get; set; }

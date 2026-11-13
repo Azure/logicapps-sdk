@@ -52,10 +52,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ErrorResponseMethodType
     {
-        GET,
-        POST,
-        PUT,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
     public class RequestInput

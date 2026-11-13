@@ -155,9 +155,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MethodInput
     {
-        GET,
-        PUT,
-        POST
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "POST")]
+        Post
     }
 
     public class ModelResponse

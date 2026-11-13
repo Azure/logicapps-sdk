@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         public string CreatedAt { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
     }
 
     public class GetDepotsResponseItemTestsuitesTypeItem
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         public string CreatedAt { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
     }
 
     public class GetDepotsResponseItemTestsuitesTypeItemResultsTypeItem
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         public string CreatedAt { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
     }
 
     public class GetDepotsResponseItemTestsuitesTypeItemDatasourceType
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         public string CreatedAt { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
     }
 
     public class GetDepotsResponseItemTestsuitesTypeItemDatasourceTypeAccountType
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         public string CreatedAt { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
     }
 
     public class GetDepotsResponseItemTestsuitesTypeItemDatasourceTypeAccountTypeAuthenticationType

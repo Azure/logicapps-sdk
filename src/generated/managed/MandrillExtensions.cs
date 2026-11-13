@@ -135,10 +135,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
     public class ListScheduledInfo
     {
         [JsonProperty("email")]
-        public string RecipientSEmail { get; set; }
+        public string RecipientEmail { get; set; }
 
         [JsonProperty("status")]
-        public ListScheduledInfoRecipientSStatusType RecipientSStatus { get; set; }
+        public ListScheduledInfoRecipientStatusType RecipientStatus { get; set; }
 
         [JsonProperty("reject_reason")]
         public ListScheduledInfoRejectionReasonType RejectionReason { get; set; }
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListScheduledInfoRecipientSStatusType
+    public enum ListScheduledInfoRecipientStatusType
     {
         [EnumMember(Value = "")]
         None,
@@ -266,13 +266,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public bool? FillTextMessageIfNotPresentTrueFalse { get; set; }
 
         [JsonProperty("auto_html", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal bool FillHTMLMessageIfNotPresentTrueFalse { get; set; } = false;
+        internal bool FillHtmlMessageIfNotPresentTrueFalse { get; set; } = false;
 
         [JsonProperty("inline_css")]
-        public bool? InlineCSSStylesInHtmlMessageTrueFalse { get; set; }
+        public bool? InlineCssStylesInHtmlMessageTrueFalse { get; set; }
 
         [JsonProperty("url_strip_qs")]
-        public bool? StripQueryStringFromURLInAggregatedDataTrueFalse { get; set; }
+        public bool? StripQueryStringFromUrlInAggregatedDataTrueFalse { get; set; }
 
         [JsonProperty("preserve_recipients")]
         public bool? ShowAllRecipientsInToLineTrueFalse { get; set; }
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public bool? RemoveContentLoggingTrueFalse { get; set; }
 
         [JsonProperty("bcc_address")]
-        public string OptionalBCCAddress { get; set; }
+        public string OptionalBccAddress { get; set; }
 
         [JsonProperty("tracking_domain")]
         public string CustomDomaingForTracking { get; set; }
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
     public class AttachmentInfo
     {
         [JsonProperty("type")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("name")]
         public string FileName { get; set; }

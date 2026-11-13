@@ -206,7 +206,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
     {
         public string CompanyName { get; set; }
         public string ContactId { get; set; }
-        public string DescriptionHTML { get; set; }
+
+        [JsonProperty("DescriptionHTML")]
+        public string DescriptionHtml { get; set; }
         public string DisplayName { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
@@ -229,7 +231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
     public class PostProjectsBodyInput
     {
         public string ClientId { get; set; }
-        public string DescriptionHTML { get; set; }
+
+        [JsonProperty("DescriptionHTML")]
+        public string DescriptionHtml { get; set; }
         public string DivisionId { get; set; }
         public string EndDate { get; set; }
         public bool? IsArchived { get; set; }
@@ -283,7 +287,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
 
     public class ApiTask
     {
-        public string DescriptionHTML { get; set; }
+        [JsonProperty("DescriptionHTML")]
+        public string DescriptionHtml { get; set; }
         public string EndDateTime { get; set; }
         public string Name { get; set; }
         public string ProjectId { get; set; }
@@ -293,7 +298,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
 
     public class PostTaskBodyInput
     {
-        public string DescriptionHTML { get; set; }
+        [JsonProperty("DescriptionHTML")]
+        public string DescriptionHtml { get; set; }
         public string EndDateTime { get; set; }
         public string GroupId { get; set; }
         public string Name { get; set; }

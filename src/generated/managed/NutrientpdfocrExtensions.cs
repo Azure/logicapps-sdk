@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal bool MetaData { get; set; } = false;
+        internal bool Metadata { get; set; } = false;
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr.InputDataInputLanguageType.English;

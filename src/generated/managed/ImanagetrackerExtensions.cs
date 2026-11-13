@@ -276,8 +276,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WorkObjectInResponseWWstypeType
     {
-        DOCUMENT,
-        FOLDER
+        [EnumMember(Value = "DOCUMENT")]
+        Document,
+        [EnumMember(Value = "FOLDER")]
+        Folder
     }
 
     public class TaskStatusInResponse

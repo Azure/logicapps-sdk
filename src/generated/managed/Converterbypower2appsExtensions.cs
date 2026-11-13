@@ -853,16 +853,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3071ImageMetaData, ApiConnectionActionConfiguration> ImageMetaData(Expression<Func<DtoRequestV3071ImageMetaDataInput>> dtoRequestV3071ImageMetaData)
+        public IBodyWorkflowAction<DtoResponseV3071ImageMetadata, ApiConnectionActionConfiguration> ImageMetadata(Expression<Func<DtoRequestV3071ImageMetadataInput>> dtoRequestV3071ImageMetadata)
         {
-            var __workflow_dtoRequestV3071ImageMetaData = WorkflowExpression.Compile(dtoRequestV3071ImageMetaData, nameof(dtoRequestV3071ImageMetaData), required: true);
-            return new DeferredBodyAction<DtoResponseV3071ImageMetaData, ApiConnectionActionConfiguration>(() =>
+            var __workflow_dtoRequestV3071ImageMetadata = WorkflowExpression.Compile(dtoRequestV3071ImageMetadata, nameof(dtoRequestV3071ImageMetadata), required: true);
+            return new DeferredBodyAction<DtoResponseV3071ImageMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/V3071_ImageMetaData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dtoRequestV3071ImageMetaData);
-                return new ApiConnectionAction<DtoResponseV3071ImageMetaData>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dtoRequestV3071ImageMetadata);
+                return new ApiConnectionAction<DtoResponseV3071ImageMetadata>(callPayload);
             });
         }
 
@@ -1258,7 +1258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1266,16 +1266,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class AddHtmlToWordDtoRequestInput
     {
-        public AddHtmlToWordDtoRequestInput(string hTML)
+        public AddHtmlToWordDtoRequestInput(string html)
         {
-            this.HTML = hTML;
+            this.Html = html;
         }
 
         [JsonProperty("existingFileContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HTML { get; set; }
+        public string Html { get; set; }
 
         [JsonProperty("fileResponseMode")]
         public int? ReduceResponseSize { get; set; }
@@ -1290,7 +1290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1331,7 +1331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1372,7 +1372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1413,7 +1413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1442,57 +1442,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV2081CombineCsvs
     {
         [JsonProperty("csv")]
-        public string CSVResponse { get; set; }
+        public string CsvResponse { get; set; }
     }
 
     public class DtoRequestV2081CombineCsvsInput
     {
-        public DtoRequestV2081CombineCsvsInput(string mainCSV, string combineColumnName, string secondCSV)
+        public DtoRequestV2081CombineCsvsInput(string mainCsv, string combineColumnName, string secondCsv)
         {
-            this.MainCSV = mainCSV;
+            this.MainCsv = mainCsv;
             this.CombineColumnName = combineColumnName;
-            this.SecondCSV = secondCSV;
+            this.SecondCsv = secondCsv;
         }
 
         [JsonProperty("mainCsv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MainCSV { get; set; }
+        public string MainCsv { get; set; }
 
         [JsonProperty("mainCsvColumn", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CombineColumnName { get; set; }
 
         [JsonProperty("secondCsv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SecondCSV { get; set; }
+        public string SecondCsv { get; set; }
 
         [JsonProperty("secondCsvColumn")]
-        public string SecondCSVColumn { get; set; }
+        public string SecondCsvColumn { get; set; }
     }
 
     public class DtoResponseV2091CombineJsonArrays
     {
         [JsonProperty("json")]
-        public string JSONResponse { get; set; }
+        public string JsonResponse { get; set; }
     }
 
     public class DtoRequestV2091CombineJsonArraysInput
     {
-        public DtoRequestV2091CombineJsonArraysInput(string mainJSON, string combinePropertyName, string secondJSON)
+        public DtoRequestV2091CombineJsonArraysInput(string mainJson, string combinePropertyName, string secondJson)
         {
-            this.MainJSON = mainJSON;
+            this.MainJson = mainJson;
             this.CombinePropertyName = combinePropertyName;
-            this.SecondJSON = secondJSON;
+            this.SecondJson = secondJson;
         }
 
         [JsonProperty("mainJson", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MainJSON { get; set; }
+        public string MainJson { get; set; }
 
         [JsonProperty("mainJsonProperty", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CombinePropertyName { get; set; }
 
         [JsonProperty("secondJson", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SecondJSON { get; set; }
+        public string SecondJson { get; set; }
 
         [JsonProperty("secondJsonProperty")]
-        public string SecondJSONProperty { get; set; }
+        public string SecondJsonProperty { get; set; }
     }
 
     public class DtoResponseV3042CompressImage
@@ -1504,7 +1504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1536,7 +1536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1544,13 +1544,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class CompressPdfDtoRequestInput
     {
-        public CompressPdfDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF)
+        public CompressPdfDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
         }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("compressImages")]
         public bool? CompressImages { get; set; }
@@ -1574,28 +1574,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV2071ConvertColor
     {
         [JsonProperty("rgb")]
-        public string RGB { get; set; }
+        public string Rgb { get; set; }
 
         [JsonProperty("hex")]
-        public string HEX { get; set; }
+        public string Hex { get; set; }
 
         [JsonProperty("cmyk")]
-        public string CMYK { get; set; }
+        public string Cmyk { get; set; }
 
         [JsonProperty("hsl")]
-        public string HSL { get; set; }
+        public string Hsl { get; set; }
 
         [JsonProperty("hsv")]
-        public string HSV { get; set; }
+        public string Hsv { get; set; }
 
         [JsonProperty("xyz")]
-        public string XYZ { get; set; }
+        public string Xyz { get; set; }
 
         [JsonProperty("yiq")]
-        public string YIQ { get; set; }
+        public string Yiq { get; set; }
 
         [JsonProperty("yuv")]
-        public string YUV { get; set; }
+        public string Yuv { get; set; }
 
         [JsonProperty("colorName")]
         public string ColorName { get; set; }
@@ -1621,7 +1621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1635,16 +1635,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertCsvToExcelDtoRequestInput
     {
-        public ConvertCsvToExcelDtoRequestInput(string cSV)
+        public ConvertCsvToExcelDtoRequestInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("dataIncludesHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDiscoverFieldTypes", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AutoDetectFieldTypes { get; set; } = false;
@@ -1668,7 +1668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public bool? AutoDetectQuoteDelimiter { get; set; } = true;
 
         [JsonProperty("encoding")]
-        public int? CSVInputEncoding { get; set; }
+        public int? CsvInputEncoding { get; set; }
 
         [JsonProperty("adjustColumnToContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AdjustExcelColumnToContent { get; set; } = true;
@@ -1686,21 +1686,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseHtml
     {
         [JsonProperty("html")]
-        public string HTMLResponse { get; set; }
+        public string HtmlResponse { get; set; }
     }
 
     public class DtoRequestV7061ConvertCsvToHtmlTableInput
     {
-        public DtoRequestV7061ConvertCsvToHtmlTableInput(string cSV)
+        public DtoRequestV7061ConvertCsvToHtmlTableInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("dataIncludesHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDiscoverFieldTypes", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AutoDetectFieldTypes { get; set; } = false;
@@ -1727,21 +1727,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV1022ConvertCsvToJson
     {
         [JsonProperty("json")]
-        public string JSONResponse { get; set; }
+        public string JsonResponse { get; set; }
     }
 
     public class DtoRequestV1022ConvertCsvToJsonInput
     {
-        public DtoRequestV1022ConvertCsvToJsonInput(string cSV)
+        public DtoRequestV1022ConvertCsvToJsonInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("dataIncludesHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDiscoverFieldTypes", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AutoDetectFieldTypes { get; set; } = false;
@@ -1780,7 +1780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public int EstimatedTokens { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1791,13 +1791,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertCsvToMarkdownDtoRequestInput
     {
-        public ConvertCsvToMarkdownDtoRequestInput(string cSV)
+        public ConvertCsvToMarkdownDtoRequestInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("dataIncludesHeader")]
         public bool? FirstRowIsTheHeader { get; set; }
@@ -1821,10 +1821,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV1100ConvertExcelToJson
     {
         [JsonProperty("json")]
-        public string JSONResponse { get; set; }
+        public string JsonResponse { get; set; }
 
         [JsonProperty("schema")]
-        public string JSONSchemaResponse { get; set; }
+        public string JsonSchemaResponse { get; set; }
     }
 
     public class DtoRequestV1100ConvertExcelToJsonInput
@@ -1862,7 +1862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public int EstimatedTokens { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1903,7 +1903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1935,21 +1935,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV7070ConvertHtmlTableToCsv
     {
         [JsonProperty("firstCsvTable")]
-        public string FirstCSVTableResponse { get; set; }
+        public string FirstCsvTableResponse { get; set; }
 
         [JsonProperty("csvTables")]
-        public string[] AllCSVTablesResponse { get; set; }
+        public string[] AllCsvTablesResponse { get; set; }
     }
 
     public class DtoRequestV7070ConvertHtmlTableToCsvInput
     {
-        public DtoRequestV7070ConvertHtmlTableToCsvInput(string hTMLTable)
+        public DtoRequestV7070ConvertHtmlTableToCsvInput(string htmlTable)
         {
-            this.HTMLTable = hTMLTable;
+            this.HtmlTable = htmlTable;
         }
 
         [JsonProperty("htmlTable", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HTMLTable { get; set; }
+        public string HtmlTable { get; set; }
 
         [JsonProperty("delimiter")]
         public string Separator { get; set; }
@@ -1964,7 +1964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -1975,13 +1975,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertHtmlTableToExcelDtoRequestInput
     {
-        public ConvertHtmlTableToExcelDtoRequestInput(string hTMLTable)
+        public ConvertHtmlTableToExcelDtoRequestInput(string htmlTable)
         {
-            this.HTMLTable = hTMLTable;
+            this.HtmlTable = htmlTable;
         }
 
         [JsonProperty("htmlTable", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HTMLTable { get; set; }
+        public string HtmlTable { get; set; }
 
         [JsonProperty("fileResponseMode")]
         public int? ReduceResponseSize { get; set; }
@@ -1990,10 +1990,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV7013ConvertHtmlTableToJson
     {
         [JsonProperty("firstTable")]
-        public string FirstJSONTableResponse { get; set; }
+        public string FirstJsonTableResponse { get; set; }
 
         [JsonProperty("tables")]
-        public string[] AllJSONTablesResponse { get; set; }
+        public string[] AllJsonTablesResponse { get; set; }
 
         [JsonProperty("notes")]
         public string[] Notes { get; set; }
@@ -2001,13 +2001,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertHtmlTableToJsonDtoRequestInput
     {
-        public ConvertHtmlTableToJsonDtoRequestInput(string hTMLTable)
+        public ConvertHtmlTableToJsonDtoRequestInput(string htmlTable)
         {
-            this.HTMLTable = hTMLTable;
+            this.HtmlTable = htmlTable;
         }
 
         [JsonProperty("htmlTable", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HTMLTable { get; set; }
+        public string HtmlTable { get; set; }
     }
 
     public class DtoResponseV7032ConvertHtmlToImage
@@ -2019,7 +2019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2027,13 +2027,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertHtmlToImageDtoRequestInput
     {
-        public ConvertHtmlToImageDtoRequestInput(string hTML)
+        public ConvertHtmlToImageDtoRequestInput(string html)
         {
-            this.HTML = hTML;
+            this.Html = html;
         }
 
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HTML { get; set; }
+        public string Html { get; set; }
 
         [JsonProperty("width")]
         public int? Width { get; set; }
@@ -2060,7 +2060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public int EstimatedTokens { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2071,13 +2071,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertHtmlToMarkdownDtoRequestInput
     {
-        public ConvertHtmlToMarkdownDtoRequestInput(string hTML)
+        public ConvertHtmlToMarkdownDtoRequestInput(string html)
         {
-            this.HTML = hTML;
+            this.Html = html;
         }
 
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HTML { get; set; }
+        public string Html { get; set; }
 
         [JsonProperty("removeClutter")]
         public bool? RemoveMenusAndExtras { get; set; }
@@ -2101,7 +2101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2109,13 +2109,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertHtmlToPdfDtoRequestInput
     {
-        public ConvertHtmlToPdfDtoRequestInput(string hTML)
+        public ConvertHtmlToPdfDtoRequestInput(string html)
         {
-            this.HTML = hTML;
+            this.Html = html;
         }
 
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HTML { get; set; }
+        public string Html { get; set; }
 
         [JsonProperty("isLandscape", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? LandscapeFormat { get; set; } = false;
@@ -2163,7 +2163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2171,13 +2171,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class DtoRequestV7041ConvertHtmlToWordInput
     {
-        public DtoRequestV7041ConvertHtmlToWordInput(string hTML)
+        public DtoRequestV7041ConvertHtmlToWordInput(string html)
         {
-            this.HTML = hTML;
+            this.Html = html;
         }
 
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HTML { get; set; }
+        public string Html { get; set; }
     }
 
     public class DtoRequestV3012ConvertImageInput
@@ -2197,18 +2197,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV1013ConvertJsonToCsv
     {
         [JsonProperty("csv")]
-        public string CSVResponse { get; set; }
+        public string CsvResponse { get; set; }
     }
 
     public class DtoRequestV1013ConvertJsonToCsvInput
     {
-        public DtoRequestV1013ConvertJsonToCsvInput(string jSON)
+        public DtoRequestV1013ConvertJsonToCsvInput(string json)
         {
-            this.JSON = jSON;
+            this.Json = json;
         }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSON { get; set; }
+        public string Json { get; set; }
 
         [JsonProperty("delimiter")]
         public string Separator { get; set; }
@@ -2223,7 +2223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2231,13 +2231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertJsonToExcelDtoRequestInput
     {
-        public ConvertJsonToExcelDtoRequestInput(string jSON)
+        public ConvertJsonToExcelDtoRequestInput(string json)
         {
-            this.JSON = jSON;
+            this.Json = json;
         }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSON { get; set; }
+        public string Json { get; set; }
 
         [JsonProperty("allInOneTable", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AllInOneTable { get; set; } = true;
@@ -2257,13 +2257,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class DtoRequestV7051ConvertJsonToHtmlTableInput
     {
-        public DtoRequestV7051ConvertJsonToHtmlTableInput(string jSON)
+        public DtoRequestV7051ConvertJsonToHtmlTableInput(string json)
         {
-            this.JSON = jSON;
+            this.Json = json;
         }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSON { get; set; }
+        public string Json { get; set; }
     }
 
     public class DtoResponseV1090ConvertJsonToTextTable
@@ -2274,47 +2274,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class DtoRequestV1090ConvertJsonToTextTableInput
     {
-        public DtoRequestV1090ConvertJsonToTextTableInput(string jSON)
+        public DtoRequestV1090ConvertJsonToTextTableInput(string json)
         {
-            this.JSON = jSON;
+            this.Json = json;
         }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSON { get; set; }
+        public string Json { get; set; }
     }
 
     public class DtoResponseV1042ConvertJsonToXml
     {
         [JsonProperty("xml")]
-        public string XMLResponse { get; set; }
+        public string XmlResponse { get; set; }
     }
 
     public class DtoRequestV1042ConvertJsonToXmlInput
     {
-        public DtoRequestV1042ConvertJsonToXmlInput(string jSON)
+        public DtoRequestV1042ConvertJsonToXmlInput(string json)
         {
-            this.JSON = jSON;
+            this.Json = json;
         }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSON { get; set; }
+        public string Json { get; set; }
     }
 
     public class DtoResponseV1081ConvertJsonToYaml
     {
         [JsonProperty("yaml")]
-        public string YAMLResponse { get; set; }
+        public string YamlResponse { get; set; }
     }
 
     public class DtoRequestV1081ConvertJsonToYamlInput
     {
-        public DtoRequestV1081ConvertJsonToYamlInput(string jSON)
+        public DtoRequestV1081ConvertJsonToYamlInput(string json)
         {
-            this.JSON = jSON;
+            this.Json = json;
         }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSON { get; set; }
+        public string Json { get; set; }
     }
 
     public class DtoResponseV1110ConvertMultiCsvToExcel
@@ -2326,7 +2326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2346,7 +2346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public CsvSheetItem[] Sheet { get; set; }
 
         [JsonProperty("dataIncludesHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDiscoverFieldTypes", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AutoDetectFieldTypes { get; set; } = false;
@@ -2387,13 +2387,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class CsvSheetItem
     {
-        public CsvSheetItem(string cSV)
+        public CsvSheetItem(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("sheetName")]
         public string Name { get; set; }
@@ -2414,7 +2414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public int EstimatedTokens { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2425,13 +2425,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertPdfToMarkdownDtoRequestInput
     {
-        public ConvertPdfToMarkdownDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF)
+        public ConvertPdfToMarkdownDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
         }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -2464,7 +2464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2472,13 +2472,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertPdfToPdfADtoRequestInput
     {
-        public ConvertPdfToPdfADtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF)
+        public ConvertPdfToPdfADtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
         }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("conformanceLevel")]
         public int? ConformanceLevel { get; set; }
@@ -2504,9 +2504,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class DtoRequestV6011ConvertSharePointSearchResultsInput
     {
-        public DtoRequestV6011ConvertSharePointSearchResultsInput(string sPSearchResult)
+        public DtoRequestV6011ConvertSharePointSearchResultsInput(string spSearchResult)
         {
-            this.SPSearchResult = sPSearchResult;
+            this.SPSearchResult = spSearchResult;
         }
 
         [JsonProperty("sharepointResult", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2516,7 +2516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV5160ConvertWordToHtml
     {
         [JsonProperty("html")]
-        public string HTMLResponse { get; set; }
+        public string HtmlResponse { get; set; }
     }
 
     public class ConvertWordToHtmlDtoRequestInput
@@ -2533,7 +2533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public bool? EmbedImages { get; set; }
 
         [JsonProperty("fullHtmlDocument")]
-        public bool? FullHTMLDocument { get; set; }
+        public bool? FullHtmlDocument { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -2554,7 +2554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public int EstimatedTokens { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2586,13 +2586,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV1130ConvertXmlToCsv
     {
         [JsonProperty("csv")]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("file")]
         public string FileResponse { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2603,22 +2603,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertXmlToCsvDtoRequestInput
     {
-        public ConvertXmlToCsvDtoRequestInput(string xML)
+        public ConvertXmlToCsvDtoRequestInput(string xml)
         {
-            this.XML = xML;
+            this.Xml = xml;
         }
 
         [JsonProperty("xml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string XML { get; set; }
+        public string Xml { get; set; }
 
         [JsonProperty("delimiter")]
         public string Separator { get; set; }
 
         [JsonProperty("ignoreXmlFormatting", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IgnoreXMLFormatting { get; set; } = true;
+        public bool? IgnoreXmlFormatting { get; set; } = true;
 
         [JsonProperty("fileName")]
-        public string CSVFileName { get; set; }
+        public string CsvFileName { get; set; }
 
         [JsonProperty("textOutputMode")]
         public int? OutputFormat { get; set; }
@@ -2633,7 +2633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2644,16 +2644,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ConvertXmlToExcelDtoRequestInput
     {
-        public ConvertXmlToExcelDtoRequestInput(string xML)
+        public ConvertXmlToExcelDtoRequestInput(string xml)
         {
-            this.XML = xML;
+            this.Xml = xml;
         }
 
         [JsonProperty("xml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string XML { get; set; }
+        public string Xml { get; set; }
 
         [JsonProperty("ignoreXmlFormatting", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IgnoreXMLFormatting { get; set; } = true;
+        public bool? IgnoreXmlFormatting { get; set; } = true;
 
         [JsonProperty("allInOneTable", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AllInOneTable { get; set; } = true;
@@ -2677,21 +2677,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV1053ConvertXmlToJson
     {
         [JsonProperty("json")]
-        public string JSONResponse { get; set; }
+        public string JsonResponse { get; set; }
     }
 
     public class ConvertXmlToJsonDtoRequestInput
     {
-        public ConvertXmlToJsonDtoRequestInput(string xML)
+        public ConvertXmlToJsonDtoRequestInput(string xml)
         {
-            this.XML = xML;
+            this.Xml = xml;
         }
 
         [JsonProperty("xml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string XML { get; set; }
+        public string Xml { get; set; }
 
         [JsonProperty("ignoreXmlFormatting")]
-        public bool? IgnoreXMLFormatting { get; set; }
+        public bool? IgnoreXmlFormatting { get; set; }
     }
 
     public class DtoResponseV8011ConvertXRechnungToPdf
@@ -2703,7 +2703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2726,18 +2726,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV1071ConvertYamlToJson
     {
         [JsonProperty("json")]
-        public string JSONResponse { get; set; }
+        public string JsonResponse { get; set; }
     }
 
     public class DtoRequestV1071YamlToJsonInput
     {
-        public DtoRequestV1071YamlToJsonInput(string yAML)
+        public DtoRequestV1071YamlToJsonInput(string yaml)
         {
-            this.YAML = yAML;
+            this.Yaml = yaml;
         }
 
         [JsonProperty("yaml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string YAML { get; set; }
+        public string Yaml { get; set; }
     }
 
     public class DtoResponseV3092CreateChartImage
@@ -2749,7 +2749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2793,7 +2793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2843,7 +2843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2884,7 +2884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2931,7 +2931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -2976,7 +2976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3031,7 +3031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("file")]
         public string FileBytes { get; set; }
@@ -3042,13 +3042,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ExtractImagesFromPdfDtoRequestInput
     {
-        public ExtractImagesFromPdfDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF)
+        public ExtractImagesFromPdfDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
         }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -3086,13 +3086,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class DtoRequestV2100ExtractJsonObjectPropertiesInput
     {
-        public DtoRequestV2100ExtractJsonObjectPropertiesInput(string jSON)
+        public DtoRequestV2100ExtractJsonObjectPropertiesInput(string json)
         {
-            this.JSON = jSON;
+            this.Json = json;
         }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSON { get; set; }
+        public string Json { get; set; }
 
         [JsonProperty("nestedPropertyExtraction", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExtractNestedProperties { get; set; } = true;
@@ -3107,7 +3107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3115,14 +3115,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ExtractPdfPagesDtoRequestInput
     {
-        public ExtractPdfPagesDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDFFile, string pagesToExtract)
+        public ExtractPdfPagesDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdfFile, string pagesToExtract)
         {
-            this.PDFFile = pDFFile;
+            this.PdfFile = pdfFile;
             this.PagesToExtract = pagesToExtract;
         }
 
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfFile { get; set; }
 
         [JsonProperty("pages", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PagesToExtract { get; set; }
@@ -3143,7 +3143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponse { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3160,13 +3160,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ExtractPdfTablesToCsvDtoRequestInput
     {
-        public ExtractPdfTablesToCsvDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF)
+        public ExtractPdfTablesToCsvDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
         }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -3181,7 +3181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Separator { get; set; }
 
         [JsonProperty("fileName")]
-        public string CSVFileName { get; set; }
+        public string CsvFileName { get; set; }
 
         [JsonProperty("textOutputMode")]
         public int? OutputFormat { get; set; }
@@ -3196,7 +3196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Base64String { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3213,13 +3213,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ExtractPdfTablesToExcelDtoRequestInput
     {
-        public ExtractPdfTablesToExcelDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF)
+        public ExtractPdfTablesToExcelDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
         }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -3240,7 +3240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV4170ExtractPdfTablesToHtml
     {
         [JsonProperty("html")]
-        public string HTML { get; set; }
+        public string Html { get; set; }
 
         [JsonProperty("firstTable")]
         public string FirstTable { get; set; }
@@ -3249,7 +3249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponse { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3266,13 +3266,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ExtractPdfTablesToHtmlDtoRequestInput
     {
-        public ExtractPdfTablesToHtmlDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF)
+        public ExtractPdfTablesToHtmlDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
         }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -3284,7 +3284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public int? HeaderRow { get; set; }
 
         [JsonProperty("fileName")]
-        public string HTMLFileName { get; set; }
+        public string HtmlFileName { get; set; }
 
         [JsonProperty("textOutputMode")]
         public int? OutputFormat { get; set; }
@@ -3307,13 +3307,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ExtractPdfTablesToJsonDtoRequestInput
     {
-        public ExtractPdfTablesToJsonDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF)
+        public ExtractPdfTablesToJsonDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
         }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -3375,13 +3375,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ExtractTextFromPdfDtoRequestInput
     {
-        public ExtractTextFromPdfDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF)
+        public ExtractTextFromPdfDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
         }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -3399,7 +3399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string PageSeparator { get; set; }
 
         [JsonProperty("normalizeWhitespace")]
-        public bool? NormalizeWhitespace { get; set; }
+        public bool? NormalizeWhiteSpace { get; set; }
     }
 
     public class DtoResponseV5021ExtractWordBookmarks
@@ -3487,13 +3487,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public bool IsValid { get; set; }
 
         [JsonProperty("isSepaCountry")]
-        public bool IsValidSEPACountry { get; set; }
+        public bool IsValidSepaCountry { get; set; }
 
         [JsonProperty("countryCode")]
         public string CountryCode { get; set; }
 
         [JsonProperty("bban")]
-        public string BBAN { get; set; }
+        public string Bban { get; set; }
 
         [JsonProperty("bankCode")]
         public string BankCode { get; set; }
@@ -3505,13 +3505,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string AccountNumber { get; set; }
 
         [JsonProperty("formattedIban")]
-        public string FormattedIBAN { get; set; }
+        public string FormattedIban { get; set; }
 
         [JsonProperty("unformattedIban")]
-        public string UnformattedIBAN { get; set; }
+        public string UnformattedIban { get; set; }
 
         [JsonProperty("swift_code")]
-        public string SWIFTCode { get; set; }
+        public string SwiftCode { get; set; }
 
         [JsonProperty("bank_name")]
         public string BankName { get; set; }
@@ -3520,7 +3520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string BankCity { get; set; }
 
         [JsonProperty("bank_zip")]
-        public string BankZIP { get; set; }
+        public string BankZip { get; set; }
 
         [JsonProperty("bank_adress")]
         public string BankAddress { get; set; }
@@ -3528,16 +3528,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class DtoRequestV2021IbanDataInput
     {
-        public DtoRequestV2021IbanDataInput(string iBAN)
+        public DtoRequestV2021IbanDataInput(string iban)
         {
-            this.IBAN = iBAN;
+            this.Iban = iban;
         }
 
         [JsonProperty("iban", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string IBAN { get; set; }
+        public string Iban { get; set; }
     }
 
-    public class DtoResponseV3071ImageMetaData
+    public class DtoResponseV3071ImageMetadata
     {
         [JsonProperty("imageFormat")]
         public string ImageFormat { get; set; }
@@ -3567,18 +3567,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public double VerticalResolution { get; set; }
 
         [JsonProperty("hasEXIFData")]
-        public bool HasEXIFData { get; set; }
+        public bool HasExifData { get; set; }
 
         [JsonProperty("exifData")]
-        public string EXIFData { get; set; }
+        public string ExifData { get; set; }
 
         [JsonProperty("hasXMPData")]
-        public bool HasXMPData { get; set; }
+        public bool HasXmpData { get; set; }
     }
 
-    public class DtoRequestV3071ImageMetaDataInput
+    public class DtoRequestV3071ImageMetadataInput
     {
-        public DtoRequestV3071ImageMetaDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent imageFile)
+        public DtoRequestV3071ImageMetadataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent imageFile)
         {
             this.ImageFile = imageFile;
         }
@@ -3626,7 +3626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3674,7 +3674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3727,7 +3727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3798,7 +3798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3840,7 +3840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3851,13 +3851,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class MergeMultiplePdfsDtoRequestInput
     {
-        public MergeMultiplePdfsDtoRequestInput(PdfMergeItem[] pDF)
+        public MergeMultiplePdfsDtoRequestInput(PdfMergeItem[] pdf)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
         }
 
         [JsonProperty("pdfFiles", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfMergeItem[] PDF { get; set; }
+        public PdfMergeItem[] Pdf { get; set; }
 
         [JsonProperty("addPageNumbers", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AddPageNumbers { get; set; } = false;
@@ -3872,13 +3872,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public bool? AddBookmarks { get; set; } = false;
 
         [JsonProperty("pdfTitle")]
-        public string PDFTitle { get; set; }
+        public string PdfTitle { get; set; }
 
         [JsonProperty("pdfAuthor")]
-        public string PDFAuthor { get; set; }
+        public string PdfAuthor { get; set; }
 
         [JsonProperty("fileName")]
-        public string PDFFileName { get; set; }
+        public string PdfFileName { get; set; }
 
         [JsonProperty("fileResponseMode")]
         public int? ReduceResponseSize { get; set; }
@@ -3904,7 +3904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -3976,7 +3976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public int FileSize { get; set; }
 
         [JsonProperty("pdfVersion")]
-        public int PDFVersion { get; set; }
+        public int PdfVersion { get; set; }
 
         [JsonProperty("pageCount")]
         public int PageCount { get; set; }
@@ -4005,7 +4005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -4042,9 +4042,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class DtoRequestReadCodeDataInput
     {
-        public DtoRequestReadCodeDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent qROrBarcode)
+        public DtoRequestReadCodeDataInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent qrOrBarcode)
         {
-            this.QROrBarcode = qROrBarcode;
+            this.QROrBarcode = qrOrBarcode;
         }
 
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4092,7 +4092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -4100,14 +4100,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class RemovePagesFromPdfDtoRequestInput
     {
-        public RemovePagesFromPdfDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDF, string pages)
+        public RemovePagesFromPdfDtoRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdf, string pages)
         {
-            this.PDF = pDF;
+            this.Pdf = pdf;
             this.Pages = pages;
         }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("pages", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pages { get; set; }
@@ -4158,7 +4158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -4196,7 +4196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -4283,21 +4283,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV2061SortCsv
     {
         [JsonProperty("csv")]
-        public string CSVResponse { get; set; }
+        public string CsvResponse { get; set; }
     }
 
     public class DtoRequestV2061SortCsvInput
     {
-        public DtoRequestV2061SortCsvInput(string cSV)
+        public DtoRequestV2061SortCsvInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("dataIncludesHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDiscoverFieldTypes", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AutoDetectFieldTypes { get; set; } = false;
@@ -4333,18 +4333,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class DtoResponseV2051SortJson
     {
         [JsonProperty("json")]
-        public string JSONResponse { get; set; }
+        public string JsonResponse { get; set; }
     }
 
     public class DtoRequestV2051SortJsonInput
     {
-        public DtoRequestV2051SortJsonInput(string jSON)
+        public DtoRequestV2051SortJsonInput(string json)
         {
-            this.JSON = jSON;
+            this.Json = json;
         }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSON { get; set; }
+        public string Json { get; set; }
 
         [JsonProperty("sortProperty")]
         public string SortProperty { get; set; }
@@ -4392,7 +4392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -4427,7 +4427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -4477,7 +4477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -4513,7 +4513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -4542,7 +4542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileResponseAsString { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
@@ -4550,13 +4550,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class UrlToFileDtoRequestInput
     {
-        public UrlToFileDtoRequestInput(string uRL)
+        public UrlToFileDtoRequestInput(string url)
         {
-            this.URL = uRL;
+            this.Url = url;
         }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("fileResponseMode")]
         public int? ReduceResponseSize { get; set; }

@@ -3289,7 +3289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<UserGroupMembership[], ApiConnectionActionConfiguration> UGMGetUserGroupMemberships(Expression<Func<string>> accessToken, Expression<Func<string>> userLoginContains = null, Expression<Func<string>> userGroupNameContains = null, Expression<Func<string>> createdAtGt = null, Expression<Func<string>> updatedAtGt = null, Expression<Func<string>> updatedAtLt = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null, Expression<Func<DirInput>> dir = null)
+        public IBodyWorkflowAction<UserGroupMembership[], ApiConnectionActionConfiguration> UgmGetUserGroupMemberships(Expression<Func<string>> accessToken, Expression<Func<string>> userLoginContains = null, Expression<Func<string>> userGroupNameContains = null, Expression<Func<string>> createdAtGt = null, Expression<Func<string>> updatedAtGt = null, Expression<Func<string>> updatedAtLt = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null, Expression<Func<DirInput>> dir = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_userLoginContains = WorkflowExpression.Compile(userLoginContains, nameof(userLoginContains), required: false);
@@ -3337,7 +3337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<UserGroupMembership, ApiConnectionActionConfiguration> UGMGetUserGroupMembershipById(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> fields = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<UserGroupMembership, ApiConnectionActionConfiguration> UgmGetUserGroupMembershipById(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> fields = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -3362,7 +3362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<InvAbandonInvoicesUOMResponse[], ApiConnectionActionConfiguration> UOMGetUOMs(Expression<Func<string>> accessToken, Expression<Func<string>> nameContains = null, Expression<Func<string>> codeContains = null, Expression<Func<bool>> active = null, Expression<Func<string>> createdAtGt = null, Expression<Func<string>> updatedAtGt = null, Expression<Func<string>> updatedAtLt = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null, Expression<Func<DirInput>> dir = null)
+        public IBodyWorkflowAction<InvAbandonInvoicesUomResponse[], ApiConnectionActionConfiguration> UomGetUoms(Expression<Func<string>> accessToken, Expression<Func<string>> nameContains = null, Expression<Func<string>> codeContains = null, Expression<Func<bool>> active = null, Expression<Func<string>> createdAtGt = null, Expression<Func<string>> updatedAtGt = null, Expression<Func<string>> updatedAtLt = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null, Expression<Func<DirInput>> dir = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_nameContains = WorkflowExpression.Compile(nameContains, nameof(nameContains), required: false);
@@ -3377,7 +3377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             var __workflow_dir = WorkflowExpression.Compile(dir, nameof(dir), required: false);
-            return new DeferredBodyAction<InvAbandonInvoicesUOMResponse[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<InvAbandonInvoicesUomResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/uoms";
                 var apiCallHttpMethod = "get";
@@ -3408,19 +3408,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                     callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<InvAbandonInvoicesUOMResponse[]>(callPayload);
+                return new ApiConnectionAction<InvAbandonInvoicesUomResponse[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coupaip")]
-        public IBodyWorkflowAction<InvAbandonInvoicesUOMResponse, ApiConnectionActionConfiguration> UOMGetUOMById(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> fields = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<InvAbandonInvoicesUomResponse, ApiConnectionActionConfiguration> UomGetUomById(Expression<Func<string>> accessToken, Expression<Func<int>> id, Expression<Func<ReturnObjectInput>> returnObject = null, Expression<Func<string>> fields = null, Expression<Func<string>> filter = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_returnObject = WorkflowExpression.Compile(returnObject, nameof(returnObject), required: false);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<InvAbandonInvoicesUOMResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<InvAbandonInvoicesUomResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/uoms/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -3433,7 +3433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<InvAbandonInvoicesUOMResponse>(callPayload);
+                return new ApiConnectionAction<InvAbandonInvoicesUomResponse>(callPayload);
             });
         }
 
@@ -4215,7 +4215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         public Integration Integration { get; set; }
 
         [JsonProperty("integration-filename")]
-        public JToken IntegrationFilename { get; set; }
+        public JToken IntegrationFileName { get; set; }
 
         [JsonProperty("integration-run")]
         public IntegrationRun IntegrationRun { get; set; }
@@ -4401,7 +4401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         public InvAbandonInvoicesItemResponse Item { get; set; }
 
         [JsonProperty("uom")]
-        public InvAbandonInvoicesUOMResponse Uom { get; set; }
+        public InvAbandonInvoicesUomResponse Uom { get; set; }
 
         [JsonProperty("commodity")]
         public CommGetCommoditiesCommodityResponse Commodity { get; set; }
@@ -4431,7 +4431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         public JToken Active { get; set; }
 
         [JsonProperty("uom")]
-        public InvAbandonInvoicesUOMResponse Uom { get; set; }
+        public InvAbandonInvoicesUomResponse Uom { get; set; }
 
         [JsonProperty("commodity")]
         public CommGetCommoditiesCommodityResponse Commodity { get; set; }
@@ -4443,7 +4443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         public JToken UpdatedAt { get; set; }
     }
 
-    public class InvAbandonInvoicesUOMResponse
+    public class InvAbandonInvoicesUomResponse
     {
         [JsonProperty("id")]
         public JToken Id { get; set; }
@@ -5992,7 +5992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         public JToken Active { get; set; }
 
         [JsonProperty("uom")]
-        public OrdListCreateOrderPadUOM Uom { get; set; }
+        public OrdListCreateOrderPadUom Uom { get; set; }
 
         [JsonProperty("commodity")]
         public OrdListCreateOrderPadCommodity Commodity { get; set; }
@@ -6004,7 +6004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         public JToken UpdatedAt { get; set; }
     }
 
-    public class OrdListCreateOrderPadUOM
+    public class OrdListCreateOrderPadUom
     {
         [JsonProperty("id")]
         public JToken Id { get; set; }
@@ -6419,7 +6419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         public InvAbandonInvoicesItemResponse Item { get; set; }
 
         [JsonProperty("uom")]
-        public InvAbandonInvoicesUOMResponse Uom { get; set; }
+        public InvAbandonInvoicesUomResponse Uom { get; set; }
 
         [JsonProperty("need-by-date")]
         public JToken NeedByDate { get; set; }
@@ -6576,7 +6576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         public PurchaseOrderLineRequesterType Requester { get; set; }
 
         [JsonProperty("uom")]
-        public InvAbandonInvoicesUOMResponse Uom { get; set; }
+        public InvAbandonInvoicesUomResponse Uom { get; set; }
 
         [JsonProperty("commodity")]
         public CommGetCommoditiesCommodityResponse Commodity { get; set; }
@@ -6848,7 +6848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         public JToken OrderHeaderNumber { get; set; }
 
         [JsonProperty("uom")]
-        public InvAbandonInvoicesUOMResponse Uom { get; set; }
+        public InvAbandonInvoicesUomResponse Uom { get; set; }
 
         [JsonProperty("item")]
         public InvAbandonInvoicesItemResponse Item { get; set; }
@@ -6980,7 +6980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coupaip
         public Account Account { get; set; }
 
         [JsonProperty("uom")]
-        public InvAbandonInvoicesUOMResponse Uom { get; set; }
+        public InvAbandonInvoicesUomResponse Uom { get; set; }
 
         [JsonProperty("commodity")]
         public CommGetCommoditiesCommodityResponse Commodity { get; set; }

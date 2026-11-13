@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
         public string LastName { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("business_name")]
         public string BusinessName { get; set; }
@@ -503,13 +503,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
 
     public class RestoreDeletedProjectBodyInput
     {
-        public RestoreDeletedProjectBodyInput(int[] projectIDs)
+        public RestoreDeletedProjectBodyInput(int[] projectIds)
         {
-            this.ProjectIDs = projectIDs;
+            this.ProjectIds = projectIds;
         }
 
         [JsonProperty("project_ids", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int[] ProjectIDs { get; set; }
+        public int[] ProjectIds { get; set; }
     }
 
     public class ListProjectQRCodesResponse
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
         public string Type { get; set; }
 
         [JsonProperty("preview_url")]
-        public string PreviewURL { get; set; }
+        public string PreviewUrl { get; set; }
 
         [JsonProperty("hits")]
         public int TotalScans { get; set; }
@@ -587,10 +587,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
         public string Name { get; set; }
 
         [JsonProperty("preview_url")]
-        public string PreviewURL { get; set; }
+        public string PreviewUrl { get; set; }
 
         [JsonProperty("shorturl")]
-        public string ShortURL { get; set; }
+        public string ShortUrl { get; set; }
     }
 
     public class GenerateQRCodeBodyInput
@@ -624,14 +624,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateQRCodeBodyInputTypeType
     {
-        URL,
-        TEXT,
-        MAILTO,
-        TEL,
-        SMSTO,
-        WIFI,
-        VCARD,
-        GEO
+        [EnumMember(Value = "URL")]
+        Url,
+        [EnumMember(Value = "TEXT")]
+        Text,
+        [EnumMember(Value = "MAILTO")]
+        Mailto,
+        [EnumMember(Value = "TEL")]
+        Tel,
+        [EnumMember(Value = "SMSTO")]
+        Smsto,
+        [EnumMember(Value = "WIFI")]
+        Wifi,
+        [EnumMember(Value = "VCARD")]
+        Vcard,
+        [EnumMember(Value = "GEO")]
+        Geo
     }
 
     public class ListQRCodesResponse
@@ -658,10 +666,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
         public int ProjectId { get; set; }
 
         [JsonProperty("shorturl")]
-        public string ShortURL { get; set; }
+        public string ShortUrl { get; set; }
 
         [JsonProperty("preview_url")]
-        public string PreviewURL { get; set; }
+        public string PreviewUrl { get; set; }
     }
 
     public class ListQRCodesResponsePaginationType
@@ -682,10 +690,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
     public class RestoreDeletedQRCodeBodyInput
     {
         [JsonProperty("qrcode_ids")]
-        public int[] QRCodeIDs { get; set; }
+        public int[] QRCodeIds { get; set; }
 
         [JsonProperty("shorturl_keys")]
-        public string[] ShortURLKeys { get; set; }
+        public string[] ShortUrlKeys { get; set; }
     }
 
     public class TransferQRCodeResponse
@@ -700,10 +708,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
         public int? ProjectId { get; set; }
 
         [JsonProperty("qrcode_ids")]
-        public int[] QRCodeIDs { get; set; }
+        public int[] QRCodeIds { get; set; }
 
         [JsonProperty("shorturl_keys")]
-        public string[] ShortURLKeys { get; set; }
+        public string[] ShortUrlKeys { get; set; }
     }
 
     public class MoveQRCodeToProjectResponse
@@ -714,13 +722,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
 
     public class MoveQRCodeToProjectBodyInput
     {
-        public MoveQRCodeToProjectBodyInput(int[] qRCodeIDs)
+        public MoveQRCodeToProjectBodyInput(int[] qrCodeIds)
         {
-            this.QRCodeIDs = qRCodeIDs;
+            this.QRCodeIds = qrCodeIds;
         }
 
         [JsonProperty("qrcodes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int[] QRCodeIDs { get; set; }
+        public int[] QRCodeIds { get; set; }
     }
 
     public class GetTopScannerResponse
@@ -780,13 +788,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
         public int ProjectId { get; set; }
 
         [JsonProperty("shorturl")]
-        public string ShortURL { get; set; }
+        public string ShortUrl { get; set; }
 
         [JsonProperty("preview_url")]
-        public string PreviewURL { get; set; }
+        public string PreviewUrl { get; set; }
 
         [JsonProperty("download_url")]
-        public string DownloadURL { get; set; }
+        public string DownloadUrl { get; set; }
 
         [JsonProperty("hits")]
         public int TotalScans { get; set; }
@@ -807,7 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
         public string Name { get; set; }
 
         [JsonProperty("data")]
-        public string DataURL { get; set; }
+        public string DataUrl { get; set; }
 
         [JsonProperty("type")]
         public UpdateQRCodeBodyInputTypeType? Type { get; set; }
@@ -816,11 +824,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qrstuff
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdateQRCodeBodyInputTypeType
     {
-        URL,
-        TEXT,
-        MAILTO,
-        TEL,
-        SMSTO
+        [EnumMember(Value = "URL")]
+        Url,
+        [EnumMember(Value = "TEXT")]
+        Text,
+        [EnumMember(Value = "MAILTO")]
+        Mailto,
+        [EnumMember(Value = "TEL")]
+        Tel,
+        [EnumMember(Value = "SMSTO")]
+        Smsto
     }
 
     public class GetQRCodeHistoryResponse

@@ -184,15 +184,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeRecentPACsResponse, ApiConnectionActionConfiguration> CommitteeRecentPACs(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CommitteeRecentPacsResponse, ApiConnectionActionConfiguration> CommitteeRecentPacs(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<CommitteeRecentPACsResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CommitteeRecentPacsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/superpacs.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<CommitteeRecentPACsResponse>(callPayload);
+                return new ApiConnectionAction<CommitteeRecentPacsResponse>(callPayload);
             });
         }
 
@@ -1493,7 +1493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         public string ReceiptDate { get; set; }
     }
 
-    public class CommitteeRecentPACsResponse
+    public class CommitteeRecentPacsResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -1511,10 +1511,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         public string Offset { get; set; }
 
         [JsonProperty("results")]
-        public CommitteeRecentPACsResponseResultsTypeItem[] Results { get; set; }
+        public CommitteeRecentPacsResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class CommitteeRecentPACsResponseResultsTypeItem
+    public class CommitteeRecentPacsResponseResultsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }

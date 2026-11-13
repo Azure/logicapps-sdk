@@ -344,13 +344,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string Creator { get; set; }
 
         [JsonProperty("creator_username")]
-        public string CreatorUsername { get; set; }
+        public string CreatorUserName { get; set; }
 
         [JsonProperty("editedByDevice")]
         public string EditedByDevice { get; set; }
 
         [JsonProperty("edited_by_username")]
-        public string EditedByUsername { get; set; }
+        public string EditedByUserName { get; set; }
 
         [JsonProperty("endDateObject")]
         public string EndDateObject { get; set; }
@@ -500,13 +500,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string Creator { get; set; }
 
         [JsonProperty("creator_username")]
-        public string CreatorUsername { get; set; }
+        public string CreatorUserName { get; set; }
 
         [JsonProperty("editedByDevice")]
         public string EditedByDevice { get; set; }
 
         [JsonProperty("edited_by_username")]
-        public string EditedByUsername { get; set; }
+        public string EditedByUserName { get; set; }
 
         [JsonProperty("endDateObject")]
         public string EndDateObject { get; set; }
@@ -655,13 +655,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string Creator { get; set; }
 
         [JsonProperty("creator_username")]
-        public string CreatorUsername { get; set; }
+        public string CreatorUserName { get; set; }
 
         [JsonProperty("editedByDevice")]
         public string EditedByDevice { get; set; }
 
         [JsonProperty("edited_by_username")]
-        public string EditedByUsername { get; set; }
+        public string EditedByUserName { get; set; }
 
         [JsonProperty("endDateObject")]
         public string EndDateObject { get; set; }
@@ -811,13 +811,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string Creator { get; set; }
 
         [JsonProperty("creator_username")]
-        public string CreatorUsername { get; set; }
+        public string CreatorUserName { get; set; }
 
         [JsonProperty("editedByDevice")]
         public string EditedByDevice { get; set; }
 
         [JsonProperty("edited_by_username")]
-        public string EditedByUsername { get; set; }
+        public string EditedByUserName { get; set; }
 
         [JsonProperty("endDateObject")]
         public string EndDateObject { get; set; }

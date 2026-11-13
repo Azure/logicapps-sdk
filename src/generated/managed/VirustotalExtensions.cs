@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public int FirstSubmissionDate { get; set; }
 
         [JsonProperty("html_meta")]
-        public JToken HTMLMetaTags { get; set; }
+        public JToken HtmlMetaTags { get; set; }
 
         [JsonProperty("last_analysis_date")]
         public int LastAnalysisDate { get; set; }
@@ -118,19 +118,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public string LastFinalUrl { get; set; }
 
         [JsonProperty("last_http_response_code")]
-        public int LastHTTPResponseCode { get; set; }
+        public int LastHttpResponseCode { get; set; }
 
         [JsonProperty("last_http_response_content_length")]
-        public int LastHTTPResponseContentLength { get; set; }
+        public int LastHttpResponseContentLength { get; set; }
 
         [JsonProperty("last_http_response_content_sha256")]
-        public string LastHTTPResponseContentSHA256 { get; set; }
+        public string LastHttpResponseContentSha256 { get; set; }
 
         [JsonProperty("last_http_response_cookies")]
-        public JToken LastHTTPResponseCookies { get; set; }
+        public JToken LastHttpResponseCookies { get; set; }
 
         [JsonProperty("last_http_response_headers")]
-        public JToken LastHTTPResponseHeaders { get; set; }
+        public JToken LastHttpResponseHeaders { get; set; }
 
         [JsonProperty("last_modification_date")]
         public int LastModificationDate { get; set; }
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public JToken Trackers { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
     }
 
     public class UrlResultDataTypeAttributesTypeLastAnalysisStatisticsType
@@ -220,16 +220,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public DomainResultDataTypeAttributesTypeLastAnalysisStatisticsType LastAnalysisStatistics { get; set; }
 
         [JsonProperty("last_dns_records")]
-        public JToken[] LastDNSRecords { get; set; }
+        public JToken[] LastDnsRecords { get; set; }
 
         [JsonProperty("last_dns_records_date")]
-        public int LastDNSRecordsDate { get; set; }
+        public int LastDnsRecordsDate { get; set; }
 
         [JsonProperty("last_https_certificate")]
-        public JToken LastHTTPSCertificate { get; set; }
+        public JToken LastHttpsCertificate { get; set; }
 
         [JsonProperty("last_https_certificate_date")]
-        public int LastHTTPSCertificateDate { get; set; }
+        public int LastHttpsCertificateDate { get; set; }
 
         [JsonProperty("last_modification_date")]
         public int LastModificationDateFormat { get; set; }
@@ -253,10 +253,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public DomainResultDataTypeAttributesTypeTotalVotesType TotalVotes { get; set; }
 
         [JsonProperty("whois")]
-        public string WHOIS { get; set; }
+        public string Whois { get; set; }
 
         [JsonProperty("whois_date")]
-        public int WHOISDate { get; set; }
+        public int WhoisDate { get; set; }
     }
 
     public class DomainResultDataTypeAttributesTypeLastAnalysisStatisticsType
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public string Owner { get; set; }
 
         [JsonProperty("asn")]
-        public int ASN { get; set; }
+        public int Asn { get; set; }
 
         [JsonProperty("continent")]
         public string Continent { get; set; }
@@ -343,10 +343,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public IpDataTypeAttributesTypeTotalVotesType TotalVotes { get; set; }
 
         [JsonProperty("whois")]
-        public string WHOIS { get; set; }
+        public string Whois { get; set; }
 
         [JsonProperty("whois_date")]
-        public int WHOISDate { get; set; }
+        public int WhoisDate { get; set; }
     }
 
     public class IpDataTypeAttributesTypeLastAnalysisStatisticsType
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public int CreationDate { get; set; }
 
         [JsonProperty("first_seen_itw_date")]
-        public int FirstSeenITWDate { get; set; }
+        public int FirstSeenItwDate { get; set; }
 
         [JsonProperty("first_submission_date")]
         public int FirstSubmissionDate { get; set; }
@@ -490,10 +490,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public int Reputation { get; set; }
 
         [JsonProperty("sha1")]
-        public string SHA1 { get; set; }
+        public string Sha1 { get; set; }
 
         [JsonProperty("sha256")]
-        public string SHA256 { get; set; }
+        public string Sha256 { get; set; }
 
         [JsonProperty("signature_info")]
         public JToken SignatureInfo { get; set; }
@@ -511,13 +511,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public int TimesSubmitted { get; set; }
 
         [JsonProperty("tlsh")]
-        public string TLSH { get; set; }
+        public string Tlsh { get; set; }
 
         [JsonProperty("total_votes")]
         public FileDataTypeAttributesTypeTotalVotesType TotalVotes { get; set; }
 
         [JsonProperty("trid")]
-        public JToken[] TRId { get; set; }
+        public JToken[] Trid { get; set; }
 
         [JsonProperty("type_description")]
         public string TypeDescription { get; set; }

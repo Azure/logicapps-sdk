@@ -69,15 +69,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaperdiem
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaperdiem")]
-        public IBodyWorkflowAction<MappingOfZIPCodeToLocationsResponseItem[], ApiConnectionActionConfiguration> MappingOfZIPCodeToLocations(Expression<Func<string>> year)
+        public IBodyWorkflowAction<MappingOfZipCodeToLocationsResponseItem[], ApiConnectionActionConfiguration> MappingOfZipCodeToLocations(Expression<Func<string>> year)
         {
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
-            return new DeferredBodyAction<MappingOfZIPCodeToLocationsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MappingOfZipCodeToLocationsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/rates/conus/zipcodes/{0}", __workflow_year.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<MappingOfZIPCodeToLocationsResponseItem[]>(callPayload);
+                return new ApiConnectionAction<MappingOfZipCodeToLocationsResponseItem[]>(callPayload);
             });
         }
     }
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaperdiem
         public string DestinationId { get; set; }
     }
 
-    public class MappingOfZIPCodeToLocationsResponseItem
+    public class MappingOfZipCodeToLocationsResponseItem
     {
         public string Zip { get; set; }
 

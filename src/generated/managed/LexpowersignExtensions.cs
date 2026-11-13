@@ -1789,7 +1789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexpowersign
         public string ContentType { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("hash")]
         public string Hash { get; set; }
@@ -1831,7 +1831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexpowersign
         public string ContentType { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("hash")]
         public string Hash { get; set; }

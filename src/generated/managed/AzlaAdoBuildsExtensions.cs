@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.AzlaAdoBuilds
     public class AzlaAdoBuildsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azla-ado-builds")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PassthroughGET(Expression<Func<string>> Path)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PassthroughGet(Expression<Func<string>> path)
         {
-            var __workflow_Path = WorkflowExpression.Compile(Path, nameof(Path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_Path.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_path.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.AzlaAdoBuilds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azla-ado-builds")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PassthroughDELETE(Expression<Func<string>> Path)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PassthroughDelete(Expression<Func<string>> path)
         {
-            var __workflow_Path = WorkflowExpression.Compile(Path, nameof(Path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_Path.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_path.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -39,12 +39,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.AzlaAdoBuilds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azla-ado-builds")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PassthroughPOST(Expression<Func<string>> Path)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Passthrough(Expression<Func<string>> path)
         {
-            var __workflow_Path = WorkflowExpression.Compile(Path, nameof(Path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_Path.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_path.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -52,12 +52,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.AzlaAdoBuilds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azla-ado-builds")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PassthroughPUT(Expression<Func<string>> Path)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PassthroughPut(Expression<Func<string>> path)
         {
-            var __workflow_Path = WorkflowExpression.Compile(Path, nameof(Path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_Path.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_path.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

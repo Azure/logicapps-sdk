@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugNDCResponse, ApiConnectionActionConfiguration> DrugNDC(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugNdcResponse, ApiConnectionActionConfiguration> DrugNdc(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<DrugNDCResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DrugNdcResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ndc.json";
                 var apiCallHttpMethod = "get";
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                     callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
-                return new ApiConnectionAction<DrugNDCResponse>(callPayload);
+                return new ApiConnectionAction<DrugNdcResponse>(callPayload);
             });
         }
 
@@ -85,11 +85,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugsFDAResponse, ApiConnectionActionConfiguration> DrugsFDA(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugsFdaResponse, ApiConnectionActionConfiguration> DrugsFda(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<DrugsFDAResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DrugsFdaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/drugsfda.json";
                 var apiCallHttpMethod = "get";
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                     callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
-                return new ApiConnectionAction<DrugsFDAResponse>(callPayload);
+                return new ApiConnectionAction<DrugsFdaResponse>(callPayload);
             });
         }
     }
@@ -362,16 +362,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string[] DosageAndAdministrationTable { get; set; }
     }
 
-    public class DrugNDCResponse
+    public class DrugNdcResponse
     {
         [JsonProperty("meta")]
-        public DrugNDCResponseMetaType Meta { get; set; }
+        public DrugNdcResponseMetaType Meta { get; set; }
 
         [JsonProperty("results")]
-        public DrugNDCResponseResultsTypeItem[] Results { get; set; }
+        public DrugNdcResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class DrugNDCResponseMetaType
+    public class DrugNdcResponseMetaType
     {
         [JsonProperty("disclaimer")]
         public string Disclaimer { get; set; }
@@ -386,10 +386,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string LastUpdated { get; set; }
 
         [JsonProperty("results")]
-        public DrugNDCResponseMetaTypeResultsType Results { get; set; }
+        public DrugNdcResponseMetaTypeResultsType Results { get; set; }
     }
 
-    public class DrugNDCResponseMetaTypeResultsType
+    public class DrugNdcResponseMetaTypeResultsType
     {
         [JsonProperty("skip")]
         public int Skip { get; set; }
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public int Total { get; set; }
     }
 
-    public class DrugNDCResponseResultsTypeItem
+    public class DrugNdcResponseResultsTypeItem
     {
         [JsonProperty("product_ndc")]
         public string ProductNdc { get; set; }
@@ -416,19 +416,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string BrandName { get; set; }
 
         [JsonProperty("active_ingredients")]
-        public DrugNDCResponseResultsTypeItemActiveIngredientsTypeItem[] ActiveIngredients { get; set; }
+        public DrugNdcResponseResultsTypeItemActiveIngredientsTypeItem[] ActiveIngredients { get; set; }
 
         [JsonProperty("finished")]
         public bool Finished { get; set; }
 
         [JsonProperty("packaging")]
-        public DrugNDCResponseResultsTypeItemPackagingTypeItem[] Packaging { get; set; }
+        public DrugNdcResponseResultsTypeItemPackagingTypeItem[] Packaging { get; set; }
 
         [JsonProperty("listing_expiration_date")]
         public string ListingExpirationDate { get; set; }
 
         [JsonProperty("openfda")]
-        public DrugNDCResponseResultsTypeItemOpenfdaType Openfda { get; set; }
+        public DrugNdcResponseResultsTypeItemOpenfdaType Openfda { get; set; }
 
         [JsonProperty("marketing_category")]
         public string MarketingCategory { get; set; }
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string[] PharmClass { get; set; }
     }
 
-    public class DrugNDCResponseResultsTypeItemActiveIngredientsTypeItem
+    public class DrugNdcResponseResultsTypeItemActiveIngredientsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string Strength { get; set; }
     }
 
-    public class DrugNDCResponseResultsTypeItemPackagingTypeItem
+    public class DrugNdcResponseResultsTypeItemPackagingTypeItem
     {
         [JsonProperty("package_ndc")]
         public string PackageNdc { get; set; }
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public bool Sample { get; set; }
     }
 
-    public class DrugNDCResponseResultsTypeItemOpenfdaType
+    public class DrugNdcResponseResultsTypeItemOpenfdaType
     {
         [JsonProperty("manufacturer_name")]
         public string[] ManufacturerName { get; set; }
@@ -626,16 +626,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string Status { get; set; }
     }
 
-    public class DrugsFDAResponse
+    public class DrugsFdaResponse
     {
         [JsonProperty("meta")]
-        public DrugsFDAResponseMetaType Meta { get; set; }
+        public DrugsFdaResponseMetaType Meta { get; set; }
 
         [JsonProperty("results")]
-        public DrugsFDAResponseResultsTypeItem[] Results { get; set; }
+        public DrugsFdaResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class DrugsFDAResponseMetaType
+    public class DrugsFdaResponseMetaType
     {
         [JsonProperty("disclaimer")]
         public string Disclaimer { get; set; }
@@ -650,10 +650,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string LastUpdated { get; set; }
 
         [JsonProperty("results")]
-        public DrugsFDAResponseMetaTypeResultsType Results { get; set; }
+        public DrugsFdaResponseMetaTypeResultsType Results { get; set; }
     }
 
-    public class DrugsFDAResponseMetaTypeResultsType
+    public class DrugsFdaResponseMetaTypeResultsType
     {
         [JsonProperty("skip")]
         public int Skip { get; set; }
@@ -665,10 +665,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public int Total { get; set; }
     }
 
-    public class DrugsFDAResponseResultsTypeItem
+    public class DrugsFdaResponseResultsTypeItem
     {
         [JsonProperty("submissions")]
-        public DrugsFDAResponseResultsTypeItemSubmissionsTypeItem[] Submissions { get; set; }
+        public DrugsFdaResponseResultsTypeItemSubmissionsTypeItem[] Submissions { get; set; }
 
         [JsonProperty("application_number")]
         public string ApplicationNumber { get; set; }
@@ -677,10 +677,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string SponsorName { get; set; }
 
         [JsonProperty("products")]
-        public DrugsFDAResponseResultsTypeItemProductsTypeItem[] Products { get; set; }
+        public DrugsFdaResponseResultsTypeItemProductsTypeItem[] Products { get; set; }
     }
 
-    public class DrugsFDAResponseResultsTypeItemSubmissionsTypeItem
+    public class DrugsFdaResponseResultsTypeItemSubmissionsTypeItem
     {
         [JsonProperty("submission_type")]
         public string SubmissionType { get; set; }
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string SubmissionClassCodeDescription { get; set; }
     }
 
-    public class DrugsFDAResponseResultsTypeItemProductsTypeItem
+    public class DrugsFdaResponseResultsTypeItemProductsTypeItem
     {
         [JsonProperty("product_number")]
         public string ProductNumber { get; set; }
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string BrandName { get; set; }
 
         [JsonProperty("active_ingredients")]
-        public DrugsFDAResponseResultsTypeItemProductsTypeItemActiveIngredientsTypeItem[] ActiveIngredients { get; set; }
+        public DrugsFdaResponseResultsTypeItemProductsTypeItemActiveIngredientsTypeItem[] ActiveIngredients { get; set; }
 
         [JsonProperty("reference_standard")]
         public string ReferenceStandard { get; set; }
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         public string MarketingStatus { get; set; }
     }
 
-    public class DrugsFDAResponseResultsTypeItemProductsTypeItemActiveIngredientsTypeItem
+    public class DrugsFdaResponseResultsTypeItemProductsTypeItemActiveIngredientsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }

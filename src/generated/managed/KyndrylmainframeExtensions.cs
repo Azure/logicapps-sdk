@@ -13,15 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
     public class KyndrylmainframeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
-        public IBodyWorkflowAction<GetPolicyResponse200, ApiConnectionActionConfiguration> GetPolicy(Expression<Func<string>> cUSTOMERNUMBER)
+        public IBodyWorkflowAction<GetPolicyResponse200, ApiConnectionActionConfiguration> GetPolicy(Expression<Func<string>> customernumber)
         {
-            var __workflow_cUSTOMERNUMBER = WorkflowExpression.Compile(cUSTOMERNUMBER, nameof(cUSTOMERNUMBER), required: true);
+            var __workflow_customernumber = WorkflowExpression.Compile(customernumber, nameof(customernumber), required: true);
             return new DeferredBodyAction<GetPolicyResponse200, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cb12-policy/getpolicy";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["CUSTOMERNUMBER"] = ExpressionConverter.Convert(__workflow_cUSTOMERNUMBER);
+                callPayload.Queries["CUSTOMERNUMBER"] = ExpressionConverter.Convert(__workflow_customernumber);
                 return new ApiConnectionAction<GetPolicyResponse200>(callPayload);
             });
         }
@@ -87,343 +87,365 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
 
     public class GetPolicyResponse200RecordsTypeItem
     {
-        public double COMMISSION { get; set; }
-        public string PAYMENT { get; set; }
-        public string ISSUEDATE { get; set; }
-        public string POLICYNUMBER { get; set; }
-        public string POLICYTYPE { get; set; }
+        [JsonProperty("COMMISSION")]
+        public double Commission { get; set; }
+
+        [JsonProperty("PAYMENT")]
+        public string Payment { get; set; }
+
+        [JsonProperty("ISSUEDATE")]
+        public string Issuedate { get; set; }
+
+        [JsonProperty("POLICYNUMBER")]
+        public string Policynumber { get; set; }
+
+        [JsonProperty("POLICYTYPE")]
+        public string Policytype { get; set; }
 
         [JsonProperty("BROKERID")]
-        public string BROKERId { get; set; }
-        public string LASTCHANGED { get; set; }
-        public string EXPIRYDATE { get; set; }
-        public string CUSTOMERNUMBER { get; set; }
-        public string BROKERSREFERENCE { get; set; }
+        public string Brokerid { get; set; }
+
+        [JsonProperty("LASTCHANGED")]
+        public string Lastchanged { get; set; }
+
+        [JsonProperty("EXPIRYDATE")]
+        public string Expirydate { get; set; }
+
+        [JsonProperty("CUSTOMERNUMBER")]
+        public string Customernumber { get; set; }
+
+        [JsonProperty("BROKERSREFERENCE")]
+        public string Brokersreference { get; set; }
     }
 
     public class PostCustomerdetailsupdResponse200
     {
-        public PostCustomerdetailsupdResponse200LGCMAREAType LGCMAREA { get; set; }
+        [JsonProperty("LGCMAREA")]
+        public PostCustomerdetailsupdResponse200LgcmareaType Lgcmarea { get; set; }
     }
 
-    public class PostCustomerdetailsupdResponse200LGCMAREAType
+    public class PostCustomerdetailsupdResponse200LgcmareaType
     {
         [JsonProperty("CA_RETURN_CODE")]
-        public int CARETURNCODE { get; set; }
+        public int CaReturnCode { get; set; }
 
         [JsonProperty("CA_CUSTOMER_NUM")]
-        public int CACUSTOMERNUM { get; set; }
+        public int CaCustomerNum { get; set; }
 
         [JsonProperty("CA_CUSTOMER_REQUEST")]
-        public PostCustomerdetailsupdResponse200LGCMAREATypeCACUSTOMERREQUESTType CACUSTOMERREQUEST { get; set; }
+        public PostCustomerdetailsupdResponse200LgcmareaTypeCaCustomerRequestType CaCustomerRequest { get; set; }
     }
 
-    public class PostCustomerdetailsupdResponse200LGCMAREATypeCACUSTOMERREQUESTType
+    public class PostCustomerdetailsupdResponse200LgcmareaTypeCaCustomerRequestType
     {
         [JsonProperty("CA_FIRST_NAME")]
-        public string CAFIRSTNAME { get; set; }
+        public string CaFirstName { get; set; }
 
         [JsonProperty("CA_LAST_NAME")]
-        public string CALASTNAME { get; set; }
+        public string CaLastName { get; set; }
 
         [JsonProperty("CA_DOB")]
-        public string CADOB { get; set; }
+        public string CaDob { get; set; }
 
         [JsonProperty("CA_HOUSE_NAME")]
-        public string CAHOUSENAME { get; set; }
+        public string CaHouseName { get; set; }
 
         [JsonProperty("CA_HOUSE_NUM")]
-        public string CAHOUSENUM { get; set; }
+        public string CaHouseNum { get; set; }
 
         [JsonProperty("CA_POSTCODE")]
-        public string CAPOSTCODE { get; set; }
+        public string CaPostcode { get; set; }
 
         [JsonProperty("CA_NUM_POLICIES")]
-        public int CANUMPOLICIES { get; set; }
+        public int CaNumPolicies { get; set; }
 
         [JsonProperty("CA_PHONE_MOBILE")]
-        public string CAPHONEMOBILE { get; set; }
+        public string CaPhoneMobile { get; set; }
 
         [JsonProperty("CA_PHONE_HOME")]
-        public string CAPHONEHOME { get; set; }
+        public string CaPhoneHome { get; set; }
 
         [JsonProperty("CA_EMAIL_ADDRESS")]
-        public string CAEMAILADDRESS { get; set; }
+        public string CaEmailAddress { get; set; }
 
         [JsonProperty("CA_POLICY_DATA")]
-        public string CAPOLICYDATA { get; set; }
+        public string CaPolicyData { get; set; }
     }
 
     public class PostCustomerdetailsupdRequestInput
     {
-        public PostCustomerdetailsupdRequestInputLGCMAREAType LGCMAREA { get; set; }
+        [JsonProperty("LGCMAREA")]
+        public PostCustomerdetailsupdRequestInputLgcmareaType Lgcmarea { get; set; }
     }
 
-    public class PostCustomerdetailsupdRequestInputLGCMAREAType
+    public class PostCustomerdetailsupdRequestInputLgcmareaType
     {
         [JsonProperty("CA_RETURN_CODE")]
-        public int? CARETURNCODE { get; set; }
+        public int? CaReturnCode { get; set; }
 
         [JsonProperty("CA_CUSTOMER_NUM")]
-        public int? CACUSTOMERNUM { get; set; }
+        public int? CaCustomerNum { get; set; }
 
         [JsonProperty("CA_CUSTOMER_REQUEST")]
-        public PostCustomerdetailsupdRequestInputLGCMAREATypeCACUSTOMERREQUESTType CACUSTOMERREQUEST { get; set; }
+        public PostCustomerdetailsupdRequestInputLgcmareaTypeCaCustomerRequestType CaCustomerRequest { get; set; }
     }
 
-    public class PostCustomerdetailsupdRequestInputLGCMAREATypeCACUSTOMERREQUESTType
+    public class PostCustomerdetailsupdRequestInputLgcmareaTypeCaCustomerRequestType
     {
         [JsonProperty("CA_FIRST_NAME")]
-        public string CAFIRSTNAME { get; set; }
+        public string CaFirstName { get; set; }
 
         [JsonProperty("CA_LAST_NAME")]
-        public string CALASTNAME { get; set; }
+        public string CaLastName { get; set; }
 
         [JsonProperty("CA_DOB")]
-        public string CADOB { get; set; }
+        public string CaDob { get; set; }
 
         [JsonProperty("CA_HOUSE_NAME")]
-        public string CAHOUSENAME { get; set; }
+        public string CaHouseName { get; set; }
 
         [JsonProperty("CA_HOUSE_NUM")]
-        public string CAHOUSENUM { get; set; }
+        public string CaHouseNum { get; set; }
 
         [JsonProperty("CA_POSTCODE")]
-        public string CAPOSTCODE { get; set; }
+        public string CaPostcode { get; set; }
 
         [JsonProperty("CA_NUM_POLICIES")]
-        public int? CANUMPOLICIES { get; set; }
+        public int? CaNumPolicies { get; set; }
 
         [JsonProperty("CA_PHONE_MOBILE")]
-        public string CAPHONEMOBILE { get; set; }
+        public string CaPhoneMobile { get; set; }
 
         [JsonProperty("CA_PHONE_HOME")]
-        public string CAPHONEHOME { get; set; }
+        public string CaPhoneHome { get; set; }
 
         [JsonProperty("CA_EMAIL_ADDRESS")]
-        public string CAEMAILADDRESS { get; set; }
+        public string CaEmailAddress { get; set; }
 
         [JsonProperty("CA_POLICY_DATA")]
-        public string CAPOLICYDATA { get; set; }
+        public string CaPolicyData { get; set; }
     }
 
     public class PutCustomerdetailResponse200
     {
-        public PutCustomerdetailResponse200LGCMAREAType LGCMAREA { get; set; }
+        [JsonProperty("LGCMAREA")]
+        public PutCustomerdetailResponse200LgcmareaType Lgcmarea { get; set; }
     }
 
-    public class PutCustomerdetailResponse200LGCMAREAType
+    public class PutCustomerdetailResponse200LgcmareaType
     {
         [JsonProperty("CA_REQUEST_ID")]
-        public string CAREQUESTId { get; set; }
+        public string CaRequestId { get; set; }
 
         [JsonProperty("CA_RETURN_CODE")]
-        public int CARETURNCODE { get; set; }
+        public int CaReturnCode { get; set; }
 
         [JsonProperty("CA_CUSTOMER_NUM")]
-        public int CACUSTOMERNUM { get; set; }
+        public int CaCustomerNum { get; set; }
 
         [JsonProperty("CA_REQUEST_SPECIFIC")]
-        public string CAREQUESTSPECIFIC { get; set; }
+        public string CaRequestSpecific { get; set; }
 
         [JsonProperty("CA_CUSTOMER_REQUEST")]
-        public PutCustomerdetailResponse200LGCMAREATypeCACUSTOMERREQUESTType CACUSTOMERREQUEST { get; set; }
+        public PutCustomerdetailResponse200LgcmareaTypeCaCustomerRequestType CaCustomerRequest { get; set; }
     }
 
-    public class PutCustomerdetailResponse200LGCMAREATypeCACUSTOMERREQUESTType
+    public class PutCustomerdetailResponse200LgcmareaTypeCaCustomerRequestType
     {
         [JsonProperty("CA_FIRST_NAME")]
-        public string CAFIRSTNAME { get; set; }
+        public string CaFirstName { get; set; }
 
         [JsonProperty("CA_LAST_NAME")]
-        public string CALASTNAME { get; set; }
+        public string CaLastName { get; set; }
 
         [JsonProperty("CA_DOB")]
-        public string CADOB { get; set; }
+        public string CaDob { get; set; }
 
         [JsonProperty("CA_HOUSE_NAME")]
-        public string CAHOUSENAME { get; set; }
+        public string CaHouseName { get; set; }
 
         [JsonProperty("CA_HOUSE_NUM")]
-        public string CAHOUSENUM { get; set; }
+        public string CaHouseNum { get; set; }
 
         [JsonProperty("CA_POSTCODE")]
-        public string CAPOSTCODE { get; set; }
+        public string CaPostcode { get; set; }
 
         [JsonProperty("CA_NUM_POLICIES")]
-        public int CANUMPOLICIES { get; set; }
+        public int CaNumPolicies { get; set; }
 
         [JsonProperty("CA_PHONE_MOBILE")]
-        public string CAPHONEMOBILE { get; set; }
+        public string CaPhoneMobile { get; set; }
 
         [JsonProperty("CA_PHONE_HOME")]
-        public string CAPHONEHOME { get; set; }
+        public string CaPhoneHome { get; set; }
 
         [JsonProperty("CA_EMAIL_ADDRESS")]
-        public string CAEMAILADDRESS { get; set; }
+        public string CaEmailAddress { get; set; }
 
         [JsonProperty("CA_POLICY_DATA")]
-        public string CAPOLICYDATA { get; set; }
+        public string CaPolicyData { get; set; }
     }
 
     public class BodyInput
     {
-        public BodyInputLGCMAREAType LGCMAREA { get; set; }
+        [JsonProperty("LGCMAREA")]
+        public BodyInputLgcmareaType Lgcmarea { get; set; }
     }
 
-    public class BodyInputLGCMAREAType
+    public class BodyInputLgcmareaType
     {
         [JsonProperty("CA_RETURN_CODE")]
-        public int? CARETURNCODE { get; set; }
+        public int? CaReturnCode { get; set; }
 
         [JsonProperty("CA_CUSTOMER_REQUEST")]
-        public BodyInputLGCMAREATypeCACUSTOMERREQUESTType CACUSTOMERREQUEST { get; set; }
+        public BodyInputLgcmareaTypeCaCustomerRequestType CaCustomerRequest { get; set; }
     }
 
-    public class BodyInputLGCMAREATypeCACUSTOMERREQUESTType
+    public class BodyInputLgcmareaTypeCaCustomerRequestType
     {
         [JsonProperty("CA_LAST_NAME")]
-        public string CALASTNAME { get; set; }
+        public string CaLastName { get; set; }
 
         [JsonProperty("CA_DOB")]
-        public string CADOB { get; set; }
+        public string CaDob { get; set; }
 
         [JsonProperty("CA_HOUSE_NAME")]
-        public string CAHOUSENAME { get; set; }
+        public string CaHouseName { get; set; }
 
         [JsonProperty("CA_HOUSE_NUM")]
-        public string CAHOUSENUM { get; set; }
+        public string CaHouseNum { get; set; }
 
         [JsonProperty("CA_POSTCODE")]
-        public string CAPOSTCODE { get; set; }
+        public string CaPostcode { get; set; }
 
         [JsonProperty("CA_NUM_POLICIES")]
-        public int? CANUMPOLICIES { get; set; }
+        public int? CaNumPolicies { get; set; }
 
         [JsonProperty("CA_PHONE_MOBILE")]
-        public string CAPHONEMOBILE { get; set; }
+        public string CaPhoneMobile { get; set; }
 
         [JsonProperty("CA_PHONE_HOME")]
-        public string CAPHONEHOME { get; set; }
+        public string CaPhoneHome { get; set; }
 
         [JsonProperty("CA_EMAIL_ADDRESS")]
-        public string CAEMAILADDRESS { get; set; }
+        public string CaEmailAddress { get; set; }
 
         [JsonProperty("CA_POLICY_DATA")]
-        public string CAPOLICYDATA { get; set; }
+        public string CaPolicyData { get; set; }
     }
 
     public class GetCustomerDetailResponse
     {
-        public GetCustomerDetailResponseLGCMAREAType LGCMAREA { get; set; }
+        [JsonProperty("LGCMAREA")]
+        public GetCustomerDetailResponseLgcmareaType Lgcmarea { get; set; }
     }
 
-    public class GetCustomerDetailResponseLGCMAREAType
+    public class GetCustomerDetailResponseLgcmareaType
     {
         [JsonProperty("CA_CUSTSECR_REQUEST")]
-        public GetCustomerDetailResponseLGCMAREATypeCACUSTSECRREQUESTType CACUSTSECRREQUEST { get; set; }
+        public GetCustomerDetailResponseLgcmareaTypeCaCustsecrRequestType CaCustsecrRequest { get; set; }
 
         [JsonProperty("CA_REQUEST_SPECIFIC")]
-        public string CAREQUESTSPECIFIC { get; set; }
+        public string CaRequestSpecific { get; set; }
 
         [JsonProperty("CA_REQUEST_ID")]
-        public string CAREQUESTId { get; set; }
+        public string CaRequestId { get; set; }
 
         [JsonProperty("CA_CUSTOMER_REQUEST")]
-        public GetCustomerDetailResponseLGCMAREATypeCACUSTOMERREQUESTType CACUSTOMERREQUEST { get; set; }
+        public GetCustomerDetailResponseLgcmareaTypeCaCustomerRequestType CaCustomerRequest { get; set; }
 
         [JsonProperty("CA_POLICY_REQUEST")]
-        public GetCustomerDetailResponseLGCMAREATypeCAPOLICYREQUESTType CAPOLICYREQUEST { get; set; }
+        public GetCustomerDetailResponseLgcmareaTypeCaPolicyRequestType CaPolicyRequest { get; set; }
 
         [JsonProperty("CA_RETURN_CODE")]
-        public int CARETURNCODE { get; set; }
+        public int CaReturnCode { get; set; }
 
         [JsonProperty("CA_CUSTOMER_NUM")]
-        public int CACUSTOMERNUM { get; set; }
+        public int CaCustomerNum { get; set; }
     }
 
-    public class GetCustomerDetailResponseLGCMAREATypeCACUSTSECRREQUESTType
+    public class GetCustomerDetailResponseLgcmareaTypeCaCustsecrRequestType
     {
         [JsonProperty("CA_CUSTSECR_DATA")]
-        public string CACUSTSECRDATA { get; set; }
+        public string CaCustsecrData { get; set; }
 
         [JsonProperty("CA_CUSTSECR_STATE")]
-        public string CACUSTSECRSTATE { get; set; }
+        public string CaCustsecrState { get; set; }
 
         [JsonProperty("CA_CUSTSECR_COUNT")]
-        public string CACUSTSECRCOUNT { get; set; }
+        public string CaCustsecrCount { get; set; }
 
         [JsonProperty("CA_CUSTSECR_PASS")]
-        public string CACUSTSECRPASS { get; set; }
+        public string CaCustsecrPass { get; set; }
     }
 
-    public class GetCustomerDetailResponseLGCMAREATypeCACUSTOMERREQUESTType
+    public class GetCustomerDetailResponseLgcmareaTypeCaCustomerRequestType
     {
         [JsonProperty("CA_PHONE_MOBILE")]
-        public string CAPHONEMOBILE { get; set; }
+        public string CaPhoneMobile { get; set; }
 
         [JsonProperty("CA_DOB")]
-        public string CADOB { get; set; }
+        public string CaDob { get; set; }
 
         [JsonProperty("CA_FIRST_NAME")]
-        public string CAFIRSTNAME { get; set; }
+        public string CaFirstName { get; set; }
 
         [JsonProperty("CA_PHONE_HOME")]
-        public string CAPHONEHOME { get; set; }
+        public string CaPhoneHome { get; set; }
 
         [JsonProperty("CA_EMAIL_ADDRESS")]
-        public string CAEMAILADDRESS { get; set; }
+        public string CaEmailAddress { get; set; }
 
         [JsonProperty("CA_POLICY_DATA")]
-        public string CAPOLICYDATA { get; set; }
+        public string CaPolicyData { get; set; }
 
         [JsonProperty("CA_LAST_NAME")]
-        public string CALASTNAME { get; set; }
+        public string CaLastName { get; set; }
 
         [JsonProperty("CA_HOUSE_NAME")]
-        public string CAHOUSENAME { get; set; }
+        public string CaHouseName { get; set; }
 
         [JsonProperty("CA_NUM_POLICIES")]
-        public int CANUMPOLICIES { get; set; }
+        public int CaNumPolicies { get; set; }
 
         [JsonProperty("CA_HOUSE_NUM")]
-        public string CAHOUSENUM { get; set; }
+        public string CaHouseNum { get; set; }
 
         [JsonProperty("CA_POSTCODE")]
-        public string CAPOSTCODE { get; set; }
+        public string CaPostcode { get; set; }
     }
 
-    public class GetCustomerDetailResponseLGCMAREATypeCAPOLICYREQUESTType
+    public class GetCustomerDetailResponseLgcmareaTypeCaPolicyRequestType
     {
         [JsonProperty("CA_POLICY_SPECIFIC")]
-        public string CAPOLICYSPECIFIC { get; set; }
+        public string CaPolicySpecific { get; set; }
 
         [JsonProperty("CA_POLICY_NUM")]
-        public int CAPOLICYNUM { get; set; }
+        public int CaPolicyNum { get; set; }
 
         [JsonProperty("CA_POLICY_COMMON")]
-        public GetCustomerDetailResponseLGCMAREATypeCAPOLICYREQUESTTypeCAPOLICYCOMMONType CAPOLICYCOMMON { get; set; }
+        public GetCustomerDetailResponseLgcmareaTypeCaPolicyRequestTypeCaPolicyCommonType CaPolicyCommon { get; set; }
     }
 
-    public class GetCustomerDetailResponseLGCMAREATypeCAPOLICYREQUESTTypeCAPOLICYCOMMONType
+    public class GetCustomerDetailResponseLgcmareaTypeCaPolicyRequestTypeCaPolicyCommonType
     {
         [JsonProperty("CA_ISSUE_DATE")]
-        public string CAISSUEDATE { get; set; }
+        public string CaIssueDate { get; set; }
 
         [JsonProperty("CA_PAYMENT")]
-        public int CAPAYMENT { get; set; }
+        public int CaPayment { get; set; }
 
         [JsonProperty("CA_BROKERID")]
-        public int CABROKERId { get; set; }
+        public int CaBrokerid { get; set; }
 
         [JsonProperty("CA_EXPIRY_DATE")]
-        public string CAEXPIRYDATE { get; set; }
+        public string CaExpiryDate { get; set; }
 
         [JsonProperty("CA_LASTCHANGED")]
-        public string CALASTCHANGED { get; set; }
+        public string CaLastchanged { get; set; }
 
         [JsonProperty("CA_BROKERSREF")]
-        public string CABROKERSREF { get; set; }
+        public string CaBrokersref { get; set; }
     }
 }
 

@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
     public class SecretSummary
     {
         [JsonProperty("uid")]
-        public string SecretUId { get; set; }
+        public string SecretUid { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         public string RecordType { get; set; }
 
         [JsonProperty("folder_uid")]
-        public string FolderUId { get; set; }
+        public string FolderUid { get; set; }
     }
 
     public class CreateSecretResponse
@@ -107,22 +107,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         public string Title { get; set; }
 
         [JsonProperty("folder_uid")]
-        public string FolderUId { get; set; }
+        public string FolderUid { get; set; }
 
         [JsonProperty("response")]
-        public string NewSecretUId { get; set; }
+        public string NewSecretUid { get; set; }
     }
 
     public class CreateSecretBodyInput
     {
-        public CreateSecretBodyInput(string folderUId, string title)
+        public CreateSecretBodyInput(string folderUid, string title)
         {
-            this.FolderUId = folderUId;
+            this.FolderUid = folderUid;
             this.Title = title;
         }
 
         [JsonProperty("folder_uid", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderUId { get; set; }
+        public string FolderUid { get; set; }
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         public string Password { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
     public class SecretDetail
     {
         [JsonProperty("uid")]
-        public string SecretUId { get; set; }
+        public string SecretUid { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -161,10 +161,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         public string Password { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("folder_uid")]
-        public string FolderUId { get; set; }
+        public string FolderUid { get; set; }
 
         [JsonProperty("is_editable")]
         public bool IsEditable { get; set; }
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         public string Password { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
@@ -197,13 +197,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
     public class Folder
     {
         [JsonProperty("uid")]
-        public string FolderUId { get; set; }
+        public string FolderUid { get; set; }
 
         [JsonProperty("name")]
         public string FolderName { get; set; }
 
         [JsonProperty("parent_uid")]
-        public string ParentFolderUId { get; set; }
+        public string ParentFolderUid { get; set; }
     }
 }
 

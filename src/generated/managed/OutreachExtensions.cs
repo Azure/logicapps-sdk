@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outreach
     public class McpResponse
     {
         [JsonProperty("jsonrpc")]
-        public string JSONRPCVersion { get; set; }
+        public string JsonRpcVersion { get; set; }
 
         [JsonProperty("id")]
         public string RequestId { get; set; }

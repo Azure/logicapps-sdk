@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip
         public string Management { get; set; }
 
         [JsonProperty("NOAA Fisheries Region")]
-        public string NOAAFisheriesRegion { get; set; }
+        public string NoaaFisheriesRegion { get; set; }
         public string Population { get; set; }
 
         [JsonProperty("Population Status")]
@@ -102,6 +102,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip
 
         [JsonProperty("Fat, Total")]
         public string FatTotal { get; set; }
+
+        [JsonProperty("Feeds_")]
+        public string Feeds2 { get; set; }
         public string Feeds { get; set; }
 
         [JsonProperty("Fiber, Total Dietary")]
@@ -117,8 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip
         [JsonProperty("Health Benefits")]
         public string HealthBenefits { get; set; }
 
-        [JsonProperty("Human Health")]
+        [JsonProperty("Human_Health_")]
         public string HumanHealth { get; set; }
+
+        [JsonProperty("Human Health")]
+        public string HumanHealth2 { get; set; }
 
         [JsonProperty("Physical Description")]
         public string PhysicalDescription { get; set; }

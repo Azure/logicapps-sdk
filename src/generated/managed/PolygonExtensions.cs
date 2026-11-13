@@ -321,27 +321,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
     public enum TypeInput
     {
         CS,
-        ADRC,
-        ADRP,
-        ADRR,
-        UNIT,
-        RIGHT,
-        PFD,
-        FUND,
+        [EnumMember(Value = "ADRC")]
+        Adrc,
+        [EnumMember(Value = "ADRP")]
+        Adrp,
+        [EnumMember(Value = "ADRR")]
+        Adrr,
+        [EnumMember(Value = "UNIT")]
+        Unit,
+        [EnumMember(Value = "RIGHT")]
+        Right,
+        [EnumMember(Value = "PFD")]
+        Pfd,
+        [EnumMember(Value = "FUND")]
+        Fund,
         SP,
-        WARRANT,
-        INDEX,
-        ETF,
-        ETN,
+        [EnumMember(Value = "WARRANT")]
+        Warrant,
+        [EnumMember(Value = "INDEX")]
+        Index,
+        [EnumMember(Value = "ETF")]
+        Etf,
+        [EnumMember(Value = "ETN")]
+        Etn,
         OS,
-        GDR,
-        OTHER,
-        NYRS,
-        AGEN,
-        EQLK,
-        BOND,
-        ADRW,
-        BASKET,
+        [EnumMember(Value = "GDR")]
+        Gdr,
+        [EnumMember(Value = "OTHER")]
+        Other,
+        [EnumMember(Value = "NYRS")]
+        Nyrs,
+        [EnumMember(Value = "AGEN")]
+        Agen,
+        [EnumMember(Value = "EQLK")]
+        Eqlk,
+        [EnumMember(Value = "BOND")]
+        Bond,
+        [EnumMember(Value = "ADRW")]
+        Adrw,
+        [EnumMember(Value = "BASKET")]
+        Basket,
         LT
     }
 

@@ -208,9 +208,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     public enum ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsTypeResponse
     {
         [EnumMember(Value = "BEST_N_PAGES")]
-        BESTNPAGES,
+        BestNPages,
         [EnumMember(Value = "BEST_FIRST")]
-        BESTFIRST
+        BestFirst
     }
 
     public class ParseDocumentDeprecatedPreprocessConfigResponse
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public ParseDocumentDeprecatedPostprocessConfigTheOutputFormatType? TheOutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.ParseDocumentDeprecatedPostprocessConfigTheOutputFormatType.V2;
 
         [JsonProperty("strategy", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType? TheStrategyUsedForAggregatingPredictions { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType.BESTFIRST;
+        public ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType? TheStrategyUsedForAggregatingPredictions { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType.BestFirst;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -268,9 +268,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     public enum ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType
     {
         [EnumMember(Value = "BEST_N_PAGES")]
-        BESTNPAGES,
+        BestNPages,
         [EnumMember(Value = "BEST_FIRST")]
-        BESTFIRST
+        BestFirst
     }
 
     public class ParseDocumentDeprecatedPreprocessConfig
@@ -346,15 +346,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("httpMethod", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal BodyInputConfigTypeHttpMethodType HttpMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.BodyInputConfigTypeHttpMethodType.POST;
+        internal BodyInputConfigTypeHttpMethodType HttpMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.BodyInputConfigTypeHttpMethodType.Post;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputConfigTypeHttpMethodType
     {
-        POST,
-        GET,
-        PUT
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "PUT")]
+        Put
     }
 }
 

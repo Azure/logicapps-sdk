@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
 
     public class BatchInput
     {
-        public BatchInput(string importData, string nameForImport, string securityToken, BatchInputRPAEnvironmentType rPAEnvironment)
+        public BatchInput(string importData, string nameForImport, string securityToken, BatchInputRpaEnvironmentType rpaEnvironment)
         {
             this.ImportData = importData;
             this.NameForImport = nameForImport;
             this.SecurityToken = securityToken;
-            this.RPAEnvironment = rPAEnvironment;
+            this.RpaEnvironment = rpaEnvironment;
         }
 
         [JsonProperty("Data", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -68,11 +68,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
         public string SecurityToken { get; set; }
 
         [JsonProperty("Version", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BatchInputRPAEnvironmentType RPAEnvironment { get; set; }
+        public BatchInputRpaEnvironmentType RpaEnvironment { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BatchInputRPAEnvironmentType
+    public enum BatchInputRpaEnvironmentType
     {
         [EnumMember(Value = "0")]
         _0,

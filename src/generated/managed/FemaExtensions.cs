@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     public class FemaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1DeclarationDenialsResponse, ApiConnectionActionConfiguration> GetV1DeclarationDenials(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1DeclarationDenialsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1DeclarationDenialsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1DeclarationDenialsResponse, ApiConnectionActionConfiguration> GetV1DeclarationDenials(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1DeclarationDenialsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1DeclarationDenialsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2DisasterDeclarationsSummariesResponse, ApiConnectionActionConfiguration> GetV2DisasterDeclarationsSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2DisasterDeclarationsSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2DisasterDeclarationsSummariesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2DisasterDeclarationsSummariesResponse, ApiConnectionActionConfiguration> GetV2DisasterDeclarationsSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2DisasterDeclarationsSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2DisasterDeclarationsSummariesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -101,13 +101,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1FemaWebDeclarationAreasResponse, ApiConnectionActionConfiguration> GetV1FemaWebDeclarationAreas(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1FemaWebDeclarationAreasOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1FemaWebDeclarationAreasSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1FemaWebDeclarationAreasResponse, ApiConnectionActionConfiguration> GetV1FemaWebDeclarationAreas(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1FemaWebDeclarationAreasOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1FemaWebDeclarationAreasSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -128,8 +128,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -145,13 +145,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1FemaWebDisasterDeclarationsResponse, ApiConnectionActionConfiguration> GetV1FemaWebDisasterDeclarations(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1FemaWebDisasterDeclarationsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1FemaWebDisasterDeclarationsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1FemaWebDisasterDeclarationsResponse, ApiConnectionActionConfiguration> GetV1FemaWebDisasterDeclarations(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1FemaWebDisasterDeclarationsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1FemaWebDisasterDeclarationsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -172,8 +172,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -189,13 +189,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1FemaWebDisasterSummariesResponse, ApiConnectionActionConfiguration> GetV1FemaWebDisasterSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1FemaWebDisasterSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1FemaWebDisasterSummariesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1FemaWebDisasterSummariesResponse, ApiConnectionActionConfiguration> GetV1FemaWebDisasterSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1FemaWebDisasterSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1FemaWebDisasterSummariesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -216,8 +216,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -233,13 +233,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2MissionAssignmentsResponse, ApiConnectionActionConfiguration> GetV2MissionAssignments(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2MissionAssignmentsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2MissionAssignmentsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2MissionAssignmentsResponse, ApiConnectionActionConfiguration> GetV2MissionAssignments(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2MissionAssignmentsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2MissionAssignmentsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -260,8 +260,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -277,13 +277,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2EmergencyManagementPerformanceGrantsResponse, ApiConnectionActionConfiguration> GetV2EmergencyManagementPerformanceGrants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2EmergencyManagementPerformanceGrantsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2EmergencyManagementPerformanceGrantsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2EmergencyManagementPerformanceGrantsResponse, ApiConnectionActionConfiguration> GetV2EmergencyManagementPerformanceGrants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2EmergencyManagementPerformanceGrantsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2EmergencyManagementPerformanceGrantsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -304,8 +304,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -321,13 +321,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1IpawsArchivedAlertsResponse, ApiConnectionActionConfiguration> GetV1IpawsArchivedAlerts(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1IpawsArchivedAlertsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1IpawsArchivedAlertsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1IpawsArchivedAlertsResponse, ApiConnectionActionConfiguration> GetV1IpawsArchivedAlerts(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1IpawsArchivedAlertsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1IpawsArchivedAlertsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -348,8 +348,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -365,13 +365,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NonDisasterAssistanceFirefighterGrantsResponse, ApiConnectionActionConfiguration> GetV1NonDisasterAssistanceFirefighterGrants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NonDisasterAssistanceFirefighterGrantsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NonDisasterAssistanceFirefighterGrantsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1NonDisasterAssistanceFirefighterGrantsResponse, ApiConnectionActionConfiguration> GetV1NonDisasterAssistanceFirefighterGrants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NonDisasterAssistanceFirefighterGrantsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NonDisasterAssistanceFirefighterGrantsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -392,8 +392,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -409,13 +409,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V4HazardMitigationAssistanceMitigatedPropertiesResponse, ApiConnectionActionConfiguration> GetV4HazardMitigationAssistanceMitigatedProperties(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV4HazardMitigationAssistanceMitigatedPropertiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV4HazardMitigationAssistanceMitigatedPropertiesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V4HazardMitigationAssistanceMitigatedPropertiesResponse, ApiConnectionActionConfiguration> GetV4HazardMitigationAssistanceMitigatedProperties(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV4HazardMitigationAssistanceMitigatedPropertiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV4HazardMitigationAssistanceMitigatedPropertiesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -436,8 +436,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -453,13 +453,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V4HazardMitigationAssistanceProjectsResponse, ApiConnectionActionConfiguration> GetV4HazardMitigationAssistanceProjects(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV4HazardMitigationAssistanceProjectsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV4HazardMitigationAssistanceProjectsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V4HazardMitigationAssistanceProjectsResponse, ApiConnectionActionConfiguration> GetV4HazardMitigationAssistanceProjects(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV4HazardMitigationAssistanceProjectsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV4HazardMitigationAssistanceProjectsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -480,8 +480,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -497,13 +497,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesResponse, ApiConnectionActionConfiguration> GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesResponse, ApiConnectionActionConfiguration> GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -524,8 +524,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -541,13 +541,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1HazardMitigationAssistanceProjectsFinancialTransactionsResponse, ApiConnectionActionConfiguration> GetV1HazardMitigationAssistanceProjectsFinancialTransactions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HazardMitigationAssistanceProjectsFinancialTransactionsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HazardMitigationAssistanceProjectsFinancialTransactionsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1HazardMitigationAssistanceProjectsFinancialTransactionsResponse, ApiConnectionActionConfiguration> GetV1HazardMitigationAssistanceProjectsFinancialTransactions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HazardMitigationAssistanceProjectsFinancialTransactionsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HazardMitigationAssistanceProjectsFinancialTransactionsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -568,8 +568,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -585,13 +585,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2HazardMitigationGrantProgramDisasterSummariesResponse, ApiConnectionActionConfiguration> GetV2HazardMitigationGrantProgramDisasterSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HazardMitigationGrantProgramDisasterSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HazardMitigationGrantProgramDisasterSummariesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2HazardMitigationGrantProgramDisasterSummariesResponse, ApiConnectionActionConfiguration> GetV2HazardMitigationGrantProgramDisasterSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HazardMitigationGrantProgramDisasterSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HazardMitigationGrantProgramDisasterSummariesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -612,8 +612,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -629,13 +629,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1HazardMitigationPlanStatusesResponse, ApiConnectionActionConfiguration> GetV1HazardMitigationPlanStatuses(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HazardMitigationPlanStatusesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HazardMitigationPlanStatusesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1HazardMitigationPlanStatusesResponse, ApiConnectionActionConfiguration> GetV1HazardMitigationPlanStatuses(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HazardMitigationPlanStatusesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HazardMitigationPlanStatusesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -656,8 +656,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -673,13 +673,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2HmaSubapplicationsResponse, ApiConnectionActionConfiguration> GetV2HmaSubapplications(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HmaSubapplicationsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HmaSubapplicationsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2HmaSubapplicationsResponse, ApiConnectionActionConfiguration> GetV2HmaSubapplications(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HmaSubapplicationsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HmaSubapplicationsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -700,8 +700,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -717,13 +717,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1HmaSubapplicationsByNfipCrsCommunitiesResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsByNfipCrsCommunities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HmaSubapplicationsByNfipCrsCommunitiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HmaSubapplicationsByNfipCrsCommunitiesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1HmaSubapplicationsByNfipCrsCommunitiesResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsByNfipCrsCommunities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HmaSubapplicationsByNfipCrsCommunitiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HmaSubapplicationsByNfipCrsCommunitiesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -744,8 +744,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -761,13 +761,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1HmaSubapplicationsFinancialTransactionsResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsFinancialTransactions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HmaSubapplicationsFinancialTransactionsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HmaSubapplicationsFinancialTransactionsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1HmaSubapplicationsFinancialTransactionsResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsFinancialTransactions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HmaSubapplicationsFinancialTransactionsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HmaSubapplicationsFinancialTransactionsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -788,8 +788,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -805,13 +805,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1HmaSubapplicationsProjectSiteInventoriesResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsProjectSiteInventories(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HmaSubapplicationsProjectSiteInventoriesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HmaSubapplicationsProjectSiteInventoriesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1HmaSubapplicationsProjectSiteInventoriesResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsProjectSiteInventories(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HmaSubapplicationsProjectSiteInventoriesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HmaSubapplicationsProjectSiteInventoriesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -832,8 +832,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -849,13 +849,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2HousingAssistanceOwnersResponse, ApiConnectionActionConfiguration> GetV2HousingAssistanceOwners(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HousingAssistanceOwnersOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HousingAssistanceOwnersSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2HousingAssistanceOwnersResponse, ApiConnectionActionConfiguration> GetV2HousingAssistanceOwners(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HousingAssistanceOwnersOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HousingAssistanceOwnersSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -876,8 +876,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -893,13 +893,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2HousingAssistanceRentersResponse, ApiConnectionActionConfiguration> GetV2HousingAssistanceRenters(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HousingAssistanceRentersOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HousingAssistanceRentersSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2HousingAssistanceRentersResponse, ApiConnectionActionConfiguration> GetV2HousingAssistanceRenters(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HousingAssistanceRentersOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HousingAssistanceRentersSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -920,8 +920,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -937,13 +937,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1IndividualAssistanceHousingRegistrantsLargeDisastersResponse, ApiConnectionActionConfiguration> GetV1IndividualAssistanceHousingRegistrantsLargeDisasters(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1IndividualAssistanceHousingRegistrantsLargeDisastersOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1IndividualAssistanceHousingRegistrantsLargeDisastersSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1IndividualAssistanceHousingRegistrantsLargeDisastersResponse, ApiConnectionActionConfiguration> GetV1IndividualAssistanceHousingRegistrantsLargeDisasters(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1IndividualAssistanceHousingRegistrantsLargeDisastersOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1IndividualAssistanceHousingRegistrantsLargeDisastersSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -964,8 +964,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -981,13 +981,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1IndividualsAndHouseholdsProgramValidRegistrationsResponse, ApiConnectionActionConfiguration> GetV1IndividualsAndHouseholdsProgramValidRegistrations(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1IndividualsAndHouseholdsProgramValidRegistrationsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1IndividualsAndHouseholdsProgramValidRegistrationsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1IndividualsAndHouseholdsProgramValidRegistrationsResponse, ApiConnectionActionConfiguration> GetV1IndividualsAndHouseholdsProgramValidRegistrations(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1IndividualsAndHouseholdsProgramValidRegistrationsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1IndividualsAndHouseholdsProgramValidRegistrationsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1008,8 +1008,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1025,13 +1025,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2RegistrationIntakeIndividualsHouseholdProgramsResponse, ApiConnectionActionConfiguration> GetV2RegistrationIntakeIndividualsHouseholdPrograms(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2RegistrationIntakeIndividualsHouseholdProgramsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2RegistrationIntakeIndividualsHouseholdProgramsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2RegistrationIntakeIndividualsHouseholdProgramsResponse, ApiConnectionActionConfiguration> GetV2RegistrationIntakeIndividualsHouseholdPrograms(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2RegistrationIntakeIndividualsHouseholdProgramsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2RegistrationIntakeIndividualsHouseholdProgramsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1052,8 +1052,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1069,13 +1069,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1DataSetFieldsResponse, ApiConnectionActionConfiguration> GetV1DataSetFields(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1DataSetFieldsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1DataSetFieldsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1DataSetFieldsResponse, ApiConnectionActionConfiguration> GetV1DataSetFields(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1DataSetFieldsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1DataSetFieldsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1096,8 +1096,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1113,13 +1113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1DataSetsResponse, ApiConnectionActionConfiguration> GetV1DataSets(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1DataSetsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1DataSetsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1DataSetsResponse, ApiConnectionActionConfiguration> GetV1DataSets(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1DataSetsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1DataSetsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1140,8 +1140,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1157,13 +1157,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2FemaRegionsResponse, ApiConnectionActionConfiguration> GetV2FemaRegions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2FemaRegionsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2FemaRegionsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2FemaRegionsResponse, ApiConnectionActionConfiguration> GetV2FemaRegions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2FemaRegionsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2FemaRegionsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1184,8 +1184,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1201,13 +1201,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2FimaNfipClaimsResponse, ApiConnectionActionConfiguration> GetV2FimaNfipClaims(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2FimaNfipClaimsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2FimaNfipClaimsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2FimaNfipClaimsResponse, ApiConnectionActionConfiguration> GetV2FimaNfipClaims(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2FimaNfipClaimsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2FimaNfipClaimsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1228,8 +1228,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1245,13 +1245,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2FimaNfipPoliciesResponse, ApiConnectionActionConfiguration> GetV2FimaNfipPolicies(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2FimaNfipPoliciesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2FimaNfipPoliciesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2FimaNfipPoliciesResponse, ApiConnectionActionConfiguration> GetV2FimaNfipPolicies(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2FimaNfipPoliciesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2FimaNfipPoliciesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1272,8 +1272,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1289,13 +1289,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipCommunityLayerComprehensiveResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerComprehensive(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityLayerComprehensiveOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityLayerComprehensiveSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1NfipCommunityLayerComprehensiveResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerComprehensive(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityLayerComprehensiveOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityLayerComprehensiveSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1316,8 +1316,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1333,13 +1333,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipCommunityLayerNoOverlapsSplitResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerNoOverlapsSplit(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsSplitOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsSplitSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1NfipCommunityLayerNoOverlapsSplitResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerNoOverlapsSplit(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsSplitOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsSplitSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1360,8 +1360,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1377,13 +1377,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipCommunityLayerNoOverlapsWholeResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerNoOverlapsWhole(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsWholeOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsWholeSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1NfipCommunityLayerNoOverlapsWholeResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerNoOverlapsWhole(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsWholeOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsWholeSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1404,8 +1404,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1421,13 +1421,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipCommunityStatusBookResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityStatusBook(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityStatusBookOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityStatusBookSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1NfipCommunityStatusBookResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityStatusBook(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityStatusBookOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityStatusBookSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1448,8 +1448,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1465,13 +1465,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipMultipleLossPropertiesResponse, ApiConnectionActionConfiguration> GetV1NfipMultipleLossProperties(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipMultipleLossPropertiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipMultipleLossPropertiesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1NfipMultipleLossPropertiesResponse, ApiConnectionActionConfiguration> GetV1NfipMultipleLossProperties(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipMultipleLossPropertiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipMultipleLossPropertiesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1492,8 +1492,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1509,13 +1509,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipResidentialPenetrationRatesResponse, ApiConnectionActionConfiguration> GetV1NfipResidentialPenetrationRates(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipResidentialPenetrationRatesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipResidentialPenetrationRatesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1NfipResidentialPenetrationRatesResponse, ApiConnectionActionConfiguration> GetV1NfipResidentialPenetrationRates(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipResidentialPenetrationRatesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipResidentialPenetrationRatesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1536,8 +1536,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1553,13 +1553,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1PublicAssistanceApplicantsResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceApplicants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceApplicantsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceApplicantsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1PublicAssistanceApplicantsResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceApplicants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceApplicantsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceApplicantsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1580,8 +1580,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1597,13 +1597,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1PublicAssistanceApplicantsProgramDeliveriesResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceApplicantsProgramDeliveries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceApplicantsProgramDeliveriesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceApplicantsProgramDeliveriesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1PublicAssistanceApplicantsProgramDeliveriesResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceApplicantsProgramDeliveries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceApplicantsProgramDeliveriesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceApplicantsProgramDeliveriesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1624,8 +1624,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1641,13 +1641,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1PublicAssistanceFundedProjectsDetailsResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceFundedProjectsDetails(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceFundedProjectsDetailsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceFundedProjectsDetailsSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1PublicAssistanceFundedProjectsDetailsResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceFundedProjectsDetails(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceFundedProjectsDetailsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceFundedProjectsDetailsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1668,8 +1668,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1685,13 +1685,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1PublicAssistanceFundedProjectsSummariesResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceFundedProjectsSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceFundedProjectsSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceFundedProjectsSummariesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1PublicAssistanceFundedProjectsSummariesResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceFundedProjectsSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceFundedProjectsSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceFundedProjectsSummariesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1712,8 +1712,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -1729,13 +1729,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2PublicAssistanceGrantAwardActivitiesResponse, ApiConnectionActionConfiguration> GetV2PublicAssistanceGrantAwardActivities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2PublicAssistanceGrantAwardActivitiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2PublicAssistanceGrantAwardActivitiesSelectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V2PublicAssistanceGrantAwardActivitiesResponse, ApiConnectionActionConfiguration> GetV2PublicAssistanceGrantAwardActivities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> fileName = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2PublicAssistanceGrantAwardActivitiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2PublicAssistanceGrantAwardActivitiesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
             var __workflow_gzip = WorkflowExpression.Compile(gzip, nameof(gzip), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -1756,8 +1756,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
                 callPayload.Queries["$count"] = Convert.ToString(false);
                 if (__workflow_count != null)
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
-                if (__workflow_filename != null)
-                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["$filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 callPayload.Queries["$metadata"] = Convert.ToString(true);
                 if (__workflow_metadata != null)
                     callPayload.Queries["$metadata"] = ExpressionConverter.Convert(__workflow_metadata);
@@ -8194,7 +8194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         public string Language { get; set; }
 
         [JsonProperty("primaryITInvestmentUII")]
-        public string PrimaryITInvestmentUII { get; set; }
+        public string PrimaryITInvestmentUii { get; set; }
 
         [JsonProperty("references")]
         public JToken[] References { get; set; }
@@ -8215,7 +8215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         public string DepWebMessage { get; set; }
 
         [JsonProperty("depNewURL")]
-        public string DepNewURL { get; set; }
+        public string DepNewUrl { get; set; }
 
         [JsonProperty("lastRefresh")]
         public string LastRefresh { get; set; }
@@ -8342,9 +8342,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "language desc")]
         LanguageDesc,
         [EnumMember(Value = "primaryITInvestmentUII")]
-        PrimaryITInvestmentUII,
+        PrimaryITInvestmentUii,
         [EnumMember(Value = "primaryITInvestmentUII desc")]
-        PrimaryITInvestmentUIIDesc,
+        PrimaryITInvestmentUiiDesc,
         [EnumMember(Value = "references")]
         References,
         [EnumMember(Value = "references desc")]
@@ -8370,9 +8370,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "depWebMessage desc")]
         DepWebMessageDesc,
         [EnumMember(Value = "depNewURL")]
-        DepNewURL,
+        DepNewUrl,
         [EnumMember(Value = "depNewURL desc")]
-        DepNewURLDesc,
+        DepNewUrlDesc,
         [EnumMember(Value = "lastRefresh")]
         LastRefresh,
         [EnumMember(Value = "lastRefresh desc")]
@@ -8449,7 +8449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "language")]
         Language,
         [EnumMember(Value = "primaryITInvestmentUII")]
-        PrimaryITInvestmentUII,
+        PrimaryITInvestmentUii,
         [EnumMember(Value = "references")]
         References,
         [EnumMember(Value = "issued")]
@@ -8463,7 +8463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "depWebMessage")]
         DepWebMessage,
         [EnumMember(Value = "depNewURL")]
-        DepNewURL,
+        DepNewUrl,
         [EnumMember(Value = "lastRefresh")]
         LastRefresh,
         [EnumMember(Value = "lastDataSetRefresh")]
@@ -8687,7 +8687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         public double AmountPaidOnIncreasedCostOfComplianceClaim { get; set; }
 
         [JsonProperty("postFIRMConstructionIndicator")]
-        public string PostFIRMConstructionIndicator { get; set; }
+        public string PostFirmConstructionIndicator { get; set; }
 
         [JsonProperty("rateMethod")]
         public string RateMethod { get; set; }
@@ -8935,9 +8935,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "amountPaidOnIncreasedCostOfComplianceClaim desc")]
         AmountPaidOnIncreasedCostOfComplianceClaimDesc,
         [EnumMember(Value = "postFIRMConstructionIndicator")]
-        PostFIRMConstructionIndicator,
+        PostFirmConstructionIndicator,
         [EnumMember(Value = "postFIRMConstructionIndicator desc")]
-        PostFIRMConstructionIndicatorDesc,
+        PostFirmConstructionIndicatorDesc,
         [EnumMember(Value = "rateMethod")]
         RateMethod,
         [EnumMember(Value = "rateMethod desc")]
@@ -9182,7 +9182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "amountPaidOnIncreasedCostOfComplianceClaim")]
         AmountPaidOnIncreasedCostOfComplianceClaim,
         [EnumMember(Value = "postFIRMConstructionIndicator")]
-        PostFIRMConstructionIndicator,
+        PostFirmConstructionIndicator,
         [EnumMember(Value = "rateMethod")]
         RateMethod,
         [EnumMember(Value = "smallBusinessIndicatorBuilding")]
@@ -9379,7 +9379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         public int PolicyTermIndicator { get; set; }
 
         [JsonProperty("postFIRMConstructionIndicator")]
-        public string PostFIRMConstructionIndicator { get; set; }
+        public string PostFirmConstructionIndicator { get; set; }
 
         [JsonProperty("primaryResidenceIndicator")]
         public string PrimaryResidenceIndicator { get; set; }
@@ -9654,9 +9654,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "policyTermIndicator desc")]
         PolicyTermIndicatorDesc,
         [EnumMember(Value = "postFIRMConstructionIndicator")]
-        PostFIRMConstructionIndicator,
+        PostFirmConstructionIndicator,
         [EnumMember(Value = "postFIRMConstructionIndicator desc")]
-        PostFIRMConstructionIndicatorDesc,
+        PostFirmConstructionIndicatorDesc,
         [EnumMember(Value = "primaryResidenceIndicator")]
         PrimaryResidenceIndicator,
         [EnumMember(Value = "primaryResidenceIndicator desc")]
@@ -9922,7 +9922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "policyTermIndicator")]
         PolicyTermIndicator,
         [EnumMember(Value = "postFIRMConstructionIndicator")]
-        PostFIRMConstructionIndicator,
+        PostFirmConstructionIndicator,
         [EnumMember(Value = "primaryResidenceIndicator")]
         PrimaryResidenceIndicator,
         [EnumMember(Value = "rateMethod")]
@@ -10769,7 +10769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         public string Tribal { get; set; }
 
         [JsonProperty("participatingInNFIP")]
-        public string ParticipatingInNFIP { get; set; }
+        public string ParticipatingInNfip { get; set; }
 
         [JsonProperty("originalEntryDate")]
         public string OriginalEntryDate { get; set; }
@@ -10830,9 +10830,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "tribal desc")]
         TribalDesc,
         [EnumMember(Value = "participatingInNFIP")]
-        ParticipatingInNFIP,
+        ParticipatingInNfip,
         [EnumMember(Value = "participatingInNFIP desc")]
-        ParticipatingInNFIPDesc,
+        ParticipatingInNfipDesc,
         [EnumMember(Value = "originalEntryDate")]
         OriginalEntryDate,
         [EnumMember(Value = "originalEntryDate desc")]
@@ -10881,7 +10881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "tribal")]
         Tribal,
         [EnumMember(Value = "participatingInNFIP")]
-        ParticipatingInNFIP,
+        ParticipatingInNfip,
         [EnumMember(Value = "originalEntryDate")]
         OriginalEntryDate,
         [EnumMember(Value = "classRatingEffectiveDate")]
@@ -10966,7 +10966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         public string OriginalNBDate { get; set; }
 
         [JsonProperty("postFIRMConstructionIndicator")]
-        public bool PostFIRMConstructionIndicator { get; set; }
+        public bool PostFirmConstructionIndicator { get; set; }
 
         [JsonProperty("primaryResidenceIndicator")]
         public bool PrimaryResidenceIndicator { get; set; }
@@ -11071,9 +11071,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "originalNBDate desc")]
         OriginalNBDateDesc,
         [EnumMember(Value = "postFIRMConstructionIndicator")]
-        PostFIRMConstructionIndicator,
+        PostFirmConstructionIndicator,
         [EnumMember(Value = "postFIRMConstructionIndicator desc")]
-        PostFIRMConstructionIndicatorDesc,
+        PostFirmConstructionIndicatorDesc,
         [EnumMember(Value = "primaryResidenceIndicator")]
         PrimaryResidenceIndicator,
         [EnumMember(Value = "primaryResidenceIndicator desc")]
@@ -11144,7 +11144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         [EnumMember(Value = "originalNBDate")]
         OriginalNBDate,
         [EnumMember(Value = "postFIRMConstructionIndicator")]
-        PostFIRMConstructionIndicator,
+        PostFirmConstructionIndicator,
         [EnumMember(Value = "primaryResidenceIndicator")]
         PrimaryResidenceIndicator,
         [EnumMember(Value = "mitigatedIndicator")]

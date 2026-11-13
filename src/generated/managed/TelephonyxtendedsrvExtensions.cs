@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ToggleAgentACDState(Expression<Func<ToggleAgentACDStateBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ToggleAgentAcdState(Expression<Func<ToggleAgentAcdStateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -431,15 +431,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string UserId { get; set; }
     }
 
-    public class ToggleAgentACDStateBodyInput
+    public class ToggleAgentAcdStateBodyInput
     {
-        public ToggleAgentACDStateBodyInput(string agentACDState)
+        public ToggleAgentAcdStateBodyInput(string agentAcdState)
         {
-            this.AgentACDState = agentACDState;
+            this.AgentAcdState = agentAcdState;
         }
 
         [JsonProperty("agentACDState", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AgentACDState { get; set; }
+        public string AgentAcdState { get; set; }
 
         [JsonProperty("userID")]
         public string UserId { get; set; }

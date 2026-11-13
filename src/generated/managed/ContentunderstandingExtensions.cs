@@ -143,13 +143,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("inputFileUrl")]
-        public string InputFileURL { get; set; }
+        public string InputFileUrl { get; set; }
 
         [JsonProperty("range")]
         public string Range { get; set; }
 
         [JsonProperty("inputFileMimeType")]
-        public string FileMIMEType { get; set; }
+        public string FileMimeType { get; set; }
 
         [JsonProperty("inputs")]
         public AnalysisInput[] Inputs { get; set; }
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
         public string Name { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("range")]
         public string Range { get; set; }

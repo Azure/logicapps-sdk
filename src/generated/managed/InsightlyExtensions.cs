@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string ProjectDetails { get; set; }
 
         [JsonProperty("IMAGE_URL")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("DATE_CREATED_UTC")]
         public string CreatedDateTime { get; set; }
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int VisibleUserIDs { get; set; }
+        public int VisibleUserIds { get; set; }
 
         [JsonProperty("CAN_EDIT")]
         public bool CanEdit { get; set; }
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public UpdatedProjectInputProjectStatusType ProjectStatus { get; set; }
 
         [JsonProperty("IMAGE_URL")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("VISIBLE_TO")]
         public UpdatedProjectInputProjectVisibilityType? ProjectVisibility { get; set; }
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int? VisibleUserIDs { get; set; }
+        public int? VisibleUserIds { get; set; }
 
         [JsonProperty("OPPORTUNITY_ID")]
         public int? OpportunityId { get; set; }
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public NewProjectInputProjectStatusType ProjectStatus { get; set; }
 
         [JsonProperty("IMAGE_URL")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("VISIBLE_TO")]
         public NewProjectInputProjectVisibilityType? ProjectVisibility { get; set; }
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int? VisibleUserIDs { get; set; }
+        public int? VisibleUserIds { get; set; }
 
         [JsonProperty("OPPORTUNITY_ID")]
         public int? OpportunityId { get; set; }
@@ -858,7 +858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public bool IsConverted { get; set; }
 
         [JsonProperty("WEBSITE_URL")]
-        public string WebsiteURL { get; set; }
+        public string WebsiteUrl { get; set; }
 
         [JsonProperty("OWNER_USER_ID")]
         public int LeadOwner { get; set; }
@@ -909,10 +909,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int VisibleUserIDs { get; set; }
+        public int VisibleUserIds { get; set; }
 
         [JsonProperty("IMAGE_URL")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("CAN_EDIT")]
         public bool CanEdit { get; set; }
@@ -950,7 +950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int? VisibleUserIDs { get; set; }
+        public int? VisibleUserIds { get; set; }
 
         [JsonProperty("ORGANIZATION_NAME")]
         public string OrganizationName { get; set; }
@@ -968,7 +968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public bool? IsConverted { get; set; }
 
         [JsonProperty("WEBSITE_URL")]
-        public string WebsiteURL { get; set; }
+        public string WebsiteUrl { get; set; }
 
         [JsonProperty("OWNER_USER_ID")]
         public int? LeadOwner { get; set; }
@@ -1027,7 +1027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int? VisibleUserIDs { get; set; }
+        public int? VisibleUserIds { get; set; }
 
         [JsonProperty("ORGANIZATION_NAME")]
         public string OrganizationName { get; set; }
@@ -1045,7 +1045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public bool? IsConverted { get; set; }
 
         [JsonProperty("WEBSITE_URL")]
-        public string WebsiteURL { get; set; }
+        public string WebsiteUrl { get; set; }
 
         [JsonProperty("OWNER_USER_ID")]
         public int? LeadOwner { get; set; }
@@ -1135,7 +1135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string LastName { get; set; }
 
         [JsonProperty("IMAGE_URL")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("DATE_CREATED_UTC")]
         public string CreatedDateTime { get; set; }
@@ -1159,7 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int VisibleUserIDs { get; set; }
+        public int VisibleUserIds { get; set; }
 
         [JsonProperty("CAN_EDIT")]
         public bool CanEdit { get; set; }
@@ -1294,7 +1294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int? VisibleUserIDs { get; set; }
+        public int? VisibleUserIds { get; set; }
 
         [JsonProperty("CONTACTINFOS")]
         public AddContactContactInfo[] ContactInformation { get; set; }
@@ -1366,7 +1366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int? VisibleUserIDs { get; set; }
+        public int? VisibleUserIds { get; set; }
 
         [JsonProperty("CONTACTINFOS")]
         public AddContactContactInfo[] ContactInformation { get; set; }
@@ -1480,13 +1480,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string Background { get; set; }
 
         [JsonProperty("IMAGE_URL")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("VISIBLE_TEAM_ID")]
         public int VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int VisibleUserIDs { get; set; }
+        public int VisibleUserIds { get; set; }
     }
 
     public class AddOrganizationAddressResponse
@@ -1560,7 +1560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleTeamId { get; set; }
 
         [JsonProperty("VISIBLE_USER_IDS")]
-        public int? VisibleUserIDs { get; set; }
+        public int? VisibleUserIds { get; set; }
 
         [JsonProperty("ADDRESSES")]
         public AddOrganizationAddress[] OrganizationAddress { get; set; }

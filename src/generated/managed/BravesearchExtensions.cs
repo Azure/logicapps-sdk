@@ -639,7 +639,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CountryInput
     {
-        ALL,
+        [EnumMember(Value = "ALL")]
+        All,
         AR,
         AU,
         AT,

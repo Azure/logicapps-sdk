@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
 
     public class GetSelfHelpInsightsResponseAIInsightsType
     {
-        public string GPTInsight { get; set; }
+        [JsonProperty("GPTInsight")]
+        public string GptInsight { get; set; }
     }
 
     public class BodyInput

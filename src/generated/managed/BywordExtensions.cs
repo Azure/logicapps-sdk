@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         public string Title { get; set; }
 
         [JsonProperty("URL Slug")]
-        public string URLSlug { get; set; }
+        public string UrlSlug { get; set; }
 
         [JsonProperty("_id")]
         public string Id { get; set; }
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         public string Title { get; set; }
 
         [JsonProperty("URL Slug")]
-        public string URLSlug { get; set; }
+        public string UrlSlug { get; set; }
 
         [JsonProperty("_id")]
         public string Id { get; set; }

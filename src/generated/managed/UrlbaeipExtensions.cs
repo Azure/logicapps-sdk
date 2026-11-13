@@ -119,11 +119,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<CTAListResponse, ApiConnectionActionConfiguration> CTAList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<CtaListResponse, ApiConnectionActionConfiguration> CtaList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<CTAListResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CtaListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/overlay";
                 var apiCallHttpMethod = "get";
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
-                return new ApiConnectionAction<CTAListResponse>(callPayload);
+                return new ApiConnectionAction<CtaListResponse>(callPayload);
             });
         }
 
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Email { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("avatar")]
         public string Avatar { get; set; }
@@ -626,16 +626,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Date { get; set; }
     }
 
-    public class CTAListResponse
+    public class CtaListResponse
     {
         [JsonProperty("error")]
         public int Error { get; set; }
 
         [JsonProperty("data")]
-        public CTAListResponseDataType Data { get; set; }
+        public CtaListResponseDataType Data { get; set; }
     }
 
-    public class CTAListResponseDataType
+    public class CtaListResponseDataType
     {
         [JsonProperty("result")]
         public int Result { get; set; }
@@ -653,10 +653,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public int Maxpage { get; set; }
 
         [JsonProperty("cta")]
-        public CTAListResponseDataTypeCtaTypeItem[] Cta { get; set; }
+        public CtaListResponseDataTypeCtaTypeItem[] Cta { get; set; }
     }
 
-    public class CTAListResponseDataTypeCtaTypeItem
+    public class CtaListResponseDataTypeCtaTypeItem
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -1480,7 +1480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Email { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("avatar")]
         public string Avatar { get; set; }
@@ -1530,7 +1530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Email { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("avatar")]
         public string Avatar { get; set; }
@@ -1572,20 +1572,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Email { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class UserCreateBodyInput
     {
-        public UserCreateBodyInput(string username, string password, string email)
+        public UserCreateBodyInput(string userName, string password, string email)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.Password = password;
             this.Email = email;
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }

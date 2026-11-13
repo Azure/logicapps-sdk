@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hhsmediaservices
         public string CreatedBy { get; set; }
 
         [JsonProperty("foreignSyndicationAPIUrl")]
-        public string ForeignSyndicationAPIUrl { get; set; }
+        public string ForeignSyndicationApiUrl { get; set; }
 
         [JsonProperty("extendedAttributes")]
         public ExtendedAttribute ExtendedAttributes { get; set; }

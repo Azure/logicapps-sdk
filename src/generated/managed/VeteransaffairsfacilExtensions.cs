@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string TimeZone { get; set; }
 
         [JsonProperty("visn")]
-        public string VISN { get; set; }
+        public string Visn { get; set; }
 
         [JsonProperty("website")]
         public string Website { get; set; }
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string State { get; set; }
 
         [JsonProperty("zip")]
-        public string ZIPCode { get; set; }
+        public string ZipCode { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -317,10 +317,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperatingStatusStatusCodeType
     {
-        NORMAL,
-        NOTICE,
-        LIMITED,
-        CLOSED
+        [EnumMember(Value = "NORMAL")]
+        Normal,
+        [EnumMember(Value = "NOTICE")]
+        Notice,
+        [EnumMember(Value = "LIMITED")]
+        Limited,
+        [EnumMember(Value = "CLOSED")]
+        Closed
     }
 
     public class SupplementalStatus
@@ -338,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string ParentFacilityId { get; set; }
 
         [JsonProperty("link")]
-        public string ParentFacilityAPILink { get; set; }
+        public string ParentFacilityApiLink { get; set; }
     }
 
     public class Phone
@@ -669,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string WingFloorRoomNumber { get; set; }
 
         [JsonProperty("zipCode")]
-        public string ZIPCode { get; set; }
+        public string ZipCode { get; set; }
     }
 
     public class DetailedServiceHours
@@ -723,7 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
     public class FacilitiesIdsResponse
     {
         [JsonProperty("data")]
-        public string[] FacilityIDs { get; set; }
+        public string[] FacilityIds { get; set; }
     }
 
     public class NearbyResponse

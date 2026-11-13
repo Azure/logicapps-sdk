@@ -1564,10 +1564,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputReasonType
     {
-        DELIVERED,
-        LOST,
+        [EnumMember(Value = "DELIVERED")]
+        Delivered,
+        [EnumMember(Value = "LOST")]
+        Lost,
         [EnumMember(Value = "RETURNED_TO_SENDER")]
-        RETURNEDTOSENDER
+        ReturnedToSender
     }
 
     public class GetTrackingNotificationResponse

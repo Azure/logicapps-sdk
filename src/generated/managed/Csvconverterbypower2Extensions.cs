@@ -191,25 +191,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string DetectedFormat { get; set; }
 
         [JsonProperty("json")]
-        public string JSONResult { get; set; }
+        public string JsonResult { get; set; }
 
         [JsonProperty("xml")]
-        public string XMLResult { get; set; }
+        public string XmlResult { get; set; }
 
         [JsonProperty("yaml")]
-        public string YAMLResult { get; set; }
+        public string YamlResult { get; set; }
 
         [JsonProperty("firstCsv")]
-        public string FirstCSVResult { get; set; }
+        public string FirstCsvResult { get; set; }
 
         [JsonProperty("csv")]
-        public string[] CSVResult { get; set; }
+        public string[] CsvResult { get; set; }
 
         [JsonProperty("firstHtmlTable")]
-        public string FirstHTMLTableResult { get; set; }
+        public string FirstHtmlTableResult { get; set; }
 
         [JsonProperty("htmlTable")]
-        public string[] HTMLResult { get; set; }
+        public string[] HtmlResult { get; set; }
 
         [JsonProperty("firstTextTable")]
         public string FirstTextTableResult { get; set; }
@@ -241,18 +241,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
     public class DtoResponseT01A001AV01CV01ConvertCsvToJson
     {
         [JsonProperty("json")]
-        public string JSONResponse { get; set; }
+        public string JsonResponse { get; set; }
     }
 
     public class DtoRequestT01A001AV01CV01ConvertCsvToJsonInput
     {
-        public DtoRequestT01A001AV01CV01ConvertCsvToJsonInput(string cSV)
+        public DtoRequestT01A001AV01CV01ConvertCsvToJsonInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("delimiter")]
         public string Separator { get; set; }
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public bool? AutoDetectQuoteDelimiter { get; set; } = true;
 
         [JsonProperty("hasHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDetectHeaderLine")]
         public bool? AutoDetectHeader { get; set; }
@@ -306,21 +306,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
     public class DtoResponseT01A002AV01CV01ConvertJsonToCsv
     {
         [JsonProperty("csvs")]
-        public string[] CSVTableList { get; set; }
+        public string[] CsvTableList { get; set; }
 
         [JsonProperty("firstCsv")]
-        public string FirstCSVTable { get; set; }
+        public string FirstCsvTable { get; set; }
     }
 
     public class DtoRequestT01A002AV01CV01ConvertJsonToCsvInput
     {
-        public DtoRequestT01A002AV01CV01ConvertJsonToCsvInput(string jSON)
+        public DtoRequestT01A002AV01CV01ConvertJsonToCsvInput(string json)
         {
-            this.JSON = jSON;
+            this.Json = json;
         }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSON { get; set; }
+        public string Json { get; set; }
     }
 
     public class DtoResponseT01A003AV01CV01ConvertCsvToExcel
@@ -331,13 +331,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
     public class DtoRequestT01A003AV01CV01ConvertCsvToExcelInput
     {
-        public DtoRequestT01A003AV01CV01ConvertCsvToExcelInput(string cSV)
+        public DtoRequestT01A003AV01CV01ConvertCsvToExcelInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("delimiter")]
         public string Separator { get; set; }
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public bool? AutoDetectQuoteDelimiter { get; set; } = true;
 
         [JsonProperty("hasHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDetectHeaderLine")]
         public bool? AutoDetectHeader { get; set; }
@@ -400,10 +400,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
     public class DtoResponseT01A004AV01CV01ConvertExcelToCsv
     {
         [JsonProperty("csvs")]
-        public string[] CSVTableList { get; set; }
+        public string[] CsvTableList { get; set; }
 
         [JsonProperty("firstCsv")]
-        public string FirstCSVTable { get; set; }
+        public string FirstCsvTable { get; set; }
     }
 
     public class DtoRequestT01A004AV01CV01ConvertExcelToCsvInput
@@ -420,24 +420,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
     public class DtoResponseT01A005AV01CV01ConvertCsvToHtml
     {
         [JsonProperty("html")]
-        public string HTMLResponse { get; set; }
+        public string HtmlResponse { get; set; }
 
         [JsonProperty("htmlTables")]
-        public string[] HTMLTableList { get; set; }
+        public string[] HtmlTableList { get; set; }
 
         [JsonProperty("firstHtmlTable")]
-        public string FirstHTMLTable { get; set; }
+        public string FirstHtmlTable { get; set; }
     }
 
     public class DtoRequestT01A005AV01CV01ConvertCsvToHtmlInput
     {
-        public DtoRequestT01A005AV01CV01ConvertCsvToHtmlInput(string cSV)
+        public DtoRequestT01A005AV01CV01ConvertCsvToHtmlInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("delimiter")]
         public string Separator { get; set; }
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public bool? AutoDetectQuoteDelimiter { get; set; } = true;
 
         [JsonProperty("hasHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDetectHeaderLine")]
         public bool? AutoDetectHeader { get; set; }
@@ -491,38 +491,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
     public class DtoResponseT01A006AV01CV01ConvertHtmlToCsv
     {
         [JsonProperty("csvs")]
-        public string[] CSVTableList { get; set; }
+        public string[] CsvTableList { get; set; }
 
         [JsonProperty("firstCsv")]
-        public string FirstCSVTable { get; set; }
+        public string FirstCsvTable { get; set; }
     }
 
     public class DtoRequestT01A006AV01CV01ConvertHtmlToCsvInput
     {
-        public DtoRequestT01A006AV01CV01ConvertHtmlToCsvInput(string hTMLTable)
+        public DtoRequestT01A006AV01CV01ConvertHtmlToCsvInput(string htmlTable)
         {
-            this.HTMLTable = hTMLTable;
+            this.HtmlTable = htmlTable;
         }
 
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HTMLTable { get; set; }
+        public string HtmlTable { get; set; }
     }
 
     public class DtoResponseT01A007AV01CV01ConvertCsvToXml
     {
         [JsonProperty("xml")]
-        public string XMLResponse { get; set; }
+        public string XmlResponse { get; set; }
     }
 
     public class DtoRequestT01A007AV01CV01ConvertCsvToXmlInput
     {
-        public DtoRequestT01A007AV01CV01ConvertCsvToXmlInput(string cSV)
+        public DtoRequestT01A007AV01CV01ConvertCsvToXmlInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("delimiter")]
         public string Separator { get; set; }
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public bool? AutoDetectQuoteDelimiter { get; set; } = true;
 
         [JsonProperty("hasHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDetectHeaderLine")]
         public bool? AutoDetectHeader { get; set; }
@@ -576,38 +576,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
     public class DtoResponseT01A008AV01CV01ConvertXmlToCsv
     {
         [JsonProperty("csvs")]
-        public string[] CSVTableList { get; set; }
+        public string[] CsvTableList { get; set; }
 
         [JsonProperty("firstCsv")]
-        public string FirstCSVTable { get; set; }
+        public string FirstCsvTable { get; set; }
     }
 
     public class DtoRequestT01A008AV01CV01ConvertXmlToCsvInput
     {
-        public DtoRequestT01A008AV01CV01ConvertXmlToCsvInput(string xML)
+        public DtoRequestT01A008AV01CV01ConvertXmlToCsvInput(string xml)
         {
-            this.XML = xML;
+            this.Xml = xml;
         }
 
         [JsonProperty("xml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string XML { get; set; }
+        public string Xml { get; set; }
     }
 
     public class DtoResponseT01A009AV01CV01ConvertCsvToYaml
     {
         [JsonProperty("yaml")]
-        public string YAMLResponse { get; set; }
+        public string YamlResponse { get; set; }
     }
 
     public class DtoRequestT01A009AV01CV01ConvertCsvToYamlInput
     {
-        public DtoRequestT01A009AV01CV01ConvertCsvToYamlInput(string cSV)
+        public DtoRequestT01A009AV01CV01ConvertCsvToYamlInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("delimiter")]
         public string Separator { get; set; }
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public bool? AutoDetectQuoteDelimiter { get; set; } = true;
 
         [JsonProperty("hasHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDetectHeaderLine")]
         public bool? AutoDetectHeader { get; set; }
@@ -661,21 +661,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
     public class DtoResponseT01A010AV01CV01ConvertYamlToCsv
     {
         [JsonProperty("csvs")]
-        public string[] CSVTableList { get; set; }
+        public string[] CsvTableList { get; set; }
 
         [JsonProperty("firstCsv")]
-        public string FirstCSVTable { get; set; }
+        public string FirstCsvTable { get; set; }
     }
 
     public class DtoRequestT01A010AV01CV01ConvertYamlToCsvInput
     {
-        public DtoRequestT01A010AV01CV01ConvertYamlToCsvInput(string yAML)
+        public DtoRequestT01A010AV01CV01ConvertYamlToCsvInput(string yaml)
         {
-            this.YAML = yAML;
+            this.Yaml = yaml;
         }
 
         [JsonProperty("yaml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string YAML { get; set; }
+        public string Yaml { get; set; }
     }
 
     public class DtoResponseT01A011AV01CV01ConvertCsvToTextTable
@@ -689,13 +689,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
     public class DtoRequestT01A011AV01CV01ConvertCsvToTextTableInput
     {
-        public DtoRequestT01A011AV01CV01ConvertCsvToTextTableInput(string cSV)
+        public DtoRequestT01A011AV01CV01ConvertCsvToTextTableInput(string csv)
         {
-            this.CSV = cSV;
+            this.Csv = csv;
         }
 
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public string Csv { get; set; }
 
         [JsonProperty("delimiter")]
         public string Separator { get; set; }
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public bool? AutoDetectQuoteDelimiter { get; set; } = true;
 
         [JsonProperty("hasHeader", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? CSVHasHeaders { get; set; } = true;
+        public bool? CsvHasHeaders { get; set; } = true;
 
         [JsonProperty("autoDetectHeaderLine")]
         public bool? AutoDetectHeader { get; set; }

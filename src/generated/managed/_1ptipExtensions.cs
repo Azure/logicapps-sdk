@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
     public class _1ptipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1ptip")]
-        public IBodyWorkflowAction<URLGetResponse, ApiConnectionActionConfiguration> URLGet(Expression<Func<string>> @long, Expression<Func<string>> @short = null)
+        public IBodyWorkflowAction<UrlGetResponse, ApiConnectionActionConfiguration> UrlGet(Expression<Func<string>> @long, Expression<Func<string>> @short = null)
         {
             var __workflow_long = WorkflowExpression.Compile(@long, nameof(@long), required: true);
             var __workflow_short = WorkflowExpression.Compile(@short, nameof(@short), required: false);
-            return new DeferredBodyAction<URLGetResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UrlGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addURL";
                 var apiCallHttpMethod = "post";
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
                 callPayload.Queries["long"] = ExpressionConverter.Convert(__workflow_long);
                 if (__workflow_short != null)
                     callPayload.Queries["short"] = ExpressionConverter.Convert(__workflow_short);
-                return new ApiConnectionAction<URLGetResponse>(callPayload);
+                return new ApiConnectionAction<UrlGetResponse>(callPayload);
             });
         }
     }
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
     {
     }
 
-    public class URLGetResponse
+    public class UrlGetResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }

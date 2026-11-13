@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstation
         public int CustomerId { get; set; }
 
         [JsonProperty("customerUsername")]
-        public string CustomerUsername { get; set; }
+        public string CustomerUserName { get; set; }
 
         [JsonProperty("customerEmail")]
         public string CustomerEmail { get; set; }
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstation
         public int CustomerId { get; set; }
 
         [JsonProperty("customerUsername")]
-        public string CustomerUsername { get; set; }
+        public string CustomerUserName { get; set; }
 
         [JsonProperty("customerEmail")]
         public string CustomerEmail { get; set; }

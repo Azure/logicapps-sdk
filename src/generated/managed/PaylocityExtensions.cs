@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
         public string CompanyId { get; set; }
 
         [JsonProperty("callbackURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

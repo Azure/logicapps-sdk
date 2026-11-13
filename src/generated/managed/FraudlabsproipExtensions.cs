@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         public string IsDisposablePhoneNumber { get; set; }
 
         [JsonProperty("is_high_risk_username")]
-        public string IsHighRiskUsername { get; set; }
+        public string IsHighRiskUserName { get; set; }
 
         [JsonProperty("is_malware_exploit")]
         public string IsMalwareExploit { get; set; }
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         public string EmailDomain { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("bin_no")]
         public string BinNo { get; set; }
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         public string Id { get; set; }
 
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputActionType? Action { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip.BodyInputActionType.APPROVE;
+        public BodyInputActionType? Action { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip.BodyInputActionType.Approve;
 
         [JsonProperty("note")]
         public string Note { get; set; }
@@ -404,10 +404,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputActionType
     {
-        APPROVE,
-        REJECT,
+        [EnumMember(Value = "APPROVE")]
+        Approve,
+        [EnumMember(Value = "REJECT")]
+        Reject,
         [EnumMember(Value = "REJECT_BLACKLIST")]
-        REJECTBLACKLIST
+        RejectBlacklist
     }
 
     public class ResultGetResponse
@@ -530,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         public string IsPhoneBlacklist { get; set; }
 
         [JsonProperty("is_high_risk_username_password")]
-        public string IsHighRiskUsernamePassword { get; set; }
+        public string IsHighRiskUserNamePassword { get; set; }
 
         [JsonProperty("is_malware_exploit")]
         public string IsMalwareExploit { get; set; }

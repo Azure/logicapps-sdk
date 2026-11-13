@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetInboundShipmentsContainingNonPalletizedProducts(Expression<Func<string>> continuationToken, Expression<Func<string>> pageSize, Expression<Func<string>> state, Expression<Func<string>> createdAtFrom, Expression<Func<string>> createdAtTo, Expression<Func<string>> updatedAtFrom, Expression<Func<string>> updatedAtTo, Expression<Func<string>> customerUUID, Expression<Func<string>> purchaseOrder, Expression<Func<string>> reservations)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetInboundShipmentsContainingNonPalletizedProducts(Expression<Func<string>> continuationToken, Expression<Func<string>> pageSize, Expression<Func<string>> state, Expression<Func<string>> createdAtFrom, Expression<Func<string>> createdAtTo, Expression<Func<string>> updatedAtFrom, Expression<Func<string>> updatedAtTo, Expression<Func<string>> customerUuid, Expression<Func<string>> purchaseOrder, Expression<Func<string>> reservations)
         {
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: true);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: true);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
             var __workflow_createdAtTo = WorkflowExpression.Compile(createdAtTo, nameof(createdAtTo), required: true);
             var __workflow_updatedAtFrom = WorkflowExpression.Compile(updatedAtFrom, nameof(updatedAtFrom), required: true);
             var __workflow_updatedAtTo = WorkflowExpression.Compile(updatedAtTo, nameof(updatedAtTo), required: true);
-            var __workflow_customerUUID = WorkflowExpression.Compile(customerUUID, nameof(customerUUID), required: true);
+            var __workflow_customerUuid = WorkflowExpression.Compile(customerUuid, nameof(customerUuid), required: true);
             var __workflow_purchaseOrder = WorkflowExpression.Compile(purchaseOrder, nameof(purchaseOrder), required: true);
             var __workflow_reservations = WorkflowExpression.Compile(reservations, nameof(reservations), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
                 callPayload.Queries["createdAtTo"] = ExpressionConverter.Convert(__workflow_createdAtTo);
                 callPayload.Queries["updatedAtFrom"] = ExpressionConverter.Convert(__workflow_updatedAtFrom);
                 callPayload.Queries["updatedAtTo"] = ExpressionConverter.Convert(__workflow_updatedAtTo);
-                callPayload.Queries["customerUUID"] = ExpressionConverter.Convert(__workflow_customerUUID);
+                callPayload.Queries["customerUUID"] = ExpressionConverter.Convert(__workflow_customerUuid);
                 callPayload.Queries["purchaseOrder"] = ExpressionConverter.Convert(__workflow_purchaseOrder);
                 callPayload.Queries["reservations"] = ExpressionConverter.Convert(__workflow_reservations);
                 return new ApiConnectionAction(callPayload);
@@ -165,9 +165,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
 
     public class BodyInputDataTypeDropoffListTypeItem
     {
-        public BodyInputDataTypeDropoffListTypeItem(string customerUUID, string purchaseOrderId, string dropoffDate, BodyInputDataTypeDropoffListTypeItemReservationType reservation)
+        public BodyInputDataTypeDropoffListTypeItem(string customerUuid, string purchaseOrderId, string dropoffDate, BodyInputDataTypeDropoffListTypeItemReservationType reservation)
         {
-            this.CustomerUUID = customerUUID;
+            this.CustomerUuid = customerUuid;
             this.PurchaseOrderId = purchaseOrderId;
             this.DropoffDate = dropoffDate;
             this.Reservation = reservation;
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string ExpectedInboundShipmentType { get; set; }
 
         [JsonProperty("customerUUID", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CustomerUUID { get; set; }
+        public string CustomerUuid { get; set; }
 
         [JsonProperty("containerNumber")]
         public string ContainerNumber { get; set; }
@@ -388,9 +388,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
 
     public class BodyInputDataTypeShipmentType
     {
-        public BodyInputDataTypeShipmentType(string customerUUID, BodyInputDataTypeShipmentTypeInventoryTypeItem[] inventory, BodyInputDataTypeShipmentTypeShipToType shipTo, BodyInputDataTypeShipmentTypeShipWithinType shipWithin, string type)
+        public BodyInputDataTypeShipmentType(string customerUuid, BodyInputDataTypeShipmentTypeInventoryTypeItem[] inventory, BodyInputDataTypeShipmentTypeShipToType shipTo, BodyInputDataTypeShipmentTypeShipWithinType shipWithin, string type)
         {
-            this.CustomerUUID = customerUUID;
+            this.CustomerUuid = customerUuid;
             this.Inventory = inventory;
             this.ShipTo = shipTo;
             this.ShipWithin = shipWithin;
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         }
 
         [JsonProperty("customerUUID", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CustomerUUID { get; set; }
+        public string CustomerUuid { get; set; }
 
         [JsonProperty("inventory", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputDataTypeShipmentTypeInventoryTypeItem[] Inventory { get; set; }

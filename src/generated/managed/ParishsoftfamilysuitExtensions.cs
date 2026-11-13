@@ -449,11 +449,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [JsonProperty("phoneNumber1")]
         public string FamilyPrimaryPhoneNumber { get; set; }
 
-        [JsonProperty("phoneType3")]
+        [JsonProperty("phoneType2")]
         public string FamilyAlternatePhoneType { get; set; }
 
-        [JsonProperty("phoneNumber3")]
+        [JsonProperty("phoneNumber2")]
         public string FamilyAlternatePhoneNumber { get; set; }
+
+        [JsonProperty("phoneType3")]
+        public string FamilyAlternatePhoneType2 { get; set; }
+
+        [JsonProperty("phoneNumber3")]
+        public string FamilyAlternatePhoneNumber2 { get; set; }
     }
 
     public class FamilySearchResponseDto
@@ -1108,7 +1114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [JsonProperty("auxID")]
         public string AuxId { get; set; }
 
-        [JsonProperty("registeredOrganizationID")]
+        [JsonProperty("organizationID")]
         public int OrganizationId { get; set; }
 
         [JsonProperty("memberDUID")]
@@ -1258,6 +1264,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [JsonProperty("familyAddres_PrimaryFullPostalCode")]
         public string FamilyAddressFullPostalCode { get; set; }
 
+        [JsonProperty("registeredOrganizationID")]
+        public int OrganizationId2 { get; set; }
+
         [JsonProperty("registeredOrganizationNameAndCity")]
         public string OrganizationName { get; set; }
 
@@ -1292,7 +1301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public bool? IncludeDeletedMembers { get; set; }
 
         [JsonProperty("organizationIDs")]
-        public int[] OrganizationIdS { get; set; }
+        public int[] OrganizationId { get; set; }
 
         [JsonProperty("filter_MemberAgeRange_From")]
         public int? MemberAgeFrom { get; set; }
@@ -1574,7 +1583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public string MemberMobilePhone { get; set; }
 
         [JsonProperty("organizationIDs")]
-        public int[] OrganizationIdS { get; set; }
+        public int[] OrganizationId { get; set; }
     }
 
     public class MemberUpdateContactBodyInput
@@ -1799,10 +1808,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public int PageSize { get; set; } = 100;
 
         [JsonProperty("familyDUIDs")]
-        public int[] FamilyIdS { get; set; }
+        public int[] FamilyId { get; set; }
 
         [JsonProperty("fundsDUIDs")]
-        public int[] FundIdS { get; set; }
+        public int[] FundId { get; set; }
 
         [JsonProperty("familyGroupId")]
         public int? GroupId { get; set; }
@@ -1858,7 +1867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         [JsonProperty("region")]
         public string Region { get; set; }
 
-        [JsonProperty("zip")]
+        [JsonProperty("postalCode")]
         public string PostalCode { get; set; }
 
         [JsonProperty("childOf")]
@@ -1881,6 +1890,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
 
         [JsonProperty("country")]
         public string Country { get; set; }
+
+        [JsonProperty("zip")]
+        public string PostalCode2 { get; set; }
 
         [JsonProperty("zipExt")]
         public string PostalCodeExtension { get; set; }

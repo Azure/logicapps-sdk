@@ -59,18 +59,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateMCCResponse, ApiConnectionActionConfiguration> CalculateMCC(Expression<Func<string>> transaction, Expression<Func<CalculateMCCBodyInput>> body = null)
+        public IBodyWorkflowAction<CalculateMccResponse, ApiConnectionActionConfiguration> CalculateMcc(Expression<Func<string>> transaction, Expression<Func<CalculateMccBodyInput>> body = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CalculateMCCResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CalculateMccResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/mcc", __workflow_transaction.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CalculateMCCResponse>(callPayload);
+                return new ApiConnectionAction<CalculateMccResponse>(callPayload);
             });
         }
 
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string Country { get; set; }
     }
 
-    public class CalculateMCCResponse
+    public class CalculateMccResponse
     {
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; }
@@ -690,28 +690,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public double TotalMicroUnits { get; set; }
 
         [JsonProperty("cost")]
-        public CalculateMCCResponseCostType Cost { get; set; }
+        public CalculateMccResponseCostType Cost { get; set; }
 
         [JsonProperty("project")]
-        public CalculateMCCResponseProjectType Project { get; set; }
+        public CalculateMccResponseProjectType Project { get; set; }
 
         [JsonProperty("receipt_url")]
         public string ReceiptUrl { get; set; }
     }
 
-    public class CalculateMCCResponseCostType
+    public class CalculateMccResponseCostType
     {
         [JsonProperty("in_usd_cents")]
-        public CalculateMCCResponseCostTypeInUsdCentsType InUsdCents { get; set; }
+        public CalculateMccResponseCostTypeInUsdCentsType InUsdCents { get; set; }
 
         [JsonProperty("requested_currency")]
         public string RequestedCurrency { get; set; }
 
         [JsonProperty("in_requested_currency")]
-        public CalculateMCCResponseCostTypeInRequestedCurrencyType InRequestedCurrency { get; set; }
+        public CalculateMccResponseCostTypeInRequestedCurrencyType InRequestedCurrency { get; set; }
     }
 
-    public class CalculateMCCResponseCostTypeInUsdCentsType
+    public class CalculateMccResponseCostTypeInUsdCentsType
     {
         [JsonProperty("total_cost")]
         public int TotalCost { get; set; }
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public int CarbonCost { get; set; }
     }
 
-    public class CalculateMCCResponseCostTypeInRequestedCurrencyType
+    public class CalculateMccResponseCostTypeInRequestedCurrencyType
     {
         [JsonProperty("total_cost")]
         public double TotalCost { get; set; }
@@ -735,7 +735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public double CarbonCost { get; set; }
     }
 
-    public class CalculateMCCResponseProjectType
+    public class CalculateMccResponseProjectType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -765,13 +765,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
-    public class CalculateMCCBodyInput
+    public class CalculateMccBodyInput
     {
         [JsonProperty("mcc_code")]
         public int? MccCode { get; set; }
 
         [JsonProperty("currency")]
-        public CalculateMCCBodyInputCurrencyType Currency { get; set; }
+        public CalculateMccBodyInputCurrencyType Currency { get; set; }
 
         [JsonProperty("project_match")]
         public CalculateElectricityBodyInputProjectMatchType ProjectMatch { get; set; }
@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string Note { get; set; }
     }
 
-    public class CalculateMCCBodyInputCurrencyType
+    public class CalculateMccBodyInputCurrencyType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }

@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         public string Id { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("discriminator")]
         public string Discriminator { get; set; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         public bool System { get; set; }
 
         [JsonProperty("mfa_enabled")]
-        public bool MFAEnabled { get; set; }
+        public bool MfaEnabled { get; set; }
 
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -212,10 +212,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         public string Content { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("avatar-url")]
-        public string AvatarURL { get; set; }
+        public string AvatarUrl { get; set; }
     }
 }
 

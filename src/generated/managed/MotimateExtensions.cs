@@ -168,10 +168,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<TokenGetResponse, ApiConnectionActionConfiguration> TokenGet(Expression<Func<string>> subdomain, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId)
+        public IBodyWorkflowAction<TokenGetResponse, ApiConnectionActionConfiguration> TokenGet(Expression<Func<string>> subdomain, Expression<Func<string>> userName, Expression<Func<string>> password, Expression<Func<string>> clientId)
         {
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
             var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
             return new DeferredBodyAction<TokenGetResponse, ApiConnectionActionConfiguration>(() =>
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["grant_type"] = Convert.ToString("password");
-                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Queries["password"] = ExpressionConverter.Convert(__workflow_password);
                 callPayload.Queries["client_id"] = ExpressionConverter.Convert(__workflow_clientId);
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);

@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
     public class SheetWithRows
     {
         [JsonProperty("rowHTML")]
-        public string SheetHTML { get; set; }
+        public string SheetHtml { get; set; }
 
         [JsonProperty("accessLevel")]
         public string AccessLevel { get; set; }
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         public RowCell[] Cells { get; set; }
 
         [JsonProperty("rowHTML")]
-        public string RowHTML { get; set; }
+        public string RowHtml { get; set; }
     }
 
     public class RowCell

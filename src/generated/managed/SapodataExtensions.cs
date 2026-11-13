@@ -259,11 +259,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AdHocRequestEntryInputInputHttpMethodType
     {
-        GET,
-        POST,
-        DELETE,
-        PUT,
-        PATCH
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "DELETE")]
+        Delete,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "PATCH")]
+        Patch
     }
 
     public class AdHocBulkRequestResponse
@@ -304,10 +309,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AdHocBulkRequestEntryInputInputHttpMethodType
     {
-        GET,
-        POST,
-        DELETE,
-        PUT
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "DELETE")]
+        Delete,
+        [EnumMember(Value = "PUT")]
+        Put
     }
 }
 

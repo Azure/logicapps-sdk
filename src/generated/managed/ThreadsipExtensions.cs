@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         public string ThreadId { get; set; }
 
         [JsonProperty("threadURL")]
-        public string ThreadURL { get; set; }
+        public string ThreadUrl { get; set; }
     }
 
     public class ThreadBodyInput
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         public string ChatMessageId { get; set; }
 
         [JsonProperty("chatMessageURL")]
-        public string ChatMessageURL { get; set; }
+        public string ChatMessageUrl { get; set; }
     }
 
     public class ChatBodyInput

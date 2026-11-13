@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListAirlinesResponse, ApiConnectionActionConfiguration> ListAirlines(Expression<Func<string>> iataCode = null, Expression<Func<string>> iataPrefix = null, Expression<Func<string>> iataAccounting = null, Expression<Func<string>> icaoCode = null, Expression<Func<string>> callsign = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> Fields = null)
+        public IBodyWorkflowAction<ListAirlinesResponse, ApiConnectionActionConfiguration> ListAirlines(Expression<Func<string>> iataCode = null, Expression<Func<string>> iataPrefix = null, Expression<Func<string>> iataAccounting = null, Expression<Func<string>> icaoCode = null, Expression<Func<string>> callsign = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> fields = null)
         {
             var __workflow_iataCode = WorkflowExpression.Compile(iataCode, nameof(iataCode), required: false);
             var __workflow_iataPrefix = WorkflowExpression.Compile(iataPrefix, nameof(iataPrefix), required: false);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             var __workflow_icaoCode = WorkflowExpression.Compile(icaoCode, nameof(icaoCode), required: false);
             var __workflow_callsign = WorkflowExpression.Compile(callsign, nameof(callsign), required: false);
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
-            var __workflow_Fields = WorkflowExpression.Compile(Fields, nameof(Fields), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<ListAirlinesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/airlines";
@@ -90,14 +90,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                     callPayload.Queries["callsign"] = ExpressionConverter.Convert(__workflow_callsign);
                 if (__workflow_countryCode != null)
                     callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
-                if (__workflow_Fields != null)
-                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_Fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<ListAirlinesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListRoutesResponse, ApiConnectionActionConfiguration> ListRoutes(Expression<Func<string>> depIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineIcao = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> Fields = null)
+        public IBodyWorkflowAction<ListRoutesResponse, ApiConnectionActionConfiguration> ListRoutes(Expression<Func<string>> depIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineIcao = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> fields = null)
         {
             var __workflow_depIata = WorkflowExpression.Compile(depIata, nameof(depIata), required: false);
             var __workflow_depIcao = WorkflowExpression.Compile(depIcao, nameof(depIcao), required: false);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             var __workflow_airlineIata = WorkflowExpression.Compile(airlineIata, nameof(airlineIata), required: false);
             var __workflow_flightIcao = WorkflowExpression.Compile(flightIcao, nameof(flightIcao), required: false);
             var __workflow_flightIata = WorkflowExpression.Compile(flightIata, nameof(flightIata), required: false);
-            var __workflow_Fields = WorkflowExpression.Compile(Fields, nameof(Fields), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<ListRoutesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/routes";
@@ -129,14 +129,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                     callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(__workflow_flightIcao);
                 if (__workflow_flightIata != null)
                     callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(__workflow_flightIata);
-                if (__workflow_Fields != null)
-                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_Fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<ListRoutesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListSchedulesResponse, ApiConnectionActionConfiguration> ListSchedules(Expression<Func<string>> depIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineIcao = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> Fields = null)
+        public IBodyWorkflowAction<ListSchedulesResponse, ApiConnectionActionConfiguration> ListSchedules(Expression<Func<string>> depIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineIcao = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> fields = null)
         {
             var __workflow_depIata = WorkflowExpression.Compile(depIata, nameof(depIata), required: false);
             var __workflow_depIcao = WorkflowExpression.Compile(depIcao, nameof(depIcao), required: false);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
             var __workflow_airlineIata = WorkflowExpression.Compile(airlineIata, nameof(airlineIata), required: false);
             var __workflow_flightIcao = WorkflowExpression.Compile(flightIcao, nameof(flightIcao), required: false);
             var __workflow_flightIata = WorkflowExpression.Compile(flightIata, nameof(flightIata), required: false);
-            var __workflow_Fields = WorkflowExpression.Compile(Fields, nameof(Fields), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<ListSchedulesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/schedules";
@@ -168,20 +168,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                     callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(__workflow_flightIcao);
                 if (__workflow_flightIata != null)
                     callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(__workflow_flightIata);
-                if (__workflow_Fields != null)
-                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_Fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<ListSchedulesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListAirportsResponse, ApiConnectionActionConfiguration> ListAirports(Expression<Func<string>> iataCode = null, Expression<Func<string>> icaoCode = null, Expression<Func<string>> cityCode = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> Fields = null)
+        public IBodyWorkflowAction<ListAirportsResponse, ApiConnectionActionConfiguration> ListAirports(Expression<Func<string>> iataCode = null, Expression<Func<string>> icaoCode = null, Expression<Func<string>> cityCode = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> fields = null)
         {
             var __workflow_iataCode = WorkflowExpression.Compile(iataCode, nameof(iataCode), required: false);
             var __workflow_icaoCode = WorkflowExpression.Compile(icaoCode, nameof(icaoCode), required: false);
             var __workflow_cityCode = WorkflowExpression.Compile(cityCode, nameof(cityCode), required: false);
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
-            var __workflow_Fields = WorkflowExpression.Compile(Fields, nameof(Fields), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<ListAirportsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/airports";
@@ -195,19 +195,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                     callPayload.Queries["city_code"] = ExpressionConverter.Convert(__workflow_cityCode);
                 if (__workflow_countryCode != null)
                     callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
-                if (__workflow_Fields != null)
-                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_Fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<ListAirportsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListCountriesResponse, ApiConnectionActionConfiguration> ListCountries(Expression<Func<string>> code = null, Expression<Func<string>> code3 = null, Expression<Func<string>> continent = null, Expression<Func<string>> Fields = null)
+        public IBodyWorkflowAction<ListCountriesResponse, ApiConnectionActionConfiguration> ListCountries(Expression<Func<string>> code = null, Expression<Func<string>> code3 = null, Expression<Func<string>> continent = null, Expression<Func<string>> fields = null)
         {
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: false);
             var __workflow_code3 = WorkflowExpression.Compile(code3, nameof(code3), required: false);
             var __workflow_continent = WorkflowExpression.Compile(continent, nameof(continent), required: false);
-            var __workflow_Fields = WorkflowExpression.Compile(Fields, nameof(Fields), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<ListCountriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/countries";
@@ -219,8 +219,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                     callPayload.Queries["code3"] = ExpressionConverter.Convert(__workflow_code3);
                 if (__workflow_continent != null)
                     callPayload.Queries["continent"] = ExpressionConverter.Convert(__workflow_continent);
-                if (__workflow_Fields != null)
-                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_Fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<ListCountriesResponse>(callPayload);
             });
         }

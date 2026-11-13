@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         public string Slug { get; set; }
 
         [JsonProperty("scheduling_url")]
-        public string SchedulingURL { get; set; }
+        public string SchedulingUrl { get; set; }
 
         [JsonProperty("duration")]
         public int Duration { get; set; }
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         public string DescriptionPlain { get; set; }
 
         [JsonProperty("description_html")]
-        public string DescriptionHTML { get; set; }
+        public string DescriptionHtml { get; set; }
 
         [JsonProperty("profile")]
         public EventTypeProfileType Profile { get; set; }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         public string ProfileName { get; set; }
 
         [JsonProperty("owner")]
-        public string ProfileOwnerURI { get; set; }
+        public string ProfileOwnerUri { get; set; }
     }
 
     public class EventTypeCustomQuestionsTypeItem
@@ -224,10 +224,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         public int PaginationCount { get; set; }
 
         [JsonProperty("next_page")]
-        public string NextPageURI { get; set; }
+        public string NextPageUri { get; set; }
 
         [JsonProperty("previous_page")]
-        public string PreviousPageURI { get; set; }
+        public string PreviousPageUri { get; set; }
 
         [JsonProperty("next_page_token")]
         public string NextPageToken { get; set; }
@@ -245,10 +245,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
     public class CreateInviteeNoShowResponseResourceType
     {
         [JsonProperty("uri")]
-        public string NoShowURI { get; set; }
+        public string NoShowUri { get; set; }
 
         [JsonProperty("invitee")]
-        public string InviteeURI { get; set; }
+        public string InviteeUri { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }

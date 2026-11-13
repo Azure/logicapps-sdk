@@ -506,10 +506,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         [JsonProperty("From", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromSendAs { get; set; }
         public string CC { get; set; }
-        public string BCC { get; set; }
+
+        [JsonProperty("BCC")]
+        public string Bcc { get; set; }
         public int? Importance { get; set; }
         public string Sensitivity { get; set; }
-        public bool? IsHTML { get; set; }
+
+        [JsonProperty("IsHTML")]
+        public bool? IsHtml { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public ParametersInputSendModeType? SendMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Politemail.ParametersInputSendModeType._2;

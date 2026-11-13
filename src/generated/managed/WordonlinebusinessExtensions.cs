@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFilePDF(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFilePdf(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);

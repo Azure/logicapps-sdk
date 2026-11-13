@@ -544,7 +544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string Uid { get; set; }
 
         [JsonProperty("otp_enabled")]
-        public JToken IfOTPIsEnabledForThisLogin { get; set; }
+        public JToken IfOtpIsEnabledForThisLogin { get; set; }
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
@@ -1099,10 +1099,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InvoiceCurrencyType
     {
-        EUR,
-        ISK,
-        USD,
-        GBP
+        [EnumMember(Value = "EUR")]
+        Eur,
+        [EnumMember(Value = "ISK")]
+        Isk,
+        [EnumMember(Value = "USD")]
+        Usd,
+        [EnumMember(Value = "GBP")]
+        Gbp
     }
 
     public class GetInvoicesInvoiceItemResponse
@@ -1163,10 +1167,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputCurrencyType
     {
-        EUR,
-        ISK,
-        USD,
-        GBP
+        [EnumMember(Value = "EUR")]
+        Eur,
+        [EnumMember(Value = "ISK")]
+        Isk,
+        [EnumMember(Value = "USD")]
+        Usd,
+        [EnumMember(Value = "GBP")]
+        Gbp
     }
 
     public class PostInvoicesInvoiceItem
@@ -1285,10 +1293,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CatalogVariantCurrencyType
     {
-        EUR,
-        ISK,
-        USD,
-        GBP
+        [EnumMember(Value = "EUR")]
+        Eur,
+        [EnumMember(Value = "ISK")]
+        Isk,
+        [EnumMember(Value = "USD")]
+        Usd,
+        [EnumMember(Value = "GBP")]
+        Gbp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

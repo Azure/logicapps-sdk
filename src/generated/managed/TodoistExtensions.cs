@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         public int TaskPriority { get; set; }
 
         [JsonProperty("url")]
-        public string TaskURL { get; set; }
+        public string TaskUrl { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [JsonProperty("collapsed")]
         public bool IsProjectCollapsed { get; set; }
 
-        [JsonProperty("inbox_project")]
+        [JsonProperty("shared")]
         public bool IsProjectShared { get; set; }
 
         [JsonProperty("is_deleted")]
@@ -376,6 +376,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
         [JsonProperty("is_favorite")]
         public bool IsProjectFavorite { get; set; }
+
+        [JsonProperty("inbox_project")]
+        public bool IsProjectShared2 { get; set; }
 
         [JsonProperty("team_inbox")]
         public bool IsProjectInTeamInbox { get; set; }
@@ -475,8 +478,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [JsonProperty("user_id")]
         public string TaskOwner { get; set; }
 
-        [JsonProperty("section_id")]
+        [JsonProperty("project_id")]
         public string ProjectId { get; set; }
+
+        [JsonProperty("section_id")]
+        public string ProjectId2 { get; set; }
 
         [JsonProperty("content")]
         public string TaskTitle { get; set; }

@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         public string Id { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("emailAddress")]
         public string EmailAddress { get; set; }
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         public string Role { get; set; }
 
         [JsonProperty("signingMethodDTO")]
-        public string[] SigningMethodDTO { get; set; }
+        public string[] SigningMethodDto { get; set; }
 
         [JsonProperty("submittedBys")]
         public GetTransactionDetailsResponseDataTypeParticipantsTypeItemSubmittedBysTypeItem[] SubmittedBys { get; set; }
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         public GetTransactionDetailsResponseDataTypeParticipantsTypeItemCandidatesTypeItemAuthenticationInfoType AuthenticationInfo { get; set; }
 
         [JsonProperty("signingMethodDTO")]
-        public string[] SigningMethodDTO { get; set; }
+        public string[] SigningMethodDto { get; set; }
 
         [JsonProperty("attachments")]
         public JToken[] Attachments { get; set; }
@@ -1149,7 +1149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
         public string[] DeliveryChannels { get; set; }
 
         [JsonProperty("customSMSBody")]
-        public string CustomSMSBody { get; set; }
+        public string CustomSmsBody { get; set; }
 
         [JsonProperty("attachments")]
         public BodyInputParticipantsTypeItemCandidatesTypeItemAttachmentsTypeItem[] Attachments { get; set; }
@@ -1170,12 +1170,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certinalesign
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventTypeInputItem
     {
-        SENT,
-        PENDING,
-        COMPLETED,
-        DECLINED,
-        CANCELLED,
-        EXPIRED
+        [EnumMember(Value = "SENT")]
+        Sent,
+        [EnumMember(Value = "PENDING")]
+        Pending,
+        [EnumMember(Value = "COMPLETED")]
+        Completed,
+        [EnumMember(Value = "DECLINED")]
+        Declined,
+        [EnumMember(Value = "CANCELLED")]
+        Cancelled,
+        [EnumMember(Value = "EXPIRED")]
+        Expired
     }
 
     public class TransactionStatusChangedBodyInput

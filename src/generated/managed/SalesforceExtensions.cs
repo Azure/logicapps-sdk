@@ -354,16 +354,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<SOSLSearchQueryResponse, ApiConnectionActionConfiguration> ExecuteSOSLQuery(Expression<Func<string>> q)
+        public IBodyWorkflowAction<SoslSearchQueryResponse, ApiConnectionActionConfiguration> ExecuteSoslQuery(Expression<Func<string>> q)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
-            return new DeferredBodyAction<SOSLSearchQueryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SoslSearchQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
-                return new ApiConnectionAction<SOSLSearchQueryResponse>(callPayload);
+                return new ApiConnectionAction<SoslSearchQueryResponse>(callPayload);
             });
         }
 
@@ -406,11 +406,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpSalesforceManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<McpQueryResponse, ApiConnectionActionConfiguration> McpSalesforceManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<McpQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcp/SalesforceManagement";
                 var apiCallHttpMethod = "post";
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 if (__workflow_queryRequest != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
-                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                return new ApiConnectionAction<McpQueryResponse>(callPayload);
             });
         }
 
@@ -578,13 +578,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
 
     public class QueryParametersInput
     {
-        public QueryParametersInput(string sOQLQuery)
+        public QueryParametersInput(string soqlQuery)
         {
-            this.SOQLQuery = sOQLQuery;
+            this.SoqlQuery = soqlQuery;
         }
 
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SOQLQuery { get; set; }
+        public string SoqlQuery { get; set; }
 
         [JsonProperty("parameters")]
         public JToken QueryParameters { get; set; }
@@ -599,13 +599,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public JobInfo[] Records { get; set; }
 
         [JsonProperty("nextRecordUrl")]
-        public string NextRecoredURL { get; set; }
+        public string NextRecoredUrl { get; set; }
     }
 
     public class JobInfo
     {
         [JsonProperty("apiVersion")]
-        public double APIVersion { get; set; }
+        public double ApiVersion { get; set; }
 
         [JsonProperty("columnDelimiter")]
         public JobInfoColumnDelimiterType ColumnDelimiter { get; set; }
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string ContentType { get; set; }
 
         [JsonProperty("contentUrl")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("createdById")]
         public string CreatedById { get; set; }
@@ -653,12 +653,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobInfoColumnDelimiterType
     {
-        BACKQUOTE,
-        CARET,
-        COMMA,
-        PIPE,
-        SEMICOLON,
-        TAB
+        [EnumMember(Value = "BACKQUOTE")]
+        Backquote,
+        [EnumMember(Value = "CARET")]
+        Caret,
+        [EnumMember(Value = "COMMA")]
+        Comma,
+        [EnumMember(Value = "PIPE")]
+        Pipe,
+        [EnumMember(Value = "SEMICOLON")]
+        Semicolon,
+        [EnumMember(Value = "TAB")]
+        Tab
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -680,7 +686,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     public enum JobInfoLineEndingType
     {
         LF,
-        CRLF
+        [EnumMember(Value = "CRLF")]
+        Crlf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -709,12 +716,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConcurrenyModeInput
     {
-        BACKQUOTE,
-        CARET,
-        COMMA,
-        PIPE,
-        SEMICOLON,
-        TAB
+        [EnumMember(Value = "BACKQUOTE")]
+        Backquote,
+        [EnumMember(Value = "CARET")]
+        Caret,
+        [EnumMember(Value = "COMMA")]
+        Comma,
+        [EnumMember(Value = "PIPE")]
+        Pipe,
+        [EnumMember(Value = "SEMICOLON")]
+        Semicolon,
+        [EnumMember(Value = "TAB")]
+        Tab
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -728,13 +741,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     public class CheckJobResponse
     {
         [JsonProperty("apexProcessingTime")]
-        public double APEXProcessingTime { get; set; }
+        public double ApexProcessingTime { get; set; }
 
         [JsonProperty("apiActiveProcessingTime")]
-        public double APIActiveProcessingTime { get; set; }
+        public double ApiActiveProcessingTime { get; set; }
 
         [JsonProperty("apiVersion")]
-        public double APIVersion { get; set; }
+        public double ApiVersion { get; set; }
 
         [JsonProperty("columnDelimiter")]
         public CheckJobResponseColumnDelimiterType ColumnDelimiter { get; set; }
@@ -746,7 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string ContentType { get; set; }
 
         [JsonProperty("contentUrl")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("createdById")]
         public string CreatedById { get; set; }
@@ -788,12 +801,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CheckJobResponseColumnDelimiterType
     {
-        BACKQUOTE,
-        CARET,
-        COMMA,
-        PIPE,
-        SEMICOLON,
-        TAB
+        [EnumMember(Value = "BACKQUOTE")]
+        Backquote,
+        [EnumMember(Value = "CARET")]
+        Caret,
+        [EnumMember(Value = "COMMA")]
+        Comma,
+        [EnumMember(Value = "PIPE")]
+        Pipe,
+        [EnumMember(Value = "SEMICOLON")]
+        Semicolon,
+        [EnumMember(Value = "TAB")]
+        Tab
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -815,7 +834,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     public enum CheckJobResponseLineEndingType
     {
         LF,
-        CRLF
+        [EnumMember(Value = "CRLF")]
+        Crlf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -867,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         Unprocessed
     }
 
-    public class SOSLSearchQueryResponse
+    public class SoslSearchQueryResponse
     {
         [JsonProperty("searchRecords")]
         public SearchRecordObject[] SearchRecords { get; set; }
@@ -895,14 +915,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MethodInput
     {
-        GET,
-        POST,
-        PUT,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
-    public class MCPQueryResponse
+    public class McpQueryResponse
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }
@@ -965,7 +990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string ContentType { get; set; }
 
         [JsonProperty("apiVersion")]
-        public double APIVersion { get; set; }
+        public double ApiVersion { get; set; }
 
         [JsonProperty("concurrencyMode")]
         public string ConcurrencyMode { get; set; }

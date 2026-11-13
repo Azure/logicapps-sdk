@@ -579,8 +579,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 11;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string URL { get; set; } = "#{listCallbackUrl()}";
+        [JsonProperty("URL", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Active { get; set; } = true;
@@ -591,8 +591,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 1;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string URL { get; set; } = "#{listCallbackUrl()}";
+        [JsonProperty("URL", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Active { get; set; } = true;
@@ -603,8 +603,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 6;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string URL { get; set; } = "#{listCallbackUrl()}";
+        [JsonProperty("URL", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Active { get; set; } = true;
@@ -615,8 +615,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 12;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string URL { get; set; } = "#{listCallbackUrl()}";
+        [JsonProperty("URL", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Active { get; set; } = true;
@@ -627,8 +627,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 13;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string URL { get; set; } = "#{listCallbackUrl()}";
+        [JsonProperty("URL", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Active { get; set; } = true;

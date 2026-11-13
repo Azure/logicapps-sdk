@@ -161,10 +161,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         public int Count { get; set; }
 
         [JsonProperty("next")]
-        public string NextPageURL { get; set; }
+        public string NextPageUrl { get; set; }
 
         [JsonProperty("previous")]
-        public string PreviousPageURL { get; set; }
+        public string PreviousPageUrl { get; set; }
 
         [JsonProperty("results")]
         public Docket[] Results { get; set; }
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         public int Id { get; set; }
 
         [JsonProperty("resource_uri")]
-        public string ResourceURI { get; set; }
+        public string ResourceUri { get; set; }
 
         [JsonProperty("court_id")]
         public string CourtId { get; set; }
@@ -218,10 +218,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         public string JuryDemand { get; set; }
 
         [JsonProperty("absolute_url")]
-        public string URLPath { get; set; }
+        public string UrlPath { get; set; }
 
         [JsonProperty("pacer_case_id")]
-        public string PACERCaseId { get; set; }
+        public string PacerCaseId { get; set; }
 
         [JsonProperty("source")]
         public int Source { get; set; }
@@ -236,10 +236,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         public int Count { get; set; }
 
         [JsonProperty("next")]
-        public string NextPageURL { get; set; }
+        public string NextPageUrl { get; set; }
 
         [JsonProperty("previous")]
-        public string PreviousPageURL { get; set; }
+        public string PreviousPageUrl { get; set; }
 
         [JsonProperty("results")]
         public DocketEntry[] Results { get; set; }
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         public int Id { get; set; }
 
         [JsonProperty("docket")]
-        public string DocketURI { get; set; }
+        public string DocketUri { get; set; }
 
         [JsonProperty("date_filed")]
         public string DateFiled { get; set; }
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         public string Description { get; set; }
 
         [JsonProperty("pacer_sequence_number")]
-        public int PACERSequenceNumber { get; set; }
+        public int PacerSequenceNumber { get; set; }
     }
 
     public class OpinionSearchList
@@ -275,10 +275,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         public int Count { get; set; }
 
         [JsonProperty("next")]
-        public string NextPageURL { get; set; }
+        public string NextPageUrl { get; set; }
 
         [JsonProperty("previous")]
-        public string PreviousPageURL { get; set; }
+        public string PreviousPageUrl { get; set; }
 
         [JsonProperty("results")]
         public OpinionSearchResult[] Results { get; set; }
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         public bool PerCuriam { get; set; }
 
         [JsonProperty("absolute_url")]
-        public string URLPath { get; set; }
+        public string UrlPath { get; set; }
 
         [JsonProperty("snippet")]
         public string Snippet { get; set; }
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         public string CaseName { get; set; }
 
         [JsonProperty("absolute_url")]
-        public string URLPath { get; set; }
+        public string UrlPath { get; set; }
     }
 
     public class BodyInput

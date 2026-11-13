@@ -16,14 +16,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
     public class SmtpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Smtp")]
-        public IWorkflowAction<SendEmailActionConfiguration> SendEmail(Expression<Func<string>> from, Expression<Func<string>> to, Expression<Func<string>> cc = null, Expression<Func<string>> subject = null, Expression<Func<string>> body = null, Expression<Func<bool>> isHTML = null, Expression<Func<string>> bcc = null, Expression<Func<string>> importance = null, Expression<Func<string>> readReceipt = null, Expression<Func<string>> deliveryReceipt = null, Expression<Func<SendEmailInputAttachmentTypeItem[]>> attachment = null)
+        public IWorkflowAction<SendEmailActionConfiguration> SendEmail(Expression<Func<string>> from, Expression<Func<string>> to, Expression<Func<string>> cc = null, Expression<Func<string>> subject = null, Expression<Func<string>> body = null, Expression<Func<bool>> isHtml = null, Expression<Func<string>> bcc = null, Expression<Func<string>> importance = null, Expression<Func<string>> readReceipt = null, Expression<Func<string>> deliveryReceipt = null, Expression<Func<SendEmailInputAttachmentTypeItem[]>> attachment = null)
         {
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: true);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
             var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
             var __workflow_subject = WorkflowExpression.Compile(subject, nameof(subject), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            var __workflow_isHTML = WorkflowExpression.Compile(isHTML, nameof(isHTML), required: false);
+            var __workflow_isHtml = WorkflowExpression.Compile(isHtml, nameof(isHtml), required: false);
             var __workflow_bcc = WorkflowExpression.Compile(bcc, nameof(bcc), required: false);
             var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
             var __workflow_readReceipt = WorkflowExpression.Compile(readReceipt, nameof(readReceipt), required: false);
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
                     serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
                 }
 
-                if (__workflow_isHTML != null)
+                if (__workflow_isHtml != null)
                 {
-                    serviceProviderParameters["isHTML"] = ExpressionConverter.ConvertO(__workflow_isHTML);
+                    serviceProviderParameters["isHTML"] = ExpressionConverter.ConvertO(__workflow_isHtml);
                 }
 
                 if (__workflow_bcc != null)

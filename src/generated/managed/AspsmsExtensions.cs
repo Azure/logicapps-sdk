@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
     public class AspsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]
-        public IBodyWorkflowAction<SendSimpleSmsResponse, ApiConnectionActionConfiguration> SendSimpleSms(Expression<Func<string>> mSISDN, Expression<Func<string>> messageData, Expression<Func<string>> originator = null, Expression<Func<int>> lifeTime = null, Expression<Func<string>> deferredDeliveryTime = null, Expression<Func<string>> transactionReferenceNumber = null)
+        public IBodyWorkflowAction<SendSimpleSmsResponse, ApiConnectionActionConfiguration> SendSimpleSms(Expression<Func<string>> msisdn, Expression<Func<string>> messageData, Expression<Func<string>> originator = null, Expression<Func<int>> lifeTime = null, Expression<Func<string>> deferredDeliveryTime = null, Expression<Func<string>> transactionReferenceNumber = null)
         {
-            var __workflow_mSISDN = WorkflowExpression.Compile(mSISDN, nameof(mSISDN), required: true);
+            var __workflow_msisdn = WorkflowExpression.Compile(msisdn, nameof(msisdn), required: true);
             var __workflow_messageData = WorkflowExpression.Compile(messageData, nameof(messageData), required: true);
             var __workflow_originator = WorkflowExpression.Compile(originator, nameof(originator), required: false);
             var __workflow_lifeTime = WorkflowExpression.Compile(lifeTime, nameof(lifeTime), required: false);
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
                 var apiCallPath = "/SendSimpleSMS";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["MSISDN"] = ExpressionConverter.Convert(__workflow_mSISDN);
+                callPayload.Queries["MSISDN"] = ExpressionConverter.Convert(__workflow_msisdn);
                 callPayload.Queries["Operation"] = Convert.ToString("SendTextSMS");
                 callPayload.Queries["MessageData"] = ExpressionConverter.Convert(__workflow_messageData);
                 if (__workflow_originator != null)
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ASPSMSCredits()
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AspsmsCredits()
         {
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {

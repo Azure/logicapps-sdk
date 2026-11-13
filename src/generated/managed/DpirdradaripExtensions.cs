@@ -195,13 +195,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
     public class GetRadarsResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public RadarMetadataModel[] Collection { get; set; }
     }
 
-    public class ApiMetaDataModel
+    public class ApiMetadataModel
     {
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
     public class GetRadarResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public RadarMetadataModel[] Collection { get; set; }
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
     public class GetNearbyRadarResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("collection")]
         public RadarLocationModel[] Collection { get; set; }
@@ -299,13 +299,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
     {
         RF3,
         RF2,
-        ALL
+        [EnumMember(Value = "ALL")]
+        All
     }
 
     public class GetRadarRainfallResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public RainfallModel Data { get; set; }
@@ -356,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
     public class GetRadarDailySummariesResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public GetRadarDailySummariesResponseDataType Data { get; set; }
@@ -422,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
     public class GetRadarMonthlySummariesResponse
     {
         [JsonProperty("metadata")]
-        public ApiMetaDataModel Metadata { get; set; }
+        public ApiMetadataModel Metadata { get; set; }
 
         [JsonProperty("data")]
         public GetRadarMonthlySummariesResponseDataType Data { get; set; }

@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CustomApi(Expression<Func<string>> featurePath, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
         {
             var __workflow_featurePath = WorkflowExpression.Compile(featurePath, nameof(featurePath), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
@@ -271,16 +271,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [JsonProperty("serviceTag", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal BodyInputEpcQrCodeActionTypeServiceTagType ServiceTag { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeServiceTagType.BCD;
+        internal BodyInputEpcQrCodeActionTypeServiceTagType ServiceTag { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeServiceTagType.Bcd;
 
         [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputEpcQrCodeActionTypeVersionType Version { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeVersionType.V2;
 
         [JsonProperty("characterSet", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputEpcQrCodeActionTypeCharacterSetType? CharacterSet { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeCharacterSetType.UTF8;
+        public BodyInputEpcQrCodeActionTypeCharacterSetType? CharacterSet { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeCharacterSetType.Utf8;
 
         [JsonProperty("identificationCode", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal BodyInputEpcQrCodeActionTypeIdentificationCodeType IdentificationCode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeIdentificationCodeType.SCT;
+        internal BodyInputEpcQrCodeActionTypeIdentificationCodeType IdentificationCode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeIdentificationCodeType.Sct;
 
         [JsonProperty("bic")]
         public string Bic { get; set; }
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         public string Iban { get; set; }
 
         [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal BodyInputEpcQrCodeActionTypeCurrencyType Currency { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeCurrencyType.EUR;
+        internal BodyInputEpcQrCodeActionTypeCurrencyType Currency { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeCurrencyType.Eur;
 
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
@@ -313,7 +313,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEpcQrCodeActionTypeServiceTagType
     {
-        BCD
+        [EnumMember(Value = "BCD")]
+        Bcd
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -326,41 +327,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEpcQrCodeActionTypeCharacterSetType
     {
-        UTF8,
+        [EnumMember(Value = "UTF8")]
+        Utf8,
         [EnumMember(Value = "ISO8859_1")]
-        ISO88591,
+        Iso88591,
         [EnumMember(Value = "ISO8859_2")]
-        ISO88592,
+        Iso88592,
         [EnumMember(Value = "ISO8859_4")]
-        ISO88594,
+        Iso88594,
         [EnumMember(Value = "ISO8859_5")]
-        ISO88595,
+        Iso88595,
         [EnumMember(Value = "ISO8859_7")]
-        ISO88597,
+        Iso88597,
         [EnumMember(Value = "ISO8859_10")]
-        ISO885910,
+        Iso885910,
         [EnumMember(Value = "ISO8859_15")]
-        ISO885915
+        Iso885915
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEpcQrCodeActionTypeIdentificationCodeType
     {
-        SCT
+        [EnumMember(Value = "SCT")]
+        Sct
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEpcQrCodeActionTypeCurrencyType
     {
-        EUR
+        [EnumMember(Value = "EUR")]
+        Eur
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SchemaValInput
     {
-        PDF,
-        PNG,
-        JPEG,
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "JPEG")]
+        Jpeg,
         Tiff
     }
 

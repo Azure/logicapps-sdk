@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int Id { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("admin_group_ids")]
         public int[] AdminGroupIds { get; set; }
@@ -973,7 +973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int Id { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("admin_group_ids")]
         public int[] AdminGroupIds { get; set; }
@@ -1258,7 +1258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string UserRoot { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1276,7 +1276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int Id { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("admin_group_ids")]
         public int[] AdminGroupIds { get; set; }
@@ -1534,7 +1534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int Id { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("admin_group_ids")]
         public int[] AdminGroupIds { get; set; }
@@ -1788,9 +1788,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
     public class PostGroupsGroupIdUsersBodyInput
     {
-        public PostGroupsGroupIdUsersBodyInput(string username)
+        public PostGroupsGroupIdUsersBodyInput(string userName)
         {
-            this.Username = username;
+            this.UserName = userName;
         }
 
         [JsonProperty("authentication_method")]
@@ -1824,7 +1824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string UserRoot { get; set; }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class GetBundleDownloadsResponseItem
@@ -2228,7 +2228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int UserId { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("group_id")]
         public int GroupId { get; set; }
@@ -2408,7 +2408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int UserId { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("group_id")]
         public int GroupId { get; set; }
@@ -2614,7 +2614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int UserId { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("group_id")]
         public int GroupId { get; set; }
@@ -2794,7 +2794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int UserId { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("group_id")]
         public int GroupId { get; set; }
@@ -3309,7 +3309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int Id { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("admin_group_ids")]
         public int[] AdminGroupIds { get; set; }

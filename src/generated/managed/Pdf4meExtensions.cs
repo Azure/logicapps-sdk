@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4me")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CustomApi(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
         {
             var __workflow_featurePath = WorkflowExpression.Compile(featurePath, nameof(featurePath), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -963,16 +963,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4me")]
-        public IBodyWorkflowAction<StartPDF4meWfResponse, ApiConnectionActionConfiguration> StartPDF4meWf(Expression<Func<StartPDF4meWfBodyInput>> body)
+        public IBodyWorkflowAction<StartPdf4meWfResponse, ApiConnectionActionConfiguration> StartPdf4meWf(Expression<Func<StartPdf4meWfBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<StartPDF4meWfResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<StartPdf4meWfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExecuteWfTrigger";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<StartPDF4meWfResponse>(callPayload);
+                return new ApiConnectionAction<StartPdf4meWfResponse>(callPayload);
             });
         }
 
@@ -993,7 +993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
 
     public class Pdf4meTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> GetDocumentFromPDF4me(Expression<Func<GetDocumentFromPDF4meBodyInput>> body)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> GetDocumentFromPdf4me(Expression<Func<GetDocumentFromPdf4meBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
@@ -1348,8 +1348,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputImageTypeType
     {
-        JPG,
-        PNG
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "PNG")]
+        Png
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1455,21 +1457,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputCurrentImageFormatType
     {
-        BMP,
-        JPG,
-        GIF,
-        PNG,
-        TIF
+        [EnumMember(Value = "BMP")]
+        Bmp,
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "GIF")]
+        Gif,
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "TIF")]
+        Tif
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputNewImageFormatType
     {
-        BMP,
-        JPG,
-        GIF,
-        PNG,
-        TIF
+        [EnumMember(Value = "BMP")]
+        Bmp,
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "GIF")]
+        Gif,
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "TIF")]
+        Tif
     }
 
     public class ConvertJsonToExcelBodyInput
@@ -1561,7 +1573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         public BodyInputAuthTypeType? AuthType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.BodyInputAuthTypeType.NoAuth;
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -1577,15 +1589,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConvertVisioSchemaValInput
     {
-        PDF,
-        BMP,
-        GIF,
-        PNG,
-        JPG,
-        SVG,
-        TIFF,
-        HTML,
-        VSDX
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "BMP")]
+        Bmp,
+        [EnumMember(Value = "GIF")]
+        Gif,
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "SVG")]
+        Svg,
+        [EnumMember(Value = "TIFF")]
+        Tiff,
+        [EnumMember(Value = "HTML")]
+        Html,
+        [EnumMember(Value = "VSDX")]
+        Vsdx
     }
 
     public class CreatebarcodeBodyInput
@@ -1626,16 +1647,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         }
 
         [JsonProperty("serviceTag", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal BodyInputEpcQrCodeActionTypeServiceTagType ServiceTag { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.BodyInputEpcQrCodeActionTypeServiceTagType.BCD;
+        internal BodyInputEpcQrCodeActionTypeServiceTagType ServiceTag { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.BodyInputEpcQrCodeActionTypeServiceTagType.Bcd;
 
         [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputEpcQrCodeActionTypeVersionType Version { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.BodyInputEpcQrCodeActionTypeVersionType.V2;
 
         [JsonProperty("characterSet", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputEpcQrCodeActionTypeCharacterSetType? CharacterSet { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.BodyInputEpcQrCodeActionTypeCharacterSetType.UTF8;
+        public BodyInputEpcQrCodeActionTypeCharacterSetType? CharacterSet { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.BodyInputEpcQrCodeActionTypeCharacterSetType.Utf8;
 
         [JsonProperty("identificationCode", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal BodyInputEpcQrCodeActionTypeIdentificationCodeType IdentificationCode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.BodyInputEpcQrCodeActionTypeIdentificationCodeType.SCT;
+        internal BodyInputEpcQrCodeActionTypeIdentificationCodeType IdentificationCode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.BodyInputEpcQrCodeActionTypeIdentificationCodeType.Sct;
 
         [JsonProperty("bic")]
         public string Bic { get; set; }
@@ -1647,7 +1668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         public string Iban { get; set; }
 
         [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal BodyInputEpcQrCodeActionTypeCurrencyType Currency { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.BodyInputEpcQrCodeActionTypeCurrencyType.EUR;
+        internal BodyInputEpcQrCodeActionTypeCurrencyType Currency { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.BodyInputEpcQrCodeActionTypeCurrencyType.Eur;
 
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
@@ -1668,7 +1689,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEpcQrCodeActionTypeServiceTagType
     {
-        BCD
+        [EnumMember(Value = "BCD")]
+        Bcd
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1681,33 +1703,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEpcQrCodeActionTypeCharacterSetType
     {
-        UTF8,
+        [EnumMember(Value = "UTF8")]
+        Utf8,
         [EnumMember(Value = "ISO8859_1")]
-        ISO88591,
+        Iso88591,
         [EnumMember(Value = "ISO8859_2")]
-        ISO88592,
+        Iso88592,
         [EnumMember(Value = "ISO8859_4")]
-        ISO88594,
+        Iso88594,
         [EnumMember(Value = "ISO8859_5")]
-        ISO88595,
+        Iso88595,
         [EnumMember(Value = "ISO8859_7")]
-        ISO88597,
+        Iso88597,
         [EnumMember(Value = "ISO8859_10")]
-        ISO885910,
+        Iso885910,
         [EnumMember(Value = "ISO8859_15")]
-        ISO885915
+        Iso885915
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEpcQrCodeActionTypeIdentificationCodeType
     {
-        SCT
+        [EnumMember(Value = "SCT")]
+        Sct
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEpcQrCodeActionTypeCurrencyType
     {
-        EUR
+        [EnumMember(Value = "EUR")]
+        Eur
     }
 
     public class CreatePdfABodyInput
@@ -2111,7 +2136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         public string DocumentDataText { get; set; }
 
         [JsonProperty("metaDataJson")]
-        public string MetaDataJson { get; set; }
+        public string MetadataJson { get; set; }
 
         [JsonProperty("outputType", DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateDocumentMultipleBodyInputOutputTypeType OutputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me.GenerateDocumentMultipleBodyInputOutputTypeType.Docx;
@@ -2132,13 +2157,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
     public enum BodyInputDocumentDataTypeType
     {
         Json,
-        XML
+        [EnumMember(Value = "XML")]
+        Xml
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateDocumentMultipleBodyInputOutputTypeType
     {
-        PDF,
+        [EnumMember(Value = "PDF")]
+        Pdf,
         Docx,
         Html
     }
@@ -2453,7 +2480,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         [EnumMember(Value = "")]
         None,
         Excel,
-        CSV
+        [EnumMember(Value = "CSV")]
+        Csv
     }
 
     public class PdfToPowerPointBodyInput
@@ -3070,7 +3098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         public bool? FitTextOverPage { get; set; } = false;
     }
 
-    public class StartPDF4meWfResponse
+    public class StartPdf4meWfResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3079,9 +3107,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         public string JobId { get; set; }
     }
 
-    public class StartPDF4meWfBodyInput
+    public class StartPdf4meWfBodyInput
     {
-        public StartPDF4meWfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName, string wfName)
+        public StartPdf4meWfBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docContent, string docName, string wfName)
         {
             this.DocContent = docContent;
             this.DocName = docName;
@@ -3117,9 +3145,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         public string Password { get; set; }
     }
 
-    public class GetDocumentFromPDF4meBodyInput
+    public class GetDocumentFromPdf4meBodyInput
     {
-        public GetDocumentFromPDF4meBodyInput(string name)
+        public GetDocumentFromPdf4meBodyInput(string name)
         {
             this.Name = name;
         }
@@ -3127,8 +3155,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4me
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        [JsonProperty("CallBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

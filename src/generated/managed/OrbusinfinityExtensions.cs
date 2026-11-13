@@ -1147,7 +1147,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         IdentifyingAttributeAssignmentWithInstancesExists,
         DocumentTypeDoesNotExist,
         DocumentTypeNameIsInvalid,
-        DocumentTypeFilenameInvalid,
+        [EnumMember(Value = "DocumentTypeFilenameInvalid")]
+        DocumentTypeFileNameInvalid,
         DocumentTypePrimaryTemplateAlreadyExists,
         DocumentTypeDoesNotSupportAncillaryTemplateFiles,
         MissingDocumentTypeTemplateFile,
@@ -1515,8 +1516,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         DocumentFilePathIsInvalid,
         DocumentModelRootPathIsNotValid,
         DocumentFilePathIsTooLong,
-        DocumentFilenameRequiresFileExtension,
-        DocumentFilenameContainsInvalidCharacters,
+        [EnumMember(Value = "DocumentFilenameRequiresFileExtension")]
+        DocumentFileNameRequiresFileExtension,
+        [EnumMember(Value = "DocumentFilenameContainsInvalidCharacters")]
+        DocumentFileNameContainsInvalidCharacters,
         DocumentFileExtensionNotSupportedForCategory,
         DocumentFileExtensionNotSupportedForCustomCategory,
         DocumentFileExtensionNotSupportedForFileTypeFilter,

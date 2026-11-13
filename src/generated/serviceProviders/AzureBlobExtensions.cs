@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<GetBlobSASUriOutput, GetBlobSASUriActionConfiguration> GetBlobSASUri(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSASUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSASUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
+        public IBodyWorkflowAction<GetBlobSasUriOutput, GetBlobSasUriActionConfiguration> GetBlobSasUri(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSasUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSasUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             var __workflow_expiryTime = WorkflowExpression.Compile(expiryTime, nameof(expiryTime), required: false);
             var __workflow_sharedAccessProtocol = WorkflowExpression.Compile(sharedAccessProtocol, nameof(sharedAccessProtocol), required: false);
             var __workflow_ipAddressRange = WorkflowExpression.Compile(ipAddressRange, nameof(ipAddressRange), required: false);
-            return new DeferredBodyAction<GetBlobSASUriOutput, GetBlobSASUriActionConfiguration>(() =>
+            return new DeferredBodyAction<GetBlobSasUriOutput, GetBlobSasUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -323,12 +323,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getBlobSASUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyAction<GetBlobSASUriOutput, GetBlobSASUriActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetBlobSasUriOutput, GetBlobSasUriActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<GetBlobSASUriFromUriOutput, GetBlobSASUriFromUriActionConfiguration> GetBlobSASUriFromUri(Expression<Func<string>> blobUri, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSASUriFromUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSASUriFromUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
+        public IBodyWorkflowAction<GetBlobSasUriFromUriOutput, GetBlobSasUriFromUriActionConfiguration> GetBlobSasUriFromUri(Expression<Func<string>> blobUri, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSasUriFromUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSasUriFromUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
         {
             var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
             var __workflow_groupPolicyIdentifier = WorkflowExpression.Compile(groupPolicyIdentifier, nameof(groupPolicyIdentifier), required: false);
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             var __workflow_expiryTime = WorkflowExpression.Compile(expiryTime, nameof(expiryTime), required: false);
             var __workflow_sharedAccessProtocol = WorkflowExpression.Compile(sharedAccessProtocol, nameof(sharedAccessProtocol), required: false);
             var __workflow_ipAddressRange = WorkflowExpression.Compile(ipAddressRange, nameof(ipAddressRange), required: false);
-            return new DeferredBodyAction<GetBlobSASUriFromUriOutput, GetBlobSASUriFromUriActionConfiguration>(() =>
+            return new DeferredBodyAction<GetBlobSasUriFromUriOutput, GetBlobSasUriFromUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(__workflow_blobUri);
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getBlobSASUriFromUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyAction<GetBlobSASUriFromUriOutput, GetBlobSASUriFromUriActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetBlobSasUriFromUriOutput, GetBlobSasUriFromUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
-    public sealed class GetBlobSASUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    public sealed class GetBlobSasUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
 
@@ -766,7 +766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
-    public sealed class GetBlobSASUriFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    public sealed class GetBlobSasUriFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
 
@@ -1299,14 +1299,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string LastModifiedTime { get; set; }
     }
 
-    public class GetBlobSASUriOutput
+    public class GetBlobSasUriOutput
     {
         [JsonProperty("blobUri")]
         public JToken BlobUri { get; set; }
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum GetBlobSASUriInputPermissionsType
+    public enum GetBlobSasUriInputPermissionsType
     {
         Read,
         Write,
@@ -1324,20 +1324,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum GetBlobSASUriInputSharedAccessProtocolType
+    public enum GetBlobSasUriInputSharedAccessProtocolType
     {
         Https,
         HttpsAndHttp
     }
 
-    public class GetBlobSASUriFromUriOutput
+    public class GetBlobSasUriFromUriOutput
     {
         [JsonProperty("blobUri")]
         public JToken BlobUri { get; set; }
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum GetBlobSASUriFromUriInputPermissionsType
+    public enum GetBlobSasUriFromUriInputPermissionsType
     {
         Read,
         Write,
@@ -1355,7 +1355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum GetBlobSASUriFromUriInputSharedAccessProtocolType
+    public enum GetBlobSasUriFromUriInputSharedAccessProtocolType
     {
         Https,
         HttpsAndHttp

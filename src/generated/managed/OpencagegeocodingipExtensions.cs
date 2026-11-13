@@ -121,14 +121,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
 
     public class ReverseGeocodingResponseResultsTypeItemAnnotationsType
     {
-        public ReverseGeocodingResponseResultsTypeItemAnnotationsTypeDMSType DMS { get; set; }
-        public string MGRS { get; set; }
+        [JsonProperty("DMS")]
+        public ReverseGeocodingResponseResultsTypeItemAnnotationsTypeDmsType Dms { get; set; }
+
+        [JsonProperty("MGRS")]
+        public string Mgrs { get; set; }
         public string Maidenhead { get; set; }
         public ReverseGeocodingResponseResultsTypeItemAnnotationsTypeMercatorType Mercator { get; set; }
-        public ReverseGeocodingResponseResultsTypeItemAnnotationsTypeOSMType OSM { get; set; }
+
+        [JsonProperty("OSM")]
+        public ReverseGeocodingResponseResultsTypeItemAnnotationsTypeOsmType Osm { get; set; }
 
         [JsonProperty("UN_M49")]
-        public ReverseGeocodingResponseResultsTypeItemAnnotationsTypeUNM49Type UNM49 { get; set; }
+        public ReverseGeocodingResponseResultsTypeItemAnnotationsTypeUnM49Type UnM49 { get; set; }
 
         [JsonProperty("callingcode")]
         public int Callingcode { get; set; }
@@ -158,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
         public ReverseGeocodingResponseResultsTypeItemAnnotationsTypeWhat3wordsType What3words { get; set; }
     }
 
-    public class ReverseGeocodingResponseResultsTypeItemAnnotationsTypeDMSType
+    public class ReverseGeocodingResponseResultsTypeItemAnnotationsTypeDmsType
     {
         [JsonProperty("lat")]
         public string Lat { get; set; }
@@ -176,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
         public double Y { get; set; }
     }
 
-    public class ReverseGeocodingResponseResultsTypeItemAnnotationsTypeOSMType
+    public class ReverseGeocodingResponseResultsTypeItemAnnotationsTypeOsmType
     {
         [JsonProperty("edit_url")]
         public string EditUrl { get; set; }
@@ -188,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
         public string Url { get; set; }
     }
 
-    public class ReverseGeocodingResponseResultsTypeItemAnnotationsTypeUNM49Type
+    public class ReverseGeocodingResponseResultsTypeItemAnnotationsTypeUnM49Type
     {
         [JsonProperty("regions")]
         public JToken Regions { get; set; }
@@ -341,10 +346,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
     public class ReverseGeocodingResponseResultsTypeItemComponentsType
     {
         [JsonProperty("ISO_3166-1_alpha-2")]
-        public string ISO31661Alpha2 { get; set; }
+        public string Iso31661Alpha2 { get; set; }
 
         [JsonProperty("ISO_3166-1_alpha-3")]
-        public string ISO31661Alpha3 { get; set; }
+        public string Iso31661Alpha3 { get; set; }
 
         [JsonProperty("_category")]
         public string Category { get; set; }
@@ -502,14 +507,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
 
     public class ForwardGeocodingResponseResultsTypeItemAnnotationsType
     {
-        public ForwardGeocodingResponseResultsTypeItemAnnotationsTypeDMSType DMS { get; set; }
-        public string MGRS { get; set; }
+        [JsonProperty("DMS")]
+        public ForwardGeocodingResponseResultsTypeItemAnnotationsTypeDmsType Dms { get; set; }
+
+        [JsonProperty("MGRS")]
+        public string Mgrs { get; set; }
         public string Maidenhead { get; set; }
         public ForwardGeocodingResponseResultsTypeItemAnnotationsTypeMercatorType Mercator { get; set; }
-        public ForwardGeocodingResponseResultsTypeItemAnnotationsTypeOSMType OSM { get; set; }
+
+        [JsonProperty("OSM")]
+        public ForwardGeocodingResponseResultsTypeItemAnnotationsTypeOsmType Osm { get; set; }
 
         [JsonProperty("UN_M49")]
-        public ForwardGeocodingResponseResultsTypeItemAnnotationsTypeUNM49Type UNM49 { get; set; }
+        public ForwardGeocodingResponseResultsTypeItemAnnotationsTypeUnM49Type UnM49 { get; set; }
 
         [JsonProperty("callingcode")]
         public int Callingcode { get; set; }
@@ -542,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
         public string Wikidata { get; set; }
     }
 
-    public class ForwardGeocodingResponseResultsTypeItemAnnotationsTypeDMSType
+    public class ForwardGeocodingResponseResultsTypeItemAnnotationsTypeDmsType
     {
         [JsonProperty("lat")]
         public string Lat { get; set; }
@@ -560,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
         public double Y { get; set; }
     }
 
-    public class ForwardGeocodingResponseResultsTypeItemAnnotationsTypeOSMType
+    public class ForwardGeocodingResponseResultsTypeItemAnnotationsTypeOsmType
     {
         [JsonProperty("edit_url")]
         public string EditUrl { get; set; }
@@ -572,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
         public string Url { get; set; }
     }
 
-    public class ForwardGeocodingResponseResultsTypeItemAnnotationsTypeUNM49Type
+    public class ForwardGeocodingResponseResultsTypeItemAnnotationsTypeUnM49Type
     {
         [JsonProperty("regions")]
         public JToken Regions { get; set; }
@@ -725,10 +735,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
     public class ForwardGeocodingResponseResultsTypeItemComponentsType
     {
         [JsonProperty("ISO_3166-1_alpha-2")]
-        public string ISO31661Alpha2 { get; set; }
+        public string Iso31661Alpha2 { get; set; }
 
         [JsonProperty("ISO_3166-1_alpha-3")]
-        public string ISO31661Alpha3 { get; set; }
+        public string Iso31661Alpha3 { get; set; }
 
         [JsonProperty("_category")]
         public string Category { get; set; }

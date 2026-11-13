@@ -315,15 +315,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetInboundRequestResponseItem[], ApiConnectionActionConfiguration> GetInboundRequest(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<POStatusInput>> pOStatus = null, Expression<Func<LineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> pOType = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetInboundRequestResponseItem[], ApiConnectionActionConfiguration> GetInboundRequest(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<PoStatusInput>> poStatus = null, Expression<Func<LineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> poNumber = null, Expression<Func<string>> poType = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
-            var __workflow_pOStatus = WorkflowExpression.Compile(pOStatus, nameof(pOStatus), required: false);
+            var __workflow_poStatus = WorkflowExpression.Compile(poStatus, nameof(poStatus), required: false);
             var __workflow_lineReceiptStatus = WorkflowExpression.Compile(lineReceiptStatus, nameof(lineReceiptStatus), required: false);
             var __workflow_itemNumber = WorkflowExpression.Compile(itemNumber, nameof(itemNumber), required: false);
-            var __workflow_pONumber = WorkflowExpression.Compile(pONumber, nameof(pONumber), required: false);
-            var __workflow_pOType = WorkflowExpression.Compile(pOType, nameof(pOType), required: false);
+            var __workflow_poNumber = WorkflowExpression.Compile(poNumber, nameof(poNumber), required: false);
+            var __workflow_poType = WorkflowExpression.Compile(poType, nameof(poType), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<GetInboundRequestResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -335,16 +335,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(__workflow_beginDate);
                 if (__workflow_endDate != null)
                     callPayload.Queries["EndDate"] = ExpressionConverter.Convert(__workflow_endDate);
-                if (__workflow_pOStatus != null)
-                    callPayload.Queries["POStatus"] = ExpressionConverter.Convert(__workflow_pOStatus);
+                if (__workflow_poStatus != null)
+                    callPayload.Queries["POStatus"] = ExpressionConverter.Convert(__workflow_poStatus);
                 if (__workflow_lineReceiptStatus != null)
                     callPayload.Queries["LineReceiptStatus"] = ExpressionConverter.Convert(__workflow_lineReceiptStatus);
                 if (__workflow_itemNumber != null)
                     callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(__workflow_itemNumber);
-                if (__workflow_pONumber != null)
-                    callPayload.Queries["PONumber"] = ExpressionConverter.Convert(__workflow_pONumber);
-                if (__workflow_pOType != null)
-                    callPayload.Queries["POType"] = ExpressionConverter.Convert(__workflow_pOType);
+                if (__workflow_poNumber != null)
+                    callPayload.Queries["PONumber"] = ExpressionConverter.Convert(__workflow_poNumber);
+                if (__workflow_poType != null)
+                    callPayload.Queries["POType"] = ExpressionConverter.Convert(__workflow_poType);
                 if (__workflow_userName != null)
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
@@ -584,14 +584,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetPurchaseOrderResponseItem[], ApiConnectionActionConfiguration> GetPurchaseOrder(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<POStatusInput>> pOStatus = null, Expression<Func<LineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetPurchaseOrderResponseItem[], ApiConnectionActionConfiguration> GetPurchaseOrder(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<PoStatusInput>> poStatus = null, Expression<Func<LineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> poNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
-            var __workflow_pOStatus = WorkflowExpression.Compile(pOStatus, nameof(pOStatus), required: false);
+            var __workflow_poStatus = WorkflowExpression.Compile(poStatus, nameof(poStatus), required: false);
             var __workflow_lineReceiptStatus = WorkflowExpression.Compile(lineReceiptStatus, nameof(lineReceiptStatus), required: false);
             var __workflow_itemNumber = WorkflowExpression.Compile(itemNumber, nameof(itemNumber), required: false);
-            var __workflow_pONumber = WorkflowExpression.Compile(pONumber, nameof(pONumber), required: false);
+            var __workflow_poNumber = WorkflowExpression.Compile(poNumber, nameof(poNumber), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<GetPurchaseOrderResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -603,14 +603,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(__workflow_beginDate);
                 if (__workflow_endDate != null)
                     callPayload.Queries["EndDate"] = ExpressionConverter.Convert(__workflow_endDate);
-                if (__workflow_pOStatus != null)
-                    callPayload.Queries["POStatus"] = ExpressionConverter.Convert(__workflow_pOStatus);
+                if (__workflow_poStatus != null)
+                    callPayload.Queries["POStatus"] = ExpressionConverter.Convert(__workflow_poStatus);
                 if (__workflow_lineReceiptStatus != null)
                     callPayload.Queries["LineReceiptStatus"] = ExpressionConverter.Convert(__workflow_lineReceiptStatus);
                 if (__workflow_itemNumber != null)
                     callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(__workflow_itemNumber);
-                if (__workflow_pONumber != null)
-                    callPayload.Queries["PONumber"] = ExpressionConverter.Convert(__workflow_pONumber);
+                if (__workflow_poNumber != null)
+                    callPayload.Queries["PONumber"] = ExpressionConverter.Convert(__workflow_poNumber);
                 if (__workflow_userName != null)
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
@@ -807,11 +807,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetWorkOrdersResponseItemLineItemsTypeItemCoreItemTypeType
     {
-        BASIC,
-        LOT,
-        SERIAL,
+        [EnumMember(Value = "BASIC")]
+        Basic,
+        [EnumMember(Value = "LOT")]
+        Lot,
+        [EnumMember(Value = "SERIAL")]
+        Serial,
         [EnumMember(Value = "or DATE")]
-        OrDATE
+        OrDate
     }
 
     public class GetWorkOrdersResponseItemLineItemsTypeItemUomTypeType
@@ -831,16 +834,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OrderStatusCodeInput
     {
-        UNA,
-        WTP,
-        PIP,
-        WFE,
-        EXP,
-        CMP,
-        REV,
-        PRC,
-        NEW,
-        WFS
+        [EnumMember(Value = "UNA")]
+        Una,
+        [EnumMember(Value = "WTP")]
+        Wtp,
+        [EnumMember(Value = "PIP")]
+        Pip,
+        [EnumMember(Value = "WFE")]
+        Wfe,
+        [EnumMember(Value = "EXP")]
+        Exp,
+        [EnumMember(Value = "CMP")]
+        Cmp,
+        [EnumMember(Value = "REV")]
+        Rev,
+        [EnumMember(Value = "PRC")]
+        Prc,
+        [EnumMember(Value = "NEW")]
+        New,
+        [EnumMember(Value = "WFS")]
+        Wfs
     }
 
     public class CreateUpdateWorkOrderResponse
@@ -988,11 +1001,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputItemLineItemsTypeItemCoreItemTypeType
     {
-        BASIC,
-        LOT,
-        SERIAL,
+        [EnumMember(Value = "BASIC")]
+        Basic,
+        [EnumMember(Value = "LOT")]
+        Lot,
+        [EnumMember(Value = "SERIAL")]
+        Serial,
         [EnumMember(Value = "or DATE")]
-        OrDATE
+        OrDate
     }
 
     public class CreateUpdateWorkOrderBodyInputItemLineItemsTypeItemUomTypeType
@@ -1097,16 +1113,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputItemOrderStatusCodeType
     {
-        UNA,
-        WTP,
-        PIP,
-        WFE,
-        EXP,
-        CMP,
-        REV,
-        PRC,
-        NEW,
-        WFS
+        [EnumMember(Value = "UNA")]
+        Una,
+        [EnumMember(Value = "WTP")]
+        Wtp,
+        [EnumMember(Value = "PIP")]
+        Pip,
+        [EnumMember(Value = "WFE")]
+        Wfe,
+        [EnumMember(Value = "EXP")]
+        Exp,
+        [EnumMember(Value = "CMP")]
+        Cmp,
+        [EnumMember(Value = "REV")]
+        Rev,
+        [EnumMember(Value = "PRC")]
+        Prc,
+        [EnumMember(Value = "NEW")]
+        New,
+        [EnumMember(Value = "WFS")]
+        Wfs
     }
 
     public class AssignOrderBodyInputItem
@@ -1141,11 +1167,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetInventoryResponseItemCoreItemTypeType
     {
-        BASIC,
-        LOT,
-        SERIAL,
+        [EnumMember(Value = "BASIC")]
+        Basic,
+        [EnumMember(Value = "LOT")]
+        Lot,
+        [EnumMember(Value = "SERIAL")]
+        Serial,
         [EnumMember(Value = "or DATE")]
-        OrDATE
+        OrDate
     }
 
     public class CreateInventoryRequestResponse
@@ -1276,10 +1305,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputItemCoreValueType
     {
-        BASIC,
-        LOT,
-        SERIAL,
-        DATE
+        [EnumMember(Value = "BASIC")]
+        Basic,
+        [EnumMember(Value = "LOT")]
+        Lot,
+        [EnumMember(Value = "SERIAL")]
+        Serial,
+        [EnumMember(Value = "DATE")]
+        Date
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1429,7 +1462,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string ItemGenericDescription { get; set; }
         public BodyInputItemItemTypeType? ItemType { get; set; }
         public string ManufacturerNumber { get; set; }
-        public string UPCBarcodeNumber { get; set; }
+
+        [JsonProperty("UPCBarcodeNumber")]
+        public string UpcBarcodeNumber { get; set; }
         public double? GrossWeight { get; set; }
         public int? FullPalletQuantity { get; set; }
         public double? Length { get; set; }
@@ -1460,11 +1495,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputItemCoreItemTypeType
     {
-        BASIC,
-        LOT,
-        SERIAL,
+        [EnumMember(Value = "BASIC")]
+        Basic,
+        [EnumMember(Value = "LOT")]
+        Lot,
+        [EnumMember(Value = "SERIAL")]
+        Serial,
         [EnumMember(Value = "or DATE")]
-        OrDATE
+        OrDate
     }
 
     public class GetInboundRequestResponseItem
@@ -1507,11 +1545,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetInboundRequestResponseItemLineItemsTypeItemCoreItemTypeType
     {
-        BASIC,
-        LOT,
-        SERIAL,
+        [EnumMember(Value = "BASIC")]
+        Basic,
+        [EnumMember(Value = "LOT")]
+        Lot,
+        [EnumMember(Value = "SERIAL")]
+        Serial,
         [EnumMember(Value = "or DATE")]
-        OrDATE
+        OrDate
     }
 
     public class GetInboundRequestResponseItemLineItemsTypeItemReceiptsTypeItem
@@ -1527,7 +1568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum POStatusInput
+    public enum PoStatusInput
     {
         Unassigned,
         WaitingForReceipt,
@@ -1692,11 +1733,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetSalesOrdersResponseItemLineItemsTypeItemCoreItemTypeType
     {
-        BASIC,
-        LOT,
-        SERIAL,
+        [EnumMember(Value = "BASIC")]
+        Basic,
+        [EnumMember(Value = "LOT")]
+        Lot,
+        [EnumMember(Value = "SERIAL")]
+        Serial,
         [EnumMember(Value = "or DATE")]
-        OrDATE
+        OrDate
     }
 
     public class GetSalesOrdersResponseItemLineItemsTypeItemUomTypeType
@@ -1790,7 +1834,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public int ItemOnlyCount { get; set; }
         public int LPCount { get; set; }
         public int BinOnlyCount { get; set; }
-        public int UOMBarcodeCount { get; set; }
+
+        [JsonProperty("UOMBarcodeCount")]
+        public int UomBarcodeCount { get; set; }
         public int PoCount { get; set; }
         public int OrderCount { get; set; }
         public int GtinCount { get; set; }
@@ -1802,7 +1848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     public class SingleScanInventoryLookupResponseItem
     {
         [JsonProperty("POID")]
-        public int POId { get; set; }
+        public int Poid { get; set; }
         public string PONumber { get; set; }
         public SingleScanInventoryLookupResponseItemPODetailsTypeItem[] PODetails { get; set; }
         public int TotalLpReceived { get; set; }
@@ -1819,7 +1865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public double Qty { get; set; }
 
         [JsonProperty("ASNDetailID")]
-        public int ASNDetailId { get; set; }
+        public int AsnDetailId { get; set; }
     }
 
     public class SingleScanInventoryLookupResponseItemPODetailsTypeItemItemType
@@ -1846,20 +1892,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SingleScanInventoryLookupResponseItemPODetailsTypeItemItemTypeCoreItemTypeType
     {
-        BASIC,
-        LOT,
-        SERIAL,
+        [EnumMember(Value = "BASIC")]
+        Basic,
+        [EnumMember(Value = "LOT")]
+        Lot,
+        [EnumMember(Value = "SERIAL")]
+        Serial,
         [EnumMember(Value = "or DATE")]
-        OrDATE
+        OrDate
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SingleScanInventoryLookupResponseItemPODetailsTypeItemItemTypeCoreValueType
     {
-        BASIC,
-        LOT,
-        SERIAL,
-        DATE
+        [EnumMember(Value = "BASIC")]
+        Basic,
+        [EnumMember(Value = "LOT")]
+        Lot,
+        [EnumMember(Value = "SERIAL")]
+        Serial,
+        [EnumMember(Value = "DATE")]
+        Date
     }
 
     public class GetTransferOrdersResponseItem
@@ -1959,11 +2012,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetTransferOrdersResponseItemLineItemsTypeItemCoreItemTypeType
     {
-        BASIC,
-        LOT,
-        SERIAL,
+        [EnumMember(Value = "BASIC")]
+        Basic,
+        [EnumMember(Value = "LOT")]
+        Lot,
+        [EnumMember(Value = "SERIAL")]
+        Serial,
         [EnumMember(Value = "or DATE")]
-        OrDATE
+        OrDate
     }
 
     public class GetTransferOrdersResponseItemLineItemsTypeItemUomTypeType

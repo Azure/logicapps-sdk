@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string CreatedTime { get; set; }
 
         [JsonProperty("archive_url")]
-        public string ArchiveURL { get; set; }
+        public string ArchiveUrl { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public GetCampaignsTrackingResponse Tracking { get; set; }
 
         [JsonProperty("rss_opts")]
-        public GetCampaignsRSSOptsResponse RssOpts { get; set; }
+        public GetCampaignsRssOptsResponse RssOpts { get; set; }
 
         [JsonProperty("ab_split_opts")]
         public ABSplitOpts AbSplitOpts { get; set; }
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool AutoFooter { get; set; }
 
         [JsonProperty("inline_css")]
-        public bool InlineCSS { get; set; }
+        public bool InlineCss { get; set; }
 
         [JsonProperty("auto_tweet")]
         public bool AutoTweet { get; set; }
@@ -371,13 +371,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool Opens { get; set; }
 
         [JsonProperty("html_clicks")]
-        public bool HTMLClickTracking { get; set; }
+        public bool HtmlClickTracking { get; set; }
 
         [JsonProperty("text_clicks")]
         public bool PlainTextClickTracking { get; set; }
 
         [JsonProperty("goal_tracking")]
-        public bool MailChimpGoalTracking { get; set; }
+        public bool MailchimpGoalTracking { get; set; }
 
         [JsonProperty("ecomm360")]
         public bool ECommerce360Tracking { get; set; }
@@ -422,23 +422,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool CapsuleNote { get; set; }
     }
 
-    public class GetCampaignsRSSOptsResponse
+    public class GetCampaignsRssOptsResponse
     {
         [JsonProperty("feed_url")]
-        public string FeedURL { get; set; }
+        public string FeedUrl { get; set; }
 
         [JsonProperty("frequency")]
-        public GetCampaignsRSSOptsFrequencyTypeResponse Frequency { get; set; }
+        public GetCampaignsRssOptsFrequencyTypeResponse Frequency { get; set; }
 
         [JsonProperty("constrain_rss_img")]
-        public string ConstrainRSSImages { get; set; }
+        public string ConstrainRssImages { get; set; }
 
         [JsonProperty("schedule")]
         public GetCampaignsScheduleResponse Schedule { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetCampaignsRSSOptsFrequencyTypeResponse
+    public enum GetCampaignsRssOptsFrequencyTypeResponse
     {
         [EnumMember(Value = "")]
         None,
@@ -518,8 +518,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [JsonProperty("pick_winner")]
         public string PickWinner { get; set; }
 
+        [JsonProperty("wait_units")]
+        public string WaitTime { get; set; }
+
         [JsonProperty("wait_time")]
-        public int WaitTime { get; set; }
+        public int WaitTime2 { get; set; }
 
         [JsonProperty("split_size")]
         public int SplitSize { get; set; }
@@ -555,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     public class GetCampaignsSocialCardResponse
     {
         [JsonProperty("image_url")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("description")]
         public string CampaignDescription { get; set; }
@@ -666,10 +669,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool EmailTypeOption { get; set; }
 
         [JsonProperty("subscribe_url_short")]
-        public string SubscribeURLShort { get; set; }
+        public string SubscribeUrlShort { get; set; }
 
         [JsonProperty("subscribe_url_long")]
-        public string SubscribeURLLong { get; set; }
+        public string SubscribeUrlLong { get; set; }
 
         [JsonProperty("beamer_address")]
         public string BeamerAddress { get; set; }
@@ -717,10 +720,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     public class GetListsCampaignDefaultsResponse
     {
         [JsonProperty("from_name")]
-        public string SenderSName { get; set; }
+        public string SenderName { get; set; }
 
         [JsonProperty("from_email")]
-        public string SenderSEmailAddress { get; set; }
+        public string SenderEmailAddress { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -966,18 +969,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class NewlistCampaignDefaults
     {
-        public NewlistCampaignDefaults(string senderSName, string senderSEmailAddress, string subject)
+        public NewlistCampaignDefaults(string senderName, string senderEmailAddress, string subject)
         {
-            this.SenderSName = senderSName;
-            this.SenderSEmailAddress = senderSEmailAddress;
+            this.SenderName = senderName;
+            this.SenderEmailAddress = senderEmailAddress;
             this.Subject = subject;
         }
 
         [JsonProperty("from_name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SenderSName { get; set; }
+        public string SenderName { get; set; }
 
         [JsonProperty("from_email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SenderSEmailAddress { get; set; }
+        public string SenderEmailAddress { get; set; }
 
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
@@ -1153,7 +1156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Language { get; set; }
 
         [JsonProperty("vip")]
-        public bool? VIP { get; set; }
+        public bool? Vip { get; set; }
 
         [JsonProperty("location")]
         public AddMembersLocation Location { get; set; }
@@ -1263,7 +1266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Language { get; set; }
 
         [JsonProperty("vip")]
-        public bool VIP { get; set; }
+        public bool Vip { get; set; }
 
         [JsonProperty("email_client")]
         public string EmailClient { get; set; }
@@ -1335,7 +1338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Language { get; set; }
 
         [JsonProperty("vip")]
-        public bool? VIP { get; set; }
+        public bool? Vip { get; set; }
 
         [JsonProperty("location")]
         public AddMembersLocation Location { get; set; }
@@ -1395,7 +1398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public NewcampaignTracking Tracking { get; set; }
 
         [JsonProperty("rss_opts")]
-        public NewcampaignRSSOpts RssOpts { get; set; }
+        public NewcampaignRssOpts RssOpts { get; set; }
 
         [JsonProperty("social_card")]
         public NewcampaignSocialCard SocialCard { get; set; }
@@ -1478,7 +1481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? AutoFooter { get; set; }
 
         [JsonProperty("inline_css")]
-        public bool? InlineCSS { get; set; }
+        public bool? InlineCss { get; set; }
 
         [JsonProperty("auto_tweet")]
         public bool? AutoTweet { get; set; }
@@ -1520,13 +1523,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? Opens { get; set; }
 
         [JsonProperty("html_clicks")]
-        public bool? HTMLClickTracking { get; set; }
+        public bool? HtmlClickTracking { get; set; }
 
         [JsonProperty("text_clicks")]
         public bool? PlainTextClickTracking { get; set; }
 
         [JsonProperty("goal_tracking")]
-        public bool? MailChimpGoalTracking { get; set; }
+        public bool? MailchimpGoalTracking { get; set; }
 
         [JsonProperty("ecomm360")]
         public bool? ECommerce360Tracking { get; set; }
@@ -1571,23 +1574,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? CapsuleNote { get; set; }
     }
 
-    public class NewcampaignRSSOpts
+    public class NewcampaignRssOpts
     {
         [JsonProperty("feed_url")]
-        public string FeedURL { get; set; }
+        public string FeedUrl { get; set; }
 
         [JsonProperty("frequency")]
-        public NewcampaignRSSOptsFrequencyType? Frequency { get; set; }
+        public NewcampaignRssOptsFrequencyType? Frequency { get; set; }
 
         [JsonProperty("constrain_rss_img")]
-        public string ConstrainRSSImages { get; set; }
+        public string ConstrainRssImages { get; set; }
 
         [JsonProperty("schedule")]
         public NewcampaignSchedule Schedule { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewcampaignRSSOptsFrequencyType
+    public enum NewcampaignRssOptsFrequencyType
     {
         [EnumMember(Value = "")]
         None,
@@ -1662,7 +1665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     public class NewcampaignSocialCard
     {
         [JsonProperty("image_url")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("description")]
         public string CampaignDescription { get; set; }
@@ -1691,7 +1694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Language { get; set; }
 
         [JsonProperty("vip")]
-        public bool? VIP { get; set; }
+        public bool? Vip { get; set; }
 
         [JsonProperty("location")]
         public AddMembersLocation Location { get; set; }
@@ -1780,7 +1783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Language { get; set; }
 
         [JsonProperty("vip")]
-        public bool VIP { get; set; }
+        public bool Vip { get; set; }
 
         [JsonProperty("email_client")]
         public string EmailClient { get; set; }

@@ -447,8 +447,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContainerPortProtocolType
     {
-        TCP,
-        UDP
+        [EnumMember(Value = "TCP")]
+        Tcp,
+        [EnumMember(Value = "UDP")]
+        Udp
     }
 
     public class EnvironmentVariable
@@ -678,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public string Server { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -731,8 +733,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PortInfoProtocolType
     {
-        TCP,
-        UDP
+        [EnumMember(Value = "TCP")]
+        Tcp,
+        [EnumMember(Value = "UDP")]
+        Udp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

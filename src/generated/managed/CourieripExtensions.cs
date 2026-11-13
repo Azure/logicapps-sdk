@@ -2168,7 +2168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public BodyInputProfileTypeAirshipTypeExpoType Expo { get; set; }
 
         [JsonProperty("facebookPSID")]
-        public string FacebookPSId { get; set; }
+        public string FacebookPsid { get; set; }
 
         [JsonProperty("firebaseToken")]
         public string FirebaseToken { get; set; }
@@ -2291,7 +2291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Mode { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }

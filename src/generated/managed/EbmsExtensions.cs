@@ -49,78 +49,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
 
     public class CreateProductBodyInput
     {
-        public CreateProductBodyInput(string tREEId)
+        public CreateProductBodyInput(string treeId)
         {
-            this.TREEId = tREEId;
+            this.TreeId = treeId;
         }
 
         [JsonProperty("ID")]
         public string Id { get; set; }
 
         [JsonProperty("TREE_ID", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TREEId { get; set; }
+        public string TreeId { get; set; }
 
         [JsonProperty("C_TYPE")]
-        public double? CTYPE { get; set; }
+        public double? CType { get; set; }
 
         [JsonProperty("DESCR_1")]
-        public string DESCR1 { get; set; }
+        public string Descr1 { get; set; }
 
         [JsonProperty("DESCR_2")]
-        public string DESCR2 { get; set; }
+        public string Descr2 { get; set; }
 
         [JsonProperty("DESCR_3")]
-        public string DESCR3 { get; set; }
-        public string TYPE { get; set; }
-        public string MEMO { get; set; }
-        public string UPC { get; set; }
-        public string MFG { get; set; }
+        public string Descr3 { get; set; }
+
+        [JsonProperty("TYPE")]
+        public string Type { get; set; }
+
+        [JsonProperty("MEMO")]
+        public string Memo { get; set; }
+
+        [JsonProperty("UPC")]
+        public string Upc { get; set; }
+
+        [JsonProperty("MFG")]
+        public string Mfg { get; set; }
 
         [JsonProperty("MFG_PART")]
-        public string MFGPART { get; set; }
+        public string MfgPart { get; set; }
 
         [JsonProperty("PRI_VENDOR")]
-        public string PRIVENDOR { get; set; }
+        public string PriVendor { get; set; }
 
         [JsonProperty("EACH_UNIT")]
-        public string EACHUNIT { get; set; }
-        public double? WEIGHT { get; set; }
-        public double? COST { get; set; }
-        public double? BASE { get; set; }
+        public string EachUnit { get; set; }
+
+        [JsonProperty("WEIGHT")]
+        public double? Weight { get; set; }
+
+        [JsonProperty("COST")]
+        public double? Cost { get; set; }
+
+        [JsonProperty("BASE")]
+        public double? Base { get; set; }
 
         [JsonProperty("EXTERNALID")]
-        public string EXTERNALId { get; set; }
+        public string Externalid { get; set; }
     }
 
     public class UpdateProductBodyInput
     {
         [JsonProperty("DESCR_1")]
-        public string DESCR1 { get; set; }
+        public string Descr1 { get; set; }
 
         [JsonProperty("DESCR_2")]
-        public string DESCR2 { get; set; }
+        public string Descr2 { get; set; }
 
         [JsonProperty("DESCR_3")]
-        public string DESCR3 { get; set; }
-        public string TYPE { get; set; }
-        public string MEMO { get; set; }
-        public string UPC { get; set; }
-        public string MFG { get; set; }
+        public string Descr3 { get; set; }
+
+        [JsonProperty("TYPE")]
+        public string Type { get; set; }
+
+        [JsonProperty("MEMO")]
+        public string Memo { get; set; }
+
+        [JsonProperty("UPC")]
+        public string Upc { get; set; }
+
+        [JsonProperty("MFG")]
+        public string Mfg { get; set; }
 
         [JsonProperty("MFG_PART")]
-        public string MFGPART { get; set; }
+        public string MfgPart { get; set; }
 
         [JsonProperty("PRI_VENDOR")]
-        public string PRIVENDOR { get; set; }
+        public string PriVendor { get; set; }
 
         [JsonProperty("EACH_UNIT")]
-        public string EACHUNIT { get; set; }
-        public double? WEIGHT { get; set; }
-        public double? COST { get; set; }
-        public double? BASE { get; set; }
+        public string EachUnit { get; set; }
+
+        [JsonProperty("WEIGHT")]
+        public double? Weight { get; set; }
+
+        [JsonProperty("COST")]
+        public double? Cost { get; set; }
+
+        [JsonProperty("BASE")]
+        public double? Base { get; set; }
 
         [JsonProperty("EXTERNALID")]
-        public string EXTERNALId { get; set; }
+        public string Externalid { get; set; }
     }
 }
 

@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
 
     public class MicrosoftbookingsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Webhookresponse, ApiConnectionPollingTriggerConfiguration> CreateAppointment(Expression<Func<string>> sMTPAddress)
+        public IBodyWorkflowTrigger<Webhookresponse, ApiConnectionPollingTriggerConfiguration> CreateAppointment(Expression<Func<string>> smtpAddress)
         {
-            var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
+            var __workflow_smtpAddress = WorkflowExpression.Compile(smtpAddress, nameof(smtpAddress), required: true);
             return new DeferredBodyTrigger<Webhookresponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentCreated", __workflow_sMTPAddress.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentCreated", __workflow_smtpAddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CreateAppointmentBodyInput().ToJToken();
@@ -41,12 +41,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> UpdateAppointment(Expression<Func<string>> sMTPAddress)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> UpdateAppointment(Expression<Func<string>> smtpAddress)
         {
-            var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
+            var __workflow_smtpAddress = WorkflowExpression.Compile(smtpAddress, nameof(smtpAddress), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentUpdated", __workflow_sMTPAddress.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentUpdated", __workflow_smtpAddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new UpdateAppointmentBodyInput().ToJToken();
@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CancelAppointment(Expression<Func<string>> sMTPAddress)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CancelAppointment(Expression<Func<string>> smtpAddress)
         {
-            var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
+            var __workflow_smtpAddress = WorkflowExpression.Compile(smtpAddress, nameof(smtpAddress), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentDeleted", __workflow_sMTPAddress.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentDeleted", __workflow_smtpAddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = new CancelAppointmentBodyInput().ToJToken();

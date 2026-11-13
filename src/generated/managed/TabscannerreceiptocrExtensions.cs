@@ -91,7 +91,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
 
     public class Result
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
 
         [JsonProperty("tax")]
         public int Tax { get; set; }
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
         public int Tip { get; set; }
 
         [JsonProperty("url")]
-        public string Url { get; set; }
+        public string Url2 { get; set; }
 
         [JsonProperty("total")]
         public double Total { get; set; }

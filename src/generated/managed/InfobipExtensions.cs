@@ -13,16 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
     public class InfobipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
-        public IBodyWorkflowAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration> SendInfobipSms(Expression<Func<SendInfobipSmsRequestBodyInput>> requestBody)
+        public IBodyWorkflowAction<SendSmsSuccessResponseBody, ApiConnectionActionConfiguration> SendInfobipSms(Expression<Func<SendInfobipSmsRequestBodyInput>> requestBody)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
-            return new DeferredBodyAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendSmsSuccessResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms/1/text/single";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
-                return new ApiConnectionAction<SendSMSSuccessResponseBody>(callPayload);
+                return new ApiConnectionAction<SendSmsSuccessResponseBody>(callPayload);
             });
         }
 
@@ -69,13 +69,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         }
     }
 
-    public class SendSMSSuccessResponseBody
+    public class SendSmsSuccessResponseBody
     {
         [JsonProperty("messages")]
-        public SendSMSSuccessResponseBodyMessagesTypeItem[] Messages { get; set; }
+        public SendSmsSuccessResponseBodyMessagesTypeItem[] Messages { get; set; }
     }
 
-    public class SendSMSSuccessResponseBodyMessagesTypeItem
+    public class SendSmsSuccessResponseBodyMessagesTypeItem
     {
         [JsonProperty("to")]
         public string DestinationPhoneNumber { get; set; }
@@ -84,10 +84,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         public string UniqueMessageId { get; set; }
 
         [JsonProperty("status")]
-        public SendSMSSuccessResponseBodyMessagesTypeItemStatusType Status { get; set; }
+        public SendSmsSuccessResponseBodyMessagesTypeItemStatusType Status { get; set; }
     }
 
-    public class SendSMSSuccessResponseBodyMessagesTypeItemStatusType
+    public class SendSmsSuccessResponseBodyMessagesTypeItemStatusType
     {
         [JsonProperty("id")]
         public double MessageSendingStatusId { get; set; }
@@ -101,17 +101,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 
     public class SendInfobipSmsRequestBodyInput
     {
-        public SendInfobipSmsRequestBodyInput(string recipientSPhoneNumber, string message)
+        public SendInfobipSmsRequestBodyInput(string recipientPhoneNumber, string message)
         {
-            this.RecipientSPhoneNumber = recipientSPhoneNumber;
+            this.RecipientPhoneNumber = recipientPhoneNumber;
             this.Message = message;
         }
 
         [JsonProperty("from")]
-        public string SenderSPhoneNumber { get; set; }
+        public string SenderPhoneNumber { get; set; }
 
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RecipientSPhoneNumber { get; set; }
+        public string RecipientPhoneNumber { get; set; }
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
@@ -149,17 +149,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 
     public class MakeInfobipVoiceCallRequestBodyInput
     {
-        public MakeInfobipVoiceCallRequestBodyInput(string recipientSPhoneNumber, string message)
+        public MakeInfobipVoiceCallRequestBodyInput(string recipientPhoneNumber, string message)
         {
-            this.RecipientSPhoneNumber = recipientSPhoneNumber;
+            this.RecipientPhoneNumber = recipientPhoneNumber;
             this.Message = message;
         }
 
         [JsonProperty("from")]
-        public string CallerSPhoneNumber { get; set; }
+        public string CallerPhoneNumber { get; set; }
 
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RecipientSPhoneNumber { get; set; }
+        public string RecipientPhoneNumber { get; set; }
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }

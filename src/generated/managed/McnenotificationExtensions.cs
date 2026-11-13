@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mcnenotification
         public string TeamsAddress { get; set; }
 
         [JsonProperty("sms")]
-        public string SMSNumber { get; set; }
+        public string SmsNumber { get; set; }
 
         [JsonProperty("whatsapp")]
         public string WhatsAppNumber { get; set; }

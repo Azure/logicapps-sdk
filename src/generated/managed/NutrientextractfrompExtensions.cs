@@ -135,13 +135,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("ocr_language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string OCRLanguage { get; set; } = "eng";
+        public string OcrLanguage { get; set; } = "eng";
 
         [JsonProperty("dpi", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InputPdfDataInputDPIType? DPI { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputDPIType._300;
+        public InputPdfDataInputDpiType? Dpi { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputDpiType._300;
 
         [JsonProperty("kvp_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InputPdfDataInputKVPOutputFormatType? KVPOutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputKVPOutputFormatType.Json;
+        public InputPdfDataInputKvpOutputFormatType? KvpOutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputKvpOutputFormatType.Json;
 
         [JsonProperty("page_range", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PageRange { get; set; } = "*";
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InputPdfDataInputDPIType
+    public enum InputPdfDataInputDpiType
     {
         [EnumMember(Value = "500")]
         _500,
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InputPdfDataInputKVPOutputFormatType
+    public enum InputPdfDataInputKvpOutputFormatType
     {
         [EnumMember(Value = "json")]
         Json,

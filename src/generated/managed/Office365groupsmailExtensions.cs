@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public string ConversationId { get; set; }
 
         [JsonProperty("threads@odata.context")]
-        public string ThreadsOdataContext { get; set; }
+        public string ThreadsODataContext { get; set; }
 
         [JsonProperty("threads")]
         public CreateConversationResponseConversationThreadsTypeItem[] ConversationThreads { get; set; }
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [JsonProperty("@odata.type", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string FileAttachmentOdataType { get; set; } = "#microsoft.graph.fileAttachment";
+        internal string FileAttachmentODataType { get; set; } = "#microsoft.graph.fileAttachment";
 
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AttachmentName { get; set; }
@@ -586,11 +586,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MethodInput
     {
-        GET,
-        POST,
-        PUT,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
     public class ForwardBodyInput

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wavelength
         public string MyRole { get; set; }
 
         [JsonProperty("open_url")]
-        public string OpenURL { get; set; }
+        public string OpenUrl { get; set; }
     }
 }
 

@@ -180,18 +180,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<DirectUploadInformationResponse, ApiConnectionActionConfiguration> DirectUploadInformation(Expression<Func<string>> filename, Expression<Func<string>> originalFilename, Expression<Func<bool>> checkExisting = null)
+        public IBodyWorkflowAction<DirectUploadInformationResponse, ApiConnectionActionConfiguration> DirectUploadInformation(Expression<Func<string>> fileName, Expression<Func<string>> originalFileName, Expression<Func<bool>> checkExisting = null)
         {
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
-            var __workflow_originalFilename = WorkflowExpression.Compile(originalFilename, nameof(originalFilename), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_originalFileName = WorkflowExpression.Compile(originalFileName, nameof(originalFileName), required: true);
             var __workflow_checkExisting = WorkflowExpression.Compile(checkExisting, nameof(checkExisting), required: false);
             return new DeferredBodyAction<DirectUploadInformationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/direct_upload_data";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
-                callPayload.Queries["original_filename"] = ExpressionConverter.Convert(__workflow_originalFilename);
+                callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_fileName);
+                callPayload.Queries["original_filename"] = ExpressionConverter.Convert(__workflow_originalFileName);
                 if (__workflow_checkExisting != null)
                     callPayload.Queries["check_existing"] = ExpressionConverter.Convert(__workflow_checkExisting);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -1296,7 +1296,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
         [JsonProperty("signature")]
         public string Signature { get; set; }
-        public string AWSAccessKeyId { get; set; }
+
+        [JsonProperty("AWSAccessKeyId")]
+        public string AwsAccessKeyId { get; set; }
 
         [JsonProperty("success_action_status")]
         public string SuccessActionStatus { get; set; }

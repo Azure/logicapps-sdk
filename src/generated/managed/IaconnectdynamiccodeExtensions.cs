@@ -167,44 +167,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<CreateJSONFromInputVariablesResponse, ApiConnectionActionConfiguration> CreateJSONFromInputVariables(Expression<Func<CreateJSONFromInputVariablesInput>> createJSONFromInputVariables)
+        public IBodyWorkflowAction<CreateJsonFromInputVariablesResponse, ApiConnectionActionConfiguration> CreateJsonFromInputVariables(Expression<Func<CreateJsonFromInputVariablesInput>> createJsonFromInputVariables)
         {
-            var __workflow_createJSONFromInputVariables = WorkflowExpression.Compile(createJSONFromInputVariables, nameof(createJSONFromInputVariables), required: true);
-            return new DeferredBodyAction<CreateJSONFromInputVariablesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_createJsonFromInputVariables = WorkflowExpression.Compile(createJsonFromInputVariables, nameof(createJsonFromInputVariables), required: true);
+            return new DeferredBodyAction<CreateJsonFromInputVariablesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/CreateJSONFromInputVariables";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createJSONFromInputVariables);
-                return new ApiConnectionAction<CreateJSONFromInputVariablesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createJsonFromInputVariables);
+                return new ApiConnectionAction<CreateJsonFromInputVariablesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetJSONTableFromStringArrayResponse, ApiConnectionActionConfiguration> GetJSONTableFromStringArray(Expression<Func<GetJSONTableFromStringArrayInput>> getJSONTableFromStringArray)
+        public IBodyWorkflowAction<GetJsonTableFromStringArrayResponse, ApiConnectionActionConfiguration> GetJsonTableFromStringArray(Expression<Func<GetJsonTableFromStringArrayInput>> getJsonTableFromStringArray)
         {
-            var __workflow_getJSONTableFromStringArray = WorkflowExpression.Compile(getJSONTableFromStringArray, nameof(getJSONTableFromStringArray), required: true);
-            return new DeferredBodyAction<GetJSONTableFromStringArrayResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_getJsonTableFromStringArray = WorkflowExpression.Compile(getJsonTableFromStringArray, nameof(getJsonTableFromStringArray), required: true);
+            return new DeferredBodyAction<GetJsonTableFromStringArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetJSONTableFromStringArray";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getJSONTableFromStringArray);
-                return new ApiConnectionAction<GetJSONTableFromStringArrayResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getJsonTableFromStringArray);
+                return new ApiConnectionAction<GetJsonTableFromStringArrayResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<FilterJSONTableResponse, ApiConnectionActionConfiguration> FilterJSONTable(Expression<Func<FilterJSONTableInput>> filterJSONTable)
+        public IBodyWorkflowAction<FilterJsonTableResponse, ApiConnectionActionConfiguration> FilterJsonTable(Expression<Func<FilterJsonTableInput>> filterJsonTable)
         {
-            var __workflow_filterJSONTable = WorkflowExpression.Compile(filterJSONTable, nameof(filterJSONTable), required: true);
-            return new DeferredBodyAction<FilterJSONTableResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_filterJsonTable = WorkflowExpression.Compile(filterJsonTable, nameof(filterJsonTable), required: true);
+            return new DeferredBodyAction<FilterJsonTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/FilterJSONTable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_filterJSONTable);
-                return new ApiConnectionAction<FilterJSONTableResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_filterJsonTable);
+                return new ApiConnectionAction<FilterJsonTableResponse>(callPayload);
             });
         }
 
@@ -237,16 +237,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<SortJSONTableResponse, ApiConnectionActionConfiguration> SortJSONTable(Expression<Func<SortJSONTableInput>> sortJSONTable)
+        public IBodyWorkflowAction<SortJsonTableResponse, ApiConnectionActionConfiguration> SortJsonTable(Expression<Func<SortJsonTableInput>> sortJsonTable)
         {
-            var __workflow_sortJSONTable = WorkflowExpression.Compile(sortJSONTable, nameof(sortJSONTable), required: true);
-            return new DeferredBodyAction<SortJSONTableResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_sortJsonTable = WorkflowExpression.Compile(sortJsonTable, nameof(sortJsonTable), required: true);
+            return new DeferredBodyAction<SortJsonTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/SortJSONTable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sortJSONTable);
-                return new ApiConnectionAction<SortJSONTableResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sortJsonTable);
+                return new ApiConnectionAction<SortJsonTableResponse>(callPayload);
             });
         }
 
@@ -265,16 +265,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetTableFromJSONResponse, ApiConnectionActionConfiguration> GetTableFromJSON(Expression<Func<GetTableFromJSONInput>> getTableFromJSON)
+        public IBodyWorkflowAction<GetTableFromJsonResponse, ApiConnectionActionConfiguration> GetTableFromJson(Expression<Func<GetTableFromJsonInput>> getTableFromJson)
         {
-            var __workflow_getTableFromJSON = WorkflowExpression.Compile(getTableFromJSON, nameof(getTableFromJSON), required: true);
-            return new DeferredBodyAction<GetTableFromJSONResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_getTableFromJson = WorkflowExpression.Compile(getTableFromJson, nameof(getTableFromJson), required: true);
+            return new DeferredBodyAction<GetTableFromJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetTableFromJSON";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getTableFromJSON);
-                return new ApiConnectionAction<GetTableFromJSONResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getTableFromJson);
+                return new ApiConnectionAction<GetTableFromJsonResponse>(callPayload);
             });
         }
 
@@ -335,30 +335,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<InsertRowInJSONTableResponse, ApiConnectionActionConfiguration> InsertRowInJSONTable(Expression<Func<InsertRowInJSONTableInput>> insertRowInJSONTable)
+        public IBodyWorkflowAction<InsertRowInJsonTableResponse, ApiConnectionActionConfiguration> InsertRowInJsonTable(Expression<Func<InsertRowInJsonTableInput>> insertRowInJsonTable)
         {
-            var __workflow_insertRowInJSONTable = WorkflowExpression.Compile(insertRowInJSONTable, nameof(insertRowInJSONTable), required: true);
-            return new DeferredBodyAction<InsertRowInJSONTableResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_insertRowInJsonTable = WorkflowExpression.Compile(insertRowInJsonTable, nameof(insertRowInJsonTable), required: true);
+            return new DeferredBodyAction<InsertRowInJsonTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/InsertRowInJSONTable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_insertRowInJSONTable);
-                return new ApiConnectionAction<InsertRowInJSONTableResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_insertRowInJsonTable);
+                return new ApiConnectionAction<InsertRowInJsonTableResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<InsertRowInJSONTableFromInputVariablesResponse, ApiConnectionActionConfiguration> InsertRowInJSONTableFromInputVariables(Expression<Func<InsertRowInJSONTableFromInputVariablesInput>> insertRowInJSONTableFromInputVariables)
+        public IBodyWorkflowAction<InsertRowInJsonTableFromInputVariablesResponse, ApiConnectionActionConfiguration> InsertRowInJsonTableFromInputVariables(Expression<Func<InsertRowInJsonTableFromInputVariablesInput>> insertRowInJsonTableFromInputVariables)
         {
-            var __workflow_insertRowInJSONTableFromInputVariables = WorkflowExpression.Compile(insertRowInJSONTableFromInputVariables, nameof(insertRowInJSONTableFromInputVariables), required: true);
-            return new DeferredBodyAction<InsertRowInJSONTableFromInputVariablesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_insertRowInJsonTableFromInputVariables = WorkflowExpression.Compile(insertRowInJsonTableFromInputVariables, nameof(insertRowInJsonTableFromInputVariables), required: true);
+            return new DeferredBodyAction<InsertRowInJsonTableFromInputVariablesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/InsertRowInJSONTableFromInputVariables";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_insertRowInJSONTableFromInputVariables);
-                return new ApiConnectionAction<InsertRowInJSONTableFromInputVariablesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_insertRowInJsonTableFromInputVariables);
+                return new ApiConnectionAction<InsertRowInJsonTableFromInputVariablesResponse>(callPayload);
             });
         }
 
@@ -391,16 +391,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteRowsInJSONTableResponse, ApiConnectionActionConfiguration> DeleteRowsInJSONTable(Expression<Func<DeleteRowsInJSONTableInput>> deleteRowsInJSONTable)
+        public IBodyWorkflowAction<DeleteRowsInJsonTableResponse, ApiConnectionActionConfiguration> DeleteRowsInJsonTable(Expression<Func<DeleteRowsInJsonTableInput>> deleteRowsInJsonTable)
         {
-            var __workflow_deleteRowsInJSONTable = WorkflowExpression.Compile(deleteRowsInJSONTable, nameof(deleteRowsInJSONTable), required: true);
-            return new DeferredBodyAction<DeleteRowsInJSONTableResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_deleteRowsInJsonTable = WorkflowExpression.Compile(deleteRowsInJsonTable, nameof(deleteRowsInJsonTable), required: true);
+            return new DeferredBodyAction<DeleteRowsInJsonTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteRowsInJSONTable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_deleteRowsInJSONTable);
-                return new ApiConnectionAction<DeleteRowsInJSONTableResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_deleteRowsInJsonTable);
+                return new ApiConnectionAction<DeleteRowsInJsonTableResponse>(callPayload);
             });
         }
 
@@ -419,16 +419,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RenameColumnInJSONTableResponse, ApiConnectionActionConfiguration> RenameColumnInJSONTable(Expression<Func<RenameColumnInJSONTableInput>> renameColumnInJSONTable)
+        public IBodyWorkflowAction<RenameColumnInJsonTableResponse, ApiConnectionActionConfiguration> RenameColumnInJsonTable(Expression<Func<RenameColumnInJsonTableInput>> renameColumnInJsonTable)
         {
-            var __workflow_renameColumnInJSONTable = WorkflowExpression.Compile(renameColumnInJSONTable, nameof(renameColumnInJSONTable), required: true);
-            return new DeferredBodyAction<RenameColumnInJSONTableResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_renameColumnInJsonTable = WorkflowExpression.Compile(renameColumnInJsonTable, nameof(renameColumnInJsonTable), required: true);
+            return new DeferredBodyAction<RenameColumnInJsonTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/RenameColumnInJSONTable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_renameColumnInJSONTable);
-                return new ApiConnectionAction<RenameColumnInJSONTableResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_renameColumnInJsonTable);
+                return new ApiConnectionAction<RenameColumnInJsonTableResponse>(callPayload);
             });
         }
 
@@ -447,16 +447,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteColumnsInJSONTableResponse, ApiConnectionActionConfiguration> DeleteColumnsInJSONTable(Expression<Func<DeleteColumnsInJSONTableInput>> deleteColumnsInJSONTable)
+        public IBodyWorkflowAction<DeleteColumnsInJsonTableResponse, ApiConnectionActionConfiguration> DeleteColumnsInJsonTable(Expression<Func<DeleteColumnsInJsonTableInput>> deleteColumnsInJsonTable)
         {
-            var __workflow_deleteColumnsInJSONTable = WorkflowExpression.Compile(deleteColumnsInJSONTable, nameof(deleteColumnsInJSONTable), required: true);
-            return new DeferredBodyAction<DeleteColumnsInJSONTableResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_deleteColumnsInJsonTable = WorkflowExpression.Compile(deleteColumnsInJsonTable, nameof(deleteColumnsInJsonTable), required: true);
+            return new DeferredBodyAction<DeleteColumnsInJsonTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteColumnsInJSONTable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_deleteColumnsInJSONTable);
-                return new ApiConnectionAction<DeleteColumnsInJSONTableResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_deleteColumnsInJsonTable);
+                return new ApiConnectionAction<DeleteColumnsInJsonTableResponse>(callPayload);
             });
         }
 
@@ -475,30 +475,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetStringArrayFromJSONTableColumnResponse, ApiConnectionActionConfiguration> GetStringArrayFromJSONTableColumn(Expression<Func<GetStringArrayFromJSONTableColumnInput>> getStringArrayFromJSONTableColumn)
+        public IBodyWorkflowAction<GetStringArrayFromJsonTableColumnResponse, ApiConnectionActionConfiguration> GetStringArrayFromJsonTableColumn(Expression<Func<GetStringArrayFromJsonTableColumnInput>> getStringArrayFromJsonTableColumn)
         {
-            var __workflow_getStringArrayFromJSONTableColumn = WorkflowExpression.Compile(getStringArrayFromJSONTableColumn, nameof(getStringArrayFromJSONTableColumn), required: true);
-            return new DeferredBodyAction<GetStringArrayFromJSONTableColumnResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_getStringArrayFromJsonTableColumn = WorkflowExpression.Compile(getStringArrayFromJsonTableColumn, nameof(getStringArrayFromJsonTableColumn), required: true);
+            return new DeferredBodyAction<GetStringArrayFromJsonTableColumnResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetStringArrayFromJSONTableColumn";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getStringArrayFromJSONTableColumn);
-                return new ApiConnectionAction<GetStringArrayFromJSONTableColumnResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getStringArrayFromJsonTableColumn);
+                return new ApiConnectionAction<GetStringArrayFromJsonTableColumnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetStringFromJSONTableCellResponse, ApiConnectionActionConfiguration> GetStringFromJSONTableCell(Expression<Func<GetStringFromJSONTableCellInput>> getStringFromJSONTableCell)
+        public IBodyWorkflowAction<GetStringFromJsonTableCellResponse, ApiConnectionActionConfiguration> GetStringFromJsonTableCell(Expression<Func<GetStringFromJsonTableCellInput>> getStringFromJsonTableCell)
         {
-            var __workflow_getStringFromJSONTableCell = WorkflowExpression.Compile(getStringFromJSONTableCell, nameof(getStringFromJSONTableCell), required: true);
-            return new DeferredBodyAction<GetStringFromJSONTableCellResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_getStringFromJsonTableCell = WorkflowExpression.Compile(getStringFromJsonTableCell, nameof(getStringFromJsonTableCell), required: true);
+            return new DeferredBodyAction<GetStringFromJsonTableCellResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetStringFromJSONTableCell";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getStringFromJSONTableCell);
-                return new ApiConnectionAction<GetStringFromJSONTableCellResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getStringFromJsonTableCell);
+                return new ApiConnectionAction<GetStringFromJsonTableCellResponse>(callPayload);
             });
         }
 
@@ -671,44 +671,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<UploadCSVToIAConnectLookupTableResponse, ApiConnectionActionConfiguration> UploadCSVToIAConnectLookupTable(Expression<Func<UploadCSVToIAConnectLookupTableInput>> uploadCSVToIAConnectLookupTable)
+        public IBodyWorkflowAction<UploadCsvToIAConnectLookupTableResponse, ApiConnectionActionConfiguration> UploadCsvToIAConnectLookupTable(Expression<Func<UploadCsvToIAConnectLookupTableInput>> uploadCsvToIAConnectLookupTable)
         {
-            var __workflow_uploadCSVToIAConnectLookupTable = WorkflowExpression.Compile(uploadCSVToIAConnectLookupTable, nameof(uploadCSVToIAConnectLookupTable), required: true);
-            return new DeferredBodyAction<UploadCSVToIAConnectLookupTableResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uploadCsvToIAConnectLookupTable = WorkflowExpression.Compile(uploadCsvToIAConnectLookupTable, nameof(uploadCsvToIAConnectLookupTable), required: true);
+            return new DeferredBodyAction<UploadCsvToIAConnectLookupTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/UploadCSVToIAConnectLookupTable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uploadCSVToIAConnectLookupTable);
-                return new ApiConnectionAction<UploadCSVToIAConnectLookupTableResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uploadCsvToIAConnectLookupTable);
+                return new ApiConnectionAction<UploadCsvToIAConnectLookupTableResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<UploadCSVToIAConnectListResponse, ApiConnectionActionConfiguration> UploadCSVToIAConnectList(Expression<Func<UploadCSVToIAConnectListInput>> uploadCSVToIAConnectList)
+        public IBodyWorkflowAction<UploadCsvToIAConnectListResponse, ApiConnectionActionConfiguration> UploadCsvToIAConnectList(Expression<Func<UploadCsvToIAConnectListInput>> uploadCsvToIAConnectList)
         {
-            var __workflow_uploadCSVToIAConnectList = WorkflowExpression.Compile(uploadCSVToIAConnectList, nameof(uploadCSVToIAConnectList), required: true);
-            return new DeferredBodyAction<UploadCSVToIAConnectListResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uploadCsvToIAConnectList = WorkflowExpression.Compile(uploadCsvToIAConnectList, nameof(uploadCsvToIAConnectList), required: true);
+            return new DeferredBodyAction<UploadCsvToIAConnectListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/UploadCSVToIAConnectList";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uploadCSVToIAConnectList);
-                return new ApiConnectionAction<UploadCSVToIAConnectListResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uploadCsvToIAConnectList);
+                return new ApiConnectionAction<UploadCsvToIAConnectListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<ConvertArrayToJSONResponse, ApiConnectionActionConfiguration> ConvertArrayToJSON(Expression<Func<ConvertArrayToJSONInput>> convertArrayToJSON)
+        public IBodyWorkflowAction<ConvertArrayToJsonResponse, ApiConnectionActionConfiguration> ConvertArrayToJson(Expression<Func<ConvertArrayToJsonInput>> convertArrayToJson)
         {
-            var __workflow_convertArrayToJSON = WorkflowExpression.Compile(convertArrayToJSON, nameof(convertArrayToJSON), required: true);
-            return new DeferredBodyAction<ConvertArrayToJSONResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_convertArrayToJson = WorkflowExpression.Compile(convertArrayToJson, nameof(convertArrayToJson), required: true);
+            return new DeferredBodyAction<ConvertArrayToJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/ConvertArrayToJSON";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_convertArrayToJSON);
-                return new ApiConnectionAction<ConvertArrayToJSONResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_convertArrayToJson);
+                return new ApiConnectionAction<ConvertArrayToJsonResponse>(callPayload);
             });
         }
     }
@@ -790,7 +790,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class RunPowerShellAutomationScriptResponse
     {
-        public string PowerShellJSONOutput { get; set; }
+        [JsonProperty("PowerShellJSONOutput")]
+        public string PowerShellJsonOutput { get; set; }
         public int ThreadId { get; set; }
     }
 
@@ -813,12 +814,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnDateAsDate { get; set; } = false;
-        public string PropertiesToReturnAsCollectionJSON { get; set; }
+
+        [JsonProperty("PropertiesToReturnAsCollectionJSON")]
+        public string PropertiesToReturnAsCollectionJson { get; set; }
         public RunPowerShellAutomationScriptInputAuthenticationMechanismType? AuthenticationMechanism { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ConnectionAttempts { get; set; } = 1;
-        public string Username { get; set; }
+
+        [JsonProperty("Username")]
+        public string UserName { get; set; }
         public string Password { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -836,8 +841,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnSecureStrings { get; set; } = false;
-        public string PropertyNamesToSerializeJSON { get; set; }
-        public string PropertyTypesToSerializeJSON { get; set; }
+
+        [JsonProperty("PropertyNamesToSerializeJSON")]
+        public string PropertyNamesToSerializeJson { get; set; }
+
+        [JsonProperty("PropertyTypesToSerializeJSON")]
+        public string PropertyTypesToSerializeJson { get; set; }
         public RunPowerShellAutomationScriptInputPowerShellCommandParametersTypeItem[] PowerShellCommandParameters { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1032,36 +1041,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int? RegexTimeoutInSeconds { get; set; } = 10;
     }
 
-    public class CreateJSONFromInputVariablesResponse
+    public class CreateJsonFromInputVariablesResponse
     {
-        public string OutputJSON { get; set; }
+        [JsonProperty("OutputJSON")]
+        public string OutputJson { get; set; }
     }
 
-    public class CreateJSONFromInputVariablesInput
+    public class CreateJsonFromInputVariablesInput
     {
-        public CreateJSONFromInputVariablesInput(CreateJSONFromInputVariablesInputInputVariablesTypeItem[] inputVariables)
+        public CreateJsonFromInputVariablesInput(CreateJsonFromInputVariablesInputInputVariablesTypeItem[] inputVariables)
         {
             this.InputVariables = inputVariables;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateJSONFromInputVariablesInputInputVariablesTypeItem[] InputVariables { get; set; }
+        public CreateJsonFromInputVariablesInputInputVariablesTypeItem[] InputVariables { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool ReturnAsJSONTable { get; set; } = true;
+        [JsonProperty("ReturnAsJSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool ReturnAsJsonTable { get; set; } = true;
     }
 
-    public class CreateJSONFromInputVariablesInputInputVariablesTypeItem
+    public class CreateJsonFromInputVariablesInputInputVariablesTypeItem
     {
         public string PropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateJSONFromInputVariablesInputInputVariablesTypeItemDataTypeType? DataType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.CreateJSONFromInputVariablesInputInputVariablesTypeItemDataTypeType.String;
+        public CreateJsonFromInputVariablesInputInputVariablesTypeItemDataTypeType? DataType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.CreateJsonFromInputVariablesInputInputVariablesTypeItemDataTypeType.String;
         public string Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateJSONFromInputVariablesInputInputVariablesTypeItemDataTypeType
+    public enum CreateJsonFromInputVariablesInputInputVariablesTypeItemDataTypeType
     {
         String,
         Integer,
@@ -1069,16 +1079,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         Boolean
     }
 
-    public class GetJSONTableFromStringArrayResponse
+    public class GetJsonTableFromStringArrayResponse
     {
-        public string OutputJSONTable { get; set; }
+        [JsonProperty("OutputJSONTable")]
+        public string OutputJsonTable { get; set; }
         public int NumberOfRows { get; set; }
         public int NumberOfColumns { get; set; }
     }
 
-    public class GetJSONTableFromStringArrayInput
+    public class GetJsonTableFromStringArrayInput
     {
-        public GetJSONTableFromStringArrayInput(string[] inputArray, string columnName)
+        public GetJsonTableFromStringArrayInput(string[] inputArray, string columnName)
         {
             this.InputArray = inputArray;
             this.ColumnName = columnName;
@@ -1094,23 +1105,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public bool? DropEmptyItems { get; set; } = false;
     }
 
-    public class FilterJSONTableResponse
+    public class FilterJsonTableResponse
     {
-        public string OutputJSONTable { get; set; }
+        [JsonProperty("OutputJSONTable")]
+        public string OutputJsonTable { get; set; }
         public int NumberOfRows { get; set; }
         public int NumberOfColumns { get; set; }
     }
 
-    public class FilterJSONTableInput
+    public class FilterJsonTableInput
     {
-        public FilterJSONTableInput(string jSONTable, string filter)
+        public FilterJsonTableInput(string jsonTable, string filter)
         {
-            this.JSONTable = jSONTable;
+            this.JsonTable = jsonTable;
             this.Filter = filter;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONTable { get; set; }
+        [JsonProperty("JSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JsonTable { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filter { get; set; }
@@ -1195,23 +1207,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public bool? Ascending3 { get; set; } = true;
     }
 
-    public class SortJSONTableResponse
+    public class SortJsonTableResponse
     {
-        public string OutputJSONTable { get; set; }
+        [JsonProperty("OutputJSONTable")]
+        public string OutputJsonTable { get; set; }
         public int NumberOfRows { get; set; }
         public int NumberOfColumns { get; set; }
     }
 
-    public class SortJSONTableInput
+    public class SortJsonTableInput
     {
-        public SortJSONTableInput(string jSONTable, string sortColumnName)
+        public SortJsonTableInput(string jsonTable, string sortColumnName)
         {
-            this.JSONTable = jSONTable;
+            this.JsonTable = jsonTable;
             this.SortColumnName = sortColumnName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONTable { get; set; }
+        [JsonProperty("JSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JsonTable { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SortColumnName { get; set; }
@@ -1253,22 +1266,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public bool? DropEmptyItems { get; set; } = false;
     }
 
-    public class GetTableFromJSONResponse
+    public class GetTableFromJsonResponse
     {
         public JToken[] OutputTable { get; set; }
         public int NumberOfRows { get; set; }
         public int NumberOfColumns { get; set; }
     }
 
-    public class GetTableFromJSONInput
+    public class GetTableFromJsonInput
     {
-        public GetTableFromJSONInput(string jSONTable)
+        public GetTableFromJsonInput(string jsonTable)
         {
-            this.JSONTable = jSONTable;
+            this.JsonTable = jsonTable;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONTable { get; set; }
+        [JsonProperty("JSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JsonTable { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int StartRowIndex { get; set; } = 1;
@@ -1370,69 +1383,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; }
-        public string RowToInsertJSON { get; set; }
+
+        [JsonProperty("RowToInsertJSON")]
+        public string RowToInsertJson { get; set; }
     }
 
-    public class InsertRowInJSONTableResponse
+    public class InsertRowInJsonTableResponse
     {
-        public string OutputJSONTable { get; set; }
+        [JsonProperty("OutputJSONTable")]
+        public string OutputJsonTable { get; set; }
         public int NumberOfRows { get; set; }
         public int NumberOfColumns { get; set; }
     }
 
-    public class InsertRowInJSONTableInput
+    public class InsertRowInJsonTableInput
     {
-        public InsertRowInJSONTableInput(string jSONTable, int rowIndex)
+        public InsertRowInJsonTableInput(string jsonTable, int rowIndex)
         {
-            this.JSONTable = jSONTable;
+            this.JsonTable = jsonTable;
             this.RowIndex = rowIndex;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONTable { get; set; }
+        [JsonProperty("JSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JsonTable { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; }
-        public string RowToInsertJSON { get; set; }
+
+        [JsonProperty("RowToInsertJSON")]
+        public string RowToInsertJson { get; set; }
     }
 
-    public class InsertRowInJSONTableFromInputVariablesResponse
+    public class InsertRowInJsonTableFromInputVariablesResponse
     {
-        public string OutputJSONTable { get; set; }
+        [JsonProperty("OutputJSONTable")]
+        public string OutputJsonTable { get; set; }
         public int NumberOfRows { get; set; }
         public int NumberOfColumns { get; set; }
     }
 
-    public class InsertRowInJSONTableFromInputVariablesInput
+    public class InsertRowInJsonTableFromInputVariablesInput
     {
-        public InsertRowInJSONTableFromInputVariablesInput(string jSONTable, int rowIndex, InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItem[] rowToInsertInputVariables)
+        public InsertRowInJsonTableFromInputVariablesInput(string jsonTable, int rowIndex, InsertRowInJsonTableFromInputVariablesInputRowToInsertInputVariablesTypeItem[] rowToInsertInputVariables)
         {
-            this.JSONTable = jSONTable;
+            this.JsonTable = jsonTable;
             this.RowIndex = rowIndex;
             this.RowToInsertInputVariables = rowToInsertInputVariables;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONTable { get; set; }
+        [JsonProperty("JSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JsonTable { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int RowIndex { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItem[] RowToInsertInputVariables { get; set; }
+        public InsertRowInJsonTableFromInputVariablesInputRowToInsertInputVariablesTypeItem[] RowToInsertInputVariables { get; set; }
     }
 
-    public class InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItem
+    public class InsertRowInJsonTableFromInputVariablesInputRowToInsertInputVariablesTypeItem
     {
         public string PropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItemDataTypeType? DataType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItemDataTypeType.String;
+        public InsertRowInJsonTableFromInputVariablesInputRowToInsertInputVariablesTypeItemDataTypeType? DataType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.InsertRowInJsonTableFromInputVariablesInputRowToInsertInputVariablesTypeItemDataTypeType.String;
         public string Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItemDataTypeType
+    public enum InsertRowInJsonTableFromInputVariablesInputRowToInsertInputVariablesTypeItemDataTypeType
     {
         String,
         Integer,
@@ -1489,23 +1508,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfRowsToDelete { get; set; } = 1;
     }
 
-    public class DeleteRowsInJSONTableResponse
+    public class DeleteRowsInJsonTableResponse
     {
-        public string OutputJSONTable { get; set; }
+        [JsonProperty("OutputJSONTable")]
+        public string OutputJsonTable { get; set; }
         public int NumberOfRows { get; set; }
         public int NumberOfColumns { get; set; }
     }
 
-    public class DeleteRowsInJSONTableInput
+    public class DeleteRowsInJsonTableInput
     {
-        public DeleteRowsInJSONTableInput(string jSONTable, int startRowIndex)
+        public DeleteRowsInJsonTableInput(string jsonTable, int startRowIndex)
         {
-            this.JSONTable = jSONTable;
+            this.JsonTable = jsonTable;
             this.StartRowIndex = startRowIndex;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONTable { get; set; }
+        [JsonProperty("JSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JsonTable { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int StartRowIndex { get; set; }
@@ -1540,24 +1560,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string NewColumnName { get; set; }
     }
 
-    public class RenameColumnInJSONTableResponse
+    public class RenameColumnInJsonTableResponse
     {
-        public string OutputJSONTable { get; set; }
+        [JsonProperty("OutputJSONTable")]
+        public string OutputJsonTable { get; set; }
         public int NumberOfRows { get; set; }
         public int NumberOfColumns { get; set; }
     }
 
-    public class RenameColumnInJSONTableInput
+    public class RenameColumnInJsonTableInput
     {
-        public RenameColumnInJSONTableInput(string jSONTable, string sourceColumnName, string newColumnName)
+        public RenameColumnInJsonTableInput(string jsonTable, string sourceColumnName, string newColumnName)
         {
-            this.JSONTable = jSONTable;
+            this.JsonTable = jsonTable;
             this.SourceColumnName = sourceColumnName;
             this.NewColumnName = newColumnName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONTable { get; set; }
+        [JsonProperty("JSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JsonTable { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceColumnName { get; set; }
@@ -1589,22 +1610,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfColumnsToDelete { get; set; } = 1;
     }
 
-    public class DeleteColumnsInJSONTableResponse
+    public class DeleteColumnsInJsonTableResponse
     {
-        public string OutputJSONTable { get; set; }
+        [JsonProperty("OutputJSONTable")]
+        public string OutputJsonTable { get; set; }
         public int NumberOfRows { get; set; }
         public int NumberOfColumns { get; set; }
     }
 
-    public class DeleteColumnsInJSONTableInput
+    public class DeleteColumnsInJsonTableInput
     {
-        public DeleteColumnsInJSONTableInput(string jSONTable)
+        public DeleteColumnsInJsonTableInput(string jsonTable)
         {
-            this.JSONTable = jSONTable;
+            this.JsonTable = jsonTable;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONTable { get; set; }
+        [JsonProperty("JSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JsonTable { get; set; }
         public int? StartColumnIndex { get; set; }
         public string ColumnNameToDelete { get; set; }
 
@@ -1631,39 +1653,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string ColumnName { get; set; }
     }
 
-    public class GetStringArrayFromJSONTableColumnResponse
+    public class GetStringArrayFromJsonTableColumnResponse
     {
         public string[] OutputArray { get; set; }
         public int NumberOfItems { get; set; }
     }
 
-    public class GetStringArrayFromJSONTableColumnInput
+    public class GetStringArrayFromJsonTableColumnInput
     {
-        public GetStringArrayFromJSONTableColumnInput(string jSONTable)
+        public GetStringArrayFromJsonTableColumnInput(string jsonTable)
         {
-            this.JSONTable = jSONTable;
+            this.JsonTable = jsonTable;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONTable { get; set; }
+        [JsonProperty("JSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JsonTable { get; set; }
         public int? ColumnIndex { get; set; }
         public string ColumnName { get; set; }
     }
 
-    public class GetStringFromJSONTableCellResponse
+    public class GetStringFromJsonTableCellResponse
     {
         public string OutputString { get; set; }
     }
 
-    public class GetStringFromJSONTableCellInput
+    public class GetStringFromJsonTableCellInput
     {
-        public GetStringFromJSONTableCellInput(string jSONTable)
+        public GetStringFromJsonTableCellInput(string jsonTable)
         {
-            this.JSONTable = jSONTable;
+            this.JsonTable = jsonTable;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONTable { get; set; }
+        [JsonProperty("JSONTable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JsonTable { get; set; }
         public int? RowIndex { get; set; }
         public int? ColumnIndex { get; set; }
         public string ColumnName { get; set; }
@@ -1726,11 +1748,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetIAConnectLookupTableSummaryResponse
     {
-        public GetIAConnectLookupTableSummaryResponseLookupTablesJSONTypeItem[] LookupTablesJSON { get; set; }
+        [JsonProperty("LookupTablesJSON")]
+        public GetIAConnectLookupTableSummaryResponseLookupTablesJsonTypeItem[] LookupTablesJson { get; set; }
         public int NumberOfLookupTables { get; set; }
     }
 
-    public class GetIAConnectLookupTableSummaryResponseLookupTablesJSONTypeItem
+    public class GetIAConnectLookupTableSummaryResponseLookupTablesJsonTypeItem
     {
         public string Name { get; set; }
         public int ThenColumnIndex { get; set; }
@@ -1792,7 +1815,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupTableName { get; set; }
-        public string InputDataJSON { get; set; }
+
+        [JsonProperty("InputDataJSON")]
+        public string InputDataJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchResultValueColumnName { get; set; }
@@ -1809,7 +1834,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class LookupColumnsFromIAConnectLookupTableResponse
     {
-        public string OutputLookupTableJSON { get; set; }
+        [JsonProperty("OutputLookupTableJSON")]
+        public string OutputLookupTableJson { get; set; }
         public JToken[] OutputLookupTable { get; set; }
         public JToken[] OutputLookupArray { get; set; }
         public int NumberOfRowsInOutput { get; set; }
@@ -1825,7 +1851,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupTableName { get; set; }
-        public string InputDataJSON { get; set; }
+
+        [JsonProperty("InputDataJSON")]
+        public string InputDataJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchResultTableColumnName { get; set; }
@@ -1837,7 +1865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public bool? ReturnBlankCells { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public LookupColumnsFromIAConnectLookupTableInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.LookupColumnsFromIAConnectLookupTableInputReturnFormatType.JSON;
+        public LookupColumnsFromIAConnectLookupTableInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.LookupColumnsFromIAConnectLookupTableInputReturnFormatType.Json;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -1846,7 +1874,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LookupColumnsFromIAConnectLookupTableInputReturnFormatType
     {
-        JSON,
+        [EnumMember(Value = "JSON")]
+        Json,
         Array,
         Table
     }
@@ -1879,7 +1908,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
     public class GetColumnFromIAConnectListResponse
     {
-        public string OutputListJSON { get; set; }
+        [JsonProperty("OutputListJSON")]
+        public string OutputListJson { get; set; }
         public JToken[] OutputList { get; set; }
         public JToken[] OutputListArray { get; set; }
         public int NumberOfRowsInOutput { get; set; }
@@ -1907,22 +1937,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string FallbackValue { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetColumnFromIAConnectListInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.GetColumnFromIAConnectListInputReturnFormatType.JSON;
+        public GetColumnFromIAConnectListInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.GetColumnFromIAConnectListInputReturnFormatType.Json;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetColumnFromIAConnectListInputReturnFormatType
     {
-        JSON,
+        [EnumMember(Value = "JSON")]
+        Json,
         Array,
         Table
     }
 
     public class GetIAConnectListContentsResponse
     {
-        public string OutputListJSON { get; set; }
+        [JsonProperty("OutputListJSON")]
+        public string OutputListJson { get; set; }
         public JToken[] OutputList { get; set; }
-        public string OutputListCSV { get; set; }
+
+        [JsonProperty("OutputListCSV")]
+        public string OutputListCsv { get; set; }
         public int NumberOfRowsInOutput { get; set; }
         public int NumberOfColumnsInOutput { get; set; }
     }
@@ -1938,20 +1972,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string ListName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetIAConnectListContentsInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.GetIAConnectListContentsInputReturnFormatType.JSON;
+        public GetIAConnectListContentsInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.GetIAConnectListContentsInputReturnFormatType.Json;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetIAConnectListContentsInputReturnFormatType
     {
-        JSON,
+        [EnumMember(Value = "JSON")]
+        Json,
         Table,
-        CSV
+        [EnumMember(Value = "CSV")]
+        Csv
     }
 
     public class LookupDataCellsFromIAConnectLookupTableResponse
     {
-        public string OutputLookupTableJSON { get; set; }
+        [JsonProperty("OutputLookupTableJSON")]
+        public string OutputLookupTableJson { get; set; }
         public JToken[] OutputLookupTable { get; set; }
         public int NumberOfCellsInOutput { get; set; }
     }
@@ -1965,7 +2002,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupTableName { get; set; }
-        public string InputDataJSON { get; set; }
+
+        [JsonProperty("InputDataJSON")]
+        public string InputDataJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RaiseExceptionIfNoMatch { get; set; } = true;
@@ -1974,21 +2013,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public bool? ReturnBlankCells { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public LookupDataCellsFromIAConnectLookupTableInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.LookupDataCellsFromIAConnectLookupTableInputReturnFormatType.JSON;
+        public LookupDataCellsFromIAConnectLookupTableInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.LookupDataCellsFromIAConnectLookupTableInputReturnFormatType.Json;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LookupDataCellsFromIAConnectLookupTableInputReturnFormatType
     {
-        JSON,
+        [EnumMember(Value = "JSON")]
+        Json,
         Table
     }
 
     public class GetIAConnectLookupTableContentsResponse
     {
-        public string OutputLookupTableJSON { get; set; }
+        [JsonProperty("OutputLookupTableJSON")]
+        public string OutputLookupTableJson { get; set; }
         public JToken[] OutputLookupTable { get; set; }
-        public string OutputLookupTableCSV { get; set; }
+
+        [JsonProperty("OutputLookupTableCSV")]
+        public string OutputLookupTableCsv { get; set; }
         public int NumberOfRowsInOutput { get; set; }
         public int NumberOfColumnsInOutput { get; set; }
     }
@@ -2004,73 +2047,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string LookupTableName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetIAConnectLookupTableContentsInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.GetIAConnectLookupTableContentsInputReturnFormatType.JSON;
+        public GetIAConnectLookupTableContentsInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.GetIAConnectLookupTableContentsInputReturnFormatType.Json;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetIAConnectLookupTableContentsInputReturnFormatType
     {
-        JSON,
+        [EnumMember(Value = "JSON")]
+        Json,
         Table,
-        CSV
+        [EnumMember(Value = "CSV")]
+        Csv
     }
 
-    public class UploadCSVToIAConnectLookupTableResponse
+    public class UploadCsvToIAConnectLookupTableResponse
     {
-        public bool UploadCSVToIAConnectLookupTableResult { get; set; }
+        [JsonProperty("UploadCSVToIAConnectLookupTableResult")]
+        public bool UploadCsvToIAConnectLookupTableResult { get; set; }
         public string ErrorMessage { get; set; }
     }
 
-    public class UploadCSVToIAConnectLookupTableInput
+    public class UploadCsvToIAConnectLookupTableInput
     {
-        public UploadCSVToIAConnectLookupTableInput(string lookupTableName, string cSVData)
+        public UploadCsvToIAConnectLookupTableInput(string lookupTableName, string csvData)
         {
             this.LookupTableName = lookupTableName;
-            this.CSVData = cSVData;
+            this.CsvData = csvData;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupTableName { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSVData { get; set; }
+        [JsonProperty("CSVData", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CsvData { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CreateLookupTableIfNotExist { get; set; } = false;
     }
 
-    public class UploadCSVToIAConnectListResponse
+    public class UploadCsvToIAConnectListResponse
     {
-        public bool UploadCSVToIAConnectListResult { get; set; }
+        [JsonProperty("UploadCSVToIAConnectListResult")]
+        public bool UploadCsvToIAConnectListResult { get; set; }
         public string ErrorMessage { get; set; }
     }
 
-    public class UploadCSVToIAConnectListInput
+    public class UploadCsvToIAConnectListInput
     {
-        public UploadCSVToIAConnectListInput(string listName, string cSVData)
+        public UploadCsvToIAConnectListInput(string listName, string csvData)
         {
             this.ListName = listName;
-            this.CSVData = cSVData;
+            this.CsvData = csvData;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSVData { get; set; }
+        [JsonProperty("CSVData", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CsvData { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CreateListIfNotExist { get; set; } = false;
     }
 
-    public class ConvertArrayToJSONResponse
+    public class ConvertArrayToJsonResponse
     {
-        public string OutputJSON { get; set; }
+        [JsonProperty("OutputJSON")]
+        public string OutputJson { get; set; }
     }
 
-    public class ConvertArrayToJSONInput
+    public class ConvertArrayToJsonInput
     {
-        public ConvertArrayToJSONInput(JToken[] inputObject)
+        public ConvertArrayToJsonInput(JToken[] inputObject)
         {
             this.InputObject = inputObject;
         }

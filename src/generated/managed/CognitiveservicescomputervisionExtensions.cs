@@ -78,10 +78,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImageURL(Expression<Func<string>> subdomainName, Expression<Func<ImageURLInput>> imageURL, Expression<Func<double>> maxCandidates = null, Expression<Func<LanguageInput>> language = null)
+        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImageUrl(Expression<Func<string>> subdomainName, Expression<Func<ImageUrlInput>> imageUrl, Expression<Func<double>> maxCandidates = null, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
-            var __workflow_imageURL = WorkflowExpression.Compile(imageURL, nameof(imageURL), required: true);
+            var __workflow_imageUrl = WorkflowExpression.Compile(imageUrl, nameof(imageUrl), required: true);
             var __workflow_maxCandidates = WorkflowExpression.Compile(maxCandidates, nameof(maxCandidates), required: false);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             return new DeferredBodyAction<DescribeResponse, ApiConnectionActionConfiguration>(() =>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                     callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(__workflow_maxCandidates);
                 if (__workflow_language != null)
                     callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_imageURL);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_imageUrl);
                 return new ApiConnectionAction<DescribeResponse>(callPayload);
             });
         }
@@ -158,12 +158,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<OCRJsonResponse, ApiConnectionActionConfiguration> OCR(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
+        public IBodyWorkflowAction<OcrJsonResponse, ApiConnectionActionConfiguration> Ocr(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
-            return new DeferredBodyAction<OCRJsonResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<OcrJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocr", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -172,17 +172,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["detectOrientation"] = Convert.ToString(true);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
-                return new ApiConnectionAction<OCRJsonResponse>(callPayload);
+                return new ApiConnectionAction<OcrJsonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<OCRTextResponse, ApiConnectionActionConfiguration> OCRText(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
+        public IBodyWorkflowAction<OcrTextResponse, ApiConnectionActionConfiguration> OcrText(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
-            return new DeferredBodyAction<OCRTextResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<OcrTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocrtext", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["detectOrientation"] = Convert.ToString(true);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
-                return new ApiConnectionAction<OCRTextResponse>(callPayload);
+                return new ApiConnectionAction<OcrTextResponse>(callPayload);
             });
         }
 
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [EnumMember(Value = "Image Content")]
         ImageContent,
         [EnumMember(Value = "Image URL")]
-        ImageURL
+        ImageUrl
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -329,10 +329,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public string CaptionText { get; set; }
     }
 
-    public class ImageURLInput
+    public class ImageUrlInput
     {
         [JsonProperty("url")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
     }
 
     public class DetectResponse
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public JToken AreaOfInterest { get; set; }
     }
 
-    public class OCRJsonResponse
+    public class OcrJsonResponse
     {
         [JsonProperty("language")]
         public string TextLanguage { get; set; }
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public JToken[] RegionsArray { get; set; }
     }
 
-    public class OCRTextResponse
+    public class OcrTextResponse
     {
         [JsonProperty("text")]
         public string DetectedText { get; set; }

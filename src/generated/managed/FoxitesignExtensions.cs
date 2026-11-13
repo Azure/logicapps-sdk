@@ -13,16 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
     public class FoxitesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<CreateEnvelopefromURLResponse, ApiConnectionActionConfiguration> CreateEnvelopefromURL(Expression<Func<CreateEnvelopefromURLBodyInput>> body)
+        public IBodyWorkflowAction<CreateEnvelopefromUrlResponse, ApiConnectionActionConfiguration> CreateEnvelopefromUrl(Expression<Func<CreateEnvelopefromUrlBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CreateEnvelopefromURLResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CreateEnvelopefromUrlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/folders/createfolder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CreateEnvelopefromURLResponse>(callPayload);
+                return new ApiConnectionAction<CreateEnvelopefromUrlResponse>(callPayload);
             });
         }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadSingleDocumentPDF(Expression<Func<string>> folderId, Expression<Func<string>> docNumber)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadSingleDocumentPdf(Expression<Func<string>> folderId, Expression<Func<string>> docNumber)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_docNumber = WorkflowExpression.Compile(docNumber, nameof(docNumber), required: true);
@@ -217,16 +217,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<CreateTemplatefromURLResponse, ApiConnectionActionConfiguration> CreateTemplatefromURL(Expression<Func<CreateTemplatefromURLBodyInput>> body)
+        public IBodyWorkflowAction<CreateTemplatefromUrlResponse, ApiConnectionActionConfiguration> CreateTemplatefromUrl(Expression<Func<CreateTemplatefromUrlBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CreateTemplatefromURLResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CreateTemplatefromUrlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/templates/createtemplate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CreateTemplatefromURLResponse>(callPayload);
+                return new ApiConnectionAction<CreateTemplatefromUrlResponse>(callPayload);
             });
         }
 
@@ -439,19 +439,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
     }
 
-    public class CreateEnvelopefromURLResponse
+    public class CreateEnvelopefromUrlResponse
     {
         [JsonProperty("folder")]
-        public CreateEnvelopefromURLResponseEnvelopeType Envelope { get; set; }
+        public CreateEnvelopefromUrlResponseEnvelopeType Envelope { get; set; }
 
         [JsonProperty("embeddedSigningSessions")]
-        public CreateEnvelopefromURLResponseEmbeddedSigningSessionsTypeItem[] EmbeddedSigningSessions { get; set; }
+        public CreateEnvelopefromUrlResponseEmbeddedSigningSessionsTypeItem[] EmbeddedSigningSessions { get; set; }
 
         [JsonProperty("embeddedToken")]
         public string EmbeddedSendingToken { get; set; }
 
         [JsonProperty("embeddedSessionURL")]
-        public string SendingSessionURL { get; set; }
+        public string SendingSessionUrl { get; set; }
 
         [JsonProperty("result")]
         public string Result { get; set; }
@@ -460,12 +460,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Message { get; set; }
     }
 
-    public class CreateEnvelopefromURLResponseEnvelopeType
+    public class CreateEnvelopefromUrlResponseEnvelopeType
     {
-        [JsonProperty("envelopeId")]
+        [JsonProperty("folderId")]
         public int Id { get; set; }
 
-        [JsonProperty("envelopeName")]
+        [JsonProperty("folderName")]
         public string Name { get; set; }
 
         [JsonProperty("folderCustomName")]
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("folderAuthorRole")]
         public string CreatorRole { get; set; }
 
-        [JsonProperty("envelopeCompanyId")]
+        [JsonProperty("folderCompanyId")]
         public int CompanyId { get; set; }
 
         [JsonProperty("folderCreationDate")]
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("folderSentDate")]
         public int SentDate { get; set; }
 
-        [JsonProperty("envelopeStatus")]
+        [JsonProperty("folderStatus")]
         public string Status { get; set; }
 
         [JsonProperty("custom_field1")]
@@ -511,19 +511,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Metadata { get; set; }
 
         [JsonProperty("folderDocumentIds")]
-        public int[] DocumentIDs { get; set; }
+        public int[] DocumentIds { get; set; }
 
         [JsonProperty("documentsList")]
-        public CreateEnvelopefromURLResponseEnvelopeTypeDocumentsTypeItem[] Documents { get; set; }
+        public CreateEnvelopefromUrlResponseEnvelopeTypeDocumentsTypeItem[] Documents { get; set; }
 
         [JsonProperty("folderRecipientParties")]
-        public CreateEnvelopefromURLResponseEnvelopeTypeRecipientsTypeItem[] Recipients { get; set; }
+        public CreateEnvelopefromUrlResponseEnvelopeTypeRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("folderAccessURLForAuthor")]
-        public string AuthorSigningURL { get; set; }
+        public string AuthorSigningUrl { get; set; }
 
         [JsonProperty("draftFolderAccessURL")]
-        public string DraftAccessURL { get; set; }
+        public string DraftAccessUrl { get; set; }
 
         [JsonProperty("boardRoomSign")]
         public bool BoardroomSigning { get; set; }
@@ -585,8 +585,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("allowRecipientsToDelegate")]
         public bool AllowDelegation { get; set; }
 
+        [JsonProperty("envelopeId")]
+        public int Id2 { get; set; }
+
+        [JsonProperty("envelopeName")]
+        public string Name2 { get; set; }
+
         [JsonProperty("envelopeOriginatorId")]
         public int OriginatorId { get; set; }
+
+        [JsonProperty("envelopeCompanyId")]
+        public int CompanyId2 { get; set; }
 
         [JsonProperty("envelopeDate")]
         public int Date { get; set; }
@@ -594,11 +603,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("envelopeSharedDate")]
         public int SharedDate { get; set; }
 
+        [JsonProperty("envelopeStatus")]
+        public string Status2 { get; set; }
+
         [JsonProperty("envelopeContractIds")]
-        public int[] ContractIDs { get; set; }
+        public int[] ContractIds { get; set; }
 
         [JsonProperty("envelopePartyPermissions")]
-        public CreateEnvelopefromURLResponseEnvelopeTypeRecipientPermissionsTypeItem[] RecipientPermissions { get; set; }
+        public CreateEnvelopefromUrlResponseEnvelopeTypeRecipientPermissionsTypeItem[] RecipientPermissions { get; set; }
 
         [JsonProperty("envelopeAuthenticationLevel")]
         public string AuthLevel { get; set; }
@@ -640,7 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public bool MergeEnabled { get; set; }
     }
 
-    public class CreateEnvelopefromURLResponseEnvelopeTypeDocumentsTypeItem
+    public class CreateEnvelopefromUrlResponseEnvelopeTypeDocumentsTypeItem
     {
         [JsonProperty("documentId")]
         public int DocumentId { get; set; }
@@ -688,13 +700,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string TransactionSource { get; set; }
     }
 
-    public class CreateEnvelopefromURLResponseEnvelopeTypeRecipientsTypeItem
+    public class CreateEnvelopefromUrlResponseEnvelopeTypeRecipientsTypeItem
     {
         [JsonProperty("partyId")]
         public int RecipientId { get; set; }
 
         [JsonProperty("partyDetails")]
-        public CreateEnvelopefromURLResponseEnvelopeTypeRecipientsTypeItemRecipientDetailsType RecipientDetails { get; set; }
+        public CreateEnvelopefromUrlResponseEnvelopeTypeRecipientsTypeItemRecipientDetailsType RecipientDetails { get; set; }
 
         [JsonProperty("dialingCode")]
         public string DialingCode { get; set; }
@@ -724,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SharingMode { get; set; }
 
         [JsonProperty("folderAccessURL")]
-        public string RecipientAccessURL { get; set; }
+        public string RecipientAccessUrl { get; set; }
 
         [JsonProperty("securityMode")]
         public string SecurityMode { get; set; }
@@ -781,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public int[] OptionalSigners { get; set; }
     }
 
-    public class CreateEnvelopefromURLResponseEnvelopeTypeRecipientsTypeItemRecipientDetailsType
+    public class CreateEnvelopefromUrlResponseEnvelopeTypeRecipientsTypeItemRecipientDetailsType
     {
         [JsonProperty("partyId")]
         public int RecipientId { get; set; }
@@ -895,13 +907,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Source { get; set; }
     }
 
-    public class CreateEnvelopefromURLResponseEnvelopeTypeRecipientPermissionsTypeItem
+    public class CreateEnvelopefromUrlResponseEnvelopeTypeRecipientPermissionsTypeItem
     {
         [JsonProperty("partyId")]
         public int RecipientId { get; set; }
 
         [JsonProperty("partyDetails")]
-        public CreateEnvelopefromURLResponseEnvelopeTypeRecipientPermissionsTypeItemRecipientDetailsType RecipientDetails { get; set; }
+        public CreateEnvelopefromUrlResponseEnvelopeTypeRecipientPermissionsTypeItemRecipientDetailsType RecipientDetails { get; set; }
 
         [JsonProperty("dialingCode")]
         public string DialingCode { get; set; }
@@ -931,7 +943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SharingMode { get; set; }
 
         [JsonProperty("folderAccessURL")]
-        public string RecipientAccessURL { get; set; }
+        public string RecipientAccessUrl { get; set; }
 
         [JsonProperty("securityMode")]
         public string SecurityMode { get; set; }
@@ -982,7 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public bool Paid { get; set; }
     }
 
-    public class CreateEnvelopefromURLResponseEnvelopeTypeRecipientPermissionsTypeItemRecipientDetailsType
+    public class CreateEnvelopefromUrlResponseEnvelopeTypeRecipientPermissionsTypeItemRecipientDetailsType
     {
         [JsonProperty("partyId")]
         public int RecipientId { get; set; }
@@ -1096,7 +1108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Source { get; set; }
     }
 
-    public class CreateEnvelopefromURLResponseEmbeddedSigningSessionsTypeItem
+    public class CreateEnvelopefromUrlResponseEmbeddedSigningSessionsTypeItem
     {
         [JsonProperty("emailIdOfSigner")]
         public string SignerEmail { get; set; }
@@ -1105,12 +1117,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SigningToken { get; set; }
 
         [JsonProperty("embeddedSessionURL")]
-        public string SigningSessionURL { get; set; }
+        public string SigningSessionUrl { get; set; }
     }
 
-    public class CreateEnvelopefromURLBodyInput
+    public class CreateEnvelopefromUrlBodyInput
     {
-        public CreateEnvelopefromURLBodyInput(string envelopeName, string[] fileUrls, string[] fileNames, Party[] parties, bool createEmbeddedSigningSession, bool processTextTags, bool processAcroFields)
+        public CreateEnvelopefromUrlBodyInput(string envelopeName, string[] fileUrls, string[] fileNames, Party[] parties, bool createEmbeddedSigningSession, bool processTextTags, bool processAcroFields)
         {
             this.EnvelopeName = envelopeName;
             this.FileUrls = fileUrls;
@@ -1354,15 +1366,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
     public enum Permissions
     {
         [EnumMember(Value = "FILL_FIELDS_AND_SIGN")]
-        FILLFIELDSANDSIGN,
+        FillFieldsAndSign,
         [EnumMember(Value = "FILL_FIELDS_ONLY")]
-        FILLFIELDSONLY,
+        FillFieldsOnly,
         [EnumMember(Value = "SIGN_ONLY")]
-        SIGNONLY,
+        SignOnly,
         [EnumMember(Value = "VIEW_ONLY")]
-        VIEWONLY,
+        ViewOnly,
         [EnumMember(Value = "PARTY_ASSIGNER")]
-        PARTYASSIGNER
+        PartyAssigner
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1370,11 +1382,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
     {
         NO,
         [EnumMember(Value = "SMS LINK")]
-        SMSLINK,
+        SmsLink,
         [EnumMember(Value = "Email Access Code")]
         EmailAccessCode,
         [EnumMember(Value = "SMS Access Code")]
-        SMSAccessCode,
+        SmsAccessCode,
         [EnumMember(Value = "Voice Access Code")]
         VoiceAccessCode,
         [EnumMember(Value = "User-defined Access Code")]
@@ -1435,10 +1447,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class GetEnvelopeDetailsResponseEnvelopeType
     {
-        [JsonProperty("envelopeId")]
+        [JsonProperty("folderId")]
         public int Id { get; set; }
 
-        [JsonProperty("envelopeName")]
+        [JsonProperty("folderName")]
         public string Name { get; set; }
 
         [JsonProperty("folderAuthorId")]
@@ -1456,7 +1468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("folderAuthorRole")]
         public string AuthorRole { get; set; }
 
-        [JsonProperty("envelopeCompanyId")]
+        [JsonProperty("folderCompanyId")]
         public int CompanyId { get; set; }
 
         [JsonProperty("folderCreationDate")]
@@ -1465,11 +1477,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("folderSentDate")]
         public int SentDate { get; set; }
 
-        [JsonProperty("envelopeStatus")]
+        [JsonProperty("folderStatus")]
         public string Status { get; set; }
 
         [JsonProperty("folderDocumentIds")]
-        public int[] DocumentIDs { get; set; }
+        public int[] DocumentIds { get; set; }
 
         [JsonProperty("documentsList")]
         public GetEnvelopeDetailsResponseEnvelopeTypeDocumentsTypeItem[] Documents { get; set; }
@@ -1478,7 +1490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public GetEnvelopeDetailsResponseEnvelopeTypeRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("folderAccessURLForAuthor")]
-        public string AuthorAccessURL { get; set; }
+        public string AuthorAccessUrl { get; set; }
 
         [JsonProperty("bulkId")]
         public int BulkId { get; set; }
@@ -1501,8 +1513,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("overrideAccountReminders")]
         public bool OverrideReminders { get; set; }
 
+        [JsonProperty("envelopeId")]
+        public int Id2 { get; set; }
+
+        [JsonProperty("envelopeName")]
+        public string Name2 { get; set; }
+
         [JsonProperty("envelopeOriginatorId")]
         public int OriginatorId { get; set; }
+
+        [JsonProperty("envelopeCompanyId")]
+        public int CompanyId2 { get; set; }
 
         [JsonProperty("envelopeDate")]
         public int Date { get; set; }
@@ -1510,8 +1531,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("envelopeSharedDate")]
         public int SharedDate { get; set; }
 
+        [JsonProperty("envelopeStatus")]
+        public string Status2 { get; set; }
+
         [JsonProperty("envelopeContractIds")]
-        public int[] ContractIDs { get; set; }
+        public int[] ContractIds { get; set; }
 
         [JsonProperty("envelopePartyPermissions")]
         public GetEnvelopeDetailsResponseEnvelopeTypePartyPermissionsTypeItem[] PartyPermissions { get; set; }
@@ -1586,7 +1610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SharingMode { get; set; }
 
         [JsonProperty("folderAccessURL")]
-        public string SigningURL { get; set; }
+        public string SigningUrl { get; set; }
 
         [JsonProperty("securityMode")]
         public string SecurityMode { get; set; }
@@ -1631,7 +1655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public int SigningOrder { get; set; }
 
         [JsonProperty("folderAccessURL")]
-        public string SigningURL { get; set; }
+        public string SigningUrl { get; set; }
     }
 
     public class GetEnvelopeDetailsResponseEnvelopeTypePartyPermissionsTypeItemRecipientDetailsType
@@ -1733,20 +1757,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Message { get; set; }
 
         [JsonProperty("allFolderIds")]
-        public int[] EnvelopeIDs { get; set; }
+        public int[] EnvelopeIds { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum StatusInput
     {
-        EXECUTED,
-        SHARED,
-        DRAFT,
+        [EnumMember(Value = "EXECUTED")]
+        Executed,
+        [EnumMember(Value = "SHARED")]
+        Shared,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
         [EnumMember(Value = "PARTIALLY SIGNED")]
-        PARTIALLYSIGNED,
-        CANCELED,
-        EXPIRED,
-        DELETED
+        PartiallySigned,
+        [EnumMember(Value = "CANCELED")]
+        Canceled,
+        [EnumMember(Value = "EXPIRED")]
+        Expired,
+        [EnumMember(Value = "DELETED")]
+        Deleted
     }
 
     public class SendSignatureReminderResponse
@@ -1900,7 +1930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Result { get; set; }
 
         [JsonProperty("folders cancelled")]
-        public int[] CancelledEnvelopeIDs { get; set; }
+        public int[] CancelledEnvelopeIds { get; set; }
     }
 
     public class CancelEnvelopeBodyInput
@@ -2015,7 +2045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class GetTemplateDetailsResponseTemplateTypePartyPermissionsTypeItem
     {
-        [JsonProperty("partyId")]
+        [JsonProperty("template_party_id")]
         public int PartyId { get; set; }
 
         [JsonProperty("templateId")]
@@ -2029,6 +2059,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
         [JsonProperty("templatePartyRole")]
         public string PartyRole { get; set; }
+
+        [JsonProperty("partyId")]
+        public int PartyId2 { get; set; }
     }
 
     public class GetTemplateDetailsResponseTemplateTypeCreatedByType
@@ -2259,7 +2292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Email { get; set; }
     }
 
-    public class CreateTemplatefromURLResponse
+    public class CreateTemplatefromUrlResponse
     {
         [JsonProperty("result")]
         public string Result { get; set; }
@@ -2268,13 +2301,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Message { get; set; }
 
         [JsonProperty("template")]
-        public CreateTemplatefromURLResponseTemplateType Template { get; set; }
+        public CreateTemplatefromUrlResponseTemplateType Template { get; set; }
 
         [JsonProperty("allfields")]
-        public CreateTemplatefromURLResponseTemplateFieldsTypeItem[] TemplateFields { get; set; }
+        public CreateTemplatefromUrlResponseTemplateFieldsTypeItem[] TemplateFields { get; set; }
     }
 
-    public class CreateTemplatefromURLResponseTemplateType
+    public class CreateTemplatefromUrlResponseTemplateType
     {
         [JsonProperty("templateId")]
         public int Id { get; set; }
@@ -2313,18 +2346,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string CustomNamePattern { get; set; }
 
         [JsonProperty("templatePartyPermissions")]
-        public CreateTemplatefromURLResponseTemplateTypePartyPermissionsTypeItem[] PartyPermissions { get; set; }
+        public CreateTemplatefromUrlResponseTemplateTypePartyPermissionsTypeItem[] PartyPermissions { get; set; }
 
         [JsonProperty("templateCreatedBy")]
-        public CreateTemplatefromURLResponseTemplateTypeCreatedByType CreatedBy { get; set; }
+        public CreateTemplatefromUrlResponseTemplateTypeCreatedByType CreatedBy { get; set; }
 
         [JsonProperty("templateLastUpdatedBy")]
-        public CreateTemplatefromURLResponseTemplateTypeLastUpdatedByType LastUpdatedBy { get; set; }
+        public CreateTemplatefromUrlResponseTemplateTypeLastUpdatedByType LastUpdatedBy { get; set; }
     }
 
-    public class CreateTemplatefromURLResponseTemplateTypePartyPermissionsTypeItem
+    public class CreateTemplatefromUrlResponseTemplateTypePartyPermissionsTypeItem
     {
-        [JsonProperty("partyId")]
+        [JsonProperty("template_party_id")]
         public int PartyId { get; set; }
 
         [JsonProperty("templateId")]
@@ -2338,9 +2371,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
         [JsonProperty("templatePartyRole")]
         public string PartyRole { get; set; }
+
+        [JsonProperty("partyId")]
+        public int PartyId2 { get; set; }
     }
 
-    public class CreateTemplatefromURLResponseTemplateTypeCreatedByType
+    public class CreateTemplatefromUrlResponseTemplateTypeCreatedByType
     {
         [JsonProperty("partyId")]
         public int UserId { get; set; }
@@ -2364,7 +2400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public bool Active { get; set; }
     }
 
-    public class CreateTemplatefromURLResponseTemplateTypeLastUpdatedByType
+    public class CreateTemplatefromUrlResponseTemplateTypeLastUpdatedByType
     {
         [JsonProperty("partyId")]
         public int UserId { get; set; }
@@ -2388,7 +2424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public bool Active { get; set; }
     }
 
-    public class CreateTemplatefromURLResponseTemplateFieldsTypeItem
+    public class CreateTemplatefromUrlResponseTemplateFieldsTypeItem
     {
         [JsonProperty("fieldTagId")]
         public int FieldId { get; set; }
@@ -2487,12 +2523,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string AttachmentDescription { get; set; }
     }
 
-    public class CreateTemplatefromURLBodyInput
+    public class CreateTemplatefromUrlBodyInput
     {
-        public CreateTemplatefromURLBodyInput(string templateName, string templateURL, bool shareAll, int numberOfParties, TemplateParty[] parties)
+        public CreateTemplatefromUrlBodyInput(string templateName, string templateUrl, bool shareAll, int numberOfParties, TemplateParty[] parties)
         {
             this.TemplateName = templateName;
-            this.TemplateURL = templateURL;
+            this.TemplateUrl = templateUrl;
             this.ShareAll = shareAll;
             this.NumberOfParties = numberOfParties;
             this.Parties = parties;
@@ -2502,7 +2538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string TemplateName { get; set; }
 
         [JsonProperty("templateUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TemplateURL { get; set; }
+        public string TemplateUrl { get; set; }
 
         [JsonProperty("inputType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputType { get; set; } = "url";
@@ -2818,7 +2854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public bool? CreateEmbeddedTemplateSession { get; set; }
 
         [JsonProperty("redirectURL")]
-        public string RedirectURL { get; set; }
+        public string RedirectUrl { get; set; }
 
         [JsonProperty("hideSendTemplate")]
         public bool? HideSendTemplate { get; set; }
@@ -2876,7 +2912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string EmbeddedSendingToken { get; set; }
 
         [JsonProperty("embeddedSessionURL")]
-        public string SendingSessionURL { get; set; }
+        public string SendingSessionUrl { get; set; }
 
         [JsonProperty("folder")]
         public CreateEnvelopefromTemplateResponseEnvelopeType Envelope { get; set; }
@@ -2891,15 +2927,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SigningToken { get; set; }
 
         [JsonProperty("embeddedSessionURL")]
-        public string SigningSessionURL { get; set; }
+        public string SigningSessionUrl { get; set; }
     }
 
     public class CreateEnvelopefromTemplateResponseEnvelopeType
     {
-        [JsonProperty("envelopeId")]
+        [JsonProperty("folderId")]
         public int Id { get; set; }
 
-        [JsonProperty("envelopeName")]
+        [JsonProperty("folderName")]
         public string Name { get; set; }
 
         [JsonProperty("folderCustomName")]
@@ -2923,7 +2959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("folderAuthorRole")]
         public string AuthorRole { get; set; }
 
-        [JsonProperty("envelopeCompanyId")]
+        [JsonProperty("folderCompanyId")]
         public int CompanyId { get; set; }
 
         [JsonProperty("folderCreationDate")]
@@ -2932,7 +2968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("folderSentDate")]
         public int SentDate { get; set; }
 
-        [JsonProperty("envelopeStatus")]
+        [JsonProperty("folderStatus")]
         public string Status { get; set; }
 
         [JsonProperty("custom_field1")]
@@ -2945,7 +2981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Metadata { get; set; }
 
         [JsonProperty("folderDocumentIds")]
-        public int[] DocumentIDs { get; set; }
+        public int[] DocumentIds { get; set; }
 
         [JsonProperty("documentsList")]
         public CreateEnvelopefromTemplateResponseEnvelopeTypeDocumentsTypeItem[] Documents { get; set; }
@@ -2954,10 +2990,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public CreateEnvelopefromTemplateResponseEnvelopeTypeRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("folderAccessURLForAuthor")]
-        public string AuthorAccessURL { get; set; }
+        public string AuthorAccessUrl { get; set; }
 
         [JsonProperty("draftFolderAccessURL")]
-        public string DraftAccessURL { get; set; }
+        public string DraftAccessUrl { get; set; }
 
         [JsonProperty("boardRoomSign")]
         public bool BoardRoomSign { get; set; }
@@ -3019,8 +3055,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("allowRecipientsToDelegate")]
         public bool AllowDelegation { get; set; }
 
+        [JsonProperty("envelopeId")]
+        public int Id2 { get; set; }
+
+        [JsonProperty("envelopeName")]
+        public string Name2 { get; set; }
+
         [JsonProperty("envelopeOriginatorId")]
         public int OriginatorId { get; set; }
+
+        [JsonProperty("envelopeCompanyId")]
+        public int CompanyId2 { get; set; }
 
         [JsonProperty("envelopeDate")]
         public int Date { get; set; }
@@ -3028,8 +3073,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("envelopeSharedDate")]
         public int SharedDate { get; set; }
 
+        [JsonProperty("envelopeStatus")]
+        public string Status2 { get; set; }
+
         [JsonProperty("envelopeContractIds")]
-        public int[] ContractIDs { get; set; }
+        public int[] ContractIds { get; set; }
 
         [JsonProperty("envelopePartyPermissions")]
         public CreateEnvelopefromTemplateResponseEnvelopeTypePartyPermissionsTypeItem[] PartyPermissions { get; set; }
@@ -3158,7 +3206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SharingMode { get; set; }
 
         [JsonProperty("folderAccessURL")]
-        public string SigningURL { get; set; }
+        public string SigningUrl { get; set; }
 
         [JsonProperty("securityMode")]
         public string SecurityMode { get; set; }
@@ -3287,7 +3335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public int RecipientId { get; set; }
 
         [JsonProperty("folderAccessURL")]
-        public string SigningURL { get; set; }
+        public string SigningUrl { get; set; }
 
         [JsonProperty("contractPermissions")]
         public string Permissions { get; set; }
@@ -3452,7 +3500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string ChannelName { get; set; }
 
         [JsonProperty("webhookUrl")]
-        public string WebhookURL { get; set; }
+        public string WebhookUrl { get; set; }
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -3515,7 +3563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Name { get; set; }
 
         [JsonProperty("webhookUrl")]
-        public string WebhookURL { get; set; }
+        public string WebhookUrl { get; set; }
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -3719,14 +3767,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EnvelopeStatus
     {
-        EXECUTED,
-        SHARED,
-        DRAFT,
+        [EnumMember(Value = "EXECUTED")]
+        Executed,
+        [EnumMember(Value = "SHARED")]
+        Shared,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
         [EnumMember(Value = "PARTIALLY SIGNED")]
-        PARTIALLYSIGNED,
-        CANCELED,
-        EXPIRED,
-        DELETED
+        PartiallySigned,
+        [EnumMember(Value = "CANCELED")]
+        Canceled,
+        [EnumMember(Value = "EXPIRED")]
+        Expired,
+        [EnumMember(Value = "DELETED")]
+        Deleted
     }
 
     public class CreateEnvelopefromBase64Response
@@ -3741,7 +3795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string EmbeddedSendingToken { get; set; }
 
         [JsonProperty("embeddedSessionURL")]
-        public string SendingSessionURL { get; set; }
+        public string SendingSessionUrl { get; set; }
 
         [JsonProperty("result")]
         public string Result { get; set; }
@@ -3752,10 +3806,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class CreateEnvelopefromBase64ResponseEnvelopeType
     {
-        [JsonProperty("envelopeId")]
+        [JsonProperty("folderId")]
         public int Id { get; set; }
 
-        [JsonProperty("envelopeName")]
+        [JsonProperty("folderName")]
         public string Name { get; set; }
 
         [JsonProperty("folderCustomName")]
@@ -3779,7 +3833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("folderAuthorRole")]
         public string CreatorRole { get; set; }
 
-        [JsonProperty("envelopeCompanyId")]
+        [JsonProperty("folderCompanyId")]
         public int CompanyId { get; set; }
 
         [JsonProperty("folderCreationDate")]
@@ -3788,7 +3842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("folderSentDate")]
         public int SentDate { get; set; }
 
-        [JsonProperty("envelopeStatus")]
+        [JsonProperty("folderStatus")]
         public string Status { get; set; }
 
         [JsonProperty("custom_field1")]
@@ -3801,7 +3855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Metadata { get; set; }
 
         [JsonProperty("folderDocumentIds")]
-        public int[] DocumentIDs { get; set; }
+        public int[] DocumentIds { get; set; }
 
         [JsonProperty("documentsList")]
         public CreateEnvelopefromBase64ResponseEnvelopeTypeDocumentsTypeItem[] Documents { get; set; }
@@ -3810,10 +3864,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public CreateEnvelopefromBase64ResponseEnvelopeTypeRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("folderAccessURLForAuthor")]
-        public string AuthorSigningURL { get; set; }
+        public string AuthorSigningUrl { get; set; }
 
         [JsonProperty("draftFolderAccessURL")]
-        public string DraftAccessURL { get; set; }
+        public string DraftAccessUrl { get; set; }
 
         [JsonProperty("boardRoomSign")]
         public bool BoardroomSigning { get; set; }
@@ -3875,8 +3929,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("allowRecipientsToDelegate")]
         public bool AllowDelegation { get; set; }
 
+        [JsonProperty("envelopeId")]
+        public int Id2 { get; set; }
+
+        [JsonProperty("envelopeName")]
+        public string Name2 { get; set; }
+
         [JsonProperty("envelopeOriginatorId")]
         public int OriginatorId { get; set; }
+
+        [JsonProperty("envelopeCompanyId")]
+        public int CompanyId2 { get; set; }
 
         [JsonProperty("envelopeDate")]
         public int Date { get; set; }
@@ -3884,8 +3947,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("envelopeSharedDate")]
         public int SharedDate { get; set; }
 
+        [JsonProperty("envelopeStatus")]
+        public string Status2 { get; set; }
+
         [JsonProperty("envelopeContractIds")]
-        public int[] ContractIDs { get; set; }
+        public int[] ContractIds { get; set; }
 
         [JsonProperty("envelopePartyPermissions")]
         public CreateEnvelopefromBase64ResponseEnvelopeTypeRecipientPermissionsTypeItem[] RecipientPermissions { get; set; }
@@ -4014,7 +4080,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SharingMode { get; set; }
 
         [JsonProperty("folderAccessURL")]
-        public string RecipientAccessURL { get; set; }
+        public string RecipientAccessUrl { get; set; }
 
         [JsonProperty("securityMode")]
         public string SecurityMode { get; set; }
@@ -4221,7 +4287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SharingMode { get; set; }
 
         [JsonProperty("folderAccessURL")]
-        public string RecipientAccessURL { get; set; }
+        public string RecipientAccessUrl { get; set; }
 
         [JsonProperty("securityMode")]
         public string SecurityMode { get; set; }
@@ -4395,7 +4461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SigningToken { get; set; }
 
         [JsonProperty("embeddedSessionURL")]
-        public string SigningSessionURL { get; set; }
+        public string SigningSessionUrl { get; set; }
     }
 
     public class CreateEnvelopefromBase64BodyInput
@@ -4597,10 +4663,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class WebhookEventPayloadEventDataTypeEnvelopeType
     {
-        [JsonProperty("envelopeId")]
+        [JsonProperty("folderId")]
         public int Id { get; set; }
 
-        [JsonProperty("envelopeName")]
+        [JsonProperty("folderName")]
         public string Name { get; set; }
 
         [JsonProperty("folderCustomName")]
@@ -4624,7 +4690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("folderAuthorRole")]
         public string CreatorRole { get; set; }
 
-        [JsonProperty("envelopeCompanyId")]
+        [JsonProperty("folderCompanyId")]
         public int CompanyId { get; set; }
 
         [JsonProperty("folderCreationDate")]
@@ -4633,7 +4699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("folderSentDate")]
         public int SentDate { get; set; }
 
-        [JsonProperty("envelopeStatus")]
+        [JsonProperty("folderStatus")]
         public string Status { get; set; }
 
         [JsonProperty("custom_field1")]
@@ -4646,7 +4712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Metadata { get; set; }
 
         [JsonProperty("folderDocumentIds")]
-        public int[] DocumentIDs { get; set; }
+        public int[] DocumentIds { get; set; }
 
         [JsonProperty("documentsList")]
         public WebhookEventPayloadEventDataTypeEnvelopeTypeDocumentsTypeItem[] Documents { get; set; }
@@ -4655,10 +4721,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public WebhookEventPayloadEventDataTypeEnvelopeTypeRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("folderAccessURLForAuthor")]
-        public string AuthorAccessURL { get; set; }
+        public string AuthorAccessUrl { get; set; }
 
         [JsonProperty("draftFolderAccessURL")]
-        public string DraftAccessURL { get; set; }
+        public string DraftAccessUrl { get; set; }
 
         [JsonProperty("boardRoomSign")]
         public bool BoardroomSigning { get; set; }
@@ -4720,8 +4786,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("allowRecipientsToDelegate")]
         public bool AllowDelegation { get; set; }
 
+        [JsonProperty("envelopeId")]
+        public int Id2 { get; set; }
+
+        [JsonProperty("envelopeName")]
+        public string Name2 { get; set; }
+
         [JsonProperty("envelopeOriginatorId")]
         public int OriginatorId { get; set; }
+
+        [JsonProperty("envelopeCompanyId")]
+        public int CompanyId2 { get; set; }
 
         [JsonProperty("envelopeDate")]
         public int Date { get; set; }
@@ -4729,8 +4804,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         [JsonProperty("envelopeSharedDate")]
         public int SharedDate { get; set; }
 
+        [JsonProperty("envelopeStatus")]
+        public string Status2 { get; set; }
+
         [JsonProperty("envelopeContractIds")]
-        public int[] ContractIDs { get; set; }
+        public int[] ContractIds { get; set; }
 
         [JsonProperty("envelopePartyPermissions")]
         public WebhookEventPayloadEventDataTypeEnvelopeTypePartyPermissionsTypeItem[] PartyPermissions { get; set; }
@@ -4859,7 +4937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SharingMode { get; set; }
 
         [JsonProperty("folderAccessURL")]
-        public string RecipientSigningURL { get; set; }
+        public string RecipientSigningUrl { get; set; }
 
         [JsonProperty("securityMode")]
         public string SecurityMode { get; set; }
@@ -4991,7 +5069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SharingMode { get; set; }
 
         [JsonProperty("folderAccessURL")]
-        public string RecipientSigningURL { get; set; }
+        public string RecipientSigningUrl { get; set; }
 
         [JsonProperty("securityMode")]
         public string SecurityMode { get; set; }
@@ -5098,7 +5176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string ChannelName { get; set; }
 
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.Account;
@@ -5118,7 +5196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
     {
         Account,
         [EnumMember(Value = "API App")]
-        APIApp
+        ApiApp
     }
 
     public class TriggerEnvelopeViewedBodyInput
@@ -5132,10 +5210,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string ChannelName { get; set; }
 
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.APIApp;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.ApiApp;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -5158,10 +5236,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string ChannelName { get; set; }
 
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.APIApp;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.ApiApp;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -5184,10 +5262,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string ChannelName { get; set; }
 
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.APIApp;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.ApiApp;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -5210,10 +5288,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string ChannelName { get; set; }
 
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.APIApp;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.ApiApp;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -5236,10 +5314,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string ChannelName { get; set; }
 
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.APIApp;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.ApiApp;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
