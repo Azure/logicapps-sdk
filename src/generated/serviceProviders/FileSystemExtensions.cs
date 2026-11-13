@@ -89,11 +89,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        public IWorkflowAction<DeleteFileActionConfiguration> DeleteFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
+        public IBodyWorkflowAction<JToken, DeleteFileActionConfiguration> DeleteFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
         {
             var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
             var __workflow_skipIfFileNotPresent = WorkflowExpression.Compile(skipIfFileNotPresent, nameof(skipIfFileNotPresent), required: false);
-            return new DeferredWorkflowAction<DeleteFileActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, DeleteFileActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "deleteFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<DeleteFileActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, DeleteFileActionConfiguration>(serviceProviderInput);
             });
         }
 

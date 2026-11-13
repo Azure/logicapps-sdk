@@ -80,32 +80,4 @@ namespace Microsoft.Azure.Workflows.Sdk
         public T TriggerBody { get; private set; }
     }
 
-    /// <summary>
-    /// Represents a service provider trigger with a strongly-typed structured output that does
-    /// not have a <c>body</c> wrapper. Use this when the operation manifest declares outputs with
-    /// properties directly (i.e., <c>outputs.properties</c> exists but has no <c>body</c> key).
-    /// </summary>
-    /// <typeparam name="T">The type of the output value produced by the trigger at runtime.</typeparam>
-    public class ServiceProviderOutputTrigger<T, TConfiguration> :
-        ServiceProviderTrigger<TConfiguration>,
-        IOutputWorkflowTrigger<T, TConfiguration>
-        where TConfiguration : class, IWorkflowOperationConfiguration, new()
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceProviderOutputTrigger{T}"/> class.
-        /// </summary>
-        /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
-        /// <param name="isPolling">Whether this trigger uses polling semantics.</param>
-        internal ServiceProviderOutputTrigger(
-            ServiceProviderOperationInput serviceProviderTriggerInput,
-            bool isPolling = false)
-            : base(serviceProviderTriggerInput, isPolling)
-        {
-        }
-
-        /// <summary>
-        /// Gets the strongly-typed output of this trigger.
-        /// </summary>
-        public T TriggerOutput { get; private set; }
-    }
 }

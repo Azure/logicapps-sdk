@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
-        public IWorkflowAction<FileDownloadActionConfiguration> FileDownload(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
+        public IBodyWorkflowAction<JToken, FileDownloadActionConfiguration> FileDownload(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
         {
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            return new DeferredWorkflowAction<FileDownloadActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, FileDownloadActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(__workflow_fileName);
@@ -76,16 +76,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDownload", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<FileDownloadActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, FileDownloadActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
-        public IWorkflowAction<FileDeleteActionConfiguration> FileDelete(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
+        public IBodyWorkflowAction<JToken, FileDeleteActionConfiguration> FileDelete(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
         {
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            return new DeferredWorkflowAction<FileDeleteActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, FileDeleteActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(__workflow_fileName);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDelete", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<FileDeleteActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, FileDeleteActionConfiguration>(serviceProviderInput);
             });
         }
     }

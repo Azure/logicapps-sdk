@@ -16,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
     public class AzureaisearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IWorkflowAction<IndexDocumentsActionConfiguration> IndexDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
+        public IBodyWorkflowAction<JToken, IndexDocumentsActionConfiguration> IndexDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: true);
-            return new DeferredWorkflowAction<IndexDocumentsActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, IndexDocumentsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(__workflow_indexName);
@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "indexDocuments", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<IndexDocumentsActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, IndexDocumentsActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IWorkflowAction<IndexDocumentActionConfiguration> IndexDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
+        public IBodyWorkflowAction<JToken, IndexDocumentActionConfiguration> IndexDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
-            return new DeferredWorkflowAction<IndexDocumentActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, IndexDocumentActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(__workflow_indexName);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "indexDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<IndexDocumentActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, IndexDocumentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -138,11 +138,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IWorkflowAction<DeleteDocumentActionConfiguration> DeleteDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
+        public IBodyWorkflowAction<JToken, DeleteDocumentActionConfiguration> DeleteDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
-            return new DeferredWorkflowAction<DeleteDocumentActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, DeleteDocumentActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(__workflow_indexName);
@@ -152,16 +152,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "deleteDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<DeleteDocumentActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, DeleteDocumentActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IWorkflowAction<DeleteDocumentsActionConfiguration> DeleteDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
+        public IBodyWorkflowAction<JToken, DeleteDocumentsActionConfiguration> DeleteDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: true);
-            return new DeferredWorkflowAction<DeleteDocumentsActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, DeleteDocumentsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(__workflow_indexName);
@@ -171,16 +171,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "deleteDocuments", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<DeleteDocumentsActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, DeleteDocumentsActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IWorkflowAction<MergeDocumentActionConfiguration> MergeDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
+        public IBodyWorkflowAction<JToken, MergeDocumentActionConfiguration> MergeDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
-            return new DeferredWorkflowAction<MergeDocumentActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, MergeDocumentActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(__workflow_indexName);
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "mergeDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<MergeDocumentActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, MergeDocumentActionConfiguration>(serviceProviderInput);
             });
         }
 
